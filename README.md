@@ -23,7 +23,9 @@ npm run preview
 - Five modeled grandstand positions, interactive seating grids, bounded row/seat inputs, and adjacent-seat keyboard navigation.
 - Orbit controls in overview and grandstand mode; drag-to-look and bounded field-of-view zoom from a seat.
 - Actual scene geometry for tiers, track, fencing, barriers, support posts, buildings, and Sphere.
-- Three-position comparison with consistent seated camera settings.
+- Three-position comparison with linked horizontal/vertical camera angles and reset.
+- Modeled groups of 1–4 seats, kept within one seating bank, with group-aware share links.
+- A persistent shortlist tray and docked primary actions on desktop and mobile.
 - F1 red, black and white interface, with an adaptive mobile bottom sheet, front/middle/high row shortcuts, and an enlarged keyboard-accessible seat map.
 - Detailed molded chairs with numbered back plates, armrests, mounting plates, half-step aisles and illuminated stair edges.
 - Steel scaffolding with material reflections, continuous fencing, lighting cabinets, service pavilions, corner boards, safety-tire stacks, an illustrative venue screen, original LED Sphere artwork and restrained bloom.
@@ -49,6 +51,8 @@ Inspected 22 November 2026:
 - [Official circuit layout](https://www.f1lasvegasgp.com/track-layout/): circuit orientation and corner sequence.
 
 Live organizer pages can change to newer editions. The model is not automatically updated. No live availability or pricing is displayed.
+
+See [platform research](PLATFORM-RESEARCH.md) for the current ticketing and venue-view references behind the group-planning and comparison changes.
 
 ## Architecture
 

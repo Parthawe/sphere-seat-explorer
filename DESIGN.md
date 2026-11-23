@@ -11,3 +11,5 @@ Mobile uses the scene above a collapsible bottom sheet, retaining access to its 
 Source references inspected 22 November 2026: formula1.com, f1lasvegasgp.com and the official 2026 Sphere-zone diagram. External seat photography informs visual construction only and is not bundled.
 
 The user subsequently confirmed true 3D as the quality priority. Start at a seated perspective and keep overview available. Favor material depth, soft shadows and geographic legibility over repeated props. Use bundled CC0 scanned asphalt and inexpensive geometry for distant seating. The enlarged map supports precise selection. Generic spectators are scene illustration; all structural positions remain estimates.
+
+The platform-research revision prioritizes choosing together, retaining context and comparing views. Use a compact 1–4 quantity control, show the selected camera seat for group previews, retain saved choices in the scene, and dock primary actions while controls scroll. Linked yaw/pitch controls use the same relative viewing direction across comparison cameras. This does not add inventory or verified photography. See PLATFORM-RESEARCH.md.

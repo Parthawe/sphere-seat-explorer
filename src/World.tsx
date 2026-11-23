@@ -8,7 +8,13 @@ import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPa
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import { GTAOPass } from "three/examples/jsm/postprocessing/GTAOPass.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
-import { stands, getStand, type Mode, type Selection } from "./model";
+import {
+  stands,
+  getStand,
+  partySeats,
+  type Mode,
+  type Selection,
+} from "./model";
 type V3 = [number, number, number];
 type Piece = { p: V3; s: V3; r?: V3; color?: string };
 const route: [number, number][] = [
@@ -729,6 +735,7 @@ function Grandstand({
     const mesh = ref.current;
     if (!mesh) return;
     const obj = new T.Object3D();
+    const plannedSeats = partySeats(selection);
     for (let r = 1; r <= s.rows; r++)
       for (let n = 1; n <= s.seats; n++) {
         const index = (r - 1) * s.seats + n - 1;
@@ -742,7 +749,7 @@ function Grandstand({
         mesh.setColorAt(
           index,
           new T.Color(
-            active && r === selection.row && n === selection.seat
+            active && r === selection.row && plannedSeats.includes(n)
               ? "#ff1a12"
               : active && r === selection.row
                 ? "#aab1c3"

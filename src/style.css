@@ -1831,3 +1831,434 @@ dialog::backdrop {
     font-size: 11px;
   }
 }
+/* Seat-planning flow informed by current ticketing platform guidance. */
+.selection-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.panel-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #bcbcc7 var(--paper);
+}
+.selection-panel > .panel-actions {
+  flex: none;
+  margin: 0;
+  padding: 14px 26px 15px;
+  border-top: 1px solid #d6d6e1;
+  background: var(--paper);
+}
+.action-selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0 10px;
+  font-size: 11px;
+  color: #68687b;
+}
+.action-selection strong {
+  font-size: 13px;
+  color: #15151e;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.selection-panel > .panel-actions .ticket-info {
+  margin-top: 11px;
+}
+.party-picker {
+  padding-top: 17px;
+}
+.party-options {
+  display: flex;
+  gap: 7px;
+  margin-top: 10px;
+}
+.party-options button {
+  flex: 1;
+  min-height: 34px;
+  border: 1px solid #c5c5d0;
+  background: white;
+  color: #5a5a70;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 2px;
+}
+.party-options button[aria-pressed="true"] {
+  background: #15151e;
+  color: white;
+  border-color: #15151e;
+}
+.party-options button:hover {
+  background: #e7e7ed;
+  color: #15151e;
+}
+.party-options button[aria-pressed="true"]:hover {
+  background: #343441;
+  color: white;
+}
+.party-picker > p {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #646479;
+  margin-top: 8px;
+}
+.stand-tabs button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 51px;
+}
+.stand-tabs button > strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+.stand-tabs button > span {
+  font-size: 9px;
+  font-weight: 400;
+}
+.view-evidence {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 0 0;
+  margin-top: 14px;
+  border-top: 1px solid #d9d9e2;
+}
+.view-evidence > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.view-evidence strong {
+  font-size: 11px;
+  font-weight: 500;
+  color: #4d4d63;
+}
+.view-evidence span {
+  font-size: 10px;
+  color: #707084;
+  line-height: 1.4;
+}
+.view-evidence > button {
+  font-size: 10px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #b50500;
+  white-space: nowrap;
+  padding: 0;
+  align-self: flex-start;
+}
+.view-evidence > button:hover {
+  color: #900400 !important;
+}
+.compare-dock {
+  position: absolute;
+  bottom: 60px;
+  left: 240px;
+  right: 74px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #15151ef5;
+  border: 1px solid #454554;
+  border-radius: 3px 3px 10px 3px;
+  padding: 8px;
+  z-index: 2;
+  box-shadow: 0 6px 18px #0003;
+}
+.dock-items {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #5c5c72 transparent;
+}
+.dock-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #4c4c5e;
+  border-radius: 2px;
+  min-width: 125px;
+  flex: 1;
+}
+.dock-preview {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 9px;
+  text-align: left;
+  flex: 1;
+  white-space: nowrap;
+}
+.dock-preview strong {
+  font-size: 11px;
+  font-weight: 500;
+  color: #f0f0f6;
+}
+.dock-preview span {
+  font-size: 10px;
+  color: #b4b4c8;
+}
+.dock-preview:hover {
+  background: #2e2e3c;
+}
+.dock-remove {
+  width: 29px;
+  min-height: 40px;
+  display: grid;
+  place-items: center;
+  color: #a9a9bd;
+  flex: none;
+}
+.dock-remove svg {
+  width: 14px;
+  height: 14px;
+}
+.dock-remove:hover {
+  background: #42313b;
+  color: #fff;
+}
+.dock-compare {
+  min-height: 39px;
+  flex: none;
+  padding: 0 13px;
+  background: #e10600;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 2px;
+}
+.dock-compare:hover {
+  background: #b90500;
+}
+.has-saved .scene-instruction {
+  display: none;
+}
+.comparison-camera {
+  padding: 16px 0;
+  margin-top: 17px;
+  border-top: 1px solid #d7d7e2;
+  border-bottom: 1px solid #d7d7e2;
+}
+.comparison-camera-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.comparison-camera-heading > strong {
+  font-size: 14px;
+  font-weight: 500;
+}
+.comparison-camera-heading > button {
+  font-size: 12px;
+  color: #b50500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.comparison-camera-heading > button:hover {
+  color: #800400;
+}
+.comparison-camera > p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #727287;
+  margin-top: 5px;
+}
+.comparison-sliders {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 15px;
+  max-width: 720px;
+}
+.comparison-sliders label {
+  font-size: 12px;
+  color: #5f5f76;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+.comparison-sliders output {
+  font-variant-numeric: tabular-nums;
+  color: #15151e;
+}
+.comparison-sliders input {
+  grid-column: 1/3;
+  width: 100%;
+  accent-color: #e10600;
+  margin: 2px 0;
+  min-height: 23px;
+}
+.comparison-detail .anchor-view {
+  font-size: 11px;
+  margin-top: 5px;
+  color: #74748b;
+}
+.comparison-dialog {
+  max-height: 94dvh;
+}
+@media (max-height: 900px) and (min-width: 761px) {
+  .party-picker {
+    padding-top: 13px;
+  }
+  .party-options {
+    margin-top: 7px;
+  }
+  .party-options button {
+    min-height: 30px;
+    font-size: 13px;
+  }
+  .party-picker > p {
+    margin-top: 6px;
+    font-size: 10px;
+  }
+  .position-picker > .seat-grid {
+    display: none;
+  }
+  .view-evidence {
+    padding-top: 9px;
+    margin-top: 11px;
+  }
+  .selection-summary {
+    margin-top: 12px;
+  }
+  .selection-panel > .panel-actions {
+    padding: 12px 23px;
+  }
+  .stand-tabs button {
+    height: 44px;
+  }
+  .action-selection {
+    padding-bottom: 8px;
+  }
+  .selection-panel > .panel-actions .ticket-info > span {
+    display: none;
+  }
+}
+@media (max-width: 1150px) and (min-width: 761px) {
+  .compare-dock {
+    left: 215px;
+    right: 65px;
+    gap: 7px;
+  }
+  .dock-items {
+    gap: 5px;
+  }
+  .dock-item {
+    min-width: 112px;
+  }
+  .dock-compare {
+    font-size: 11px;
+    padding: 0 10px;
+  }
+  .selection-panel > .panel-actions {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+@media (max-width: 760px) {
+  .selection-panel:not(.collapsed) {
+    display: flex;
+    max-height: calc(100% - 100px);
+  }
+  .mobile-panel-toggle {
+    flex: none;
+  }
+  .selection-panel:not(.collapsed) .panel-content {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding-bottom: 14px;
+  }
+  .selection-panel > .panel-actions {
+    position: static;
+    bottom: auto;
+    padding: 10px 23px 14px;
+    margin: 0;
+    flex: none;
+  }
+  .selection-panel.collapsed > .panel-actions {
+    display: none;
+  }
+  .selection-panel > .panel-actions .ticket-info {
+    display: none;
+  }
+  .action-selection {
+    font-size: 11px;
+    padding-bottom: 8px;
+  }
+  .action-selection strong {
+    font-size: 12px;
+  }
+  .party-options button {
+    min-height: 40px;
+  }
+  .party-picker > p {
+    font-size: 12px;
+  }
+  .view-evidence span {
+    font-size: 11px;
+  }
+  .view-evidence strong,
+  .view-evidence > button {
+    font-size: 12px;
+  }
+  .compare-dock {
+    left: 18px;
+    right: 18px;
+    bottom: 135px;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 3px;
+  }
+  .dock-item {
+    flex: none;
+    min-width: 128px;
+  }
+  .dock-preview {
+    padding: 7px;
+  }
+  .dock-compare {
+    min-height: 43px;
+    font-size: 11px;
+    padding: 0 11px;
+  }
+  .dock-remove {
+    min-height: 42px;
+  }
+  .has-saved .track-demo {
+    bottom: 207px;
+  }
+  .has-saved .circuit-inset {
+    display: none;
+  }
+  .stand-tabs button {
+    height: 50px;
+  }
+  .stand-tabs button > span {
+    font-size: 10px;
+  }
+  .comparison-sliders {
+    gap: 16px;
+  }
+  .comparison-sliders label {
+    font-size: 11px;
+  }
+  .comparison-camera-heading > strong {
+    font-size: 13px;
+  }
+  .comparison-camera > p {
+    font-size: 12px;
+  }
+}

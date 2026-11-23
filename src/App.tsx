@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import {
   DEFAULT,
   stands,
@@ -9,6 +9,8 @@ import {
   makeSearch,
   addSaved,
   seatPosition,
+  partySeats,
+  selectionLabel,
   sources,
   type Selection,
   type Mode,
@@ -107,6 +109,9 @@ function SeatGrid({
 }) {
   const stand = getStand(selection.stand),
     width = stand.seats * 7;
+  const group = partySeats(selection);
+  const update = (next: Selection) =>
+    onChange({ ...next, party: selection.party });
   return (
     <div className={"seat-grid " + (large ? "seat-grid-large" : "")}>
       <div className="track-edge">
@@ -123,7 +128,7 @@ function SeatGrid({
           )
             return;
           e.preventDefault();
-          onChange(
+          update(
             normalize({
               ...selection,
               seat:
@@ -144,7 +149,7 @@ function SeatGrid({
           const x = (e.clientX - rect.left - offsetX) / scale - 16;
           const y = (e.clientY - rect.top - offsetY) / scale - 6;
           if (x < -8 || x > width + 8 || y < -6 || y > 126) return;
-          onChange(
+          update(
             normalize({
               stand: stand.id,
               row: Math.round((y - 4) / 6.4) + 1,
@@ -183,8 +188,7 @@ function SeatGrid({
         ))}
         {Array.from({ length: stand.rows }, (_, ri) =>
           Array.from({ length: stand.seats }, (_, si) => {
-            const active =
-              ri + 1 === selection.row && si + 1 === selection.seat;
+            const active = ri + 1 === selection.row && group.includes(si + 1);
             return (
               <circle
                 key={ri + "-" + si}
@@ -199,7 +203,7 @@ function SeatGrid({
                       : "#c9ccd6"
                 }
                 onClick={() =>
-                  onChange({ stand: stand.id, row: ri + 1, seat: si + 1 })
+                  update({ stand: stand.id, row: ri + 1, seat: si + 1 })
                 }
               >
                 <title>
@@ -302,13 +306,20 @@ export default function App() {
     [unavailable, setUnavailable] = useState(false),
     [flat, setFlat] = useState(false),
     [panelOpen, setPanelOpen] = useState(() => window.innerWidth > 760),
-    [playing, setPlaying] = useState(false);
+    [playing, setPlaying] = useState(false),
+    [compareYaw, setCompareYaw] = useState(0),
+    [comparePitch, setComparePitch] = useState(0);
+  const comparisonLook = useMemo(
+    () => ({ yaw: compareYaw, pitch: comparePitch }),
+    [compareYaw, comparePitch],
+  );
   const dialogRef = useRef<HTMLDialogElement>(null),
     sceneRef = useRef<HTMLDivElement>(null),
     noticeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const stand = getStand(selection.stand),
     position = seatPosition(selection),
     isSaved = saved.some((s) => key(s) === key(selection));
+  const partyCount = selection.party || 1;
   const announce = (text: string) => {
     setNotice(text);
     if (noticeTimer.current) clearTimeout(noticeTimer.current);
@@ -360,7 +371,12 @@ export default function App() {
     const s = getStand(id);
     if (window.innerWidth <= 760) setPanelOpen(true);
     navigate(
-      { stand: id, row: selection.row, seat: Math.ceil(s.seats / 2) },
+      {
+        stand: id,
+        row: selection.row,
+        seat: Math.ceil(s.seats / 2),
+        party: selection.party,
+      },
       "stand",
     );
   };
@@ -435,7 +451,9 @@ export default function App() {
       </header>
       <main className="workspace">
         <section
-          className={"scene-area mode-" + mode}
+          className={
+            "scene-area mode-" + mode + (saved.length ? " has-saved" : "")
+          }
           aria-label="Interactive seat view"
           ref={sceneRef}
         >
@@ -483,7 +501,9 @@ export default function App() {
                   mode={mode}
                   reset={reset}
                   playing={playing}
-                  onSelect={(s) => navigate(s, "seat")}
+                  onSelect={(s) =>
+                    navigate({ ...s, party: selection.party }, "seat")
+                  }
                   onStand={chooseStand}
                   onReady={() => {
                     setReady(true);
@@ -505,7 +525,10 @@ export default function App() {
                   {stand.name}
                   <span>
                     {mode === "seat"
-                      ? "ROW " + selection.row + " / SEAT " + selection.seat
+                      ? "ROW " +
+                        selection.row +
+                        " / " +
+                        selectionLabel(selection).toUpperCase()
                       : "SELECT A SEAT POSITION"}
                   </span>
                 </>
@@ -642,6 +665,64 @@ export default function App() {
             </button>
             <span>Illustrative cars</span>
           </div>
+          {saved.length > 0 && (
+            <div className="compare-dock" aria-label="Saved view shortlist">
+              <div className="dock-items">
+                {saved.map((item) => (
+                  <div className="dock-item" key={key(item)}>
+                    <button
+                      className="dock-preview"
+                      aria-label={
+                        "Preview position " +
+                        item.stand +
+                        " row " +
+                        item.row +
+                        " " +
+                        selectionLabel(item).toLowerCase()
+                      }
+                      onClick={() => {
+                        navigate(item, "seat");
+                        setFlat(false);
+                        setPanelOpen(false);
+                      }}
+                    >
+                      <strong>Position {item.stand}</strong>
+                      <span>
+                        R{item.row} · {selectionLabel(item)}
+                      </span>
+                    </button>
+                    <button
+                      className="dock-remove"
+                      aria-label={
+                        "Remove saved position " +
+                        item.stand +
+                        " row " +
+                        item.row +
+                        " " +
+                        selectionLabel(item).toLowerCase()
+                      }
+                      onClick={() =>
+                        navigate(
+                          selection,
+                          mode,
+                          saved.filter((x) => key(x) !== key(item)),
+                          true,
+                        )
+                      }
+                    >
+                      <Icon name="close" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <button
+                className="dock-compare"
+                onClick={() => setDialog("compare")}
+              >
+                Compare {saved.length}
+              </button>
+            </div>
+          )}
           <div className="model-caption">
             <span className="live-mark" />
             {flat || unavailable
@@ -666,7 +747,7 @@ export default function App() {
             <span className="mobile-summary">
               {stand.name}
               <strong>
-                ROW {selection.row} / SEAT {selection.seat}
+                ROW {selection.row} / {selectionLabel(selection).toUpperCase()}
               </strong>
             </span>
             <span className="mobile-action">
@@ -697,7 +778,8 @@ export default function App() {
                     aria-pressed={s.id === stand.id}
                     onClick={() => chooseStand(s.id)}
                   >
-                    {s.id}
+                    <strong>{s.id}</strong>
+                    <span>{s.corner}</span>
                   </button>
                 ))}
               </div>
@@ -706,6 +788,34 @@ export default function App() {
                 <span>{stand.corner}</span>
               </div>
               <p className="stand-description">{stand.description}</p>
+            </section>
+            <section className="party-picker" aria-label="Group planning">
+              <div className="section-label">
+                <h3>Seats together</h3>
+                <span>MODELED GROUP</span>
+              </div>
+              <div className="party-options">
+                {[1, 2, 3, 4].map((n) => (
+                  <button
+                    key={n}
+                    aria-label={
+                      "Plan " + n + (n === 1 ? " seat" : " adjacent seats")
+                    }
+                    aria-pressed={partyCount === n}
+                    onClick={() =>
+                      navigate({ ...selection, party: n }, mode, saved, true)
+                    }
+                  >
+                    {n}
+                  </button>
+                ))}
+              </div>
+              <p>
+                {partyCount === 1
+                  ? "Choose a seat to inspect its view."
+                  : selectionLabel(selection) +
+                    " stay on one side of the modeled aisle."}
+              </p>
             </section>
             <section className="position-picker">
               <div className="section-label">
@@ -746,6 +856,13 @@ export default function App() {
               </div>
               <SeatGrid selection={selection} onChange={change} />
             </section>
+            <div className="view-evidence">
+              <div>
+                <strong>3D estimate</strong>
+                <span>Viewing seat {selection.seat} · No verified photo</span>
+              </div>
+              <button onClick={() => setDialog("sources")}>View sources</button>
+            </div>
             <div className="selection-summary">
               <div>
                 <span>EST. EYE HEIGHT</span>
@@ -770,53 +887,7 @@ export default function App() {
                 i
               </button>
             </div>
-            <div className="panel-actions">
-              <button
-                className="primary-button"
-                onClick={() => {
-                  navigate(selection, "seat");
-                  setReset((v) => v + 1);
-                  setPanelOpen(false);
-                  setFlat(false);
-                  if (window.innerWidth <= 760)
-                    window.scrollTo({
-                      top: 0,
-                      behavior: window.matchMedia(
-                        "(prefers-reduced-motion: reduce)",
-                      ).matches
-                        ? "auto"
-                        : "smooth",
-                    });
-                }}
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  aria-hidden="true"
-                >
-                  <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                {mode === "seat" ? "Reset seat view" : "View from this seat"}
-              </button>
-              <button className="save-button" onClick={save}>
-                <Icon name="plus" />
-                {isSaved ? "View saved comparison" : "Add to comparison"}
-                <span>{saved.length}/3</span>
-              </button>
-              <div className="ticket-info">
-                <span>Planning your next race?</span>
-                <a
-                  href="https://www.f1lasvegasgp.com/tickets/grandstands/t-mobile-grandstands/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Official ticket information
-                </a>
-              </div>
-            </div>
+
             <div className="accuracy-note">
               <span className="accuracy-symbol">≈</span>
               <p>
@@ -827,6 +898,59 @@ export default function App() {
                   How this is modeled
                 </button>
               </p>
+            </div>
+          </div>
+          <div className="panel-actions">
+            <div className="action-selection">
+              <span>
+                Position {stand.id} · row {selection.row}
+              </span>
+              <strong>{selectionLabel(selection)}</strong>
+            </div>
+            <button
+              className="primary-button"
+              onClick={() => {
+                navigate(selection, "seat");
+                setReset((v) => v + 1);
+                setPanelOpen(false);
+                setFlat(false);
+                if (window.innerWidth <= 760)
+                  window.scrollTo({
+                    top: 0,
+                    behavior: window.matchMedia(
+                      "(prefers-reduced-motion: reduce)",
+                    ).matches
+                      ? "auto"
+                      : "smooth",
+                  });
+              }}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                aria-hidden="true"
+              >
+                <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              {mode === "seat" ? "Reset seat view" : "View from this seat"}
+            </button>
+            <button className="save-button" onClick={save}>
+              <Icon name="plus" />
+              {isSaved ? "View saved comparison" : "Add to comparison"}
+              <span>{saved.length}/3</span>
+            </button>
+            <div className="ticket-info">
+              <span>Planning your next race?</span>
+              <a
+                href="https://www.f1lasvegasgp.com/tickets/grandstands/t-mobile-grandstands/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Official ticket information
+              </a>
             </div>
           </div>
         </aside>
@@ -860,7 +984,11 @@ export default function App() {
           if (e.target === e.currentTarget) setDialog(null);
         }}
         className={
-          dialog === "compare" ? "comparison-dialog" : "sources-dialog"
+          dialog === "compare"
+            ? "comparison-dialog"
+            : dialog === "map"
+              ? "map-dialog"
+              : "sources-dialog"
         }
       >
         <div className="dialog-header">
@@ -900,7 +1028,8 @@ export default function App() {
             />
             <div className="map-confirm">
               <span>
-                Modeled row {selection.row} / seat {selection.seat}
+                Modeled row {selection.row} /{" "}
+                {selectionLabel(selection).toLowerCase()}
               </span>
               <button
                 className="primary-button"
@@ -922,6 +1051,51 @@ export default function App() {
                   The same eye-level camera settings, from different positions.
                   All seat positions and obstruction geometry are estimated.
                 </p>
+                <div className="comparison-camera">
+                  <div className="comparison-camera-heading">
+                    <strong>Linked view controls</strong>
+                    <button
+                      onClick={() => {
+                        setCompareYaw(0);
+                        setComparePitch(0);
+                      }}
+                    >
+                      Reset angles
+                    </button>
+                  </div>
+                  <p>
+                    Look in the same relative direction from every saved
+                    position.
+                  </p>
+                  <div className="comparison-sliders">
+                    <label>
+                      Look left or right <output>{compareYaw}°</output>
+                      <input
+                        type="range"
+                        aria-label="Horizontal comparison angle"
+                        min="-90"
+                        max="90"
+                        step="1"
+                        value={compareYaw}
+                        onChange={(e) => setCompareYaw(Number(e.target.value))}
+                      />
+                    </label>
+                    <label>
+                      Look up or down <output>{comparePitch}°</output>
+                      <input
+                        type="range"
+                        aria-label="Vertical comparison angle"
+                        min="-20"
+                        max="30"
+                        step="1"
+                        value={comparePitch}
+                        onChange={(e) =>
+                          setComparePitch(Number(e.target.value))
+                        }
+                      />
+                    </label>
+                  </div>
+                </div>
                 <div className="comparison-grid">
                   {saved.map((s) => {
                     const st = getStand(s.stand);
@@ -934,6 +1108,7 @@ export default function App() {
                               mode="seat"
                               reset={0}
                               preview
+                              previewLook={comparisonLook}
                             />
                           </Suspense>
                         </div>
@@ -943,8 +1118,10 @@ export default function App() {
                           </span>
                           <h3>{st.name}</h3>
                           <p>
-                            Modeled row {s.row} · seat {s.seat}
+                            Modeled row {s.row} ·{" "}
+                            {selectionLabel(s).toLowerCase()}
                           </p>
+                          <p className="anchor-view">Camera at seat {s.seat}</p>
                           <dl>
                             <div>
                               <dt>Est. eye height</dt>
@@ -1044,8 +1221,8 @@ export default function App() {
             </p>
             <p>
               The displayed Sphere artwork is original illustration. Seat
-              numbers, venue screens, service pavilions and equipment placement
-              and generic spectator silhouettes are illustrative. Layouts and
+              numbers, venue screens, service pavilions, equipment placement and
+              generic spectator silhouettes are illustrative. Layouts and
               temporary structures can change by race edition. A low row may
               encounter fencing; the exact obstruction cannot be confirmed from
               this model.

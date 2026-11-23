@@ -17,6 +17,7 @@ import {
   seatTarget,
   type Selection,
   type Mode,
+  type CameraLook,
 } from "./model";
 
 type Props = {
@@ -27,10 +28,11 @@ type Props = {
   onStand?: (id: string) => void;
   preview?: boolean;
   playing?: boolean;
+  previewLook?: CameraLook;
   onReady?: () => void;
   onUnavailable?: () => void;
 };
-function Rig({ selection, mode, reset, preview, onReady }: Props) {
+function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
   const { camera, gl, invalidate } = useThree();
   const controls = useRef<OrbitControls | null>(null);
   const transition = useRef<{
@@ -142,6 +144,30 @@ function Rig({ selection, mode, reset, preview, onReady }: Props) {
     mode,
     reset,
     preview,
+    camera,
+    invalidate,
+  ]);
+  useEffect(() => {
+    if (!preview || !previewLook) return;
+    const p = seatPosition(selection),
+      yaw =
+        getStand(selection.stand).rotation + (previewLook.yaw * Math.PI) / 180,
+      pitch = Math.atan(8 / 90) + (previewLook.pitch * Math.PI) / 180;
+    camera.position.set(...p);
+    target.current.set(
+      p[0] + Math.sin(yaw) * Math.cos(pitch) * 90,
+      p[1] + Math.sin(pitch) * 90,
+      p[2] + Math.cos(yaw) * Math.cos(pitch) * 90,
+    );
+    camera.lookAt(target.current);
+    invalidate();
+  }, [
+    preview,
+    previewLook?.yaw,
+    previewLook?.pitch,
+    selection.stand,
+    selection.row,
+    selection.seat,
     camera,
     invalidate,
   ]);

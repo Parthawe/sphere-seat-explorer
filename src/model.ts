@@ -1,5 +1,11 @@
 export type Mode = "overview" | "stand" | "seat";
-export type Selection = { stand: string; row: number; seat: number };
+export type Selection = {
+  stand: string;
+  row: number;
+  seat: number;
+  party?: number;
+};
+export type CameraLook = { yaw: number; pitch: number };
 export type Stand = {
   id: string;
   name: string;
@@ -102,20 +108,37 @@ export function normalize(input: Partial<Selection>): Selection {
     stand: s.id,
     row: bound(input.row, s.rows, 12),
     seat: bound(input.seat, s.seats, Math.ceil(s.seats / 2)),
+    ...(bound(input.party, 4, 1) > 1
+      ? { party: bound(input.party, 4, 1) }
+      : {}),
   };
 }
 export function key(s: Selection) {
-  return s.stand + ":" + s.row + ":" + s.seat;
+  return (
+    s.stand +
+    ":" +
+    s.row +
+    ":" +
+    s.seat +
+    ((s.party || 1) > 1 ? ":" + s.party : "")
+  );
 }
 export function decode(value: string): Selection | null {
-  const [stand, row, seat] = value.split(":");
+  const [stand, row, seat, party, ...extra] = value.split(":");
   if (
     !stands.some((s) => s.id === stand) ||
     !/^\d+$/.test(row || "") ||
-    !/^\d+$/.test(seat || "")
+    !/^\d+$/.test(seat || "") ||
+    extra.length > 0 ||
+    (party !== undefined && !/^[1-4]$/.test(party))
   )
     return null;
-  return normalize({ stand, row: Number(row), seat: Number(seat) });
+  return normalize({
+    stand,
+    row: Number(row),
+    seat: Number(seat),
+    party: party ? Number(party) : 1,
+  });
 }
 export function readUrl(search: string) {
   const p = new URLSearchParams(search);
@@ -164,4 +187,25 @@ export function addSaved(saved: Selection[], s: Selection) {
     : saved.length >= 3
       ? saved
       : [...saved, { ...s }];
+}
+
+export function partySeats(selection: Selection): number[] {
+  const s = normalize(selection),
+    stand = getStand(s.stand),
+    count = s.party || 1,
+    split = Math.ceil(stand.seats / 2),
+    left = s.seat <= split;
+  const first = left ? 1 : split + 1,
+    last = left ? split : stand.seats;
+  const start = Math.max(first, Math.min(s.seat, last - count + 1));
+  return Array.from({ length: count }, (_, i) => start + i);
+}
+export function seatRange(s: Selection) {
+  const seats = partySeats(s);
+  return seats.length === 1
+    ? String(seats[0])
+    : seats[0] + "–" + seats[seats.length - 1];
+}
+export function selectionLabel(s: Selection) {
+  return ((s.party || 1) > 1 ? "Seats " : "Seat ") + seatRange(s);
 }

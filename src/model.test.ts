@@ -8,6 +8,9 @@ import {
   addSaved,
   DEFAULT,
   decode,
+  partySeats,
+  stands,
+  key,
 } from "./model";
 test("bounds malformed and out-of-range selections", () => {
   assert.deepEqual(normalize({ stand: "missing", row: -5, seat: Infinity }), {
@@ -51,4 +54,24 @@ test("entry starts seated while explicit overview links keep their mode", () => 
   assert.equal(readUrl("").mode, "seat");
   assert.equal(readUrl("?view=overview").mode, "overview");
   assert.equal(readUrl("?view=stand").mode, "stand");
+});
+
+test("groups remain contiguous within one modeled seating bank", () => {
+  for (const stand of stands) for (let seat = 1; seat <= stand.seats; seat++) for (let party = 1; party <= 4; party++) {
+    const group = partySeats({ stand: stand.id, row: 12, seat, party });
+    assert.equal(group.length, party);
+    assert.ok(group.includes(seat));
+    assert.ok(group.every((n, i) => n >= 1 && n <= stand.seats && (!i || n === group[i - 1] + 1)));
+    assert.equal(group[0] <= stand.seats / 2, group.at(-1)! <= stand.seats / 2);
+  }
+  assert.deepEqual(partySeats({ ...DEFAULT, party: 2 }), [17, 18]);
+  assert.deepEqual(partySeats({ ...DEFAULT, seat: 19, party: 2 }), [19, 20]);
+});
+test("group plans round trip without breaking legacy seat links", () => {
+  const group = { ...DEFAULT, party: 4 };
+  assert.deepEqual(decode(key(DEFAULT)), DEFAULT);
+  assert.deepEqual(readUrl(makeSearch(group, "stand", [DEFAULT, group])).saved, [DEFAULT, group]);
+  assert.deepEqual(readUrl(makeSearch(group, "seat", [])).current, group);
+  assert.equal(addSaved([DEFAULT], group).length, 2);
+  for (const invalid of ["C:12:18:0", "C:12:18:5", "C:12:18:2:3", "C:12:18:NaN"]) assert.equal(decode(invalid), null);
 });
