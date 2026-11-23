@@ -5,6 +5,7 @@ import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { stands, getStand, type Mode, type Selection } from "./model";
 type V3 = [number, number, number];
@@ -432,7 +433,26 @@ function Sphere() {
     <group position={[0, 44, 0]}>
       <mesh rotation={[0, 0.35, 0]}>
         <sphereGeometry args={[48, 128, 80]} />
-        <meshBasicMaterial map={map} toneMapped={false} />
+        <meshBasicMaterial
+          map={map}
+          toneMapped={false}
+          onBeforeCompile={(shader) => {
+            shader.vertexShader =
+              "varying vec3 ledWorldNormal; varying vec3 ledWorldPosition;\n" +
+              shader.vertexShader;
+            shader.vertexShader = shader.vertexShader.replace(
+              "#include <begin_vertex>",
+              "#include <begin_vertex>\nledWorldNormal=normalize(mat3(modelMatrix)*normal);ledWorldPosition=(modelMatrix*vec4(position,1.0)).xyz;",
+            );
+            shader.fragmentShader =
+              "varying vec3 ledWorldNormal; varying vec3 ledWorldPosition;\n" +
+              shader.fragmentShader;
+            shader.fragmentShader = shader.fragmentShader.replace(
+              "#include <tonemapping_fragment>",
+              "float edgeFacing=abs(dot(normalize(ledWorldNormal),normalize(cameraPosition-ledWorldPosition)));gl_FragColor.rgb*=mix(0.5,1.0,pow(edgeFacing,0.22));\n#include <tonemapping_fragment>",
+            );
+          }}
+        />
       </mesh>
       <mesh position={[0, -42, 0]}>
         <cylinderGeometry args={[30, 35, 8, 64]} />
@@ -483,17 +503,194 @@ function Label({
     </sprite>
   );
 }
+function moldedPanel(w: number, h: number, r: number, depth: number) {
+  const shape = new T.Shape();
+  shape.moveTo(-w / 2 + r, -h / 2);
+  shape.lineTo(w / 2 - r, -h / 2);
+  shape.quadraticCurveTo(w / 2, -h / 2, w / 2, -h / 2 + r);
+  shape.lineTo(w / 2, h / 2 - r);
+  shape.quadraticCurveTo(w / 2, h / 2, w / 2 - r, h / 2);
+  shape.lineTo(-w / 2 + r, h / 2);
+  shape.quadraticCurveTo(-w / 2, h / 2, -w / 2, h / 2 - r);
+  shape.lineTo(-w / 2, -h / 2 + r);
+  shape.quadraticCurveTo(-w / 2, -h / 2, -w / 2 + r, -h / 2);
+  return new T.ExtrudeGeometry(shape, {
+    depth,
+    bevelEnabled: true,
+    bevelThickness: 0.018,
+    bevelSize: 0.018,
+    bevelSegments: 2,
+    steps: 1,
+    curveSegments: 4,
+  });
+}
 const seatGeo = (() => {
-  const pan = new T.BoxGeometry(0.76, 0.12, 0.68);
-  const back = new T.BoxGeometry(0.76, 0.64, 0.11);
+  const pan = moldedPanel(0.72, 0.62, 0.09, 0.075);
+  pan.rotateX(-Math.PI / 2);
+  pan.translate(0, -0.015, 0.02);
+  const back = moldedPanel(0.72, 0.62, 0.085, 0.07);
   back.rotateX(-0.11);
-  back.translate(0, 0.35, -0.31);
-  const leg1 = new T.BoxGeometry(0.06, 0.5, 0.48);
-  leg1.translate(-0.28, -0.25, 0);
+  back.translate(0, 0.36, -0.33);
+  const leg1 = new T.BoxGeometry(0.055, 0.48, 0.44);
+  leg1.translate(-0.27, -0.26, 0);
   const leg2 = leg1.clone();
-  leg2.translate(0.56, 0, 0);
-  return mergeGeometries([pan, back, leg1, leg2]);
+  leg2.translate(0.54, 0, 0);
+  const arms = [-0.41, 0.41].map((x) => {
+    const g = new T.BoxGeometry(0.07, 0.065, 0.49);
+    g.translate(x, 0.25, -0.015);
+    return g;
+  });
+  const uprights = [-0.4, 0.4].map((x) => {
+    const g = new T.BoxGeometry(0.045, 0.25, 0.05);
+    g.translate(x, 0.13, -0.12);
+    return g;
+  });
+  return mergeGeometries(
+    [pan, back, leg1, leg2, ...arms, ...uprights].map((g) =>
+      g.index ? g.toNonIndexed() : g,
+    ),
+  );
 })();
+function SeatNumbers({ standId }: { standId: string }) {
+  const s = getStand(standId),
+    ref = useRef<T.InstancedMesh>(null);
+  const map = useMemo(() => {
+    const c = document.createElement("canvas");
+    c.width = 1024;
+    c.height = 768;
+    const x = c.getContext("2d")!;
+    for (let n = 1; n <= 48; n++) {
+      const col = (n - 1) % 8,
+        row = Math.floor((n - 1) / 8);
+      x.fillStyle = "#d9dce5";
+      x.fillRect(col * 128 + 8, row * 128 + 26, 112, 76);
+      x.fillStyle = "#161b26";
+      x.font = "600 55px sans-serif";
+      x.textAlign = "center";
+      x.textBaseline = "middle";
+      x.fillText(String(n), col * 128 + 64, row * 128 + 65);
+    }
+    const t = new T.CanvasTexture(c);
+    t.colorSpace = T.SRGBColorSpace;
+    t.anisotropy = 4;
+    return t;
+  }, []);
+  const geometry = useMemo(() => {
+    const g = new T.PlaneGeometry(0.25, 0.19);
+    const offsets = new Float32Array(s.rows * s.seats * 2);
+    for (let r = 1; r <= s.rows; r++)
+      for (let n = 1; n <= s.seats; n++) {
+        const i = ((r - 1) * s.seats + n - 1) * 2;
+        offsets[i] = (n - 1) % 8;
+        offsets[i + 1] = 5 - Math.floor((n - 1) / 8);
+      }
+    g.setAttribute("instanceUv", new T.InstancedBufferAttribute(offsets, 2));
+    return g;
+  }, [s]);
+  const material = useMemo(() => {
+    const m = new T.MeshBasicMaterial({
+      map,
+      transparent: true,
+      alphaTest: 0.1,
+      side: T.FrontSide,
+    });
+    m.onBeforeCompile = (shader) => {
+      shader.vertexShader =
+        "attribute vec2 instanceUv;\n" + shader.vertexShader;
+      shader.vertexShader = shader.vertexShader.replace(
+        "#include <uv_vertex>",
+        "#include <uv_vertex>\n#ifdef USE_MAP\nvMapUv=(vMapUv+instanceUv)/vec2(8.0,6.0);\n#endif",
+      );
+    };
+    m.customProgramCacheKey = () => "number-atlas-v1";
+    return m;
+  }, [map]);
+  useEffect(() => {
+    if (!ref.current) return;
+    const o = new T.Object3D();
+    for (let r = 1; r <= s.rows; r++)
+      for (let n = 1; n <= s.seats; n++) {
+        o.position.set(
+          (n - (s.seats + 1) / 2) * 1.1 + (n > s.seats / 2 ? 1.1 : -1.1),
+          r * 0.55 + 1.04,
+          -r * 1.05 - 0.375,
+        );
+        o.rotation.set(-0.11, Math.PI, 0);
+        o.updateMatrix();
+        ref.current.setMatrixAt((r - 1) * s.seats + n - 1, o.matrix);
+      }
+    ref.current.instanceMatrix.needsUpdate = true;
+    ref.current.computeBoundingSphere();
+  }, [s]);
+  return (
+    <instancedMesh ref={ref} args={[geometry, material, s.rows * s.seats]} />
+  );
+}
+function GrandstandDetails({ standId }: { standId: string }) {
+  const s = getStand(standId),
+    width = s.seats * 1.1 + 2.2;
+  const pieces = useMemo(() => {
+    const list: Piece[] = [];
+    for (let r = 1; r <= s.rows; r++) {
+      for (const x of [-width / 2 - 1.5, 0, width / 2 + 1.5]) {
+        list.push({
+          p: [x, (r - 0.5) * 0.55, -(r - 0.5) * 1.05],
+          s: [1, 0.09, 0.51],
+          color: "#b6bdcd",
+        });
+        for (const side of [-1, 1])
+          list.push({
+            p: [x + side * 0.44, r * 0.55 + 0.105, -r * 1.05 + 0.08],
+            s: [0.04, 0.025, 0.8],
+            color: "#292f3b",
+          });
+      }
+      for (let n = 1; n <= s.seats; n += 3) {
+        const x =
+          (n - (s.seats + 1) / 2) * 1.1 + (n > s.seats / 2 ? 1.1 : -1.1);
+        for (const side of [-1, 1])
+          list.push({
+            p: [x + side * 0.27, r * 0.55 + 0.08, -r * 1.05],
+            s: [0.12, 0.045, 0.18],
+            color: "#b3b7c3",
+          });
+      }
+    }
+    for (const x of [-width / 2 - 2.3, width / 2 + 2.3]) {
+      list.push({
+        p: [x, s.rows * 0.55 + 0.65, -s.rows * 1.05],
+        s: [0.12, 1.3, 0.12],
+        color: "#aeb7ca",
+      });
+      list.push({
+        p: [x, s.rows * 0.55 + 0.9, -s.rows * 1.05],
+        s: [0.13, 0.13, 1.2],
+        color: "#bdc4d2",
+      });
+    }
+    return list;
+  }, [s, width]);
+  return (
+    <>
+      <Instances pieces={pieces} metal={0.8} roughness={0.37} />
+      {[-width / 2 - 1.5, 0, width / 2 + 1.5].map((x, i) => (
+        <group key={i}>
+          {[3, 6, 9, 12, 15, 18].map((r) => (
+            <mesh key={r} position={[x, r * 0.55 + 0.12, -r * 1.05 + 0.43]}>
+              <boxGeometry args={[0.62, 0.04, 0.06]} />
+              <meshStandardMaterial
+                color="#b7caee"
+                emissive="#9ebcf5"
+                emissiveIntensity={1.3}
+              />
+            </mesh>
+          ))}
+        </group>
+      ))}
+      <SeatNumbers standId={standId} />
+    </>
+  );
+}
 function Grandstand({
   id,
   selection,
@@ -574,6 +771,7 @@ function Grandstand({
   return (
     <group position={s.center} rotation={[0, s.rotation, 0]}>
       <Instances pieces={tiers} metal={0.65} roughness={0.48} />
+      <GrandstandDetails standId={id} />
       <instancedMesh
         ref={ref}
         args={[seatGeo, undefined, s.rows * s.seats]}
@@ -629,15 +827,17 @@ function Grandstand({
           </group>
         );
       })}
-      <Sign
-        text={"POSITION " + id}
-        position={[0, s.rows * 0.55 + 0.7, -s.rows * 1.05 - 0.3]}
-        rotation={Math.PI}
-        width={width * 0.85}
-        height={1.3}
-        red={active}
-      />
-      {mode !== "seat" && (
+      {mode === "overview" && (
+        <Sign
+          text={"POSITION " + id}
+          position={[0, s.rows * 0.55 + 0.7, -s.rows * 1.05 - 0.3]}
+          rotation={Math.PI}
+          width={width * 0.85}
+          height={1.3}
+          red={active}
+        />
+      )}
+      {mode === "overview" && (
         <Label
           id={id}
           position={[0, s.rows * 0.55 + 8, -s.rows * 0.55]}
@@ -707,7 +907,7 @@ function Environment() {
                 map={facade}
                 emissiveMap={facade}
                 emissive="#ffffff"
-                emissiveIntensity={1.1}
+                emissiveIntensity={0.75}
                 roughness={0.5}
                 metalness={0.35}
               />
@@ -732,7 +932,7 @@ function Environment() {
                 map={facade}
                 emissiveMap={facade}
                 emissive="#f1e2c7"
-                emissiveIntensity={1.2}
+                emissiveIntensity={0.85}
               />
             </mesh>
             <mesh position={[x, 98 + i * 12, 0]}>
@@ -742,13 +942,6 @@ function Environment() {
           </group>
         ))}
       </group>
-      <Instances
-        pieces={Array.from({ length: 14 }, (_, i) => ({
-          p: [-49 + i * 7, 1, 73] as V3,
-          s: [5, 2, 16] as V3,
-          color: "#b7bac4",
-        }))}
-      />
       <Sign text="LAS VEGAS" position={[-158, 110, 56]} width={62} height={6} />
       <Gantry />
       <Floodlights />
@@ -873,6 +1066,207 @@ function Car({
     </group>
   );
 }
+function VenueDetails() {
+  const pieces = useMemo(() => {
+    const list: Piece[] = [];
+    // Lighting cabinets, mounting bases, cable conduits and modular service cabins.
+    for (const [x, z] of [
+      [-94, -112],
+      [-46, -82],
+      [37, -78],
+      [115, -55],
+      [111, 65],
+      [-85, 60],
+    ]) {
+      list.push({ p: [x, 0.24, z], s: [1.5, 0.48, 1.5], color: "#686d79" });
+      list.push({
+        p: [x + 0.85, 0.9, z + 0.6],
+        s: [0.6, 1.55, 0.5],
+        color: "#3b4251",
+      });
+      list.push({
+        p: [x + 0.21, 10, z + 0.13],
+        s: [0.05, 19, 0.05],
+        color: "#282e39",
+      });
+      list.push({ p: [x, 21.9, z + 0.3], s: [6.2, 1, 0.35], color: "#4b5364" });
+      for (let n = -2; n <= 2; n++)
+        list.push({
+          p: [x + n * 1.06, 22, z - 0.05],
+          s: [0.06, 0.75, 0.5],
+          color: "#252b39",
+        });
+    }
+    for (let i = 0; i < 6; i++) {
+      const x = -48 + i * 16;
+      list.push({
+        p: [x, 1.7, 77],
+        s: [12, 3.4, 8],
+        color: i % 2 ? "#e2e3e8" : "#aeb4c0",
+      });
+      list.push({ p: [x, 1.5, 72.95], s: [9, 1.6, 0.08], color: "#222836" });
+      list.push({ p: [x, 1.65, 72.8], s: [10, 0.12, 0.4], color: "#b7bfce" });
+      for (const d of [-1, 1])
+        list.push({
+          p: [x + d * 5.7, 2.2, 72.9],
+          s: [0.12, 4.4, 0.12],
+          color: "#8e99ad",
+        });
+    }
+    // Directional pedestrian barriers and a maintenance walkway outside the track.
+    for (let i = 0; i < 18; i++) {
+      const x = -57 + i * 6;
+      list.push({ p: [x, 0.04, -68], s: [3.5, 0.06, 0.2], color: "#858b9b" });
+      list.push({ p: [x, 1, -72], s: [5.3, 0.08, 0.08], color: "#7c8495" });
+      for (const d of [-2.5, 2.5])
+        list.push({
+          p: [x + d, 0.55, -72],
+          s: [0.08, 1.1, 0.08],
+          color: "#7c8495",
+        });
+    }
+    return list;
+  }, []);
+  const tires = useRef<T.InstancedMesh>(null);
+  useEffect(() => {
+    if (!tires.current) return;
+    const obj = new T.Object3D();
+    for (let i = 0; i < 24; i++) {
+      obj.position.set(
+        146,
+        0.38 + Math.floor(i / 8) * 0.38,
+        -70 + (i % 8) * 1.13,
+      );
+      obj.rotation.set(Math.PI / 2, 0, 0);
+      obj.updateMatrix();
+      tires.current.setMatrixAt(i, obj.matrix);
+    }
+    tires.current.instanceMatrix.needsUpdate = true;
+    tires.current.computeBoundingSphere();
+  }, []);
+  return (
+    <>
+      <Instances pieces={pieces} metal={0.4} roughness={0.6} />
+      <instancedMesh ref={tires} args={[undefined, undefined, 24]}>
+        <torusGeometry args={[0.44, 0.16, 6, 16]} />
+        <meshStandardMaterial color="#13161d" roughness={0.92} />
+      </instancedMesh>
+      {Array.from({ length: 6 }, (_, i) => (
+        <mesh
+          key={i}
+          position={[-48 + i * 16, 4.5, 77]}
+          rotation={[0, Math.PI / 4, 0]}
+        >
+          <coneGeometry args={[9, 2.7, 4]} />
+          <meshStandardMaterial color="#d9dce4" roughness={0.8} />
+        </mesh>
+      ))}
+      <Sign
+        text="SPHERE ZONE"
+        position={[0, 2.9, 72.6]}
+        rotation={Math.PI}
+        width={26}
+        height={1.3}
+        red
+      />
+      <VenueScreen />
+      {[
+        { text: "TURN 5", p: [145, 4, -45] as V3, a: Math.PI / 2 },
+        { text: "TURN 7", p: [43, 3.1, -128] as V3, a: Math.PI },
+        { text: "TURN 9", p: [-74, 3.1, -129] as V3, a: Math.PI },
+      ].map((sign) => (
+        <group key={sign.text}>
+          <Sign
+            text={sign.text}
+            position={sign.p}
+            rotation={sign.a}
+            width={4}
+            height={1.5}
+          />
+          <Beam
+            a={[sign.p[0], 0, sign.p[2]]}
+            b={[sign.p[0], sign.p[1] - 0.8, sign.p[2]]}
+            r={0.07}
+          />
+        </group>
+      ))}
+    </>
+  );
+}
+function VenueScreen() {
+  const map = useMemo(() => {
+    const c = document.createElement("canvas");
+    c.width = 1024;
+    c.height = 576;
+    const x = c.getContext("2d")!;
+    x.fillStyle = "#15151e";
+    x.fillRect(0, 0, 1024, 576);
+    x.fillStyle = "#e10600";
+    x.fillRect(0, 0, 1024, 14);
+    x.font = "italic 700 110px sans-serif";
+    x.fillStyle = "#fff";
+    x.fillText("LAS VEGAS", 70, 176);
+    x.font = "italic 700 68px sans-serif";
+    x.fillText("GRAND PRIX", 72, 260);
+    x.strokeStyle = "#f0342c";
+    x.lineWidth = 6;
+    x.beginPath();
+    x.moveTo(85, 370);
+    x.lineTo(385, 370);
+    x.quadraticCurveTo(410, 370, 410, 345);
+    x.lineTo(410, 320);
+    x.lineTo(470, 340);
+    x.quadraticCurveTo(530, 275, 585, 350);
+    x.lineTo(585, 370);
+    x.lineTo(915, 370);
+    x.stroke();
+    x.font = "26px sans-serif";
+    x.fillStyle = "#b5bbcd";
+    x.fillText("ILLUSTRATIVE VENUE SCREEN", 72, 510);
+    const t = new T.CanvasTexture(c);
+    t.colorSpace = T.SRGBColorSpace;
+    return t;
+  }, []);
+  return (
+    <group position={[77, 0, 30]} rotation={[0, -0.4, 0]}>
+      {[-6, 6].map((x) => (
+        <Beam key={x} a={[x, 0, 0]} b={[x, 15, 0]} r={0.22} />
+      ))}
+      <mesh position={[0, 10, 0]}>
+        <boxGeometry args={[17, 10, 0.55]} />
+        <meshStandardMaterial color="#282e3b" metalness={0.6} roughness={0.4} />
+      </mesh>
+      <mesh position={[0, 10, -0.31]} rotation={[0, Math.PI, 0]}>
+        <planeGeometry args={[16, 9]} />
+        <meshBasicMaterial map={map} toneMapped={false} />
+      </mesh>
+      <Beam a={[-7.5, 15, 0]} b={[7.5, 15, 0]} r={0.13} />
+      <Beam a={[-7.5, 5, 0]} b={[7.5, 5, 0]} r={0.13} />
+    </group>
+  );
+}
+
+function MetalReflections() {
+  const { gl, scene, invalidate } = useThree();
+  useEffect(() => {
+    const room = new RoomEnvironment();
+    const pmrem = new T.PMREMGenerator(gl);
+    const target = pmrem.fromScene(room, 0.06);
+    const previous = scene.environment,
+      previousIntensity = scene.environmentIntensity;
+    scene.environment = target.texture;
+    scene.environmentIntensity = 0.22;
+    room.dispose();
+    pmrem.dispose();
+    invalidate();
+    return () => {
+      scene.environment = previous;
+      scene.environmentIntensity = previousIntensity;
+      target.dispose();
+    };
+  }, [gl, scene, invalidate]);
+  return null;
+}
 function Finish({ playing, preview }: { playing: boolean; preview?: boolean }) {
   const { gl, scene, camera, size, invalidate } = useThree();
   const composer = useMemo(() => {
@@ -926,6 +1320,8 @@ export function World({
         intensity={1.8}
         color="#c2d2ff"
       />
+      <MetalReflections />
+      <VenueDetails />
       <Environment />
       <Track />
       <Sphere />

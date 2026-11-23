@@ -29,3 +29,9 @@ The user requested F1 colors and the Las Vegas race aesthetic. Replaced the oliv
 Checked desktop at 1440×1000 and 1366×768 and mobile at 390×844. Confirmed the bottom sheet opens and closes, the high-row shortcut changes the selection, and portrait seat views use a wider field of view. Compared three rendered seat previews and checked removal, sharing, reload, map mode, track-demo play/pause and actual WebGL context-loss recovery. No unhandled browser errors were observed in these flows. The mechanical design scan reported two border/corner warnings; both thick borders were reduced.
 
 These changes improve rendering and interaction. They do not establish surveyed accuracy or verify actual seat obstructions.
+
+## Detail revision
+
+Added beveled molded chairs, armrests, hardware, numbered rear plates, two-step aisle treads, step lighting and environment reflections for metal. Added illustrative service pavilions, lighting cabinets and conduits, tire stacks, corner signs and a venue screen. Grandstand mode now frames the selected seat closely; markers remain in overview so they do not obscure close views.
+
+The new detail is reconstructed artwork and does not establish actual equipment placement, official seat numbers, or measured sightlines.

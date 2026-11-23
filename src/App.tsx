@@ -967,10 +967,11 @@ export default function App() {
               not measured at the venue.
             </p>
             <p>
-              The displayed Sphere artwork is original illustration. Layouts and
-              temporary structures can change by race edition. A low row may
-              encounter fencing; the exact obstruction cannot be confirmed from
-              this model.
+              The displayed Sphere artwork is original illustration. Seat
+              numbers, venue screens, service pavilions and equipment placement
+              are illustrative. Layouts and temporary structures can change by
+              race edition. A low row may encounter fencing; the exact
+              obstruction cannot be confirmed from this model.
             </p>
             <h3>Research sources</h3>
             <ul className="source-links">

@@ -59,12 +59,14 @@ function Rig({ selection, mode, reset, preview }: Props) {
       p = new T.Vector3(...seatPosition(selection));
       t = new T.Vector3(...seatTarget(selection));
     } else if (mode === "stand") {
+      const seat = seatPosition(selection),
+        angle = stand.rotation;
       p = new T.Vector3(
-        stand.center[0] + Math.sin(stand.rotation) * -85,
-        85,
-        stand.center[2] + Math.cos(stand.rotation) * -100,
+        seat[0] + Math.cos(angle) * 7 - Math.sin(angle) * 8,
+        seat[1] + 6,
+        seat[2] - Math.cos(angle) * 8 - Math.sin(angle) * 7,
       );
-      t = new T.Vector3(stand.center[0], 0, stand.center[2] + 25);
+      t = new T.Vector3(seat[0], seat[1] - 0.4, seat[2] + 2);
     } else {
       const narrow = (camera as T.PerspectiveCamera).aspect < 1;
       p = narrow
@@ -74,7 +76,10 @@ function Rig({ selection, mode, reset, preview }: Props) {
     }
     gl.domElement.dataset.cameraState = "moving";
     const c = controls.current;
-    if (c) c.enabled = mode !== "seat" && !preview;
+    if (c) {
+      c.enabled = mode !== "seat" && !preview;
+      c.minDistance = mode === "stand" ? 6 : 30;
+    }
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -180,7 +185,7 @@ function Rig({ selection, mode, reset, preview }: Props) {
           offset.setLength(
             T.MathUtils.clamp(
               offset.length() * (direction > 0 ? 1.12 : 0.88),
-              30,
+              mode === "stand" ? 6 : 30,
               650,
             ),
           );

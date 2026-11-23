@@ -25,7 +25,9 @@ npm run preview
 - Actual scene geometry for tiers, track, fencing, barriers, support posts, buildings, and Sphere.
 - Three-position comparison with consistent seated camera settings.
 - F1 red, black and white interface, with an adaptive mobile bottom sheet and front/middle/high row shortcuts.
-- Detailed procedural chairs, scaffolding, continuous track fencing, floodlights, original LED Sphere artwork and restrained bloom.
+- Detailed molded chairs with numbered back plates, armrests, mounting plates, half-step aisles and illuminated stair edges.
+- Steel scaffolding with material reflections, continuous fencing, lighting cabinets, service pavilions, corner boards, safety-tire stacks, an illustrative venue screen, original LED Sphere artwork and restrained bloom.
+- A close grandstand camera for inspecting the selected seating area.
 - Optional illustrative open-wheel car demonstration with play/pause controls.
 - Browser-local shortlists, shareable URLs, and back/forward navigation.
 - Responsive mobile controls, reduced-motion camera changes, source details, and 2D fallback after WebGL loss.
