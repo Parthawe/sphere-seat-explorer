@@ -50,11 +50,11 @@ Inside Sphere is a separate cutaway 3D study with four levels, 39 section refere
 
 ## Model accuracy
 
-This is a **2026 historical reference reconstruction**, not a certified digital twin, photographic seat preview, or live ticketing system. The organizer's 2026 diagram informs the track and approximate grandstand placement. Seat-level measurements and most venue dimensions were unavailable. The Sphere shell now uses the published 516 ft width and 366 ft height as a spherical cap cut at ground level. Its artwork is an original amber face. This calibrates the exterior envelope only, not its placement relative to individual seats.
+This is a **2026 historical reference reconstruction**, not a certified digital twin, photographic seat preview, or live ticketing system. The organizer's 2026 diagram informs the track and approximate grandstand placement. Seat-level measurements and most venue dimensions were unavailable. The Sphere shell now uses the published 516 ft width and 366 ft height as a spherical cap cut at ground level. Its selectable artwork includes a NASA lunar map, an original amber face and original race ribbons. This calibrates the exterior envelope only, not its placement relative to individual seats.
 
 A–E, M, H, K and F are app-specific modeled bank labels, not official section identifiers. Row counts, seat numbers, spacing, elevations, fences, buildings, and obstructions are estimated reconstruction parameters. Eye height is computed within the model. Choosing a position does not reserve a ticket or establish that a corresponding ticket exists.
 
-The original Singapore video is an interaction reference only. Its footage and assets are not redistributed. Sphere artwork, geometry, maps, and UI artwork in this repository are original procedural work. No Formula 1, Sphere, or ticketing-partner affiliation is implied. The generic spectator silhouettes are illustrative artwork, not a representation of an actual event attendance.
+The original Singapore video is an interaction reference only. Its footage and assets are not redistributed. The procedural scene and UI artwork are original. NASA lunar imagery, OpenStreetMap-derived footprints and Poly Haven asphalt maps retain the separate credits and license notices described below. No Formula 1, Sphere, or ticketing-partner affiliation is implied. The generic spectator silhouettes are illustrative artwork, not a representation of an actual event attendance.
 
 ## Research sources
 
