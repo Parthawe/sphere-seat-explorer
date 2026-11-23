@@ -36,3 +36,9 @@ Support seven standard grandstands: Main, North, North Straight, West, West Stra
 Qatar and Abu Dhabi use a year-specific venue registry and shared SVG renderer within the established ticket-desk design. Preserve Qatar’s hatched seating markers, track annotations and moving dot, and Abu Dhabi’s area callouts. Compare up to three valid public area IDs within one race and year. Show seating, race focus and location confidence in aligned table columns. Qatar includes dated 3-day reference prices; Abu Dhabi has no price column.
 
 On mobile, keep horizontal table scrolling inside its labeled region with a visible scroll hint, and keep “Clear comparison” on one line. Show the tab-only notice when device storage is blocked. Ticket parsers remain browser-local; raw ticket text never enters comparisons or shared links.
+
+## Singapore 2027 pilot
+
+Keep the established F1 typography, palette and ticket-desk layout. Support six standard grandstands: Pit, Turn 1, Turn 2, Republic, Padang and Connaught. Draw current OpenStreetMap street geometry with narrower venue-specific track strokes so nearby segments remain distinguishable. Label every marker as an estimated region and keep the 2027 coverage and unsupported 2026 boundary visible. Use neutral “Ticket planning” navigation across venues.
+
+Place sourced, published zone access beside the selected product and retain the shared three-area comparison. Link each organizer product page with guidance to its “180° View” button; link photographs and map artwork without republishing them. Keep parsing local and raw ticket text out of storage, comparisons and shared links. Exact seats, seat-level 3D, live prices and stock remain unavailable.

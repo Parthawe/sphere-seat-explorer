@@ -111,3 +111,8 @@ Open `?season=2026&race=united-arab-emirates`. Seven standard grandstands have p
 ### Shared venue registry and comparisons
 
 `src/venueRegistry.ts` holds the Qatar and Abu Dhabi event/year associations, geometry references, source dates, area confidence, map configuration and explicit coverage limits. Both desks use `CircuitAreaMap`, `AreaComparison` and `useAreaComparison`. Qatar’s legacy `apex-qatar-2026-areas` key is preserved; Abu Dhabi uses a separate key. Only valid public area IDs persist, up to three. Clear removes the race’s key. Blocked storage keeps the comparison in the current tab and displays a notice. The registry does not supply a 2027 ticket layout from a 2026 reference.
+
+
+### Singapore 2027 area pilot
+
+Open `?season=2027&race=singapore`. Six current organizer-listed grandstands have estimated track-region callouts, source-linked zone access, private ticket matching and three-area comparison. Product handoffs open the organizer’s actual page containing its 180° View control. Singapore 2026, remaining grandstands and variant products are not resolved by this pilot. No exact seats, Singapore 3D, current prices or stock are claimed. Adapted OSM relation 421263 data is downloadable under ODbL at `/data/singapore-track.json`.

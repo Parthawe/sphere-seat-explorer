@@ -5091,7 +5091,7 @@ dialog::backdrop {
   color: #5f5f6e;
   text-decoration: none;
 }
-.product-jump-nav a:first-child {
+.product-jump-nav a[aria-current="page"] {
   color: #b00903;
   font-weight: 500;
 }
@@ -5484,5 +5484,115 @@ dialog::backdrop {
     font-size: 12px;
     margin: 10px 0 2px;
     color: #60606e;
+  }
+}
+.singapore-ticket-desk .desk-topline {
+  align-items: start;
+}
+.singapore-ticket-desk .desk-topline p {
+  max-width: 760px;
+  color: #5d5d6c;
+  font-size: 16px;
+  margin: 15px 0 0;
+}
+.singapore-reference-note {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5e5e6c;
+  border-top: 1px solid #d6d6df;
+  padding: 16px 0;
+  margin: 0 0 8px;
+}
+.singapore-ticket-desk .map-area-leader {
+  stroke: #777b8e;
+}
+.singapore-ticket-desk .map-area.is-active .map-area-leader {
+  stroke: #ff6259;
+}
+.singapore-ticket-desk .map-area-controls button {
+  font-size: 13px;
+  padding: 10px 12px;
+}
+.singapore-ticket-desk .map-watermark {
+  font-size: 40px;
+  letter-spacing: 5px;
+}
+.singapore-ticket-desk .area-title-row {
+  display: block;
+}
+.singapore-ticket-desk .seating-tag {
+  display: inline-block;
+  margin: 0 0 14px;
+}
+.singapore-zone-access {
+  border-top: 1px solid #dadbe2;
+  padding: 16px 0;
+}
+.singapore-zone-access span {
+  display: block;
+  font-size: 13px;
+  color: #666674;
+}
+.singapore-zone-access strong {
+  display: block;
+  font:
+    600 25px "Barlow Condensed",
+    sans-serif;
+  margin: 5px 0;
+}
+.ticket-panel .singapore-zone-access p {
+  font-size: 13px;
+  margin: 0;
+}
+.singapore-ticket-desk .reference-note {
+  margin-top: 12px;
+}
+.singapore-pilot-link {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px solid #15151e;
+  border-bottom: 1px solid #cdced8;
+  padding: 24px 0;
+  margin: 30px 0;
+}
+.singapore-pilot-link h2 {
+  font:
+    600 32px "Barlow Condensed",
+    sans-serif;
+  margin: 0 0 10px;
+}
+.singapore-pilot-link p {
+  font-size: 15px;
+  color: #60606d;
+  max-width: 740px;
+}
+.singapore-pilot-link button {
+  min-height: 46px;
+  padding: 12px 18px;
+  border: 1px solid #15151e;
+  white-space: nowrap;
+  font-size: 14px;
+}
+@media (max-width: 760px) {
+  .singapore-ticket-desk .desk-topline p {
+    font-size: 15px;
+  }
+  .singapore-ticket-desk .ticket-panel {
+    scroll-margin-top: 16px;
+  }
+  .singapore-ticket-desk .map-area-controls button {
+    min-width: 75px;
+  }
+  .singapore-pilot-link {
+    display: block;
+  }
+  .singapore-pilot-link button {
+    margin-top: 18px;
+    width: 100%;
+  }
+  .singapore-ticket-desk .map-label {
+    font-size: 15px;
   }
 }

@@ -17,6 +17,7 @@ export default function AreaComparison({
   referencePrice?: (id: string) => string | undefined;
 }) {
   if (!saved.length) return null;
+  const showAccess = venue.areas.some((a) => a.access);
   return (
     <section className="area-comparison" aria-label="Saved area comparison">
       <div className="section-line">
@@ -43,6 +44,7 @@ export default function AreaComparison({
             <tr>
               <th scope="col">Viewing area</th>
               <th scope="col">Seating</th>
+              {showAccess && <th scope="col">Published zone access</th>}
               <th scope="col">Race focus</th>
               <th scope="col">Location evidence</th>
               {referencePrice && (
@@ -61,6 +63,7 @@ export default function AreaComparison({
                     <button onClick={() => onSelect(id)}>{a.name}</button>
                   </th>
                   <td>{a.kind}</td>
+                  {showAccess && <td>{a.access || "Check organizer"}</td>}
                   <td>{a.focus}</td>
                   <td>{a.confidence}</td>
                   {referencePrice && (

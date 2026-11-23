@@ -117,3 +117,14 @@ Chromium checks at 1600×1050 and 390×844 covered visible racing motion, stable
 - Geometry and seat-accuracy limits are unchanged. Venue-certified chair positions, other circuits’ 3D views, live stock and current Abu Dhabi prices remain unavailable.
 
 Independent finish review closed with Pass and no outstanding findings. Two minor mobile refinements were applied and confirmed: Clear comparison stays on one line, and the horizontal-scroll hint appears only on small screens. The table remains keyboard-focusable. Qatar public source collection refreshed successfully: all five published reference prices unchanged; the F1 store remains access-blocked, with no stock inferred.
+
+
+## Singapore 2027 area pilot · 23 November 2026
+
+- 42 automated tests passed. New checks cover2027 binding without2026 fallback, six source/zone mappings, variants including hyphenated Pit-Exit and Super-Pit, combinations, wrong years/races, ambiguous names and numeric seat/year distinction. The shared URL test now chooses each registry entry’s real first area instead of assuming every venue has Main.
+- Chromium 1440×1050,390×844 and320 px: all six area/source/zone selections, map pointer/keyboard, example/manual/clear, matched/unknown/ambiguous/wrong-year states, saved-row selection, three-item cap, remove/clear/reload and official handoffs checked. Comparison adds a published-zone column for Singapore only; Abu Dhabi retains its original columns and no invented price column.
+- A unique pasted ticket marker was absent from requests and localStorage; clipboard held only public 2027/race/area. Singapore and Abu Dhabi keys remained separate. Blocked storage displayed the tab-only notice. At 320 px, viewport/client/document were320 px; horizontal table scrolling remained inside its region.
+- Current2027 calendar entry opens the pilot. The 2026 Singapore guide explains its unsupported year boundary and links the explicitly labeled 2027 pilot. Qatar’s parser and legacy Las Vegas WebGL entry still worked; no page exceptions observed in these flows.
+- Mechanical detector ran once with no findings. Independent finish review found misleading Qatar emphasis in shared navigation; neutral current-season Ticket planning navigation fixed it. Rechecked desktop/mobile; review closed Pass with no remaining material findings.
+- Qatar public-source collection refreshed successfully with unchanged five published reference prices; the F1 store remained blocked with no inventory inferred. Singapore prices and stock were not collected.
+- Limits: six estimated standard-grandstand regions, not all Singapore seats/products; no exact chairs, measured obstructions, final 2027 configuration or Singapore 3D. Organizer artwork/photos are linked, not republished.

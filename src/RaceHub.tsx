@@ -11,6 +11,7 @@ import {
   type Season,
   type Race,
 } from "./races";
+const SingaporeDesk = lazy(() => import("./SingaporeDesk"));
 const AbuDhabiDesk = lazy(() => import("./AbuDhabiDesk"));
 const TicketDesk = lazy(() => import("./TicketDesk"));
 const VegasAtlas = lazy(() => import("./VegasAtlas"));
@@ -204,7 +205,12 @@ export default function RaceHub() {
       </header>
       <main id="race-content">
         <nav className="product-jump-nav" aria-label="Explore Apex Atlas">
-          <a href="?season=2026#race-content">Qatar ticket desk</a>
+          <a
+            href={`?season=${route.season}#race-content`}
+            aria-current={!selected ? "page" : undefined}
+          >
+            Ticket planning
+          </a>
           <a href={`?season=${route.season}#race-calendar`}>All races</a>
           <a href={`?season=${route.season}&race=las-vegas&screen=vegas`}>
             Las Vegas 3D
@@ -257,6 +263,16 @@ export default function RaceHub() {
               >
                 <AbuDhabiDesk />
               </Suspense>
+            ) : selected.slug === "singapore" && route.season === 2027 ? (
+              <Suspense
+                fallback={
+                  <div className="hub-loading">
+                    Opening Singapore viewing areas…
+                  </div>
+                }
+              >
+                <SingaporeDesk />
+              </Suspense>
             ) : selected.slug === "las-vegas" ? (
               <section className="vegas-feature">
                 <img
@@ -292,15 +308,22 @@ export default function RaceHub() {
                   official event guide and ticket providers to review this
                   race’s viewing areas and current offers.
                 </p>
+                {selected.slug === "singapore" && route.season === 2026 && (
+                  <p>
+                    Our Singapore area pilot covers 2027 ticket products. We do
+                    not locate 2026 tickets against that reference.{" "}
+                    <a href="?season=2027&race=singapore">
+                      Explore the explicitly labeled 2027 pilot
+                    </a>
+                    .
+                  </p>
+                )}
                 <a href={raceUrl(selected)} target="_blank" rel="noreferrer">
                   Open the official race guide
                 </a>
               </section>
             )}
-            {!(
-              ["qatar", "united-arab-emirates"].includes(selected.slug) &&
-              route.season === 2026
-            ) && (
+            {!findVenue(route.season, selected.slug) && (
               <section className="ticket-options">
                 <h2>Choose how you watch</h2>
                 <p>
@@ -401,8 +424,8 @@ export default function RaceHub() {
                   </h1>
                   <p>
                     Browse the published calendar and official race guides.
-                    Qatar’s ticket locator and reference prices apply to 2026
-                    only.
+                    Singapore has a sourced 2027 area pilot. Qatar and Abu Dhabi
+                    ticket desks apply to 2026 only.
                   </p>
                 </div>
                 <div className="season-year" aria-hidden="true">
@@ -433,6 +456,25 @@ export default function RaceHub() {
                       </span>
                     </button>
                   ))}
+              </section>
+            )}
+            {route.season === 2027 && (
+              <section className="singapore-pilot-link">
+                <div>
+                  <h2>Explore Singapore’s 2027 viewing areas.</h2>
+                  <p>
+                    Six standard grandstands, official preview links and private
+                    ticket-area matching. Approximate regions; exact seats are
+                    not verified.
+                  </p>
+                </div>
+                <button
+                  onClick={() =>
+                    go({ season: 2027, race: "singapore", seats: false })
+                  }
+                >
+                  Open Singapore area map
+                </button>
               </section>
             )}
             <section className="race-feature-strip compact-vegas">
@@ -574,9 +616,7 @@ export default function RaceHub() {
       </main>
       <footer className="hub-footer">
         <span>Independent race planning · no Formula 1 affiliation</span>
-        <span>
-          Qatar 2026 area locator · Las Vegas 3D · no live ticket inventory
-        </span>
+        <span>Sourced area maps · Las Vegas 3D · no live ticket inventory</span>
       </footer>
     </div>
   );

@@ -83,10 +83,14 @@ test("keys retain Qatar legacy storage while separating Abu Dhabi and future sea
     comparisonStorageKey({ id: "qatar", season: 2027 }),
   );
 });
-test("both venue share URLs remove private query and fragment data", () => {
+test("registered venue share URLs remove private query and fragment data", () => {
   for (const v of venueRegistry) {
     const url = new URL(
-      venueAreaUrl("https://example.com/?ticket=PRIVATE#PRIVATE", v, "main"),
+      venueAreaUrl(
+        "https://example.com/?ticket=PRIVATE#PRIVATE",
+        v,
+        v.areas[0].id,
+      ),
     );
     assert.equal(url.hash, "");
     assert.deepEqual([...url.searchParams.keys()], ["season", "race", "area"]);

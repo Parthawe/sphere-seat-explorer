@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-23",
   "cadence_hours": 2,
-  "phase": "shared-venue-registry",
+  "phase": "singapore-area-pilot",
   "active_run": null,
-  "next_action": "Verify Singapore 2026/2027 event and venue identity, gather official circuit/viewing-area sources and licensed geography, then implement a registry-backed Singapore area pilot. Keep unsupported season layouts explicit.",
+  "next_action": "Source and add the remaining Singapore 2027 standard grandstand products, keeping Super Pit, Pit Exit and Chicane variants distinct. Verify zone access and estimated geographic regions, and assess representative 3D assets separately. Singapore 2026 remains unsupported.",
   "venues": [
     {
       "id": "las-vegas",
@@ -20,9 +20,18 @@
       "id": "singapore",
       "event": "Singapore",
       "venue": "Marina Bay",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify Singapore 2026/2027 event and venue identity, gather official circuit/viewing-area sources and licensed geography, then implement a registry-backed Singapore area pilot. Keep unsupported season layouts explicit."
+      "status": "area_locator_pilot_2027",
+      "sources": [
+        "https://www.formula1.com/en/racing/2027/singapore",
+        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/",
+        "https://singaporegp.sg/en/event-info/circuit-park-map/",
+        "https://singaporegp.sg/en/tickets/official-resellers/",
+        "https://www.openstreetmap.org/relation/421263"
+      ],
+      "next_action": "Source and add the remaining Singapore 2027 standard grandstand products, keeping Super Pit, Pit Exit and Chicane variants distinct. Verify zone access and estimated geographic regions, and assess representative 3D assets separately. Singapore 2026 remains unsupported.",
+      "seasons_with_area_coverage": [
+        2027
+      ]
     },
     {
       "id": "qatar",
@@ -284,6 +293,26 @@
         "2027 layouts are not inherited from 2026 references"
       ],
       "next": "Verify Singapore 2026/2027 event and venue identity, gather official circuit/viewing-area sources and licensed geography, then implement a registry-backed Singapore area pilot. Keep unsupported season layouts explicit."
+    },
+    {
+      "date": "2026-11-23",
+      "run": "2026-11-23T14:57:56Z-singapore",
+      "work": "Implemented a Singapore2027 registry-backed six-area pilot for Pit, Turn1, Turn2, Republic, Padang and Connaught. Added local ticket-area parsing, source-linked zone access, three-area comparison, sharing and organizer180-degree preview handoffs. Added neutral planning navigation, explicit unsupported2026 boundary and2027 calendar entry.",
+      "evidence": [
+        "42 automated tests passed",
+        "Current official2027 catalogue, product descriptions,2027 map image header and F1 dates checked",
+        "OSM relation421263 assembled as closed99-way polyline, excluding pitlane; adapted data and ODbL attribution provided",
+        "Desktop1440x1050/mobile390x844/320px checks; privacy, ambiguity, variants, persistence, capacity and zone columns tested",
+        "Independent finish review closed Pass after neutral navigation correction; no remaining material findings",
+        "Existing Qatar parser/Abu comparison and legacy Vegas WebGL entry passed"
+      ],
+      "limitations": [
+        "All six stand locations are estimated regions; exact seats, final2027 boundaries and Singapore3D unavailable",
+        "Other grandstands and variant/combination/accessibility/hospitality products unsupported in this pilot",
+        "Singapore2026 is not silently mapped using2027 products",
+        "No Singapore price/stock feed; organizer photographs and map artwork linked rather than republished"
+      ],
+      "next": "Source and add the remaining Singapore 2027 standard grandstand products, keeping Super Pit, Pit Exit and Chicane variants distinct. Verify zone access and estimated geographic regions, and assess representative 3D assets separately. Singapore 2026 remains unsupported."
     }
   ],
   "blockers": []

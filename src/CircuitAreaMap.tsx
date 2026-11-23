@@ -54,14 +54,14 @@ export default function CircuitAreaMap({
           d={path}
           fill="#20212b"
           stroke="#353744"
-          strokeWidth={seating ? 26 : 22}
+          strokeWidth={venue.map.roadStroke ?? (seating ? 26 : 22)}
           strokeLinejoin="round"
         />
         <path
           d={path}
           fill="none"
           stroke="#f0f1f4"
-          strokeWidth={seating ? 8 : 6}
+          strokeWidth={venue.map.trackStroke ?? (seating ? 8 : 6)}
           strokeLinejoin="round"
         />
         <path

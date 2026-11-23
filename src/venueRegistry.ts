@@ -1,3 +1,5 @@
+import { singaporeAreas, SINGAPORE_CHECKED, SINGAPORE_MAP } from "./singapore";
+import singaporeGeometry from "./singapore-track.json";
 import type { Season } from "./races";
 import {
   areas as qatarAreas,
@@ -17,6 +19,7 @@ export type VenueArea = {
   name: string;
   short: string;
   controlLabel?: string;
+  access?: string;
   point: readonly number[];
   label: readonly number[];
   kind: string;
@@ -48,6 +51,8 @@ export type VenueDefinition = {
   map: {
     markerStyle: "seating" | "callout";
     movingDot?: boolean;
+    roadStroke?: number;
+    trackStroke?: number;
     decorations?: readonly MapDecoration[];
   };
   coverage: { level: "area-estimate"; exactSeats: false; seat3d: false };
@@ -112,6 +117,23 @@ export const venueRegistry: readonly VenueDefinition[] = [
     coverage: { level: "area-estimate", exactSeats: false, seat3d: false },
     areas: abuAreas.map((a) => ({ ...a, kind: "Seat selection offered" })),
     map: { markerStyle: "callout" },
+  },
+  {
+    id: "singapore",
+    circuitId: "marina-bay",
+    raceSlug: "singapore",
+    season: 2027,
+    name: "Marina Bay Street Circuit",
+    watermark: "MARINA BAY",
+    checked: SINGAPORE_CHECKED,
+    durationDays: 3,
+    officialMap: SINGAPORE_MAP,
+    ticketGuidance: "https://singaporegp.sg/en/faq/ticketing/",
+    geography: singaporeGeometry,
+    download: "/data/singapore-track.json",
+    coverage: { level: "area-estimate", exactSeats: false, seat3d: false },
+    areas: singaporeAreas,
+    map: { markerStyle: "callout", roadStroke: 6, trackStroke: 2.5 },
   },
 ];
 export function findVenue(season: number, raceSlug: string) {
