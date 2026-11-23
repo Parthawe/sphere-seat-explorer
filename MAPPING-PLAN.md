@@ -1,3 +1,9 @@
+## User priority: hourly 3D improvement and completion
+
+Continue every hour using the existing automation. First render and assess Las Vegas outdoor, Sphere indoor, Qatar and Bahrain on desktop/phone; fix concrete material, lighting, camera, geometry or performance defects in one coherent batch. Preserve passing controls, reduced motion, privacy, historical replay and recovery states. Then assess licensed geometry for the next unmapped 3D venue, starting with the existing Abu Dhabi area pilot, and continue the verified physical venue queue. Exact chair calibration must remain unsupported without evidence; it must not stop independent useful work. Publish validated changes and push matching source. Complete a bounded chunk within roughly 50 minutes to avoid overlapping runs.
+
+Singapore's three distinct variants are now implemented as area products, bringing coverage to fifteen. Revisit its 3D asset gap only when new evidence supports it. Keep remaining photo gaps open until source-specific year/camera evidence is available.
+
 ## Latest checkpoint: footprint alignment and full-circuit overview
 
 Permanent Qatar/Bahrain bank axes now follow their source footprint envelopes; Sakhir Tower uses its own mapped center. A north-up circuit map provides all bank selectors and an illustrative view-direction fan, including a WebGL-independent fallback. Rechecked organizer descriptions do not establish Qatar temporary-bank surveys or exact seat facing, so those confidence levels stay estimated. Continue distinct Singapore Super Pit / Pit Exit / Chicane products next. Photo gaps remain documented in PHOTO-REFERENCES.md and should be revisited only with additional source-specific evidence.
@@ -18,11 +24,11 @@ Each venue should connect verified event/year provider links, publicly readable 
 
 The Qatar pilot implements five area callouts, numbered-vs-free-seating rules, three-area comparison, public-only sharing, a private local text parser and an allowlisted metadata collector. Refresh with `npm run collect:tickets`; inspect differences before publishing. The collector fails closed on unreadable robots rules, makes no authenticated requests and does not infer availability. Runtime public snapshots require a validated Site deployment; this is not an autonomous hosted live feed.
 
-Both remaining 2026 races now have area-locator pilots. Abu Dhabi has seven source-linked standard grandstands, four OSM building anchors and three explicitly estimated regions; exact seats, variants and 3D remain unavailable. Both pilots now consume a shared, year-specific venue registry and SVG renderer, and both support race-scoped three-area comparison. Singapore now has a third registry-backed pilot covering twelve standard grandstands from the current 2027 catalogue. It uses current OSM streets and estimated regions, not verified seats or final event infrastructure. Its 2026 race guide remains unsupported for area matching. Next: source Super Pit, Pit Exit and Chicane with separate product identities, zone access and broad regions. The initial 3D asset assessment found no measured stand/chair geometry or licensed panorama bundle in the selected organizer sources; keep 3D needs_assets and continue other venue work when evidence is unavailable. Revalidate dates and “next race” priority when time advances. Existing two-hour development automation covers this work; do not create a second schedule.
+Both remaining 2026 races now have area-locator pilots. Abu Dhabi has seven source-linked standard grandstands, four OSM building anchors and three explicitly estimated regions; exact seats, variants and 3D remain unavailable. Both pilots now consume a shared, year-specific venue registry and SVG renderer, and both support race-scoped three-area comparison. Singapore now has a third registry-backed pilot covering twelve standard grandstands from the current 2027 catalogue. It uses current OSM streets and estimated regions, not verified seats or final event infrastructure. Its 2026 race guide remains unsupported for area matching. Next: source Super Pit, Pit Exit and Chicane with separate product identities, zone access and broad regions. The initial 3D asset assessment found no measured stand/chair geometry or licensed panorama bundle in the selected organizer sources; keep 3D needs_assets and continue other venue work when evidence is unavailable. Revalidate dates and “next race” priority when time advances. Existing hourly development automation covers this work; do not create a second schedule.
 
 # Apex Atlas mapping programme
 
-Requested 23 November 2026. Work is scheduled every two hours in this conversation. The working interpretation of “all the Vegas” is all F1 venues across the 2026 and 2027 calendars, following the earlier all-races brief. If the user clarifies that they mean Las Vegas venues instead, revise this scope before the next implementation chunk.
+Requested 23 November 2026. Work is scheduled every hour in this conversation. The working interpretation of “all the Vegas” is all F1 venues across the 2026 and 2027 calendars, following the earlier all-races brief. If the user clarifies that they mean Las Vegas venues instead, revise this scope before the next implementation chunk.
 
 ## Outcome
 
@@ -37,7 +43,7 @@ Calendar guides already exist. They are not finished circuit or seat maps. Las V
 3. **Night-race group.** Qatar, Abu Dhabi, Sakhir and Jeddah. Reuse rendering capabilities while sourcing each circuit independently. Do not reuse Las Vegas geography or stand layouts.
 4. **Established circuits.** Silverstone, Spa, Monza, Suzuka and Monaco. Adapt views to their actual circuit and viewing-area structure.
 5. **Remaining venues.** Work through the rest of the verified queue. Keep year-specific differences explicit, including new, rotating or relocated events. Record unsupported configurations instead of inventing data.
-6. **Coverage audit.** Reconcile the finished registry against both calendars. Check all links, venue routing, source dates, camera bounds, empty/error states and mobile performance. Pause the recurring work only after the completion criteria are met, or if the user changes/stops the schedule.
+6. **Coverage audit.** Reconcile the finished registry against both calendars. Check all links, venue routing, source dates, camera bounds, empty/error states and mobile performance. Stop the recurring work only after the completion criteria are met, or if the user changes/stops the schedule.
 
 ## Each recurring run
 

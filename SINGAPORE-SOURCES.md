@@ -1,6 +1,6 @@
 # Singapore 2027 standard-product expansion
 
-Checked 23 November 2026. Bounded addition: six products, taking the pilot from six to twelve standard grandstands. No prices or availability collected. Super Pit, Pit Exit, Chicane and combination products remain unsupported separate identities.
+Checked 23 November 2026. Current coverage: twelve standard grandstands plus Super Pit, Pit Exit and Chicane @ Turn 2, for fifteen distinct grandstand products. No prices or availability collected. Combination, accessibility, walkabout and hospitality products remain unsupported.
 
 ## Event and source year
 
@@ -53,3 +53,19 @@ Do not reuse the Las Vegas model as Singapore geometry. A future clearly labeled
 46 tests passed, including all twelve names, distinct access/product IDs, Marina Bay venue-name ambiguity, wrong years and unsupported variants. Chromium checks covered desktop 1440×1050 and phones at 390×844/320px. All twelve map targets worked with pointer and Enter; six new selects updated their own source and zone guidance. Found and corrected the Marina Bay label extending beyond the drawing. Final map text bounds lie within its 620-unit viewBox. Three new products compared with their correct zone values and survived reload; remove/clear worked. A ticket input marker was absent from requests, storage and the shared area URL. Mobile ambiguity recovery worked. The comparison table scrolls within 280px at a 320px viewport; the document remained 320px wide. No page exceptions were observed. Qatar, the correct Abu Dhabi URL (`race=united-arab-emirates`) and the Vegas historical archive were checked.
 
 No physical stand dimensions, actual sightlines, final temporary infrastructure, other browser engines or low-end hardware were verified.
+
+## Three separate variants — 23 November 2026
+
+The current organizer catalogue explicitly labels 2027 Tickets and lists all three products. Product page map-footers dated 05 Oct 2026 do not independently establish the event year.
+
+| Product | Official source | Access | Estimated map anchor / label |
+| --- | --- | --- | --- |
+| Super Pit | https://singaporegp.sg/en/tickets/general-tickets/grandstands/super-pit-grandstand/ | Zones 1–4 | 547,220 / 485,315; shares Pit anchor because it occupies upper rows of the same stand |
+| Pit Exit | https://singaporegp.sg/en/tickets/general-tickets/grandstands/pit-exit-grandstand/ | Zones 1–4 | 482,167 / 489,43; beside pit exit toward Turn 1 |
+| Chicane @ Turn 2 | https://singaporegp.sg/en/tickets/general-tickets/grandstands/chicane-grandstand-turn-2/ | Zones 1–4 | 455,142 / 308,40; inside the opening corner complex |
+
+These are broad app drawing regions, not final venue boundaries, ticket-row coordinates or new 3D coverage. No benefits, prices, live availability or official artwork were imported. Super Pit's description explains the shared Pit anchor. Its package and actual row assignment must be checked with the organizer. The guessed chicane-at-turn-2-grandstand path was not used; the checked source has the explicit chicane-grandstand-turn-2 slug.
+
+The local parser recognizes SuperPit/Super-Pit, Pit Exit/Pit-Exit and Chicane @/at Turn 2/T2 separately. It masks the variant name before matching standard Pit/Turn 2, but retains multiple-product ambiguity. Bare Chicane, wrong turns, combination passes and wrong years remain unsupported.
+
+56 tests pass. Desktop 1440×1050 and phone 390×844/320×740 checks covered all fifteen named map controls, the three variant keyboard targets, selected product/source/access, parser matches, multi-area rejection, wrong-year recovery, three-product comparison and reload persistence. A unique input marker did not appear in requests or localStorage. At 320px the document remained 320px wide. No page exceptions were observed. Singapore 3D remains needs_assets as described above.

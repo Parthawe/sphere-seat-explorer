@@ -62,7 +62,7 @@ export default function SingaporeDesk() {
         <div>
           <h2>Find your place at Marina Bay.</h2>
           <p>
-            {singaporeAreas.length} standard grandstands from the organizer’s current 2027
+            {singaporeAreas.length} grandstand products from the organizer’s current 2027
             catalogue. Explore a broad area, compare zone access or locate an
             existing ticket’s grandstand.
           </p>
@@ -212,9 +212,9 @@ export default function SingaporeDesk() {
                 )}
                 {match?.status === "unknown" && (
                   <p className="locator-notice">
-                    No supported standard grandstand found. Enter the full
-                    grandstand name printed on your ticket. Super Pit, Pit Exit,
-                    Chicane, combination passes, walkabouts, accessible
+                    No supported grandstand found. Enter the full
+                    grandstand name printed on your ticket. Combination
+                    passes, walkabouts, accessible
                     platforms and hospitality are not mapped by this pilot.
                   </p>
                 )}
@@ -346,10 +346,10 @@ export default function SingaporeDesk() {
         <div>
           <h3>What is supported</h3>
           <p>
-            This pilot covers {singaporeAreas.length} standard 3-day grandstands listed in the
+            This pilot covers {singaporeAreas.length} 3-day grandstand products listed in the
             organizer’s current 2027 catalogue, including Marina Bay, Bayfront,
-            Promenade, Raffles, Empress and Stamford. Super Pit, Pit Exit,
-            Chicane, hospitality and multi-area passes remain distinct, unsupported products. A location match does not
+            Promenade, Raffles, Empress, Stamford, Super Pit, Pit Exit and
+            Chicane @ Turn 2. Hospitality and multi-area passes remain unsupported. A location match does not
             verify a ticket or guarantee entry.
           </p>
           <h3>What the map shows</h3>

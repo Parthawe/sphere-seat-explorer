@@ -2,12 +2,12 @@
   "automation_id": "build-apex-atlas-circuit-maps",
   "kind": "heartbeat",
   "status": "ACTIVE",
-  "cadence_hours": 2,
+  "cadence_hours": 1,
   "created": "2026-11-23",
   "scope": "All 2026\u20132027 F1 venues, pending any user clarification",
   "plan": "MAPPING-PLAN.md",
   "progress": "MAPPING-PROGRESS.json",
-  "stop_condition": "Pause after all verified target maps meet completion criteria and the coverage audit passes.",
+  "stop_condition": "Report completion and delete the automation after all verified target venues meet completion criteria and the coverage audit passes.",
   "updated": "2026-11-23",
-  "priority": "Audit Qatar/Bahrain 3D reconstruction anchors and sources, then remaining Singapore 2027 variants and verified venues"
+  "priority": "Improve and complete venue-specific 3D scenes and map coverage; follow the current tracker, preserving existing scenes and source confidence."
 }

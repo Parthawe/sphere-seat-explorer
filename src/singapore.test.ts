@@ -5,7 +5,7 @@ import { findVenue, venueAreaUrl, comparisonStorageKey } from "./venueRegistry";
 test("Singapore products bind to 2027 while 2026 remains unsupported", () => {
   const venue = findVenue(2027, "singapore")!;
   assert.equal(venue.circuitId, "marina-bay");
-  assert.equal(venue.areas.length, 12);
+  assert.equal(venue.areas.length, 15);
   assert.equal(findVenue(2026, "singapore"), undefined);
   assert.equal(venue.map.roadStroke, 6);
   assert.deepEqual(venue.geography.points[0], venue.geography.points.at(-1));
@@ -17,7 +17,7 @@ test("Singapore products bind to 2027 while 2026 remains unsupported", () => {
     "?season=2027&race=singapore&area=padang",
   );
 });
-test("twelve standard stand names resolve without claiming chair coordinates", () => {
+test("all fifteen grandstand product names resolve without claiming chair coordinates", () => {
   for (const area of singaporeAreas) {
     assert.deepEqual(locateSingaporeTicket(area.name).ids, [area.id]);
     assert.match(
@@ -33,14 +33,8 @@ test("twelve standard stand names resolve without claiming chair coordinates", (
     { status: "matched", ids: ["padang"], section: "A", row: "12", seat: "18" },
   );
 });
-test("variants do not fall through to standard Pit or Turn names", () => {
+test("unsupported multi-area and access products remain unknown", () => {
   for (const raw of [
-    "Super Pit Grandstand",
-    "SuperPit",
-    "Super-Pit Grandstand",
-    "Pit Exit Grandstand",
-    "Pit-Exit Grandstand",
-    "Chicane @ Turn 2",
     "Turn 1 Combination",
     "Turn 1 Combo",
     "Premier Walkabout",
@@ -85,4 +79,17 @@ test("new standard products retain published access and separate identities", ()
   assert.equal(locateSingaporeTicket("Bay Grandstand").status,"unknown");
   assert.equal(locateSingaporeTicket("Raffles / Republic").status,"ambiguous");
   assert.equal(locateSingaporeTicket("Promenade or Marina Bay Grandstand").status,"ambiguous");
+});
+
+
+test("supported variants resolve separately and preserve ambiguous combinations",()=>{
+ for(const raw of ["SuperPit", "Super Pit Grandstand", "Super-Pit Grandstand"])assert.deepEqual(locateSingaporeTicket(raw).ids,["super-pit"]);
+ for(const raw of ["Pit Exit Grandstand", "Pit-Exit"])assert.deepEqual(locateSingaporeTicket(raw).ids,["pit-exit"]);
+ for(const raw of ["Chicane @ Turn 2", "Chicane at Turn 2 Grandstand", "Chicane T2"])assert.deepEqual(locateSingaporeTicket(raw).ids,["chicane"]);
+ for(const raw of ["Chicane", "Chicane at Turn 1"])assert.equal(locateSingaporeTicket(raw).status,"unknown");
+ for(const raw of ["Super Pit or Pit Grandstand", "Pit Exit / Pit Grandstand", "Chicane @ Turn 2 or Turn 2 Grandstand"])assert.equal(locateSingaporeTicket(raw).status,"ambiguous");
+ assert.equal(locateSingaporeTicket("Chicane @ Turn 2 Combination").status,"unknown");
+ for(const id of ["super-pit","pit-exit","chicane"]){const a=singaporeAreas.find(a=>a.id===id)!;assert.equal(a.zones,"1, 2, 3, 4");assert.equal(locateSingaporeTicket("2026 "+a.name).status,"wrong-event");}
+ assert.equal(singaporeAreas.find(a=>a.id==='chicane')!.source,"https://singaporegp.sg/en/tickets/general-tickets/grandstands/chicane-grandstand-turn-2/");
+ assert.deepEqual(singaporeAreas.find(a=>a.id==='super-pit')!.point,singaporeAreas.find(a=>a.id==='pit')!.point);
 });

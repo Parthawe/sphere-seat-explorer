@@ -150,9 +150,30 @@ export const singaporeAreas = [
     description:
       "The organizer describes views of Turns 7 and 8, covering braking into Turn 7 and acceleration towards Turn 8. Published access is Zone 4; this is not a surveyed stand footprint.",
   },
+  {
+    id: "super-pit", name: "Super Pit Grandstand", short: "Super Pit",
+    point: [547, 220], label: [485, 315],
+    position: "Upper rows of the Pit Grandstand", focus: "Grid, garages & pit stops",
+    zones: "1, 2, 3, 4",
+    description: "A distinct package in the upper rows of the Pit Grandstand, opposite the garages. It shares the Pit map anchor; the map cannot identify its rows or exact seats. Check the organizer for current package benefits.",
+  },
+  {
+    id: "pit-exit", name: "Pit Exit Grandstand", short: "Pit Exit",
+    point: [482, 167], label: [489, 43],
+    position: "Beside pit-lane exit · Turn 1", focus: "Pit exit & opening braking zone",
+    zones: "1, 2, 3, 4",
+    description: "The organizer places this separate grandstand beside the pit-lane exit with views towards Turn 1. The map marks an estimated region, not its final footprint or assigned chairs.",
+  },
+  {
+    id: "chicane", name: "Chicane @ Turn 2 Grandstand", short: "Chicane T2",
+    point: [455, 142], label: [308, 40],
+    position: "Inside the Turns 1–3 complex", focus: "Opening-corner sequence",
+    zones: "1, 2, 3, 4",
+    description: "The current Chicane @ Turn 2 product describes the inside of Turns 1–3. It is distinct from Turn 2 Grandstand and from the Chicane combination pass. This is an estimated viewing region.",
+  },
 ].map((a) => ({
   ...a,
-  source: SINGAPORE_TICKETS + a.id + "-grandstand/",
+  source: SINGAPORE_TICKETS + (a.id === "chicane" ? "chicane-grandstand-turn-2/" : a.id + "-grandstand/"),
   kind: "3-day grandstand",
   access: a.zones === "4" ? "Zone 4" : "Zones " + a.zones,
   confidence: "Estimated region",
@@ -165,7 +186,7 @@ export type SingaporeMatch = {
   section?: string;
 };
 export function locateSingaporeTicket(raw: string): SingaporeMatch {
-  const text = raw.normalize("NFKC").toLowerCase().replace(/[–—]/g, "-");
+  let text = raw.normalize("NFKC").toLowerCase().replace(/[–—]/g, "-");
   const context = text.replace(
     /\b(?:row|seat|section)\s*[:#-]?\s*\d{1,4}\b/g,
     "",
@@ -176,14 +197,21 @@ export function locateSingaporeTicket(raw: string): SingaporeMatch {
     )
   )
     return { status: "wrong-event", ids: [] };
-  // Variants and combination passes do not establish one supported standard grandstand.
+  // Multi-area/access products do not establish one supported grandstand.
   if (
-    /\b(super[-\s]*pit|pit[-\s]+exit|chicane|comb(?:i(?:nation)?|o)|walkabout|wheelchair|platform|hospitality|lounge|suite|paddock|premier|twenty3)\b/.test(
+    /\b(comb(?:i(?:nation)?|o)|walkabout|wheelchair|platform|hospitality|lounge|suite|paddock|premier|twenty3)\b/.test(
       text,
     )
   )
     return { status: "unknown", ids: [] };
   const ids: string[] = [];
+  const variants: [string, RegExp][] = [
+    ["super-pit", /\bsuper[-\s]*pit\b/g],
+    ["pit-exit", /\bpit[-\s]+exit\b/g],
+    ["chicane", /\bchicane\s*(?:@|at)?\s*(?:turn|t)\s*0?2\b/g],
+  ];
+  for(const [id, pattern] of variants){if(pattern.test(text)){ids.push(id);pattern.lastIndex=0;text=text.replace(pattern," ");}}
+  if(/\bchicane\b/.test(text))return {status:"unknown",ids:[]};
   if (/\bpit(?:\s+grandstand)?\b/.test(text)) ids.push("pit");
   if (/\b(?:turn\s*0?1|t\s*0?1)\b/.test(text)) ids.push("turn-1");
   if (/\b(?:turn\s*0?2|t\s*0?2)\b/.test(text)) ids.push("turn-2");

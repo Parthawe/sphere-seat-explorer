@@ -3,10 +3,10 @@
   "product": "Apex Atlas",
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-23",
-  "cadence_hours": 2,
-  "phase": "singapore-variant-research",
+  "cadence_hours": 1,
+  "phase": "hourly-3d-scene-quality-and-expansion",
   "active_run": null,
-  "next_action": "Verify and implement distinct Singapore 2027 Super Pit, Pit Exit and Chicane products with their own names, access rules and broad viewing regions; preserve standard grandstand boundaries and unsupported exact seats. Then continue the verified venue queue. Qatar temporary-bank surveys and exact facing remain unverified; do not repeat the completed footprint-axis audit. Photo gaps T16/Beyon/Vegas Main remain open in PHOTO-REFERENCES.md and require new source-specific camera/year evidence.",
+  "next_action": "Render and assess Las Vegas outdoor, Sphere indoor, Qatar and Bahrain on desktop/phone; implement one concrete visible-quality or stability improvement with screenshots and relevant controls checked. Then assess Abu Dhabi licensed geometry for its own representative 3D scene and continue the verified venue queue. Singapore fifteen grandstand products are implemented; its exact-seat 3D needs assets. Preserve inferred geometry labels, current scenes, historical replay, private local parsing and media-source boundaries.",
   "venues": [
     {
       "id": "las-vegas",
@@ -20,7 +20,7 @@
       "id": "singapore",
       "event": "Singapore",
       "venue": "Marina Bay",
-      "status": "area_locator_pilot_2027",
+      "status": "area_locator_15_products_2027",
       "sources": [
         "https://www.formula1.com/en/racing/2027/singapore",
         "https://singaporegp.sg/en/tickets/general-tickets/grandstands/",
@@ -32,15 +32,20 @@
         "https://singaporegp.sg/en/tickets/general-tickets/grandstands/promenade-grandstand/",
         "https://singaporegp.sg/en/tickets/general-tickets/grandstands/raffles-grandstand/",
         "https://singaporegp.sg/en/tickets/general-tickets/grandstands/empress-grandstand/",
-        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/stamford-grandstand/"
+        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/stamford-grandstand/",
+        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/super-pit-grandstand/",
+        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/pit-exit-grandstand/",
+        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/chicane-grandstand-turn-2/"
       ],
-      "next_action": "Source Super Pit, Pit Exit and Chicane @ Turn 2 from the Singapore 2027 catalogue as separate product identities; verify zone access and broad regions before adding them. Keep combination/accessibility/hospitality products unsupported and Singapore 3D needs_assets. Then verify the Bahrain/Sakhir physical venue and current season evidence without inheriting older layouts.",
+      "next_action": "Retain fifteen product identities, estimated area matching and explicit unsupported combination/access products. Revisit 3D only with additional licensed venue assets.",
       "seasons_with_area_coverage": [
         2027
       ],
       "standard_grandstands_supported": 12,
       "seat3d_status": "needs_assets",
-      "asset_assessment": "SINGAPORE-SOURCES.md"
+      "asset_assessment": "SINGAPORE-SOURCES.md",
+      "distinct_variants_supported": 3,
+      "grandstand_products_supported": 15
     },
     {
       "id": "qatar",
@@ -52,7 +57,7 @@
         "https://www.lcsc.qa/faq/formula-1r-qatar-airways-qatar-grand-prix-2026",
         "https://www.openstreetmap.org/copyright"
       ],
-      "next_action": "Audit Qatar temporary-bank anchors and Bahrain footprint orientation against additional current organizer references, preserving illustrative sections/counts and no exact-ticket-coordinate claim. Exact official chair inventory and measured sightlines need venue assets; skip that blocked precision task if no evidence is available, then continue distinct Singapore 2027 Super Pit/Pit Exit/Chicane products and the verified venue queue.",
+      "next_action": "Improve existing 3D scene quality and stability. The permanent-footprint axis audit is complete; temporary layouts, exact chairs and measured sightlines remain unverified.",
       "seasons_with_3d_coverage": [
         2026
       ],
@@ -425,6 +430,24 @@
         "70-degree map fan ignores obstructions and does not track interactive camera zoom"
       ],
       "next": "Verify and implement distinct Singapore 2027 Super Pit, Pit Exit and Chicane products with their own names, access rules and broad viewing regions; preserve standard grandstand boundaries and unsupported exact seats. Then continue the verified venue queue. Qatar temporary-bank surveys and exact facing remain unverified; do not repeat the completed footprint-axis audit. Photo gaps T16/Beyon/Vegas Main remain open in PHOTO-REFERENCES.md and require new source-specific camera/year evidence."
+    },
+    {
+      "date": "2026-11-23",
+      "run": "user-hourly-scenes-and-singapore-variants",
+      "work": "Updated the existing recurring work to ACTIVE hourly. Added three distinct Singapore 2027 variants with organizer sources, zone access, estimated areas, parser support and comparison; coverage is now fifteen grandstand products.",
+      "evidence": [
+        "Automation update returned ACTIVE for build-apex-atlas-circuit-maps; interval one hour",
+        "Current organizer catalogue explicitly labels 2027 and all three detail pages were checked",
+        "56 tests pass; fifteen native map controls, variant keyboard selection, desktop/phone states, wrong years and combination rejection checked",
+        "Three-variant comparison persists on reload; private input marker absent from network requests and localStorage",
+        "320px document remained 320px; no page exceptions"
+      ],
+      "limitations": [
+        "No Singapore 3D or exact ticket-row matching added",
+        "Super Pit shares the standard Pit broad anchor because the source places it in upper rows of the same stand",
+        "All-venue 3D programme remains unfinished"
+      ],
+      "next": "Render and assess Las Vegas outdoor, Sphere indoor, Qatar and Bahrain on desktop/phone; implement one concrete visible-quality or stability improvement with screenshots and relevant controls checked. Then assess Abu Dhabi licensed geometry for its own representative 3D scene and continue the verified venue queue. Singapore fifteen grandstand products are implemented; its exact-seat 3D needs assets. Preserve inferred geometry labels, current scenes, historical replay, private local parsing and media-source boundaries."
     }
   ],
   "blockers": [

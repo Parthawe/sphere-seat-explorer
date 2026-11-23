@@ -65,3 +65,9 @@ Supported media loads on demand with attribution and provider privacy links. Oth
 ## Circuit orientation and overview
 
 Qatar/Bahrain now offer a north-up full-circuit map with numbered bank selectors, source footprints, estimated-region outlines and an illustrative view-direction fan. Choosing a bank updates the existing 3D selection; the map remains available if 3D fails. Opening it pauses simulated cars. Permanent bank envelopes follow their OSM source axes and the Sakhir Tower follows its own footprint. Facing and all seat-level geometry remain inferred.
+
+## Singapore variants and hourly scene work
+
+Singapore 2027 now includes fifteen distinct grandstand products: twelve standard products plus Super Pit, Pit Exit and Chicane @ Turn 2. The parser preserves variant identity, ambiguity and unsupported combination products. Super Pit shares the Pit map anchor with a clear upper-row explanation. All three have their own organizer links, zone access and race-scoped comparison. These are broad area matches; Singapore seat-level 3D is still unavailable.
+
+The existing mapping automation now runs hourly at the user's request. Prioritize existing 3D scene quality and stability, then sourced new venue coverage; retain truthful estimates and preserve each working scene.
