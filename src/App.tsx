@@ -79,18 +79,18 @@ function MiniMap() {
     >
       <path
         d="M56 59V25Q54 13 66 17L78 23Q84 25 85 14Q114 12 117 45V58L187 57Q206 56 202 40L193 24Q190 15 197 16L229 43Q240 49 240 66V113L234 119V127L154 126Q97 128 34 103Q32 78 56 68Z"
-        stroke="#727b70"
+        stroke="#757589"
         strokeWidth="2.5"
         strokeLinejoin="round"
       />
       <path
         d="M56 59V25Q54 13 66 17L78 23Q84 25 85 14Q114 12 117 45V58"
-        stroke="#e2c18b"
+        stroke="#e10600"
         strokeWidth="3"
       />
-      <circle cx="81" cy="43" r="12" stroke="#e2c18b" />
-      <circle cx="81" cy="43" r="3" fill="#e2c18b" />
-      <text x="10" y="144" fill="#929d8f" fontSize="9" fontFamily="sans-serif">
+      <circle cx="81" cy="43" r="12" stroke="#e10600" />
+      <circle cx="81" cy="43" r="3" fill="#e10600" />
+      <text x="10" y="144" fill="#9393a7" fontSize="9" fontFamily="sans-serif">
         LAS VEGAS STRIP CIRCUIT
       </text>
     </svg>
@@ -112,6 +112,22 @@ function SeatGrid({
       </div>
       <svg
         viewBox={"-8 -6 " + (width + 16) + " 132"}
+        onPointerDown={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const scale = Math.min(rect.width / (width + 16), rect.height / 132);
+          const offsetX = (rect.width - (width + 16) * scale) / 2;
+          const offsetY = (rect.height - 132 * scale) / 2;
+          const x = (e.clientX - rect.left - offsetX) / scale - 8;
+          const y = (e.clientY - rect.top - offsetY) / scale - 6;
+          if (x < -8 || x > width + 8 || y < -6 || y > 126) return;
+          onChange(
+            normalize({
+              stand: stand.id,
+              row: Math.round((y - 4) / 6.4) + 1,
+              seat: Math.round((x - 3.5) / 7) + 1,
+            }),
+          );
+        }}
         role="img"
         aria-label={
           "Modeled seating grid. Row " +
@@ -133,10 +149,10 @@ function SeatGrid({
                 r={active ? 3.5 : 1.7}
                 fill={
                   active
-                    ? "#f17a5c"
+                    ? "#e10600"
                     : ri + 1 === selection.row
-                      ? "#b5bcae"
-                      : "#465046"
+                      ? "#4c5268"
+                      : "#c9ccd6"
                 }
                 onClick={() =>
                   onChange({ stand: stand.id, row: ri + 1, seat: si + 1 })
@@ -241,7 +257,8 @@ export default function App() {
     [ready, setReady] = useState(false),
     [unavailable, setUnavailable] = useState(false),
     [flat, setFlat] = useState(false),
-    [panelOpen, setPanelOpen] = useState(true);
+    [panelOpen, setPanelOpen] = useState(() => window.innerWidth > 760),
+    [playing, setPlaying] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null),
     sceneRef = useRef<HTMLDivElement>(null),
     noticeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -297,6 +314,7 @@ export default function App() {
   const change = (next: Selection) => navigate(next, mode, saved, true);
   const chooseStand = (id: string) => {
     const s = getStand(id);
+    if (window.innerWidth <= 760) setPanelOpen(true);
     navigate(
       { stand: id, row: selection.row, seat: Math.ceil(s.seats / 2) },
       "stand",
@@ -343,9 +361,11 @@ export default function App() {
       </a>
       <header className="site-header">
         <a className="wordmark" href="/" aria-label="Viewpoint home">
-          <Globe />
+          <svg viewBox="0 0 50 36" fill="none" aria-hidden="true">
+            <path d="M2 4h12l8 20L37 4h12L24 35H14Z" fill="currentColor" />
+          </svg>
           <span>
-            VIEWPOINT<span className="wordmark-sub">THE SEAT EXPLORER</span>
+            VIEWPOINT<span className="wordmark-sub">F1 SEAT EXPLORER</span>
           </span>
         </a>
         <div className="header-location">
@@ -418,6 +438,7 @@ export default function App() {
                   selection={selection}
                   mode={mode}
                   reset={reset}
+                  playing={playing}
                   onSelect={(s) => navigate(s, "seat")}
                   onStand={chooseStand}
                   onReady={() => {
@@ -430,36 +451,30 @@ export default function App() {
             )}
           </div>
           <div className="scene-heading">
-            <div className="eyebrow">
-              LAS VEGAS GRAND PRIX <span>2026 REFERENCE</span>
-            </div>
             <h1>
               {mode === "overview" ? (
                 <>
-                  A different
-                  <br />
-                  point of view.
-                </>
-              ) : mode === "stand" ? (
-                <>
-                  Find your place
-                  <br />
-                  at {stand.name}.
+                  LAS VEGAS<span>GRAND PRIX</span>
                 </>
               ) : (
                 <>
-                  This could be
-                  <br />
-                  your view.
+                  {stand.name}
+                  <span>
+                    {mode === "seat"
+                      ? "ROW " + selection.row + " / SEAT " + selection.seat
+                      : "SELECT A SEAT POSITION"}
+                  </span>
                 </>
               )}
             </h1>
             <p>
               {mode === "overview"
-                ? "Explore the seats. See the perspective."
-                : mode === "stand"
-                  ? "Choose a modeled row and seat to look closer."
-                  : "Drag to look around. Take it all in."}
+                ? "SPHERE ZONE · 2026 REFERENCE MODEL"
+                : "POSITION " +
+                  stand.id +
+                  " · " +
+                  stand.corner +
+                  " · ESTIMATED VIEW"}
             </p>
           </div>
           <div className="view-switch" aria-label="Viewing mode">
@@ -470,7 +485,6 @@ export default function App() {
                 aria-pressed={v === mode}
                 onClick={() => navigate(selection, v)}
               >
-                <span className="mode-index">0{i + 1}</span>
                 {v === "overview"
                   ? "Overview"
                   : v === "stand"
@@ -544,7 +558,16 @@ export default function App() {
               </div>
             </div>
             <div className="scene-instruction">
-              <span className="drag-symbol">⤧</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                aria-hidden="true"
+              >
+                <path d="M8 4h8a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z" />
+                <path d="M12 4v6" />
+              </svg>
               {flat
                 ? "Choose a stand in the selector"
                 : mode === "seat"
@@ -561,6 +584,19 @@ export default function App() {
                 />
               </svg>
             </div>
+          </div>
+          <div className="track-demo">
+            <button aria-pressed={playing} onClick={() => setPlaying(!playing)}>
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                {playing ? (
+                  <path d="M5 4h3v12H5zm7 0h3v12h-3Z" />
+                ) : (
+                  <path d="m6 3 11 7-11 7Z" />
+                )}
+              </svg>
+              {playing ? "Pause track demo" : "Play track demo"}
+            </button>
+            <span>Illustrative cars</span>
           </div>
           <div className="model-caption">
             <span className="live-mark" />
@@ -583,12 +619,21 @@ export default function App() {
             aria-expanded={panelOpen}
           >
             <span className="sheet-handle" />
-            {panelOpen ? "Hide seat controls" : "Choose your seat"}
+            <span className="mobile-summary">
+              {stand.name}
+              <strong>
+                ROW {selection.row} / SEAT {selection.seat}
+              </strong>
+            </span>
+            <span className="mobile-action">
+              {panelOpen ? "Close controls" : "Choose seats"}
+            </span>
           </button>
           <div className="panel-content">
             <div className="panel-intro">
-              <span className="eyebrow">YOUR RACE, YOUR PERSPECTIVE</span>
-              <h2>Choose your view.</h2>
+              <h2>
+                FIND YOUR SEAT<span className="panel-edition">2026</span>
+              </h2>
               <p>T-Mobile Zone at Sphere</p>
             </div>
             <section className="stand-picker">
@@ -621,7 +666,7 @@ export default function App() {
             <section className="position-picker">
               <div className="section-label">
                 <h3>Pick your position</h3>
-                <span>ILLUSTRATIVE SEATS</span>
+                <span>ESTIMATED LAYOUT</span>
               </div>
               <div className="steppers">
                 <Stepper
@@ -636,6 +681,22 @@ export default function App() {
                   max={stand.seats}
                   onChange={(v) => change({ ...selection, seat: v })}
                 />
+              </div>
+              <div className="row-presets" aria-label="Quick row selection">
+                {[
+                  { label: "Front", row: 3 },
+                  { label: "Middle", row: 10 },
+                  { label: "High", row: 18 },
+                ].map((p) => (
+                  <button
+                    key={p.row}
+                    aria-pressed={selection.row === p.row}
+                    onClick={() => change({ ...selection, row: p.row })}
+                  >
+                    {p.label}
+                    <span>R{p.row}</span>
+                  </button>
+                ))}
               </div>
               <SeatGrid selection={selection} onChange={change} />
             </section>
@@ -668,6 +729,7 @@ export default function App() {
                 className="primary-button"
                 onClick={() => {
                   navigate(selection, "seat");
+                  setReset((v) => v + 1);
                   setPanelOpen(false);
                   setFlat(false);
                   if (window.innerWidth <= 760)
@@ -691,9 +753,7 @@ export default function App() {
                   <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z" />
                   <circle cx="12" cy="12" r="3" />
                 </svg>
-                {mode === "seat"
-                  ? "Return to this seat view"
-                  : "See the view from here"}
+                {mode === "seat" ? "Reset seat view" : "View from this seat"}
               </button>
               <button className="save-button" onClick={save}>
                 <Icon name="plus" />
@@ -888,9 +948,9 @@ export default function App() {
         ) : (
           <div className="source-content">
             <p>
-              This independent explorer reconstructs the Sphere zone using the
-              organizer’s 2026 location diagram. It is a planning model, not a
-              verified photographic seat preview or ticket seller.
+              This independent, F1-inspired explorer reconstructs the Sphere
+              zone using the organizer’s 2026 location diagram. It is a planning
+              model, not a verified photographic seat preview or ticket seller.
             </p>
             <h3>What the sources establish</h3>
             <p>

@@ -15,8 +15,8 @@ export function FlatMap({
         role="img"
         aria-label="Circuit orientation map"
       >
-        <path d={circuitPath} fill="none" stroke="#7c8980" strokeWidth="9" />
-        <circle cx="0" cy="0" r="47" fill="#b19461" />
+        <path d={circuitPath} fill="none" stroke="#7c7c91" strokeWidth="9" />
+        <circle cx="0" cy="0" r="47" fill="#e10600" />
         {stands.map((s) => (
           <g key={s.id} onClick={() => onStand?.(s.id)}>
             <rect
@@ -24,7 +24,7 @@ export function FlatMap({
               y={s.center[2] - 12}
               width="44"
               height="12"
-              fill={selected === s.id ? "#ef6e55" : "#b8c0ac"}
+              fill={selected === s.id ? "#e10600" : "#cbcbd8"}
               transform={
                 "rotate(" +
                 (-s.rotation * 180) / Math.PI +
@@ -38,7 +38,7 @@ export function FlatMap({
             <text
               x={s.center[0]}
               y={s.center[2] - 24}
-              fill="#e8e6dd"
+              fill="#f4f4f8"
               textAnchor="middle"
               fontSize="19"
             >
@@ -46,10 +46,10 @@ export function FlatMap({
             </text>
           </g>
         ))}
-        <text x="0" y="7" fontSize="16" textAnchor="middle" fill="#141a16">
+        <text x="0" y="7" fontSize="16" textAnchor="middle" fill="#ffffff">
           SPHERE
         </text>
-        <text x="280" y="490" fontSize="19" fill="#9da79c">
+        <text x="280" y="490" fontSize="19" fill="#9c9cb3">
           LAS VEGAS STRIP
         </text>
       </svg>

@@ -1,6 +1,6 @@
 # Viewpoint · Sphere Seat Explorer
 
-An independent, interactive Las Vegas Grand Prix seat explorer around Sphere. Choose a modeled grandstand position, enter a seated-eye-level view, compare up to three positions, and share the selection.
+An independent, F1-inspired Las Vegas Grand Prix seat explorer around Sphere. Choose a modeled grandstand position, enter a seated-eye-level view, compare up to three positions, and share the selection.
 
 ## Run locally
 
@@ -24,6 +24,9 @@ npm run preview
 - Orbit controls in overview and grandstand mode; drag-to-look and bounded field-of-view zoom from a seat.
 - Actual scene geometry for tiers, track, fencing, barriers, support posts, buildings, and Sphere.
 - Three-position comparison with consistent seated camera settings.
+- F1 red, black and white interface, with an adaptive mobile bottom sheet and front/middle/high row shortcuts.
+- Detailed procedural chairs, scaffolding, continuous track fencing, floodlights, original LED Sphere artwork and restrained bloom.
+- Optional illustrative open-wheel car demonstration with play/pause controls.
 - Browser-local shortlists, shareable URLs, and back/forward navigation.
 - Responsive mobile controls, reduced-motion camera changes, source details, and 2D fallback after WebGL loss.
 
@@ -47,7 +50,7 @@ Live organizer pages can change to newer editions. The model is not automaticall
 
 ## Architecture
 
-React 19, TypeScript, Vite, Three.js, and React Three Fiber. Venue and selection data live in `src/model.ts`; scene construction and camera controls in `src/Scene.tsx`; UI and URL/history state in `src/App.tsx`. The 3D bundle loads separately from the controls and 2D map. All scene assets are generated locally, with no runtime asset-service dependency.
+React 19, TypeScript, Vite, Three.js, and React Three Fiber. Venue and selection data live in `src/model.ts`; scene construction in `src/World.tsx` and camera controls in `src/Scene.tsx`; UI and URL/history state in `src/App.tsx`. The 3D bundle loads separately from the controls and 2D map. All scene assets are generated locally, with no runtime asset-service dependency.
 
 The URL carries the seat, view mode, and optional three-position comparison. `localStorage` holds only the shortlist. No account, analytics, or payment integrations are included. Hosting services process requests under their own policies.
 
