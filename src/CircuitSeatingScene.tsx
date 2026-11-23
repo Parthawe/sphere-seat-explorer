@@ -1,3 +1,4 @@
+import FormulaCar from "./FormulaCar";
 import {Canvas,useFrame,useThree,useLoader} from '@react-three/fiber';
 import {Component,Suspense,useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import * as T from 'three';
@@ -78,12 +79,12 @@ function Context({model,selection}:{model:CircuitModel;selection:ModelPosition})
  </>;
 }
 function DemoCars({model,playing,selection}:{model:CircuitModel;playing:boolean;selection:ModelPosition}){
- const refs=useRef<(T.Group|null)[]>([]),progress=useRef(0);const {invalidate,gl}=useThree();
- useEffect(()=>{gl.domElement.dataset.carsPlaying=String(playing);invalidate();},[playing,gl,invalidate]);
+ const refs=useRef<(T.Group|null)[]>([]),wheels=useRef<(T.Group|null)[]>([]),progress=useRef(0);const {invalidate,gl}=useThree();
+ useEffect(()=>{gl.domElement.dataset.carsPlaying=String(playing);gl.domElement.dataset.carDetail='formula';invalidate();},[playing,gl,invalidate]);
  const curve=useMemo(()=>new T.CatmullRomCurve3(model.track.slice(0,-1).map(p=>new T.Vector3(p[0],0,p[1])),true,'centripetal'),[model]);
  useEffect(()=>{const b=model.banks.find(b=>b.id===selection.bank)!,samples=curve.getSpacedPoints(1500);let best=Infinity,index=0;samples.forEach((p,i)=>{const d=Math.hypot(p.x-b.center[0],p.z-b.center[1]);if(d<best){best=d;index=i;}});progress.current=index/(samples.length-1);invalidate();},[model,selection.bank,curve,invalidate]);
- useFrame((_,delta)=>{if(playing)progress.current=(progress.current+Math.min(delta,.05)/105)%1;refs.current.forEach((r,i)=>{if(!r)return;const u=(progress.current+i*.008)%1,p=curve.getPointAt(u),t=curve.getTangentAt(u);r.position.set(p.x,.48,p.z);r.rotation.y=Math.atan2(t.x,t.z);});if(playing)invalidate();});
- return <>{['#eb3433','#24b9ad','#fc9d34','#668cd9','#f1f3f8'].map((c,i)=><group key={c} ref={r=>{refs.current[i]=r;}}><mesh castShadow><boxGeometry args={[1.45,.38,4.7]}/><meshStandardMaterial color={c} metalness={.65} roughness={.23}/></mesh><mesh position={[0,.44,-.1]}><sphereGeometry args={[.4,12,8]}/><meshStandardMaterial color="#101724"/></mesh><mesh position={[0,.23,2.3]}><boxGeometry args={[1.95,.12,.45]}/><meshStandardMaterial color={c}/></mesh><mesh position={[0,.65,-2]}><boxGeometry args={[1.9,.12,.5]}/><meshStandardMaterial color={c}/></mesh>{[-.85,.85].flatMap(x=>[-1.4,1.4].map(z=><mesh key={x+':'+z} position={[x,0,z]} rotation={[0,0,Math.PI/2]}><cylinderGeometry args={[.38,.38,.34,10]}/><meshStandardMaterial color="#11141b" roughness={.9}/></mesh>))}</group>)}</>;
+ useFrame((_,delta)=>{if(playing)progress.current=(progress.current+Math.min(delta,.05)/105)%1;refs.current.forEach((r,i)=>{if(!r)return;const u=(progress.current+i*.008)%1,p=curve.getPointAt(u),t=curve.getTangentAt(u);r.position.set(p.x,.45,p.z);r.rotation.y=Math.atan2(t.x,t.z);if(playing)wheels.current[i]?.children.forEach(w=>w.rotation.x-=Math.min(delta,.05)*model.length/105/.36);});if(playing)invalidate();});
+ return <>{['#eb3433','#24b9ad','#fc9d34','#668cd9','#f1f3f8'].map((c,i)=><group key={c} ref={r=>{refs.current[i]=r;}}><FormulaCar color={c} wheels={r=>{wheels.current[i]=r;}}/></group>)}</>;
 }
 function Rig({model,selection,mode,reset}:Props){
  const {camera,gl,invalidate,size}=useThree(),control=useRef<OrbitControls|null>(null),tr=useRef<{p:T.Vector3;t:T.Vector3;elapsed:number;from:T.Vector3;fromT:T.Vector3}|null>(null),target=useRef(new T.Vector3());

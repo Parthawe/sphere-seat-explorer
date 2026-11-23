@@ -64,3 +64,9 @@ Current organizer T2/T16 product pages were rechecked: they establish inside-T2 
 The circuit-map dialog shows source outlines, modeled bank envelopes, north-up geography and all bank selectors. A 70-degree illustrative horizontal fan follows the selected model position and inferred bank facing. It does not represent occlusion, visible-track proportion, distance to barriers or live camera zoom. It works independently of WebGL.
 
 55 tests pass, including a rotated-rectangle regression, reversed polygon order/invalid-input checks, footprint-axis and source-envelope agreement, and exhaustive unique finite model coordinates. Desktop and phone checks covered all 13 bank selections, Escape/reopen, source-versus-estimate labels and forced WebGL failure with map selection still working. At 320px the dialog content/scroll width were both 284px and document width was 320px. No page exceptions occurred.
+
+## Detailed procedural cars — 23 November 2026
+
+The Qatar/Bahrain studies now use the same authored open-wheel body as the existing Vegas scene: tapered chassis, cockpit/helmet, halo, multi-element front wing, rear wing/endplates, suspension rods, tire sidewall rings, wheel hubs and a rear lamp. The reusable component owns body/halo geometry cleanup; each scene owns its placement and motion. Qatar/Bahrain wheels turn while their simulated cars play and stop with pause. These shapes are illustrative, not manufacturer CAD or a certified 2026/2027 car specification. No team marks, external vehicle assets, photographs or new venue geometry were added.
+
+Vegas keeps its existing geometry, procedural pace and historical replay data/clock. Qatar/Bahrain retain their illustrative five-car, constant modeled-lap simulation; no telemetry or overtaking accuracy is implied.

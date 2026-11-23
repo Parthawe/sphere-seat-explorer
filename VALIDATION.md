@@ -162,3 +162,11 @@ Mobile document width stayed 320px; dialog content measured 284px. The Vegas rep
 ## Singapore variants / hourly cadence · 23 November 2026
 
 56 tests pass. Added variant regression checks for SuperPit/Super-Pit, Pit Exit and Chicane @/at Turn 2/T2, standard-name masking, multiple-product ambiguity, wrong-year boundaries, unsupported combinations and the checked Chicane source slug. Desktop 1440×1050 and phone 390×844/320×740 checks covered all fifteen native map controls, variant keyboard selection, matching product URLs/zone access, private local parsing, comparison of the three variants and persistence after reload. Input marker absent from requests and localStorage. Document width was 320px at 320px; no page exceptions observed. No new Singapore 3D accuracy or live inventory is claimed. Existing automation was updated in the app to ACTIVE hourly; no duplicate was created.
+
+## Outdoor car detail / existing-scene audit · 23 November 2026
+
+56 existing tests and production build pass. Inspected Qatar T2/T16, Bahrain Turn 1/Beyon, Vegas outdoor and Sphere interior on desktop 1440×1000 and phone 390×844. The shared visual component replaces the Qatar/Bahrain box silhouettes while retaining Vegas's authored body and its parent-owned motion. Comparison of Vegas before/after screenshots showed the same seated composition.
+
+Qatar/Bahrain play/pause, stand/seated mode switches and map-to-bank selection passed. Two canvas captures after pause and two animation frames were byte-identical. Forced Qatar WebGL loss/Retry returned a ready canvas with detailed cars. Vegas historical archive load, play/pause, scrub to 80s, Next pass and close passed. Sphere whole-bowl/model-seat switches worked; indoor geometry was unchanged. Phone document width remained 390px; no page exceptions occurred.
+
+Evidence screenshots are local under qa/hourly-car-detail/. This is a rendering/control check on the available Chromium/Mac environment, not a real-device performance benchmark or physical-view validation. The audit still found sparse foreground/context in Qatar/Bahrain and no touch-button zoom in their seated mode; those remain future polish work. No new venue or calibrated exact-seat coverage is claimed.

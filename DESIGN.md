@@ -56,3 +56,7 @@ Use a focused reference dialog from the seat view, retaining selected-area conte
 ## Circuit overview
 
 Keep the full layout readable in a focused dialog: geographic drawing alongside a named bank directory on desktop, stacked on phones. Numbered map markers correspond to native buttons rather than requiring tiny map targets. Red marks the selection; solid and dashed outlines distinguish footprint-aligned banks and estimated regions. Label the view fan as illustrative and retain north/source context. Preserve selection when closing the map.
+
+## Vehicle consistency
+
+Use one authored open-wheel silhouette and material treatment across the three outdoor reconstructions. Cockpit, halo, wing planes, suspension and rim highlights should hold up when close enough to inspect. Keep geography and camera placement independent from this visual component. Avoid team branding or regulation-year claims for a generic vehicle. Maintain still frames when paused and reduced-motion entry.

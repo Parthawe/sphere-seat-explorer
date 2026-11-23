@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-23",
   "cadence_hours": 1,
-  "phase": "hourly-3d-scene-quality-and-expansion",
+  "phase": "abu-dhabi-3d-asset-assessment",
   "active_run": null,
-  "next_action": "Render and assess Las Vegas outdoor, Sphere indoor, Qatar and Bahrain on desktop/phone; implement one concrete visible-quality or stability improvement with screenshots and relevant controls checked. Then assess Abu Dhabi licensed geometry for its own representative 3D scene and continue the verified venue queue. Singapore fifteen grandstand products are implemented; its exact-seat 3D needs assets. Preserve inferred geometry labels, current scenes, historical replay, private local parsing and media-source boundaries.",
+  "next_action": "Assess Abu Dhabi 2026 current organizer products and licensed geographic inputs for a representative 3D scene. Existing yas-track.json uses drawing coordinates without an inverse meter transform: obtain local-meter circuit/footprint geography and preserve ODbL sources before modeling, never treat map pixels as meters. If suitable public geometry is unavailable, continue another verified venue or add Qatar/Bahrain touch-button zoom and surface/context polish. The existing four-scene audit and shared car-detail batch are complete; keep Vegas replay, reduced motion, paused stability, local ticket privacy and unsupported exact-seat labels.",
   "venues": [
     {
       "id": "las-vegas",
@@ -448,6 +448,27 @@
         "All-venue 3D programme remains unfinished"
       ],
       "next": "Render and assess Las Vegas outdoor, Sphere indoor, Qatar and Bahrain on desktop/phone; implement one concrete visible-quality or stability improvement with screenshots and relevant controls checked. Then assess Abu Dhabi licensed geometry for its own representative 3D scene and continue the verified venue queue. Singapore fifteen grandstand products are implemented; its exact-seat 3D needs assets. Preserve inferred geometry labels, current scenes, historical replay, private local parsing and media-source boundaries."
+    },
+    {
+      "date": "2026-11-23",
+      "run": "hourly-existing-scene-audit-and-car-detail",
+      "work": "Audited Vegas outdoor, Sphere indoor, Qatar and Bahrain desktop/phone scenes. Extracted the existing Vegas procedural car body into a shared component and replaced Qatar/Bahrain box cars with the same chassis, halo, wing, suspension, tire/rim and rear-light detail; added simulated wheel rotation.",
+      "evidence": [
+        "56 tests and production build passed",
+        "Desktop 1440x1000 and phone 390x844 rendering inspected across all four scenes",
+        "Qatar/Bahrain play/pause, stand/seated cameras and bank-map selection passed; paused canvas captures byte-identical",
+        "Forced Qatar WebGL loss/Retry restored detailed cars",
+        "Vegas archive load, play/pause, 80s scrub, Next pass and close passed; Sphere whole/seat cameras passed",
+        "Phone document width stayed 390px; no page exceptions",
+        "Existing Abu Dhabi data inspected: drawing coordinates, six OSM track way IDs and four lat/lon stand anchors, no inverse meter transform retained"
+      ],
+      "limitations": [
+        "Cars remain generic authored shapes, not season-certified CAD",
+        "No new venue geometry, real chair matching, calibrated visibility or telemetry added",
+        "Qatar/Bahrain sparse foreground/context and missing seated touch zoom remain polish candidates",
+        "Low-end-device performance and other browser engines unverified"
+      ],
+      "next": "Assess Abu Dhabi 2026 current organizer products and licensed geographic inputs for a representative 3D scene. Existing yas-track.json uses drawing coordinates without an inverse meter transform: obtain local-meter circuit/footprint geography and preserve ODbL sources before modeling, never treat map pixels as meters. If suitable public geometry is unavailable, continue another verified venue or add Qatar/Bahrain touch-button zoom and surface/context polish. The existing four-scene audit and shared car-detail batch are complete; keep Vegas replay, reduced motion, paused stability, local ticket privacy and unsupported exact-seat labels."
     }
   ],
   "blockers": [

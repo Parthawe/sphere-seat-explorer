@@ -71,3 +71,7 @@ Qatar/Bahrain now offer a north-up full-circuit map with numbered bank selectors
 Singapore 2027 now includes fifteen distinct grandstand products: twelve standard products plus Super Pit, Pit Exit and Chicane @ Turn 2. The parser preserves variant identity, ambiguity and unsupported combination products. Super Pit shares the Pit map anchor with a clear upper-row explanation. All three have their own organizer links, zone access and race-scoped comparison. These are broad area matches; Singapore seat-level 3D is still unavailable.
 
 The existing mapping automation now runs hourly at the user's request. Prioritize existing 3D scene quality and stability, then sourced new venue coverage; retain truthful estimates and preserve each working scene.
+
+## Shared racing-car detail
+
+Qatar and Bahrain now show the detailed authored open-wheel cars already used by Vegas, including halo, wings, suspension, wheel hubs and rear lighting. Wheels rotate only during simulated playback. The shared visual component keeps motion separate, preserving the Vegas 2024 archive and the Qatar/Bahrain simulation distinction. These are representative car shapes, not season-certified specifications.
