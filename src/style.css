@@ -5832,3 +5832,40 @@ dialog::backdrop {
 
 .historical-replay .replay-photo-link { margin-top:10px; padding:7px 10px; font-size:12px; }
 .historical-replay.replay-compact { max-height:255px; }
+
+.circuit-overview-trigger { width:100%; text-align:left; padding:14px; margin:0 0 22px; border:1px solid #a6aebb; background:#e5e8ee; color:#172232; font:600 14px 'IBM Plex Sans',sans-serif; }
+.circuit-overview-trigger span { display:block; margin-top:5px; font-weight:400; line-height:1.5; }
+.circuit-overview-dialog { width:min(1100px,94vw); max-height:92dvh; padding:24px; border:1px solid #7b8495; color:#171d2a; background:#f3f4f7; }
+.circuit-overview-dialog::backdrop { background:#080d18c9; }
+.circuit-overview-dialog header { display:flex; justify-content:space-between; gap:18px; }
+.circuit-overview-dialog h2 { font:600 36px 'Barlow Condensed',sans-serif; margin:5px 0; }
+.circuit-overview-dialog p { font-size:14px; line-height:1.6; margin:5px 0 14px; }
+.circuit-overview-dialog header>button { border:0; background:none; color:inherit; font-size:28px; min-width:44px; height:44px; }
+.circuit-overview-layout { display:grid; grid-template-columns:minmax(0,1fr) 285px; border-block:1px solid #c7cdd6; }
+.circuit-overview-drawing { position:relative; min-width:0; padding:18px 18px 12px 0; }
+.circuit-overview-drawing svg { display:block; width:100%; height:480px; background:#e9ecf1; }
+.circuit-overview-north { position:absolute; top:32px; left:14px; font:600 14px 'IBM Plex Sans',sans-serif; }
+.circuit-overview-legend { display:flex; flex-wrap:wrap; gap:6px 18px; padding-top:12px; font-size:13px; color:#4f5a6d; }
+.circuit-overview-banks { padding:18px 0 18px 18px; border-left:1px solid #c7cdd6; }
+.circuit-overview-banks h3 { margin:0; font:600 24px 'Barlow Condensed',sans-serif; }
+.circuit-overview-banks button { display:flex; align-items:center; gap:12px; width:100%; padding:10px 6px; border:0; border-bottom:1px solid #c7cdd6; background:transparent; color:#1b2739; text-align:left; min-height:54px; }
+.circuit-overview-banks button>span { display:grid; place-items:center; flex:0 0 25px; height:25px; background:#172232; color:white; font-size:14px; }
+.circuit-overview-banks button[aria-pressed=true] { background:#fff; }
+.circuit-overview-banks button[aria-pressed=true]>span { background:#e10600; }
+.circuit-overview-banks strong { display:block; font-size:14px; }
+.circuit-overview-banks small { display:block; margin-top:3px; color:#566176; font-size:12px; }
+.circuit-overview-dialog footer { display:flex; justify-content:space-between; align-items:center; gap:28px; padding-top:18px; }
+.circuit-overview-dialog footer>div { max-width:680px; }
+.circuit-overview-dialog footer strong { font-size:16px; }
+.circuit-overview-dialog footer p { margin:6px 0; }
+.circuit-overview-dialog footer a { font-size:13px; color:#465269; text-underline-offset:3px; }
+.circuit-overview-dialog footer>button { flex-shrink:0; background:#d70904; border:0; padding:14px 18px; color:white; font-size:14px; min-height:48px; }
+@media(max-width:700px) {
+ .circuit-overview-dialog { padding:18px; }
+ .circuit-overview-dialog h2 { font-size:28px; }
+ .circuit-overview-layout { grid-template-columns:1fr; }
+ .circuit-overview-drawing { padding:12px 0; }
+ .circuit-overview-drawing svg { height:320px; }
+ .circuit-overview-banks { padding:14px 0; border-left:0; border-top:1px solid #c7cdd6; }
+ .circuit-overview-dialog footer { align-items:stretch; flex-direction:column; gap:14px; }
+}

@@ -52,3 +52,7 @@ Use the existing Apex Atlas red, ink and paper system with the scene leading and
 ## Spectator references
 
 Use a focused reference dialog from the seat view, retaining selected-area context. Keep source year, author, location granularity and uncertainty visible before media. Area/year/type filters should produce honest empty states and an explicit venue-wide recovery action. Preserve provider attribution in supported embeds and link other photo galleries to the originals. Ask users to load external media through a normal preview action; keep provider privacy links and source fallbacks beside it. Do not imply that an author's real section code maps to a model section.
+
+## Circuit overview
+
+Keep the full layout readable in a focused dialog: geographic drawing alongside a named bank directory on desktop, stacked on phones. Numbered map markers correspond to native buttons rather than requiring tiny map targets. Red marks the selection; solid and dashed outlines distinguish footprint-aligned banks and estimated regions. Label the view fan as illustrative and retain north/source context. Preserve selection when closing the map.

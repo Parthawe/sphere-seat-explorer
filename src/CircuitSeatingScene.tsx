@@ -8,7 +8,7 @@ import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import {OutputPass} from 'three/examples/jsm/postprocessing/OutputPass.js';
 import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
-import {bankFrame,localModelPosition,modelPosition,type CircuitModel,type ModelBank,type ModelPosition} from './circuitSeating';
+import {bankFrame,footprintPlacement,localModelPosition,modelPosition,type CircuitModel,type ModelBank,type ModelPosition} from './circuitSeating';
 type Mode='circuit'|'stand'|'seat';
 type Props={model:CircuitModel;selection:ModelPosition;mode:Mode;playing:boolean;roofs:boolean;reset:number;onSelect:(p:ModelPosition)=>void;onUnavailable:()=>void;onReady:()=>void};
 function Instances({items,color,geometry,onClick}:{items:{p:number[];s:number[];r?:number[]}[];color:string;geometry?:T.BufferGeometry;onClick?:(index:number)=>void}){
@@ -60,6 +60,7 @@ function Track({model}:{model:CircuitModel}){
 function Context({model,selection}:{model:CircuitModel;selection:ModelPosition}){
  const bank=model.banks.find(b=>b.id===selection.bank)!,frame=bankFrame(model,bank);
  const poles=useMemo(()=>{const c=new T.CatmullRomCurve3(model.track.slice(0,-1).map(p=>new T.Vector3(p[0],0,p[1])),true);return c.getSpacedPoints(Math.round(model.length/75)).map((p,i,a)=>{const d=c.getTangentAt(i/(a.length-1));return [p.x-d.z*20,p.z+d.x*20];});},[model]);
+ const tower=model.features.find(f=>f.name==='Sakhir Tower'),towerCenter=tower?footprintPlacement(tower.points).center:undefined;
  const main=model.banks[0],mf=bankFrame(model,main),pit=[mf.target[0]+mf.forward[0]*28,mf.target[1]+mf.forward[1]*28];
  return <>
   <mesh rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[6500,6500]}/><meshStandardMaterial color={model.id==='qatar'?'#29282b':'#493e36'} roughness={1}/></mesh>
@@ -70,7 +71,7 @@ function Context({model,selection}:{model:CircuitModel;selection:ModelPosition})
    <mesh position={[0,11,0]} castShadow><boxGeometry args={[model.id==='qatar'?320:295,.6,24]}/><meshStandardMaterial color="#c6cbd4"/></mesh>
    {Array.from({length:22},(_,i)=><group key={i} position={[-132+i*12.5,0,-8.1]}><mesh position={[0,2.5,0]}><boxGeometry args={[10,5,.15]}/><meshStandardMaterial color="#222a38"/></mesh><mesh position={[0,7.8,-.05]}><boxGeometry args={[10,2,.2]}/><meshPhysicalMaterial color="#37546b" metalness={.7} roughness={.15} clearcoat={1}/></mesh><mesh position={[0,5.4,-.1]}><boxGeometry args={[10,.4,.2]}/><meshBasicMaterial color={i%3===0?'#d02d36':'#bfc7d6'}/></mesh></group>)}
   </group>
-  {model.id==='bahrain'&&<group position={[-245,0,-280]}>
+  {model.id==='bahrain'&&towerCenter&&<group position={[towerCenter[0],0,towerCenter[1]]}>
    {Array.from({length:8},(_,i)=><group key={i} position={[0,5+i*3.2,0]}><mesh castShadow><cylinderGeometry args={[14+i*.8,14+i*.8,2.6,48]}/><meshStandardMaterial color="#243346" metalness={.7} roughness={.22}/></mesh><mesh position={[0,1.5,0]} castShadow><cylinderGeometry args={[16+i*.8,16+i*.8,.4,48]}/><meshStandardMaterial color="#d9d8d3" roughness={.45}/></mesh></group>)}
   </group>}
   <mesh position={[bank.center[0]+frame.forward[0]*10,.5,bank.center[1]+frame.forward[1]*10]} rotation={[0,frame.yaw,0]}><boxGeometry args={[bank.width+12,1,.5]}/><meshStandardMaterial color="#c3cad2"/></mesh>

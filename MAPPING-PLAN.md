@@ -1,3 +1,7 @@
+## Latest checkpoint: footprint alignment and full-circuit overview
+
+Permanent Qatar/Bahrain bank axes now follow their source footprint envelopes; Sakhir Tower uses its own mapped center. A north-up circuit map provides all bank selectors and an illustrative view-direction fan, including a WebGL-independent fallback. Rechecked organizer descriptions do not establish Qatar temporary-bank surveys or exact seat facing, so those confidence levels stay estimated. Continue distinct Singapore Super Pit / Pit Exit / Chicane products next. Photo gaps remain documented in PHOTO-REFERENCES.md and should be revisited only with additional source-specific evidence.
+
 ## Spectator-reference addition
 
 The user also requested real photo references and reviews. A checked, source-linked browser now accompanies Qatar/Bahrain and Vegas 3D, keeping capture years, author-reported areas, section uncertainty, opt-in embeds and provider blocks explicit. Read PHOTO-REFERENCES.md before expanding it. T16, Beyon/Batelco and Vegas Main have known selected-area photo gaps; find attributable public evidence when available and keep unknowns empty. This is not a live scraper and does not authorize copying unlicensed imagery.

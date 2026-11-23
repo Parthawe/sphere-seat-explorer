@@ -61,3 +61,7 @@ Qatar includes Main, North, T2, T16 and sampled Hill viewpoints, with assigned/f
 The 3D studies now include source-linked spectator references with location scope, reference year and photo/report filters. A source-reported grandstand or section is distinct from an exact match to the model. Qatar T16, Bahrain Beyon and Vegas Main currently have explicit reference gaps; venue-wide context appears only when selected. Historical photos keep their own years, including older 2024 references.
 
 Supported media loads on demand with attribution and provider privacy links. Other photographs stay on their original publishers' sites. No photo files, copied review bodies, verified-attendance claims or aggregate ratings are added. Reviews summarize reported experiences and disagreements, not current event policy. The collection is curated public research rather than a live Internet feed. See PHOTO-REFERENCES.md.
+
+## Circuit orientation and overview
+
+Qatar/Bahrain now offer a north-up full-circuit map with numbered bank selectors, source footprints, estimated-region outlines and an illustrative view-direction fan. Choosing a bank updates the existing 3D selection; the map remains available if 3D fails. Opening it pauses simulated cars. Permanent bank envelopes follow their OSM source axes and the Sakhir Tower follows its own footprint. Facing and all seat-level geometry remain inferred.

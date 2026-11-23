@@ -52,3 +52,15 @@ Data are adapted under [ODbL 1.0](https://www.openstreetmap.org/copyright), attr
 Chromium at 1440×1000, 390×844 and 320px: all banks, three camera modes, row shortcuts, complete grid, precise mobile inputs, keyboard grid selection, shared-position restoration, three-item comparison/capacity and WebGL loss/retry were checked. At 320px, document width stayed 320px and the grid dialog content was 284px. Reduced-motion entry starts paused and uses immediate camera placement. No page exceptions occurred in these checks.
 
 Correct-year race entry, Qatar area-to-model handoff, 3D calendar filtering, unsupported season recovery, existing Abu Dhabi/Singapore desks and Las Vegas historical replay were checked. These checks do not certify real-world seat accuracy, other browsers or low-end-device performance.
+
+## Footprint alignment and circuit overview — 23 November 2026
+
+The horizontal bank envelope now fits the source footprint's edge-aligned bounding rectangle. It uses that rectangle's center and long dimension instead of a vertex average and farthest-corner diagonal. The model's long axis follows the footprint; its front-facing normal is chosen toward the nearest Grand Prix circuit point. This facing choice is still inferred, especially around curved/internal sections, and does not calibrate actual seat directions. Qatar Main uses way 152483596; all eight Bahrain banks use their existing named footprints. Qatar temporary stands/Hill retain their estimated regions and nearest-track facing. No new surveyed geometry was found or asserted.
+
+Sakhir Tower now uses its own source footprint center instead of a hardcoded scene position. Its vertical architecture remains illustrative. Existing model links retain section/row/position labels, but the corrected horizontal envelopes change their generated coordinates. They remain public model positions, not ticket IDs.
+
+Current organizer T2/T16 product pages were rechecked: they establish inside-T2 and final-corner placement and free seating, not temporary-stand boundary coordinates or orientation. The Bahrain 2027 organizer page still establishes five viewing products, not row-level camera calibration. These descriptions are insufficient to upgrade temporary placement confidence.
+
+The circuit-map dialog shows source outlines, modeled bank envelopes, north-up geography and all bank selectors. A 70-degree illustrative horizontal fan follows the selected model position and inferred bank facing. It does not represent occlusion, visible-track proportion, distance to barriers or live camera zoom. It works independently of WebGL.
+
+55 tests pass, including a rotated-rectangle regression, reversed polygon order/invalid-input checks, footprint-axis and source-envelope agreement, and exhaustive unique finite model coordinates. Desktop and phone checks covered all 13 bank selections, Escape/reopen, source-versus-estimate labels and forced WebGL failure with map selection still working. At 320px the dialog content/scroll width were both 284px and document width was 320px. No page exceptions occurred.

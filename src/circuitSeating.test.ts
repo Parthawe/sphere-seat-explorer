@@ -24,3 +24,30 @@ test('Qatar admission rules and all sourced Bahrain banks remain separate',()=>{
  const q=circuitModels.qatar;assert.equal(q.banks.find(b=>b.id==='main')?.kind,'assigned');for(const id of ['north','t2','t16'])assert.equal(q.banks.find(b=>b.id===id)?.kind,'free');assert.equal(q.banks.find(b=>b.id==='hill')?.kind,'lawn');
  const b=circuitModels.bahrain;assert.equal(new Set(b.banks.map(b=>b.product)).size,5);assert.equal(b.banks.filter(b=>b.product==='university').length,3);assert.equal(b.banks.filter(b=>b.product==='victory').length,2);assert.ok(b.banks.every(b=>b.confidence.startsWith('OSM footprint')));
 });
+
+test('source rectangles retain their real horizontal axis instead of a diagonal width',async()=>{
+ const {footprintPlacement}=await import('./circuitSeating');
+ const angle=.73,c=Math.cos(angle),s=Math.sin(angle),rotate=([x,z]:number[])=>[120+x*c-z*s,-80+x*s+z*c];
+ const polygon=[[-100,-12],[100,-12],[100,12],[-100,12],[-100,-12]].map(rotate);
+ const fit=footprintPlacement(polygon),reversed=footprintPlacement([...polygon].reverse());
+ assert.ok(Math.abs(fit.width-200)<1e-8);assert.ok(Math.hypot(fit.center[0]-120,fit.center[1]+80)<1e-8);
+ assert.ok(Math.abs(Math.abs(fit.axis[0]*c+fit.axis[1]*s)-1)<1e-8);
+ assert.ok(Math.abs(fit.width-reversed.width)<1e-8);assert.ok(Math.hypot(fit.center[0]-reversed.center[0],fit.center[1]-reversed.center[1])<1e-8);
+ assert.throws(()=>footprintPlacement([[0,0],[1,1],[2,2]]));assert.throws(()=>footprintPlacement([[0,0],[Infinity,1],[2,2]]));
+});
+test('footprint-based banks stay aligned with their source envelope and face toward the circuit',async()=>{
+ const {bankFrame}=await import('./circuitSeating');
+ for(const model of Object.values(circuitModels))for(const bank of model.banks){
+  const frame=bankFrame(model,bank);assert.ok(Math.abs(Math.hypot(...frame.forward)-1)<1e-8);
+  const toward=[frame.target[0]-bank.center[0],frame.target[1]-bank.center[1]];
+  assert.ok(frame.forward[0]*toward[0]+frame.forward[1]*toward[1]>=-1e-8);
+  if(!bank.axis)continue;
+  assert.ok(Math.abs(bank.axis[0]*frame.forward[0]+bank.axis[1]*frame.forward[1])<1e-8);
+  const source=model.features.find(f=>f.id===bank.footprint);assert.ok(source);
+  const projected=source.points.map(p=>(p[0]-bank.center[0])*bank.axis![0]+(p[1]-bank.center[1])*bank.axis![1]);
+  assert.ok(Math.abs(Math.max(...projected)-Math.min(...projected)-bank.width)<1e-6);
+  assert.ok(projected.every(v=>Math.abs(v)<=bank.width/2+1e-6));
+ }
+ assert.equal(circuitModels.qatar.banks.filter(b=>b.axis).length,1);
+ assert.equal(circuitModels.bahrain.banks.filter(b=>b.axis).length,8);
+});

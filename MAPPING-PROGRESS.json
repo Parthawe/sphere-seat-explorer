@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-23",
   "cadence_hours": 2,
-  "phase": "qatar-bahrain-3d-reconstructions",
+  "phase": "singapore-variant-research",
   "active_run": null,
-  "next_action": "Audit Qatar temporary-bank anchors and Bahrain footprint orientation against current organizer references, preserving illustrative rows and no exact-ticket mapping. Then implement distinct Singapore variants and continue the verified venue queue. Photo gaps T16/Beyon/Vegas Main remain open; follow-up search and unverified leads are recorded in PHOTO-REFERENCES.md. Revisit only with source-specific camera/year evidence; do not bypass media blocks.",
+  "next_action": "Verify and implement distinct Singapore 2027 Super Pit, Pit Exit and Chicane products with their own names, access rules and broad viewing regions; preserve standard grandstand boundaries and unsupported exact seats. Then continue the verified venue queue. Qatar temporary-bank surveys and exact facing remain unverified; do not repeat the completed footprint-axis audit. Photo gaps T16/Beyon/Vegas Main remain open in PHOTO-REFERENCES.md and require new source-specific camera/year evidence.",
   "venues": [
     {
       "id": "las-vegas",
@@ -407,6 +407,24 @@
         "No app source or public deployment change; existing v16 remains live"
       ],
       "next": "Audit Qatar temporary-bank anchors and Bahrain footprint orientation against current organizer references, preserving illustrative rows and no exact-ticket mapping. Then implement distinct Singapore variants and continue the verified venue queue. Photo gaps T16/Beyon/Vegas Main remain open; follow-up search and unverified leads are recorded in PHOTO-REFERENCES.md. Revisit only with source-specific camera/year evidence; do not bypass media blocks."
+    },
+    {
+      "date": "2026-11-23",
+      "run": "user-continue-footprint-orientation-and-overview",
+      "work": "Aligned Qatar Main and all eight Bahrain horizontal bank envelopes to source footprint axes; corrected Sakhir Tower anchor. Added a north-up circuit-map dialog with every bank selector and an illustrative selected-position view fan.",
+      "evidence": [
+        "55 tests and TypeScript/production build passed",
+        "Rotated/reversed/invalid footprint regression and source-envelope/facing checks",
+        "Desktop all 13 bank selectors update 3D; Escape/reopen and phone WebGL-failure selection passed",
+        "320px document width 320px; dialog content and scroll width 284px; no page exceptions",
+        "Rechecked current Qatar T2/T16 and Bahrain 2027 organizer descriptions; no surveyed temporary boundaries established"
+      ],
+      "limitations": [
+        "Footprint alignment does not establish actual chair numbering, facing or sightlines",
+        "Qatar temporary-bank/Hill regions unchanged and estimated",
+        "70-degree map fan ignores obstructions and does not track interactive camera zoom"
+      ],
+      "next": "Verify and implement distinct Singapore 2027 Super Pit, Pit Exit and Chicane products with their own names, access rules and broad viewing regions; preserve standard grandstand boundaries and unsupported exact seats. Then continue the verified venue queue. Qatar temporary-bank surveys and exact facing remain unverified; do not repeat the completed footprint-axis audit. Photo gaps T16/Beyon/Vegas Main remain open in PHOTO-REFERENCES.md and require new source-specific camera/year evidence."
     }
   ],
   "blockers": [
