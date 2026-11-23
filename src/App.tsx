@@ -1,3 +1,4 @@
+import { FullSeatMap } from "./FullSeatMap";
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import {
   DEFAULT,
@@ -102,13 +103,15 @@ function SeatGrid({
   selection,
   onChange,
   large = false,
+  zoom = false,
 }: {
   selection: Selection;
   onChange: (s: Selection) => void;
   large?: boolean;
+  zoom?: boolean;
 }) {
   const stand = getStand(selection.stand),
-    width = stand.seats * 7;
+    width = stand.seats * 7 + 12;
   const group = partySeats(selection);
   const update = (next: Selection) =>
     onChange({ ...next, party: selection.party });
@@ -119,7 +122,15 @@ function SeatGrid({
       </div>
       <svg
         viewBox={"-16 -6 " + (width + 24) + " 132"}
-        style={large ? { minWidth: width * 2.8, height: 370 } : undefined}
+        style={
+          large
+            ? {
+                minWidth: zoom ? width * 2.8 : 0,
+                width: "100%",
+                height: zoom ? 370 : "auto",
+              }
+            : undefined
+        }
         tabIndex={large ? 0 : undefined}
         onKeyDown={(e) => {
           if (
@@ -147,13 +158,14 @@ function SeatGrid({
           const offsetX = (rect.width - (width + 24) * scale) / 2;
           const offsetY = (rect.height - 132 * scale) / 2;
           const x = (e.clientX - rect.left - offsetX) / scale - 16;
+          const seatX = x > stand.seats * 3.5 ? x - 12 : x;
           const y = (e.clientY - rect.top - offsetY) / scale - 6;
           if (x < -8 || x > width + 8 || y < -6 || y > 126) return;
           update(
             normalize({
               stand: stand.id,
               row: Math.round((y - 4) / 6.4) + 1,
-              seat: Math.round((x - 3.5) / 7) + 1,
+              seat: Math.round((seatX - 3.5) / 7) + 1,
             }),
           );
         }}
@@ -174,6 +186,19 @@ function SeatGrid({
           rx={1.5}
           fill="#e1060010"
         />
+        {large &&
+          Array.from({ length: stand.seats }, (_, i) => (
+            <text
+              key={"seat-number" + i}
+              x={i * 7 + 3.5 + (i >= stand.seats / 2 ? 12 : 0)}
+              y={-1}
+              fontSize={3.7}
+              textAnchor="middle"
+              fill="#5e6172"
+            >
+              {i + 1}
+            </text>
+          ))}
         {Array.from({ length: stand.rows }, (_, i) => (
           <text
             key={"row" + i}
@@ -192,7 +217,7 @@ function SeatGrid({
             return (
               <circle
                 key={ri + "-" + si}
-                cx={si * 7 + 3.5}
+                cx={si * 7 + 3.5 + (si >= stand.seats / 2 ? 12 : 0)}
                 cy={ri * 6.4 + 4}
                 r={active ? 3 : large ? 2.2 : 1.8}
                 fill={
@@ -272,7 +297,15 @@ function Stepper({
     </div>
   );
 }
-export default function App() {
+export default function App({
+  season = 2026,
+  onBack,
+}: {
+  season?: number;
+  onBack?: () => void;
+}) {
+  const seatSearch = (current: Selection, view: Mode, shortlist: Selection[]) =>
+    makeSearch(current, view, shortlist) + "&race=las-vegas&season=" + season;
   const initial = useRef(readUrl(window.location.search)).current;
   const [selection, setSelection] = useState<Selection>(initial.current),
     [mode, setMode] = useState<Mode>(initial.mode),
@@ -307,6 +340,7 @@ export default function App() {
     [flat, setFlat] = useState(false),
     [panelOpen, setPanelOpen] = useState(() => window.innerWidth > 760),
     [playing, setPlaying] = useState(false),
+    [gridZoom, setGridZoom] = useState(false),
     [compareYaw, setCompareYaw] = useState(0),
     [comparePitch, setComparePitch] = useState(0);
   const comparisonLook = useMemo(
@@ -335,8 +369,8 @@ export default function App() {
     setSelection(next);
     setMode(view);
     setSaved(shortlist);
-    const url = window.location.pathname + makeSearch(next, view, shortlist);
-    if (window.location.search !== makeSearch(next, view, shortlist))
+    const url = window.location.pathname + seatSearch(next, view, shortlist);
+    if (window.location.search !== seatSearch(next, view, shortlist))
       window.history[replace ? "replaceState" : "pushState"]({}, "", url);
   }
   useEffect(() => {
@@ -397,7 +431,7 @@ export default function App() {
     const url =
       window.location.origin +
       window.location.pathname +
-      makeSearch(selection, mode, saved);
+      seatSearch(selection, mode, saved);
     try {
       await navigator.clipboard.writeText(url);
       announce("Link copied. It includes your selected seat and comparison.");
@@ -434,6 +468,9 @@ export default function App() {
           <span>SPHERE ZONE</span>
         </div>
         <nav aria-label="Main navigation">
+          <button className="all-races-button" onClick={onBack}>
+            All races
+          </button>
           <button
             className="text-button about-button"
             onClick={() => setDialog("sources")}
@@ -756,6 +793,11 @@ export default function App() {
           </button>
           <div className="panel-content">
             <div className="panel-intro">
+              {season === 2027 && (
+                <p className="season-model-note">
+                  Browsing 2027 · 2026 reference model
+                </p>
+              )}
               <h2>
                 FIND YOUR SEAT<span className="panel-edition">2026</span>
               </h2>
@@ -821,7 +863,7 @@ export default function App() {
               <div className="section-label">
                 <h3>Pick your position</h3>
                 <button className="map-expand" onClick={() => setDialog("map")}>
-                  Enlarge seat map
+                  Full seating grid
                 </button>
               </div>
               <div className="steppers">
@@ -1021,11 +1063,47 @@ export default function App() {
               {selection.seat}. Select a seat or use the arrow keys. These are
               modeled seat identifiers.
             </p>
-            <SeatGrid
+            <FullSeatMap
               selection={selection}
               onChange={(s) => navigate(s, mode, saved, true)}
-              large
             />
+            <div className="selected-grid-heading">
+              <h3>
+                Position {stand.id} · {stand.name}
+              </h3>
+              <span>
+                Complete grid · seats 1–{stand.seats} · rows 1–{stand.rows}
+              </span>
+              <button
+                className="grid-magnify"
+                aria-pressed={gridZoom}
+                onClick={() => setGridZoom(!gridZoom)}
+              >
+                {gridZoom ? "Fit full grid" : "Magnify seats"}
+              </button>
+            </div>
+            <div className={gridZoom ? "detail-grid zoomed" : "detail-grid"}>
+              <SeatGrid
+                selection={selection}
+                onChange={(s) => navigate(s, mode, saved, true)}
+                large
+                zoom={gridZoom}
+              />
+            </div>
+            <div className="map-position-controls">
+              <Stepper
+                label="Grid row"
+                value={selection.row}
+                max={stand.rows}
+                onChange={(row) => change({ ...selection, row })}
+              />
+              <Stepper
+                label="Grid seat"
+                value={selection.seat}
+                max={stand.seats}
+                onChange={(seat) => change({ ...selection, seat })}
+              />
+            </div>
             <div className="map-confirm">
               <span>
                 Modeled row {selection.row} /{" "}

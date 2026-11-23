@@ -8,7 +8,7 @@ import "@fontsource/barlow-condensed/500.css";
 import "@fontsource/barlow-condensed/600.css";
 import "@fontsource/barlow-condensed/700.css";
 import "@fontsource/barlow-condensed/700-italic.css";
-import App from "./App";
+import App from "./RaceHub";
 import "./style.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

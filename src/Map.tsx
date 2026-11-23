@@ -1,4 +1,4 @@
-import { stands } from "./model";
+import { stands, SPHERE } from "./model";
 export const circuitPath =
   "M130 105L130-45Q130-100 45-116Q32-84 7-97L-26-115Q-77-135-78-80L-78 50Q-78 135-125 155L-210 202Q-245 235-245 290Q0 440 270 450L675 450L675 425L725 400L725 5Q725-15 695-34L570-135Q530-150 560-85Q625-10 575 45Q560 105 530 95Z";
 export function FlatMap({
@@ -16,7 +16,7 @@ export function FlatMap({
         aria-label="Circuit orientation map"
       >
         <path d={circuitPath} fill="none" stroke="#7c7c91" strokeWidth="9" />
-        <circle cx="0" cy="0" r="47" fill="#e10600" />
+        <circle cx="0" cy="0" r={SPHERE.radius} fill="#e10600" />
         {stands.map((s) => (
           <g key={s.id} onClick={() => onStand?.(s.id)}>
             <rect

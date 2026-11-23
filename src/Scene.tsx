@@ -86,9 +86,9 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
     } else {
       const narrow = (camera as T.PerspectiveCamera).aspect < 1;
       p = narrow
-        ? new T.Vector3(230, 205, -335)
-        : new T.Vector3(215, 165, -280);
-      t = narrow ? new T.Vector3(0, 30, -30) : new T.Vector3(0, 18, -38);
+        ? new T.Vector3(260, 300, -460)
+        : new T.Vector3(210, 260, -365);
+      t = narrow ? new T.Vector3(25, 30, -40) : new T.Vector3(25, 30, -40);
     }
     gl.domElement.dataset.cameraState = "moving";
     const c = controls.current;
@@ -134,7 +134,7 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
     (camera as T.PerspectiveCamera).updateProjectionMatrix();
     seatAngles.current = {
       yaw: getStand(selection.stand).rotation,
-      pitch: 0.088,
+      pitch: Math.atan(22 / 90),
     };
     invalidate();
   }, [
@@ -152,7 +152,7 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
     const p = seatPosition(selection),
       yaw =
         getStand(selection.stand).rotation + (previewLook.yaw * Math.PI) / 180,
-      pitch = Math.atan(8 / 90) + (previewLook.pitch * Math.PI) / 180;
+      pitch = Math.atan(22 / 90) + (previewLook.pitch * Math.PI) / 180;
     camera.position.set(...p);
     target.current.set(
       p[0] + Math.sin(yaw) * Math.cos(pitch) * 90,

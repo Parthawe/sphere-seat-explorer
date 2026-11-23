@@ -13,3 +13,9 @@ Linked yaw/pitch controls are our design inference: moving comparison cameras to
 ## Boundaries
 
 Group adjacency describes this model only. Actual venue numbering and aisle boundaries require official seat-level data. No live inventory, prices, reservations, verified photography or platform integration has been added. A group preview uses its selected anchor seat; it does not combine multiple sightlines into one image. Existing individual-seat links remain compatible.
+
+## Calendar expansion, 22 November 2026
+
+[Formula 1 2026 calendar](https://www.formula1.com/en/racing/2026) and [2027 calendar](https://www.formula1.com/en/racing/2027) supply the checked-in race-weekend snapshots. The revised 2026 list has 23 Grands Prix; 2027 lists 24. Pre-season testing is excluded from Grand Prix counts. Dates and rounds are not inferred from the prior year.
+
+[Sphere Entertainment filing](https://www.sec.gov/Archives/edgar/data/1795250/000162828026007760/sphr-20251231.htm) supplies the exterior width and height. The spherical-cap geometry, artwork and seat-relative placement are reconstruction choices. [Official ticket](https://ticketing.formula1.com/seasons/) and [hospitality](https://ticketing.formula1.com/hospitality/seasons/) selectors and [F1 Experiences](https://f1experiences.com/) supply external catalogue destinations. Ticket-category guidance does not assert current availability at every venue.

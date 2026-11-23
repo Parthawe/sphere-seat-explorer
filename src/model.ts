@@ -78,6 +78,12 @@ export const stands: Stand[] = [
 export const DEFAULT: Selection = { stand: "C", row: 12, seat: 18 };
 export const sources = [
   {
+    title: "Sphere Entertainment published dimensions",
+    url: "https://www.sec.gov/Archives/edgar/data/1795250/000162828026007760/sphr-20251231.htm",
+    detail:
+      "516 ft width and 366 ft height. The spherical-cap interpretation and surrounding placement remain reconstructed.",
+  },
+  {
     title: "Official 2026 Sphere-zone diagram",
     url: "https://www.f1lasvegasgp.com/app/uploads/2026/03/TMOGRANDSTAND-1.png",
     detail: "Track shape and approximate grandstand placement.",
@@ -179,7 +185,7 @@ export function seatPosition(s: Selection): [number, number, number] {
 export function seatTarget(s: Selection): [number, number, number] {
   const a = getStand(s.stand).rotation;
   const p = seatPosition(s);
-  return [p[0] + Math.sin(a) * 90, p[1] + 8, p[2] + Math.cos(a) * 90];
+  return [p[0] + Math.sin(a) * 90, p[1] + 22, p[2] + Math.cos(a) * 90];
 }
 export function addSaved(saved: Selection[], s: Selection) {
   return saved.some((x) => key(x) === key(s))
@@ -209,3 +215,11 @@ export function seatRange(s: Selection) {
 export function selectionLabel(s: Selection) {
   return ((s.party || 1) > 1 ? "Seats " : "Seat ") + seatRange(s);
 }
+
+// Sphere Entertainment's published external envelope (516 ft × 366 ft).
+export const SPHERE = {
+  radius: 78.6384,
+  height: 111.5568,
+  centerY: 111.5568 - 78.6384,
+  thetaLength: Math.acos(-(111.5568 - 78.6384) / 78.6384),
+};

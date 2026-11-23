@@ -12,6 +12,7 @@ import {
   stands,
   getStand,
   partySeats,
+  SPHERE,
   type Mode,
   type Selection,
 } from "./model";
@@ -410,77 +411,96 @@ function Sphere() {
     c.width = 2048;
     c.height = 1024;
     const x = c.getContext("2d")!;
-    x.fillStyle = "#a30912";
-    x.fillRect(0, 0, 2048, 1024);
-    for (let i = 0; i < 13; i++) {
-      x.fillStyle =
-        i % 3 === 0 ? "#f5f6ff" : i % 3 === 1 ? "#d01622" : "#4a020a";
+    // Original amber Exosphere artwork. No text band: the curved LED shell leads.
+    const pixels = x.createImageData(c.width, c.height);
+    for (let v = 0; v < c.height; v++)
+      for (let u = 0; u < c.width; u++) {
+        const p = (v * c.width + u) * 4;
+        const cloud =
+          Math.sin(u / 73 + Math.sin(v / 61) * 2) *
+            Math.sin(v / 41 + u / 183) *
+            0.04 +
+          Math.sin(u / 19 + v / 23) * 0.013;
+        const latitude = v / c.height;
+        const intensity = 0.7 + 0.22 * Math.sin(latitude * Math.PI) + cloud;
+        pixels.data[p] = Math.min(255, 255 * intensity);
+        pixels.data[p + 1] = Math.max(
+          0,
+          Math.min(255, (168 - 105 * latitude) * intensity),
+        );
+        pixels.data[p + 2] = Math.max(0, (48 - 38 * latitude) * intensity);
+        pixels.data[p + 3] = 255;
+      }
+    x.putImageData(pixels, 0, 0);
+    // A simple, original amber face makes the LED canvas recognizable at a distance.
+    for (const middle of [512, 1536]) {
+      x.fillStyle = "#271709";
+      for (const eye of [-95, 95]) {
+        x.beginPath();
+        x.ellipse(middle + eye, 650, 27, 65, 0, 0, Math.PI * 2);
+        x.fill();
+      }
+      x.strokeStyle = "#271709";
+      x.lineWidth = 19;
+      x.lineCap = "round";
       x.beginPath();
-      for (let u = 0; u < 2100; u += 10) {
-        const v = 180 + i * 65 + Math.sin(u / 320 + i * 0.1) * 55;
-        x.lineTo(u, v);
-      }
-      for (let u = 2100; u >= 0; u -= 10) {
-        const v = 220 + i * 65 + Math.sin(u / 320 + i * 0.1) * 55;
-        x.lineTo(u, v);
-      }
-      x.closePath();
-      x.fill();
-    }
-    for (let pos = 512; pos < 2048; pos += 1024) {
-      x.fillStyle = "#11111b";
-      x.fillRect(pos - 315, 363, 630, 211);
-      x.fillStyle = "#ffffff";
-      x.font = "italic 700 104px sans-serif";
-      x.textAlign = "center";
-      x.fillText("LAS VEGAS", pos, 495);
-      x.font = "500 34px sans-serif";
-      x.fillText("GRAND PRIX", pos, 551);
-    }
-    for (let y = 0; y < 1024; y += 4) {
-      x.fillStyle = "rgba(0,0,0,.26)";
-      x.fillRect(0, y, 2048, 1);
+      x.moveTo(middle - 120, 820);
+      x.bezierCurveTo(middle - 65, 902, middle + 65, 902, middle + 120, 820);
+      x.stroke();
     }
     const t = new T.CanvasTexture(c);
     t.colorSpace = T.SRGBColorSpace;
     t.anisotropy = 8;
     return t;
   }, []);
+  useEffect(() => () => map.dispose(), [map]);
+  // Published envelope: 516 ft wide, 366 ft tall. A spherical cap cut at grade.
+  const { radius, centerY: center, thetaLength: theta } = SPHERE;
   return (
-    <group position={[0, 44, 0]}>
-      <mesh rotation={[0, 0, 0]} castShadow>
-        <sphereGeometry args={[48, 128, 80]} />
+    <group>
+      <mesh position={[0, center, 0]} castShadow>
+        <sphereGeometry args={[radius, 160, 100, 0, Math.PI * 2, 0, theta]} />
         <meshBasicMaterial
           map={map}
           toneMapped={false}
           onBeforeCompile={(shader) => {
             shader.vertexShader =
-              "varying vec3 ledWorldNormal; varying vec3 ledWorldPosition;\n" +
+              "varying vec3 ledWorldNormal; varying vec3 ledWorldPosition; varying vec2 ledUV;\n" +
               shader.vertexShader;
             shader.vertexShader = shader.vertexShader.replace(
               "#include <begin_vertex>",
-              "#include <begin_vertex>\nledWorldNormal=normalize(mat3(modelMatrix)*normal);ledWorldPosition=(modelMatrix*vec4(position,1.0)).xyz;",
+              "#include <begin_vertex>\nledWorldNormal=normalize(mat3(modelMatrix)*normal);ledWorldPosition=(modelMatrix*vec4(position,1.0)).xyz;ledUV=uv;",
             );
             shader.fragmentShader =
-              "varying vec3 ledWorldNormal; varying vec3 ledWorldPosition;\n" +
+              "varying vec3 ledWorldNormal; varying vec3 ledWorldPosition; varying vec2 ledUV;\n" +
               shader.fragmentShader;
             shader.fragmentShader = shader.fragmentShader.replace(
               "#include <tonemapping_fragment>",
-              "float edgeFacing=abs(dot(normalize(ledWorldNormal),normalize(cameraPosition-ledWorldPosition)));gl_FragColor.rgb*=mix(0.5,1.0,pow(edgeFacing,0.22));\n#include <tonemapping_fragment>",
+              `
+          float facing=max(0.0,dot(normalize(ledWorldNormal),normalize(cameraPosition-ledWorldPosition)));
+          float shell=mix(0.30,1.0,pow(facing,0.40));
+          float puck=0.94+0.06*sin(ledUV.x*4200.0)*sin(ledUV.y*2100.0);
+          gl_FragColor.rgb*=shell*puck;
+          #include <tonemapping_fragment>
+        `,
             );
           }}
         />
       </mesh>
-      <mesh position={[0, -42, 0]}>
-        <cylinderGeometry args={[30, 35, 8, 64]} />
-        <meshStandardMaterial color="#11121a" metalness={0.5} roughness={0.4} />
+      <mesh position={[0, 1, 0]}>
+        <cylinderGeometry args={[70.9, 71.4, 2, 128]} />
+        <meshStandardMaterial
+          color="#24242b"
+          roughness={0.65}
+          metalness={0.3}
+        />
       </mesh>
       <pointLight
-        position={[0, -6, -48]}
-        intensity={950}
+        position={[0, 20, -76]}
+        intensity={1300}
         distance={190}
         decay={2}
-        color="#e10600"
+        color="#ff912c"
       />
     </group>
   );
