@@ -1,3 +1,4 @@
+import type { SphereDisplay } from "./rendering";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   Component,
@@ -28,6 +29,9 @@ type Props = {
   onStand?: (id: string) => void;
   preview?: boolean;
   playing?: boolean;
+  atmosphere?: boolean;
+  sphereDisplay?: SphereDisplay;
+  ambientMotion?: boolean;
   previewLook?: CameraLook;
   onReady?: () => void;
   onUnavailable?: () => void;

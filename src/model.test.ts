@@ -186,3 +186,40 @@ test("interior model covers four levels and all illustrative markers uniquely", 
   assert.equal(sphereMaps.length, 8);
   assert.equal(new Set(sphereMaps.map((m) => m.url)).size, 8);
 });
+
+test("traffic spawns at the closest modeled circuit sample", async () => {
+  const { nearestTrackFraction } = await import("./rendering");
+  assert.equal(
+    nearestTrackFraction(
+      [
+        { x: 0, z: 0 },
+        { x: 10, z: 0 },
+        { x: 20, z: 0 },
+      ],
+      [11, 7, 0],
+    ),
+    0.5,
+  );
+  assert.equal(nearestTrackFraction([], [0, 0, 0]), 0);
+  assert.equal(nearestTrackFraction([{ x: 0, z: 0 }], [0, 0, 0]), 0);
+});
+test("building heights honor source tags, units and explicit fallbacks", async () => {
+  const { buildingHeight } = await import("./rendering");
+  assert.equal(buildingHeight("145", null), 145);
+  assert.equal(buildingHeight("100 ft", null), 30.48);
+  assert.equal(buildingHeight(null, "10"), 32);
+  assert.equal(buildingHeight(null, null, "Venetian Expo"), 18);
+  assert.equal(buildingHeight(null, null), 14);
+  assert.equal(buildingHeight("-8", null), 6);
+});
+test("bundled building outlines retain finite closed projected polygons", async () => {
+  const { default: data } = await import("./buildings.json");
+  assert.ok(data.buildings.length > 0);
+  for (const building of data.buildings) {
+    assert.ok(building.outline.length >= 4);
+    assert.deepEqual(building.outline[0], building.outline.at(-1));
+    assert.ok(
+      building.outline.every((p) => p.length === 2 && p.every(Number.isFinite)),
+    );
+  }
+});

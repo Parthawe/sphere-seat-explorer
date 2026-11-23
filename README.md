@@ -1,4 +1,4 @@
-# Viewpoint · F1 Race & Seat Explorer
+# Apex Atlas · F1 Race & Seat Explorer
 
 An independent, F1-inspired race browser for the published 2026 and 2027 calendars, with a true-3D Las Vegas circuit explorer and illustrative Sphere interior. Browse every listed race, review ticket categories, and open official sources. Las Vegas is the only modeled race. Sphere indoor seating is a separate illustrative venue study.
 
@@ -84,3 +84,13 @@ Fonts are bundled from the `@fontsource` Barlow Condensed and IBM Plex Sans pack
 ## Publishing
 
 The project is configured as a static Site in `.openai/hosting.json`. Run the production build before packaging `dist/`. Source is mirrored to a dedicated public GitHub repository. The Sites remote is managed separately by the Sites publishing workflow; no publishing credentials belong in this repository.
+
+## Apex Atlas rendering revision
+
+The user selected Apex Atlas as the product name. The interface, original A mark, favicon and page titles use it; the existing neutral hosting URL and repository remain unchanged.
+
+Five detailed illustrative open-wheel cars start near the selected modeled bank, follow the circuit and remain visible when paused. Racing starts automatically unless reduced motion is requested. Scene settings separately control light shafts/airborne motes and choose a simulated lunar, amber-face or racing-ribbon Exosphere display. The lunar surface is NASA's bundled CGI Moon Kit texture; the other displays are original artwork. The official Sphere XO Stream and Google Maps location open externally.
+
+Nearby context uses 126 downloaded OpenStreetMap building outlines. The renderer omits centerline conflicts with the schematic course and uses source height tags, source storey counts or explicit estimated heights. This improves context without certifying the course's geographic alignment. Night-window shaders, shadow-casting selected-bank lighting, PBR road response and bloom complement existing shadows and material maps. Low-end-device performance and exact real-world sightlines remain unverified.
+
+OpenStreetMap derived data is supplied under ODbL in `public/geo/buildings.json`, with source and license notices in `public/geo/CREDITS.txt`. NASA texture credits are in `public/materials/CREDITS.txt`. These data/asset notices are separate from the app code's MIT license.

@@ -127,6 +127,23 @@ export const stands: Stand[] = [
 export const DEFAULT: Selection = { stand: "C", row: 12, seat: 18 };
 export const sources = [
   {
+    title: "NASA CGI Moon Kit",
+    url: "https://svs.gsfc.nasa.gov/4720",
+    detail:
+      "Lunar surface map for the simulated Exosphere display. It is not a recording of Sphere programming.",
+  },
+  {
+    title: "OpenStreetMap building context",
+    url: "https://www.openstreetmap.org/copyright",
+    detail:
+      "Nearby footprint outlines, with tagged heights where available and estimated heights otherwise. Track and seat alignment remain reconstructed. ODbL data is available at /geo/buildings.json.",
+  },
+  {
+    title: "Sphere official XO Stream",
+    url: "https://www.thesphere.com/xo-stream",
+    detail: "Watch the actual current Exosphere display externally.",
+  },
+  {
     title: "Sphere Entertainment published dimensions",
     url: "https://www.sec.gov/Archives/edgar/data/1795250/000162828026007760/sphr-20251231.htm",
     detail:

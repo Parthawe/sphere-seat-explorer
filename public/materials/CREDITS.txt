@@ -4,3 +4,8 @@ Source: https://polyhaven.com/a/clean_asphalt
 Files obtained from the Poly Haven asset API on 22 November 2026.
 License: CC0 1.0, https://creativecommons.org/publicdomain/zero/1.0/
 Material only; this texture does not establish venue geometry or surface accuracy.
+
+nasa-moon.jpg: NASA's Scientific Visualization Studio CGI Moon Kit, 2025 lunar color map, NASA/GSFC/Arizona State University.
+https://svs.gsfc.nasa.gov/4720
+https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_2k.jpg
+Used to render a simulated lunar Exosphere display. It is not Sphere show footage. No NASA affiliation is implied.

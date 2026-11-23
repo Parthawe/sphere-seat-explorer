@@ -1,4 +1,4 @@
-# Viewpoint design direction
+# Apex Atlas design direction
 
 The user explicitly requested the F1 visual language and Las Vegas Grand Prix theme after rejecting the olive/gold release. Preserve the working selection, comparison, sharing and estimated-data boundaries. Replace the weak scene and visual treatment.
 
@@ -17,3 +17,5 @@ The platform-research revision prioritizes choosing together, retaining context 
 The calendar extension retains the same F1 visual system. The root opens the 2027 season, with explicit 2026/2027 navigation, a searchable chronological race list, and per-race ticket-category guidance. Use an actual render from the app as the Las Vegas feature image. Never reuse the Vegas scene for another circuit. Keep model coverage distinct from race-guide coverage. The complete seating grid shows all five modeled stands, then a numbered selected-stand grid with center aisle, fit and magnify controls. The Sphere uses its published exterior envelope and original amber face artwork; it is a ground-cut spherical cap rather than an elevated full ball. Seat framing includes the whole shell from the default modeled position.
 
 The whole-Las-Vegas extension uses a schematic circuit atlas with a selected-area panel, filterable product directory and three-area comparison. It connects nine outdoor banks through a full-circuit camera and bank-specific inset. The indoor Sphere study has a separate tab, cutaway 3D bowl, four-level/section controls, a selected-section model grid and official access-map links. Counts describe illustrative geometry only. Keep the distinction between outdoor race views and indoor Sphere shows explicit. Source-linked product names do not imply inventory or a verified 2027 layout.
+
+The user selected **Apex Atlas** as the new name. Use the original red A/apex mark and the existing motorsport typography; preserve the established red, ink and paper system. The scene settings remain beside the racing control, with a bounded upward-opening panel. Distinguish simulated Sphere artwork from the official live exterior stream. Cars and atmosphere have separate motion controls. Respect reduced motion, show map attribution in the scene and keep model limits accessible.

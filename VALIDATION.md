@@ -71,3 +71,15 @@ Added a separate Sphere indoor study with 39 section references over four levels
 Thirteen automated model tests pass. TypeScript compilation passes. The design detector reports no findings. Chromium functional and rendered checks ran at 1440×1050 and 390×844. No document overflow in the checked final mobile atlas or outdoor seat view. A real WEBGL_lose_context interruption triggered the indoor recovery message, and Retry 3D recreated a ready canvas. Official maps and model-grid controls remained outside the failed canvas. No unhandled page errors occurred in the final tested flows.
 
 Not verified: official seat inventories, show-specific configurations, actual indoor or outdoor sightlines, accessible routes, 2027 zone layouts, live stock/pricing, Safari/Firefox, or low-end-device performance. The counts above describe generated geometry only.
+
+## Apex Atlas identity and night-rendering revision
+
+The user selected Apex Atlas. Updated app wordmarks, the original A mark, favicon, titles, UI copy and documentation. Retained the existing neutral hosting/repository locations.
+
+Added five detailed procedural open-wheel cars with cockpit, halo, wing elements, suspension, spinning wheels, reflective paint and rear lights. Cars begin at the modeled track sample closest to the selected bank; pause preserves their positions. Added selected-bank shadow-casting lighting, shader light shafts, subtle lit airborne motes, brighter road response and adjusted bloom. Added three simulated Sphere display choices, with a bundled NASA lunar surface map and external official XO Stream / Google Maps links.
+
+Downloaded 126 OpenStreetMap building outlines with available height/storey tags; the renderer omits schematic-course conflicts and estimates missing heights. Added procedural night-window shading. Source geometry is credited in the scene and sources dialog; adapted data is supplied under ODbL in public/geo. The resulting scene remains an uncalibrated race reconstruction.
+
+Sixteen model tests pass, including nearest-track placement, height-unit/fallback handling and closed, finite building outlines. TypeScript and production build are required by the publishing workflow. The design detector reports no findings.
+
+Chromium checks at 1600×1050 and 390×844 covered visible racing motion, stable paused frames with atmosphere disabled, all display choices, independent atmosphere control, reduced-motion initial pause, two-view comparison, renamed calendar/atlas surfaces and scene-setting panel bounds. No horizontal overflow in the checked mobile seat/calendar/atlas views. No browser rendering errors were observed in these flows. A 90-frame local Chromium sample had a 16.7 ms median frame interval; this is not a claim about low-end phones or every device. Real-world geometry, display-program fidelity, race telemetry, other browser engines and low-end hardware remain unverified.

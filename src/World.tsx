@@ -1,3 +1,6 @@
+import GeoBuildings from "./GeoBuildings";
+import { Atmosphere } from "./Atmosphere";
+import { nearestTrackFraction, type SphereDisplay } from "./rendering";
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame, useThree, useLoader } from "@react-three/fiber";
 import * as T from "three";
@@ -270,7 +273,7 @@ function Track() {
           normalMap={maps[1]}
           normalScale={new T.Vector2(0.55, 0.55)}
           roughnessMap={maps[2]}
-          roughness={0.87}
+          roughness={0.66}
           side={T.DoubleSide}
         />
       </mesh>
@@ -405,8 +408,16 @@ function TrackFence() {
     </>
   );
 }
-function Sphere() {
+function Sphere({ display }: { display: SphereDisplay }) {
+  const lunar = useLoader(T.TextureLoader, "/materials/nasa-moon.jpg");
+  useEffect(() => {
+    lunar.colorSpace = T.SRGBColorSpace;
+    lunar.repeat.y = SPHERE.thetaLength / Math.PI;
+    lunar.offset.y = 1 - lunar.repeat.y;
+    lunar.anisotropy = 8;
+  }, [lunar]);
   const map = useMemo(() => {
+    if (display === "moon") return null;
     const c = document.createElement("canvas");
     c.width = 2048;
     c.height = 1024;
@@ -432,28 +443,41 @@ function Sphere() {
         pixels.data[p + 3] = 255;
       }
     x.putImageData(pixels, 0, 0);
-    // A simple, original amber face makes the LED canvas recognizable at a distance.
-    for (const middle of [512, 1536]) {
-      x.fillStyle = "#271709";
-      for (const eye of [-95, 95]) {
+    if (display === "race") {
+      x.fillStyle = "#11151f";
+      x.fillRect(0, 0, 2048, 1024);
+      for (let i = 0; i < 9; i++) {
+        x.strokeStyle = i % 3 === 0 ? "#edf0f6" : "#d10814";
+        x.lineWidth = i % 3 === 0 ? 42 : 75;
         x.beginPath();
-        x.ellipse(middle + eye, 650, 27, 65, 0, 0, Math.PI * 2);
-        x.fill();
+        for (let u = 0; u <= 2048; u += 8)
+          x.lineTo(u, 60 + i * 125 + Math.sin(u / 260 + i * 0.2) * 130);
+        x.stroke();
       }
-      x.strokeStyle = "#271709";
-      x.lineWidth = 19;
-      x.lineCap = "round";
-      x.beginPath();
-      x.moveTo(middle - 120, 820);
-      x.bezierCurveTo(middle - 65, 902, middle + 65, 902, middle + 120, 820);
-      x.stroke();
     }
+    // Original face artwork informed by the Exosphere's familiar amber character.
+    if (display === "amber")
+      for (const middle of [512, 1536]) {
+        x.fillStyle = "#271709";
+        for (const eye of [-95, 95]) {
+          x.beginPath();
+          x.ellipse(middle + eye, 650, 27, 65, 0, 0, Math.PI * 2);
+          x.fill();
+        }
+        x.strokeStyle = "#271709";
+        x.lineWidth = 19;
+        x.lineCap = "round";
+        x.beginPath();
+        x.moveTo(middle - 120, 820);
+        x.bezierCurveTo(middle - 65, 902, middle + 65, 902, middle + 120, 820);
+        x.stroke();
+      }
     const t = new T.CanvasTexture(c);
     t.colorSpace = T.SRGBColorSpace;
     t.anisotropy = 8;
     return t;
-  }, []);
-  useEffect(() => () => map.dispose(), [map]);
+  }, [display]);
+  useEffect(() => () => map?.dispose(), [map]);
   // Published envelope: 516 ft wide, 366 ft tall. A spherical cap cut at grade.
   const { radius, centerY: center, thetaLength: theta } = SPHERE;
   return (
@@ -461,7 +485,7 @@ function Sphere() {
       <mesh position={[0, center, 0]} castShadow>
         <sphereGeometry args={[radius, 160, 100, 0, Math.PI * 2, 0, theta]} />
         <meshBasicMaterial
-          map={map}
+          map={display === "moon" ? lunar : map}
           toneMapped={false}
           onBeforeCompile={(shader) => {
             shader.vertexShader =
@@ -500,7 +524,13 @@ function Sphere() {
         intensity={1300}
         distance={190}
         decay={2}
-        color="#ff912c"
+        color={
+          display === "amber"
+            ? "#ff912c"
+            : display === "moon"
+              ? "#c9d7ff"
+              : "#e10600"
+        }
       />
     </group>
   );
@@ -952,56 +982,7 @@ function Environment() {
         <planeGeometry args={[8000, 8000]} />
         <meshStandardMaterial map={ground} roughness={0.95} />
       </mesh>
-      {Array.from({ length: 10 }, (_, i) => {
-        const angle = i * 0.39,
-          h = 22 + ((i * 37) % 65),
-          x = 255 + (i % 5) * 65,
-          z = 230 + Math.floor(i / 5) * 110;
-        return (
-          <group key={i}>
-            <mesh position={[x, h / 2, z]}>
-              <boxGeometry args={[20 + (i % 3) * 8, h, 23]} />
-              <meshStandardMaterial
-                color="#7c8297"
-                map={facade}
-                emissiveMap={facade}
-                emissive="#ffffff"
-                emissiveIntensity={0.65}
-                roughness={0.5}
-                metalness={0.35}
-              />
-            </mesh>
-            <mesh position={[x, h + 0.3, z]}>
-              <boxGeometry args={[20 + (i % 3) * 8, 0.4, 23]} />
-              <meshBasicMaterial
-                color={i % 4 === 0 ? "#e10600" : "#8090b6"}
-                toneMapped={false}
-              />
-            </mesh>
-          </group>
-        );
-      })}
-      <group position={[-158, 0, 70]}>
-        {[-30, 0, 30].map((x, i) => (
-          <group key={i}>
-            <mesh position={[x, 48 + i * 6, 0]}>
-              <boxGeometry args={[27, 96 + i * 12, 25]} />
-              <meshStandardMaterial
-                color="#878e9d"
-                map={facade}
-                emissiveMap={facade}
-                emissive="#f1e2c7"
-                emissiveIntensity={0.7}
-              />
-            </mesh>
-            <mesh position={[x, 98 + i * 12, 0]}>
-              <boxGeometry args={[31, 2, 29]} />
-              <meshStandardMaterial color="#c6c2b7" />
-            </mesh>
-          </group>
-        ))}
-      </group>
-      <Sign text="LAS VEGAS" position={[-158, 110, 56]} width={62} height={6} />
+      <GeoBuildings track={points} />
       <Gantry />
       <Floodlights />
     </>
@@ -1076,52 +1057,213 @@ function Car({
   color,
   offset,
   playing,
+  selection,
 }: {
   color: string;
   offset: number;
   playing: boolean;
+  selection: Selection;
 }) {
-  const ref = useRef<T.Group>(null);
-  const clock = useRef(0);
+  const ref = useRef<T.Group>(null),
+    wheels = useRef<T.Group>(null),
+    progress = useRef(0);
+  const { invalidate } = useThree();
+  useEffect(() => {
+    progress.current =
+      (nearestTrackFraction(points, getStand(selection.stand).center) -
+        offset +
+        1) %
+      1;
+    const p = curve.getPointAt(progress.current),
+      d = curve.getTangentAt(progress.current);
+    if (ref.current) {
+      ref.current.position.set(p.x, 0.38, p.z);
+      ref.current.rotation.y = Math.atan2(d.x, d.z);
+    }
+    invalidate();
+  }, [selection.stand, offset, invalidate]);
+  const body = useMemo(() => {
+    const sections = [
+      [-2.2, 0.38, 0.35],
+      [-1.5, 0.72, 0.5],
+      [-0.45, 0.84, 0.42],
+      [0.45, 0.48, 0.38],
+      [1.6, 0.18, 0.25],
+      [2.6, 0.12, 0.17],
+    ];
+    const vertices: number[] = [],
+      indices: number[] = [];
+    sections.forEach(([z, w, h]) =>
+      vertices.push(-w, 0.12, z, w, 0.12, z, w, h, z, -w, h, z),
+    );
+    for (let j = 0; j < sections.length - 1; j++)
+      for (let k = 0; k < 4; k++) {
+        const a = j * 4 + k,
+          b = j * 4 + ((k + 1) % 4),
+          c = (j + 1) * 4 + k,
+          d = (j + 1) * 4 + ((k + 1) % 4);
+        indices.push(a, b, c, b, d, c);
+      }
+    indices.push(0, 2, 1, 0, 3, 2, 20, 21, 22, 20, 22, 23);
+    const g = new T.BufferGeometry();
+    g.setAttribute("position", new T.Float32BufferAttribute(vertices, 3));
+    g.setIndex(indices);
+    g.computeVertexNormals();
+    return g;
+  }, []);
+  const halo = useMemo(
+    () =>
+      new T.TubeGeometry(
+        new T.CatmullRomCurve3([
+          new T.Vector3(-0.4, 0.65, -0.65),
+          new T.Vector3(-0.4, 0.9, 0.1),
+          new T.Vector3(0, 0.94, 0.6),
+          new T.Vector3(0.4, 0.9, 0.1),
+          new T.Vector3(0.4, 0.65, -0.65),
+        ]),
+        20,
+        0.04,
+        6,
+        false,
+      ),
+    [],
+  );
+  useEffect(
+    () => () => {
+      body.dispose();
+      halo.dispose();
+    },
+    [body, halo],
+  );
   useFrame((_, delta) => {
     if (!playing || !ref.current) return;
-    clock.current += Math.min(delta, 0.05);
-    const t = (clock.current * 0.019 + offset) % 1,
-      p = curve.getPointAt(t),
-      d = curve.getTangentAt(t);
-    ref.current.position.set(p.x, 0.7, p.z);
-    ref.current.rotation.y = Math.atan2(d.x, d.z);
+    const d = curve.getTangentAt(progress.current),
+      next = curve.getTangentAt((progress.current + 0.003) % 1);
+    const straight = Math.max(0, d.dot(next));
+    progress.current =
+      (progress.current +
+        Math.min(delta, 0.05) * (0.012 + 0.012 * straight ** 10)) %
+      1;
+    const p = curve.getPointAt(progress.current),
+      t = curve.getTangentAt(progress.current);
+    ref.current.position.set(p.x, 0.38, p.z);
+    ref.current.rotation.y = Math.atan2(t.x, t.z);
+    if (wheels.current)
+      wheels.current.children.forEach((w) => (w.rotation.x -= delta * 95));
   });
   return (
-    <group ref={ref} visible={playing}>
-      <mesh>
-        <boxGeometry args={[1.1, 0.45, 3.7]} />
-        <meshStandardMaterial color={color} metalness={0.6} roughness={0.3} />
+    <group ref={ref}>
+      <mesh geometry={body} castShadow>
+        <meshPhysicalMaterial
+          color={color}
+          metalness={0.65}
+          roughness={0.22}
+          clearcoat={1}
+          clearcoatRoughness={0.15}
+        />
       </mesh>
-      <mesh position={[0, 0.4, -0.1]}>
-        <sphereGeometry args={[0.5, 12, 8]} />
-        <meshStandardMaterial color="#11121b" />
+      <mesh position={[0, 0.06, 0]} castShadow>
+        <boxGeometry args={[1.9, 0.09, 4.8]} />
+        <meshStandardMaterial color="#14161c" roughness={0.62} />
       </mesh>
-      <mesh position={[0, 0.2, 2.1]}>
-        <boxGeometry args={[2.1, 0.12, 0.5]} />
-        <meshStandardMaterial color={color} />
+      <mesh position={[0, 0.5, -0.2]} castShadow>
+        <sphereGeometry args={[0.33, 16, 10]} />
+        <meshStandardMaterial color="#080b11" />
       </mesh>
-      <mesh position={[0, 0.5, -1.8]}>
-        <boxGeometry args={[1.9, 0.18, 0.45]} />
-        <meshStandardMaterial color={color} />
+      <mesh position={[0, 0.7, -0.2]}>
+        <sphereGeometry args={[0.16, 16, 12]} />
+        <meshStandardMaterial color="#d6dbe5" roughness={0.25} />
       </mesh>
+      <mesh geometry={halo} castShadow>
+        <meshStandardMaterial
+          color="#15191f"
+          metalness={0.65}
+          roughness={0.3}
+        />
+      </mesh>
+      <Beam a={[0, 0.85, 0.55]} b={[0, 0.4, 0.9]} r={0.045} color="#15191f" />
+      {[0, 1, 2].map((i) => (
+        <mesh
+          key={"front-" + i}
+          position={[0, 0.11 + i * 0.045, 2.3 - i * 0.14]}
+          castShadow
+        >
+          <boxGeometry args={[1.95, 0.035, 0.26]} />
+          <meshPhysicalMaterial
+            color={i === 0 ? color : "#20252f"}
+            metalness={0.5}
+            roughness={0.3}
+          />
+        </mesh>
+      ))}
+      <mesh position={[0, 0.88, -2.12]} castShadow>
+        <boxGeometry args={[1.9, 0.09, 0.48]} />
+        <meshPhysicalMaterial color={color} metalness={0.6} roughness={0.24} />
+      </mesh>
+      {[-0.95, 0.95].map((x) => (
+        <mesh key={"end-" + x} position={[x, 0.72, -2.12]} castShadow>
+          <boxGeometry args={[0.055, 0.44, 0.65]} />
+          <meshStandardMaterial color="#10131a" />
+        </mesh>
+      ))}
+      {[-0.45, 0.45].map((x) => (
+        <mesh key={"wingpost" + x} position={[x, 0.47, -2.06]} castShadow>
+          <boxGeometry args={[0.06, 0.8, 0.1]} />
+          <meshStandardMaterial color="#242830" metalness={0.6} />
+        </mesh>
+      ))}
       {[-1, 1].flatMap((x) =>
-        [-1.25, 1.3].map((z) => (
-          <mesh
-            key={x + ":" + z}
-            position={[x, 0.05, z]}
-            rotation={[0, 0, Math.PI / 2]}
-          >
-            <cylinderGeometry args={[0.43, 0.43, 0.4, 12]} />
-            <meshStandardMaterial color="#0a0b0f" roughness={0.8} />
-          </mesh>
-        )),
+        [-1.5, 1.5].flatMap((z) => [
+          <Beam
+            key={"s1" + x + z}
+            a={[x * 0.35, 0.35, z * 0.8]}
+            b={[x * 1.02, 0, z]}
+            r={0.025}
+            color="#555d6b"
+          />,
+          <Beam
+            key={"s2" + x + z}
+            a={[x * 0.35, 0.1, z * 0.6]}
+            b={[x * 1.02, 0, z]}
+            r={0.025}
+            color="#555d6b"
+          />,
+        ]),
       )}
+      <group ref={wheels}>
+        {[-1, 1].flatMap((x) =>
+          [-1.5, 1.5].map((z) => (
+            <group key={x + ":" + z} position={[x * 1.02, 0, z]}>
+              <mesh rotation={[0, 0, Math.PI / 2]} castShadow>
+                <cylinderGeometry args={[0.36, 0.36, 0.4, 24]} />
+                <meshStandardMaterial color="#101115" roughness={0.9} />
+              </mesh>
+              <mesh rotation={[0, Math.PI / 2, 0]} position={[x * 0.205, 0, 0]}>
+                <torusGeometry args={[0.27, 0.012, 4, 24]} />
+                <meshBasicMaterial color="#bdae6a" />
+              </mesh>
+              <mesh rotation={[0, 0, Math.PI / 2]} position={[x * 0.21, 0, 0]}>
+                <cylinderGeometry args={[0.18, 0.18, 0.012, 12]} />
+                <meshStandardMaterial
+                  color="#4c535f"
+                  metalness={0.85}
+                  roughness={0.28}
+                />
+              </mesh>
+            </group>
+          )),
+        )}
+      </group>
+      <mesh position={[0, 0.32, -2.42]}>
+        <boxGeometry args={[0.13, 0.13, 0.05]} />
+        <meshBasicMaterial color="#ff140a" toneMapped={false} />
+      </mesh>
+      <pointLight
+        position={[0, 0.3, -2.5]}
+        color="#ff210c"
+        intensity={4}
+        distance={2.5}
+      />
     </group>
   );
 }
@@ -1413,7 +1555,15 @@ function MetalReflections() {
   }, [gl, scene, invalidate]);
   return null;
 }
-function Finish({ playing, preview }: { playing: boolean; preview?: boolean }) {
+function Finish({
+  playing,
+  preview,
+  atmosphere,
+}: {
+  playing: boolean;
+  preview?: boolean;
+  atmosphere: boolean;
+}) {
   const { gl, scene, camera, size, invalidate } = useThree();
   const composer = useMemo(() => {
     const c = new EffectComposer(gl);
@@ -1437,9 +1587,9 @@ function Finish({ playing, preview }: { playing: boolean; preview?: boolean }) {
     c.addPass(
       new UnrealBloomPass(
         new T.Vector2(size.width, size.height),
-        0.22,
-        0.5,
-        1.2,
+        0.3,
+        0.45,
+        1.15,
       ),
     );
     c.addPass(new OutputPass());
@@ -1452,7 +1602,7 @@ function Finish({ playing, preview }: { playing: boolean; preview?: boolean }) {
   useEffect(() => () => composer.dispose(), [composer]);
   useFrame((_, delta) => {
     composer.render(delta);
-    if (playing && !preview) invalidate();
+    if ((playing || atmosphere) && !preview) invalidate();
   }, 1);
   return null;
 }
@@ -1463,6 +1613,9 @@ export function World({
   onStand,
   playing = false,
   preview = false,
+  atmosphere = true,
+  sphereDisplay = "moon",
+  ambientMotion = true,
 }: {
   selection: Selection;
   mode: Mode;
@@ -1470,6 +1623,9 @@ export function World({
   onStand?: (id: string) => void;
   playing?: boolean;
   preview?: boolean;
+  atmosphere?: boolean;
+  sphereDisplay?: SphereDisplay;
+  ambientMotion?: boolean;
 }) {
   return (
     <>
@@ -1500,7 +1656,10 @@ export function World({
       <FanZone />
       <Environment />
       <Track />
-      <Sphere />
+      <Sphere display={sphereDisplay} />
+      {atmosphere && (
+        <Atmosphere selection={selection} animate={!preview && ambientMotion} />
+      )}
       <group position={[665, 0, -45]} rotation={[0, -0.65, 0]}>
         <mesh position={[0, 8, 20]}>
           <boxGeometry args={[105, 16, 20]} />
@@ -1557,12 +1716,43 @@ export function World({
       ))}
       {!preview && (
         <>
-          <Car color="#e10600" offset={0.04} playing={playing} />
-          <Car color="#e8eaf2" offset={0.065} playing={playing} />
-          <Car color="#f28c22" offset={0.085} playing={playing} />
+          <Car
+            color="#e10600"
+            offset={0}
+            playing={playing}
+            selection={selection}
+          />
+          <Car
+            color="#e8eaf2"
+            offset={0.0035}
+            playing={playing}
+            selection={selection}
+          />
+          <Car
+            color="#e6aa35"
+            offset={0.006}
+            playing={playing}
+            selection={selection}
+          />
+          <Car
+            color="#246681"
+            offset={0.009}
+            playing={playing}
+            selection={selection}
+          />
+          <Car
+            color="#bec3cc"
+            offset={0.013}
+            playing={playing}
+            selection={selection}
+          />
         </>
       )}
-      <Finish playing={playing} preview={preview} />
+      <Finish
+        playing={playing}
+        preview={preview}
+        atmosphere={atmosphere && ambientMotion}
+      />
     </>
   );
 }

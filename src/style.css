@@ -4099,3 +4099,121 @@ dialog::backdrop {
     padding: 8px;
   }
 }
+.track-demo {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  max-width: 360px;
+}
+.track-demo > span {
+  width: 100%;
+}
+.scene-controls {
+  position: relative;
+  color: #e6e8ef;
+  font-size: 12px;
+}
+.scene-controls summary {
+  padding: 10px 13px;
+  border: 1px solid #626777;
+  background: #15151e;
+  cursor: pointer;
+  list-style: none;
+}
+.scene-controls summary::-webkit-details-marker {
+  display: none;
+}
+.scene-controls summary:hover,
+.scene-controls[open] summary {
+  background: #292d3b;
+}
+.scene-controls > div {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  width: 270px;
+  padding: 18px;
+  background: #15151e;
+  border: 1px solid #626777;
+  color: #e6e8ef;
+  z-index: 12;
+}
+.scene-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.scene-controls select {
+  width: 100%;
+  padding: 10px;
+  background: #282c38;
+  border: 1px solid #6b7288;
+  border-radius: 0;
+  color: #fff;
+  font: inherit;
+}
+.scene-controls .scene-atmosphere {
+  flex-direction: row;
+  align-items: start;
+  margin-top: 18px;
+  font-size: 12px;
+}
+.scene-controls input {
+  accent-color: #e10600;
+  margin-top: 4px;
+}
+.scene-controls p {
+  font-size: 11px;
+  color: #c0c6d7;
+  line-height: 1.7;
+  margin-top: 18px;
+}
+.scene-controls a {
+  display: block;
+  color: #e1e5f1;
+  text-underline-offset: 3px;
+  font-size: 12px;
+  margin-top: 14px;
+}
+.wordmark > span {
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .track-demo {
+    max-width: 290px;
+    gap: 6px;
+  }
+  .scene-controls summary {
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+  .scene-controls > div {
+    left: auto;
+    right: 0;
+    width: 258px;
+  }
+  .hub-header .wordmark > span {
+    font-size: 16px;
+  }
+  .vegas-atlas .wordmark > span {
+    font-size: 18px;
+  }
+  .app-shell .site-header .wordmark > span {
+    font-size: 18px;
+  }
+  .wordmark-sub {
+    white-space: normal;
+  }
+}
+@media (max-width: 760px) {
+  .scene-controls > div {
+    left: 0;
+    right: auto;
+  }
+}
+.model-caption a {
+  color: inherit;
+  text-underline-offset: 2px;
+}

@@ -1,3 +1,5 @@
+import { sphereDisplays, type SphereDisplay } from "./rendering";
+import { BrandMark } from "./BrandMark";
 import { FullSeatMap } from "./FullSeatMap";
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -336,10 +338,26 @@ export default function App({
     [unavailable, setUnavailable] = useState(false),
     [flat, setFlat] = useState(false),
     [panelOpen, setPanelOpen] = useState(() => window.innerWidth > 760),
-    [playing, setPlaying] = useState(false),
+    [reducedMotion, setReducedMotion] = useState(
+      () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    ),
+    [atmosphere, setAtmosphere] = useState(true),
+    [sphereDisplay, setSphereDisplay] = useState<SphereDisplay>("moon"),
+    [playing, setPlaying] = useState(
+      () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    ),
     [gridZoom, setGridZoom] = useState(false),
     [compareYaw, setCompareYaw] = useState(0),
     [comparePitch, setComparePitch] = useState(0);
+  useEffect(() => {
+    const q = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => {
+      setReducedMotion(q.matches);
+      if (q.matches) setPlaying(false);
+    };
+    q.addEventListener("change", update);
+    return () => q.removeEventListener("change", update);
+  }, []);
   const comparisonLook = useMemo(
     () => ({ yaw: compareYaw, pitch: comparePitch }),
     [compareYaw, comparePitch],
@@ -451,12 +469,10 @@ export default function App({
         Skip to seat controls
       </a>
       <header className="site-header">
-        <a className="wordmark" href="/" aria-label="Viewpoint home">
-          <svg viewBox="0 0 50 36" fill="none" aria-hidden="true">
-            <path d="M2 4h12l8 20L37 4h12L24 35H14Z" fill="currentColor" />
-          </svg>
+        <a className="wordmark" href="/" aria-label="Apex Atlas home">
+          <BrandMark />
           <span>
-            VIEWPOINT<span className="wordmark-sub">F1 SEAT EXPLORER</span>
+            APEX ATLAS<span className="wordmark-sub">F1 SEAT EXPLORER</span>
           </span>
         </a>
         <div className="header-location">
@@ -540,6 +556,9 @@ export default function App({
                   mode={mode}
                   reset={reset}
                   playing={playing}
+                  atmosphere={atmosphere}
+                  sphereDisplay={sphereDisplay}
+                  ambientMotion={!reducedMotion}
                   onSelect={(s) =>
                     navigate({ ...s, party: selection.party }, "seat")
                   }
@@ -705,9 +724,58 @@ export default function App({
                   <path d="m6 3 11 7-11 7Z" />
                 )}
               </svg>
-              {playing ? "Pause track demo" : "Play track demo"}
+              {playing ? "Pause racing" : "Start racing"}
             </button>
-            <span>Illustrative cars</span>
+            <details className="scene-controls">
+              <summary>Scene settings</summary>
+              <div>
+                <label>
+                  Sphere display
+                  <select
+                    aria-label="Sphere display"
+                    value={sphereDisplay}
+                    onChange={(e) =>
+                      setSphereDisplay(e.target.value as SphereDisplay)
+                    }
+                  >
+                    {sphereDisplays.map((d) => (
+                      <option key={d.id} value={d.id}>
+                        {d.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="scene-atmosphere">
+                  <input
+                    type="checkbox"
+                    checked={atmosphere}
+                    onChange={(e) => setAtmosphere(e.target.checked)}
+                  />
+                  Light beams & airborne particles
+                </label>
+                <p>
+                  {sphereDisplay === "moon"
+                    ? "Lunar map: NASA / LRO."
+                    : "Original display artwork."}{" "}
+                  Simulated display, not a live Sphere feed.
+                </p>
+                <a
+                  href="https://www.thesphere.com/xo-stream"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Watch the real Sphere display
+                </a>
+                <a
+                  href="https://maps.app.goo.gl/DpXKoWXbPmJotJch9"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Sphere on Google Maps
+                </a>
+              </div>
+            </details>
+            <span>Illustrative racing · not live timing</span>
           </div>
           {saved.length > 0 && (
             <div className="compare-dock" aria-label="Saved view shortlist">
@@ -774,7 +842,16 @@ export default function App({
               : ready
                 ? "INTERACTIVE 3D MODEL"
                 : "LOADING 3D MODEL"}
-            <span>Estimated geometry · no live inventory</span>
+            <span>
+              Estimated geometry ·{" "}
+              <a
+                href="https://www.openstreetmap.org/copyright"
+                target="_blank"
+                rel="noreferrer"
+              >
+                © OpenStreetMap contributors
+              </a>
+            </span>
           </div>
         </section>
         <aside
@@ -1188,6 +1265,9 @@ export default function App({
                               reset={0}
                               preview
                               previewLook={comparisonLook}
+                              sphereDisplay={sphereDisplay}
+                              atmosphere={atmosphere}
+                              ambientMotion={false}
                             />
                           </Suspense>
                         </div>

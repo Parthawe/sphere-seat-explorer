@@ -1,4 +1,4 @@
-# Viewpoint
+# Apex Atlas
 
 ## Platform
 
@@ -16,7 +16,7 @@ Calendar data is a dated official-source snapshot. Venue placements, rows, seat 
 
 ## Brand commitments
 
-The user explicitly requested F1 colors and design language, Las Vegas context, true 3D and a premium, detailed experience. Viewpoint is independent and does not imply Formula 1 affiliation.
+The user explicitly requested F1 colors and design language, Las Vegas context, true 3D and a premium, detailed experience. Apex Atlas is independent and does not imply Formula 1 affiliation.
 
 ## Evidence
 
@@ -25,3 +25,7 @@ The original Singapore video supplied the interaction reference. Official Formul
 ## Coverage
 
 The user requested all seats around Sphere and Las Vegas. The implementation exposes every modeled position, the organizer's listed viewing products and Sphere's official floor/access map links. Complete official seat inventories and event-specific indoor layouts are not available; the UI states that boundary.
+
+## Approved identity and scene behavior
+
+The user selected Apex Atlas on 23 November 2026. They requested moving race cars, light rays, richer shaders, shadows/highlights and real-world reference context. The implementation uses procedural cars and atmospheric effects, three simulated Sphere display options, NASA lunar imagery, OpenStreetMap building outlines and links to Sphere's official live exterior stream and actual Google Maps location. It does not imply licensed official F1 car models, live race telemetry or verified venue geometry.

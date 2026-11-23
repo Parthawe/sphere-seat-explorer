@@ -1,0 +1,7 @@
+Building footprints: © OpenStreetMap contributors, Open Database License (ODbL) 1.0.
+Source: https://api.openstreetmap.org/api/0.6/map?bbox=-115.171,36.116,-115.156,36.126
+Retrieved 23 November 2026. The extracted/adapted building database is supplied alongside this notice as buildings.json under ODbL 1.0.
+Copyright and license: https://www.openstreetmap.org/copyright
+License text: https://opendatacommons.org/licenses/odbl/1-0/
+Origin for local projected coordinates: 36.1212 N, -115.1621 E.
+The app omits footprints that conflict with the schematic course. Heights absent from source tags are estimated. This does not establish surveyed track or seat alignment.

@@ -25,3 +25,11 @@ Group adjacency describes this model only. Actual venue numbering and aisle boun
 The organizer's [grandstand](https://www.f1lasvegasgp.com/tickets/grandstands/), [general-admission](https://www.f1lasvegasgp.com/tickets/general-admission/) and [hospitality](https://www.f1lasvegasgp.com/tickets/hospitality/) pages supply the 16 location-based product names and viewing focuses. The [current circuit page](https://www.f1lasvegasgp.com/track-layout/) informed the schematic. [2027 deposits](https://www.f1lasvegasgp.com/2027-deposits/) is the organizer's currently promoted next-season destination. No stale prices or sold-out indicators were copied into the app.
 
 [Sphere's venue maps](https://www.thesphere.com/plan-your-visit/maps) provide eight official access/floor-map destinations. Common section ranges were cross-checked against the [venue visualization provider reference](https://sites.3ddigitalvenue.com/3dmap/clients/sphere/level-200/) and public event seating references. All seat-level positions and row/seat counts in the new indoor study are original illustrative parameters, not a transcription of event ticket data. Floor maps were inspected for research and are linked externally, not redistributed.
+
+## Apex Atlas scene references, 23 November 2026
+
+[Sphere XO Stream](https://www.thesphere.com/xo-stream) supplies an official destination for actual current Exosphere programming and its published Google Maps location. Its footage is not copied into the app. The amber face and race ribbons remain original display artwork.
+
+[NASA CGI Moon Kit](https://svs.gsfc.nasa.gov/4720) supplies the bundled 2K lunar color map. It is used as a simulated Sphere display, not presented as footage of a real race-night program.
+
+[OpenStreetMap API](https://api.openstreetmap.org/api/0.6/map?bbox=-115.171,36.116,-115.156,36.126) supplies nearby building outlines and available tags. The extracted database and [ODbL attribution](https://www.openstreetmap.org/copyright) are bundled. The scene uses a rounded geographic Sphere origin, omits course conflicts, and estimates missing heights. This is not a new survey of the venue or certified Google Maps geometry.

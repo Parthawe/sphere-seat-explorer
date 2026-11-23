@@ -1,3 +1,4 @@
+import { BrandMark } from "./BrandMark";
 import type { Mode } from "./model";
 import { lazy, Suspense, useEffect, useState } from "react";
 import {
@@ -103,8 +104,8 @@ export default function RaceHub() {
       : route.seats
         ? "Las Vegas · 3D Seat Explorer"
         : selected
-          ? `${selected.name} ${route.season} · Viewpoint`
-          : `F1 Races ${route.season} · Viewpoint`;
+          ? `${selected.name} ${route.season} · Apex Atlas`
+          : `F1 Races ${route.season} · Apex Atlas`;
   }, [route, selected]);
   if (route.atlas)
     return (
@@ -172,11 +173,9 @@ export default function RaceHub() {
             go({ ...route, race: "", seats: false });
           }}
         >
-          <svg viewBox="0 0 50 36" aria-hidden="true">
-            <path d="M2 4h12l8 20L37 4h12L24 35H14Z" fill="currentColor" />
-          </svg>
+          <BrandMark />
           <span>
-            VIEWPOINT
+            APEX ATLAS
             <span className="wordmark-sub">F1 RACE & SEAT EXPLORER</span>
           </span>
         </a>
@@ -317,7 +316,7 @@ export default function RaceHub() {
                 ))}
               <p className="provider-note">
                 Provider links open an external catalogue. Select the race and
-                season there. Viewpoint does not display live stock, prices or
+                season there. Apex Atlas does not display live stock, prices or
                 reservations.
               </p>
             </section>

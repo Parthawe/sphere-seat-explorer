@@ -1,3 +1,4 @@
+import { BrandMark } from "./BrandMark";
 import { lazy, Suspense, useState } from "react";
 import { circuitPath } from "./Map";
 import { stands, type Mode } from "./model";
@@ -85,11 +86,9 @@ export default function VegasAtlas({
             onBack();
           }}
         >
-          <svg viewBox="0 0 50 36" aria-hidden="true">
-            <path d="M2 4h12l8 20L37 4h12L24 35H14Z" fill="currentColor" />
-          </svg>
+          <BrandMark />
           <span>
-            VIEWPOINT<span className="wordmark-sub">LAS VEGAS EXPLORER</span>
+            APEX ATLAS<span className="wordmark-sub">LAS VEGAS EXPLORER</span>
           </span>
         </a>
         <nav>
