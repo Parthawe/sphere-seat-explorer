@@ -94,3 +94,10 @@ Five detailed illustrative open-wheel cars start near the selected modeled bank,
 Nearby context uses 126 downloaded OpenStreetMap building outlines. The renderer omits centerline conflicts with the schematic course and uses source height tags, source storey counts or explicit estimated heights. This improves context without certifying the course's geographic alignment. Night-window shaders, shadow-casting selected-bank lighting, PBR road response and bloom complement existing shadows and material maps. Low-end-device performance and exact real-world sightlines remain unverified.
 
 OpenStreetMap derived data is supplied under ODbL in `public/geo/buildings.json`, with source and license notices in `public/geo/CREDITS.txt`. NASA texture credits are in `public/materials/CREDITS.txt`. These data/asset notices are separate from the app code's MIT license.
+
+
+### Qatar 2026 ticket product
+
+The root now opens a Qatar ticket desk for the next remaining 2026 race. Locate an existing ticket’s **viewing area**, compare up to three areas and continue to verified event pages or organizer-listed sellers. Main Grandstand has assigned seating; the other supported areas are unassigned. Exact row/chair coordinates are unavailable.
+
+`npm run collect:tickets` refreshes allowlisted public metadata into `public/data/ticket-sources.json`. Review the snapshot and run `npm test` / `npm run build` before deployment. Reference prices are not live offers. No ticket text is uploaded, stored or shared; only public comparison area IDs persist locally. There is no account, booking or checkout service. The existing two-hour development automation prioritizes Abu Dhabi 2026 next; it is not a hosted live inventory feed.

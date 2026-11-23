@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-23",
   "cadence_hours": 2,
-  "phase": "foundation",
+  "phase": "ticket-product-pilot",
   "active_run": null,
-  "next_action": "Revalidate official calendar/event venue identities, then introduce a reusable per-venue registry and renderer without regressing Las Vegas.",
+  "next_action": "Prioritize Abu Dhabi 2026: verify organizer viewing-area sources and extend the area locator with explicit uncertainty. Then extract the Qatar pilot into a shared venue registry and resume Singapore and remaining verified venues.",
   "venues": [
     {
       "id": "las-vegas",
@@ -28,17 +28,25 @@
       "id": "qatar",
       "event": "Qatar",
       "venue": "Lusail",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "area_locator_pilot",
+      "sources": [
+        "https://www.lcsc.qa/formula12026",
+        "https://www.lcsc.qa/faq/formula-1r-qatar-airways-qatar-grand-prix-2026",
+        "https://www.openstreetmap.org/copyright"
+      ],
+      "next_action": "Maintain dated official product snapshots. Exact row/chair geometry and hospitality mapping remain unavailable."
     },
     {
       "id": "abu-dhabi",
       "event": "Abu Dhabi",
       "venue": "Yas Marina",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "verified_ticket_links",
+      "sources": [
+        "https://www.abudhabigp.com/en/formula1/tickets-2026/",
+        "https://www.abudhabigp.com/en/faq",
+        "https://tickets.formula1.com/en/f1-3312-abu-dhabi"
+      ],
+      "next_action": "Next priority: verify area naming, seating rules and map sources before implementing an approximate area locator."
     },
     {
       "id": "bahrain-sakhir",
@@ -225,6 +233,13 @@
       "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
     }
   ],
-  "runs": [],
+  "runs": [
+    {
+      "date": "2026-11-23",
+      "work": "Qatar 2026 ticket product pilot: local area locator, five approximate area callouts, official reference price collection, nine seller links, comparison/share and Abu Dhabi 2026 direct provider guidance. No exact chair coordinates or live stock claimed.",
+      "sources_checked": "2026-11-23",
+      "next": "Abu Dhabi 2026 area research and reusable venue registry"
+    }
+  ],
   "blockers": []
 }

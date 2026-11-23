@@ -33,3 +33,20 @@ The organizer's [grandstand](https://www.f1lasvegasgp.com/tickets/grandstands/),
 [NASA CGI Moon Kit](https://svs.gsfc.nasa.gov/4720) supplies the bundled 2K lunar color map. It is used as a simulated Sphere display, not presented as footage of a real race-night program.
 
 [OpenStreetMap API](https://api.openstreetmap.org/api/0.6/map?bbox=-115.171,36.116,-115.156,36.126) supplies nearby building outlines and available tags. The extracted database and [ODbL attribution](https://www.openstreetmap.org/copyright) are bundled. The scene uses a rounded geographic Sphere origin, omits course conflicts, and estimates missing heights. This is not a new survey of the venue or certified Google Maps geometry.
+
+
+## Remaining 2026 races · checked 23 November 2026
+
+- Calendar and next race: https://www.formula1.com/en/racing/2026
+- Qatar event/product taxonomy: https://www.lcsc.qa/formula12026
+- Numbered/free seating, mobile delivery and organizer seller roster: https://www.lcsc.qa/faq/formula-1r-qatar-airways-qatar-grand-prix-2026
+- Official map handoff: https://www.lcsc.qa/interactive-event-map
+- Official product pages and collected reference prices: public/data/ticket-sources.json (five 3-day products, exact 27–29 Nov 2026 date gate).
+- Public F1 Qatar event store: https://tickets.formula1.com/en/f1-56257-qatar (automated access blocked; no price or stock inferred).
+- Experience packages: https://f1experiences.com/2026-qatar-grand-prix (metadata only; packages can start Thursday).
+- Abu Dhabi 2026 organizer: https://www.abudhabigp.com/en/formula1/tickets-2026/ and https://www.abudhabigp.com/en/faq
+- Abu Dhabi F1 store: https://tickets.formula1.com/en/f1-3312-abu-dhabi
+
+Collector implementation: scripts/collect-ticket-sources.mjs. It reads only allowlisted public pages, checks robots before fetching, does not follow redirects blindly, and keeps source failures explicit. No authenticated scraping or access-block bypass. A checked page is not proof of stock. Prices from other-event recommendations must never be attached to the current race.
+
+Adapted Lusail track: OSM ways 152483595 + 1553605580, queried 23 Nov 2026 with bbox 51.440,25.478,51.462,25.502. Coordinates projected to a north-up local SVG; downloadable derived data at /data/lusail-track.json under ODbL. Viewing callouts are placed schematically using official area descriptions and are not surveyed polygons.

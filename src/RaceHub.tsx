@@ -10,6 +10,7 @@ import {
   type Season,
   type Race,
 } from "./races";
+const TicketDesk = lazy(() => import("./TicketDesk"));
 const VegasAtlas = lazy(() => import("./VegasAtlas"));
 const Explorer = lazy(() => import("./App"));
 type Route = {
@@ -30,7 +31,7 @@ function readRoute(): Route {
           ? 2027
           : p.has("seat") || p.has("view")
             ? 2026
-            : 2027,
+            : 2026,
     race: p.get("race") || "",
     atlas: p.get("screen") === "vegas",
     seats: p.get("screen") === "seats" || p.has("seat") || p.has("view"),
@@ -105,7 +106,9 @@ export default function RaceHub() {
         ? "Las Vegas · 3D Seat Explorer"
         : selected
           ? `${selected.name} ${route.season} · Apex Atlas`
-          : `F1 Races ${route.season} · Apex Atlas`;
+          : route.season === 2026
+            ? "Apex Atlas · Qatar 2026 Tickets & Viewing Areas"
+            : "F1 Races 2027 · Apex Atlas";
   }, [route, selected]);
   if (route.atlas)
     return (
@@ -176,7 +179,7 @@ export default function RaceHub() {
           <BrandMark />
           <span>
             APEX ATLAS
-            <span className="wordmark-sub">F1 RACE & SEAT EXPLORER</span>
+            <span className="wordmark-sub">RACE TICKETS & SEAT EXPLORER</span>
           </span>
         </a>
         <nav aria-label="Seasons">
@@ -184,18 +187,27 @@ export default function RaceHub() {
             <button
               key={y}
               aria-pressed={route.season === y}
+              aria-label={`${y} season`}
               onClick={() => {
                 go({ season: y, race: "", seats: false });
                 setFilter("all");
                 setSearch("");
               }}
             >
-              {y} season
+              {y}
+              <span className="season-label"> season</span>
             </button>
           ))}
         </nav>
       </header>
       <main id="race-content">
+        <nav className="product-jump-nav" aria-label="Explore Apex Atlas">
+          <a href="?season=2026#race-content">Qatar ticket desk</a>
+          <a href={`?season=${route.season}#race-calendar`}>All races</a>
+          <a href={`?season=${route.season}&race=las-vegas&screen=vegas`}>
+            Las Vegas 3D
+          </a>
+        </nav>
         {selected ? (
           <>
             <div className="race-breadcrumb">
@@ -224,7 +236,55 @@ export default function RaceHub() {
                 Official event & schedule
               </a>
             </section>
-            {selected.slug === "las-vegas" ? (
+            {selected.slug === "qatar" && route.season === 2026 ? (
+              <Suspense
+                fallback={
+                  <div className="hub-loading">Opening Qatar ticket desk…</div>
+                }
+              >
+                <TicketDesk compact />
+              </Suspense>
+            ) : selected.slug === "united-arab-emirates" &&
+              route.season === 2026 ? (
+              <section className="race-coverage abu-dhabi-guide">
+                <p className="eyebrow">2026 SEASON FINALE · 4–6 DECEMBER</p>
+                <h2>Find your Abu Dhabi weekend</h2>
+                <p>
+                  Start with the organizer’s 2026 ticket catalogue, the F1 store
+                  or an experience package. Some passes include Thursday 3
+                  December. Exact viewing-area and seat mapping is not available
+                  in Apex Atlas yet.
+                </p>
+                <div className="verified-event-links">
+                  <a
+                    href="https://www.abudhabigp.com/en/formula1/tickets-2026/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Organizer’s 2026 tickets
+                  </a>
+                  <a
+                    href="https://tickets.formula1.com/en/f1-3312-abu-dhabi"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    F1 ticket store · Abu Dhabi
+                  </a>
+                  <a
+                    href="https://www.abudhabigp.com/en/faq"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Ticket delivery & event FAQ
+                  </a>
+                </div>
+                <p className="provider-note">
+                  Sources checked 23 November 2026. Prices and stock are not
+                  verified here. Confirm the named grandstand, ticket days, fees
+                  and delivery before buying.
+                </p>
+              </section>
+            ) : selected.slug === "las-vegas" ? (
               <section className="vegas-feature">
                 <img
                   className="venue-preview-image"
@@ -264,62 +324,67 @@ export default function RaceHub() {
                 </a>
               </section>
             )}
-            <section className="ticket-options">
-              <h2>Choose how you watch</h2>
-              <p>
-                Ticket categories to investigate. Availability and inclusions
-                must be confirmed with the provider for {selected.name}{" "}
-                {route.season}.
-              </p>
-              <div
-                className="ticket-category-tabs"
-                role="group"
-                aria-label="Ticket categories"
-              >
-                {categories.map((c) => (
-                  <button
-                    key={c[0]}
-                    aria-pressed={category === c[0]}
-                    onClick={() => setCategory(c[0])}
-                  >
-                    {c[1]}
-                  </button>
-                ))}
-              </div>
-              {categories
-                .filter((c) => c[0] === category)
-                .map((c) => (
-                  <div className="ticket-category-detail" key={c[0]}>
-                    <div>
-                      <h3>{c[2]}</h3>
-                      <p>{c[3]}</p>
-                    </div>
-                    <a
-                      className="primary-button"
-                      href={
-                        c[0] === "experiences"
-                          ? "https://f1experiences.com/"
-                          : c[0] === "hospitality"
-                            ? "https://ticketing.formula1.com/hospitality/seasons/"
-                            : "https://ticketing.formula1.com/seasons/"
-                      }
-                      target="_blank"
-                      rel="noreferrer"
+            {!(
+              ["qatar", "united-arab-emirates"].includes(selected.slug) &&
+              route.season === 2026
+            ) && (
+              <section className="ticket-options">
+                <h2>Choose how you watch</h2>
+                <p>
+                  Ticket categories to investigate. Availability and inclusions
+                  must be confirmed with the provider for {selected.name}{" "}
+                  {route.season}.
+                </p>
+                <div
+                  className="ticket-category-tabs"
+                  role="group"
+                  aria-label="Ticket categories"
+                >
+                  {categories.map((c) => (
+                    <button
+                      key={c[0]}
+                      aria-pressed={category === c[0]}
+                      onClick={() => setCategory(c[0])}
                     >
-                      {c[0] === "experiences"
-                        ? "Visit F1 Experiences"
-                        : c[0] === "hospitality"
-                          ? "Visit F1 hospitality"
-                          : "Visit F1 ticket store"}
-                    </a>
-                  </div>
-                ))}
-              <p className="provider-note">
-                Provider links open an external catalogue. Select the race and
-                season there. Apex Atlas does not display live stock, prices or
-                reservations.
-              </p>
-            </section>
+                      {c[1]}
+                    </button>
+                  ))}
+                </div>
+                {categories
+                  .filter((c) => c[0] === category)
+                  .map((c) => (
+                    <div className="ticket-category-detail" key={c[0]}>
+                      <div>
+                        <h3>{c[2]}</h3>
+                        <p>{c[3]}</p>
+                      </div>
+                      <a
+                        className="primary-button"
+                        href={
+                          c[0] === "experiences"
+                            ? "https://f1experiences.com/"
+                            : c[0] === "hospitality"
+                              ? "https://ticketing.formula1.com/hospitality/seasons/"
+                              : "https://ticketing.formula1.com/seasons/"
+                        }
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {c[0] === "experiences"
+                          ? "Visit F1 Experiences"
+                          : c[0] === "hospitality"
+                            ? "Visit F1 hospitality"
+                            : "Visit F1 ticket store"}
+                      </a>
+                    </div>
+                  ))}
+                <p className="provider-note">
+                  Provider links open an external catalogue. Select the race and
+                  season there. Apex Atlas does not display live stock, prices
+                  or reservations.
+                </p>
+              </section>
+            )}
             <section className="other-races">
               <h2>More races this season</h2>
               <div>
@@ -342,28 +407,70 @@ export default function RaceHub() {
           </>
         ) : (
           <>
-            <section className="season-heading">
+            {route.season === 2026 ? (
+              <Suspense
+                fallback={
+                  <div className="hub-loading">
+                    Opening the 2026 ticket desk…
+                  </div>
+                }
+              >
+                <TicketDesk />
+              </Suspense>
+            ) : (
+              <section className="season-heading">
+                <div>
+                  <p className="eyebrow">PLAN THE NEXT SEASON</p>
+                  <h1>
+                    The 2027
+                    <br />
+                    <em>race calendar.</em>
+                  </h1>
+                  <p>
+                    Browse the published calendar and official race guides.
+                    Qatar’s ticket locator and reference prices apply to 2026
+                    only.
+                  </p>
+                </div>
+                <div className="season-year" aria-hidden="true">
+                  2027
+                </div>
+              </section>
+            )}
+            {route.season === 2026 && (
+              <section
+                className="remaining-races"
+                aria-label="Remaining 2026 races"
+              >
+                <div className="section-line">
+                  <h2>Still to race in 2026</h2>
+                  <span>Race weekends · local dates</span>
+                </div>
+                {calendars[2026]
+                  .filter((r) => raceStatus(r) !== "Past")
+                  .map((r) => (
+                    <button key={r.slug} onClick={() => select(r)}>
+                      <span>ROUND {r.round}</span>
+                      <strong>{r.name}</strong>
+                      <span>{dateLabel(r)}</span>
+                      <span>
+                        {r.slug === "qatar"
+                          ? "Ticket desk & area map"
+                          : "2026 ticket sources"}
+                      </span>
+                    </button>
+                  ))}
+              </section>
+            )}
+            <section className="race-feature-strip compact-vegas">
               <div>
-                <h1>
-                  Find your next
-                  <br />
-                  <em>race weekend.</em>
-                </h1>
+                <span>LAS VEGAS · THE 3D ATLAS</span>
+                <h2>Step into the Sphere zone.</h2>
                 <p>
-                  Every published race in {route.season}. Explore the calendar,
-                  choose a ticket category, and inspect our Las Vegas seat
-                  model.
+                  Explore reconstructed seat views, moving cars and the Vegas
+                  night skyline. Estimated geometry, not official seat
+                  inventory.
                 </p>
-              </div>
-              <div className="season-year" aria-hidden="true">
-                {route.season}
-              </div>
-            </section>
-            <section className="race-feature-strip">
-              <div>
-                <span>LAS VEGAS · SPHERE ZONE</span>
-                <h2>The seat changes everything.</h2>
-                <p>Get inside the model before choosing your view.</p>
                 <button
                   onClick={() =>
                     go({
@@ -374,19 +481,21 @@ export default function RaceHub() {
                     })
                   }
                 >
-                  Explore Las Vegas
+                  Explore Las Vegas in 3D
                 </button>
               </div>
               <img
                 className="venue-preview-image"
                 src="/las-vegas-preview.webp"
-                alt="The rebuilt Sphere and modeled grandstands in our 3D explorer"
+                alt="Reconstructed Las Vegas circuit with Sphere and modeled viewing areas"
                 width="1000"
                 height="800"
+                loading="lazy"
               />
             </section>
             <section
               className="race-calendar"
+              id="race-calendar"
               aria-label={`${route.season} race calendar`}
             >
               <div className="calendar-toolbar">
@@ -451,9 +560,11 @@ export default function RaceHub() {
                           : "coverage-guide"
                       }
                     >
-                      {r.slug === "las-vegas"
-                        ? "3D seat model"
-                        : "Race & ticket guide"}
+                      {r.slug === "qatar" && route.season === 2026
+                        ? "Ticket desk & area map"
+                        : r.slug === "las-vegas"
+                          ? "3D seat model"
+                          : "Race & ticket guide"}
                     </span>
                     <span className="race-status">{raceStatus(r)}</span>
                   </button>
@@ -479,7 +590,7 @@ export default function RaceHub() {
         <section className="calendar-source">
           <strong>Calendar source</strong>
           <p>
-            Formula 1’s published {route.season} calendar, checked 22 November
+            Formula 1’s published {route.season} calendar, checked 23 November
             2026. Dates can change. The 2026 list reflects the current revised
             calendar; past weekends remain available for reference.
           </p>
@@ -491,7 +602,7 @@ export default function RaceHub() {
       <footer className="hub-footer">
         <span>Independent race planning · no Formula 1 affiliation</span>
         <span>
-          3D coverage: Las Vegas models only · no live ticket inventory
+          Qatar 2026 area locator · Las Vegas 3D · no live ticket inventory
         </span>
       </footer>
     </div>

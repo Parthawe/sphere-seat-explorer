@@ -7,5 +7,7 @@
   "scope": "All 2026\u20132027 F1 venues, pending any user clarification",
   "plan": "MAPPING-PLAN.md",
   "progress": "MAPPING-PROGRESS.json",
-  "stop_condition": "Pause after all verified target maps meet completion criteria and the coverage audit passes."
+  "stop_condition": "Pause after all verified target maps meet completion criteria and the coverage audit passes.",
+  "updated": "2026-11-23",
+  "priority": "Qatar ticket pilot maintenance, Abu Dhabi 2026, reusable venue framework, then Singapore and other verified venues"
 }

@@ -1,3 +1,13 @@
+## Current priority: a useful ticket product for the remaining 2026 races
+
+The user’s latest brief takes priority over the original Singapore-first order. Qatar (27–29 November) is the first working ticket-product pilot; Abu Dhabi (4–6 December) is next. Preserve both seasons and Las Vegas 3D.
+
+Each venue should connect verified event/year provider links, publicly readable product metadata, a local ticket-area resolver, sourced geography, explicit location confidence and a dated update path. Approximate areas are useful without fabricated exact seats. Only graduate to row/chair mapping when supported by venue assets. Respect organizer resale policies and robots/access restrictions. Never scrape private tickets, bypass blocks, or label reference prices as live inventory.
+
+The Qatar pilot implements five area callouts, numbered-vs-free-seating rules, three-area comparison, public-only sharing, a private local text parser and an allowlisted metadata collector. Refresh with `npm run collect:tickets`; inspect differences before publishing. The collector fails closed on unreadable robots rules, makes no authenticated requests and does not infer availability. Runtime public snapshots require a validated Site deployment; this is not an autonomous hosted live feed.
+
+Next: verify Abu Dhabi area definitions and develop its locator, extract a shared venue schema from the two pilots, then resume Singapore and the remaining verified venues below. Revalidate dates and “next race” priority when time advances. Existing two-hour development automation covers this work; do not create a second schedule.
+
 # Apex Atlas mapping programme
 
 Requested 23 November 2026. Work is scheduled every two hours in this conversation. The working interpretation of “all the Vegas” is all F1 venues across the 2026 and 2027 calendars, following the earlier all-races brief. If the user clarifies that they mean Las Vegas venues instead, revise this scope before the next implementation chunk.
