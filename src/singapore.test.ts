@@ -5,7 +5,7 @@ import { findVenue, venueAreaUrl, comparisonStorageKey } from "./venueRegistry";
 test("Singapore products bind to 2027 while 2026 remains unsupported", () => {
   const venue = findVenue(2027, "singapore")!;
   assert.equal(venue.circuitId, "marina-bay");
-  assert.equal(venue.areas.length, 6);
+  assert.equal(venue.areas.length, 12);
   assert.equal(findVenue(2026, "singapore"), undefined);
   assert.equal(venue.map.roadStroke, 6);
   assert.deepEqual(venue.geography.points[0], venue.geography.points.at(-1));
@@ -17,7 +17,7 @@ test("Singapore products bind to 2027 while 2026 remains unsupported", () => {
     "?season=2027&race=singapore&area=padang",
   );
 });
-test("six standard stand names resolve without claiming chair coordinates", () => {
+test("twelve standard stand names resolve without claiming chair coordinates", () => {
   for (const area of singaporeAreas) {
     assert.deepEqual(locateSingaporeTicket(area.name).ids, [area.id]);
     assert.match(
@@ -69,4 +69,20 @@ test("wrong event/year and multiple areas stay explicit", () => {
     locateSingaporeTicket("Pit Grandstand Seat 2026").status,
     "matched",
   );
+});
+
+
+test("new standard products retain published access and separate identities", () => {
+  const expected: Record<string,string> = {"marina-bay":"1, 2, 3, 4",bayfront:"1, 2, 3, 4",promenade:"1, 2, 3, 4",raffles:"1, 2, 3, 4",empress:"4",stamford:"4"};
+  for (const [id,zones] of Object.entries(expected)) {
+    const area = singaporeAreas.find(a=>a.id===id)!;
+    assert.equal(area.zones,zones);
+    assert.equal(locateSingaporeTicket(`Singapore 2027 ${area.name} Row 2026 Seat 17`).status,"matched");
+    assert.equal(locateSingaporeTicket(`${area.name} combination`).status,"unknown");
+  }
+  assert.equal(locateSingaporeTicket("Marina Bay circuit Row 12 Seat 9").status,"unknown");
+  assert.deepEqual(locateSingaporeTicket("Marina Bay 2027 Pit Grandstand").ids,["pit"]);
+  assert.equal(locateSingaporeTicket("Bay Grandstand").status,"unknown");
+  assert.equal(locateSingaporeTicket("Raffles / Republic").status,"ambiguous");
+  assert.equal(locateSingaporeTicket("Promenade or Marina Bay Grandstand").status,"ambiguous");
 });

@@ -39,6 +39,6 @@ On mobile, keep horizontal table scrolling inside its labeled region with a visi
 
 ## Singapore 2027 pilot
 
-Keep the established F1 typography, palette and ticket-desk layout. Support six standard grandstands: Pit, Turn 1, Turn 2, Republic, Padang and Connaught. Draw current OpenStreetMap street geometry with narrower venue-specific track strokes so nearby segments remain distinguishable. Label every marker as an estimated region and keep the 2027 coverage and unsupported 2026 boundary visible. Use neutral “Ticket planning” navigation across venues.
+Keep the established F1 typography, palette and ticket-desk layout. Support twelve standard grandstands: Pit, Turn 1, Turn 2, Republic, Padang, Connaught, Marina Bay, Bayfront, Promenade, Raffles, Empress and Stamford. Draw current OpenStreetMap street geometry with narrower venue-specific track strokes so nearby segments remain distinguishable. Label every marker as an estimated region and keep the 2027 coverage and unsupported 2026 boundary visible. Use neutral “Ticket planning” navigation across venues.
 
 Place sourced, published zone access beside the selected product and retain the shared three-area comparison. Link each organizer product page with guidance to its “180° View” button; link photographs and map artwork without republishing them. Keep parsing local and raw ticket text out of storage, comparisons and shared links. Exact seats, seat-level 3D, live prices and stock remain unavailable.

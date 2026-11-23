@@ -463,7 +463,7 @@ export default function RaceHub() {
                 <div>
                   <h2>Explore Singapore’s 2027 viewing areas.</h2>
                   <p>
-                    Six standard grandstands, official preview links and private
+                    Twelve standard grandstands, official preview links and private
                     ticket-area matching. Approximate regions; exact seats are
                     not verified.
                   </p>

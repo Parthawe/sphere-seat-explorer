@@ -115,7 +115,7 @@ Open `?season=2026&race=united-arab-emirates`. Seven standard grandstands have p
 
 ### Singapore 2027 area pilot
 
-Open `?season=2027&race=singapore`. Six current organizer-listed grandstands have estimated track-region callouts, source-linked zone access, private ticket matching and three-area comparison. Product handoffs open the organizer’s actual page containing its 180° View control. Singapore 2026, remaining grandstands and variant products are not resolved by this pilot. No exact seats, Singapore 3D, current prices or stock are claimed. Adapted OSM relation 421263 data is downloadable under ODbL at `/data/singapore-track.json`.
+Open `?season=2027&race=singapore`. Twelve current organizer-listed grandstands have estimated track-region callouts, source-linked zone access, private ticket matching and three-area comparison. Product handoffs open the organizer’s actual page containing its 180° View control. Singapore 2026 and variant products are not resolved by this pilot. No exact seats, Singapore 3D, current prices or stock are claimed. Adapted OSM relation 421263 data is downloadable under ODbL at `/data/singapore-track.json`.
 
 
 ### Historical Las Vegas replay

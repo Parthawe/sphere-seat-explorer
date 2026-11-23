@@ -128,3 +128,13 @@ Independent finish review closed with Pass and no outstanding findings. Two mino
 - Mechanical detector ran once with no findings. Independent finish review found misleading Qatar emphasis in shared navigation; neutral current-season Ticket planning navigation fixed it. Rechecked desktop/mobile; review closed Pass with no remaining material findings.
 - Qatar public-source collection refreshed successfully with unchanged five published reference prices; the F1 store remained blocked with no inventory inferred. Singapore prices and stock were not collected.
 - Limits: six estimated standard-grandstand regions, not all Singapore seats/products; no exact chairs, measured obstructions, final 2027 configuration or Singapore 3D. Organizer artwork/photos are linked, not republished.
+
+
+## Singapore 2027 twelve-grandstand expansion · 23 November 2026
+
+- Added Marina Bay, Bayfront, Promenade, Raffles, Empress and Stamford to the six-area pilot. Current organizer 2027 catalogue, six product descriptions/zone access and F1 event dates rechecked. `SINGAPORE-SOURCES.md` records per-product sources, inferred coordinates and a separate 3D asset assessment.
+- 46 tests pass, including all twelve names, published-zone values and distinct identities. Marina Bay circuit-only input cannot resolve a stand; Raffles/Republic and Promenade/Marina Bay remain ambiguous; unsupported variants and wrong years remain explicit.
+- Chromium 1440×1050: all twelve map pointer/keyboard targets, new selected-panel/source/zone agreement, comparison persistence/removal/clear, local match and public-only clipboard sharing checked. Ticket marker absent from requests and storage.
+- Mobile 390×844 and 320px: new area selection, circuit-only unknown state, ambiguous selection/recovery and three-area comparison checked. Map labels fit after correcting Marina Bay's right-edge label. At 320px, document width is 320px; the comparison scrolls inside its 280px region. No page exceptions observed.
+- Qatar, Abu Dhabi's seven-area desk (`race=united-arab-emirates`) and the existing Las Vegas historical archive route remain available.
+- Super Pit, Pit Exit, Chicane, combination/accessibility/hospitality products remain unsupported. All twelve regions are estimates. No exact-seat geometry, 2026 fallback, Singapore 3D, prices, stock or redistributed organizer images added. Representative 3D is recorded as needs_assets; area work can continue.

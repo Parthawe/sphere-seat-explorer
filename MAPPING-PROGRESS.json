@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-23",
   "cadence_hours": 2,
-  "phase": "singapore-area-pilot",
+  "phase": "singapore-standard-grandstands-expanded",
   "active_run": null,
-  "next_action": "Source and add the remaining Singapore 2027 standard grandstand products, keeping Super Pit, Pit Exit and Chicane variants distinct. Verify zone access and estimated geographic regions, and assess representative 3D assets separately. Singapore 2026 remains unsupported.",
+  "next_action": "Source Super Pit, Pit Exit and Chicane @ Turn 2 from the Singapore 2027 catalogue as separate product identities; verify zone access and broad regions before adding them. Keep combination/accessibility/hospitality products unsupported and Singapore 3D needs_assets. Then verify the Bahrain/Sakhir physical venue and current season evidence without inheriting older layouts.",
   "venues": [
     {
       "id": "las-vegas",
@@ -26,12 +26,21 @@
         "https://singaporegp.sg/en/tickets/general-tickets/grandstands/",
         "https://singaporegp.sg/en/event-info/circuit-park-map/",
         "https://singaporegp.sg/en/tickets/official-resellers/",
-        "https://www.openstreetmap.org/relation/421263"
+        "https://www.openstreetmap.org/relation/421263",
+        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/marina-bay-grandstand/",
+        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/bayfront-grandstand/",
+        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/promenade-grandstand/",
+        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/raffles-grandstand/",
+        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/empress-grandstand/",
+        "https://singaporegp.sg/en/tickets/general-tickets/grandstands/stamford-grandstand/"
       ],
-      "next_action": "Source and add the remaining Singapore 2027 standard grandstand products, keeping Super Pit, Pit Exit and Chicane variants distinct. Verify zone access and estimated geographic regions, and assess representative 3D assets separately. Singapore 2026 remains unsupported.",
+      "next_action": "Source Super Pit, Pit Exit and Chicane @ Turn 2 from the Singapore 2027 catalogue as separate product identities; verify zone access and broad regions before adding them. Keep combination/accessibility/hospitality products unsupported and Singapore 3D needs_assets. Then verify the Bahrain/Sakhir physical venue and current season evidence without inheriting older layouts.",
       "seasons_with_area_coverage": [
         2027
-      ]
+      ],
+      "standard_grandstands_supported": 12,
+      "seat3d_status": "needs_assets",
+      "asset_assessment": "SINGAPORE-SOURCES.md"
     },
     {
       "id": "qatar",
@@ -313,7 +322,34 @@
         "No Singapore price/stock feed; organizer photographs and map artwork linked rather than republished"
       ],
       "next": "Source and add the remaining Singapore 2027 standard grandstand products, keeping Super Pit, Pit Exit and Chicane variants distinct. Verify zone access and estimated geographic regions, and assess representative 3D assets separately. Singapore 2026 remains unsupported."
+    },
+    {
+      "date": "2026-11-23",
+      "run": "2026-11-23T16:58:27Z-singapore-expansion",
+      "work": "Expanded Singapore 2027 to twelve standard grandstands by adding Marina Bay, Bayfront, Promenade, Raffles, Empress and Stamford with distinct estimated regions, private parser matching, published zone access, comparison/share and official 180-degree preview handoffs. Assessed representative 3D assets separately and retained needs_assets. Preserved the newly shipped Las Vegas 2024 historical replay.",
+      "sources_checked": "2026-11-23",
+      "evidence": [
+        "F1 8\u201310 October 2027 event dates and organizer 2027 catalogue rechecked; six individual product descriptions and zone guidance verified",
+        "46 automated tests passed; TypeScript and production build checked in publication workflow",
+        "Desktop 1440x1050 all twelve pointer/keyboard targets, six new source/zone selections, comparison persistence/removal/clear, parser privacy and public-only sharing checked",
+        "Mobile 390x844 and 320px selection, ambiguity recovery and comparison checked; viewport/document both 320px and table scrolling contained in its 280px region",
+        "No page exceptions; existing Qatar, seven-area Abu Dhabi and Vegas historical archive routes checked",
+        "Evidence and separate 3D asset assessment in SINGAPORE-SOURCES.md"
+      ],
+      "limitations": [
+        "All twelve viewing regions are estimates, not surveyed 2027 footprints or chair coordinates",
+        "Super Pit, Pit Exit, Chicane, combination, accessibility and hospitality products remain distinct and unsupported",
+        "No Singapore prices, stock, photographic assets or seat-level 3D added; 2026 remains unsupported"
+      ],
+      "next": "Source Super Pit, Pit Exit and Chicane @ Turn 2 from the Singapore 2027 catalogue as separate product identities; verify zone access and broad regions before adding them. Keep combination/accessibility/hospitality products unsupported and Singapore 3D needs_assets. Then verify the Bahrain/Sakhir physical venue and current season evidence without inheriting older layouts."
     }
   ],
-  "blockers": []
+  "blockers": [
+    {
+      "id": "singapore-seat-3d",
+      "status": "needs_assets",
+      "scope": "Representative/seat-level 3D only; does not block further area maps or other venues",
+      "reason": "Selected organizer references and existing OSM streets provide no measured stand/chair geometry, identified-seat camera calibration or redistributable panorama bundle. See SINGAPORE-SOURCES.md."
+    }
+  ]
 }

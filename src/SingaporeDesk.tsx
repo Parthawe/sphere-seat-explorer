@@ -62,7 +62,7 @@ export default function SingaporeDesk() {
         <div>
           <h2>Find your place at Marina Bay.</h2>
           <p>
-            Six standard grandstands from the organizer’s current 2027
+            {singaporeAreas.length} standard grandstands from the organizer’s current 2027
             catalogue. Explore a broad area, compare zone access or locate an
             existing ticket’s grandstand.
           </p>
@@ -212,8 +212,8 @@ export default function SingaporeDesk() {
                 )}
                 {match?.status === "unknown" && (
                   <p className="locator-notice">
-                    No supported standard grandstand found. Add Pit, Turn 1,
-                    Turn 2, Republic, Padang or Connaught. Super Pit, Pit Exit,
+                    No supported standard grandstand found. Enter the full
+                    grandstand name printed on your ticket. Super Pit, Pit Exit,
                     Chicane, combination passes, walkabouts, accessible
                     platforms and hospitality are not mapped by this pilot.
                   </p>
@@ -346,15 +346,15 @@ export default function SingaporeDesk() {
         <div>
           <h3>What is supported</h3>
           <p>
-            This pilot covers six standard 3-day grandstands listed in the
-            organizer’s current 2027 catalogue: Pit, Turn 1, Turn 2, Republic,
-            Padang and Connaught. Other grandstands, variants, hospitality and
-            multi-area passes are not mapped yet. A location match does not
+            This pilot covers {singaporeAreas.length} standard 3-day grandstands listed in the
+            organizer’s current 2027 catalogue, including Marina Bay, Bayfront,
+            Promenade, Raffles, Empress and Stamford. Super Pit, Pit Exit,
+            Chicane, hospitality and multi-area passes remain distinct, unsupported products. A location match does not
             verify a ticket or guarantee entry.
           </p>
           <h3>What the map shows</h3>
           <p>
-            The track follows current OpenStreetMap street geometry. All six
+            The track follows current OpenStreetMap street geometry. All
             viewing regions are estimates based on product descriptions, not
             surveyed 2027 stand boundaries, entrances, rows or chairs. The
             organizer’s published circuit map labels the 2027 event and is dated

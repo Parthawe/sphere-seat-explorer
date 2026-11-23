@@ -78,6 +78,78 @@ export const singaporeAreas = [
     description:
       "The organizer describes the run across Esplanade Bridge and the braking zone for Turn 14. Its published access is Zone 4.",
   },
+  {
+    id: "marina-bay",
+    name: "Marina Bay Grandstand",
+    short: "Marina Bay",
+    point: [540, 307],
+    label: [487, 372],
+    position: "Final sector · Turn 18 region",
+    focus: "Final corners & pit-straight approach",
+    zones: "1, 2, 3, 4",
+    description:
+      "The organizer describes views of the last two corners before the pit straight and identifies Turn 18 in its overview. This estimates the final-sector region, not the former Bay Grandstand or a measured stand boundary.",
+  },
+  {
+    id: "bayfront",
+    name: "Bayfront Grandstand",
+    short: "Bayfront",
+    point: [403, 311],
+    label: [353, 442],
+    position: "Benjamin Sheares Bridge · Turns 16–17",
+    focus: "Braking through Turns 16–17",
+    zones: "1, 2, 3, 4",
+    description:
+      "The organizer places Bayfront beneath Benjamin Sheares Bridge, facing the braking sequence at Turns 16 and 17. This marker estimates that region; it does not locate a gate or an individual seat.",
+  },
+  {
+    id: "promenade",
+    name: "Promenade Grandstand",
+    short: "Promenade",
+    point: [467, 337],
+    label: [453, 403],
+    position: "Between Turns 17–18 · Singapore Flyer",
+    focus: "Final corners & pit-lane entry",
+    zones: "1, 2, 3, 4",
+    description:
+      "The organizer identifies the region between Turns 17 and 18, with views towards the final corners and cars entering the pit lane. Its marker is kept separate from Marina Bay Grandstand.",
+  },
+  {
+    id: "raffles",
+    name: "Raffles Grandstand",
+    short: "Raffles",
+    point: [453, 252],
+    label: [383, 305],
+    position: "Turn 5 · Raffles Boulevard · drivers’ left",
+    focus: "Turn 5 apex & straight exit",
+    zones: "1, 2, 3, 4",
+    description:
+      "The organizer places Raffles on the drivers’ left along Raffles Boulevard at Turn 5. It is distinct from Republic on the drivers’ right; both markers are estimated regions.",
+  },
+  {
+    id: "empress",
+    name: "Empress Grandstand",
+    short: "Empress",
+    point: [127, 343],
+    label: [57, 417],
+    position: "Turns 11–12 · Anderson Bridge approach",
+    focus: "Braking & Civic District corner sequence",
+    zones: "4",
+    description:
+      "The organizer describes braking for Turn 11 and the sequence towards Anderson Bridge, with its overview placing the stand between Turns 11 and 12. Published access is Zone 4.",
+  },
+  {
+    id: "stamford",
+    name: "Stamford Grandstand",
+    short: "Stamford",
+    point: [218, 185],
+    label: [228, 124],
+    position: "Between Turns 7–8",
+    focus: "Turn 7 braking & Turn 8 acceleration",
+    zones: "4",
+    description:
+      "The organizer describes views of Turns 7 and 8, covering braking into Turn 7 and acceleration towards Turn 8. Published access is Zone 4; this is not a surveyed stand footprint.",
+  },
 ].map((a) => ({
   ...a,
   source: SINGAPORE_TICKETS + a.id + "-grandstand/",
@@ -115,7 +187,8 @@ export function locateSingaporeTicket(raw: string): SingaporeMatch {
   if (/\bpit(?:\s+grandstand)?\b/.test(text)) ids.push("pit");
   if (/\b(?:turn\s*0?1|t\s*0?1)\b/.test(text)) ids.push("turn-1");
   if (/\b(?:turn\s*0?2|t\s*0?2)\b/.test(text)) ids.push("turn-2");
-  for (const name of ["republic", "padang", "connaught"])
+  if (/\bmarina\s+bay\s+grandstand\b/.test(text)) ids.push("marina-bay");
+  for (const name of ["republic", "padang", "connaught", "bayfront", "promenade", "raffles", "empress", "stamford"])
     if (new RegExp(`\\b${name}\\b`).test(text)) ids.push(name);
   const row = text
     .match(/\brow\s*[:#-]?\s*([a-z]?\d{1,3}|[a-z]{1,2})\b/i)?.[1]
