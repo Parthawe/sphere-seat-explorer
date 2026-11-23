@@ -271,6 +271,7 @@ export default function AbuDhabiDesk() {
             >
               View this 2026 product with the organizer
             </a>
+            <a className="qatar-model-link" href={`?season=2026&race=united-arab-emirates&screen=circuit&bank=${area}`}>Explore this area in 3D <span>Illustrative positions, not ticket coordinates</span></a>
             <p className="reference-note">
               Source checked 23 Nov 2026. Prices, fees and availability must be
               confirmed with the seller.

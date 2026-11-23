@@ -51,3 +51,47 @@ test('footprint-based banks stay aligned with their source envelope and face tow
  assert.equal(circuitModels.qatar.banks.filter(b=>b.axis).length,1);
  assert.equal(circuitModels.bahrain.banks.filter(b=>b.axis).length,8);
 });
+
+
+test('Yas 2026 has its own meter-space geometry and seven separate products',async()=>{
+ const {default:yas}=await import('./yas-geometry.json');
+ const {abuAreas}=await import('./abuDhabi');
+ const m=findCircuitModel(2026,'united-arab-emirates')!;
+ assert.equal(m.name,'Yas Marina Circuit');assert.equal(findCircuitModel(2027,'united-arab-emirates'),undefined);
+ assert.equal(findCircuitModel(2026,'abu-dhabi'),undefined);
+ assert.deepEqual(m.banks.map(b=>b.product).sort(),abuAreas.map(a=>a.id).sort());
+ assert.equal(yas.projection.units,'meters');assert.equal(yas.licence,'ODbL-1.0');assert.equal(yas.features.length,5);
+ assert.ok(Math.min(...m.track.map(p=>p[1]))< -800);assert.ok(Math.max(...m.track.map(p=>p[1]))>800);
+ assert.equal(m.banks.filter(b=>b.footprint).length,3);
+ for(const bank of m.banks){assert.equal(bank.source,abuAreas.find(a=>a.id===bank.product)!.source);assert.match(bank.confidence,/modeled|representative/);}
+ const u=new URL(modelPositionUrl('https://example.com/?booking=secret#private',m,normalizeModelPosition(m,{})));
+ assert.equal(u.searchParams.get('race'),'united-arab-emirates');assert.equal(u.searchParams.get('booking'),null);
+});
+test('representative Yas banks never place a model chair on the modeled road',async()=>{
+ const {closestTrack}=await import('./circuitSeating');const m=circuitModels['united-arab-emirates'];
+ // Full curved building envelopes can contain the road. Keep modeled banks outside it.
+ for(const b of m.banks)for(let section=1;section<=b.sections;section++)for(let row=1;row<=b.rows;row++)for(let seat=1;seat<=b.seats;seat++){
+  const p=modelPosition(m,{bank:b.id,section,row,seat}),t=closestTrack(m,[p[0],p[2]]);
+  assert.ok(Math.hypot(p[0]-t[0],p[2]-t[1])>15,`${b.id} ${section}/${row}/${seat} overlaps modeled road`);
+ }
+});
+
+
+test('full-circuit framing keeps every track vertex inside the viewport across venues and aspects',async()=>{
+ const {circuitOverviewCamera}=await import('./circuitSeating');
+ for(const model of Object.values(circuitModels))for(const aspect of [.5,1,2.5]){
+  const {eye,target}=circuitOverviewCamera(model,aspect),distance=Math.hypot(...eye.map((n,i)=>n-target[i]));
+  const n=eye.map((v,i)=>(v-target[i])/distance),rLength=Math.hypot(n[0],n[2]),right=[n[2]/rLength,0,-n[0]/rLength],up=[-n[1]*n[0]/rLength,rLength,-n[1]*n[2]/rLength],tan=Math.tan(Math.PI/8);
+  for(const point of model.track){const v=[point[0]-target[0],-target[1],point[1]-target[2]],depth=distance-v.reduce((s,a,i)=>s+a*n[i],0);assert.ok(depth>0);const x=v.reduce((s,a,i)=>s+a*right[i],0)/(depth*tan*aspect),y=v.reduce((s,a,i)=>s+a*up[i],0)/(depth*tan);assert.ok(Math.abs(x)<.83&&Math.abs(y)<.71,model.id+' clips overview');}
+ }
+});
+
+test('overview projection leaves track geometry clear of top and bottom controls',async()=>{
+ const {circuitOverviewCamera}=await import('./circuitSeating');const T=await import('three');
+ for(const model of Object.values(circuitModels))for(const [width,height] of [[390,742],[1075,917]]){
+  const top=Math.min(height*.35,width<760?250:220),bottom=110,fraction=Math.max(.2,1-(top+bottom)/height)*.95;
+  const view=circuitOverviewCamera(model,width/height,fraction),camera=new T.PerspectiveCamera(45,width/height,.15,12000);
+  camera.position.set(...view.eye);camera.lookAt(...view.target);camera.setViewOffset(width,height,0,(bottom-top)/2,width,height);camera.updateMatrixWorld();
+  for(const p of model.track){const projected=new T.Vector3(p[0],0,p[1]).project(camera),x=(projected.x+1)*width/2,y=(1-projected.y)*height/2;assert.ok(x>0&&x<width&&y>top&&y<height-bottom,model.id+' overlaps overview controls');}
+ }
+});

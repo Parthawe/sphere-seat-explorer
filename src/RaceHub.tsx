@@ -627,7 +627,7 @@ export default function RaceHub() {
       </main>
       <footer className="hub-footer">
         <span>Independent race planning · no Formula 1 affiliation</span>
-        <span>Sourced area maps · Las Vegas 3D · no live ticket inventory</span>
+        <span>Illustrative 3D scenes · sourced area maps · no live ticket inventory</span>
       </footer>
     </div>
   );

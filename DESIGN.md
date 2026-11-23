@@ -60,3 +60,7 @@ Keep the full layout readable in a focused dialog: geographic drawing alongside 
 ## Vehicle consistency
 
 Use one authored open-wheel silhouette and material treatment across the three outdoor reconstructions. Cockpit, halo, wing planes, suspension and rim highlights should hold up when close enough to inspect. Keep geography and camera placement independent from this visual component. Avoid team branding or regulation-year claims for a generic vehicle. Maintain still frames when paused and reduced-motion entry.
+
+## Yas and overview framing
+
+Use the actual Yas circuit line in local meters, with authored blue seating and turquoise runoff rather than reusing another circuit's map. Keep curved-building context separate from rectangular model banks; estimated banks remain dashed on the source map. Frame a whole-circuit overview around venue bounds and the viewport area left by controls, and keep it legible at long camera distances. Restore the eye-level projection/fog when returning to a seat. Light-surface controls must retain dark hover labels. A venue with no checked references should not offer a recovery button that still leads to zero sources.

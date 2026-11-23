@@ -197,7 +197,8 @@ export default function SpectatorReferences({
     } else dialog.current?.close();
   }, [open, venue, area]);
   const refs = referencesFor(venue, area, scope, kind, year),
-    nearbyCount = referencesFor(venue, area, "area").length;
+    nearbyCount = referencesFor(venue, area, "area").length,
+    venueCount = referencesFor(venue, area, "venue").length;
   return (
     <dialog
       ref={dialog}
@@ -215,7 +216,7 @@ export default function SpectatorReferences({
               ? "Las Vegas"
               : venue === "qatar"
                 ? "Lusail"
-                : "Sakhir"}{" "}
+                : venue === "united-arab-emirates" ? "Yas Marina" : "Sakhir"}{" "}
             · planning {season}
           </p>
         </div>
@@ -358,7 +359,7 @@ export default function SpectatorReferences({
                   grandstand and year. An empty result is not evidence that the
                   view is poor.
                 </p>
-                <button
+                {venueCount > 0 ? <button
                   onClick={() => {
                     setScope("venue");
                     setYear("all");
@@ -366,7 +367,7 @@ export default function SpectatorReferences({
                   }}
                 >
                   Show checked venue references
-                </button>
+                </button> : <p>No checked photos or reports for this venue yet.</p>}
               </div>
             )}
       </div>

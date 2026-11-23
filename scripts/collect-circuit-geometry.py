@@ -1,16 +1,27 @@
 """Refresh bounded OSM geometry. Public API only; no imagery or ticket data.
 All outputs are adaptations under ODbL-1.0. Review source changes before deployment.
 """
-import datetime,json,math,urllib.request,xml.etree.ElementTree as ET
+import argparse,datetime,json,math,urllib.request,xml.etree.ElementTree as ET
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 SOURCES={
  'qatar':{'bbox':'51.44,25.48,51.47,25.51','origin':[51.452,25.49],'ways':['152483595','1553605580'],'features':['152483596']},
- 'bahrain':{'bbox':'50.50,26.02,50.53,26.05','origin':[50.514,26.033],'ways':['4818385','881756729','881756728'],'features':['187123414','187123419','187123438','271535959','271535961','271535964','271535967','271535981','271535984']}}
-for venue,cfg in SOURCES.items():
+ 'bahrain':{'bbox':'50.50,26.02,50.53,26.05','origin':[50.514,26.033],'ways':['4818385','881756729','881756728'],'features':['187123414','187123419','187123438','271535959','271535961','271535964','271535967','271535981','271535984']},
+ 'yas':{'bbox':'54.598,24.462,54.612,24.480','origin':[54.605,24.471],'ways':['168477013','1469184731','1469184732','188337196','1255169703','1255169704'],'features':['188731381','168411369','133907352','133907079','133907081']}}
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('venues',nargs='*')
+parser.add_argument('--input',type=Path,help='Use an already retrieved public OSM XML snapshot for one selected venue')
+args=parser.parse_args()
+selected=args.venues or list(SOURCES)
+if any(v not in SOURCES for v in selected):parser.error('Unknown venue')
+if args.input and len(selected)!=1:parser.error('--input requires exactly one venue')
+for venue in selected:
+ cfg=SOURCES[venue]
  url='https://api.openstreetmap.org/api/0.6/map?bbox='+cfg['bbox']
  request=urllib.request.Request(url,headers={'User-Agent':'ApexAtlas geographic research'})
- with urllib.request.urlopen(request,timeout=30) as response:root=ET.fromstring(response.read())
+ if args.input:root=ET.parse(args.input).getroot()
+ else:
+  with urllib.request.urlopen(request,timeout=30) as response:root=ET.fromstring(response.read())
  nodes={n.attrib['id']:[float(n.attrib['lon']),float(n.attrib['lat'])] for n in root.findall('node')}
  ways={w.attrib['id']:w for w in root.findall('way')};refs=[]
  for way_id in cfg['ways']:

@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-23",
   "cadence_hours": 1,
-  "phase": "abu-dhabi-3d-asset-assessment",
+  "phase": "verified-venue-expansion",
   "active_run": null,
-  "next_action": "Assess Abu Dhabi 2026 current organizer products and licensed geographic inputs for a representative 3D scene. Existing yas-track.json uses drawing coordinates without an inverse meter transform: obtain local-meter circuit/footprint geography and preserve ODbL sources before modeling, never treat map pixels as meters. If suitable public geometry is unavailable, continue another verified venue or add Qatar/Bahrain touch-button zoom and surface/context polish. The existing four-scene audit and shared car-detail batch are complete; keep Vegas replay, reduced motion, paused stability, local ticket privacy and unsupported exact-seat labels.",
+  "next_action": "Verify the Saudi Arabia 2027 physical venue and current organizer products before assuming Jeddah or Qiddiya. Gather licensed local-meter GP/stand geography and implement a bounded representative 3D study if evidence supports it. If blocked, continue another verified venue or add shared seated touch-zoom and material/context polish. Yas 2026 now has seven product banks and 19,840 illustrative positions; its assessment and initial scene are complete. Preserve exact-seat uncertainty, existing scenes, replay, private local ticket matching and explicit source gaps.",
   "venues": [
     {
       "id": "las-vegas",
@@ -68,7 +68,7 @@
       "id": "abu-dhabi",
       "event": "Abu Dhabi",
       "venue": "Yas Marina",
-      "status": "area_locator_pilot",
+      "status": "area_locator_and_3d_reconstruction_2026",
       "sources": [
         "https://www.abudhabigp.com/en/formula1/tickets-2026/",
         "https://www.abudhabigp.com/en/faq",
@@ -81,9 +81,16 @@
         "https://www.abudhabigp.com/en/formula1/tickets-2026/west-grandstand-4day",
         "https://www.abudhabigp.com/en/formula1/tickets-2026/marina-grandstand-4day",
         "https://www.abudhabigp.com/en/formula1/tickets-2026/south-grandstand-4day",
-        "https://www.openstreetmap.org/copyright"
+        "https://www.openstreetmap.org/copyright",
+        "https://www.formula1.com/en/racing/2026/united-arab-emirates",
+        "https://www.openstreetmap.org/way/168477013"
       ],
-      "next_action": "Maintain sourced area pilot and race-scoped comparison; exact chairs, variant products and 3D remain unsupported."
+      "next_action": "Polish representative scene context and touch zoom as shared improvements; real chair inventory, curved stand tiers, bridge elevation, water/hotel context and calibrated views remain unverified.",
+      "seasons_with_3d_coverage": [
+        2026
+      ],
+      "modeled_positions": 19840,
+      "exact_seats_verified": false
     },
     {
       "id": "bahrain-sakhir",
@@ -469,6 +476,27 @@
         "Low-end-device performance and other browser engines unverified"
       ],
       "next": "Assess Abu Dhabi 2026 current organizer products and licensed geographic inputs for a representative 3D scene. Existing yas-track.json uses drawing coordinates without an inverse meter transform: obtain local-meter circuit/footprint geography and preserve ODbL sources before modeling, never treat map pixels as meters. If suitable public geometry is unavailable, continue another verified venue or add Qatar/Bahrain touch-button zoom and surface/context polish. The existing four-scene audit and shared car-detail batch are complete; keep Vegas replay, reduced motion, paused stability, local ticket privacy and unsupported exact-seat labels."
+    },
+    {
+      "date": "2026-11-23",
+      "run": "hourly-yas-2026-representative-3d",
+      "work": "Verified current Yas event/products; obtained separate local-meter OSM GP/stand geometry and added a seven-product, 19,840-position representative 3D study with existing controls. Corrected shared overview framing/fog and light-surface hover contrast.",
+      "evidence": [
+        "61 tests pass, including all new positions off the modeled road and Three.js overview projection clear of controls",
+        "Six connected GP ways, five named stand polygons, closed 250-vertex line, approximately 5303m; ODbL attribution/download",
+        "North/West full curved envelopes rejected for model placement; estimated representative banks keep all new positions more than 15m from the modeled track centerline",
+        "Desktop 1440x1000 and 390x844/320x740 checks: seven selectors, complete-grid last position, cameras, playback, comparison, share success and WebGL Retry",
+        "Guide and area handoffs work; 2027 plus legacy-seat route remains unsupported",
+        "Yas reference collection correctly empty; Qatar/Bahrain reference scopes retained",
+        "320px map dialog width/scroll 284px, document 320px; no page exceptions"
+      ],
+      "limitations": [
+        "Generated labels/counts are not official ticket inventories or real-seat matches",
+        "North/West/straight banks estimated; source envelopes do not establish actual row orientation",
+        "No water, hotel architecture, bridge elevation, accessible routes or measured sightlines modeled",
+        "No checked Yas photos/reviews yet; no live inventory or pricing"
+      ],
+      "next": "Verify the Saudi Arabia 2027 physical venue and current organizer products before assuming Jeddah or Qiddiya. Gather licensed local-meter GP/stand geography and implement a bounded representative 3D study if evidence supports it. If blocked, continue another verified venue or add shared seated touch-zoom and material/context polish. Yas 2026 now has seven product banks and 19,840 illustrative positions; its assessment and initial scene are complete. Preserve exact-seat uncertainty, existing scenes, replay, private local ticket matching and explicit source gaps."
     }
   ],
   "blockers": [

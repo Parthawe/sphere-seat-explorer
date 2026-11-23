@@ -75,3 +75,9 @@ The existing mapping automation now runs hourly at the user's request. Prioritiz
 ## Shared racing-car detail
 
 Qatar and Bahrain now show the detailed authored open-wheel cars already used by Vegas, including halo, wings, suspension, wheel hubs and rear lighting. Wheels rotate only during simulated playback. The shared visual component keeps motion separate, preserving the Vegas 2024 archive and the Qatar/Bahrain simulation distinction. These are representative car shapes, not season-certified specifications.
+
+## Abu Dhabi 2026 representative 3D
+
+All seven existing Yas grandstand products now link into their own geographic 3D study: Main, North, North Straight, West Straight, West, Marina and South. It includes 19,840 generated positions, full-circuit/stand/seated cameras, map, complete model grid, roof cutaway, simulated passing cars, comparison and sanitized sharing. These are representative positions, not official ticket IDs. The 2026 four-day product begins 3 December; the F1 racing weekend is 4–6 December. There is no inherited 2027 model.
+
+Five named OSM stand polygons provide context. Curved North/West and the two Straight products use explicitly estimated banks; Main/Marina/South use fitted envelopes. Surrounding water, hotel architecture, bridge elevation and real obstructions remain unmodeled. The reference browser shows an honest empty collection for Yas.

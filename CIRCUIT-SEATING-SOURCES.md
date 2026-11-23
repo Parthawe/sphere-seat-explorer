@@ -1,4 +1,4 @@
-# Qatar and Bahrain 3D seating studies
+# Circuit-specific 3D seating studies
 
 Checked 23 November 2026. These are circuit-specific illustrative reconstructions. Every generated position is selectable; this is not a complete or verified inventory of purchasable seats.
 
@@ -70,3 +70,37 @@ The circuit-map dialog shows source outlines, modeled bank envelopes, north-up g
 The Qatar/Bahrain studies now use the same authored open-wheel body as the existing Vegas scene: tapered chassis, cockpit/helmet, halo, multi-element front wing, rear wing/endplates, suspension rods, tire sidewall rings, wheel hubs and a rear lamp. The reusable component owns body/halo geometry cleanup; each scene owns its placement and motion. Qatar/Bahrain wheels turn while their simulated cars play and stop with pause. These shapes are illustrative, not manufacturer CAD or a certified 2026/2027 car specification. No team marks, external vehicle assets, photographs or new venue geometry were added.
 
 Vegas keeps its existing geometry, procedural pace and historical replay data/clock. Qatar/Bahrain retain their illustrative five-car, constant modeled-lap simulation; no telemetry or overtaking accuracy is implied.
+
+## Abu Dhabi · Yas Marina · 2026
+
+Checked 23 November 2026. [F1's event page](https://www.formula1.com/en/racing/2026/united-arab-emirates) places racing on 4–6 December and gives the circuit length as 5.281 km. The [organizer's 2026 catalogue](https://www.abudhabigp.com/en/formula1/tickets-2026/) and product pages cover four-day grandstand products starting 3 December. Model route: `?season=2026&race=united-arab-emirates&screen=circuit`. No 2027 layout is inherited.
+
+### Products and model regions
+
+| Product | Current official detail | Geographic / modeled foundation |
+| --- | --- | --- |
+| Main | https://www.abudhabigp.com/en/formula1/tickets-2026/main-grandstand-4day | Starting grid/pits; OSM 188731381, fitted envelope |
+| North | https://www.abudhabigp.com/en/formula1/tickets-2026/north-grandstand-4day | Turn 5; OSM 168411369 as context, representative estimated bank at 30,-930 |
+| North Straight | https://www.abudhabigp.com/en/formula1/tickets-2026/north-straight-grandstand-4day | Long straight after Turn 5; estimated bank at -170,-420 |
+| West Straight | https://www.abudhabigp.com/en/formula1/tickets-2026/west-straight-grandstand-4day | Straight towards Turns 6–7; estimated bank at -300,-65 |
+| West | https://www.abudhabigp.com/en/formula1/tickets-2026/west-grandstand-4day | Braking complex; OSM 133907352 as context, representative estimated bank at -390,230 |
+| Marina | https://www.abudhabigp.com/en/formula1/tickets-2026/marina-grandstand-4day | Marina-side final sector; OSM 133907079, fitted envelope |
+| South | https://www.abudhabigp.com/en/formula1/tickets-2026/south-grandstand-4day | Turn 9; OSM 133907081, fitted envelope |
+
+The organizer pages contain duplicated generic highlight blocks and some mismatched image alt text. Product headings and product-specific descriptions were used; generic grassy-hill copy was not treated as Main/North seating evidence. No prices, availability, image files or private tickets were imported.
+
+### Meter-space data and limits
+
+A public OSM map snapshot for bbox `54.598,24.462,54.612,24.480` supplied six connected Grand Prix ways: 168477013, 1469184731, 1469184732, 188337196, 1255169703, 1255169704. They form a closed 250-vertex line. An earlier, larger bbox request returned HTTP 400; the smaller public request succeeded. No access control or media block was bypassed.
+
+Coordinates are projected from longitude/latitude around `[54.605,24.471]`, in meters with south as positive Z. Adapted line length is approximately 5,303 m, not a replacement for the official measured length. Source geometry/IDs/date/licence are in `/data/yas-geometry.json`, under ODbL-1.0 with in-app attribution. The existing area desk's drawing-coordinate `yas-track.json` is unchanged and was not treated as meter data.
+
+Refresh one venue with `python3 scripts/collect-circuit-geometry.py yas`; `--input /path/to/public-osm.xml` can process an already retrieved public snapshot. An explicit input requires one venue. Connectivity/closure and plausible-length guards remain in place. Review updates before publication.
+
+North and West footprints are curved. Their full rectangular envelopes can contain the circuit; the initial West envelope placed generated positions on the road and was rejected. The scene instead uses narrow representative banks in their broad regions, marked estimated. A regression check exhaustively keeps every new model chair more than 15 m from the modeled track centerline. This protects internal model consistency; it does not certify real stand boundaries or clearance.
+
+The model has **19,840 illustrative positions across seven products**. Section/row counts, chairs, widths of estimated banks, rake, roofs, facing, fences, pit structures and light placement are authored. Water, hotel architecture, bridge elevation and final event structures are not reconstructed. Terrain is flattened. No official chair inventory, exact ticket match, accessible route or measured sightline is established. Photos/reports have an explicit empty collection; sources from other venues are never borrowed.
+
+### Rendering corrections shared with Qatar/Bahrain
+
+Full-circuit framing now uses each venue's geometry and bank bounds, viewport aspect and space reserved for controls. The previous fixed camera clipped the Yas south end. Overview fog/far range now follows camera distance instead of fading away the entire phone overview. Seated/stand mode restores its original fog and projection. The phone overview gets a taller bounded scene. Light-surface map/grid/position hover text stays dark; the prior global white hover rule hid selected bank names.

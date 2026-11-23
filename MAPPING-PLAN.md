@@ -1,3 +1,9 @@
+## Latest hourly checkpoint: Yas Marina 2026 representative 3D
+
+Abu Dhabi now has its own closed local-meter circuit model and seven product banks, with 19,840 illustrative positions. North/West curved footprints are context for estimated representative banks; Main/Marina/South use fitted envelopes, and both Straight banks remain estimated. This is not an official chair inventory or a surveyed digital twin. Read CIRCUIT-SEATING-SOURCES.md for provenance and absent water/hotel/bridge context. Source-driven overview framing and hover-contrast corrections also apply to Qatar/Bahrain.
+
+Next verify the physical venue and organizer products for Saudi Arabia 2027 before assuming Jeddah or Qiddiya. Collect licensed local-meter geometry and build a bounded representative study if evidence supports it. If that venue is blocked, continue the verified queue or the shared touch-zoom/material improvements; do not re-run the completed Yas assessment. Keep photo gaps open until attributable source-year/location evidence is available.
+
 ## Latest hourly checkpoint: shared car detail
 
 The existing-scene desktop/phone audit is complete for this batch. Qatar/Bahrain now share Vegas's detailed authored open-wheel body and retain independent simulation. Vegas replay and Sphere controls were checked. Next assess Abu Dhabi's licensed geometry for its own representative 3D scene. The current yas-track.json contains drawing coordinates and geographic stand anchors, without a preserved inverse meter transform; do not treat its 620-unit map points as meters. Recheck organizer products/year and obtain or reconstruct properly attributed local-meter geometry before building a 3D model. Remaining Qatar/Bahrain polish includes touch-button zoom and richer authored surface/context detail; exact temporary layouts and chairs stay unsupported.

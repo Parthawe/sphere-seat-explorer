@@ -9,7 +9,7 @@ import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import {OutputPass} from 'three/examples/jsm/postprocessing/OutputPass.js';
 import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
-import {bankFrame,footprintPlacement,localModelPosition,modelPosition,type CircuitModel,type ModelBank,type ModelPosition} from './circuitSeating';
+import {bankFrame,circuitOverviewCamera,footprintPlacement,localModelPosition,modelPosition,type CircuitModel,type ModelBank,type ModelPosition} from './circuitSeating';
 type Mode='circuit'|'stand'|'seat';
 type Props={model:CircuitModel;selection:ModelPosition;mode:Mode;playing:boolean;roofs:boolean;reset:number;onSelect:(p:ModelPosition)=>void;onUnavailable:()=>void;onReady:()=>void};
 function Instances({items,color,geometry,onClick}:{items:{p:number[];s:number[];r?:number[]}[];color:string;geometry?:T.BufferGeometry;onClick?:(index:number)=>void}){
@@ -56,7 +56,7 @@ function Track({model}:{model:CircuitModel}){
  const curve=useMemo(()=>new T.CatmullRomCurve3(model.track.slice(0,-1).map(p=>new T.Vector3(p[0],0,p[1])),true,'centripetal'),[model]);
  const curbs=useMemo(()=>{const out:{p:number[];s:number[];r:number[]}[][]=[[],[]];const samples=curve.getSpacedPoints(Math.round(model.length/4));samples.forEach((p,i)=>{const tangent=curve.getTangentAt(i/(samples.length-1)),yaw=Math.atan2(tangent.x,tangent.z);for(const side of [-1,1])out[i%2].push({p:[p.x-tangent.z*7.7*side,.13,p.z+tangent.x*7.7*side],s:[1.1,.18,4.1],r:[0,yaw,0]});});return out;},[curve,model]);
  useEffect(()=>()=>{road.dispose();runoff.dispose();textures.forEach(t=>t.dispose());},[road,runoff,textures]);
- return <><mesh geometry={runoff} receiveShadow><meshStandardMaterial color={model.id==='qatar'?'#355b69':'#967456'} roughness={.95}/></mesh><mesh geometry={road} receiveShadow><meshStandardMaterial map={textures[0]} normalMap={textures[1]} roughnessMap={textures[2]} normalScale={new T.Vector2(.35,.35)} color="#acb1ba" roughness={.78}/></mesh><Instances items={curbs[0]} color="#dc2529"/><Instances items={curbs[1]} color="#e9e8e5"/></>;
+ return <><mesh geometry={runoff} receiveShadow><meshStandardMaterial color={model.id==='qatar'?'#355b69':model.id==='united-arab-emirates'?'#347c8c':'#967456'} roughness={.95}/></mesh><mesh geometry={road} receiveShadow><meshStandardMaterial map={textures[0]} normalMap={textures[1]} roughnessMap={textures[2]} normalScale={new T.Vector2(.35,.35)} color="#acb1ba" roughness={.78}/></mesh><Instances items={curbs[0]} color="#dc2529"/><Instances items={curbs[1]} color="#e9e8e5"/></>;
 }
 function Context({model,selection}:{model:CircuitModel;selection:ModelPosition}){
  const bank=model.banks.find(b=>b.id===selection.bank)!,frame=bankFrame(model,bank);
@@ -64,7 +64,7 @@ function Context({model,selection}:{model:CircuitModel;selection:ModelPosition})
  const tower=model.features.find(f=>f.name==='Sakhir Tower'),towerCenter=tower?footprintPlacement(tower.points).center:undefined;
  const main=model.banks[0],mf=bankFrame(model,main),pit=[mf.target[0]+mf.forward[0]*28,mf.target[1]+mf.forward[1]*28];
  return <>
-  <mesh rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[6500,6500]}/><meshStandardMaterial color={model.id==='qatar'?'#29282b':'#493e36'} roughness={1}/></mesh>
+  <mesh rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><meshStandardMaterial color={model.id==='qatar'?'#29282b':model.id==='united-arab-emirates'?'#25343b':'#493e36'} roughness={1}/></mesh>
   {poles.map((p,i)=><group key={i} position={[p[0],0,p[1]]}><mesh position={[0,12,0]}><cylinderGeometry args={[.17,.33,24,6]}/><meshStandardMaterial color="#7c8796" metalness={.6}/></mesh><mesh position={[0,24,0]} rotation={[-.2,0,0]}><boxGeometry args={[4,.45,1.1]}/><meshBasicMaterial color={new T.Color(2.2,2.4,3)} toneMapped={false}/></mesh></group>)}
   <pointLight position={[bank.center[0]+frame.forward[0]*20,30,bank.center[1]+frame.forward[1]*20]} intensity={12500} distance={220} decay={2} color="#d5e5ff"/>
   <group position={[pit[0],0,pit[1]]} rotation={[0,mf.yaw,0]}>
@@ -87,18 +87,22 @@ function DemoCars({model,playing,selection}:{model:CircuitModel;playing:boolean;
  return <>{['#eb3433','#24b9ad','#fc9d34','#668cd9','#f1f3f8'].map((c,i)=><group key={c} ref={r=>{refs.current[i]=r;}}><FormulaCar color={c} wheels={r=>{wheels.current[i]=r;}}/></group>)}</>;
 }
 function Rig({model,selection,mode,reset}:Props){
- const {camera,gl,invalidate,size}=useThree(),control=useRef<OrbitControls|null>(null),tr=useRef<{p:T.Vector3;t:T.Vector3;elapsed:number;from:T.Vector3;fromT:T.Vector3}|null>(null),target=useRef(new T.Vector3());
+ const {camera,gl,invalidate,size,scene}=useThree(),control=useRef<OrbitControls|null>(null),tr=useRef<{p:T.Vector3;t:T.Vector3;elapsed:number;from:T.Vector3;fromT:T.Vector3}|null>(null),target=useRef(new T.Vector3());
  useEffect(()=>{const c=new OrbitControls(camera,gl.domElement);c.enablePan=false;c.minDistance=12;c.maxDistance=3000;c.maxPolarAngle=Math.PI*.495;control.current=c;const change=()=>invalidate(),start=()=>{tr.current=null;gl.domElement.dataset.modelReady='true';};c.addEventListener('change',change);c.addEventListener('start',start);return()=>{c.dispose();control.current=null;};},[camera,gl,invalidate]);
  useEffect(()=>{const bank=model.banks.find(b=>b.id===selection.bank)!,p=modelPosition(model,selection),f=bankFrame(model,bank);let position:T.Vector3,look:T.Vector3;
   if(mode==='seat'){position=new T.Vector3(p[0],p[1]+1.15,p[2]);look=new T.Vector3(p[0]+f.forward[0]*90,1.6,p[2]+f.forward[1]*90);}
   else if(mode==='stand'){const distance=Math.max(90,bank.width*.85);position=new T.Vector3(bank.center[0]+f.forward[0]*distance+f.forward[1]*distance*.25,distance*.65,bank.center[1]+f.forward[1]*distance-f.forward[0]*distance*.25);look=new T.Vector3(bank.center[0],4,bank.center[1]);}
-  else {const narrow=size.width<size.height;position=new T.Vector3(900,narrow?2200:1500,1350);look=new T.Vector3(100,0,100);}
-  const c=control.current;if(c){c.enabled=true;c.minDistance=mode==='seat'?.1:12;c.enableZoom=mode!=='seat';}
+  else {const top=Math.min(size.height*.35,size.width<760?250:220),bottom=110,fraction=Math.max(.2,1-(top+bottom)/size.height)*.95,overview=circuitOverviewCamera(model,size.width/size.height,fraction);position=new T.Vector3(...overview.eye);look=new T.Vector3(...overview.target);}
+  if(scene.fog instanceof T.Fog){const d=position.distanceTo(look);scene.fog.near=mode==='circuit'?d+1000:1000;scene.fog.far=mode==='circuit'?d+3000:4500;}
+  (camera as T.PerspectiveCamera).far=mode==='circuit'?Math.max(6500,position.distanceTo(look)+4000):6500;
+  const c=control.current;if(c){c.enabled=true;c.minDistance=mode==='seat'?.1:12;c.maxDistance=mode==='circuit'?Math.max(3000,position.distanceTo(look)*1.4):3000;c.enableZoom=mode!=='seat';}
+  (camera as T.PerspectiveCamera).clearViewOffset();
+  if(mode==='circuit'){const top=Math.min(size.height*.35,size.width<760?250:220);(camera as T.PerspectiveCamera).setViewOffset(size.width,size.height,0,(110-top)/2,size.width,size.height);}
   (camera as T.PerspectiveCamera).fov=mode==='seat'?(size.width<size.height?90:70):45;(camera as T.PerspectiveCamera).updateProjectionMatrix();
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){camera.position.copy(position);target.current.copy(look);camera.lookAt(look);c?.target.copy(look);tr.current=null;gl.domElement.dataset.modelReady='true';}
   else{tr.current={p:position,t:look,from:camera.position.clone(),fromT:target.current.clone(),elapsed:0};gl.domElement.dataset.modelReady='moving';}
   invalidate();
- },[model,selection.bank,selection.section,selection.row,selection.seat,mode,reset,size.width,size.height,camera,gl,invalidate]);
+ },[model,selection.bank,selection.section,selection.row,selection.seat,mode,reset,size.width,size.height,camera,gl,invalidate,scene]);
  // In seated mode orbit around the eye position, never move the camera through the stands.
  useEffect(()=>{if(mode!=='seat')return;const c=control.current;if(c)c.enabled=false;const el=gl.domElement;let last:{x:number;y:number}|null=null;const p=modelPosition(model,selection),f=bankFrame(model,model.banks.find(b=>b.id===selection.bank)!);let yaw=f.yaw,pitch=Math.atan2(1.6-p[1]-1.15,90);
   const down=(e:PointerEvent)=>{last={x:e.clientX,y:e.clientY};el.setPointerCapture(e.pointerId);tr.current=null;gl.domElement.dataset.modelReady='true';};const move=(e:PointerEvent)=>{if(!last)return;yaw-=(e.clientX-last.x)*.003;pitch=T.MathUtils.clamp(pitch+(e.clientY-last.y)*.003,-1.1,.7);last={x:e.clientX,y:e.clientY};target.current.set(camera.position.x+Math.sin(yaw)*90,camera.position.y+Math.sin(pitch)*90,camera.position.z+Math.cos(yaw)*90);camera.lookAt(target.current);invalidate();};const up=()=>{last=null;};const wheel=(e:WheelEvent)=>{e.preventDefault();const c=camera as T.PerspectiveCamera;c.fov=T.MathUtils.clamp(c.fov+e.deltaY*.03,35,105);c.updateProjectionMatrix();invalidate();};el.addEventListener('pointerdown',down);el.addEventListener('pointermove',move);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);el.addEventListener('wheel',wheel,{passive:false});return()=>{el.removeEventListener('pointerdown',down);el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);el.removeEventListener('wheel',wheel);};

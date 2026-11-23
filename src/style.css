@@ -5869,3 +5869,9 @@ dialog::backdrop {
  .circuit-overview-banks { padding:14px 0; border-left:0; border-top:1px solid #c7cdd6; }
  .circuit-overview-dialog footer { align-items:stretch; flex-direction:column; gap:14px; }
 }
+
+/* Keep light-surface controls readable under the app's white hover text rule. */
+:is(.circuit-overview-trigger,.circuit-grid-trigger,.circuit-row-shortcuts button,.circuit-saved button,.circuit-position-actions button:last-child,.circuit-grid-sections button:not([aria-pressed=true]),.circuit-grid-dialog header>button,.circuit-overview-dialog header>button,.spectator-dialog>header>button,.circuit-overview-banks button):hover:not(:disabled) { color:#1b2739; }
+.circuit-row-shortcuts button[aria-pressed=true]:hover:not(:disabled) { color:#bc130f; }
+
+@media(max-width:760px) { .circuit-model-stage.mode-circuit { height:88dvh; min-height:660px; } }

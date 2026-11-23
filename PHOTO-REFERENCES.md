@@ -53,3 +53,7 @@ A second targeted search did not establish a new selected-seat photo for the thr
 - Bahrain search results included editorial stand guides, seller footage and older reports. None checked in this pass established a 2024/2025 Beyon/Batelco attendee photograph with a reported camera area.
 
 No files or review bodies were copied and no additional media was loaded into the product. Continue the geographic-anchor audit next; revisit these photo leads when specific source evidence becomes available.
+
+## Yas Marina reference boundary
+
+The new Abu Dhabi 2026 model uses its own physical venue identity (`united-arab-emirates` in app routes). No checked attendee photo/report has been added for its seven products yet. The dialog names Yas Marina and keeps an empty collection instead of borrowing Qatar, Bahrain or Vegas sources. A venue with no checked sources no longer offers an empty venue-wide recovery action. OSM image links alone do not establish capture year, identified seat or reuse rights.

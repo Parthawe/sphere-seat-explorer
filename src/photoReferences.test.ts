@@ -69,3 +69,9 @@ test("curated references retain provenance, safe source links and bounded suppor
   assert.match(main.location, /E1/);
   assert.match(main.expectation, /do not correspond/);
 });
+
+
+test('new Yas scene has an honest empty reference collection without venue fallback',()=>{
+ assert.deepEqual(referencesFor('united-arab-emirates','main','area'),[]);
+ assert.deepEqual(referencesFor('united-arab-emirates','main','venue'),[]);
+});
