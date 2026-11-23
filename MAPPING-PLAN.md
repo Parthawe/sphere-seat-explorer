@@ -6,7 +6,7 @@ Each venue should connect verified event/year provider links, publicly readable 
 
 The Qatar pilot implements five area callouts, numbered-vs-free-seating rules, three-area comparison, public-only sharing, a private local text parser and an allowlisted metadata collector. Refresh with `npm run collect:tickets`; inspect differences before publishing. The collector fails closed on unreadable robots rules, makes no authenticated requests and does not infer availability. Runtime public snapshots require a validated Site deployment; this is not an autonomous hosted live feed.
 
-Next: verify Abu Dhabi area definitions and develop its locator, extract a shared venue schema from the two pilots, then resume Singapore and the remaining verified venues below. Revalidate dates and “next race” priority when time advances. Existing two-hour development automation covers this work; do not create a second schedule.
+Both remaining 2026 races now have area-locator pilots. Abu Dhabi has seven source-linked standard grandstands, four OSM building anchors and three explicitly estimated regions; exact seats, variants and 3D remain unavailable. Next: consolidate the two pilots into a shared venue registry, add Abu Dhabi comparison, then resume Singapore and the remaining verified venues below. Revalidate dates and “next race” priority when time advances. Existing two-hour development automation covers this work; do not create a second schedule.
 
 # Apex Atlas mapping programme
 

@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-23T07:45:24.142Z",
+  "checkedAt": "2026-11-23T09:46:11.939Z",
   "sources": [
     {
       "id": "main",
       "url": "https://www.lcsc.qa/ticket/main-grandstand-3-day",
-      "checkedAt": "2026-11-23T07:45:12.374Z",
+      "checkedAt": "2026-11-23T09:45:54.061Z",
       "status": "reference-price",
       "title": "Main Grandstand (3-Day) | Lusail International Circuit",
       "price": 2000,
@@ -15,7 +15,7 @@
     {
       "id": "north",
       "url": "https://www.lcsc.qa/ticket/north-grandstand-3-day",
-      "checkedAt": "2026-11-23T07:45:14.153Z",
+      "checkedAt": "2026-11-23T09:45:56.503Z",
       "status": "reference-price",
       "title": "North Grandstand (3-Day) | Lusail International Circuit",
       "price": 1500,
@@ -26,7 +26,7 @@
     {
       "id": "t2",
       "url": "https://www.lcsc.qa/ticket/t2-grandstand-3-day",
-      "checkedAt": "2026-11-23T07:45:15.790Z",
+      "checkedAt": "2026-11-23T09:45:58.003Z",
       "status": "reference-price",
       "title": "T2 Grandstand (3-Day) | Lusail International Circuit",
       "price": 1000,
@@ -37,7 +37,7 @@
     {
       "id": "t16",
       "url": "https://www.lcsc.qa/ticket/t16-grandstand-3-day",
-      "checkedAt": "2026-11-23T07:45:17.235Z",
+      "checkedAt": "2026-11-23T09:45:59.577Z",
       "status": "reference-price",
       "title": "T16 Grandstand (3-Day) | Lusail International Circuit",
       "price": 1000,
@@ -48,7 +48,7 @@
     {
       "id": "hill",
       "url": "https://www.lcsc.qa/ticket/general-admission-lusail-hill-3-day",
-      "checkedAt": "2026-11-23T07:45:18.755Z",
+      "checkedAt": "2026-11-23T09:46:01.308Z",
       "status": "reference-price",
       "title": "General Admission Lusail Hill (3-Day) | Lusail International Circuit",
       "price": 600,
@@ -59,14 +59,14 @@
     {
       "id": "f1",
       "url": "https://tickets.formula1.com/en/f1-56257-qatar",
-      "checkedAt": "2026-11-23T07:45:20.766Z",
+      "checkedAt": "2026-11-23T09:46:07.865Z",
       "status": "blocked",
       "note": "Automated access was blocked. Visit the provider directly."
     },
     {
       "id": "experiences",
       "url": "https://f1experiences.com/2026-qatar-grand-prix",
-      "checkedAt": "2026-11-23T07:45:23.011Z",
+      "checkedAt": "2026-11-23T09:46:10.793Z",
       "status": "metadata-only",
       "title": "Formula 1 Qatar Grand Prix 2026 Tickets | F1 Experiences",
       "note": "Public page checked; live stock and prices are unavailable in this snapshot."

@@ -94,3 +94,13 @@ Chromium checks at 1600×1050 and 390×844 covered visible racing motion, stable
 - Reduced-motion context checked; circuit highlight remains static and the moving dot is hidden. Keyboard Enter selects map areas. No page exceptions in the tested product flow. The intentional aborted snapshot request displayed an unavailable-price message.
 - Automated style detector ran once; its new side-border warning was removed. Existing Three.js bundle size warning remains confined to the lazy 3D experience; the Qatar desk does not load that renderer.
 - Limitations: area callouts are schematic and do not resolve exact rows/chairs, entrances, fencing or photographic sightlines. No live inventory, hosted price feed, checkout, account or upload/OCR is implemented. Abu Dhabi area mapping is the next scheduled chunk.
+
+
+## Abu Dhabi 2026 area pilot · 23 November 2026
+
+- 32 automated tests passed, including long versus short product aliases, venue-name ambiguity, wrong-year/event inputs, unsupported variants, numeric seat/year handling, public-only share URL cleanup, closed Yas geography and product source integrity.
+- Chromium desktop 1440×1050 and mobile 390×844: all seven area sources, selected-panel updates, locator example/manual/clear, matched/ambiguous/unknown/wrong-event states, unplaced variant guidance, public sharing, source disclosure and official handoffs checked. At 320px, document/client/viewport widths all remain 320px.
+- Found and fixed SVG marker hit targeting: long unpainted leader-line bounds no longer form the marker role-button. Pointer click and keyboard Enter now activate the circle target, while labels remain clickable. The seven ordinary buttons remain an accessible alternative.
+- Privacy check: a unique pasted marker did not appear in requests, localStorage or shared URL. Clipboard contained only the public 2026 race/area. No page exceptions occurred in the tested new flow.
+- Mechanical detector ran once with no findings. Independent bounded finish review returned Pass with no material findings in the supplied desktop/mobile screenshots and scoped source review. The review did not certify real-world accuracy or external inventory.
+- Limits remain explicit: approximate areas, not entrances, accessible routes, exact seats, section positions, 3D previews or photographic sightlines. Club/lounge/suite/Hill/concert products are unsupported. No current Abu Dhabi prices or inventory are inferred from public product pages.

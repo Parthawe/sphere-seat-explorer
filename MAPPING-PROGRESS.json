@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-23",
   "cadence_hours": 2,
-  "phase": "ticket-product-pilot",
+  "phase": "two-venue-ticket-pilots",
   "active_run": null,
-  "next_action": "Prioritize Abu Dhabi 2026: verify organizer viewing-area sources and extend the area locator with explicit uncertainty. Then extract the Qatar pilot into a shared venue registry and resume Singapore and remaining verified venues.",
+  "next_action": "Migrate Qatar and Abu Dhabi area metadata/drawings into a shared venue registry, preserving both private parsers and legacy links; add Abu Dhabi area comparison. Then source the Singapore pilot.",
   "venues": [
     {
       "id": "las-vegas",
@@ -40,13 +40,22 @@
       "id": "abu-dhabi",
       "event": "Abu Dhabi",
       "venue": "Yas Marina",
-      "status": "verified_ticket_links",
+      "status": "area_locator_pilot",
       "sources": [
         "https://www.abudhabigp.com/en/formula1/tickets-2026/",
         "https://www.abudhabigp.com/en/faq",
-        "https://tickets.formula1.com/en/f1-3312-abu-dhabi"
+        "https://tickets.formula1.com/en/f1-3312-abu-dhabi",
+        "https://www.abudhabigp.com/en/circuit",
+        "https://www.abudhabigp.com/en/formula1/tickets-2026/main-grandstand-4day",
+        "https://www.abudhabigp.com/en/formula1/tickets-2026/north-grandstand-4day",
+        "https://www.abudhabigp.com/en/formula1/tickets-2026/north-straight-grandstand-4day",
+        "https://www.abudhabigp.com/en/formula1/tickets-2026/west-straight-grandstand-4day",
+        "https://www.abudhabigp.com/en/formula1/tickets-2026/west-grandstand-4day",
+        "https://www.abudhabigp.com/en/formula1/tickets-2026/marina-grandstand-4day",
+        "https://www.abudhabigp.com/en/formula1/tickets-2026/south-grandstand-4day",
+        "https://www.openstreetmap.org/copyright"
       ],
-      "next_action": "Next priority: verify area naming, seating rules and map sources before implementing an approximate area locator."
+      "next_action": "Add race-scoped comparison while migrating Qatar and Abu Dhabi into a shared venue registry. Exact row/chair mapping, hospitality/GA variants, surveyed boundaries and 3D remain unsupported."
     },
     {
       "id": "bahrain-sakhir",
@@ -239,6 +248,24 @@
       "work": "Qatar 2026 ticket product pilot: local area locator, five approximate area callouts, official reference price collection, nine seller links, comparison/share and Abu Dhabi 2026 direct provider guidance. No exact chair coordinates or live stock claimed.",
       "sources_checked": "2026-11-23",
       "next": "Abu Dhabi 2026 area research and reusable venue registry"
+    },
+    {
+      "date": "2026-11-23",
+      "run": "2026-11-23T09:36:58Z-abu-dhabi",
+      "work": "Built Abu Dhabi 2026 area locator and geographic SVG map for seven standard grandstands; four named OSM building anchors and three estimated region callouts. Long-name aliases distinguish North/West from North/West Straight. Added local parsing, uncertainty, public-only sharing and per-product organizer handoffs. No exact seat, price or stock claims.",
+      "evidence": [
+        "32 automated tests passed",
+        "Desktop 1440x1050, mobile 390x844, narrow 320px browser checks",
+        "Marker pointer/keyboard, ambiguous/unknown/wrong-year/unsupported variants, privacy and sharing checked",
+        "Independent finish review: Pass, no material findings"
+      ],
+      "limitations": [
+        "Exact seat/section coordinates and 3D previews unavailable",
+        "Club, lounge, suite, Hill, hospitality and concert products unsupported",
+        "Official circuit map image returned HTTP 403; it was not downloaded or republished",
+        "Some official product pages repeat mismatched generic highlight/alt blocks; only product-specific descriptions and seating guidance used"
+      ],
+      "next": "Migrate Qatar and Abu Dhabi area metadata/drawings into a shared venue registry, preserving both private parsers and legacy links; add Abu Dhabi area comparison. Then source the Singapore pilot."
     }
   ],
   "blockers": []

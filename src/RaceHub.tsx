@@ -10,6 +10,7 @@ import {
   type Season,
   type Race,
 } from "./races";
+const AbuDhabiDesk = lazy(() => import("./AbuDhabiDesk"));
 const TicketDesk = lazy(() => import("./TicketDesk"));
 const VegasAtlas = lazy(() => import("./VegasAtlas"));
 const Explorer = lazy(() => import("./App"));
@@ -246,44 +247,15 @@ export default function RaceHub() {
               </Suspense>
             ) : selected.slug === "united-arab-emirates" &&
               route.season === 2026 ? (
-              <section className="race-coverage abu-dhabi-guide">
-                <p className="eyebrow">2026 SEASON FINALE · 4–6 DECEMBER</p>
-                <h2>Find your Abu Dhabi weekend</h2>
-                <p>
-                  Start with the organizer’s 2026 ticket catalogue, the F1 store
-                  or an experience package. Some passes include Thursday 3
-                  December. Exact viewing-area and seat mapping is not available
-                  in Apex Atlas yet.
-                </p>
-                <div className="verified-event-links">
-                  <a
-                    href="https://www.abudhabigp.com/en/formula1/tickets-2026/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Organizer’s 2026 tickets
-                  </a>
-                  <a
-                    href="https://tickets.formula1.com/en/f1-3312-abu-dhabi"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    F1 ticket store · Abu Dhabi
-                  </a>
-                  <a
-                    href="https://www.abudhabigp.com/en/faq"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Ticket delivery & event FAQ
-                  </a>
-                </div>
-                <p className="provider-note">
-                  Sources checked 23 November 2026. Prices and stock are not
-                  verified here. Confirm the named grandstand, ticket days, fees
-                  and delivery before buying.
-                </p>
-              </section>
+              <Suspense
+                fallback={
+                  <div className="hub-loading">
+                    Opening Abu Dhabi viewing areas…
+                  </div>
+                }
+              >
+                <AbuDhabiDesk />
+              </Suspense>
             ) : selected.slug === "las-vegas" ? (
               <section className="vegas-feature">
                 <img
@@ -456,7 +428,7 @@ export default function RaceHub() {
                       <span>
                         {r.slug === "qatar"
                           ? "Ticket desk & area map"
-                          : "2026 ticket sources"}
+                          : "Ticket sources & area map"}
                       </span>
                     </button>
                   ))}
@@ -560,7 +532,8 @@ export default function RaceHub() {
                           : "coverage-guide"
                       }
                     >
-                      {r.slug === "qatar" && route.season === 2026
+                      {["qatar", "united-arab-emirates"].includes(r.slug) &&
+                      route.season === 2026
                         ? "Ticket desk & area map"
                         : r.slug === "las-vegas"
                           ? "3D seat model"

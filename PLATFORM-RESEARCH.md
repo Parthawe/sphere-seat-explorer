@@ -50,3 +50,14 @@ The organizer's [grandstand](https://www.f1lasvegasgp.com/tickets/grandstands/),
 Collector implementation: scripts/collect-ticket-sources.mjs. It reads only allowlisted public pages, checks robots before fetching, does not follow redirects blindly, and keeps source failures explicit. No authenticated scraping or access-block bypass. A checked page is not proof of stock. Prices from other-event recommendations must never be attached to the current race.
 
 Adapted Lusail track: OSM ways 152483595 + 1553605580, queried 23 Nov 2026 with bbox 51.440,25.478,51.462,25.502. Coordinates projected to a north-up local SVG; downloadable derived data at /data/lusail-track.json under ODbL. Viewing callouts are placed schematically using official area descriptions and are not surveyed polygons.
+
+
+## Abu Dhabi area pilot · 23 November 2026
+
+The official F1 calendar still identifies Qatar as next (27–29 Nov), with Abu Dhabi on 4–6 Dec. The organizer’s standard grandstand products below span Thursday 3 Dec through Sunday 6 Dec. Ticket-specific access remains authoritative.
+
+Product-specific source records are in `src/abuDhabi.ts`: Main (grid/pits), North (Turn 5), North Straight (longest straight after Turn 5), West Straight and West (braking towards Turns 6–7), Marina (marina-side sector) and South (Turn 9). Each links its official `/en/formula1/tickets-2026/<product>-4day` page. The pages explicitly offer seat selection. Some pages repeat generic highlights about grassy-hill seating or mismatched West Straight image alt text; those repeated blocks are not accepted as product-location evidence. No published price or stock state is imported into this pilot.
+
+The official circuit page https://www.abudhabigp.com/en/circuit links a track-map image, but a direct reference download returned HTTP 403. No bypass or redistribution was attempted. The official circuit page remains the user handoff. FAQ and authorized seller links remain https://www.abudhabigp.com/en/faq and https://www.abudhabigp.com/en/authorized-onsellers.
+
+Geography: OSM map API bbox 54.599,24.465,54.610,24.481, queried 23 Nov 2026. The earlier wider request returned HTTP 400; the smaller circuit-specific bbox succeeded. Closed circuit ways: 168477013, 1469184731, 1469184732, 188337196, 1255169703, 1255169704. The assembled polyline is about 5.30 km and has not been surveyed or certified against 2026 race infrastructure. Named building anchors: Main 188731381; North 168411369; West 133907352; Marina 133907079. Building centroids use unique polygon vertices. North Straight, West Straight and South markers are inferred regions, not measured stand footprints. Projected track and anchor data are supplied under ODbL in `public/data/yas-track.json`; UI attribution links OSM contributors. No linked user photos or YouTube content were downloaded.

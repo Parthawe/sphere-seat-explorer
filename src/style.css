@@ -5329,3 +5329,145 @@ dialog::backdrop {
     font-size: 13px;
   }
 }
+/* Abu Dhabi uses the established ticket desk with source-specific confidence. */
+.abu-ticket-desk .desk-topline {
+  align-items: start;
+}
+.abu-ticket-desk .desk-topline p {
+  max-width: 760px;
+  color: #5d5d6c;
+  font-size: 16px;
+  margin: 15px 0 0;
+}
+.abu-locator-shortcut,
+.abu-provider-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 18px;
+  background: #15151e;
+  color: #fff;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.race-hub .abu-locator-shortcut:hover:not(:disabled) {
+  color: #fff;
+  background: #a80802;
+}
+.abu-ticket-desk .map-area-leader {
+  stroke: #696c7e;
+}
+.abu-ticket-desk .map-area.is-active .map-area-leader {
+  stroke: #ff6259;
+}
+.abu-ticket-desk .map-area-halo {
+  fill-opacity: 0.16;
+  stroke-opacity: 0.5;
+}
+.abu-ticket-desk .map-area.is-active .map-area-halo {
+  fill-opacity: 0.3;
+  stroke-opacity: 1;
+}
+.abu-ticket-desk .map-area-controls button {
+  font-size: 13px;
+  padding: 10px 12px;
+}
+.abu-location-confidence {
+  border-top: 1px solid #dadbe2;
+  padding-top: 16px;
+  margin: 0 0 22px;
+}
+.abu-location-confidence strong,
+.abu-location-confidence span {
+  display: block;
+  font-size: 13px;
+}
+.abu-location-confidence strong {
+  font-weight: 500;
+}
+.abu-location-confidence span {
+  margin: 5px 0 8px;
+  color: #a90802;
+}
+.ticket-panel .abu-location-confidence p {
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.6;
+}
+.abu-provider-primary {
+  white-space: normal;
+  width: 100%;
+  background: #be0903;
+  color: white;
+  text-decoration: none;
+}
+.abu-provider-primary:hover {
+  background: #9d0903;
+  text-decoration: none;
+}
+.abu-ticket-handoffs {
+  margin-top: 38px;
+}
+.abu-ticket-handoffs p {
+  font-size: 15px;
+  color: #60606f;
+  margin-top: 14px;
+}
+.abu-ticket-handoffs a {
+  color: #a70802;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.abu-ticket-desk .map-watermark {
+  font-size: 40px;
+  letter-spacing: 5px;
+}
+.abu-ticket-desk .area-title-row {
+  display: block;
+}
+.abu-ticket-desk .seating-tag {
+  display: inline-block;
+  margin: 0 0 14px;
+}
+.abu-ticket-desk .selected-area {
+  padding-top: 22px;
+}
+.abu-ticket-desk .reference-note {
+  margin-top: 12px;
+}
+@media (max-width: 760px) {
+  .abu-ticket-desk .desk-topline p {
+    font-size: 15px;
+  }
+  .abu-locator-shortcut {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .abu-ticket-desk .map-area-controls button {
+    min-width: 70px;
+  }
+  .abu-ticket-desk .map-heading {
+    font-size: 11px;
+  }
+  .abu-ticket-desk .map-label {
+    font-size: 16px;
+  }
+  .abu-ticket-desk .ticket-workspace {
+    margin-top: 22px;
+  }
+  .abu-ticket-desk .ticket-panel {
+    scroll-margin-top: 16px;
+  }
+}
+.venue-area-map .map-area {
+  cursor: pointer;
+}
+.venue-area-map .map-area g[role="button"] {
+  outline: none;
+}
+.venue-area-map .map-area g[role="button"]:focus-visible .map-area-halo {
+  stroke: white;
+  stroke-width: 3;
+  stroke-opacity: 1;
+}

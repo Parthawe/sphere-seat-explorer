@@ -24,3 +24,9 @@ The user selected **Apex Atlas** as the new name. Use the original red A/apex ma
 ## Qatar ticket desk
 
 Keep the established condensed display type, operational sans, race red, ink and paper. A large geographic circuit drawing and a focused decision panel form the primary work surface. The product supports two concrete jobs: finding ticket sources and locating an owned ticket’s viewing area. Mobile gets both entry actions before the circuit drawing. The provider directory uses aligned rows with clear event-versus-catalogue scope; no invented ratings, scarcity, stock or best-price badges. Reference prices always carry currency, duration, source and a checked date. Avoid adding more promotional sections above the work.
+
+## Abu Dhabi ticket desk
+
+Extend the approved ticket desk with Barlow Condensed, IBM Plex Sans, F1 red, ink and paper. Keep sourced circuit geometry on the left and ticket and area decisions on the right. On mobile, place the locator shortcut before the map. Use selectable map callouts and matching area controls; keep location evidence beside the selected product and its organizer link.
+
+Support seven standard grandstands: Main, North, North Straight, West, West Straight, Marina and South. Four markers use OpenStreetMap building anchors; three mark estimated track regions. Preserve these confidence labels and broad-area limits through selection and locator results. Ticket text stays in local tab state; shared links contain only the public race, year and area. Exact seat locations, seat-level 3D, prices and live stock are unavailable. Keep source attribution, checked dates, ticket-app guidance and provider handoffs accessible.
