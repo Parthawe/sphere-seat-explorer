@@ -1,12 +1,13 @@
 import { useState } from "react";
 import CircuitAreaMap from "./CircuitAreaMap";
+import AreaComparison from "./AreaComparison";
+import { requireVenue, venueAreaUrl } from "./venueRegistry";
+import { useAreaComparison } from "./useAreaComparison";
+const venue = requireVenue("abu-dhabi", 2026);
 import {
   abuAreas,
   locateAbuTicket,
-  abuShareUrl,
-  yasGeometry,
   ABU_CHECKED,
-  ABU_CIRCUIT,
   ABU_FAQ,
   ABU_TICKETS,
   type AbuAreaId,
@@ -23,6 +24,7 @@ export default function AbuDhabiDesk() {
     [text, setText] = useState(""),
     [match, setMatch] = useState<AbuMatch | null>(null),
     [feedback, setFeedback] = useState("");
+  const comparison = useAreaComparison(venue);
   const chosen = abuAreas.find((a) => a.id === area)!;
   function choose(id: string) {
     setArea(id as AbuAreaId);
@@ -35,7 +37,7 @@ export default function AbuDhabiDesk() {
     if (result.status === "matched") setArea(result.ids[0]);
   }
   async function share() {
-    const url = abuShareUrl(location.href, area);
+    const url = venueAreaUrl(location.href, venue, area);
     try {
       await navigator.clipboard.writeText(url);
       setFeedback("Area link copied. Ticket details are not included.");
@@ -70,15 +72,7 @@ export default function AbuDhabiDesk() {
         </button>
       </div>
       <div className="ticket-workspace">
-        <CircuitAreaMap
-          name="Yas Marina Circuit"
-          season={2026}
-          points={yasGeometry.points}
-          areas={abuAreas}
-          selected={area}
-          onSelect={choose}
-          officialMap={ABU_CIRCUIT}
-        />
+        <CircuitAreaMap venue={venue} selected={area} onSelect={choose} />
         <div className="ticket-panel" id="abu-ticket-panel">
           <div
             className="desk-jobs"
@@ -282,6 +276,21 @@ export default function AbuDhabiDesk() {
               confirmed with the seller.
             </p>
             <div className="area-actions">
+              <button
+                onClick={() => {
+                  if (comparison.toggle(area))
+                    setFeedback(
+                      "Three areas saved. Remove one from the comparison to add another.",
+                    );
+                  else setFeedback("");
+                }}
+              >
+                {comparison.saved.includes(area)
+                  ? "Remove from comparison"
+                  : comparison.saved.length >= 3
+                    ? "Comparison full · 3/3"
+                    : "Compare this area"}
+              </button>
               <button onClick={share}>Share area</button>
               <a href={ABU_FAQ} target="_blank" rel="noreferrer">
                 Ticket app & delivery guidance
@@ -293,6 +302,14 @@ export default function AbuDhabiDesk() {
           </div>
         </div>
       </div>
+      <AreaComparison
+        venue={venue}
+        saved={comparison.saved}
+        persistent={comparison.persistent}
+        onSelect={choose}
+        onRemove={comparison.remove}
+        onClear={comparison.clear}
+      />
       <section className="abu-ticket-handoffs">
         <h2>Continue with a ticket provider.</h2>
         <p>
@@ -338,8 +355,9 @@ export default function AbuDhabiDesk() {
           <p>
             The parser runs in your browser. Ticket text is not uploaded, stored
             or put into shared URLs. Sharing includes only the public race, year
-            and area ID. External ticket sites have their own privacy and
-            purchase terms.
+            and area ID. Comparisons save only public area IDs for this race and
+            season on this device; Clear comparison removes them. External
+            ticket sites have their own privacy and purchase terms.
           </p>
           <p>
             Product descriptions and seating: each selected area links its

@@ -106,3 +106,8 @@ The root now opens a Qatar ticket desk for the next remaining 2026 race. Locate 
 ### Abu Dhabi 2026 area locator
 
 Open `?season=2026&race=united-arab-emirates`. Seven standard grandstands have product-specific organizer links, a geographic circuit drawing and approximate area callouts. Four markers use named OSM stand buildings; three indicate inferred track regions. North Straight and West Straight remain distinct from North and West. The local parser supports section/row/seat text without mapping an exact chair, rejects unsupported variants and shares only public area IDs. Reference geography is downloadable under ODbL at `/data/yas-track.json`. No seat-level 3D, live prices or inventory are implemented for this circuit.
+
+
+### Shared venue registry and comparisons
+
+`src/venueRegistry.ts` holds the Qatar and Abu Dhabi event/year associations, geometry references, source dates, area confidence, map configuration and explicit coverage limits. Both desks use `CircuitAreaMap`, `AreaComparison` and `useAreaComparison`. Qatar’s legacy `apex-qatar-2026-areas` key is preserved; Abu Dhabi uses a separate key. Only valid public area IDs persist, up to three. Clear removes the race’s key. Blocked storage keeps the comparison in the current tab and displays a notice. The registry does not supply a 2027 ticket layout from a 2026 reference.

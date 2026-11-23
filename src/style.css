@@ -5471,3 +5471,18 @@ dialog::backdrop {
   stroke-width: 3;
   stroke-opacity: 1;
 }
+.area-comparison .section-line > button {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.area-comparison .comparison-scroll-hint {
+  display: none;
+}
+@media (max-width: 760px) {
+  .area-comparison .comparison-scroll-hint {
+    display: block;
+    font-size: 12px;
+    margin: 10px 0 2px;
+    color: #60606e;
+  }
+}

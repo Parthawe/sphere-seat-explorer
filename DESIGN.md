@@ -30,3 +30,9 @@ Keep the established condensed display type, operational sans, race red, ink and
 Extend the approved ticket desk with Barlow Condensed, IBM Plex Sans, F1 red, ink and paper. Keep sourced circuit geometry on the left and ticket and area decisions on the right. On mobile, place the locator shortcut before the map. Use selectable map callouts and matching area controls; keep location evidence beside the selected product and its organizer link.
 
 Support seven standard grandstands: Main, North, North Straight, West, West Straight, Marina and South. Four markers use OpenStreetMap building anchors; three mark estimated track regions. Preserve these confidence labels and broad-area limits through selection and locator results. Ticket text stays in local tab state; shared links contain only the public race, year and area. Exact seat locations, seat-level 3D, prices and live stock are unavailable. Keep source attribution, checked dates, ticket-app guidance and provider handoffs accessible.
+
+## Shared venue maps and comparison
+
+Qatar and Abu Dhabi use a year-specific venue registry and shared SVG renderer within the established ticket-desk design. Preserve Qatar’s hatched seating markers, track annotations and moving dot, and Abu Dhabi’s area callouts. Compare up to three valid public area IDs within one race and year. Show seating, race focus and location confidence in aligned table columns. Qatar includes dated 3-day reference prices; Abu Dhabi has no price column.
+
+On mobile, keep horizontal table scrolling inside its labeled region with a visible scroll hint, and keep “Clear comparison” on one line. Show the tab-only notice when device storage is blocked. Ticket parsers remain browser-local; raw ticket text never enters comparisons or shared links.

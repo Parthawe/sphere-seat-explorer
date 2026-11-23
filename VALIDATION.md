@@ -104,3 +104,16 @@ Chromium checks at 1600×1050 and 390×844 covered visible racing motion, stable
 - Privacy check: a unique pasted marker did not appear in requests, localStorage or shared URL. Clipboard contained only the public 2026 race/area. No page exceptions occurred in the tested new flow.
 - Mechanical detector ran once with no findings. Independent bounded finish review returned Pass with no material findings in the supplied desktop/mobile screenshots and scoped source review. The review did not certify real-world accuracy or external inventory.
 - Limits remain explicit: approximate areas, not entrances, accessible routes, exact seats, section positions, 3D previews or photographic sightlines. Club/lounge/suite/Hill/concert products are unsupported. No current Abu Dhabi prices or inventory are inferred from public product pages.
+
+
+## Shared venue registry and comparison · 23 November 2026
+
+- 38 automated tests passed. New checks cover event/year lookup, distinct closed geometry, attribution and coverage limits, corrupt/duplicate/private/unsupported comparison values, capacity/removal, race/year storage keys and public-only share URLs.
+- Qatar and Abu Dhabi now use the same registry-backed SVG renderer and comparison table. Qatar retains hatch markers, track annotations, animated dot, source geometry, price duration and legacy storage key. Abu Dhabi retains four OSM stand anchors and three estimated regions; its comparison adds no price or live-stock claim.
+- Chromium desktop 1440×1050, mobile 390×844 and 320px: add three, capacity rejection, remove/re-add, row selection, clear and reload persistence passed. Mobile comparison scrolls within its table region; the document remains 320px wide at a 320px viewport. Map keyboard activation and selected-panel agreement passed.
+- Seeded legacy Qatar IDs restored without affecting Abu Dhabi choices. Clearing Qatar removed its key while Abu Dhabi’s three saved IDs remained. A unique pasted ticket marker did not appear in requests or localStorage. Both share paths strip unrelated query/hash data. A blocked-localStorage context displayed the tab-only comparison notice.
+- Qatar parser and legacy Las Vegas WebGL entry still worked; no page exceptions observed. No 2026 desk appeared under the 2027 season.
+- Mechanical detector ran once with no findings. Source compilation passed after resolving a case-insensitive module-name collision by naming the pure helper `comparisonState.ts`.
+- Geometry and seat-accuracy limits are unchanged. Venue-certified chair positions, other circuits’ 3D views, live stock and current Abu Dhabi prices remain unavailable.
+
+Independent finish review closed with Pass and no outstanding findings. Two minor mobile refinements were applied and confirmed: Clear comparison stays on one line, and the horizontal-scroll hint appears only on small screens. The table remains keyboard-focusable. Qatar public source collection refreshed successfully: all five published reference prices unchanged; the F1 store remains access-blocked, with no stock inferred.

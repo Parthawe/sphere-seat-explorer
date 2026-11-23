@@ -1,3 +1,4 @@
+import { findVenue } from "./venueRegistry";
 import { BrandMark } from "./BrandMark";
 import type { Mode } from "./model";
 import { lazy, Suspense, useEffect, useState } from "react";
@@ -532,8 +533,7 @@ export default function RaceHub() {
                           : "coverage-guide"
                       }
                     >
-                      {["qatar", "united-arab-emirates"].includes(r.slug) &&
-                      route.season === 2026
+                      {findVenue(route.season, r.slug)
                         ? "Ticket desk & area map"
                         : r.slug === "las-vegas"
                           ? "3D seat model"

@@ -6,192 +6,20 @@ import {
   providers,
   providerUrl,
   FAQ,
-  EVENT_MAP,
   CHECKED,
   type AreaId,
   type TicketMatch,
   type SourceSnapshot,
 } from "./ticketing";
-import geography from "./lusail-track.json";
+import CircuitAreaMap from "./CircuitAreaMap";
+import AreaComparison from "./AreaComparison";
+import { requireVenue, venueAreaUrl } from "./venueRegistry";
+import { useAreaComparison } from "./useAreaComparison";
+const venue = requireVenue("qatar", 2026);
 const initialArea = () =>
-  areas.find((a) => a.id === new URLSearchParams(location.search).get("area"))
-    ?.id || "main";
-const track = "M" + geography.points.map((p) => p.join(",")).join(" L") + " Z";
-function CircuitMap({
-  selected,
-  onSelect,
-}: {
-  selected: AreaId;
-  onSelect: (id: AreaId) => void;
-}) {
-  return (
-    <div className="lusail-map">
-      <div className="map-heading">
-        <span>LUSAIL INTERNATIONAL CIRCUIT</span>
-        <span>QATAR / 2026</span>
-      </div>
-      <svg
-        viewBox="0 0 620 570"
-        role="group"
-        aria-label={`Lusail circuit with five approximate viewing areas. Selected: ${areas.find((a) => a.id === selected)!.name}. Select a marked area or use the buttons below the map.`}
-      >
-        <defs>
-          <pattern
-            id="atlas-grid"
-            width="36"
-            height="36"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M36 0H0V36"
-              fill="none"
-              stroke="#ffffff"
-              strokeOpacity=".045"
-            />
-          </pattern>
-          <pattern
-            id="stand-lines"
-            width="5"
-            height="5"
-            patternUnits="userSpaceOnUse"
-          >
-            <path d="M0 1H5" stroke="#8a8b97" strokeWidth="1" />
-          </pattern>
-        </defs>
-        <rect width="620" height="570" fill="url(#atlas-grid)" />
-        <path
-          d={track}
-          fill="#20212b"
-          stroke="#353744"
-          strokeWidth="26"
-          strokeLinejoin="round"
-        />
-        <path
-          d={track}
-          fill="none"
-          stroke="#f0f1f4"
-          strokeWidth="8"
-          strokeLinejoin="round"
-        />
-        <path
-          d={track}
-          className="circuit-racing-line"
-          fill="none"
-          stroke="#e10600"
-          strokeWidth="3"
-          strokeDasharray="90 1800"
-          strokeLinecap="round"
-        />
-        <g className="circuit-car">
-          <circle r="5" fill="#f7bb4c">
-            <animateMotion dur="19s" repeatCount="indefinite" path={track} />
-          </circle>
-        </g>
-        <path
-          d="M199 339L240 387"
-          stroke="#9195a6"
-          strokeWidth="4"
-          strokeDasharray="4 4"
-        />
-        <text x="253" y="393" className="map-micro">
-          START / FINISH
-        </text>
-        <path d="M208 319L252 378" stroke="#5a5d70" strokeWidth="11" />
-        <text x="265" y="365" className="map-micro">
-          PITS
-        </text>
-        <text x="126" y="199" className="map-micro">
-          T1
-        </text>
-        <text x="179" y="254" className="map-micro">
-          T2
-        </text>
-        <text x="310" y="456" className="map-micro">
-          T16
-        </text>
-        {areas.map((a) => (
-          <g
-            key={a.id}
-            className={`map-area ${selected === a.id ? "is-active" : ""}`}
-            role="button"
-            tabIndex={0}
-            aria-label={`Select ${a.name} on map`}
-            aria-pressed={selected === a.id}
-            onClick={() => onSelect(a.id)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                onSelect(a.id);
-              }
-            }}
-          >
-            <circle
-              cx={a.x}
-              cy={a.y}
-              r={selected === a.id ? 32 : 22}
-              className="map-area-halo"
-            />
-            <rect
-              x={a.x - 14}
-              y={a.y - 8}
-              width="28"
-              height="16"
-              rx="2"
-              fill="url(#stand-lines)"
-              transform={`rotate(52 ${a.x} ${a.y})`}
-            />
-            <circle cx={a.x} cy={a.y} r="5" className="map-area-dot" />
-            <text
-              x={a.x + (a.id === "hill" ? -35 : 19)}
-              y={a.y - 18}
-              className="map-label"
-            >
-              {a.short}
-            </text>
-          </g>
-        ))}
-        <g transform="translate(549 63)">
-          <path
-            d="M0 27V0M-6 8L0 0L6 8"
-            fill="none"
-            stroke="#a3a6b7"
-            strokeWidth="1.5"
-          />
-          <text x="-5" y="-9" className="map-micro">
-            N
-          </text>
-        </g>
-        <text x="34" y="524" className="map-watermark">
-          LUSAIL
-        </text>
-        <text x="36" y="547" className="map-micro">
-          GEOGRAPHIC TRACK · SCHEMATIC VIEWING AREAS
-        </text>
-      </svg>
-      <div
-        className="map-area-controls"
-        role="group"
-        aria-label="Viewing areas"
-      >
-        {areas.map((a) => (
-          <button
-            key={a.id}
-            aria-pressed={selected === a.id}
-            onClick={() => onSelect(a.id)}
-          >
-            {a.short === "Hill" ? "Lusail Hill" : a.short}
-          </button>
-        ))}
-      </div>
-      <div className="map-caption">
-        <span>Area estimate · no row or seat coordinates</span>
-        <a href={EVENT_MAP} target="_blank" rel="noreferrer">
-          Official event map
-        </a>
-      </div>
-    </div>
-  );
-}
+  (venue.areas.find(
+    (a) => a.id === new URLSearchParams(location.search).get("area"),
+  )?.id as AreaId) || "main";
 export default function TicketDesk({ compact = false }: { compact?: boolean }) {
   const [area, setArea] = useState<AreaId>(initialArea),
     [job, setJob] = useState<"find" | "locate">("find"),
@@ -201,18 +29,8 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
     [dataError, setDataError] = useState(false),
     [sellerFilter, setSellerFilter] = useState("all"),
     [feedback, setFeedback] = useState("");
-  const [saved, setSaved] = useState<AreaId[]>(() => {
-    try {
-      const v = JSON.parse(
-        localStorage.getItem("apex-qatar-2026-areas") || "[]",
-      );
-      return Array.isArray(v)
-        ? v.filter((id) => areas.some((a) => a.id === id)).slice(0, 3)
-        : [];
-    } catch {
-      return [];
-    }
-  });
+  const comparison = useAreaComparison(venue),
+    saved = comparison.saved;
   useEffect(() => {
     const controller = new AbortController();
     fetch("/data/ticket-sources.json", { signal: controller.signal })
@@ -226,13 +44,6 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
       });
     return () => controller.abort();
   }, []);
-  useEffect(() => {
-    try {
-      localStorage.setItem("apex-qatar-2026-areas", JSON.stringify(saved));
-    } catch {
-      /* unavailable storage does not block planning */
-    }
-  }, [saved]);
   const chosen = areas.find((a) => a.id === area)!;
   const priceFor = (id: AreaId) =>
     snapshot?.sources.find(
@@ -249,24 +60,19 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
     if (match.status === "matched") setArea(match.ids[0]);
   }
   function toggleSaved() {
-    if (saved.includes(area)) setSaved(saved.filter((id) => id !== area));
-    else if (saved.length < 3) setSaved([...saved, area]);
-    else
+    if (comparison.toggle(area))
       setFeedback(
         "Three areas saved. Remove one from the comparison to add another.",
       );
+    else setFeedback("");
   }
   async function share() {
-    const url = new URL(location.href);
-    url.search = "";
-    url.searchParams.set("season", "2026");
-    url.searchParams.set("race", "qatar");
-    url.searchParams.set("area", area);
+    const url = venueAreaUrl(location.href, venue, area);
     try {
-      await navigator.clipboard.writeText(url.href);
+      await navigator.clipboard.writeText(url);
       setFeedback("Area link copied. Your ticket details are not included.");
     } catch {
-      setFeedback("Copy this area link: " + url.href);
+      setFeedback("Copy this area link: " + url);
     }
   }
   function start(task: "find" | "locate") {
@@ -322,7 +128,11 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
         </span>
       </div>
       <div className="ticket-workspace">
-        <CircuitMap selected={area} onSelect={choose} />
+        <CircuitAreaMap
+          venue={venue}
+          selected={area}
+          onSelect={(id) => choose(id as AreaId)}
+        />
         <div className="ticket-panel" id="qatar-ticket-panel">
           <div
             className="desk-jobs"
@@ -454,12 +264,10 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
                     <button
                       className="show-area-on-map"
                       onClick={() =>
-                        document
-                          .querySelector(".lusail-map")
-                          ?.scrollIntoView({
-                            block: "start",
-                            behavior: "instant",
-                          })
+                        document.querySelector(".lusail-map")?.scrollIntoView({
+                          block: "start",
+                          behavior: "instant",
+                        })
                       }
                     >
                       See area on map
@@ -546,63 +354,18 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
           </div>
         </div>
       </div>
-      {saved.length > 0 && (
-        <section className="area-comparison" aria-label="Saved area comparison">
-          <div className="section-line">
-            <h2>
-              Your area comparison <span>{saved.length}/3</span>
-            </h2>
-            <button onClick={() => setSaved([])}>Clear comparison</button>
-          </div>
-          <div className="comparison-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">Viewing area</th>
-                  <th scope="col">Seating</th>
-                  <th scope="col">Race focus</th>
-                  <th scope="col">3-day reference</th>
-                  <th scope="col">Selection</th>
-                </tr>
-              </thead>
-              <tbody>
-                {saved.map((id) => {
-                  const a = areas.find((a) => a.id === id)!,
-                    p = priceFor(id);
-                  return (
-                    <tr key={id}>
-                      <th scope="row">
-                        <button onClick={() => choose(id)}>{a.name}</button>
-                      </th>
-                      <td>{a.kind}</td>
-                      <td>{a.focus}</td>
-                      <td>
-                        {p
-                          ? `${p.price?.toLocaleString("en")} QAR`
-                          : "Check seller"}
-                      </td>
-                      <td>
-                        <button
-                          onClick={() =>
-                            setSaved(saved.filter((v) => v !== id))
-                          }
-                          aria-label={`Remove ${a.name}`}
-                        >
-                          Remove
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-          <p>
-            Same race and duration. Reference prices exclude any unverified fees
-            or changes; this is not a live offer comparison.
-          </p>
-        </section>
-      )}
+      <AreaComparison
+        venue={venue}
+        saved={saved}
+        persistent={comparison.persistent}
+        onSelect={(id) => choose(id as AreaId)}
+        onRemove={comparison.remove}
+        onClear={comparison.clear}
+        referencePrice={(id) => {
+          const price = priceFor(id as AreaId);
+          return price ? `${price.price?.toLocaleString("en")} QAR` : undefined;
+        }}
+      />
       <section id="ticket-sellers" className="ticket-sellers">
         <div className="section-line">
           <div>

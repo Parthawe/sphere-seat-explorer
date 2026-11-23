@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-23",
   "cadence_hours": 2,
-  "phase": "two-venue-ticket-pilots",
+  "phase": "shared-venue-registry",
   "active_run": null,
-  "next_action": "Migrate Qatar and Abu Dhabi area metadata/drawings into a shared venue registry, preserving both private parsers and legacy links; add Abu Dhabi area comparison. Then source the Singapore pilot.",
+  "next_action": "Verify Singapore 2026/2027 event and venue identity, gather official circuit/viewing-area sources and licensed geography, then implement a registry-backed Singapore area pilot. Keep unsupported season layouts explicit.",
   "venues": [
     {
       "id": "las-vegas",
@@ -22,7 +22,7 @@
       "venue": "Marina Bay",
       "status": "queued_unverified",
       "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "next_action": "Verify Singapore 2026/2027 event and venue identity, gather official circuit/viewing-area sources and licensed geography, then implement a registry-backed Singapore area pilot. Keep unsupported season layouts explicit."
     },
     {
       "id": "qatar",
@@ -55,7 +55,7 @@
         "https://www.abudhabigp.com/en/formula1/tickets-2026/south-grandstand-4day",
         "https://www.openstreetmap.org/copyright"
       ],
-      "next_action": "Add race-scoped comparison while migrating Qatar and Abu Dhabi into a shared venue registry. Exact row/chair mapping, hospitality/GA variants, surveyed boundaries and 3D remain unsupported."
+      "next_action": "Maintain sourced area pilot and race-scoped comparison; exact chairs, variant products and 3D remain unsupported."
     },
     {
       "id": "bahrain-sakhir",
@@ -266,6 +266,24 @@
         "Some official product pages repeat mismatched generic highlight/alt blocks; only product-specific descriptions and seating guidance used"
       ],
       "next": "Migrate Qatar and Abu Dhabi area metadata/drawings into a shared venue registry, preserving both private parsers and legacy links; add Abu Dhabi area comparison. Then source the Singapore pilot."
+    },
+    {
+      "date": "2026-11-23",
+      "run": "2026-11-23T11:35:30Z-registry",
+      "work": "Consolidated Qatar and Abu Dhabi into a season-specific venue registry and shared SVG renderer, preserving geometry, confidence, original Qatar annotations and both local parsers. Added Abu Dhabi three-area comparison with per-race/year persistence and shared public-only URL handling. Qatar legacy comparison IDs remain compatible.",
+      "evidence": [
+        "38 automated tests passed",
+        "Desktop1440x1050/mobile390x844/320px comparison and map checks",
+        "Race-key isolation, Qatar legacy restoration, capacity/removal/clear/reload, blocked-storage recovery and privacy checks passed",
+        "Qatar parser and legacy Vegas WebGL entry passed; no page exceptions",
+        "Independent finish review closed Pass with no outstanding findings; two minor mobile refinements resolved"
+      ],
+      "limitations": [
+        "Coverage remains approximate areas, not surveyed seats or sightlines",
+        "No Abu Dhabi price or inventory column added",
+        "2027 layouts are not inherited from 2026 references"
+      ],
+      "next": "Verify Singapore 2026/2027 event and venue identity, gather official circuit/viewing-area sources and licensed geography, then implement a registry-backed Singapore area pilot. Keep unsupported season layouts explicit."
     }
   ],
   "blockers": []
