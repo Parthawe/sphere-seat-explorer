@@ -1,6 +1,6 @@
 # Viewpoint · F1 Race & Seat Explorer
 
-An independent, F1-inspired race browser for the published 2026 and 2027 calendars, with a true-3D Las Vegas Sphere-zone seat explorer. Browse every listed race, review ticket categories, and open official sources. Las Vegas is the only modeled venue.
+An independent, F1-inspired race browser for the published 2026 and 2027 calendars, with a true-3D Las Vegas circuit explorer and illustrative Sphere interior. Browse every listed race, review ticket categories, and open official sources. Las Vegas is the only modeled race. Sphere indoor seating is a separate illustrative venue study.
 
 ## Run locally
 
@@ -26,7 +26,7 @@ Deep links preserve the season and selected race. Existing `?seat=...` links con
 ## What works
 
 - A seated opening view, aerial overview, and close grandstand inspection with interruptible camera travel.
-- Five modeled grandstand positions, a complete all-position seating overview, numbered full grids, magnification, bounded row/seat inputs, and keyboard navigation.
+- Nine modeled outdoor seating banks, a complete all-position seating overview, numbered full grids, magnification, bounded row/seat inputs, and keyboard navigation.
 - Orbit controls in overview and grandstand mode; drag-to-look and bounded field-of-view zoom from a seat.
 - Actual scene geometry for tiers, track, fencing, barriers, support posts, buildings, and Sphere.
 - Three-position comparison with linked horizontal/vertical camera angles and reset.
@@ -40,11 +40,19 @@ Deep links preserve the season and selected race. Existing `?seat=...` links con
 - Browser-local shortlists, shareable URLs, and back/forward navigation.
 - Responsive mobile controls, reduced-motion camera changes, source details, and 2D fallback after WebGL loss.
 
+## Whole Las Vegas explorer
+
+The atlas lists 16 viewing products from the organizer's current reference pages: five grandstand products, two general-admission areas and nine hospitality products. The map is schematic. Each product links to its official category page; guide-only areas never receive invented seat numbers. The 2027 deposit page remains the current organizer destination.
+
+The outdoor scene contains 6,444 modeled positions across nine illustrative banks, including start/finish, Turn 17 and Turns 3–4. These counts describe the app, not complete official grandstand inventories. Full-circuit mode, the location inset and all-bank grid provide navigation into the scene.
+
+Inside Sphere is a separate cutaway 3D study with four levels, 39 section references and 16,220 selectable model markers. It includes a selected-section grid and level/section/row/seat controls. Those rows, counts, elevations and screen geometry are illustrative and do not certify a view or identify an actual ticket. Eight links lead to Sphere's official floor/access maps. Show layouts and actual numbering must be checked against the event-specific ticket map.
+
 ## Model accuracy
 
 This is a **2026 historical reference reconstruction**, not a certified digital twin, photographic seat preview, or live ticketing system. The organizer's 2026 diagram informs the track and approximate grandstand placement. Seat-level measurements and most venue dimensions were unavailable. The Sphere shell now uses the published 516 ft width and 366 ft height as a spherical cap cut at ground level. Its artwork is an original amber face. This calibrates the exterior envelope only, not its placement relative to individual seats.
 
-A–E are app-specific modeled position labels, not official section identifiers. Row counts, seat numbers, spacing, elevations, fences, buildings, and obstructions are estimated reconstruction parameters. Eye height is computed within the model. Choosing a position does not reserve a ticket or establish that a corresponding ticket exists.
+A–E, M, H, K and F are app-specific modeled bank labels, not official section identifiers. Row counts, seat numbers, spacing, elevations, fences, buildings, and obstructions are estimated reconstruction parameters. Eye height is computed within the model. Choosing a position does not reserve a ticket or establish that a corresponding ticket exists.
 
 The original Singapore video is an interaction reference only. Its footage and assets are not redistributed. Sphere artwork, geometry, maps, and UI artwork in this repository are original procedural work. No Formula 1, Sphere, or ticketing-partner affiliation is implied. The generic spectator silhouettes are illustrative artwork, not a representation of an actual event attendance.
 
@@ -61,6 +69,9 @@ Inspected 22 November 2026:
 Live organizer pages can change to newer editions. The model is not automatically updated. No live availability or pricing is displayed.
 
 See [platform research](PLATFORM-RESEARCH.md) for the current ticketing and venue-view references behind the group-planning and comparison changes.
+
+- [Organizer grandstands](https://www.f1lasvegasgp.com/tickets/grandstands/), [general admission](https://www.f1lasvegasgp.com/tickets/general-admission/) and [hospitality](https://www.f1lasvegasgp.com/tickets/hospitality/): listed viewing products and viewing focuses.
+- [Sphere official venue maps](https://www.thesphere.com/plan-your-visit/maps): floor/level access references. [Venue visualization reference](https://sites.3ddigitalvenue.com/3dmap/clients/sphere/level-200/): common section ranges; event-specific configurations can differ.
 
 ## Architecture
 

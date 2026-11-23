@@ -1,4 +1,4 @@
-export type Mode = "overview" | "stand" | "seat";
+export type Mode = "overview" | "circuit" | "stand" | "seat";
 export type Selection = {
   stand: string;
   row: number;
@@ -11,6 +11,7 @@ export type Stand = {
   name: string;
   corner: string;
   description: string;
+  zone?: string;
   center: [number, number, number];
   rotation: number;
   rows: number;
@@ -73,6 +74,54 @@ export const stands: Stand[] = [
     rotation: 0.55,
     rows: 18,
     seats: 30,
+  },
+  {
+    id: "M",
+    name: "Main grandstand bank",
+    corner: "START / FINISH",
+    zone: "East Harmon",
+    description:
+      "A modeled bank representing the main-grandstand viewing area. Inspect the starting straight; exact seating subdivisions are unverified.",
+    center: [645, 0, -125],
+    rotation: -0.65,
+    rows: 18,
+    seats: 60,
+  },
+  {
+    id: "H",
+    name: "Turn 17 bank",
+    corner: "T17",
+    zone: "West Harmon / Performance Zone",
+    description:
+      "A modeled bank for the Lewis Hamilton Grandstand area at the final corner. This is not its official seat inventory.",
+    center: [765, 0, 50],
+    rotation: -Math.PI / 2,
+    rows: 18,
+    seats: 42,
+  },
+  {
+    id: "K",
+    name: "Turn 3 bank",
+    corner: "T3–T4",
+    zone: "Koval",
+    description:
+      "An illustrative seating bank facing the Turn 3 area. Verify the real section and aisle layout with the organizer.",
+    center: [615, 0, 70],
+    rotation: -Math.PI / 2,
+    rows: 18,
+    seats: 40,
+  },
+  {
+    id: "F",
+    name: "Turn 4 bank",
+    corner: "T4",
+    zone: "Koval",
+    description:
+      "A modeled bank for the Heineken Grandstands area beside Turn 4. Rows, dimensions and relative positions are estimated.",
+    center: [520, 0, 65],
+    rotation: 0,
+    rows: 18,
+    seats: 36,
   },
 ];
 export const DEFAULT: Selection = { stand: "C", row: 12, seat: 18 };
@@ -156,7 +205,10 @@ export function readUrl(search: string) {
     .filter((s, i, a) => a.findIndex((x) => key(x) === key(s)) === i)
     .slice(0, 3);
   const value = p.get("view");
-  const mode: Mode = value === "overview" || value === "stand" ? value : "seat";
+  const mode: Mode =
+    value === "overview" || value === "circuit" || value === "stand"
+      ? value
+      : "seat";
   return { current, saved, mode, hasComparison: p.has("compare") };
 }
 export function makeSearch(current: Selection, mode: Mode, saved: Selection[]) {
@@ -183,9 +235,14 @@ export function seatPosition(s: Selection): [number, number, number] {
   ];
 }
 export function seatTarget(s: Selection): [number, number, number] {
-  const a = getStand(s.stand).rotation;
+  const stand = getStand(s.stand),
+    a = stand.rotation;
   const p = seatPosition(s);
-  return [p[0] + Math.sin(a) * 90, p[1] + 22, p[2] + Math.cos(a) * 90];
+  return [
+    p[0] + Math.sin(a) * 90,
+    p[1] + (stand.zone ? -2 : 22),
+    p[2] + Math.cos(a) * 90,
+  ];
 }
 export function addSaved(saved: Selection[], s: Selection) {
   return saved.some((x) => key(x) === key(s))

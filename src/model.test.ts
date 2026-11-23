@@ -139,3 +139,50 @@ test("Sphere cap is grounded and matches the published exterior envelope", async
   assert.ok(Math.abs(box.max.x - box.min.x - 157.2768) < 0.03);
   geometry.dispose();
 });
+
+test("expanded outdoor banks retain every seat and group within bounds", () => {
+  assert.equal(stands.length, 9);
+  assert.equal(
+    stands.reduce((n, s) => n + s.rows * s.seats, 0),
+    6444,
+  );
+  for (const stand of stands) {
+    const s = { stand: stand.id, row: stand.rows, seat: stand.seats, party: 4 };
+    assert.deepEqual(readUrl(makeSearch(s, "circuit", [])).current, s);
+    assert.equal(readUrl(makeSearch(s, "circuit", [])).mode, "circuit");
+    assert.equal(partySeats(s).at(-1), stand.seats);
+    assert.ok(seatPosition(s).every(Number.isFinite));
+  }
+});
+test("every product with 3D coverage points to an existing modeled bank", async () => {
+  const { vegasAreas } = await import("./vegas");
+  assert.equal(vegasAreas.length, 16);
+  assert.equal(new Set(vegasAreas.map((a) => a.id)).size, vegasAreas.length);
+  for (const area of vegasAreas) {
+    assert.ok(area.point.every(Number.isFinite));
+    if (area.stand) assert.ok(stands.some((s) => s.id === area.stand));
+    if (area.kind === "General admission") assert.equal(area.stand, undefined);
+  }
+});
+test("interior model covers four levels and all illustrative markers uniquely", async () => {
+  const { bowlLevels, bowlPosition, bowlSeatCount, sphereMaps } =
+    await import("./vegas");
+  assert.equal(bowlLevels.length, 4);
+  assert.equal(
+    bowlLevels.reduce((n, l) => n + l.sections, 0),
+    39,
+  );
+  assert.equal(bowlSeatCount, 16220);
+  const positions = new Set<string>();
+  for (const l of bowlLevels)
+    for (let section = l.first; section < l.first + l.sections; section++)
+      for (let row = 1; row <= l.rows; row++)
+        for (let seat = 1; seat <= l.seats; seat++) {
+          const p = bowlPosition({ level: l.level, section, row, seat });
+          assert.ok(p.every(Number.isFinite));
+          positions.add(p.map((x) => x.toFixed(5)).join(":"));
+        }
+  assert.equal(positions.size, bowlSeatCount);
+  assert.equal(sphereMaps.length, 8);
+  assert.equal(new Set(sphereMaps.map((m) => m.url)).size, 8);
+});

@@ -3185,5 +3185,917 @@ dialog::backdrop {
     height: 210px;
   }
 }
-.race-feature-strip .venue-preview-image {height:240px;min-height:0;align-self:center;}
-@media(max-width:760px){.race-feature-strip .venue-preview-image{height:160px;width:100%;object-fit:cover;}}
+.race-feature-strip .venue-preview-image {
+  height: 240px;
+  min-height: 0;
+  align-self: center;
+}
+@media (max-width: 760px) {
+  .race-feature-strip .venue-preview-image {
+    height: 160px;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+/* Las Vegas atlas: a whole-circuit directory and separate indoor study. */
+.vegas-atlas {
+  background: #f6f6f8;
+  color: #15151e;
+  min-height: 100dvh;
+}
+.vegas-atlas .site-header {
+  color: #fff;
+  justify-content: space-between;
+}
+.vegas-atlas .site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.vegas-atlas .site-header nav a {
+  color: #c9cbd7;
+  font-size: 13px;
+}
+.vegas-atlas main {
+  max-width: 1440px;
+  margin: auto;
+  padding: 0 42px 50px;
+}
+.atlas-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 44px 0 32px;
+  gap: 30px;
+}
+.atlas-intro h1 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.atlas-intro h1 em {
+  color: #d00500;
+}
+.atlas-intro p {
+  margin-top: 18px;
+  color: #5a5e70;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 600px;
+}
+.atlas-edition {
+  text-align: right;
+  flex: none;
+}
+.atlas-edition strong {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 54px;
+  font-weight: 700;
+  font-style: italic;
+  display: block;
+}
+.atlas-edition span {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #65697b;
+}
+.atlas-tabs {
+  display: flex;
+  border-bottom: 1px solid #bec2ce;
+  margin-bottom: 24px;
+  gap: 28px;
+}
+.atlas-tabs button {
+  padding: 14px 0;
+  font-size: 16px;
+  color: #5a5e70;
+}
+.atlas-tabs button[aria-pressed="true"] {
+  color: #bc0500;
+  border-bottom: 3px solid #e10600;
+  font-weight: 600;
+}
+.vegas-atlas button:hover:not(:disabled) {
+  color: #b00500;
+}
+.vegas-atlas .primary-button:hover:not(:disabled),
+.vegas-atlas .site-header button:hover:not(:disabled) {
+  color: #fff;
+}
+.atlas-map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  min-height: 550px;
+}
+.atlas-map {
+  background: #11141e;
+  color: #fff;
+  position: relative;
+  min-width: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.atlas-map-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+}
+.atlas-map-title h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 26px;
+  text-transform: uppercase;
+}
+.atlas-map-title span {
+  color: #aeb6c9;
+  font-size: 12px;
+}
+.atlas-map > svg {
+  width: 100%;
+  height: 410px;
+  display: block;
+}
+.atlas-map svg g[role="button"] {
+  cursor: pointer;
+  outline: none;
+}
+.atlas-map svg g[role="button"]:focus circle {
+  stroke: #e10600;
+  stroke-width: 7;
+}
+.atlas-map svg g[role="button"]:hover circle {
+  stroke: #e10600;
+  stroke-width: 4;
+}
+.atlas-map-legend {
+  display: flex;
+  gap: 24px;
+  color: #b6bed0;
+  font-size: 12px;
+}
+.atlas-map-legend span {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.atlas-map-legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f0f2f8;
+}
+.atlas-map-legend span:nth-child(2) i {
+  background: #7c8aa9;
+}
+.atlas-map-legend span:nth-child(3) i {
+  background: #343d53;
+  border: 1px solid #a3aabe;
+}
+.atlas-circuit-open {
+  align-self: start;
+  border: 1px solid #626c83;
+  margin-top: 20px;
+  padding: 11px 18px;
+  font-weight: 600;
+}
+.vegas-atlas .atlas-circuit-open:hover:not(:disabled) {
+  color: #fff;
+  background: #292f40;
+}
+.atlas-area-detail {
+  padding: 28px 24px;
+  border: 1px solid #c4c7d3;
+}
+.atlas-area-detail > span {
+  color: #636779;
+  font-size: 12px;
+}
+.atlas-area-detail h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 32px;
+  line-height: 1.06;
+  margin-top: 12px;
+  margin-bottom: 22px;
+}
+.atlas-area-detail dl > div {
+  margin-bottom: 18px;
+}
+.atlas-area-detail dt {
+  font-size: 12px;
+  color: #686c7d;
+  margin-bottom: 5px;
+}
+.atlas-area-detail dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.atlas-area-detail .primary-button {
+  font-size: 14px;
+  padding: 14px 12px;
+}
+.atlas-area-detail > a {
+  display: block;
+  color: #b50000;
+  text-underline-offset: 3px;
+  margin-top: 18px;
+  font-size: 14px;
+}
+.atlas-reference-note,
+.atlas-no-seats {
+  font-size: 12px;
+  color: #65697b;
+  line-height: 1.7;
+  margin-top: 18px;
+}
+.sphere-bank-links {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.sphere-bank-links button {
+  border: 1px solid #c4c7d3;
+  padding: 8px;
+  font-size: 11px;
+}
+.atlas-compare-button {
+  border: 1px solid #bfc3d0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px;
+  margin-top: 18px;
+  text-align: left;
+  font-size: 13px;
+}
+.atlas-compare-button[aria-pressed="true"] {
+  background: #15151e;
+  color: white;
+}
+.atlas-compare-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.atlas-directory,
+.all-bank-directory,
+.area-comparison,
+.atlas-planning,
+.sphere-official-levels {
+  margin-top: 44px;
+}
+.atlas-directory h2,
+.all-bank-directory h2,
+.area-comparison h2,
+.atlas-planning h2,
+.sphere-official-levels h2,
+.sphere-interior-intro h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  font-size: 32px;
+}
+.atlas-directory-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.atlas-directory-heading label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 13px;
+  color: #5a5e70;
+}
+.atlas-directory-heading input {
+  font: inherit;
+  font-size: 16px;
+  padding: 10px 12px;
+  border: 1px solid #bfc3d0;
+  background: #fff;
+  color: #15151e;
+}
+.atlas-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.atlas-filters button {
+  border: 1px solid #bfc3d0;
+  padding: 9px 14px;
+}
+.atlas-filters button[aria-pressed="true"] {
+  background: #15151e;
+  color: #fff;
+}
+.atlas-directory-rows > button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.4fr 1.2fr 0.8fr 1.1fr;
+  gap: 22px;
+  text-align: left;
+  padding: 20px 14px;
+  border-top: 1px solid #d0d3de;
+  align-items: center;
+  font-size: 13px;
+  color: #5b6073;
+}
+.atlas-directory-rows > button strong {
+  font-size: 16px;
+  color: #15151e;
+}
+.atlas-directory-rows > button[aria-pressed="true"] {
+  background: #e9eaf0;
+}
+.atlas-directory-rows > button:last-child {
+  border-bottom: 1px solid #d0d3de;
+}
+.atlas-empty {
+  padding: 28px;
+  background: #e9eaf0;
+}
+.atlas-empty button {
+  color: #b00500;
+  margin-top: 15px;
+  text-decoration: underline;
+}
+.all-bank-directory > p,
+.sphere-official-levels > p {
+  color: #626779;
+  line-height: 1.7;
+  font-size: 15px;
+  max-width: 780px;
+  margin: 12px 0 24px;
+}
+.all-bank-directory > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 24px;
+}
+.all-bank-directory button {
+  border-top: 1px solid #bec3d0;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 6px 12px;
+  padding: 20px 0;
+}
+.all-bank-directory button > span:first-child {
+  font-size: 22px;
+  font-weight: 600;
+  grid-row: 1/3;
+  color: #be0500;
+}
+.all-bank-directory button strong {
+  font-size: 16px;
+}
+.all-bank-directory button > span:last-child {
+  font-size: 12px;
+  color: #626779;
+}
+.area-comparison-table {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+.area-comparison-table article {
+  border-top: 2px solid #15151e;
+  padding-top: 18px;
+}
+.area-comparison-table h3 {
+  font-size: 20px;
+}
+.area-comparison-table p {
+  font-size: 12px;
+  color: #626779;
+  margin-top: 8px;
+}
+.area-comparison-table dl {
+  margin: 20px 0;
+}
+.area-comparison-table dl > div {
+  padding: 9px 0;
+  border-bottom: 1px solid #d0d3de;
+}
+.area-comparison-table dt {
+  font-size: 12px;
+  color: #626779;
+}
+.area-comparison-table dd {
+  font-size: 14px;
+  margin: 5px 0 0;
+}
+.area-comparison-table button {
+  padding: 9px 12px;
+  border: 1px solid #bfc3d0;
+  margin-right: 8px;
+  font-size: 12px;
+}
+.atlas-planning > div:first-of-type {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 24px;
+}
+.atlas-planning h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.atlas-planning p {
+  font-size: 14px;
+  color: #626779;
+  line-height: 1.7;
+}
+.atlas-resource-links {
+  display: flex;
+  gap: 25px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.atlas-resource-links a {
+  font-size: 13px;
+  color: #b50000;
+  text-underline-offset: 3px;
+}
+.sphere-interior-intro {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 24px;
+}
+.sphere-interior-intro p {
+  max-width: 690px;
+  color: #626779;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+.sphere-interior-intro > a {
+  color: #b50000;
+  font-size: 14px;
+  white-space: nowrap;
+  margin-top: 10px;
+}
+.sphere-interior-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  min-height: 570px;
+}
+.sphere-bowl-view {
+  background: #090b12;
+  position: relative;
+  min-height: 570px;
+}
+.sphere-bowl-view > div:first-child {
+  position: absolute !important;
+  inset: 0;
+}
+.bowl-view-controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  background: #15151e;
+  border: 1px solid #4b5368;
+  color: #d9dce6;
+}
+.bowl-view-controls button {
+  padding: 10px 14px;
+  font-size: 13px;
+}
+.bowl-view-controls button[aria-pressed="true"] {
+  background: #e10600;
+  color: white;
+}
+.vegas-atlas .bowl-view-controls button:hover:not(:disabled) {
+  color: white;
+}
+.bowl-model-label {
+  position: absolute;
+  left: 22px;
+  bottom: 20px;
+  font-size: 12px;
+  color: #c1c8d8;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+.bowl-model-label span {
+  display: block;
+  margin-top: 7px;
+  font-size: 11px;
+  color: #9ca8be;
+  letter-spacing: 0;
+}
+.bowl-selection {
+  border: 1px solid #c4c7d3;
+  padding: 26px 22px;
+}
+.bowl-selection h3 {
+  font-size: 22px;
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+.bowl-selection label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: #606577;
+  margin-bottom: 18px;
+}
+.bowl-selection select,
+.bowl-selection input[type="number"] {
+  padding: 11px 12px;
+  background: white;
+  border: 1px solid #b7bece;
+  font: inherit;
+  font-size: 16px;
+  color: #15151e;
+  min-width: 0;
+  width: 100%;
+  border-radius: 0;
+}
+.bowl-row-seat {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.bowl-selection .show-all-levels {
+  flex-direction: row;
+  align-items: center;
+  margin-top: 4px;
+}
+.show-all-levels input {
+  accent-color: #e10600;
+}
+.bowl-selection p {
+  font-size: 12px;
+  color: #656b7e;
+  line-height: 1.7;
+}
+.bowl-selection a {
+  color: #b50000;
+  font-size: 14px;
+  display: block;
+  margin-top: 20px;
+}
+.bowl-fallback {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  min-height: 300px;
+  padding: 36px;
+  color: #d9dce6;
+  font-size: 16px;
+}
+.sphere-official-levels > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 24px;
+}
+.sphere-official-levels a {
+  border-top: 1px solid #bfc3d0;
+  padding: 20px 0;
+  color: #15151e;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.sphere-official-levels a span {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #b50000;
+}
+.stand-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+.zone-grid-stands {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.view-switch {
+  max-width: calc(100% - 42px);
+}
+.view-switch button {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media (max-width: 1000px) {
+  .vegas-atlas main {
+    padding: 0 25px 40px;
+  }
+  .atlas-map-layout {
+    grid-template-columns: minmax(0, 1fr) 290px;
+  }
+  .atlas-map {
+    padding: 20px;
+  }
+  .atlas-map-title {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .atlas-map > svg {
+    height: 370px;
+  }
+  .atlas-map-legend {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .atlas-intro h1 {
+    font-size: 48px;
+  }
+  .sphere-interior-layout {
+    grid-template-columns: minmax(0, 1fr) 280px;
+  }
+  .sphere-bowl-view {
+    min-height: 540px;
+  }
+}
+@media (max-width: 760px) {
+  .vegas-atlas main {
+    padding: 0 18px 32px;
+  }
+  .vegas-atlas .site-header {
+    padding: 0 18px;
+    height: 72px;
+  }
+  .vegas-atlas .site-header nav a {
+    display: none;
+  }
+  .vegas-atlas .site-header nav {
+    gap: 0;
+  }
+  .vegas-atlas .wordmark {
+    gap: 8px;
+  }
+  .vegas-atlas .wordmark > span {
+    font-size: 19px;
+  }
+  .vegas-atlas .wordmark svg {
+    width: 28px;
+  }
+  .vegas-atlas .wordmark-sub {
+    font-size: 8px;
+  }
+  .atlas-intro {
+    padding: 30px 0 24px;
+  }
+  .atlas-intro h1 {
+    font-size: 38px;
+  }
+  .atlas-intro p {
+    font-size: 15px;
+  }
+  .atlas-edition {
+    display: none;
+  }
+  .atlas-tabs {
+    gap: 24px;
+  }
+  .atlas-tabs button {
+    font-size: 15px;
+  }
+  .atlas-map-layout {
+    grid-template-columns: 1fr;
+  }
+  .atlas-map {
+    padding: 18px;
+  }
+  .atlas-map-title h2 {
+    font-size: 24px;
+  }
+  .atlas-map > svg {
+    height: 280px;
+  }
+  .atlas-map-title span {
+    font-size: 11px;
+  }
+  .atlas-map-legend {
+    font-size: 10px;
+    gap: 15px;
+  }
+  .atlas-circuit-open {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+  .atlas-area-detail {
+    padding: 24px;
+  }
+  .atlas-area-detail h2 {
+    font-size: 30px;
+  }
+  .atlas-area-detail dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+  }
+  .atlas-area-detail dl > div:last-child {
+    grid-column: 1 / 3;
+  }
+  .atlas-directory-heading {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+  .atlas-filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .atlas-filters button {
+    font-size: 12px;
+    padding: 10px;
+  }
+  .atlas-directory-rows > button {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    padding: 18px 0;
+  }
+  .atlas-directory-rows > button strong {
+    grid-column: 1 / 3;
+  }
+  .atlas-directory-rows > button > span:last-child {
+    grid-column: 1 / 3;
+  }
+  .all-bank-directory > div {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+  }
+  .all-bank-directory button {
+    grid-template-columns: 20px 1fr;
+    gap: 6px 8px;
+  }
+  .all-bank-directory button strong {
+    font-size: 14px;
+  }
+  .all-bank-directory button > span:last-child {
+    font-size: 11px;
+  }
+  .area-comparison-table {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .atlas-planning > div:first-of-type {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .atlas-resource-links {
+    gap: 16px;
+  }
+  .sphere-interior-intro {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sphere-interior-intro p {
+    font-size: 15px;
+  }
+  .sphere-interior-layout {
+    grid-template-columns: 1fr;
+  }
+  .sphere-bowl-view {
+    min-height: 420px;
+    height: 420px;
+  }
+  .bowl-selection {
+    padding: 24px;
+  }
+  .bowl-selection label {
+    font-size: 14px;
+  }
+  .sphere-official-levels > div {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+  }
+  .sphere-official-levels a {
+    font-size: 14px;
+  }
+  .bowl-view-controls {
+    top: 14px;
+    left: 14px;
+  }
+  .bowl-view-controls button {
+    font-size: 12px;
+    padding: 9px;
+  }
+  .bowl-model-label {
+    left: 14px;
+    bottom: 16px;
+    font-size: 10px;
+  }
+  .bowl-model-label span {
+    font-size: 10px;
+  }
+  .zone-grid-stands {
+    grid-template-columns: 1fr 1fr;
+  }
+  .zone-grid-stands > button:last-child {
+    grid-column: auto;
+  }
+  .view-switch {
+    max-width: calc(100% - 82px);
+    left: 18px;
+    right: auto;
+    top: 118px;
+  }
+  .view-switch button {
+    padding: 9px 7px;
+    font-size: 10px;
+  }
+}
+.bowl-section-plan {
+  margin-top: 38px;
+}
+.bowl-section-plan > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.bowl-section-plan h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.bowl-section-plan > div > span {
+  font-size: 12px;
+  color: #626779;
+}
+.bowl-section-plan > p {
+  font-size: 14px;
+  color: #626779;
+  margin: 12px 0 20px;
+}
+.bowl-section-plan > svg {
+  width: 100%;
+  max-height: 420px;
+  display: block;
+  padding: 15px;
+  background: #eceef3;
+  cursor: pointer;
+}
+@media (max-width: 760px) {
+  .bowl-section-plan > div {
+    align-items: start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .bowl-section-plan h2 {
+    font-size: 26px;
+  }
+  .bowl-section-plan > svg {
+    max-height: none;
+  }
+}
+.bowl-fallback p {
+  max-width: 430px;
+  line-height: 1.7;
+}
+.bowl-fallback button {
+  display: block;
+  padding: 11px 18px;
+  border: 1px solid #8d99b1;
+  margin-top: 20px;
+  color: #fff;
+}
+.vegas-atlas .bowl-fallback button:hover:not(:disabled) {
+  color: #fff;
+  background: #2a3246;
+}
+.header-action-short {
+  display: none;
+}
+@media (max-width: 760px) {
+  .header-action-full {
+    display: none;
+  }
+  .header-action-short {
+    display: inline;
+  }
+  .app-shell .site-header {
+    gap: 12px;
+  }
+  .app-shell .site-header .wordmark {
+    gap: 7px;
+  }
+  .app-shell .site-header .wordmark > span {
+    font-size: 20px;
+  }
+  .app-shell .site-header nav {
+    gap: 8px;
+  }
+  .app-shell .site-header .all-races-button {
+    font-size: 11px;
+    padding: 8px;
+  }
+}

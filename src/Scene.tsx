@@ -56,7 +56,7 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
     c.enableDamping = false;
     c.maxPolarAngle = Math.PI * 0.48;
     c.minDistance = 30;
-    c.maxDistance = 650;
+    c.maxDistance = 2000;
     c.enablePan = false;
     c.addEventListener("change", () => invalidate());
     c.addEventListener("start", () => {
@@ -83,6 +83,12 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
         seat[2] - Math.cos(angle) * 8 - Math.sin(angle) * 7,
       );
       t = new T.Vector3(seat[0], seat[1] - 0.4, seat[2] + 2);
+    } else if (mode === "circuit") {
+      const narrow = (camera as T.PerspectiveCamera).aspect < 1;
+      p = narrow
+        ? new T.Vector3(1000, 1250, -1450)
+        : new T.Vector3(780, 650, -850);
+      t = new T.Vector3(245, 15, 130);
     } else {
       const narrow = (camera as T.PerspectiveCamera).aspect < 1;
       p = narrow
@@ -134,7 +140,7 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
     (camera as T.PerspectiveCamera).updateProjectionMatrix();
     seatAngles.current = {
       yaw: getStand(selection.stand).rotation,
-      pitch: Math.atan(22 / 90),
+      pitch: Math.atan((getStand(selection.stand).zone ? -2 : 22) / 90),
     };
     invalidate();
   }, [
@@ -152,7 +158,9 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
     const p = seatPosition(selection),
       yaw =
         getStand(selection.stand).rotation + (previewLook.yaw * Math.PI) / 180,
-      pitch = Math.atan(22 / 90) + (previewLook.pitch * Math.PI) / 180;
+      pitch =
+        Math.atan((getStand(selection.stand).zone ? -2 : 22) / 90) +
+        (previewLook.pitch * Math.PI) / 180;
     camera.position.set(...p);
     target.current.set(
       p[0] + Math.sin(yaw) * Math.cos(pitch) * 90,

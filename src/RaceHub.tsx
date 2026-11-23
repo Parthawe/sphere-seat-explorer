@@ -1,3 +1,4 @@
+import type { Mode } from "./model";
 import { lazy, Suspense, useEffect, useState } from "react";
 import {
   calendars,
@@ -8,8 +9,16 @@ import {
   type Season,
   type Race,
 } from "./races";
+const VegasAtlas = lazy(() => import("./VegasAtlas"));
 const Explorer = lazy(() => import("./App"));
-type Route = { season: Season; race: string; seats: boolean };
+type Route = {
+  season: Season;
+  race: string;
+  seats: boolean;
+  atlas?: boolean;
+  position?: string;
+  mode?: Mode;
+};
 function readRoute(): Route {
   const p = new URLSearchParams(location.search);
   return {
@@ -22,6 +31,7 @@ function readRoute(): Route {
             ? 2026
             : 2027,
     race: p.get("race") || "",
+    atlas: p.get("screen") === "vegas",
     seats: p.get("screen") === "seats" || p.has("seat") || p.has("view"),
   };
 }
@@ -64,7 +74,14 @@ export default function RaceHub() {
   function go(next: Route) {
     const p = new URLSearchParams({ season: String(next.season) });
     if (next.race) p.set("race", next.race);
-    if (next.seats) p.set("screen", "seats");
+    if (next.atlas) p.set("screen", "vegas");
+    else if (next.seats) {
+      p.set("screen", "seats");
+      if (next.position) {
+        p.set("seat", `${next.position}:12:18`);
+        p.set("view", next.mode || "seat");
+      }
+    }
     history.pushState({}, "", `?${p}`);
     setRoute(next);
     window.scrollTo(0, 0);
@@ -81,12 +98,38 @@ export default function RaceHub() {
         (filter === "3d" && r.slug === "las-vegas")),
   );
   useEffect(() => {
-    document.title = route.seats
-      ? "Las Vegas · 3D Seat Explorer"
-      : selected
-        ? `${selected.name} ${route.season} · Viewpoint`
-        : `F1 Races ${route.season} · Viewpoint`;
+    document.title = route.atlas
+      ? "Las Vegas · All Areas & Sphere Interior"
+      : route.seats
+        ? "Las Vegas · 3D Seat Explorer"
+        : selected
+          ? `${selected.name} ${route.season} · Viewpoint`
+          : `F1 Races ${route.season} · Viewpoint`;
   }, [route, selected]);
+  if (route.atlas)
+    return (
+      <Suspense
+        fallback={
+          <div className="hub-loading">Opening all Las Vegas areas…</div>
+        }
+      >
+        <VegasAtlas
+          season={route.season}
+          onBack={() =>
+            go({ season: route.season, race: "las-vegas", seats: false })
+          }
+          onOpen={(position, mode = "seat") =>
+            go({
+              season: route.season,
+              race: "las-vegas",
+              seats: true,
+              position,
+              mode,
+            })
+          }
+        />
+      </Suspense>
+    );
   if (route.seats)
     return (
       <Suspense
@@ -98,7 +141,17 @@ export default function RaceHub() {
       >
         <Explorer
           season={route.season}
-          onBack={() => go({ ...route, seats: false, race: "las-vegas" })}
+          onBack={() =>
+            go({ season: route.season, seats: false, race: "las-vegas" })
+          }
+          onAreas={() =>
+            go({
+              season: route.season,
+              seats: false,
+              race: "las-vegas",
+              atlas: true,
+            })
+          }
         />
       </Suspense>
     );
@@ -182,16 +235,16 @@ export default function RaceHub() {
                   height="800"
                 />
                 <div>
-                  <h2>See it from your seat.</h2>
+                  <h2>Explore all of Las Vegas.</h2>
                   <p>
-                    Explore the Sphere zone in true 3D. Inspect all five modeled
-                    positions, choose a group and compare the views.
+                    Browse all listed viewing products, nine modeled outdoor
+                    seating banks and an illustrative Sphere interior.
                   </p>
                   <button
                     className="primary-button"
-                    onClick={() => go({ ...route, seats: true })}
+                    onClick={() => go({ ...route, seats: false, atlas: true })}
                   >
-                    Open 3D seat explorer
+                    Explore all Las Vegas areas
                   </button>
                   <span className="feature-note">
                     2026 reference geometry · estimated seats and sightlines,
@@ -314,10 +367,15 @@ export default function RaceHub() {
                 <p>Get inside the model before choosing your view.</p>
                 <button
                   onClick={() =>
-                    go({ season: route.season, race: "las-vegas", seats: true })
+                    go({
+                      season: route.season,
+                      race: "las-vegas",
+                      seats: false,
+                      atlas: true,
+                    })
                   }
                 >
-                  Explore Las Vegas in 3D
+                  Explore Las Vegas
                 </button>
               </div>
               <img
@@ -434,7 +492,7 @@ export default function RaceHub() {
       <footer className="hub-footer">
         <span>Independent race planning · no Formula 1 affiliation</span>
         <span>
-          3D coverage: Las Vegas Sphere zone only · no live ticket inventory
+          3D coverage: Las Vegas models only · no live ticket inventory
         </span>
       </footer>
     </div>

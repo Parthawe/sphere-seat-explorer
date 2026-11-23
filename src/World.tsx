@@ -309,7 +309,7 @@ function TrackFence() {
     for (let i = 0; i < points.length - 1; i++) {
       const p = points[i],
         next = points[i + 1];
-      if (p.x > 170 || p.x < -140 || p.z > 160 || p.z < -155) continue;
+
       const d = next.clone().sub(p).normalize(),
         n = new T.Vector3(-d.z, 0, d.x);
       for (const side of [-1, 1]) {
@@ -373,7 +373,7 @@ function TrackFence() {
     const all: Piece[] = [];
     for (let i = 0; i < points.length - 2; i += 5) {
       const p = points[i];
-      if (p.x > 170 || p.x < -140 || p.z > 160 || p.z < -155) continue;
+
       const d = points[i + 1].clone().sub(p).normalize();
       for (const side of [-1, 1]) {
         const x = p.x - d.z * 12 * side,
@@ -877,7 +877,7 @@ function Grandstand({
           </group>
         );
       })}
-      {mode === "overview" && (
+      {(mode === "overview" || mode === "circuit") && (
         <Sign
           text={"POSITION " + id}
           position={[0, s.rows * 0.55 + 0.7, -s.rows * 1.05 - 0.3]}
@@ -887,7 +887,7 @@ function Grandstand({
           red={active}
         />
       )}
-      {mode === "overview" && (
+      {(mode === "overview" || mode === "circuit") && (
         <Label
           id={id}
           position={[0, s.rows * 0.55 + 8, -s.rows * 0.55]}
@@ -949,7 +949,7 @@ function Environment() {
         rotation={[-Math.PI / 2, 0, 0]}
         position={[150, -0.15, 0]}
       >
-        <planeGeometry args={[2200, 2200]} />
+        <planeGeometry args={[8000, 8000]} />
         <meshStandardMaterial map={ground} roughness={0.95} />
       </mesh>
       {Array.from({ length: 10 }, (_, i) => {
@@ -1474,7 +1474,10 @@ export function World({
   return (
     <>
       <color attach="background" args={["#080911"]} />
-      <fogExp2 attach="fog" args={["#111421", 0.0018]} />
+      <fogExp2
+        attach="fog"
+        args={["#111421", mode === "circuit" ? 0.0003 : 0.0012]}
+      />
       <ambientLight intensity={0.16} />
       <hemisphereLight args={["#bac8e7", "#17131b", 0.4]} />
       <directionalLight
@@ -1498,6 +1501,50 @@ export function World({
       <Environment />
       <Track />
       <Sphere />
+      <group position={[665, 0, -45]} rotation={[0, -0.65, 0]}>
+        <mesh position={[0, 8, 20]}>
+          <boxGeometry args={[105, 16, 20]} />
+          <meshStandardMaterial
+            color="#454955"
+            roughness={0.6}
+            metalness={0.3}
+          />
+        </mesh>
+        <Sign
+          text="PIT BUILDING · ILLUSTRATIVE"
+          rotation={Math.PI}
+          position={[0, 17, 9]}
+          width={92}
+          height={3}
+        />
+        {Array.from({ length: 11 }, (_, i) => (
+          <mesh key={i} position={[-46 + i * 9, 3, 9.8]}>
+            <boxGeometry args={[7, 5, 0.2]} />
+            <meshBasicMaterial color={i % 2 ? "#c9ccd6" : "#e10600"} />
+          </mesh>
+        ))}
+      </group>
+      {stands
+        .filter((s) => s.zone)
+        .map((s) => (
+          <group key={"light-" + s.id} position={[s.center[0], 0, s.center[2]]}>
+            <pointLight
+              position={[0, 24, 0]}
+              intensity={1800}
+              distance={125}
+              decay={2}
+              color="#e5eaff"
+            />
+            <mesh position={[-30, 13, 0]}>
+              <cylinderGeometry args={[0.18, 0.25, 26, 6]} />
+              <meshStandardMaterial color="#8c92a0" />
+            </mesh>
+            <mesh position={[-30, 26, 0]}>
+              <boxGeometry args={[5, 0.8, 1]} />
+              <meshBasicMaterial color="#fff" toneMapped={false} />
+            </mesh>
+          </group>
+        ))}
       {stands.map((s) => (
         <Grandstand
           key={s.id}

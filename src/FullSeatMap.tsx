@@ -12,8 +12,8 @@ export function FullSeatMap({
       aria-label="Complete modeled seating grid"
     >
       <div className="zone-grid-heading">
-        <h3>All grandstand positions</h3>
-        <span>18 modeled rows per position · center aisles shown</span>
+        <h3>All modeled seating banks</h3>
+        <span>All 9 banks · illustrative rows and center aisles</span>
       </div>
       <div className="zone-grid-stands">
         {stands.map((s) => (

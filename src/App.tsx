@@ -16,7 +16,7 @@ import {
   type Selection,
   type Mode,
 } from "./model";
-import { FlatMap } from "./Map";
+import { FlatMap, circuitPath } from "./Map";
 const Scene = lazy(() => import("./Scene"));
 type DialogKind = "compare" | "sources" | "map" | null;
 function Globe() {
@@ -72,30 +72,25 @@ function Icon({
     </svg>
   );
 }
-function MiniMap() {
+function MiniMap({ standId }: { standId: string }) {
+  const s = getStand(standId);
   return (
     <svg
-      viewBox="0 0 250 150"
+      viewBox="-330 -240 1220 880"
       fill="none"
-      aria-label="Sphere zone on the Las Vegas circuit"
+      aria-label="Selected modeled bank on the full Las Vegas circuit"
       role="img"
     >
-      <path
-        d="M56 59V25Q54 13 66 17L78 23Q84 25 85 14Q114 12 117 45V58L187 57Q206 56 202 40L193 24Q190 15 197 16L229 43Q240 49 240 66V113L234 119V127L154 126Q97 128 34 103Q32 78 56 68Z"
-        stroke="#757589"
-        strokeWidth="2.5"
-        strokeLinejoin="round"
+      <path d={circuitPath} stroke="#8b91a6" strokeWidth="13" />
+      <circle cx={0} cy={0} r={78} stroke="#e10600" strokeWidth="9" />
+      <circle
+        cx={s.center[0]}
+        cy={s.center[2]}
+        r={25}
+        fill="#e10600"
+        stroke="#fff"
+        strokeWidth="7"
       />
-      <path
-        d="M56 59V25Q54 13 66 17L78 23Q84 25 85 14Q114 12 117 45V58"
-        stroke="#e10600"
-        strokeWidth="3"
-      />
-      <circle cx="81" cy="43" r="12" stroke="#e10600" />
-      <circle cx="81" cy="43" r="3" fill="#e10600" />
-      <text x="10" y="144" fill="#9393a7" fontSize="9" fontFamily="sans-serif">
-        LAS VEGAS STRIP CIRCUIT
-      </text>
     </svg>
   );
 }
@@ -300,9 +295,11 @@ function Stepper({
 export default function App({
   season = 2026,
   onBack,
+  onAreas,
 }: {
   season?: number;
   onBack?: () => void;
+  onAreas?: () => void;
 }) {
   const seatSearch = (current: Selection, view: Mode, shortlist: Selection[]) =>
     makeSearch(current, view, shortlist) + "&race=las-vegas&season=" + season;
@@ -465,11 +462,16 @@ export default function App({
         <div className="header-location">
           <span className="location-mark" />
           LAS VEGAS <span className="header-separator">/</span>
-          <span>SPHERE ZONE</span>
+          <span>{stand.zone || "SPHERE ZONE"}</span>
         </div>
         <nav aria-label="Main navigation">
-          <button className="all-races-button" onClick={onBack}>
-            All races
+          <button
+            className="all-races-button"
+            aria-label="All Las Vegas areas"
+            onClick={onAreas || onBack}
+          >
+            <span className="header-action-full">All Las Vegas areas</span>
+            <span className="header-action-short">All areas</span>
           </button>
           <button
             className="text-button about-button"
@@ -553,7 +555,7 @@ export default function App({
           </div>
           <div className="scene-heading">
             <h1>
-              {mode === "overview" ? (
+              {mode === "overview" || mode === "circuit" ? (
                 <>
                   LAS VEGAS<span>GRAND PRIX</span>
                 </>
@@ -572,8 +574,9 @@ export default function App({
               )}
             </h1>
             <p>
-              {mode === "overview"
-                ? "SPHERE ZONE · 2026 REFERENCE MODEL"
+              {mode === "overview" || mode === "circuit"
+                ? (mode === "circuit" ? "FULL CIRCUIT" : "SPHERE ZONE") +
+                  " · ESTIMATED RECONSTRUCTION"
                 : "POSITION " +
                   stand.id +
                   " · " +
@@ -582,20 +585,24 @@ export default function App({
             </p>
           </div>
           <div className="view-switch" aria-label="Viewing mode">
-            {(["overview", "stand", "seat"] as Mode[]).map((v, i) => (
-              <button
-                key={v}
-                className={v === mode ? "selected" : ""}
-                aria-pressed={v === mode}
-                onClick={() => navigate(selection, v)}
-              >
-                {v === "overview"
-                  ? "Overview"
-                  : v === "stand"
-                    ? "Grandstand"
-                    : "Seat view"}
-              </button>
-            ))}
+            {(["overview", "circuit", "stand", "seat"] as Mode[]).map(
+              (v, i) => (
+                <button
+                  key={v}
+                  className={v === mode ? "selected" : ""}
+                  aria-pressed={v === mode}
+                  onClick={() => navigate(selection, v)}
+                >
+                  {v === "overview"
+                    ? "Sphere"
+                    : v === "circuit"
+                      ? "Full circuit"
+                      : v === "stand"
+                        ? "Grandstand"
+                        : "Seat view"}
+                </button>
+              ),
+            )}
           </div>
           <div className="scene-tools">
             <button
@@ -654,11 +661,11 @@ export default function App({
           </div>
           <div className="scene-bottom">
             <div className="circuit-inset">
-              <MiniMap />
+              <MiniMap standId={selection.stand} />
               <div>
                 <span className="eyebrow">YOU ARE HERE</span>
-                <strong>Sphere zone</strong>
-                <small>Turns 5–9</small>
+                <strong>{stand.zone || "Sphere zone"}</strong>
+                <small>{stand.corner}</small>
               </div>
             </div>
             <div className="scene-instruction">
@@ -801,12 +808,12 @@ export default function App({
               <h2>
                 FIND YOUR SEAT<span className="panel-edition">2026</span>
               </h2>
-              <p>T-Mobile Zone at Sphere</p>
+              <p>{stand.zone || "T-Mobile Zone at Sphere"}</p>
             </div>
             <section className="stand-picker">
               <div className="section-label">
                 <h3>Grandstand position</h3>
-                <span>MODELED A–E</span>
+                <span>9 MODELED BANKS</span>
               </div>
               <div
                 className="stand-tabs"
@@ -914,13 +921,7 @@ export default function App({
               </div>
               <div>
                 <span>FACING</span>
-                <strong>
-                  {stand.id === "A"
-                    ? "Turn 5"
-                    : stand.id === "E"
-                      ? "Turn 9"
-                      : "Chicane"}
-                </strong>
+                <strong>{stand.corner}</strong>
               </div>
               <button
                 aria-label="Explain model accuracy"
@@ -1210,7 +1211,7 @@ export default function App({
                               <dd>{st.corner}</dd>
                             </div>
                             <div>
-                              <dt>Sphere visibility</dt>
+                              <dt>Landmark visibility</dt>
                               <dd>Inspect modeled view</dd>
                             </div>
                             <div>
@@ -1291,11 +1292,11 @@ export default function App({
             </p>
             <h3>What is estimated</h3>
             <p>
-              A–E are our position labels. Row counts, seat numbers, tier
-              heights, distances, buildings, fencing and support-post dimensions
-              are illustrative reconstruction parameters. They are not official
-              ticket identifiers. Eye height is calculated within this model,
-              not measured at the venue.
+              A–E, M, H, K and F are app-specific modeled bank labels. Row
+              counts, seat numbers, tier heights, distances, buildings, fencing
+              and support-post dimensions are illustrative reconstruction
+              parameters. They are not official ticket identifiers. Eye height
+              is calculated within this model, not measured at the venue.
             </p>
             <p>
               The displayed Sphere artwork is original illustration. Seat
