@@ -41,3 +41,15 @@ Chromium desktop 1440×1000, phone 390×844 and 320px checks covered source/year
 Found and fixed the Vegas replay panel covering the old reference trigger. The replay now has its own reference action in both detailed and compact modes; opening references pauses playback and closing them preserves its current time. The base 3D view remains usable after closing.
 
 Remaining limits: capture dates and attendance are author-reported or inferred as labeled, not EXIF-certified; no exact-seat photo calibration, comprehensive photo coverage, live refresh or publisher-availability guarantee is provided. Review harvesting and photo reuse must continue to respect access restrictions and publisher terms.
+
+## Follow-up source search — 23 November 2026
+
+A second targeted search did not establish a new selected-seat photo for the three gaps. Keep the current empty-photo states. These leads remain research notes, not published spectator references:
+
+- [Camel Travel's Qatar account](https://cameltravel.co.uk/qatar-grand-prix-packages/) describes its staff attending T16 in 2024 and North in 2025. This is a travel seller's first-person account, not an independent fan review; the inspected text does not identify the camera position/year of its page images. Do not label them T16 seat photographs.
+- [Formula.Vegas credits](https://www.formula.vegas/credits) points to Tia Dufour/DHS race-night photographs of the Main stand and pit straight in 2025. They are promising venue-context leads, not photographs from an identified Main seat. Check the individual original file, date, camera location and rights before importing anything; a secondary credits page is insufficient.
+- [Vegas first-attendance discussion](https://www.reddit.com/r/formula1/comments/1p4qbg4/longtime_f1_fan_firsttime_attendee_my_impressions/) contains a Main-stand comment describing a visit two years earlier. Do not turn the 2025 thread date into a 2025 Main-seat capture date.
+- [Vegas 2025 experiences](https://www.reddit.com/r/GrandPrixTravel/comments/1p4lovo/how_was_your_las_vegas_gp_2025_experience/) mixes Sphere, hotel and other viewing locations. A post-wide year/location does not establish the provenance of each photograph.
+- Bahrain search results included editorial stand guides, seller footage and older reports. None checked in this pass established a 2024/2025 Beyon/Batelco attendee photograph with a reported camera area.
+
+No files or review bodies were copied and no additional media was loaded into the product. Continue the geographic-anchor audit next; revisit these photo leads when specific source evidence becomes available.

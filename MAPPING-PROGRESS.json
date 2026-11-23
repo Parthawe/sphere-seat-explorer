@@ -6,7 +6,7 @@
   "cadence_hours": 2,
   "phase": "qatar-bahrain-3d-reconstructions",
   "active_run": null,
-  "next_action": "Expand checked photo references for the explicit T16/Beyon/Vegas Main gaps when public, attributable evidence is available; keep missing photos and exact model-to-ticket matches unsupported. Continue the Qatar/Bahrain geographic-anchor audit, then distinct Singapore variants and the verified venue queue. Do not bypass media blocks or redistribute unlicensed imagery.",
+  "next_action": "Audit Qatar temporary-bank anchors and Bahrain footprint orientation against current organizer references, preserving illustrative rows and no exact-ticket mapping. Then implement distinct Singapore variants and continue the verified venue queue. Photo gaps T16/Beyon/Vegas Main remain open; follow-up search and unverified leads are recorded in PHOTO-REFERENCES.md. Revisit only with source-specific camera/year evidence; do not bypass media blocks.",
   "venues": [
     {
       "id": "las-vegas",
@@ -392,6 +392,21 @@
         "Curated source notes, not a live scraper; provider embeds can be blocked and photo files are not copied"
       ],
       "next": "Expand checked photo references for the explicit T16/Beyon/Vegas Main gaps when public, attributable evidence is available; keep missing photos and exact model-to-ticket matches unsupported. Continue the Qatar/Bahrain geographic-anchor audit, then distinct Singapore variants and the verified venue queue. Do not bypass media blocks or redistribute unlicensed imagery."
+    },
+    {
+      "date": "2026-11-23",
+      "run": "photo-gap-follow-up-research",
+      "work": "Checked additional public T16, Beyon/Batelco and Vegas Main leads. No new selected-area photo passed provenance checks; documented leads and exclusions without changing published reference coverage.",
+      "evidence": [
+        "Travel seller Qatar account separates T16 2024 and North 2025 but does not establish the image camera area/year",
+        "Vegas credits point to potential government venue-context images; individual original provenance remains unchecked",
+        "Vegas discussion includes mixed locations and an older Main visit, not a confirmed 2025 Main-seat photo"
+      ],
+      "limitations": [
+        "Selected-area photo gaps remain open",
+        "No app source or public deployment change; existing v16 remains live"
+      ],
+      "next": "Audit Qatar temporary-bank anchors and Bahrain footprint orientation against current organizer references, preserving illustrative rows and no exact-ticket mapping. Then implement distinct Singapore variants and continue the verified venue queue. Photo gaps T16/Beyon/Vegas Main remain open; follow-up search and unverified leads are recorded in PHOTO-REFERENCES.md. Revisit only with source-specific camera/year evidence; do not bypass media blocks."
     }
   ],
   "blockers": [
