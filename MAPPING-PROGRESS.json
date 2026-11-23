@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-23",
   "cadence_hours": 2,
-  "phase": "singapore-standard-grandstands-expanded",
+  "phase": "qatar-bahrain-3d-reconstructions",
   "active_run": null,
-  "next_action": "Source Super Pit, Pit Exit and Chicane @ Turn 2 from the Singapore 2027 catalogue as separate product identities; verify zone access and broad regions before adding them. Keep combination/accessibility/hospitality products unsupported and Singapore 3D needs_assets. Then verify the Bahrain/Sakhir physical venue and current season evidence without inheriting older layouts.",
+  "next_action": "Audit Qatar temporary-bank anchors and Bahrain footprint orientation against additional current organizer references, preserving illustrative sections/counts and no exact-ticket-coordinate claim. Exact official chair inventory and measured sightlines need venue assets; skip that blocked precision task if no evidence is available, then continue distinct Singapore 2027 Super Pit/Pit Exit/Chicane products and the verified venue queue.",
   "venues": [
     {
       "id": "las-vegas",
@@ -46,13 +46,18 @@
       "id": "qatar",
       "event": "Qatar",
       "venue": "Lusail",
-      "status": "area_locator_pilot",
+      "status": "area_locator_and_3d_reconstruction_2026",
       "sources": [
         "https://www.lcsc.qa/formula12026",
         "https://www.lcsc.qa/faq/formula-1r-qatar-airways-qatar-grand-prix-2026",
         "https://www.openstreetmap.org/copyright"
       ],
-      "next_action": "Maintain dated official product snapshots. Exact row/chair geometry and hospitality mapping remain unavailable."
+      "next_action": "Audit Qatar temporary-bank anchors and Bahrain footprint orientation against additional current organizer references, preserving illustrative sections/counts and no exact-ticket-coordinate claim. Exact official chair inventory and measured sightlines need venue assets; skip that blocked precision task if no evidence is available, then continue distinct Singapore 2027 Super Pit/Pit Exit/Chicane products and the verified venue queue.",
+      "seasons_with_3d_coverage": [
+        2026
+      ],
+      "modeled_positions": 13663,
+      "exact_seats_verified": false
     },
     {
       "id": "abu-dhabi",
@@ -79,9 +84,18 @@
       "id": "bahrain-sakhir",
       "event": "Bahrain",
       "venue": "Sakhir",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "representative_3d_reconstruction_2027",
+      "sources": [
+        "https://www.formula1.com/en/racing/2027/bahrain",
+        "https://www.bahraingp.com/blog/events/f1-2027/",
+        "https://www.openstreetmap.org/way/4818385"
+      ],
+      "next_action": "Audit Qatar temporary-bank anchors and Bahrain footprint orientation against additional current organizer references, preserving illustrative sections/counts and no exact-ticket-coordinate claim. Exact official chair inventory and measured sightlines need venue assets; skip that blocked precision task if no evidence is available, then continue distinct Singapore 2027 Super Pit/Pit Exit/Chicane products and the verified venue queue.",
+      "seasons_with_3d_coverage": [
+        2027
+      ],
+      "modeled_positions": 24784,
+      "exact_seats_verified": false
     },
     {
       "id": "saudi-arabia",
@@ -342,6 +356,24 @@
         "No Singapore prices, stock, photographic assets or seat-level 3D added; 2026 remains unsupported"
       ],
       "next": "Source Super Pit, Pit Exit and Chicane @ Turn 2 from the Singapore 2027 catalogue as separate product identities; verify zone access and broad regions before adding them. Keep combination/accessibility/hospitality products unsupported and Singapore 3D needs_assets. Then verify the Bahrain/Sakhir physical venue and current season evidence without inheriting older layouts."
+    },
+    {
+      "date": "2026-11-23",
+      "run": "user-request-qatar-bahrain-3d",
+      "work": "Built distinct Qatar 2026 and Bahrain Sakhir 2027 3D seating studies with selectable chairs/lawn samples, complete grids, three cameras, cutaway roofs, simulated cars, three-position comparison and public sharing. OSM circuit lines and available permanent footprints are licensed and downloadable. Model labels/counts remain explicitly illustrative.",
+      "evidence": [
+        "50 tests passed including exhaustive uniqueness/finite/reachability for all 38,447 model positions",
+        "Desktop 1440x1000, phone 390x844 and 320px, precise mobile grid selection, no document overflow",
+        "Forced WebGL loss and Retry passed; reduced-motion initial pause and immediate camera checked",
+        "Current Qatar organizer event/FAQ/product rules and Bahrain 2027 organizer/F1 event identity verified",
+        "Existing ticket desks, correct-year entries, 3D filter, unsupported season recovery and Vegas historical archive retained"
+      ],
+      "limitations": [
+        "No surveyed actual chair inventory, model-to-ticket row mapping or measured sightlines",
+        "Qatar temporary banks/Hill and all vertical structures/roofs remain estimated",
+        "Bahrain 2026 is a different physical venue in the checked calendar and does not inherit Sakhir 2027"
+      ],
+      "next": "Audit Qatar temporary-bank anchors and Bahrain footprint orientation against additional current organizer references, preserving illustrative sections/counts and no exact-ticket-coordinate claim. Exact official chair inventory and measured sightlines need venue assets; skip that blocked precision task if no evidence is available, then continue distinct Singapore 2027 Super Pit/Pit Exit/Chicane products and the verified venue queue."
     }
   ],
   "blockers": [
@@ -350,6 +382,12 @@
       "status": "needs_assets",
       "scope": "Representative/seat-level 3D only; does not block further area maps or other venues",
       "reason": "Selected organizer references and existing OSM streets provide no measured stand/chair geometry, identified-seat camera calibration or redistributable panorama bundle. See SINGAPORE-SOURCES.md."
+    },
+    {
+      "id": "qatar-bahrain-exact-chairs",
+      "status": "needs_assets",
+      "scope": "Official row/chair matching and measured views only; representative 3D is implemented",
+      "reason": "No venue-certified row/seat geometry, calibrated identified-seat photographs or final temporary stand surveys supplied. Generated model labels are not actual ticket IDs."
     }
   ]
 }

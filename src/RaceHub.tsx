@@ -1,3 +1,4 @@
+import {findCircuitModel} from "./circuitSeating";
 import { findVenue } from "./venueRegistry";
 import { BrandMark } from "./BrandMark";
 import type { Mode } from "./model";
@@ -11,6 +12,7 @@ import {
   type Season,
   type Race,
 } from "./races";
+const CircuitSeatingExplorer = lazy(() => import("./CircuitSeatingExplorer"));
 const SingaporeDesk = lazy(() => import("./SingaporeDesk"));
 const AbuDhabiDesk = lazy(() => import("./AbuDhabiDesk"));
 const TicketDesk = lazy(() => import("./TicketDesk"));
@@ -21,6 +23,7 @@ type Route = {
   race: string;
   seats: boolean;
   atlas?: boolean;
+  circuit?: boolean;
   position?: string;
   mode?: Mode;
 };
@@ -37,7 +40,8 @@ function readRoute(): Route {
             : 2026,
     race: p.get("race") || "",
     atlas: p.get("screen") === "vegas",
-    seats: p.get("screen") === "seats" || p.has("seat") || p.has("view"),
+    circuit: p.get("screen") === "circuit",
+    seats: p.get("screen") !== "circuit" && (p.get("screen") === "seats" || p.has("seat") || p.has("view")),
   };
 }
 const categories = [
@@ -79,7 +83,8 @@ export default function RaceHub() {
   function go(next: Route) {
     const p = new URLSearchParams({ season: String(next.season) });
     if (next.race) p.set("race", next.race);
-    if (next.atlas) p.set("screen", "vegas");
+    if (next.circuit) p.set("screen", "circuit");
+    else if (next.atlas) p.set("screen", "vegas");
     else if (next.seats) {
       p.set("screen", "seats");
       if (next.position) {
@@ -100,10 +105,11 @@ export default function RaceHub() {
         .includes(search.toLowerCase().trim()) &&
       (filter === "all" ||
         (filter === "upcoming" && raceStatus(r) !== "Past") ||
-        (filter === "3d" && r.slug === "las-vegas")),
+        (filter === "3d" && (r.slug === "las-vegas" || !!findCircuitModel(route.season,r.slug)))),
   );
+  const circuitModel = findCircuitModel(route.season,route.race);
   useEffect(() => {
-    document.title = route.atlas
+    document.title = route.circuit && circuitModel ? `${circuitModel.country} ${circuitModel.season} · 3D seating study` : route.atlas
       ? "Las Vegas · All Areas & Sphere Interior"
       : route.seats
         ? "Las Vegas · 3D Seat Explorer"
@@ -113,6 +119,7 @@ export default function RaceHub() {
             ? "Apex Atlas · Qatar 2026 Tickets & Viewing Areas"
             : "F1 Races 2027 · Apex Atlas";
   }, [route, selected]);
+  if (route.circuit && circuitModel) return <Suspense fallback={<div className="hub-loading">Opening the circuit seating study…</div>}><CircuitSeatingExplorer key={circuitModel.id} model={circuitModel} onBack={() => go({season:route.season,race:route.race,seats:false})}/></Suspense>;
   if (route.atlas)
     return (
       <Suspense
@@ -244,6 +251,8 @@ export default function RaceHub() {
                 Official event & schedule
               </a>
             </section>
+            {circuitModel && <section className="circuit-model-entry"><div><span className="eyebrow">CIRCUIT-SPECIFIC 3D / {circuitModel.season}</span><h2>Explore the grandstands in 3D.</h2><p>Move between the circuit, grandstand and seated views. Every modeled position is selectable; chair counts, sections and sightlines are estimates.</p></div><button onClick={()=>go({season:route.season,race:route.race,seats:false,circuit:true})}>Open 3D seating</button></section>}
+            {route.circuit && !circuitModel && <p className="singapore-reference-note">No 3D seating model is available for this venue and season. Choose a supported race; layouts are not carried across seasons.</p>}
             {selected.slug === "qatar" && route.season === 2026 ? (
               <Suspense
                 fallback={
@@ -304,7 +313,7 @@ export default function RaceHub() {
               <section className="race-coverage">
                 <h2>Plan your viewing position</h2>
                 <p>
-                  A seat-level 3D model is not available here yet. Use the
+                  {circuitModel ? "This venue has an illustrative 3D reconstruction above. Exact ticket-seat geometry is not verified. Use the" : "A seat-level 3D model is not available here yet. Use the"}
                   official event guide and ticket providers to review this
                   race’s viewing areas and current offers.
                 </p>
@@ -570,12 +579,14 @@ export default function RaceHub() {
                     <span className="race-dates">{dateLabel(r)}</span>
                     <span
                       className={
-                        r.slug === "las-vegas"
+                        r.slug === "las-vegas" || findCircuitModel(route.season,r.slug)
                           ? "coverage-3d"
                           : "coverage-guide"
                       }
                     >
-                      {findVenue(route.season, r.slug)
+                      {findCircuitModel(route.season,r.slug)
+                        ? "3D seating reconstruction"
+                        : findVenue(route.season, r.slug)
                         ? "Ticket desk & area map"
                         : r.slug === "las-vegas"
                           ? "3D seat model"

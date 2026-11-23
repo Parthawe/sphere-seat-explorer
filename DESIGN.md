@@ -42,3 +42,8 @@ On mobile, keep horizontal table scrolling inside its labeled region with a visi
 Keep the established F1 typography, palette and ticket-desk layout. Support twelve standard grandstands: Pit, Turn 1, Turn 2, Republic, Padang, Connaught, Marina Bay, Bayfront, Promenade, Raffles, Empress and Stamford. Draw current OpenStreetMap street geometry with narrower venue-specific track strokes so nearby segments remain distinguishable. Label every marker as an estimated region and keep the 2027 coverage and unsupported 2026 boundary visible. Use neutral “Ticket planning” navigation across venues.
 
 Place sourced, published zone access beside the selected product and retain the shared three-area comparison. Link each organizer product page with guidance to its “180° View” button; link photographs and map artwork without republishing them. Keep parsing local and raw ticket text out of storage, comparisons and shared links. Exact seats, seat-level 3D, live prices and stock remain unavailable.
+
+
+## Qatar/Bahrain seating studies
+
+Use the existing Apex Atlas red, ink and paper system with the scene leading and operational position controls alongside it. Keep each venue's own source geometry, with separate model grids, confidence labels and organizer handoffs. The full scene, stand cutaway and eye-level camera serve different spatial questions. Chair and bank colours distinguish the Qatar/Bahrain studies without replacing the product brand. Put “modeled positions, not ticket numbers” beside the selectors, retain admission rules and keep exact-seat uncertainty visible. Phone layouts put a bounded scene above the controls and offer precise grid inputs as well as pointer selection.

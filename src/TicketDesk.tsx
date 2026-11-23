@@ -337,6 +337,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
                     ? "No readable price in the public snapshot. Check the organizer’s page."
                     : "Loading public source snapshot…"}
             </p>
+            <a className="qatar-model-link" href={`?season=2026&race=qatar&screen=circuit&bank=${area}`}>Explore this area in 3D <span>Illustrative positions, not ticket coordinates</span></a>
             <div className="area-actions">
               <button onClick={toggleSaved}>
                 {saved.includes(area)

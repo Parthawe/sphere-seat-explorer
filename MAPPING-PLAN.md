@@ -1,3 +1,7 @@
+## Latest user priority: Qatar and Bahrain 3D seating
+
+The user requested selectable 3D seating for Qatar and Bahrain. Qatar 2026 and Bahrain Sakhir 2027 now have separate geographic reconstructions and complete illustrative position grids. Do not describe their generated chairs, section/row labels or counts as official inventories. Preserve the correct assigned/free/lawn rules and the unsupported-year boundary. Next audit the Qatar temporary-bank anchors and Bahrain stand orientation against additional current organizer evidence; exact chairs and measured sightlines still need venue assets. When no further public calibration evidence is available, continue the remaining Singapore products and verified venue queue. See CIRCUIT-SEATING-SOURCES.md.
+
 ## Current priority: a useful ticket product for the remaining 2026 races
 
 The user’s latest brief takes priority over the original Singapore-first order. Qatar (27–29 November) is the first working ticket-product pilot; Abu Dhabi (4–6 December) is next. Preserve both seasons and Las Vegas 3D.

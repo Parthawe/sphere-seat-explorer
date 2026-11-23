@@ -138,3 +138,12 @@ Independent finish review closed with Pass and no outstanding findings. Two mino
 - Mobile 390×844 and 320px: new area selection, circuit-only unknown state, ambiguous selection/recovery and three-area comparison checked. Map labels fit after correcting Marina Bay's right-edge label. At 320px, document width is 320px; the comparison scrolls inside its 280px region. No page exceptions observed.
 - Qatar, Abu Dhabi's seven-area desk (`race=united-arab-emirates`) and the existing Las Vegas historical archive route remain available.
 - Super Pit, Pit Exit, Chicane, combination/accessibility/hospitality products remain unsupported. All twelve regions are estimates. No exact-seat geometry, 2026 fallback, Singapore 3D, prices, stock or redistributed organizer images added. Representative 3D is recorded as needs_assets; area work can continue.
+
+
+## Qatar/Bahrain 3D seating · 23 November 2026
+
+50 tests pass, including exhaustive checks for every one of the 38,447 generated positions, unique finite coordinates, source closure, bank bounds, admission distinctions, correct season/physical circuit and sanitized public sharing. Source notes in CIRCUIT-SEATING-SOURCES.md separate OSM footprints from inferred Qatar temporary regions and authored rows/chairs/roofs.
+
+Chromium desktop 1440×1000 and phone 390×844/320px checks covered all banks, circuit/stand/seated cameras, roof cutaway, grid pointer/keyboard and numeric inputs, last-section/last-row/last-position selection, front/middle/high shortcuts, three-item comparison/capacity, share-link restoration and initial paused reduced-motion state. Forced WEBGL_lose_context retained model controls and grid; Retry recreated a ready canvas. Document width remained 320px at a 320px viewport; dialog content was 284px. No page exceptions occurred.
+
+Qatar's source-area link, Bahrain's 2027 entry/back navigation and 3D race filtering worked. A 2026 Bahrain circuit request with a legacy seat parameter showed unsupported coverage instead of opening Las Vegas. Existing Qatar/Abu Dhabi/Singapore desks and the Vegas historical archive remained available. Physical seating accuracy, surveyed temporary stands, actual obstructions, other browser engines and low-end performance are unverified.

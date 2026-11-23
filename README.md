@@ -1,6 +1,6 @@
 # Apex Atlas · F1 Race & Seat Explorer
 
-An independent, F1-inspired race browser for the published 2026 and 2027 calendars, with a true-3D Las Vegas circuit explorer and illustrative Sphere interior. Browse every listed race, review ticket categories, and open official sources. Las Vegas is the only modeled race. Sphere indoor seating is a separate illustrative venue study.
+An independent, F1-inspired race browser for the published 2026 and 2027 calendars, with a true-3D Las Vegas circuit explorer and illustrative Sphere interior. Browse every listed race, review ticket categories, and open official sources. Las Vegas, Qatar 2026 and Bahrain Sakhir 2027 have illustrative 3D reconstructions; none certify actual seat coordinates. Sphere indoor seating is a separate illustrative venue study.
 
 ## Run locally
 
@@ -125,3 +125,10 @@ The seat explorer's **Historical race** control loads a bundled 129-second openi
 Visitors can pause, scrub, choose 0.25–4× playback, follow a driver, jump to the next estimated section pass, and minimize the panel while watching from their seat. Playback starts paused and stops at the clip end or when the tab is hidden. Missing observations are hidden rather than extended. A failed archive request offers Retry.
 
 Source: https://openf1.org/docs/ (location and car_data endpoints). All bounded query URLs and collection time are retained in `public/historical/las-vegas-2024-opening.json`. Refresh deliberately with `npx tsx scripts/collect-vegas-replay.ts`. Visitors make no calls to OpenF1. `history=2024` opens the archive directly on a seat-explorer URL.
+
+
+## Qatar and Bahrain 3D seating studies
+
+Open `?season=2026&race=qatar&screen=circuit` or `?season=2027&race=bahrain&screen=circuit`. The separate renderer uses each circuit's own OSM track and available footprints, instanced chairs, tier geometry, canopy cutaways, estimated pit buildings, track fencing, lights and simulated cars. Every generated position can be selected through the complete model grid, keyboard or numeric controls. Compare up to three positions and share public model coordinates.
+
+The Qatar model has four chair banks plus lawn samples; Bahrain has eight banks representing five organizer products. Model counts and row/section labels are illustrative, not organizer seat inventories. Qatar free-seating rules remain explicit. Unsupported years do not inherit these models. Source/licence records and limits are in CIRCUIT-SEATING-SOURCES.md. Refresh public geography with `python3 scripts/collect-circuit-geometry.py` and review the changes before publishing.
