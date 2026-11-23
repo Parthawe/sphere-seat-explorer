@@ -47,3 +47,8 @@ Place sourced, published zone access beside the selected product and retain the 
 ## Qatar/Bahrain seating studies
 
 Use the existing Apex Atlas red, ink and paper system with the scene leading and operational position controls alongside it. Keep each venue's own source geometry, with separate model grids, confidence labels and organizer handoffs. The full scene, stand cutaway and eye-level camera serve different spatial questions. Chair and bank colours distinguish the Qatar/Bahrain studies without replacing the product brand. Put “modeled positions, not ticket numbers” beside the selectors, retain admission rules and keep exact-seat uncertainty visible. Phone layouts put a bounded scene above the controls and offer precise grid inputs as well as pointer selection.
+
+
+## Spectator references
+
+Use a focused reference dialog from the seat view, retaining selected-area context. Keep source year, author, location granularity and uncertainty visible before media. Area/year/type filters should produce honest empty states and an explicit venue-wide recovery action. Preserve provider attribution in supported embeds and link other photo galleries to the originals. Ask users to load external media through a normal preview action; keep provider privacy links and source fallbacks beside it. Do not imply that an author's real section code maps to a model section.

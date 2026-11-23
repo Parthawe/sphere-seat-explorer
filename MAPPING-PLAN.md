@@ -1,3 +1,7 @@
+## Spectator-reference addition
+
+The user also requested real photo references and reviews. A checked, source-linked browser now accompanies Qatar/Bahrain and Vegas 3D, keeping capture years, author-reported areas, section uncertainty, opt-in embeds and provider blocks explicit. Read PHOTO-REFERENCES.md before expanding it. T16, Beyon/Batelco and Vegas Main have known selected-area photo gaps; find attributable public evidence when available and keep unknowns empty. This is not a live scraper and does not authorize copying unlicensed imagery.
+
 ## Latest user priority: Qatar and Bahrain 3D seating
 
 The user requested selectable 3D seating for Qatar and Bahrain. Qatar 2026 and Bahrain Sakhir 2027 now have separate geographic reconstructions and complete illustrative position grids. Do not describe their generated chairs, section/row labels or counts as official inventories. Preserve the correct assigned/free/lawn rules and the unsupported-year boundary. Next audit the Qatar temporary-bank anchors and Bahrain stand orientation against additional current organizer evidence; exact chairs and measured sightlines still need venue assets. When no further public calibration evidence is available, continue the remaining Singapore products and verified venue queue. See CIRCUIT-SEATING-SOURCES.md.

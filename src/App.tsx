@@ -1,3 +1,4 @@
+import SpectatorReferences from "./SpectatorReferences";
 import { HistoricalReplay } from "./HistoricalReplay";
 import type { ReplayFrame } from "./replayMath";
 import { sphereDisplays, type SphereDisplay } from "./rendering";
@@ -348,6 +349,7 @@ export default function App({
     [playing, setPlaying] = useState(
       () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     ),
+    [referencesOpen, setReferencesOpen] = useState(() => new URLSearchParams(location.search).get("references") === "1"),
     [historyOpen, setHistoryOpen] = useState(() => new URLSearchParams(window.location.search).get("history") === "2024"),
     [replay, setReplay] = useState<ReplayFrame | null>(null),
     [gridZoom, setGridZoom] = useState(false),
@@ -720,7 +722,9 @@ export default function App({
               </svg>
             </div>
           </div>
+          <SpectatorReferences open={referencesOpen} onClose={()=>setReferencesOpen(false)} venue="las-vegas" area={["A","B","C","D","E"].includes(selection.stand)?"sphere":selection.stand==="M"?"main":selection.stand==="H"?"turn-17":"turn-3-4"} areaName={stand.name} season={season}/>
           <div className="track-demo">
+            {!historyOpen&&<button onClick={()=>{setPlaying(false);setReferencesOpen(true);}}>Photos & fan reports</button>}
             <button aria-pressed={historyOpen} onClick={() => setHistoryOpen(!historyOpen)}>Historical race</button>
             {!historyOpen && <button aria-pressed={playing} onClick={() => setPlaying(!playing)}>
               <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -783,7 +787,7 @@ export default function App({
             </details>
             <span>{historyOpen ? "2024 archive · projected onto estimated track" : "Illustrative racing · not live timing"}</span>
           </div>
-          {historyOpen && <HistoricalReplay standId={selection.stand} onChange={setReplay} onClose={() => {setHistoryOpen(false);setReplay(null);}} />}
+          {historyOpen && <HistoricalReplay standId={selection.stand} onChange={setReplay} onReferences={()=>{setPlaying(false);setReferencesOpen(true);}} onClose={() => {setHistoryOpen(false);setReplay(null);}} />}
           {saved.length > 0 && (
             <div className="compare-dock" aria-label="Saved view shortlist">
               <div className="dock-items">

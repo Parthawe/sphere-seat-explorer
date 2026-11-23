@@ -5775,3 +5775,60 @@ dialog::backdrop {
 .circuit-grid-precise label { font-size:13px; display:flex; align-items:center; gap:10px; }
 .circuit-grid-precise input { width:70px; font:inherit; font-size:16px; padding:9px; border:1px solid #9ea8bb; background:#fff; }
 @media(max-width:400px) { .circuit-grid-precise label { flex:1; display:block; } .circuit-grid-precise input { display:block; width:100%; margin-top:6px; } .circuit-scene-actions { flex-wrap:wrap; max-width:calc(100% - 36px); } }
+
+/* Spectator references keep capture context beside the modeled view. */
+.circuit-photo-trigger { position:absolute; z-index:2; right:24px; top:28px; border:1px solid #a3aec1; padding:11px 14px; color:#fff; background:#162133ed; font-size:14px; }
+.spectator-dialog { width:min(970px,94vw); max-height:92dvh; padding:28px; color:#171c27; background:#f3f4f7; border:1px solid #7b8495; border-top:3px solid #e10600; }
+.spectator-dialog::backdrop { background:#070d18d6; }
+.spectator-dialog>header { display:flex; justify-content:space-between; align-items:start; gap:20px; }
+.spectator-dialog h2 { font:600 42px/1.1 'Barlow Condensed',sans-serif; margin:7px 0; }
+.spectator-dialog>header p { font-size:14px; color:#5c6678; margin:8px 0 20px; }
+.spectator-dialog>header>button { border:0; background:none; font-size:30px; padding:0 4px; }
+.spectator-boundary { padding:16px 0; border-block:1px solid #bdc5d3; font-size:14px; line-height:1.7; }
+.spectator-boundary p { margin:6px 0 0; color:#596375; }
+.spectator-filters { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:12px; margin:22px 0 16px; }
+.spectator-filters label { font-size:13px; font-weight:600; }
+.spectator-filters select { display:block; width:100%; margin-top:7px; padding:11px; border:1px solid #9ca7ba; background:white; color:#1b2435; font:inherit; font-size:14px; }
+.spectator-year-note { font-size:14px; line-height:1.7; padding:12px 15px; background:#e5e9f0; }
+.spectator-result-count { font-size:12px; color:#687286; }
+.spectator-reference { padding:26px 0; border-bottom:1px solid #bdc5d3; }
+.spectator-ref-meta { display:flex; gap:7px 16px; flex-wrap:wrap; color:#5a6579; font-size:11px; letter-spacing:.035em; }
+.spectator-ref-meta span:first-child { color:#bb170f; font-weight:600; }
+.spectator-reference h3 { font:600 29px/1.2 'Barlow Condensed',sans-serif; margin:9px 0 6px; }
+.spectator-byline { font-size:13px; color:#5a6579; margin:0 0 17px; }
+.spectator-reference>p:not(.spectator-byline) { font-size:15px; line-height:1.8; max-width:760px; }
+.spectator-ref-location { padding:12px 15px; background:#e5e9f0; font-size:13px; line-height:1.6; }
+.spectator-ref-location p { margin:4px 0 0; }
+.spectator-ref-location>span { display:block; color:#70443f; margin-top:6px; }
+.spectator-expectation { font-size:14px; line-height:1.7; margin:16px 0; }
+.spectator-expectation p { margin:4px 0 0; color:#596375; }
+.spectator-provenance { font-size:12px; line-height:1.7; color:#596375; margin:16px 0; }
+.spectator-provenance summary { cursor:pointer; color:#242e40; font-size:13px; }
+.spectator-original { margin:18px 0; }
+.spectator-original>button,.spectator-empty button { padding:11px 15px; border:1px solid #8591a5; background:#18243a; color:white; font-size:14px; }
+.spectator-original>p { font-size:12px; line-height:1.7; color:#677186; }
+.spectator-original a { color:inherit; text-underline-offset:3px; }
+.spectator-embed-host { max-width:100%; overflow:hidden; }
+.spectator-embed-host iframe { max-width:100% !important; }
+.spectator-original .spectator-unload { margin-top:10px; background:none; color:#354158; border:1px solid #a6afbe; font-size:12px; padding:7px 10px; }
+.spectator-video { display:block; width:100%; aspect-ratio:16/9; border:0; background:#111b2c; }
+.spectator-source-link { display:inline-block; color:#b9120c; font-size:14px; font-weight:600; text-underline-offset:4px; padding:4px 0; }
+.spectator-empty { padding:28px 0; }
+.spectator-empty h3 { font:600 28px 'Barlow Condensed',sans-serif; }
+.spectator-empty p { font-size:14px; line-height:1.7; color:#657084; }
+.spectator-dialog>footer { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-top:22px; }
+.spectator-dialog>footer p { max-width:620px; font-size:12px; line-height:1.7; color:#667186; }
+.spectator-dialog>footer button { border:0; background:#d90904; color:#fff; padding:12px 17px; white-space:nowrap; font-size:14px; }
+@media(max-width:760px) {
+ .circuit-photo-trigger { top:202px; left:18px; right:auto; padding:9px 12px; font-size:13px; }
+ .spectator-dialog { width:96vw; padding:20px 16px; max-height:94dvh; }
+ .spectator-dialog h2 { font-size:35px; }
+ .spectator-filters { grid-template-columns:1fr 1fr; gap:12px; }
+ .spectator-filters label:first-child { grid-column:1 / -1; }
+ .spectator-dialog>footer { display:block; }
+ .spectator-dialog>footer button { width:100%; margin-top:8px; }
+ .spectator-reference h3 { font-size:27px; }
+}
+
+.historical-replay .replay-photo-link { margin-top:10px; padding:7px 10px; font-size:12px; }
+.historical-replay.replay-compact { max-height:255px; }

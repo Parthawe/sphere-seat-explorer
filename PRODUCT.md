@@ -54,3 +54,10 @@ The private parser keeps unsupported Super Pit, Pit Exit, Chicane, combination, 
 Qatar 2026 and Bahrain Sakhir 2027 now have distinct 3D reconstructions using their own geographic circuit lines and available OSM stand footprints. Every generated position is selectable via bank, model section, row and position controls; these labels are separate from real ticket IDs. Users can switch circuit/stand/seated cameras, inspect roof cutaways, play/pause simulated passing cars, compare three model positions and share a position link. Mobile has precise inputs in its complete-grid dialog; a WebGL failure retains the grid and Retry.
 
 Qatar includes Main, North, T2, T16 and sampled Hill viewpoints, with assigned/free/GA distinctions. Bahrain includes Main, Turn 1, Beyon/Batelco, three University and two Victory banks. Physical chair inventory, sections, shade, elevations, obstructions and actual row views remain unverified. Models do not inherit across seasons or replace the private ticket-area parser. See CIRCUIT-SEATING-SOURCES.md.
+
+
+## Photo references and attendee reports
+
+The 3D studies now include source-linked spectator references with location scope, reference year and photo/report filters. A source-reported grandstand or section is distinct from an exact match to the model. Qatar T16, Bahrain Beyon and Vegas Main currently have explicit reference gaps; venue-wide context appears only when selected. Historical photos keep their own years, including older 2024 references.
+
+Supported media loads on demand with attribution and provider privacy links. Other photographs stay on their original publishers' sites. No photo files, copied review bodies, verified-attendance claims or aggregate ratings are added. Reviews summarize reported experiences and disagreements, not current event policy. The collection is curated public research rather than a live Internet feed. See PHOTO-REFERENCES.md.

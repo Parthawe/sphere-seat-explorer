@@ -6,7 +6,7 @@
   "cadence_hours": 2,
   "phase": "qatar-bahrain-3d-reconstructions",
   "active_run": null,
-  "next_action": "Audit Qatar temporary-bank anchors and Bahrain footprint orientation against additional current organizer references, preserving illustrative sections/counts and no exact-ticket-coordinate claim. Exact official chair inventory and measured sightlines need venue assets; skip that blocked precision task if no evidence is available, then continue distinct Singapore 2027 Super Pit/Pit Exit/Chicane products and the verified venue queue.",
+  "next_action": "Expand checked photo references for the explicit T16/Beyon/Vegas Main gaps when public, attributable evidence is available; keep missing photos and exact model-to-ticket matches unsupported. Continue the Qatar/Bahrain geographic-anchor audit, then distinct Singapore variants and the verified venue queue. Do not bypass media blocks or redistribute unlicensed imagery.",
   "venues": [
     {
       "id": "las-vegas",
@@ -374,6 +374,24 @@
         "Bahrain 2026 is a different physical venue in the checked calendar and does not inherit Sakhir 2027"
       ],
       "next": "Audit Qatar temporary-bank anchors and Bahrain footprint orientation against additional current organizer references, preserving illustrative sections/counts and no exact-ticket-coordinate claim. Exact official chair inventory and measured sightlines need venue assets; skip that blocked precision task if no evidence is available, then continue distinct Singapore 2027 Super Pit/Pit Exit/Chicane products and the verified venue queue."
+    },
+    {
+      "date": "2026-11-23",
+      "run": "user-request-spectator-photo-references",
+      "work": "Added a source-linked photo/fan-report browser to Qatar/Bahrain 3D and the Vegas seat explorer with area/year/type filters, attribution, reported location and capture-year evidence. Supported media is opt-in; originals stay linked. Opening it pauses the historical replay without losing time.",
+      "evidence": [
+        "53 tests passed; reference-year, physical venue and selected-area isolation checked",
+        "Desktop 1440x1000 and mobile 390x844/320px filter, empty/reopen recovery and source targets checked",
+        "No third-party media requests before click; supported oEmbed metadata retrieved for two Qatar photo posts",
+        "Reddit provider frame was network-blocked in QA; no bypass, direct originals retained; simulated script failure/unload checked",
+        "Vegas detailed/compact replay reference trigger fixed and verified; no page exceptions"
+      ],
+      "limitations": [
+        "No exact model-row to real camera-seat match; source attendance and capture context are self-reported/inferred",
+        "Qatar T16, Bahrain Beyon and Vegas Main lack checked selected-area photo coverage",
+        "Curated source notes, not a live scraper; provider embeds can be blocked and photo files are not copied"
+      ],
+      "next": "Expand checked photo references for the explicit T16/Beyon/Vegas Main gaps when public, attributable evidence is available; keep missing photos and exact model-to-ticket matches unsupported. Continue the Qatar/Bahrain geographic-anchor audit, then distinct Singapore variants and the verified venue queue. Do not bypass media blocks or redistribute unlicensed imagery."
     }
   ],
   "blockers": [

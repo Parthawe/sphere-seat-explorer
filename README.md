@@ -132,3 +132,10 @@ Source: https://openf1.org/docs/ (location and car_data endpoints). All bounded 
 Open `?season=2026&race=qatar&screen=circuit` or `?season=2027&race=bahrain&screen=circuit`. The separate renderer uses each circuit's own OSM track and available footprints, instanced chairs, tier geometry, canopy cutaways, estimated pit buildings, track fencing, lights and simulated cars. Every generated position can be selected through the complete model grid, keyboard or numeric controls. Compare up to three positions and share public model coordinates.
 
 The Qatar model has four chair banks plus lawn samples; Bahrain has eight banks representing five organizer products. Model counts and row/section labels are illustrative, not organizer seat inventories. Qatar free-seating rules remain explicit. Unsupported years do not inherit these models. Source/licence records and limits are in CIRCUIT-SEATING-SOURCES.md. Refresh public geography with `python3 scripts/collect-circuit-geometry.py` and review the changes before publishing.
+
+
+## Spectator photos and fan reports
+
+Use **Photos & fan reports** in the Qatar/Bahrain 3D studies or Las Vegas seat explorer. Filter by selected area versus venue, reference year and photo sources versus reviews. The structured source notes in `src/photoReferences.ts` retain author, publisher, physical venue, source-reported location, date evidence and uncertainty. This is a checked collection, not a live scraper.
+
+Supported Reddit photo embeds and a linked attendee video load only on request; other photographs open on the publisher's site. Provider blocks retain original-source links. No photo files or scraped review bodies are redistributed. Actual seat codes are not translated to modeled rows. Empty locations stay explicit; see PHOTO-REFERENCES.md for source evidence, exclusions and verification.
