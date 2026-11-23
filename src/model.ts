@@ -41,7 +41,7 @@ export const stands: Stand[] = [
     corner: "T7–T8",
     description:
       "Face the technical section with Sphere behind the racing line.",
-    center: [27, 0, -153],
+    center: [27, 0, -129],
     rotation: -0.07,
     rows: 18,
     seats: 36,
@@ -52,7 +52,7 @@ export const stands: Stand[] = [
     corner: "T8",
     description:
       "A central perspective on the direction changes, looking toward Sphere.",
-    center: [-30, 0, -153],
+    center: [-30, 0, -141],
     rotation: 0,
     rows: 18,
     seats: 36,
@@ -127,7 +127,7 @@ export function readUrl(search: string) {
     .filter((s, i, a) => a.findIndex((x) => key(x) === key(s)) === i)
     .slice(0, 3);
   const value = p.get("view");
-  const mode: Mode = value === "seat" || value === "stand" ? value : "overview";
+  const mode: Mode = value === "overview" || value === "stand" ? value : "seat";
   return { current, saved, mode, hasComparison: p.has("compare") };
 }
 export function makeSearch(current: Selection, mode: Mode, saved: Selection[]) {
@@ -156,7 +156,7 @@ export function seatPosition(s: Selection): [number, number, number] {
 export function seatTarget(s: Selection): [number, number, number] {
   const a = getStand(s.stand).rotation;
   const p = seatPosition(s);
-  return [p[0] + Math.sin(a) * 90, p[1] - 1.5, p[2] + Math.cos(a) * 90];
+  return [p[0] + Math.sin(a) * 90, p[1] + 8, p[2] + Math.cos(a) * 90];
 }
 export function addSaved(saved: Selection[], s: Selection) {
   return saved.some((x) => key(x) === key(s))

@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame, useThree, useLoader } from "@react-three/fiber";
 import * as T from "three";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
+import { GTAOPass } from "three/examples/jsm/postprocessing/GTAOPass.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { stands, getStand, type Mode, type Selection } from "./model";
 type V3 = [number, number, number];
@@ -100,7 +101,12 @@ function Instances({
     mesh.computeBoundingSphere();
   }, [pieces]);
   return (
-    <instancedMesh ref={ref} args={[undefined, undefined, pieces.length]}>
+    <instancedMesh
+      castShadow
+      receiveShadow
+      ref={ref}
+      args={[undefined, undefined, pieces.length]}
+    >
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial metalness={metal} roughness={roughness} />
     </instancedMesh>
@@ -183,22 +189,24 @@ function Sign({
   );
 }
 function Track() {
-  const asphalt = useMemo(() => {
-    const c = document.createElement("canvas");
-    c.width = c.height = 256;
-    const x = c.getContext("2d")!;
-    const image = x.createImageData(256, 256);
-    for (let i = 0; i < image.data.length; i += 4) {
-      const v = 62 + ((i * 134775813 + 17) % 23);
-      image.data.set([v, v + 1, v + 4, 255], i);
-    }
-    x.putImageData(image, 0, 0);
-    const t = new T.CanvasTexture(c);
-    t.wrapS = t.wrapT = T.RepeatWrapping;
-    t.repeat.set(5, 180);
-    t.colorSpace = T.SRGBColorSpace;
-    return t;
-  }, []);
+  const sourceMaps = useLoader(T.TextureLoader, [
+    "/materials/asphalt-color.jpg",
+    "/materials/asphalt-normal.jpg",
+    "/materials/asphalt-roughness.jpg",
+  ]);
+  const maps = useMemo(
+    () =>
+      sourceMaps.map((source, i) => {
+        const t = source.clone();
+        t.wrapS = t.wrapT = T.RepeatWrapping;
+        t.repeat.set(7, 1);
+        t.anisotropy = 8;
+        if (i === 0) t.colorSpace = T.SRGBColorSpace;
+        t.needsUpdate = true;
+        return t;
+      }),
+    [sourceMaps],
+  );
   const road = useMemo(() => stripe(0, 16, 0.18), []),
     edge = useMemo(() => stripe(0, 19, 0.12), []),
     lineA = useMemo(() => stripe(7.35, 0.12, 0.22), []),
@@ -249,9 +257,12 @@ function Track() {
       <mesh geometry={edge}>
         <meshStandardMaterial color="#b8b9c0" side={T.DoubleSide} />
       </mesh>
-      <mesh geometry={road}>
+      <mesh geometry={road} receiveShadow>
         <meshStandardMaterial
-          map={asphalt}
+          map={maps[0]}
+          normalMap={maps[1]}
+          normalScale={new T.Vector2(0.55, 0.55)}
+          roughnessMap={maps[2]}
           roughness={0.87}
           side={T.DoubleSide}
         />
@@ -410,11 +421,11 @@ function Sphere() {
       x.closePath();
       x.fill();
     }
-    for (let pos = 256; pos < 2048; pos += 1024) {
+    for (let pos = 512; pos < 2048; pos += 1024) {
       x.fillStyle = "#11111b";
-      x.fillRect(pos - 340, 352, 680, 236);
+      x.fillRect(pos - 315, 363, 630, 211);
       x.fillStyle = "#ffffff";
-      x.font = "italic 900 126px sans-serif";
+      x.font = "italic 700 104px sans-serif";
       x.textAlign = "center";
       x.fillText("LAS VEGAS", pos, 495);
       x.font = "500 34px sans-serif";
@@ -431,7 +442,7 @@ function Sphere() {
   }, []);
   return (
     <group position={[0, 44, 0]}>
-      <mesh rotation={[0, 0.35, 0]}>
+      <mesh rotation={[0, 0, 0]} castShadow>
         <sphereGeometry args={[48, 128, 80]} />
         <meshBasicMaterial
           map={map}
@@ -550,6 +561,12 @@ const seatGeo = (() => {
       g.index ? g.toNonIndexed() : g,
     ),
   );
+})();
+const distantSeatGeo = (() => {
+  const pan = new T.BoxGeometry(0.72, 0.12, 0.62),
+    back = new T.BoxGeometry(0.72, 0.62, 0.08);
+  back.translate(0, 0.35, -0.3);
+  return mergeGeometries([pan, back]);
 })();
 function SeatNumbers({ standId }: { standId: string }) {
   const s = getStand(standId),
@@ -774,7 +791,13 @@ function Grandstand({
       <GrandstandDetails standId={id} />
       <instancedMesh
         ref={ref}
-        args={[seatGeo, undefined, s.rows * s.seats]}
+        castShadow
+        receiveShadow
+        args={[
+          active && mode !== "overview" ? seatGeo : distantSeatGeo,
+          undefined,
+          s.rows * s.seats,
+        ]}
         onClick={(e) => {
           e.stopPropagation();
           if (e.delta > 4 || mode === "seat") return;
@@ -858,15 +881,20 @@ function Environment() {
     x.fillRect(0, 0, 256, 512);
     for (let row = 0; row < 40; row++)
       for (let col = 0; col < 16; col++) {
-        const lit = (row * 19 + col * 13) % 11 < 6;
+        const lit = (row * 19 + col * 13) % 17 < 4;
         x.fillStyle = lit
           ? (col + row) % 5
-            ? "#a6a6b4"
-            : "#c8b99d"
+            ? "#827b75"
+            : "#c0a879"
           : "#172032";
-        x.fillRect(col * 16 + 3, row * 13 + 2, 6, 5);
+        x.fillRect(col * 16 + 2, row * 13 + 3, 11, 4);
       }
+    for (let y = 0; y < 512; y += 52) {
+      x.fillStyle = "#4d4b48";
+      x.fillRect(0, y, 256, 3);
+    }
     const t = new T.CanvasTexture(c);
+    t.anisotropy = 8;
     t.colorSpace = T.SRGBColorSpace;
     return t;
   }, []);
@@ -889,15 +917,19 @@ function Environment() {
   }, []);
   return (
     <>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[150, -0.15, 0]}>
+      <mesh
+        receiveShadow
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={[150, -0.15, 0]}
+      >
         <planeGeometry args={[2200, 2200]} />
         <meshStandardMaterial map={ground} roughness={0.95} />
       </mesh>
-      {Array.from({ length: 22 }, (_, i) => {
+      {Array.from({ length: 10 }, (_, i) => {
         const angle = i * 0.39,
-          h = 25 + ((i * 37) % 90),
-          x = 245 + (i % 7) * 48,
-          z = 190 + Math.floor(i / 7) * 85;
+          h = 22 + ((i * 37) % 65),
+          x = 255 + (i % 5) * 65,
+          z = 230 + Math.floor(i / 5) * 110;
         return (
           <group key={i}>
             <mesh position={[x, h / 2, z]}>
@@ -907,7 +939,7 @@ function Environment() {
                 map={facade}
                 emissiveMap={facade}
                 emissive="#ffffff"
-                emissiveIntensity={0.75}
+                emissiveIntensity={0.65}
                 roughness={0.5}
                 metalness={0.35}
               />
@@ -932,7 +964,7 @@ function Environment() {
                 map={facade}
                 emissiveMap={facade}
                 emissive="#f1e2c7"
-                emissiveIntensity={0.85}
+                emissiveIntensity={0.7}
               />
             </mesh>
             <mesh position={[x, 98 + i * 12, 0]}>
@@ -1246,6 +1278,93 @@ function VenueScreen() {
   );
 }
 
+function FanZone() {
+  const ref = useRef<T.InstancedMesh>(null);
+  const geometry = useMemo(() => {
+    const coat = new T.CapsuleGeometry(0.19, 0.47, 2, 5);
+    coat.translate(0, 1.08, 0);
+    const head = new T.SphereGeometry(0.13, 7, 5);
+    head.translate(0, 1.61, 0);
+    const legs = [-0.105, 0.105].map((x) => {
+      const g = new T.CylinderGeometry(0.065, 0.055, 0.75, 5);
+      g.translate(x, 0.42, 0);
+      return g;
+    });
+    const arms = [-0.26, 0.26].map((x, i) => {
+      const g = new T.CylinderGeometry(0.055, 0.06, 0.61, 5);
+      g.rotateZ(i === 0 ? -0.12 : 0.12);
+      g.translate(x, 1.05, 0);
+      return g;
+    });
+    return mergeGeometries(
+      [coat, head, ...legs, ...arms].map((g) =>
+        g.index ? g.toNonIndexed() : g,
+      ),
+    );
+  }, []);
+  useEffect(() => {
+    if (!ref.current) return;
+    const obj = new T.Object3D();
+    for (let i = 0; i < 138; i++) {
+      const side = i % 2 === 0 ? 1 : -1;
+      const x = side * (35 + ((i * 17) % 36)),
+        z = -42 - ((i * 13) % 28);
+      obj.position.set(x, 0, z);
+      obj.rotation.y = (i * 0.73) % 6.28;
+      const scale = 0.9 + (i % 7) * 0.026;
+      obj.scale.setScalar(scale);
+      obj.updateMatrix();
+      ref.current.setMatrixAt(i, obj.matrix);
+      ref.current.setColorAt(
+        i,
+        new T.Color(
+          ["#29313f", "#54505a", "#27282f", "#682e35", "#9b9793"][i % 5],
+        ),
+      );
+    }
+    ref.current.instanceMatrix.needsUpdate = true;
+    if (ref.current.instanceColor) ref.current.instanceColor.needsUpdate = true;
+    ref.current.computeBoundingSphere();
+  }, []);
+  return (
+    <>
+      <instancedMesh
+        castShadow
+        receiveShadow
+        ref={ref}
+        args={[geometry, undefined, 138]}
+      >
+        <meshStandardMaterial roughness={0.95} />
+      </instancedMesh>
+      {[-1, 1].map((side) => (
+        <group key={side} position={[side * 67, 0, -48]}>
+          <mesh position={[0, 2.5, 0]}>
+            <boxGeometry args={[11, 5, 8]} />
+            <meshStandardMaterial color="#282d37" roughness={0.7} />
+          </mesh>
+          <mesh position={[0, 5.6, 0]} rotation={[0, Math.PI / 4, 0]}>
+            <coneGeometry args={[9, 2.3, 4]} />
+            <meshStandardMaterial color="#bfc4d1" roughness={0.8} />
+          </mesh>
+          <Sign
+            text="SPHERE ZONE"
+            position={[0, 4, -4.1]}
+            rotation={Math.PI}
+            width={9}
+            height={1.3}
+            red
+          />
+          <pointLight
+            position={[0, 4, -5]}
+            intensity={140}
+            distance={20}
+            color="#f1dfc2"
+          />
+        </group>
+      ))}
+    </>
+  );
+}
 function MetalReflections() {
   const { gl, scene, invalidate } = useThree();
   useEffect(() => {
@@ -1272,6 +1391,22 @@ function Finish({ playing, preview }: { playing: boolean; preview?: boolean }) {
   const composer = useMemo(() => {
     const c = new EffectComposer(gl);
     c.addPass(new RenderPass(scene, camera));
+    if (size.width >= 760 && !preview) {
+      const ao = new GTAOPass(
+        scene,
+        camera,
+        Math.round(size.width * 0.65),
+        Math.round(size.height * 0.65),
+      );
+      ao.updateGtaoMaterial({
+        radius: 1.2,
+        thickness: 0.8,
+        samples: 8,
+        distanceFallOff: 1.5,
+      });
+      ao.blendIntensity = 0.65;
+      c.addPass(ao);
+    }
     c.addPass(
       new UnrealBloomPass(
         new T.Vector2(size.width, size.height),
@@ -1282,7 +1417,7 @@ function Finish({ playing, preview }: { playing: boolean; preview?: boolean }) {
     );
     c.addPass(new OutputPass());
     return c;
-  }, [gl, scene, camera]);
+  }, [gl, scene, camera, preview]);
   useEffect(() => {
     composer.setSize(size.width, size.height);
     invalidate();
@@ -1312,16 +1447,27 @@ export function World({
   return (
     <>
       <color attach="background" args={["#080911"]} />
-      <fog attach="fog" args={["#080911", 350, 1100]} />
-      <ambientLight intensity={0.6} />
-      <hemisphereLight args={["#b5c8ff", "#1b1522", 0.8]} />
+      <fogExp2 attach="fog" args={["#111421", 0.0018]} />
+      <ambientLight intensity={0.16} />
+      <hemisphereLight args={["#bac8e7", "#17131b", 0.4]} />
       <directionalLight
-        position={[50, 180, -90]}
-        intensity={1.8}
-        color="#c2d2ff"
+        position={[-60, 160, -120]}
+        intensity={2.8}
+        color="#e1e7f6"
+        castShadow
+        shadow-mapSize={[2048, 2048]}
+        shadow-camera-left={-230}
+        shadow-camera-right={230}
+        shadow-camera-top={230}
+        shadow-camera-bottom={-230}
+        shadow-camera-near={0.5}
+        shadow-camera-far={650}
+        shadow-normalBias={0.035}
+        shadow-bias={-0.00008}
       />
       <MetalReflections />
       <VenueDetails />
+      <FanZone />
       <Environment />
       <Track />
       <Sphere />

@@ -19,12 +19,12 @@ npm run preview
 
 ## What works
 
-- Aerial overview, grandstand inspection, and seated camera modes.
+- A seated opening view, aerial overview, and close grandstand inspection with interruptible camera travel.
 - Five modeled grandstand positions, interactive seating grids, bounded row/seat inputs, and adjacent-seat keyboard navigation.
 - Orbit controls in overview and grandstand mode; drag-to-look and bounded field-of-view zoom from a seat.
 - Actual scene geometry for tiers, track, fencing, barriers, support posts, buildings, and Sphere.
 - Three-position comparison with consistent seated camera settings.
-- F1 red, black and white interface, with an adaptive mobile bottom sheet and front/middle/high row shortcuts.
+- F1 red, black and white interface, with an adaptive mobile bottom sheet, front/middle/high row shortcuts, and an enlarged keyboard-accessible seat map.
 - Detailed molded chairs with numbered back plates, armrests, mounting plates, half-step aisles and illuminated stair edges.
 - Steel scaffolding with material reflections, continuous fencing, lighting cabinets, service pavilions, corner boards, safety-tire stacks, an illustrative venue screen, original LED Sphere artwork and restrained bloom.
 - A close grandstand camera for inspecting the selected seating area.
@@ -38,7 +38,7 @@ This is a **2026 historical reference reconstruction**, not a certified digital 
 
 A–E are app-specific modeled position labels, not official section identifiers. Row counts, seat numbers, spacing, elevations, fences, buildings, and obstructions are estimated reconstruction parameters. Eye height is computed within the model. Choosing a position does not reserve a ticket or establish that a corresponding ticket exists.
 
-The original Singapore video is an interaction reference only. Its footage and assets are not redistributed. Sphere artwork, geometry, maps, and UI artwork in this repository are original procedural work. No Formula 1, Sphere, or ticketing-partner affiliation is implied.
+The original Singapore video is an interaction reference only. Its footage and assets are not redistributed. Sphere artwork, geometry, maps, and UI artwork in this repository are original procedural work. No Formula 1, Sphere, or ticketing-partner affiliation is implied. The generic spectator silhouettes are illustrative artwork, not a representation of an actual event attendance.
 
 ## Research sources
 
@@ -52,7 +52,7 @@ Live organizer pages can change to newer editions. The model is not automaticall
 
 ## Architecture
 
-React 19, TypeScript, Vite, Three.js, and React Three Fiber. Venue and selection data live in `src/model.ts`; scene construction in `src/World.tsx` and camera controls in `src/Scene.tsx`; UI and URL/history state in `src/App.tsx`. The 3D bundle loads separately from the controls and 2D map. All scene assets are generated locally, with no runtime asset-service dependency.
+React 19, TypeScript, Vite, Three.js, and React Three Fiber. Venue and selection data live in `src/model.ts`; scene construction in `src/World.tsx` and camera controls in `src/Scene.tsx`; UI and URL/history state in `src/App.tsx`. The 3D bundle loads separately from the controls and 2D map. Original scene geometry is generated locally. Scanned CC0 asphalt maps by Dimitrios Savva / Poly Haven are bundled under public/materials with credits, so the app has no runtime asset-service dependency.
 
 The URL carries the seat, view mode, and optional three-position comparison. `localStorage` holds only the shortlist. No account, analytics, or payment integrations are included. Hosting services process requests under their own policies.
 

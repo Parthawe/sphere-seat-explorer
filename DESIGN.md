@@ -9,3 +9,5 @@ The interactive scene leads. Las Vegas at night requires a dark sky, bright trac
 Mobile uses the scene above a collapsible bottom sheet, retaining access to its controls without a long page. Selection, camera mode and saved comparisons remain obvious. Controls use red for selected/action states; the map identifies rows and seats with readable labels.
 
 Source references inspected 22 November 2026: formula1.com, f1lasvegasgp.com and the official 2026 Sphere-zone diagram. External seat photography informs visual construction only and is not bundled.
+
+The user subsequently confirmed true 3D as the quality priority. Start at a seated perspective and keep overview available. Favor material depth, soft shadows and geographic legibility over repeated props. Use bundled CC0 scanned asphalt and inexpensive geometry for distant seating. The enlarged map supports precise selection. Generic spectators are scene illustration; all structural positions remain estimates.

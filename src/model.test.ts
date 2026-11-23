@@ -47,3 +47,8 @@ test("row and lateral changes alter the real camera coordinates", () => {
   assert.notEqual(high[2], low[2]);
   assert.ok(Math.abs(right[0] - left[0]) > 30);
 });
+test("entry starts seated while explicit overview links keep their mode", () => {
+  assert.equal(readUrl("").mode, "seat");
+  assert.equal(readUrl("?view=overview").mode, "overview");
+  assert.equal(readUrl("?view=stand").mode, "stand");
+});

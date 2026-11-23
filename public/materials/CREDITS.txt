@@ -1,0 +1,6 @@
+Clean Asphalt (1K diffuse, OpenGL normal, roughness)
+Author: Dimitrios Savva
+Source: https://polyhaven.com/a/clean_asphalt
+Files obtained from the Poly Haven asset API on 22 November 2026.
+License: CC0 1.0, https://creativecommons.org/publicdomain/zero/1.0/
+Material only; this texture does not establish venue geometry or surface accuracy.

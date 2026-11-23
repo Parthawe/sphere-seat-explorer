@@ -15,7 +15,7 @@ import {
 } from "./model";
 import { FlatMap } from "./Map";
 const Scene = lazy(() => import("./Scene"));
-type DialogKind = "compare" | "sources" | null;
+type DialogKind = "compare" | "sources" | "map" | null;
 function Globe() {
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -99,25 +99,49 @@ function MiniMap() {
 function SeatGrid({
   selection,
   onChange,
+  large = false,
 }: {
   selection: Selection;
   onChange: (s: Selection) => void;
+  large?: boolean;
 }) {
   const stand = getStand(selection.stand),
     width = stand.seats * 7;
   return (
-    <div className="seat-grid">
+    <div className={"seat-grid " + (large ? "seat-grid-large" : "")}>
       <div className="track-edge">
         <span>TRACK / SPHERE</span>
       </div>
       <svg
-        viewBox={"-8 -6 " + (width + 16) + " 132"}
+        viewBox={"-16 -6 " + (width + 24) + " 132"}
+        style={large ? { minWidth: width * 2.8, height: 370 } : undefined}
+        tabIndex={large ? 0 : undefined}
+        onKeyDown={(e) => {
+          if (
+            !large ||
+            !["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)
+          )
+            return;
+          e.preventDefault();
+          onChange(
+            normalize({
+              ...selection,
+              seat:
+                selection.seat +
+                (e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0),
+              row:
+                selection.row +
+                (e.key === "ArrowUp" ? 1 : e.key === "ArrowDown" ? -1 : 0),
+            }),
+          );
+        }}
         onPointerDown={(e) => {
+          if (large) return;
           const rect = e.currentTarget.getBoundingClientRect();
-          const scale = Math.min(rect.width / (width + 16), rect.height / 132);
-          const offsetX = (rect.width - (width + 16) * scale) / 2;
+          const scale = Math.min(rect.width / (width + 24), rect.height / 132);
+          const offsetX = (rect.width - (width + 24) * scale) / 2;
           const offsetY = (rect.height - 132 * scale) / 2;
-          const x = (e.clientX - rect.left - offsetX) / scale - 8;
+          const x = (e.clientX - rect.left - offsetX) / scale - 16;
           const y = (e.clientY - rect.top - offsetY) / scale - 6;
           if (x < -8 || x > width + 8 || y < -6 || y > 126) return;
           onChange(
@@ -137,6 +161,26 @@ function SeatGrid({
           ". Use row and seat controls to change position."
         }
       >
+        <rect
+          x={-3}
+          y={(selection.row - 1) * 6.4 + 0.5}
+          width={width + 2}
+          height={7}
+          rx={1.5}
+          fill="#e1060010"
+        />
+        {Array.from({ length: stand.rows }, (_, i) => (
+          <text
+            key={"row" + i}
+            x={-10}
+            y={i * 6.4 + 5.8}
+            fontSize={4.5}
+            textAnchor="middle"
+            fill={selection.row === i + 1 ? "#e10600" : "#6f7182"}
+          >
+            {i + 1}
+          </text>
+        ))}
         {Array.from({ length: stand.rows }, (_, ri) =>
           Array.from({ length: stand.seats }, (_, si) => {
             const active =
@@ -146,7 +190,7 @@ function SeatGrid({
                 key={ri + "-" + si}
                 cx={si * 7 + 3.5}
                 cy={ri * 6.4 + 4}
-                r={active ? 3.5 : 1.7}
+                r={active ? 3 : large ? 2.2 : 1.8}
                 fill={
                   active
                     ? "#e10600"
@@ -666,7 +710,9 @@ export default function App() {
             <section className="position-picker">
               <div className="section-label">
                 <h3>Pick your position</h3>
-                <span>ESTIMATED LAYOUT</span>
+                <button className="map-expand" onClick={() => setDialog("map")}>
+                  Enlarge seat map
+                </button>
               </div>
               <div className="steppers">
                 <Stepper
@@ -827,7 +873,9 @@ export default function App() {
             <h2>
               {dialog === "compare"
                 ? "Find the view that feels right."
-                : "Built to explore. Modeled with care."}
+                : dialog === "map"
+                  ? "Choose your position"
+                  : "Built to explore. Modeled with care."}
             </h2>
           </div>
           <button
@@ -838,7 +886,35 @@ export default function App() {
             <Icon name="close" />
           </button>
         </div>
-        {dialog === "compare" ? (
+        {dialog === "map" ? (
+          <div className="expanded-seat-map">
+            <p>
+              Position {stand.id} · {stand.name}. Row {selection.row}, seat{" "}
+              {selection.seat}. Select a seat or use the arrow keys. These are
+              modeled seat identifiers.
+            </p>
+            <SeatGrid
+              selection={selection}
+              onChange={(s) => navigate(s, mode, saved, true)}
+              large
+            />
+            <div className="map-confirm">
+              <span>
+                Modeled row {selection.row} / seat {selection.seat}
+              </span>
+              <button
+                className="primary-button"
+                onClick={() => {
+                  navigate(selection, "seat");
+                  setDialog(null);
+                  setPanelOpen(false);
+                }}
+              >
+                Preview selected seat
+              </button>
+            </div>
+          </div>
+        ) : dialog === "compare" ? (
           <>
             {saved.length ? (
               <>
@@ -969,9 +1045,10 @@ export default function App() {
             <p>
               The displayed Sphere artwork is original illustration. Seat
               numbers, venue screens, service pavilions and equipment placement
-              are illustrative. Layouts and temporary structures can change by
-              race edition. A low row may encounter fencing; the exact
-              obstruction cannot be confirmed from this model.
+              and generic spectator silhouettes are illustrative. Layouts and
+              temporary structures can change by race edition. A low row may
+              encounter fencing; the exact obstruction cannot be confirmed from
+              this model.
             </p>
             <h3>Research sources</h3>
             <ul className="source-links">

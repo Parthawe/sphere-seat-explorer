@@ -30,14 +30,24 @@ type Props = {
   onReady?: () => void;
   onUnavailable?: () => void;
 };
-function Rig({ selection, mode, reset, preview }: Props) {
+function Rig({ selection, mode, reset, preview, onReady }: Props) {
   const { camera, gl, invalidate } = useThree();
   const controls = useRef<OrbitControls | null>(null);
-  const transition = useRef<{ position: T.Vector3; target: T.Vector3 } | null>(
-    null,
+  const transition = useRef<{
+    position: T.Vector3;
+    target: T.Vector3;
+    startPosition: T.Vector3;
+    startTarget: T.Vector3;
+    elapsed: number;
+    duration: number;
+  } | null>(null);
+  const target = useRef(
+    mode === "seat" ? new T.Vector3(...seatTarget(selection)) : new T.Vector3(),
   );
-  const target = useRef(new T.Vector3());
   const seatAngles = useRef({ yaw: 0, pitch: 0 });
+  useEffect(() => {
+    onReady?.();
+  }, [gl]);
   useEffect(() => {
     const c = new OrbitControls(camera, gl.domElement);
     controls.current = c;
@@ -47,6 +57,10 @@ function Rig({ selection, mode, reset, preview }: Props) {
     c.maxDistance = 650;
     c.enablePan = false;
     c.addEventListener("change", () => invalidate());
+    c.addEventListener("start", () => {
+      transition.current = null;
+      gl.domElement.dataset.cameraState = "ready";
+    });
     return () => {
       c.dispose();
       controls.current = null;
@@ -83,29 +97,42 @@ function Rig({ selection, mode, reset, preview }: Props) {
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    if (preview || reduced) {
+    if (
+      preview ||
+      reduced ||
+      (camera.position.distanceTo(p) < 0.01 &&
+        target.current.distanceTo(t) < 0.01)
+    ) {
       camera.position.copy(p);
       camera.lookAt(t);
       target.current.copy(t);
       c?.target.copy(t);
       transition.current = null;
       gl.domElement.dataset.cameraState = "ready";
-    } else transition.current = { position: p, target: t };
+    } else
+      transition.current = {
+        position: p,
+        target: t,
+        startPosition: camera.position.clone(),
+        startTarget: target.current.clone(),
+        elapsed: 0,
+        duration: camera.position.distanceTo(p) < 8 ? 0.38 : 1.15,
+      };
     const aspect = (camera as T.PerspectiveCamera).aspect;
     (camera as T.PerspectiveCamera).fov =
       mode === "seat" || preview
         ? aspect < 1
           ? Math.min(
               100,
-              (2 * Math.atan(Math.tan((65 * Math.PI) / 360) / aspect) * 180) /
+              (2 * Math.atan(Math.tan((72 * Math.PI) / 360) / aspect) * 180) /
                 Math.PI,
             )
-          : 65
+          : 72
         : 46;
     (camera as T.PerspectiveCamera).updateProjectionMatrix();
     seatAngles.current = {
       yaw: getStand(selection.stand).rotation,
-      pitch: -0.018,
+      pitch: 0.088,
     };
     invalidate();
   }, [
@@ -130,6 +157,7 @@ function Rig({ selection, mode, reset, preview }: Props) {
       lastY = e.clientY;
       el.setPointerCapture(e.pointerId);
       transition.current = null;
+      gl.domElement.dataset.cameraState = "ready";
     };
     const move = (e: PointerEvent) => {
       if (!down) return;
@@ -201,15 +229,18 @@ function Rig({ selection, mode, reset, preview }: Props) {
   useFrame((_, delta) => {
     const tr = transition.current;
     if (!tr) return;
-    const alpha = 1 - Math.exp(-delta * 5);
-    camera.position.lerp(tr.position, alpha);
-    target.current.lerp(tr.target, alpha);
+    tr.elapsed += Math.min(delta, 0.05);
+    const progress = Math.min(1, tr.elapsed / tr.duration),
+      eased = 1 - Math.pow(1 - progress, 3);
+    camera.position.lerpVectors(tr.startPosition, tr.position, eased);
+    const distance = tr.startPosition.distanceTo(tr.position);
+    if (distance > 20)
+      camera.position.y +=
+        Math.sin(Math.PI * progress) * Math.min(distance * 0.12, 28);
+    target.current.lerpVectors(tr.startTarget, tr.target, eased);
     camera.lookAt(target.current);
     controls.current?.target.copy(target.current);
-    if (
-      camera.position.distanceTo(tr.position) < 0.03 &&
-      target.current.distanceTo(tr.target) < 0.03
-    ) {
+    if (progress === 1) {
       camera.position.copy(tr.position);
       target.current.copy(tr.target);
       camera.lookAt(target.current);
@@ -264,15 +295,23 @@ export default function Scene(props: Props) {
     <Boundary fallback={fallback}>
       <Canvas
         frameloop="demand"
+        shadows="soft"
         dpr={[1, 1.6]}
-        camera={{ position: [255, 205, -325], fov: 46, near: 0.5, far: 1800 }}
+        camera={{
+          position:
+            props.mode === "seat"
+              ? seatPosition(props.selection)
+              : [255, 205, -325],
+          fov: 46,
+          near: 0.25,
+          far: 1800,
+        }}
         gl={{ antialias: true, powerPreference: "high-performance" }}
         onCreated={({ gl }) => {
           gl.domElement.addEventListener("webglcontextlost", (e) => {
             e.preventDefault();
             setLost(true);
           });
-          props.onReady?.();
         }}
         fallback={
           <div>
