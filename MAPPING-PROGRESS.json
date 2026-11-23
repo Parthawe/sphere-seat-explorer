@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "product": "Apex Atlas",
+  "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
+  "updated": "2026-11-23",
+  "cadence_hours": 2,
+  "phase": "foundation",
+  "active_run": null,
+  "next_action": "Revalidate official calendar/event venue identities, then introduce a reusable per-venue registry and renderer without regressing Las Vegas.",
+  "venues": [
+    {
+      "id": "las-vegas",
+      "event": "Las Vegas",
+      "venue": "Las Vegas Strip Circuit",
+      "status": "existing_reconstruction",
+      "sources": [],
+      "next_action": "Retain working maps; audit provenance and geographic alignment during shared-framework migration."
+    },
+    {
+      "id": "singapore",
+      "event": "Singapore",
+      "venue": "Marina Bay",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "qatar",
+      "event": "Qatar",
+      "venue": "Lusail",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "abu-dhabi",
+      "event": "Abu Dhabi",
+      "venue": "Yas Marina",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "bahrain-sakhir",
+      "event": "Bahrain",
+      "venue": "Sakhir",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "saudi-arabia",
+      "event": "Saudi Arabia",
+      "venue": "Jeddah",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "great-britain",
+      "event": "Great Britain",
+      "venue": "Silverstone",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "belgium",
+      "event": "Belgium",
+      "venue": "Spa-Francorchamps",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "italy",
+      "event": "Italy",
+      "venue": "Monza",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "japan",
+      "event": "Japan",
+      "venue": "Suzuka",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "monaco",
+      "event": "Monaco",
+      "venue": "Monte Carlo",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "australia",
+      "event": "Australia",
+      "venue": "Albert Park",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "china",
+      "event": "China",
+      "venue": "Shanghai",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "miami",
+      "event": "Miami",
+      "venue": "Miami International Autodrome",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "canada",
+      "event": "Canada",
+      "venue": "Gilles-Villeneuve",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "austria",
+      "event": "Austria",
+      "venue": "Red Bull Ring",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "hungary",
+      "event": "Hungary",
+      "venue": "Hungaroring",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "spain-madrid",
+      "event": "Spain",
+      "venue": "Madrid",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "azerbaijan",
+      "event": "Azerbaijan",
+      "venue": "Baku",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "united-states",
+      "event": "United States",
+      "venue": "Circuit of the Americas",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "mexico",
+      "event": "Mexico",
+      "venue": "Hermanos Rodr\u00edguez",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "brazil",
+      "event": "Brazil",
+      "venue": "Interlagos",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "portugal",
+      "event": "Portugal",
+      "venue": "Portim\u00e3o",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "turkiye",
+      "event": "T\u00fcrkiye",
+      "venue": "Istanbul Park",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "barcelona-catalunya",
+      "event": "Barcelona-Catalunya",
+      "venue": "Barcelona-Catalunya",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "netherlands",
+      "event": "Netherlands",
+      "venue": "Zandvoort",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    },
+    {
+      "id": "malaysia-2026-reference",
+      "event": "2026 Bahrain-labelled event in Malaysia",
+      "venue": "Sepang; verify identity against official event page",
+      "status": "queued_unverified",
+      "sources": [],
+      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+    }
+  ],
+  "runs": [],
+  "blockers": []
+}
