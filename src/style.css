@@ -5596,3 +5596,54 @@ dialog::backdrop {
     font-size: 15px;
   }
 }
+
+/* Historical archive controls share the seat explorer's race timing language. */
+.historical-replay { position:absolute; z-index:12; left:24px; top:155px; width:370px; max-height:calc(100% - 180px); overflow:auto; background:#11151e; color:#f1f2f6; border:1px solid #596172; border-top:3px solid #e10600; padding:18px; box-shadow:0 12px 40px #0006; }
+.historical-replay header { display:flex; justify-content:space-between; align-items:start; gap:12px; }
+.historical-replay .eyebrow { font-size:12px; color:#b3bbcd; letter-spacing:.1em; }
+.historical-replay h2 { font:600 32px/1.1 'Barlow Condensed',sans-serif; margin:5px 0 16px; }
+.historical-replay button,.historical-replay select { font:inherit; font-size:14px; color:inherit; border:1px solid #596172; background:#1c2230; padding:8px; border-radius:2px; cursor:pointer; }
+.historical-replay button:hover { background:#30394c; }
+.historical-replay .replay-close { font-size:26px; line-height:1; border:0; background:none; padding:0 5px; }
+.replay-context { display:grid; gap:4px; font-size:13px; }
+.replay-context strong { font-size:14px; letter-spacing:.04em; }
+.replay-context span,.replay-driver p { color:#b4bdd0; }
+.replay-track-row { display:grid; grid-template-columns:100px minmax(0,1fr); gap:16px; align-items:center; padding:14px 0; }
+.replay-track { width:100px; height:150px; overflow:visible; }
+.replay-driver label { display:block; margin-bottom:5px; font-size:13px; }
+.replay-driver select { width:100%; }
+.replay-driver>strong { display:block; font:600 28px 'Barlow Condensed',sans-serif; margin-top:9px; }
+.replay-driver strong span { color:#f4f5f8; margin-left:9px; }
+.replay-driver strong small { font:400 13px 'IBM Plex Sans',sans-serif; }
+.replay-driver p { font-size:12px; line-height:1.6; margin:5px 0 0; }
+.replay-timeline label { display:flex; justify-content:space-between; font-size:13px; }
+.replay-timeline output { font-variant-numeric:tabular-nums; }
+.replay-timeline input { display:block; width:100%; margin:14px 0; accent-color:#e10600; cursor:ew-resize; }
+.replay-actions { display:flex; gap:6px; align-items:stretch; }
+.historical-replay .replay-play { background:#c90805; border-color:#ef332e; }
+.replay-actions select { min-width:0; }
+.replay-passes { margin-top:18px; border-top:1px solid #3d4555; padding-top:12px; }
+.replay-passes>div { display:flex; justify-content:space-between; gap:10px; font-size:13px; margin-bottom:7px; }
+.replay-passes>div span { color:#b4bdd0; font-size:12px; }
+.historical-replay .replay-passes button { display:grid; grid-template-columns:4px 1fr 1fr 1fr; align-items:center; gap:12px; text-align:left; width:100%; border:0; border-bottom:1px solid #303848; background:none; padding:8px 0; font-size:14px; font-variant-numeric:tabular-nums; }
+.replay-passes i { height:16px; }
+.replay-passes small { text-align:right; color:#b4bdd0; }
+.replay-passes p,.replay-method { font-size:12px; line-height:1.7; }
+.replay-method { margin-top:14px; color:#bdc5d5; }
+.replay-method summary { cursor:pointer; color:#f1f2f6; font-size:13px; }
+.replay-method a { display:block; color:inherit; text-underline-offset:3px; margin-top:6px; }
+.replay-status { padding:24px 0; font-size:14px; }
+@media(max-width:760px) {
+ .historical-replay { position:fixed; top:auto; bottom:0; left:0; width:100%; max-height:70dvh; padding:18px 20px; padding-bottom:max(20px,env(safe-area-inset-bottom)); z-index:55; }
+ .replay-track-row { grid-template-columns:80px minmax(0,1fr); }
+ .replay-track { width:80px; height:115px; }
+ .historical-replay h2 { font-size:29px; }
+}
+.historical-replay .replay-size { margin-left:auto; font-size:12px; max-width:88px; line-height:1.4; padding:5px 7px; }
+.historical-replay.replay-compact { top:auto; bottom:110px; max-height:210px; padding:14px 16px; }
+.replay-compact h2,.replay-compact .replay-context,.replay-compact .replay-track-row,.replay-compact .replay-passes,.replay-compact .replay-method { display:none; }
+.replay-compact header { align-items:center; margin-bottom:12px; }
+.replay-compact .replay-size { max-width:none; }
+@media(max-width:760px) { .historical-replay.replay-compact { bottom:0; padding-bottom:max(16px,env(safe-area-inset-bottom)); } }
+
+@media(max-width:760px) { .scene-area.history-open { z-index:6; } }

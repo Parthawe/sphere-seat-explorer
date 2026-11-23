@@ -116,3 +116,12 @@ Open `?season=2026&race=united-arab-emirates`. Seven standard grandstands have p
 ### Singapore 2027 area pilot
 
 Open `?season=2027&race=singapore`. Six current organizer-listed grandstands have estimated track-region callouts, source-linked zone access, private ticket matching and three-area comparison. Product handoffs open the organizer’s actual page containing its 180° View control. Singapore 2026, remaining grandstands and variant products are not resolved by this pilot. No exact seats, Singapore 3D, current prices or stock are claimed. Adapted OSM relation 421263 data is downloadable under ODbL at `/data/singapore-track.json`.
+
+
+### Historical Las Vegas replay
+
+The seat explorer's **Historical race** control loads a bundled 129-second opening-field clip from the 2024 Las Vegas race (OpenF1 session 9644). All 20 drivers use recorded XY locations and sampled speeds. The full-circuit tracker displays those XY positions. The 3D model uses landmark correspondence to project each observation onto its estimated centerline, so lateral lines, overtakes, exact seat visibility and crossing locations are not verified. Gaps shown are differences between estimated centerline crossings, not official timing gaps. The archive is independent of the selected planning season.
+
+Visitors can pause, scrub, choose 0.25–4× playback, follow a driver, jump to the next estimated section pass, and minimize the panel while watching from their seat. Playback starts paused and stops at the clip end or when the tab is hidden. Missing observations are hidden rather than extended. A failed archive request offers Retry.
+
+Source: https://openf1.org/docs/ (location and car_data endpoints). All bounded query URLs and collection time are retained in `public/historical/las-vegas-2024-opening.json`. Refresh deliberately with `npx tsx scripts/collect-vegas-replay.ts`. Visitors make no calls to OpenF1. `history=2024` opens the archive directly on a seat-explorer URL.

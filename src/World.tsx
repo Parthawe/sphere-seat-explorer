@@ -1,3 +1,5 @@
+import { curve, points } from "./racingLine";
+import { replaySample, type ReplayFrame, type ReplayDriver } from "./replayMath";
 import GeoBuildings from "./GeoBuildings";
 import { Atmosphere } from "./Atmosphere";
 import { nearestTrackFraction, type SphereDisplay } from "./rendering";
@@ -21,42 +23,6 @@ import {
 } from "./model";
 type V3 = [number, number, number];
 type Piece = { p: V3; s: V3; r?: V3; color?: string };
-const route: [number, number][] = [
-  [130, 105],
-  [130, -45],
-  [119, -82],
-  [92, -105],
-  [45, -116],
-  [27, -97],
-  [7, -97],
-  [-26, -115],
-  [-58, -118],
-  [-77, -103],
-  [-78, 50],
-  [-88, 118],
-  [-125, 155],
-  [-210, 202],
-  [-245, 290],
-  [0, 420],
-  [270, 450],
-  [675, 450],
-  [700, 425],
-  [725, 400],
-  [725, 5],
-  [695, -34],
-  [570, -135],
-  [548, -122],
-  [560, -85],
-  [590, -35],
-  [575, 45],
-  [530, 95],
-];
-const curve = new T.CatmullRomCurve3(
-  route.map(([x, z]) => new T.Vector3(x, 0, z)),
-  true,
-  "centripetal",
-);
-const points = curve.getSpacedPoints(1100);
 function stripe(offset: number, width: number, y: number) {
   const vertices: number[] = [],
     indices: number[] = [],
@@ -1058,9 +1024,13 @@ function Car({
   offset,
   playing,
   selection,
+  replay,
+  driver,
 }: {
   color: string;
   offset: number;
+  replay?: ReplayFrame | null;
+  driver?: ReplayDriver;
   playing: boolean;
   selection: Selection;
 }) {
@@ -1136,6 +1106,17 @@ function Car({
     [body, halo],
   );
   useFrame((_, delta) => {
+    if (replay && driver && ref.current) {
+      const sample = replaySample(driver, replay.clock.current);
+      ref.current.visible = !!sample;
+      if (sample) {
+        const p = curve.getPointAt(sample[1]), tangent = curve.getTangentAt(sample[1]);
+        ref.current.position.set(p.x, 0.38, p.z);
+        ref.current.rotation.y = Math.atan2(tangent.x, tangent.z);
+        if (replay.playing && wheels.current) wheels.current.children.forEach(w => w.rotation.x -= delta * (sample[4] ?? 0) / 3.6);
+      }
+      return;
+    }
     if (!playing || !ref.current) return;
     const d = curve.getTangentAt(progress.current),
       next = curve.getTangentAt((progress.current + 0.003) % 1);
@@ -1616,6 +1597,7 @@ export function World({
   atmosphere = true,
   sphereDisplay = "moon",
   ambientMotion = true,
+  replay,
 }: {
   selection: Selection;
   mode: Mode;
@@ -1626,7 +1608,15 @@ export function World({
   atmosphere?: boolean;
   sphereDisplay?: SphereDisplay;
   ambientMotion?: boolean;
+  replay?: ReplayFrame | null;
 }) {
+  const { invalidate } = useThree();
+  useEffect(() => {
+    const refresh = () => invalidate();
+    window.addEventListener("apexreplaychange", refresh);
+    invalidate();
+    return () => window.removeEventListener("apexreplaychange", refresh);
+  }, [invalidate, replay]);
   return (
     <>
       <color attach="background" args={["#080911"]} />
@@ -1714,7 +1704,7 @@ export function World({
           onStand={onStand}
         />
       ))}
-      {!preview && (
+      {!preview && replay ? replay.data.drivers.map(driver => <Car key={driver.number} color={driver.color} offset={0} playing={false} selection={selection} driver={driver} replay={replay} />) : !preview && (
         <>
           <Car
             color="#e10600"
@@ -1749,7 +1739,7 @@ export function World({
         </>
       )}
       <Finish
-        playing={playing}
+        playing={replay ? replay.playing : playing}
         preview={preview}
         atmosphere={atmosphere && ambientMotion}
       />

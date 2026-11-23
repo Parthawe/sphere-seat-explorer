@@ -1,3 +1,5 @@
+import { HistoricalReplay } from "./HistoricalReplay";
+import type { ReplayFrame } from "./replayMath";
 import { sphereDisplays, type SphereDisplay } from "./rendering";
 import { BrandMark } from "./BrandMark";
 import { FullSeatMap } from "./FullSeatMap";
@@ -346,6 +348,8 @@ export default function App({
     [playing, setPlaying] = useState(
       () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     ),
+    [historyOpen, setHistoryOpen] = useState(() => new URLSearchParams(window.location.search).get("history") === "2024"),
+    [replay, setReplay] = useState<ReplayFrame | null>(null),
     [gridZoom, setGridZoom] = useState(false),
     [compareYaw, setCompareYaw] = useState(0),
     [comparePitch, setComparePitch] = useState(0);
@@ -507,7 +511,7 @@ export default function App({
       <main className="workspace">
         <section
           className={
-            "scene-area mode-" + mode + (saved.length ? " has-saved" : "")
+            "scene-area mode-" + mode + (saved.length ? " has-saved" : "") + (historyOpen ? " history-open" : "")
           }
           aria-label="Interactive seat view"
           ref={sceneRef}
@@ -555,7 +559,8 @@ export default function App({
                   selection={selection}
                   mode={mode}
                   reset={reset}
-                  playing={playing}
+                  playing={historyOpen ? false : playing}
+                  replay={replay}
                   atmosphere={atmosphere}
                   sphereDisplay={sphereDisplay}
                   ambientMotion={!reducedMotion}
@@ -716,7 +721,8 @@ export default function App({
             </div>
           </div>
           <div className="track-demo">
-            <button aria-pressed={playing} onClick={() => setPlaying(!playing)}>
+            <button aria-pressed={historyOpen} onClick={() => setHistoryOpen(!historyOpen)}>Historical race</button>
+            {!historyOpen && <button aria-pressed={playing} onClick={() => setPlaying(!playing)}>
               <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 {playing ? (
                   <path d="M5 4h3v12H5zm7 0h3v12h-3Z" />
@@ -724,8 +730,8 @@ export default function App({
                   <path d="m6 3 11 7-11 7Z" />
                 )}
               </svg>
-              {playing ? "Pause racing" : "Start racing"}
-            </button>
+              {playing ? "Pause demo" : "Start demo"}
+            </button>}
             <details className="scene-controls">
               <summary>Scene settings</summary>
               <div>
@@ -775,8 +781,9 @@ export default function App({
                 </a>
               </div>
             </details>
-            <span>Illustrative racing · not live timing</span>
+            <span>{historyOpen ? "2024 archive · projected onto estimated track" : "Illustrative racing · not live timing"}</span>
           </div>
+          {historyOpen && <HistoricalReplay standId={selection.stand} onChange={setReplay} onClose={() => {setHistoryOpen(false);setReplay(null);}} />}
           {saved.length > 0 && (
             <div className="compare-dock" aria-label="Saved view shortlist">
               <div className="dock-items">

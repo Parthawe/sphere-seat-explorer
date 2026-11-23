@@ -1,3 +1,6 @@
+import { points } from "./racingLine";
+import { nearestTrackFraction } from "./rendering";
+import type { ReplayFrame } from "./replayMath";
 import type { SphereDisplay } from "./rendering";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
@@ -29,6 +32,7 @@ type Props = {
   onStand?: (id: string) => void;
   preview?: boolean;
   playing?: boolean;
+  replay?: ReplayFrame | null;
   atmosphere?: boolean;
   sphereDisplay?: SphereDisplay;
   ambientMotion?: boolean;
@@ -36,7 +40,7 @@ type Props = {
   onReady?: () => void;
   onUnavailable?: () => void;
 };
-function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
+function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: Props) {
   const { camera, gl, invalidate } = useThree();
   const controls = useRef<OrbitControls | null>(null);
   const transition = useRef<{
@@ -78,6 +82,11 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
     if (mode === "seat" || preview) {
       p = new T.Vector3(...seatPosition(selection));
       t = new T.Vector3(...seatTarget(selection));
+      if (replay && !preview) {
+        const index = Math.round(nearestTrackFraction(points, stand.center) * (points.length - 1));
+        t = points[index].clone();
+        t.y = 0.9;
+      }
     } else if (mode === "stand") {
       const seat = seatPosition(selection),
         angle = stand.rotation;
@@ -143,8 +152,8 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
         : 46;
     (camera as T.PerspectiveCamera).updateProjectionMatrix();
     seatAngles.current = {
-      yaw: getStand(selection.stand).rotation,
-      pitch: Math.atan((getStand(selection.stand).zone ? -2 : 22) / 90),
+      yaw: Math.atan2(t.x - p.x, t.z - p.z),
+      pitch: Math.atan2(t.y - p.y, Math.hypot(t.x - p.x, t.z - p.z)),
     };
     invalidate();
   }, [
@@ -154,6 +163,7 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook }: Props) {
     mode,
     reset,
     preview,
+    !!replay,
     camera,
     invalidate,
   ]);
