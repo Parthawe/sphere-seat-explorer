@@ -6,7 +6,7 @@
   "cadence_hours": 1,
   "phase": "remaining-venue-source-verification",
   "active_run": null,
-  "next_action": "Continue Spa from the evidence checkpoint in CIRCUIT-SEATING-SOURCES.md. Identity/year, current Gold 3 rename, connected OSM GP candidate and CC BY SPW terrain source are checked. Inspect organizer map for bank associations; obtain a bounded terrain crop and implement shared height sampling for road, cars, fences, banks and camera before a credible Spa 3D release. Current renderer is flat. Do not repeat identity checks or bulk-download the 9.5GB provincial raster. If terrain access is unavailable, advance area mapping or another venue while keeping the gap explicit.",
+  "next_action": "Resume the bounded SPW collector only after its temporary 502 failure has cleared; use retained research/spa/terrain-partial.json cache to avoid re-querying 157 samples. Fetch the documented bounded OSM XML if /tmp is gone. Complete 330 road-height slots and coarse 17x25 context grid, validate source units/continuity, then integrate a shared height sampler across road/cars/fences/banks/camera/terrain. Current Spa map broad routing is inspected; current product-to-bank assignments still need confirmation. Do not repeat identity checks or claim a complete height field. If service remains unavailable, progress bank/source associations or another venue.",
   "venues": [
     {
       "id": "las-vegas",
@@ -143,17 +143,21 @@
       "id": "belgium",
       "event": "Belgium",
       "venue": "Spa-Francorchamps",
-      "status": "venue_sources_and_gp_candidate_checked_2027_terrain_pending",
+      "status": "gp_layout_reviewed_partial_terrain_2027",
       "sources": [
         "https://www.formula1.com/en/racing/2027/belgium",
         "https://www.spagrandprix.com/en/",
         "https://www.spagrandprix.com/en/ticketing/ticket/list",
         "https://www.spagrandprix.com/en/ticketing/ticket/map",
         "https://www.openstreetmap.org/relation/284560",
-        "https://geoportail.wallonie.be/catalogue/fe13bc84-e371-46ca-9632-8ad4139f1ee5.html"
+        "https://geoportail.wallonie.be/catalogue/fe13bc84-e371-46ca-9632-8ad4139f1ee5.html",
+        "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
+        "https://geoportail.wallonie.be/catalogue/e257f5df-6c96-4118-b4d2-1e63e955df53.html"
       ],
-      "next_action": "Continue Spa from the evidence checkpoint in CIRCUIT-SEATING-SOURCES.md. Identity/year, current Gold 3 rename, connected OSM GP candidate and CC BY SPW terrain source are checked. Inspect organizer map for bank associations; obtain a bounded terrain crop and implement shared height sampling for road, cars, fences, banks and camera before a credible Spa 3D release. Current renderer is flat. Do not repeat identity checks or bulk-download the 9.5GB provincial raster. If terrain access is unavailable, advance area mapping or another venue while keeping the gap explicit.",
-      "exact_seats_verified": false
+      "next_action": "Resume the bounded SPW collector only after its temporary 502 failure has cleared; use retained research/spa/terrain-partial.json cache to avoid re-querying 157 samples. Fetch the documented bounded OSM XML if /tmp is gone. Complete 330 road-height slots and coarse 17x25 context grid, validate source units/continuity, then integrate a shared height sampler across road/cars/fences/banks/camera/terrain. Current Spa map broad routing is inspected; current product-to-bank assignments still need confirmation. Do not repeat identity checks or claim a complete height field. If service remains unavailable, progress bank/source associations or another venue.",
+      "exact_seats_verified": false,
+      "terrain_status": "157 distinct source samples retained; 158 of 330 road slots populated; SPW temporarily returns 502",
+      "terrain_artifact": "research/spa/terrain-partial.json"
     },
     {
       "id": "italy",
@@ -596,6 +600,23 @@
         "Source metadata alone is not a sampled height field"
       ],
       "next": "Continue Spa from the evidence checkpoint in CIRCUIT-SEATING-SOURCES.md. Identity/year, current Gold 3 rename, connected OSM GP candidate and CC BY SPW terrain source are checked. Inspect organizer map for bank associations; obtain a bounded terrain crop and implement shared height sampling for road, cars, fences, banks and camera before a credible Spa 3D release. Current renderer is flat. Do not repeat identity checks or bulk-download the 9.5GB provincial raster. If terrain access is unavailable, advance area mapping or another venue while keeping the gap explicit."
+    },
+    {
+      "date": "2026-11-24",
+      "scope": "Spa bounded numeric terrain and map comparison",
+      "result": "Retained 157 distinct licensed SPW samples, resumable sequential collector and offline research validators; compared broad organizer map to OSM candidate. No app release.",
+      "evidence": [
+        "SPW numeric identify values returned; 158/330 road slots populated including repeated start",
+        "50cm source dataset CC BY 4.0; separate OSM ODbL attribution retained",
+        "HTTP 502 stopped acquisition; one resume failed at metadata; no further retries",
+        "68 tests pass including two new offline terrain checks; Python collector compilation passes"
+      ],
+      "limitations": [
+        "No context grid or complete height profile yet",
+        "Public renderer remains flat; no Spa route exposed",
+        "Current bank/product associations and structures remain unverified"
+      ],
+      "next": "Resume the bounded SPW collector only after its temporary 502 failure has cleared; use retained research/spa/terrain-partial.json cache to avoid re-querying 157 samples. Fetch the documented bounded OSM XML if /tmp is gone. Complete 330 road-height slots and coarse 17x25 context grid, validate source units/continuity, then integrate a shared height sampler across road/cars/fences/banks/camera/terrain. Current Spa map broad routing is inspected; current product-to-bank assignments still need confirmation. Do not repeat identity checks or claim a complete height field. If service remains unavailable, progress bank/source associations or another venue."
     }
   ],
   "blockers": [

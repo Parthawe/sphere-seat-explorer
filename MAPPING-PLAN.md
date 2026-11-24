@@ -1,3 +1,7 @@
+## Latest checkpoint: Spa partial terrain input
+
+Spa’s public map and licensed GP trace have been compared at broad layout level. The public SPW numeric terrain service supplied a partial road sample before returning 502; one resume also failed, so acquisition stopped. The retained research artifact, resumable collector and interpolation/partial-data tests are in the repository. This is not a published Spa scene. Follow MAPPING-PROGRESS.json for bounded completion and terrain-aware renderer work; retain the Silverstone release while inputs are incomplete.
+
 ## Latest checkpoint: Silverstone 2027 initial study
 
 Melbourne and Silverstone now have distinct daylight circuit studies. Silverstone supports 26 representative banks, 48,960 illustrative positions and three attributable media/review sources. Its licensed GP loop excludes duplicate relation members and pit/short routes. Exact chairs, premium boundaries, hospitality and accessible platforms remain unverified. Continue the tracker with Spa current official sources and licensed geography. Jeddah still needs new evidence to resolve conflicting public location descriptions; do not repeat sign-in-only seat selection attempts.
