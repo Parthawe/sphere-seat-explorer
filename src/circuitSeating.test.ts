@@ -95,3 +95,23 @@ test('overview projection leaves track geometry clear of top and bottom controls
   for(const p of model.track){const projected=new T.Vector3(p[0],0,p[1]).project(camera),x=(projected.x+1)*width/2,y=(1-projected.y)*height/2;assert.ok(x>0&&x<width&&y>top&&y<height-bottom,model.id+' overlaps overview controls');}
  }
 });
+
+test('Albert Park 2027 preserves current map coverage and licensed lake context',()=>{
+ const m=circuitModels.australia;
+ assert.equal(findCircuitModel(2026,'australia'),undefined);assert.equal(findCircuitModel(2027,'australia'),m);
+ assert.equal(m.appearance,'day');assert.equal(normalizeModelPosition(m,{}).bank,'fangio');
+ assert.equal(m.banks.length,16);assert.equal(new Set(m.banks.map(b=>b.id)).size,16);
+ assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),30464);assert.ok(m.banks.every(b=>!b.roof&&/estimated/i.test(b.confidence)));
+ const lake=m.features.find(f=>f.kind==='water')!;assert.ok(lake);assert.deepEqual(lake.points[0],lake.points.at(-1));assert.ok(lake.holes!.length>0);
+ for(const hole of lake.holes!)assert.deepEqual(hole[0],hole.at(-1));assert.ok(m.vegetation!.length>2000);
+});
+test('every Melbourne modeled chair clears the road and lake',async()=>{
+ const {closestTrack}=await import('./circuitSeating');const m=circuitModels.australia;
+ const inside=(p:number[],ring:number[][])=>{let hit=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const a=ring[i],b=ring[j];if((a[1]>p[1])!==(b[1]>p[1])&&p[0]<(b[0]-a[0])*(p[1]-a[1])/(b[1]-a[1])+a[0])hit=!hit;}return hit;};
+ const lakes=m.features.filter(f=>f.kind==='water');
+ for(const b of m.banks)for(let section=1;section<=b.sections;section++)for(let row=1;row<=b.rows;row++)for(let seat=1;seat<=b.seats;seat++){
+  const p=modelPosition(m,{bank:b.id,section,row,seat}),xy=[p[0],p[2]],t=closestTrack(m,xy);
+  assert.ok(Math.hypot(p[0]-t[0],p[2]-t[1])>15,b.id+' overlaps modeled road');
+  assert.ok(!lakes.some(l=>inside(xy,l.points)&&!(l.holes??[]).some(h=>inside(xy,h))),b.id+' overlaps lake');
+ }
+});

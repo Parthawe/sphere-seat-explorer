@@ -216,7 +216,7 @@ export default function SpectatorReferences({
               ? "Las Vegas"
               : venue === "qatar"
                 ? "Lusail"
-                : venue === "united-arab-emirates" ? "Yas Marina" : "Sakhir"}{" "}
+                : venue === "united-arab-emirates" ? "Yas Marina" : venue === "australia" ? "Albert Park" : "Sakhir"}{" "}
             · planning {season}
           </p>
         </div>

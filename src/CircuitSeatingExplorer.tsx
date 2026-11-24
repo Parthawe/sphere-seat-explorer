@@ -22,7 +22,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  return <div className="circuit-explorer">
   <header className="circuit-explorer-header"><a className="wordmark" href="?season=2026"><BrandMark/><span>APEX ATLAS<small>3D SEATING STUDIES</small></span></a><div><span>{model.country.toUpperCase()} / {model.season}</span><button onClick={onBack}>Back to race guide</button></div></header>
   <main className="circuit-explorer-layout">
-   <section className={'circuit-model-stage mode-'+mode} aria-label={`${model.name} 3D seating model`}>
+   <section className={'circuit-model-stage mode-'+mode+(model.appearance==='day'?' day-scene':'')} aria-label={`${model.name} 3D seating model`}>
     <div className="circuit-model-canvas" role="region" tabIndex={0} aria-label="Interactive modeled view. Drag to look or orbit. Arrow keys change model row and position." onKeyDown={arrows}>
      {unavailable?<div className="circuit-model-fallback"><h2>3D view unavailable</h2><p>Your position controls and complete model grid still work.</p><button onClick={()=>{setUnavailable(false);setReady(false);setRetry(r=>r+1);}}>Retry 3D</button><button onClick={()=>setGrid(true)}>Open model grid</button></div>:<Suspense fallback={null}><Scene onZoomLimitsChange={zoomLimitsCallback} cameraControls={cameraControls} key={model.id+'-'+retry} model={model} selection={selection} mode={mode} playing={playing} roofs={roofs} reset={reset} onSelect={setSelection} onUnavailable={unavailableCallback} onReady={readyCallback}/></Suspense>}
     </div>

@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-24",
   "cadence_hours": 1,
-  "phase": "jeddah-geography-and-bank-verification",
+  "phase": "remaining-venue-source-verification",
   "active_run": null,
-  "next_action": "Use current organizer-linked location/diagram evidence to place Jeddah 2027 six named grandstand products and independently verify the GP loop against mixed Formula E/WTCR OSM segments. Venue/date/product identities are already checked in src/jeddahReference.ts and CIRCUIT-SEATING-SOURCES.md; do not repeat them. Do not publish guessed six-bank associations from four unnamed footprints. If spatial evidence is insufficient, continue verified Melbourne 2027 sources/geography and keep the Jeddah gap explicit. Shared seated touch zoom is complete for Qatar/Bahrain/Yas; preserve it and all existing scene/replay/privacy limits.",
+  "next_action": "Verify Silverstone current event/venue and public organizer viewing-area sources, then gather licensed geography for the next distinct circuit study. Melbourne initial 2027 daylight model is complete; do not repeat its sixteen-name assessment. Jeddah remains spatially unverified: public explorer descriptions conflict and the seat selector requires login; resume only with new evidence. Preserve all existing scenes, replay, photo attribution, season boundaries and privacy limits.",
   "venues": [
     {
       "id": "las-vegas",
@@ -119,7 +119,7 @@
         "https://www.jeddahcircuit.com/en/events/formula-1-stc-saudi-arabian-grand-prix",
         "https://tickets.saudiarabiangp.com/en"
       ],
-      "next_action": "Use current organizer-linked location/diagram evidence to place Jeddah 2027 six named grandstand products and independently verify the GP loop against mixed Formula E/WTCR OSM segments. Venue/date/product identities are already checked in src/jeddahReference.ts and CIRCUIT-SEATING-SOURCES.md; do not repeat them. Do not publish guessed six-bank associations from four unnamed footprints. If spatial evidence is insufficient, continue verified Melbourne 2027 sources/geography and keep the Jeddah gap explicit. Shared seated touch zoom is complete for Qatar/Bahrain/Yas; preserve it and all existing scene/replay/privacy limits.",
+      "next_action": "Resume spatial verification only with new organizer evidence; explorer descriptions conflict and seat selector requires sign-in. Do not repeat identity checks or infer six banks from four unnamed footprints.",
       "grandstand_products_verified": 6
     },
     {
@@ -166,9 +166,18 @@
       "id": "australia",
       "event": "Australia",
       "venue": "Albert Park",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "representative_3d_reconstruction_2027",
+      "sources": [
+        "https://www.formula1.com/en/racing/2027/australia",
+        "https://travel.grandprix.com.au/blog/grandstand-guide-2027",
+        "https://www.openstreetmap.org/relation/280443"
+      ],
+      "next_action": "Initial daylight scene complete. Seek attributable spectator references and better temporary-bank assets; actual chairs, premium/accessible boundaries and measured sightlines remain unverified.",
+      "seasons_with_3d_coverage": [
+        2027
+      ],
+      "modeled_positions": 30464,
+      "exact_seats_verified": false
     },
     {
       "id": "china",
@@ -521,6 +530,22 @@
         "Zoom is a lens study, not optical/sightline calibration or current magnification readout"
       ],
       "next": "Use current organizer-linked location/diagram evidence to place Jeddah 2027 six named grandstand products and independently verify the GP loop against mixed Formula E/WTCR OSM segments. Venue/date/product identities are already checked in src/jeddahReference.ts and CIRCUIT-SEATING-SOURCES.md; do not repeat them. Do not publish guessed six-bank associations from four unnamed footprints. If spatial evidence is insufficient, continue verified Melbourne 2027 sources/geography and keep the Jeddah gap explicit. Shared seated touch zoom is complete for Qatar/Bahrain/Yas; preserve it and all existing scene/replay/privacy limits."
+    },
+    {
+      "date": "2026-11-24",
+      "scope": "Melbourne 2027 daylight reconstruction and Jeddah evidence follow-up",
+      "result": "Added sixteen estimated Melbourne banks with 30,464 model positions, licensed lake/island geometry and tree context. Jeddah spatial conflict retained.",
+      "evidence": [
+        "63 tests pass; TypeScript and production build pass",
+        "All Melbourne positions clear modeled road and lake",
+        "Desktop and 390/320px phone controls, map/grid, empty references, zoom and recovery checked; Qatar/Bahrain/Yas render regression passed"
+      ],
+      "limitations": [
+        "Temporary stand positions and all chairs are estimated; no actual ticket match",
+        "No Melbourne spectator-photo references yet",
+        "Jeddah product-to-bank locations unresolved"
+      ],
+      "next": "Verify Silverstone current event/venue and public organizer viewing-area sources, then gather licensed geography for the next distinct circuit study. Melbourne initial 2027 daylight model is complete; do not repeat its sixteen-name assessment. Jeddah remains spatially unverified: public explorer descriptions conflict and the seat selector requires login; resume only with new evidence. Preserve all existing scenes, replay, photo attribution, season boundaries and privacy limits."
     }
   ],
   "blockers": [

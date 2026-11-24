@@ -18,7 +18,7 @@ export default function CircuitOverview({model,selection,open,onClose,onSelect}:
     <svg viewBox={`${minX} ${minZ} ${width} ${height}`} role="img" aria-label={`Full ${model.country} circuit map. Selected ${bank.name}. Numbered markers correspond to viewing bank buttons. Shaded fan shows an illustrative 70 degree horizontal view direction.`}>
      <polyline points={model.track.map(p=>p.join(',')).join(' ')} fill="none" stroke="#abb1bb" strokeWidth={24} strokeLinejoin="round"/>
      <polyline points={model.track.map(p=>p.join(',')).join(' ')} fill="none" stroke="#f3f4f6" strokeWidth={12} strokeLinejoin="round"/>
-     {model.features.map(f=><polygon key={f.id} points={f.points.map(p=>p.join(',')).join(' ')} fill="#dde0e6" stroke="#a4acba" strokeWidth={3}/>)}
+     {model.features.map(f=><path key={f.id} d={[f.points,...(f.holes??[])].map(r=>'M'+r.map(p=>p.join(',')).join(' L')+' Z').join(' ')} fill={f.kind==='water'?'#b4d0db':'#dde0e6'} stroke="#a4acba" strokeWidth={3} fillRule="evenodd"/>)}
      {model.banks.map(b=><polygon key={b.id} points={polygon(b)} fill={b.id===bank.id?'#e10600':'#546377'} fillOpacity={.65} stroke={b.footprint?'#1b2739':'#546377'} strokeWidth={4} strokeDasharray={b.footprint?undefined:'10 7'}/>)}
      <polygon points={`${eye[0]},${eye[2]} ${tip(frame.yaw-half)} ${tip(frame.yaw+half)}`} fill="#e10600" fillOpacity={.15} stroke="#e10600" strokeWidth={3} strokeDasharray="9 7"/>
      <circle cx={eye[0]} cy={eye[2]} r={marker*.23} fill="#e10600" stroke="white" strokeWidth={3}/>

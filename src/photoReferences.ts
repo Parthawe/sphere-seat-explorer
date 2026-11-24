@@ -1,4 +1,4 @@
-export type ReferenceVenue = "qatar" | "bahrain" | "las-vegas" | "united-arab-emirates";
+export type ReferenceVenue = "qatar" | "bahrain" | "las-vegas" | "united-arab-emirates" | "australia";
 export type ReferenceKind = "photos" | "review";
 export type SpectatorReference = {
   id: string;

@@ -1,10 +1,11 @@
 import qatar from './qatar-geometry.json';
 import bahrain from './bahrain-geometry.json';
 import yas from './yas-geometry.json';
-export type CircuitId = 'qatar' | 'bahrain' | 'united-arab-emirates';
+import albert from './albert-park-geometry.json';
+export type CircuitId = 'qatar' | 'bahrain' | 'united-arab-emirates' | 'australia';
 export type ModelPosition = {bank:string;section:number;row:number;seat:number};
 export type ModelBank = {id:string;product:string;name:string;center:[number,number];width:number;axis?:[number,number];footprint?:string;sections:number;rows:number;seats:number;roof:boolean;kind:'assigned'|'free'|'lawn'|'check';confidence:string;source:string};
-export type CircuitModel = {id:CircuitId;name:string;country:string;season:2026|2027;dates:string;track:number[][];features:{id:string;name:string;points:number[][]}[];banks:ModelBank[];source:string;ticketUrl:string;geometryUrl:string;length:number;evidence:string};
+export type CircuitModel = {id:CircuitId;name:string;country:string;season:2026|2027;dates:string;track:number[][];features:{id:string;name:string;points:number[][];kind?:string;holes?:number[][][]}[];vegetation?:{id:string;point:number[]}[];appearance?:'day';defaultBank?:string;pitBank?:string;banks:ModelBank[];source:string;ticketUrl:string;geometryUrl:string;length:number;evidence:string};
 export const BAHRAIN_EVENT='https://www.bahraingp.com/blog/events/f1-2027/';
 const qSource=(path:string)=>'https://www.lcsc.qa/ticket/'+path+'-3-day';
 // Fit the source polygon rather than pointing a rectangular stand at one nearby road point.
@@ -27,6 +28,9 @@ const b=(id:string,product:string,name:string,feature:string,sections:number,row
 const YAS_TICKETS='https://www.abudhabigp.com/en/formula1/tickets-2026/';
 const y=(id:string,name:string,feature:string,sections:number,rows:number,seats:number):ModelBank=>({id,product:id,name,...footprint(yas,feature),sections,rows,seats,roof:true,kind:'check',confidence:'OSM footprint-aligned envelope; modeled tiers and chairs; facing inferred',source:YAS_TICKETS+id+'-grandstand-4day'});
 const yRegion=(id:string,name:string,center:[number,number],width:number,sections:number):ModelBank=>({id,product:id,name,center,width,sections,rows:16,seats:40,roof:true,kind:'check',confidence:'Estimated representative bank region; not a surveyed footprint',source:YAS_TICKETS+id+'-grandstand-4day'});
+export const MELBOURNE_GUIDE='https://travel.grandprix.com.au/blog/grandstand-guide-2027';
+export const MELBOURNE_TICKETS='https://www.grandprix.com.au/en/tickets';
+const parkBank=(id:string,name:string,center:[number,number],sections=3,rows=16,seats=36,width=sections===7?230:sections===5?155:95):ModelBank=>({id,product:id,name,center,width,sections,rows,seats,roof:false,kind:'check',confidence:'Estimated temporary-stand region from the linked 2027 organizer diagram; all tiers and chairs modeled',source:MELBOURNE_GUIDE});
 export const circuitModels:Record<CircuitId,CircuitModel>={
  qatar:{id:'qatar',name:'Lusail International Circuit',country:'Qatar',season:2026,dates:'27–29 November 2026',track:qatar.points,features:qatar.features,source:'https://www.lcsc.qa/formula12026',ticketUrl:'https://www.lcsc.qa/formula12026',geometryUrl:'/data/qatar-geometry.json',length:qatar.length_m,evidence:'Main has a permanent footprint reference. North, T2, T16 and Hill are estimated regions from organizer descriptions; they are not surveyed temporary layouts.',banks:[
   {id:'main',product:'main',name:'Main Grandstand',...footprint(qatar,'152483596'),sections:9,rows:18,seats:44,roof:true,kind:'assigned',confidence:'OSM permanent footprint-aligned envelope; modeled tiers and chairs; facing inferred',source:qSource('main-grandstand')},
@@ -54,6 +58,24 @@ export const circuitModels:Record<CircuitId,CircuitModel>={
   y('marina','Marina Grandstand','133907079',4,18,40),
   y('south','South Grandstand','133907081',4,18,40),
  ]},
+ australia:{id:'australia',name:'Albert Park Grand Prix Circuit',country:'Australia',season:2027,dates:'2–4 April 2027 · racing weekend',track:albert.points,features:albert.features,vegetation:albert.vegetation,appearance:'day',defaultBank:'fangio',pitBank:'fangio',source:MELBOURNE_GUIDE,ticketUrl:MELBOURNE_TICKETS,geometryUrl:'/data/albert-park-geometry.json',length:albert.length_m,evidence:'Sixteen named grandstand regions follow the map linked by AGPC’s 2027 guide. The ten-stand travel-package comparison is a subset of that map. All temporary boundaries, rows and chairs are estimates. Premium section locations and the accessible Turn 12 platform are not modeled. No canopies are shown because premium roof boundaries are unverified. Source tree points and lake outline provide park context; vegetation size, event clearing and terrain are authored. Reserved Friday–Sunday and Thursday roaming rules vary by ticket; confirm with the organizer.',banks:[
+  parkBank('jones','Jones Grandstand',[-554.6, 103.1]),
+  parkBank('hill','Hill Grandstand',[-849.5, -599.9]),
+  parkBank('ricciardo','Ricciardo Grandstand',[-795.2, -518.2]),
+  parkBank('american-express','American Express Grandstand',[-768.3, -620.1],2,16,28,55),
+  parkBank('stewart','Stewart Grandstand',[-678.8, -886.9]),
+  parkBank('button','Button Grandstand',[-58.7, -900.8]),
+  parkBank('clark','Clark Grandstand',[41.8, -547.8]),
+  parkBank('waite','Waite Grandstand',[246.5, 74.9]),
+  parkBank('vettel','Vettel Grandstand',[611.0, 630.7]),
+  parkBank('webber','Webber Grandstand',[529.7, 673.3],2,16,32,65),
+  parkBank('lauda','Lauda Grandstand',[310.0, 827.3]),
+  parkBank('schumacher','Schumacher Grandstand',[174.7, 636.6],2,16,28,55),
+  parkBank('prost','Prost Grandstand',[108.6, 686.9]),
+  parkBank('senna','Senna Grandstand',[-32.0, 632.7]),
+  parkBank('fangio','Fangio Grandstand',[-142.8, 520.4],7,18,40),
+  parkBank('piastri','Piastri Grandstand',[-279.1, 382.9],5,18,40),
+ ]},
 };
 export function findCircuitModel(season:number,race:string){const m=circuitModels[race as CircuitId];return m?.season===season?m:undefined;}
 export function closestTrack(model:CircuitModel,point:readonly number[]):[number,number]{let best=Infinity,hit:[number,number]=[0,0];for(let i=1;i<model.track.length;i++){const a=model.track[i-1],b=model.track[i],dx=b[0]-a[0],dz=b[1]-a[1],f=Math.max(0,Math.min(1,((point[0]-a[0])*dx+(point[1]-a[1])*dz)/(dx*dx+dz*dz||1))),p:[number,number]=[a[0]+f*dx,a[1]+f*dz],d=Math.hypot(p[0]-point[0],p[1]-point[1]);if(d<best){best=d;hit=p;}}return hit;}
@@ -63,7 +85,7 @@ export function bankFrame(model:CircuitModel,bank:ModelBank){
  if(bank.axis){forward=[-bank.axis[1],bank.axis[0]];if(forward[0]*dx+forward[1]*dz<0)forward=[-forward[0],-forward[1]];}
  return {forward,yaw:Math.atan2(forward[0],forward[1]),target};
 }
-export function normalizeModelPosition(model:CircuitModel,p:Partial<ModelPosition>):ModelPosition{const b=model.banks.find(b=>b.id===p.bank)??model.banks[0];const bound=(n:unknown,max:number,def:number)=>typeof n==='number'&&Number.isFinite(n)?Math.max(1,Math.min(max,Math.round(n))):def;return {bank:b.id,section:bound(p.section,b.sections,Math.ceil(b.sections/2)),row:bound(p.row,b.rows,Math.ceil(b.rows/2)),seat:bound(p.seat,b.seats,Math.ceil(b.seats/2))};}
+export function normalizeModelPosition(model:CircuitModel,p:Partial<ModelPosition>):ModelPosition{const b=model.banks.find(b=>b.id===p.bank)??model.banks.find(b=>b.id===model.defaultBank)??model.banks[0];const bound=(n:unknown,max:number,def:number)=>typeof n==='number'&&Number.isFinite(n)?Math.max(1,Math.min(max,Math.round(n))):def;return {bank:b.id,section:bound(p.section,b.sections,Math.ceil(b.sections/2)),row:bound(p.row,b.rows,Math.ceil(b.rows/2)),seat:bound(p.seat,b.seats,Math.ceil(b.seats/2))};}
 export function localModelPosition(bank:ModelBank,p:ModelPosition):[number,number,number]{const lawn=bank.kind==='lawn',pitch=bank.width/(bank.sections*bank.seats+(bank.sections-1)*3);const x=((p.section-1)*(bank.seats+3)+p.seat-.5)*pitch-bank.width/2;return [x,lawn?3+(p.row-1)*.14:.7+(p.row-1)*.43,(bank.rows/2-p.row)*(lawn?3:.88)];}
 export function modelPosition(model:CircuitModel,p:ModelPosition):[number,number,number]{const b=model.banks.find(b=>b.id===p.bank)!;const [x,y,z]=localModelPosition(b,p),{yaw}=bankFrame(model,b);return [b.center[0]+x*Math.cos(yaw)+z*Math.sin(yaw),y,b.center[1]-x*Math.sin(yaw)+z*Math.cos(yaw)];}
 export function modelCount(bank:ModelBank){return bank.sections*bank.rows*bank.seats;}
