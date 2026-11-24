@@ -5,7 +5,7 @@ test('physical circuit and season cannot silently cross Qatar/Bahrain references
  assert.equal(findCircuitModel(2026,'qatar')?.id,'qatar');assert.equal(findCircuitModel(2027,'bahrain')?.id,'bahrain');
  assert.equal(findCircuitModel(2026,'bahrain'),undefined);assert.equal(findCircuitModel(2027,'qatar'),undefined);
  assert.notDeepEqual(circuitModels.qatar.track,circuitModels.bahrain.track);
- for(const m of Object.values(circuitModels)){assert.deepEqual(m.track[0],m.track.at(-1));assert.ok(m.length>5000&&m.length<5600);assert.ok(m.track.flat().every(Number.isFinite));}
+ for(const m of Object.values(circuitModels)){assert.deepEqual(m.track[0],m.track.at(-1));assert.ok(m.length>5000&&m.length<(m.id==='great-britain'?6000:5600));assert.ok(m.track.flat().every(Number.isFinite));}
 });
 test('all model positions are finite, unique and reachable without claiming ticket IDs',()=>{
  for(const m of Object.values(circuitModels))for(const b of m.banks){const keys=new Set<string>(),coordinates=new Set<string>();
@@ -43,6 +43,7 @@ test('footprint-based banks stay aligned with their source envelope and face tow
   assert.ok(frame.forward[0]*toward[0]+frame.forward[1]*toward[1]>=-1e-8);
   if(!bank.axis)continue;
   assert.ok(Math.abs(bank.axis[0]*frame.forward[0]+bank.axis[1]*frame.forward[1])<1e-8);
+  if(!bank.footprint)continue;
   const source=model.features.find(f=>f.id===bank.footprint);assert.ok(source);
   const projected=source.points.map(p=>(p[0]-bank.center[0])*bank.axis![0]+(p[1]-bank.center[1])*bank.axis![1]);
   assert.ok(Math.abs(Math.max(...projected)-Math.min(...projected)-bank.width)<1e-6);
@@ -113,5 +114,20 @@ test('every Melbourne modeled chair clears the road and lake',async()=>{
   const p=modelPosition(m,{bank:b.id,section,row,seat}),xy=[p[0],p[2]],t=closestTrack(m,xy);
   assert.ok(Math.hypot(p[0]-t[0],p[2]-t[1])>15,b.id+' overlaps modeled road');
   assert.ok(!lakes.some(l=>inside(xy,l.points)&&!(l.holes??[]).some(h=>inside(xy,h))),b.id+' overlaps lake');
+ }
+});
+
+
+test('Silverstone 2027 keeps current banks, representative anchors and season boundaries',()=>{
+ const m=circuitModels['great-britain'];assert.equal(findCircuitModel(2026,'great-britain'),undefined);assert.equal(m.banks.length,26);assert.equal(normalizeModelPosition(m,{}).bank,'hamilton-a');
+ assert.equal(new Set(m.banks.map(b=>b.id)).size,26);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),48960);
+ assert.ok(m.length>5800&&m.length<6000);assert.ok(m.features.some(f=>f.name==='Silverstone Wing'));
+ assert.ok(m.banks.some(b=>b.id==='george-russell'));assert.ok(m.banks.some(b=>b.id==='landostand'));assert.ok(m.banks.every(b=>!b.footprint&&!b.roof&&/estimated/.test(b.confidence)));
+ const u=new URL(modelPositionUrl('https://example.com/?ticket=secret#booking',m,normalizeModelPosition(m,{})));assert.equal(u.searchParams.get('race'),'great-britain');assert.equal(u.searchParams.get('ticket'),null);assert.equal(u.hash,'');
+});
+test('every Silverstone model position stays outside its modeled racing surface',async()=>{
+ const {closestTrack}=await import('./circuitSeating');const m=circuitModels['great-britain'];
+ for(const b of m.banks)for(let section=1;section<=b.sections;section++)for(let row=1;row<=b.rows;row++)for(let seat=1;seat<=b.seats;seat++){
+  const p=modelPosition(m,{bank:b.id,section,row,seat}),t=closestTrack(m,[p[0],p[2]]);assert.ok(Math.hypot(p[0]-t[0],p[2]-t[1])>15,b.id+' intersects modeled road');
  }
 });

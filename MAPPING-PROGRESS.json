@@ -6,7 +6,7 @@
   "cadence_hours": 1,
   "phase": "remaining-venue-source-verification",
   "active_run": null,
-  "next_action": "Verify Silverstone current event/venue and public organizer viewing-area sources, then gather licensed geography for the next distinct circuit study. Melbourne initial 2027 daylight model is complete; do not repeat its sixteen-name assessment. Jeddah remains spatially unverified: public explorer descriptions conflict and the seat selector requires login; resume only with new evidence. Preserve all existing scenes, replay, photo attribution, season boundaries and privacy limits.",
+  "next_action": "Verify Spa-Francorchamps current event/season and organizer viewing-area sources, then gather licensed GP geometry and build the next distinct circuit study. Silverstone initial 2027 study is complete with 26 representative banks and three references; do not repeat its source assessment. Jeddah needs new spatial evidence. Preserve all scene/replay/privacy/season boundaries.",
   "venues": [
     {
       "id": "las-vegas",
@@ -126,9 +126,18 @@
       "id": "great-britain",
       "event": "Great Britain",
       "venue": "Silverstone",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "representative_3d_reconstruction_2027",
+      "sources": [
+        "https://www.formula1.com/en/racing/2027/great-britain",
+        "https://www.silverstone.co.uk/events/formula-1-british-grand-prix/tickets/grandstands",
+        "https://www.openstreetmap.org/relation/51160"
+      ],
+      "next_action": "Initial study complete; obtain better temporary-bank/roof/elevation assets and attributable photo references for the remaining banks. No exact ticket or Prime View row mapping.",
+      "seasons_with_3d_coverage": [
+        2027
+      ],
+      "modeled_positions": 48960,
+      "exact_seats_verified": false
     },
     {
       "id": "belgium",
@@ -546,6 +555,23 @@
         "Jeddah product-to-bank locations unresolved"
       ],
       "next": "Verify Silverstone current event/venue and public organizer viewing-area sources, then gather licensed geography for the next distinct circuit study. Melbourne initial 2027 daylight model is complete; do not repeat its sixteen-name assessment. Jeddah remains spatially unverified: public explorer descriptions conflict and the seat selector requires login; resume only with new evidence. Preserve all existing scenes, replay, photo attribution, season boundaries and privacy limits."
+    },
+    {
+      "date": "2026-11-24",
+      "scope": "Silverstone 2027 initial reconstruction and source references",
+      "result": "26 representative banks, 48,960 selectable model positions, licensed Wing footprint with authored architecture, Copse C publisher video and two attributed 2025 reports. Shared daytime grass material.",
+      "evidence": [
+        "66 tests pass; TypeScript/production build pass",
+        "All new modeled positions clear the road centerline by more than 15m",
+        "26 bank selections, complete grid last position, map, camera, zoom, pause and recovery checked on desktop/phone",
+        "Source video opt-in/unload and attribution checked; no page exceptions"
+      ],
+      "limitations": [
+        "No actual seat coordinates or premium/accessible/hospitality geometry",
+        "Flat terrain and authored building elevations",
+        "Source footage is publisher-reported, not exact-row photography"
+      ],
+      "next": "Verify Spa-Francorchamps current event/season and organizer viewing-area sources, then gather licensed GP geometry and build the next distinct circuit study. Silverstone initial 2027 study is complete with 26 representative banks and three references; do not repeat its source assessment. Jeddah needs new spatial evidence. Preserve all scene/replay/privacy/season boundaries."
     }
   ],
   "blockers": [

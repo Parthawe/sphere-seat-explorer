@@ -2,10 +2,11 @@ import qatar from './qatar-geometry.json';
 import bahrain from './bahrain-geometry.json';
 import yas from './yas-geometry.json';
 import albert from './albert-park-geometry.json';
-export type CircuitId = 'qatar' | 'bahrain' | 'united-arab-emirates' | 'australia';
+import silverstone from './silverstone-geometry.json';
+export type CircuitId = 'qatar' | 'bahrain' | 'united-arab-emirates' | 'australia' | 'great-britain';
 export type ModelPosition = {bank:string;section:number;row:number;seat:number};
 export type ModelBank = {id:string;product:string;name:string;center:[number,number];width:number;axis?:[number,number];footprint?:string;sections:number;rows:number;seats:number;roof:boolean;kind:'assigned'|'free'|'lawn'|'check';confidence:string;source:string};
-export type CircuitModel = {id:CircuitId;name:string;country:string;season:2026|2027;dates:string;track:number[][];features:{id:string;name:string;points:number[][];kind?:string;holes?:number[][][]}[];vegetation?:{id:string;point:number[]}[];appearance?:'day';defaultBank?:string;pitBank?:string;banks:ModelBank[];source:string;ticketUrl:string;geometryUrl:string;length:number;evidence:string};
+export type CircuitModel = {id:CircuitId;name:string;country:string;season:2026|2027;dates:string;track:number[][];features:{id:string;name:string;points:number[][];kind?:string;holes?:number[][][]}[];vegetation?:{id:string;point:number[]}[];appearance?:'day';checked?:string;defaultBank?:string;pitBank?:string;banks:ModelBank[];source:string;ticketUrl:string;geometryUrl:string;length:number;evidence:string};
 export const BAHRAIN_EVENT='https://www.bahraingp.com/blog/events/f1-2027/';
 const qSource=(path:string)=>'https://www.lcsc.qa/ticket/'+path+'-3-day';
 // Fit the source polygon rather than pointing a rectangular stand at one nearby road point.
@@ -31,6 +32,11 @@ const yRegion=(id:string,name:string,center:[number,number],width:number,section
 export const MELBOURNE_GUIDE='https://travel.grandprix.com.au/blog/grandstand-guide-2027';
 export const MELBOURNE_TICKETS='https://www.grandprix.com.au/en/tickets';
 const parkBank=(id:string,name:string,center:[number,number],sections=3,rows=16,seats=36,width=sections===7?230:sections===5?155:95):ModelBank=>({id,product:id,name,center,width,sections,rows,seats,roof:false,kind:'check',confidence:'Estimated temporary-stand region from the linked 2027 organizer diagram; all tiers and chairs modeled',source:MELBOURNE_GUIDE});
+const SILVERSTONE_SOURCE='https://www.silverstone.co.uk/events/formula-1-british-grand-prix/tickets/grandstands';
+const silverBank=(id:string,name:string,feature:string,sections=3,center?:[number,number],width?:number):ModelBank=>{
+ const f=silverstone.features.find(f=>f.id===feature)!,fit=footprintPlacement(f.points);
+ return {id,product:id,name,center:center??fit.center,width:width??Math.min(fit.width,130),axis:fit.axis,sections,rows:16,seats:36,roof:false,kind:'assigned',confidence:'OSM-anchored representative bank; rectangular boundaries, tiers and chairs estimated; not a surveyed event layout',source:SILVERSTONE_SOURCE};
+};
 export const circuitModels:Record<CircuitId,CircuitModel>={
  qatar:{id:'qatar',name:'Lusail International Circuit',country:'Qatar',season:2026,dates:'27–29 November 2026',track:qatar.points,features:qatar.features,source:'https://www.lcsc.qa/formula12026',ticketUrl:'https://www.lcsc.qa/formula12026',geometryUrl:'/data/qatar-geometry.json',length:qatar.length_m,evidence:'Main has a permanent footprint reference. North, T2, T16 and Hill are estimated regions from organizer descriptions; they are not surveyed temporary layouts.',banks:[
   {id:'main',product:'main',name:'Main Grandstand',...footprint(qatar,'152483596'),sections:9,rows:18,seats:44,roof:true,kind:'assigned',confidence:'OSM permanent footprint-aligned envelope; modeled tiers and chairs; facing inferred',source:qSource('main-grandstand')},
@@ -58,7 +64,7 @@ export const circuitModels:Record<CircuitId,CircuitModel>={
   y('marina','Marina Grandstand','133907079',4,18,40),
   y('south','South Grandstand','133907081',4,18,40),
  ]},
- australia:{id:'australia',name:'Albert Park Grand Prix Circuit',country:'Australia',season:2027,dates:'2–4 April 2027 · racing weekend',track:albert.points,features:albert.features,vegetation:albert.vegetation,appearance:'day',defaultBank:'fangio',pitBank:'fangio',source:MELBOURNE_GUIDE,ticketUrl:MELBOURNE_TICKETS,geometryUrl:'/data/albert-park-geometry.json',length:albert.length_m,evidence:'Sixteen named grandstand regions follow the map linked by AGPC’s 2027 guide. The ten-stand travel-package comparison is a subset of that map. All temporary boundaries, rows and chairs are estimates. Premium section locations and the accessible Turn 12 platform are not modeled. No canopies are shown because premium roof boundaries are unverified. Source tree points and lake outline provide park context; vegetation size, event clearing and terrain are authored. Reserved Friday–Sunday and Thursday roaming rules vary by ticket; confirm with the organizer.',banks:[
+ australia:{id:'australia',name:'Albert Park Grand Prix Circuit',country:'Australia',season:2027,checked:'24 Nov 2026',dates:'2–4 April 2027 · racing weekend',track:albert.points,features:albert.features,vegetation:albert.vegetation,appearance:'day',defaultBank:'fangio',pitBank:'fangio',source:MELBOURNE_GUIDE,ticketUrl:MELBOURNE_TICKETS,geometryUrl:'/data/albert-park-geometry.json',length:albert.length_m,evidence:'Sixteen named grandstand regions follow the map linked by AGPC’s 2027 guide. The ten-stand travel-package comparison is a subset of that map. All temporary boundaries, rows and chairs are estimates. Premium section locations and the accessible Turn 12 platform are not modeled. No canopies are shown because premium roof boundaries are unverified. Source tree points and lake outline provide park context; vegetation size, event clearing and terrain are authored. Reserved Friday–Sunday and Thursday roaming rules vary by ticket; confirm with the organizer.',banks:[
   parkBank('jones','Jones Grandstand',[-554.6, 103.1]),
   parkBank('hill','Hill Grandstand',[-849.5, -599.9]),
   parkBank('ricciardo','Ricciardo Grandstand',[-795.2, -518.2]),
@@ -75,6 +81,34 @@ export const circuitModels:Record<CircuitId,CircuitModel>={
   parkBank('senna','Senna Grandstand',[-32.0, 632.7]),
   parkBank('fangio','Fangio Grandstand',[-142.8, 520.4],7,18,40),
   parkBank('piastri','Piastri Grandstand',[-279.1, 382.9],5,18,40),
+ ]},
+ 'great-britain':{id:'great-britain',name:'Silverstone Circuit',country:'Great Britain',season:2027,checked:'24 Nov 2026',dates:'2–4 July 2027 · racing weekend',track:silverstone.points,features:silverstone.features,vegetation:silverstone.vegetation,appearance:'day',defaultBank:'hamilton-a',pitBank:'hamilton-a',source:SILVERSTONE_SOURCE,ticketUrl:'https://www.silverstone.co.uk/events/formula-1-british-grand-prix/tickets',geometryUrl:'/data/silverstone-geometry.json',length:silverstone.length_m,evidence:'The current 2027 organizer map names these 26 viewing banks. Standard and Prime View products can share a stand; premium row boundaries are not known. Club Corner uses the older OSM Club B region, and George Russell uses Farm Curve. Abbey A/B split an estimated region. Woodcote C, Hamilton B and Landostand are estimated regions. All chairs, sections, roofs, terrain, pit architecture and sightlines are illustrative. No exact ticket matching, Prime View row selection, hospitality, GA or accessible-platform geometry is supplied. Canopies are omitted because current cover boundaries are unverified. Confirm the actual ticket and cover with Silverstone.',banks:[
+  silverBank('abbey-a','Abbey A','227342458',3,[-78,357],85),
+  silverBank('abbey-b','Abbey B','227342458',3,[1,288],85),
+  silverBank('becketts','Becketts','227342446',5),
+  silverBank('chapel','Chapel','1430486596',3),
+  silverBank('club-a','Club A','227342445'),
+  silverBank('club-corner','Club Corner','227342448',4),
+  silverBank('copse-a','Copse A','227342440'),
+  silverBank('copse-b','Copse B','227342441',2),
+  silverBank('copse-c','Copse C','227342444'),
+  silverBank('copse-d','Copse D','1560504713',2),
+  silverBank('hamilton-a','Hamilton Straight A','1387956625',5),
+  silverBank('hamilton-b','Hamilton Straight B','1387956625',3,[-154,460],90),
+  silverBank('luffield','Luffield','227342456',4),
+  silverBank('luffield-corner','Luffield Corner','1560504709'),
+  silverBank('national-pit-straight','National Pit Straight','227342452',5),
+  silverBank('stirling-a','Stirling A','1560504712',2),
+  silverBank('stirling-b','Stirling B','1560504711',2),
+  silverBank('vale','Vale','227342453',4),
+  silverBank('village-a','Village A','227342451',3),
+  silverBank('village-b','Village B','227342447',3),
+  silverBank('woodcote-a','Woodcote A','227342450',4),
+  silverBank('woodcote-b','Woodcote B','227342459'),
+  silverBank('woodcote-c','Woodcote C','227342452',2,[82,-582],35),
+  silverBank('george-russell','George Russell Grandstand','227342449',4),
+  silverBank('the-view','The View','227342454',2),
+  silverBank('landostand','Landostand','227342453',5,[155,1255],150),
  ]},
 };
 export function findCircuitModel(season:number,race:string){const m=circuitModels[race as CircuitId];return m?.season===season?m:undefined;}

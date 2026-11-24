@@ -5,7 +5,7 @@ import {
   type ReferenceVenue,
   type SpectatorReference,
 } from "./photoReferences";
-function OriginalVideo({ videoId }: { videoId: string }) {
+function OriginalVideo({ videoId, title }: { videoId: string; title:string }) {
   const [enabled, setEnabled] = useState(false);
   return (
     <div className="spectator-original">
@@ -14,7 +14,7 @@ function OriginalVideo({ videoId }: { videoId: string }) {
           <iframe
             className="spectator-video"
             src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0`}
-            title="Attendee practice-start clip linked in the 2025 Bahrain report"
+            title={title}
             allow="encrypted-media; picture-in-picture"
             allowFullScreen
             referrerPolicy="strict-origin-when-cross-origin"
@@ -40,7 +40,7 @@ function OriginalVideo({ videoId }: { videoId: string }) {
       ) : (
         <>
           <button onClick={() => setEnabled(true)}>
-            Load attendee video from this report
+            Load source video
           </button>
           <p>
             The photos stay on the author’s site. This optional clip connects to
@@ -120,7 +120,7 @@ function OriginalPost({ reference }: { reference: SpectatorReference }) {
   }, [enabled, reference]);
   if (!reference.embed) return null;
   if (reference.embed.type === "youtube")
-    return <OriginalVideo videoId={reference.embed.videoId} />;
+    return <OriginalVideo videoId={reference.embed.videoId} title={`${reference.title} · ${reference.author}`} />;
   return (
     <div className="spectator-original">
       {!enabled ? (
@@ -216,7 +216,7 @@ export default function SpectatorReferences({
               ? "Las Vegas"
               : venue === "qatar"
                 ? "Lusail"
-                : venue === "united-arab-emirates" ? "Yas Marina" : venue === "australia" ? "Albert Park" : "Sakhir"}{" "}
+                : venue === "united-arab-emirates" ? "Yas Marina" : venue === "great-britain" ? "Silverstone" : venue === "australia" ? "Albert Park" : "Sakhir"}{" "}
             · planning {season}
           </p>
         </div>
@@ -344,7 +344,7 @@ export default function SpectatorReferences({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {r.kind === "photos" && r.embed?.type !== "reddit"
+                  {r.kind === "photos" && !r.embed
                     ? "View photographs on the author’s site"
                     : "Open original source"}
                 </a>

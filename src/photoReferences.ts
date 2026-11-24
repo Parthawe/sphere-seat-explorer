@@ -1,4 +1,4 @@
-export type ReferenceVenue = "qatar" | "bahrain" | "las-vegas" | "united-arab-emirates" | "australia";
+export type ReferenceVenue = "qatar" | "bahrain" | "las-vegas" | "united-arab-emirates" | "australia" | "great-britain";
 export type ReferenceKind = "photos" | "review";
 export type SpectatorReference = {
   id: string;
@@ -33,6 +33,16 @@ const q2025 =
 const b2025 =
   "https://www.reddit.com/r/GrandPrixTravel/comments/1jydi1m/how_was_your_bahrain_gp_2025_experience/";
 export const spectatorReferences: SpectatorReference[] = [
+  {
+    id:'silverstone-copse-c-2025-video',venue:'great-britain',areas:['copse-c'],title:'Copse C · published viewing video',year:2025,published:'2025 in the video title; exact publication date not established',yearEvidence:'Publisher titles the video View from Copse C at Silverstone Circuit (2025); capture year and location are publisher-reported.',kind:'photos',author:'Race Experience',publisher:'YouTube · Race Experience (travel publisher)',url:'https://youtu.be/WkElRBu1Wqg',location:'Copse C grandstand; row and chair not supplied',match:'grandstand-reported',summary:'A twenty-second video published as a view from Copse C. This is travel-publisher footage, not an independently verified attendee seat photograph.',expectation:'Useful for comparing the general view and camera framing. The capture position, lens and future event layout are unverified; no model row is matched.',checked:'2026-11-24',embed:{type:'youtube',videoId:'WkElRBu1Wqg'}
+  },
+  {
+    id:'silverstone-becketts-2025-report',venue:'great-britain',areas:['becketts'],title:'Becketts · broad views, longer walk',year:2025,published:'July 2025 post-race thread',yearEvidence:'The British GP 2025 experience thread explicitly identifies that weekend; u/paolact reports watching the race from Becketts.',kind:'review',author:'u/paolact',publisher:'Reddit · r/GrandPrixTravel',url:'https://www.reddit.com/r/GrandPrixTravel/comments/1lt4z6r/how_was_your_british_gp_2025_experience/',location:'Becketts grandstand; row and chair not supplied',match:'grandstand-reported',summary:'The attendee describes views of the Esses and across to the Loop and Wellington Straight, alongside a long walk from their entrance and changing weather.',expectation:'A personal 2025 account. Walking time, mobility suitability, weather and ticket access can differ; this does not establish an accessible route or current roaming policy.',checked:'2026-11-24'
+  },
+  {
+    id:'silverstone-vale-2025-report',venue:'great-britain',areas:['vale'],title:'Vale · corner views and screen limitations',year:2025,published:'July 2025 post-race thread',yearEvidence:'The British GP 2025 experience thread explicitly identifies that weekend; u/jelly10001 identifies their Sunday seat as Vale.',kind:'review',author:'u/jelly10001',publisher:'Reddit · r/GrandPrixTravel',url:'https://www.reddit.com/r/GrandPrixTravel/comments/1lt4z6r/how_was_your_british_gp_2025_experience/',location:'Vale grandstand; row and chair not supplied',match:'grandstand-reported',summary:'The attendee describes seeing Stowe and Club, rain exposure and difficulty reading a screen off to the side from their position.',expectation:'One reported position can differ from another in the same stand. Screens, cover and access are not verified for 2027.',checked:'2026-11-24'
+  },
+
   {
     id: "qatar-north-2025-photos",
     venue: "qatar",

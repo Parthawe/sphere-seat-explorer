@@ -57,3 +57,11 @@ No files or review bodies were copied and no additional media was loaded into th
 ## Yas Marina reference boundary
 
 The new Abu Dhabi 2026 model uses its own physical venue identity (`united-arab-emirates` in app routes). No checked attendee photo/report has been added for its seven products yet. The dialog names Yas Marina and keeps an empty collection instead of borrowing Qatar, Bahrain or Vegas sources. A venue with no checked sources no longer offers an empty venue-wide recovery action. OSM image links alone do not establish capture year, identified seat or reuse rights.
+
+## Silverstone initial references · 24 November 2026 UTC
+
+Three references now accompany the Silverstone study. [Race Experience’s Copse C video](https://youtu.be/WkElRBu1Wqg) was checked in the normal public browser: title identifies 2025/Copse C, channel is Race Experience and footage runs twenty seconds. It is labeled travel-publisher footage, not an independently verified attendee photograph. Exact publication date, lens, camera row and capture year are unverified beyond the publisher’s title. No media was downloaded. YouTube loads only after an explicit button and can be unloaded; the original link remains available.
+
+The [2025 experience thread](https://www.reddit.com/r/GrandPrixTravel/comments/1lt4z6r/how_was_your_british_gp_2025_experience/) contains u/paolact’s Becketts report and u/jelly10001’s Vale report. Only short original summaries are included, with named authors, reported bank and year evidence. Becketts summary covers broad views and walk/weather tradeoffs; Vale covers corner views, rain and an off-axis screen. No comment body or photo was copied. These are personal experiences, not current access/cover guarantees or calibrated model-row matches. Other Silverstone banks keep empty selected-area states; the venue-wide filter exposes these three sources without assigning them to another stand.
+
+The shared video component now uses each reference’s own title/author rather than the previous Bahrain-specific iframe title. Its action reads Load source video so travel footage is not mislabeled as attendee footage. Existing original-source and privacy fallbacks remain.

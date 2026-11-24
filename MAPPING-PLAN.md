@@ -1,3 +1,7 @@
+## Latest checkpoint: Silverstone 2027 initial study
+
+Melbourne and Silverstone now have distinct daylight circuit studies. Silverstone supports 26 representative banks, 48,960 illustrative positions and three attributable media/review sources. Its licensed GP loop excludes duplicate relation members and pit/short routes. Exact chairs, premium boundaries, hospitality and accessible platforms remain unverified. Continue the tracker with Spa current official sources and licensed geography. Jeddah still needs new evidence to resolve conflicting public location descriptions; do not repeat sign-in-only seat selection attempts.
+
 ## Latest hourly checkpoint: touch zoom and Jeddah identities
 
 Visible seated zoom is implemented for Qatar, Bahrain and Yas with keyboard/touch controls, synchronized bounds, default reset and WebGL unavailable states. Jeddah's 2027 physical venue, dates and six current organizer-linked product names are verified and available in its race guide. A GP-consistent closed geographic trace and current product-to-bank locations still need verification; mixed Formula E/WTCR OSM branches and four unnamed footprints must not be turned into a certified six-bank F1 layout.

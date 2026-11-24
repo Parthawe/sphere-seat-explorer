@@ -16,6 +16,16 @@ export default function CircuitPark({model}:{model:CircuitModel}){
   }
   const texture=new T.DataTexture(pixels,size,size);texture.wrapS=texture.wrapT=T.RepeatWrapping;texture.repeat.set(.14,.14);texture.needsUpdate=true;return texture;
  },[]);
+ const grass=useMemo(()=>{
+  const size=128,pixels=new Uint8Array(size*size*4);let seed=31871;
+  for(let y=0;y<size;y++)for(let x=0;x<size;x++){
+   seed=(Math.imul(seed,1664525)+1013904223)>>>0;
+   const variation=(seed/4294967296-.5)*16+Math.sin(x*.16)*Math.cos(y*.11)*4,i=(y*size+x)*4;
+   pixels[i]=78+variation;pixels[i+1]=100+variation;pixels[i+2]=53+variation*.7;pixels[i+3]=255;
+  }
+  const texture=new T.DataTexture(pixels,size,size);texture.colorSpace=T.SRGBColorSpace;texture.wrapS=texture.wrapT=T.RepeatWrapping;texture.repeat.set(420,420);texture.magFilter=T.LinearFilter;texture.minFilter=T.LinearMipmapLinearFilter;texture.generateMipmaps=true;texture.needsUpdate=true;return texture;
+ },[]);
+ useEffect(()=>()=>grass.dispose(),[grass]);
  const treeRefs=useRef<T.InstancedMesh[]>([]);
  const trees=useMemo(()=>{
   const frames=model.banks.map(b=>({bank:b,frame:bankFrame(model,b)}));
@@ -33,6 +43,7 @@ export default function CircuitPark({model}:{model:CircuitModel}){
  },[trees]);
  useEffect(()=>()=>{water.forEach(w=>w.geometry.dispose());normal.dispose();},[water,normal]);
  return <>
+  <mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><meshStandardMaterial map={grass} roughness={1}/></mesh>
   {water.map(w=><mesh key={w.id} geometry={w.geometry} rotation={[-Math.PI/2,0,0]} position={[0,.035,0]} receiveShadow><meshPhysicalMaterial color="#3f8b9e" roughness={.28} metalness={.08} clearcoat={.75} normalMap={normal} normalScale={new T.Vector2(.2,.2)}/></mesh>)}
   {trees.length>0&&<>
    <instancedMesh ref={m=>{if(m)treeRefs.current[0]=m;}} args={[undefined,undefined,trees.length]} castShadow receiveShadow><cylinderGeometry args={[1,1,1,6]}/><meshStandardMaterial color="#66563d" roughness={1}/></instancedMesh>

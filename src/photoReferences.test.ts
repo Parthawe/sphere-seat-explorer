@@ -37,6 +37,7 @@ test("curated references retain provenance, safe source links and bounded suppor
     "www.reddit.com",
     "www.team-bhp.com",
     "gpdestinations.com",
+    "youtu.be",
   ]);
   for (const r of spectatorReferences) {
     assert.ok(!ids.has(r.id));
@@ -74,4 +75,9 @@ test("curated references retain provenance, safe source links and bounded suppor
 test('new Yas scene has an honest empty reference collection without venue fallback',()=>{
  assert.deepEqual(referencesFor('united-arab-emirates','main','area'),[]);
  assert.deepEqual(referencesFor('united-arab-emirates','main','venue'),[]);
+});
+
+test('Silverstone source references never imply exact or future seat calibration',()=>{
+ const video=referencesFor('great-britain','copse-c','area','photos','2025');assert.equal(video.length,1);assert.equal(video[0].author,'Race Experience');assert.match(video[0].publisher,/travel publisher/);assert.equal(video[0].embed?.type,'youtube');
+ assert.equal(referencesFor('great-britain','copse-a','area','photos').length,0);assert.equal(referencesFor('great-britain','becketts','area','review').length,1);assert.equal(referencesFor('great-britain','vale','area','review').length,1);assert.equal(referencesFor('great-britain','vale','area','all','2026').length,0);
 });

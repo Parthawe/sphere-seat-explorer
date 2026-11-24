@@ -1,3 +1,4 @@
+import SilverstoneWing from './SilverstoneWing';
 import CircuitPark from "./CircuitPark";
 import FormulaCar from "./FormulaCar";
 import {Canvas,useFrame,useThree,useLoader} from '@react-three/fiber';
@@ -66,14 +67,14 @@ function Context({model,selection}:{model:CircuitModel;selection:ModelPosition})
  const tower=model.features.find(f=>f.name==='Sakhir Tower'),towerCenter=tower?footprintPlacement(tower.points).center:undefined;
  const main=model.banks.find(b=>b.id===model.pitBank)??model.banks[0],mf=bankFrame(model,main),pit=[mf.target[0]+mf.forward[0]*28,mf.target[1]+mf.forward[1]*28];
  return <>
-  <mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><meshStandardMaterial color={model.appearance==='day'?'#70905d':model.id==='qatar'?'#29282b':model.id==='united-arab-emirates'?'#25343b':'#493e36'} roughness={1}/></mesh>
+  {model.appearance!=='day'&&<mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><meshStandardMaterial color={model.appearance==='day'?'#70905d':model.id==='qatar'?'#29282b':model.id==='united-arab-emirates'?'#25343b':'#493e36'} roughness={1}/></mesh>}
   {model.appearance!=='day'&&poles.map((p,i)=><group key={i} position={[p[0],0,p[1]]}><mesh position={[0,12,0]}><cylinderGeometry args={[.17,.33,24,6]}/><meshStandardMaterial color="#7c8796" metalness={.6}/></mesh><mesh position={[0,24,0]} rotation={[-.2,0,0]}><boxGeometry args={[4,.45,1.1]}/><meshBasicMaterial color={new T.Color(2.2,2.4,3)} toneMapped={false}/></mesh></group>)}
   {model.appearance!=='day'&&<pointLight position={[bank.center[0]+frame.forward[0]*20,30,bank.center[1]+frame.forward[1]*20]} intensity={12500} distance={220} decay={2} color="#d5e5ff"/>}
-  <group position={[pit[0],0,pit[1]]} rotation={[0,mf.yaw,0]}>
+  {model.id==='great-britain'?<SilverstoneWing model={model}/>:<group position={[pit[0],0,pit[1]]} rotation={[0,mf.yaw,0]}>
    <mesh position={[0,5,0]} castShadow><boxGeometry args={[model.id==='qatar'?310:285,10,16]}/><meshStandardMaterial color="#737d8a" metalness={.35} roughness={.6}/></mesh>
    <mesh position={[0,11,0]} castShadow><boxGeometry args={[model.id==='qatar'?320:295,.6,24]}/><meshStandardMaterial color="#c6cbd4"/></mesh>
    {Array.from({length:22},(_,i)=><group key={i} position={[-132+i*12.5,0,-8.1]}><mesh position={[0,2.5,0]}><boxGeometry args={[10,5,.15]}/><meshStandardMaterial color="#222a38"/></mesh><mesh position={[0,7.8,-.05]}><boxGeometry args={[10,2,.2]}/><meshPhysicalMaterial color="#37546b" metalness={.7} roughness={.15} clearcoat={1}/></mesh><mesh position={[0,5.4,-.1]}><boxGeometry args={[10,.4,.2]}/><meshBasicMaterial color={i%3===0?'#d02d36':'#bfc7d6'}/></mesh></group>)}
-  </group>
+  </group>}
   {model.id==='bahrain'&&towerCenter&&<group position={[towerCenter[0],0,towerCenter[1]]}>
    {Array.from({length:8},(_,i)=><group key={i} position={[0,5+i*3.2,0]}><mesh castShadow><cylinderGeometry args={[14+i*.8,14+i*.8,2.6,48]}/><meshStandardMaterial color="#243346" metalness={.7} roughness={.22}/></mesh><mesh position={[0,1.5,0]} castShadow><cylinderGeometry args={[16+i*.8,16+i*.8,.4,48]}/><meshStandardMaterial color="#d9d8d3" roughness={.45}/></mesh></group>)}
   </group>}

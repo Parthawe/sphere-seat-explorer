@@ -9,6 +9,7 @@ SOURCES={
  'bahrain':{'bbox':'50.50,26.02,50.53,26.05','origin':[50.514,26.033],'ways':['4818385','881756729','881756728'],'features':['187123414','187123419','187123438','271535959','271535961','271535964','271535967','271535981','271535984']},
  'yas':{'bbox':'54.598,24.462,54.612,24.480','origin':[54.605,24.471],'ways':['168477013','1469184731','1469184732','188337196','1255169703','1255169704'],'features':['188731381','168411369','133907352','133907079','133907081']}}
 SOURCES['albert-park']={'bbox': '144.961,-37.857,144.984,-37.836', 'origin': [144.972, -37.847], 'ways': ['987030977', '784076843', '784076839', '987030969', '1070446542', '784087846', '987030978', '987030966', '784083210', '987030982', '1050371045', '1013633268', '1013633269', '1050342733', '1021617920', '1021617874', '15856988', '979723480', '987030968', '784071296', '979723479', '979723477', '1253159342', '979723478', '1126808201', '987030972', '987030985', '987030974', '987030973', '784076847'], 'features': [], 'water_relation': '346429', 'trees': True, 'start': '9123374386'}
+SOURCES['silverstone']={'bbox': '-1.035,52.062,-1.005,52.086', 'origin': [-1.02, 52.074], 'ways': ['169800225', '169848882', '169800224', '169800222', '169618242', '169618240', '169618241', '169618245', '169609611', '169730588', '3571477', '169730585', '169730587', '169733768', '169730586', '430075118', '169733766', '169733769', '169733770', '169848880', '169848884', '169848881', '55224168', '55224167', '169854842', '169800226', '169800223'], 'features': ['227332429', '227342440', '227342441', '227342444', '227342445', '227342446', '227342447', '227342448', '227342449', '227342450', '227342451', '227342452', '227342453', '227342454', '227342456', '227342458', '227342459', '1387956625', '1430486596', '1560504709', '1560504711', '1560504712', '1560504713'], 'trees': True, 'start': '2364624111', 'length_range': [5800, 6000]}
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('venues',nargs='*')
 parser.add_argument('--input',type=Path,help='Use an already retrieved public OSM XML snapshot for one selected venue')
@@ -36,7 +37,7 @@ for venue in selected:
  lon,lat=cfg['origin']
  def project(p):return [round((p[0]-lon)*111320*math.cos(math.radians(lat)),2),round(-(p[1]-lat)*111320,2)]
  track=[project(nodes[k]) for k in refs];length=sum(math.dist(a,b) for a,b in zip(track,track[1:]));features=[]
- if not 5000<length<5600:raise ValueError('Unexpected circuit length: review required')
+ if not cfg.get('length_range',[5000,5600])[0]<length<cfg.get('length_range',[5000,5600])[1]:raise ValueError('Unexpected circuit length: review required')
  for way_id in cfg['features']:
   w=ways[way_id];tags={t.attrib['k']:t.attrib['v'] for t in w.findall('tag')}
   features.append({'id':way_id,'name':tags.get('name','Permanent grandstand footprint (unnamed in OSM)'),'points':[project(nodes[n.attrib['ref']]) for n in w.findall('nd')]})
