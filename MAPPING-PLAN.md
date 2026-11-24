@@ -1,3 +1,9 @@
+## Latest hourly checkpoint: touch zoom and Jeddah identities
+
+Visible seated zoom is implemented for Qatar, Bahrain and Yas with keyboard/touch controls, synchronized bounds, default reset and WebGL unavailable states. Jeddah's 2027 physical venue, dates and six current organizer-linked product names are verified and available in its race guide. A GP-consistent closed geographic trace and current product-to-bank locations still need verification; mixed Formula E/WTCR OSM branches and four unnamed footprints must not be turned into a certified six-bank F1 layout.
+
+Continue Jeddah spatial/source verification using the organizer-linked public catalogue and current location diagram. Do not repeat the completed venue/product checks. If evidence is insufficient for a useful reconstruction, proceed to verified Melbourne 2027 sources/geography while keeping this source gap explicit. Existing material/context polish remains available; exact-chair assets do not block independent venue work. See CIRCUIT-SEATING-SOURCES.md.
+
 ## Latest hourly checkpoint: Yas Marina 2026 representative 3D
 
 Abu Dhabi now has its own closed local-meter circuit model and seven product banks, with 19,840 illustrative positions. North/West curved footprints are context for estimated representative banks; Main/Marina/South use fitted envelopes, and both Straight banks remain estimated. This is not an official chair inventory or a surveyed digital twin. Read CIRCUIT-SEATING-SOURCES.md for provenance and absent water/hotel/bridge context. Source-driven overview framing and hover-contrast corrections also apply to Qatar/Bahrain.

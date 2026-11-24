@@ -64,3 +64,7 @@ Use one authored open-wheel silhouette and material treatment across the three o
 ## Yas and overview framing
 
 Use the actual Yas circuit line in local meters, with authored blue seating and turquoise runoff rather than reusing another circuit's map. Keep curved-building context separate from rectangular model banks; estimated banks remain dashed on the source map. Frame a whole-circuit overview around venue bounds and the viewport area left by controls, and keep it legible at long camera distances. Restore the eye-level projection/fog when returning to a seat. Light-surface controls must retain dark hover labels. A venue with no checked references should not offer a recovery button that still leads to zero sources.
+
+## Touch zoom
+
+Follow the existing Vegas toolbar pattern with a compact dark control strip on the scene's right edge. Keep zoom-in/out targets 44px, label reset as the default 1× action, and provide explicit accessible names. Controls appear only for the seated/standing camera. Bound the lens, synchronize wheel limits and preserve the user's modeled position and look direction. Disable controls until the scene is ready and after context loss. Narrow headings must leave a gap above camera modes, including long bank names.

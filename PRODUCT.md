@@ -81,3 +81,9 @@ Qatar and Bahrain now show the detailed authored open-wheel cars already used by
 All seven existing Yas grandstand products now link into their own geographic 3D study: Main, North, North Straight, West Straight, West, Marina and South. It includes 19,840 generated positions, full-circuit/stand/seated cameras, map, complete model grid, roof cutaway, simulated passing cars, comparison and sanitized sharing. These are representative positions, not official ticket IDs. The 2026 four-day product begins 3 December; the F1 racing weekend is 4–6 December. There is no inherited 2027 model.
 
 Five named OSM stand polygons provide context. Curved North/West and the two Straight products use explicitly estimated banks; Main/Marina/South use fitted envelopes. Surrounding water, hotel architecture, bridge elevation and real obstructions remain unmodeled. The reference browser shows an honest empty collection for Yas.
+
+## Seated zoom and Saudi source reference
+
+Qatar, Bahrain and Abu Dhabi now support visible touch/keyboard zoom controls beside the 3D seat view. Closer, wider and default zoom keep the modeled position fixed; limits and unavailable states disable the relevant buttons. Camera reset, viewport/position changes and WebGL Retry restore the default lens.
+
+Saudi Arabia's 2027 guide now lists six organizer-linked grandstand names and links the current JCC event and ticket catalogue. Venue/date/product identities are checked; stand locations, row mapping and a Jeddah 3D scene remain unsupported pending spatial verification. No prices or live availability are shown.

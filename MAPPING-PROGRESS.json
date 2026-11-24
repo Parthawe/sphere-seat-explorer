@@ -2,11 +2,11 @@
   "schema": 1,
   "product": "Apex Atlas",
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "cadence_hours": 1,
-  "phase": "verified-venue-expansion",
+  "phase": "jeddah-geography-and-bank-verification",
   "active_run": null,
-  "next_action": "Verify the Saudi Arabia 2027 physical venue and current organizer products before assuming Jeddah or Qiddiya. Gather licensed local-meter GP/stand geography and implement a bounded representative 3D study if evidence supports it. If blocked, continue another verified venue or add shared seated touch-zoom and material/context polish. Yas 2026 now has seven product banks and 19,840 illustrative positions; its assessment and initial scene are complete. Preserve exact-seat uncertainty, existing scenes, replay, private local ticket matching and explicit source gaps.",
+  "next_action": "Use current organizer-linked location/diagram evidence to place Jeddah 2027 six named grandstand products and independently verify the GP loop against mixed Formula E/WTCR OSM segments. Venue/date/product identities are already checked in src/jeddahReference.ts and CIRCUIT-SEATING-SOURCES.md; do not repeat them. Do not publish guessed six-bank associations from four unnamed footprints. If spatial evidence is insufficient, continue verified Melbourne 2027 sources/geography and keep the Jeddah gap explicit. Shared seated touch zoom is complete for Qatar/Bahrain/Yas; preserve it and all existing scene/replay/privacy limits.",
   "venues": [
     {
       "id": "las-vegas",
@@ -112,10 +112,15 @@
     {
       "id": "saudi-arabia",
       "event": "Saudi Arabia",
-      "venue": "Jeddah",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "venue": "Jeddah Corniche Circuit",
+      "status": "venue_products_verified_2027_geometry_pending",
+      "sources": [
+        "https://www.formula1.com/en/racing/2027/saudi-arabia",
+        "https://www.jeddahcircuit.com/en/events/formula-1-stc-saudi-arabian-grand-prix",
+        "https://tickets.saudiarabiangp.com/en"
+      ],
+      "next_action": "Use current organizer-linked location/diagram evidence to place Jeddah 2027 six named grandstand products and independently verify the GP loop against mixed Formula E/WTCR OSM segments. Venue/date/product identities are already checked in src/jeddahReference.ts and CIRCUIT-SEATING-SOURCES.md; do not repeat them. Do not publish guessed six-bank associations from four unnamed footprints. If spatial evidence is insufficient, continue verified Melbourne 2027 sources/geography and keep the Jeddah gap explicit. Shared seated touch zoom is complete for Qatar/Bahrain/Yas; preserve it and all existing scene/replay/privacy limits.",
+      "grandstand_products_verified": 6
     },
     {
       "id": "great-britain",
@@ -497,6 +502,25 @@
         "No checked Yas photos/reviews yet; no live inventory or pricing"
       ],
       "next": "Verify the Saudi Arabia 2027 physical venue and current organizer products before assuming Jeddah or Qiddiya. Gather licensed local-meter GP/stand geography and implement a bounded representative 3D study if evidence supports it. If blocked, continue another verified venue or add shared seated touch-zoom and material/context polish. Yas 2026 now has seven product banks and 19,840 illustrative positions; its assessment and initial scene are complete. Preserve exact-seat uncertainty, existing scenes, replay, private local ticket matching and explicit source gaps."
+    },
+    {
+      "date": "2026-11-24",
+      "run": "hourly-jeddah-source-check-and-touch-zoom",
+      "work": "Verified Jeddah 2027 venue/date and six grandstand names in the organizer-linked public catalogue; added source links/names to its guide. Added touch/keyboard seated zoom to Qatar/Bahrain/Yas, with bounds, reset and context-loss states.",
+      "evidence": [
+        "61 tests pass; final release build required",
+        "Organizer-linked normal public ticket page names Jeddah 19\u201321 March 2027; six names read in public Grandstands table without booking or queue entry",
+        "OSM snapshot contains mixed route variants and unnamed stands; no new geometry/model published",
+        "Three geographic scenes: desktop/phone zoom, keyboard, 35/105 bounds, disabled controls, wheel synchronization, reference-dialog preservation and reset checked",
+        "WebGL loss disabled zoom; Retry restored controls and responsive lens",
+        "320px document remained 320px; 44px targets; long North Straight heading now has 20px gap above camera modes; no page exceptions"
+      ],
+      "limitations": [
+        "Jeddah GP routing and 2027 product-to-stand positions not independently verified",
+        "No new race 3D coverage or actual ticket-seat matching added",
+        "Zoom is a lens study, not optical/sightline calibration or current magnification readout"
+      ],
+      "next": "Use current organizer-linked location/diagram evidence to place Jeddah 2027 six named grandstand products and independently verify the GP loop against mixed Formula E/WTCR OSM segments. Venue/date/product identities are already checked in src/jeddahReference.ts and CIRCUIT-SEATING-SOURCES.md; do not repeat them. Do not publish guessed six-bank associations from four unnamed footprints. If spatial evidence is insufficient, continue verified Melbourne 2027 sources/geography and keep the Jeddah gap explicit. Shared seated touch zoom is complete for Qatar/Bahrain/Yas; preserve it and all existing scene/replay/privacy limits."
     }
   ],
   "blockers": [

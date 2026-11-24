@@ -5760,7 +5760,7 @@ dialog::backdrop {
  .circuit-model-stage { position:relative; height:66dvh; min-height:460px; }
  .circuit-model-heading { top:22px; left:18px; right:18px; }
  .circuit-model-heading>span { font-size:11px; }
- .circuit-model-heading h1 { font-size:38px; max-width:100%; }
+ .circuit-model-heading h1 { font-size:clamp(28px,8vw,38px); max-width:100%; }
  .circuit-model-heading p { font-size:10px; }
  .circuit-camera-modes { top:145px; left:18px; }
  .circuit-scene-actions { left:18px; bottom:78px; gap:6px; }
@@ -5875,3 +5875,16 @@ dialog::backdrop {
 .circuit-row-shortcuts button[aria-pressed=true]:hover:not(:disabled) { color:#bc130f; }
 
 @media(max-width:760px) { .circuit-model-stage.mode-circuit { height:88dvh; min-height:660px; } }
+
+.circuit-seat-zoom { position:absolute; top:94px; right:24px; display:flex; flex-direction:column; gap:5px; z-index:2; }
+.circuit-seat-zoom button { display:grid; place-items:center; width:44px; height:44px; padding:0; border:1px solid #7e8aa0; background:#111723ed; color:#fff; font:500 23px 'IBM Plex Sans',sans-serif; }
+.circuit-seat-zoom button:nth-child(2) { font-size:14px; }
+.circuit-seat-zoom button:disabled { opacity:.4; cursor:not-allowed; }
+.circuit-seat-zoom button:hover:not(:disabled) { background:#29364c; color:#fff; }
+@media(max-width:760px) { .circuit-seat-zoom { top:202px; right:18px; } }
+
+.jeddah-source-reference { margin-top:24px; padding-top:20px; border-top:1px solid #c9ccd6; }
+.jeddah-source-reference h3 { font:600 27px 'Barlow Condensed',sans-serif; margin:0 0 10px; }
+.jeddah-source-reference ul { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 28px; padding-left:20px; margin:20px 0; font-size:14px; line-height:1.5; }
+.jeddah-source-reference small { display:block; margin-top:14px; font-size:12px; line-height:1.6; color:#5a6274; }
+@media(max-width:600px) { .jeddah-source-reference ul { grid-template-columns:1fr; } }

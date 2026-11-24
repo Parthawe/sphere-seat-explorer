@@ -1,3 +1,4 @@
+import type {ModelCameraControls} from "./CircuitSeatingScene";
 import CircuitOverview from "./CircuitOverview";
 import SpectatorReferences from "./SpectatorReferences";
 import {lazy,Suspense,useCallback,useEffect,useRef,useState} from 'react';
@@ -7,6 +8,9 @@ const Scene=lazy(()=>import('./CircuitSeatingScene'));
 export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitModel;onBack:()=>void}){
  const [selection,setSelection]=useState(()=>{const q=new URLSearchParams(location.search);return normalizeModelPosition(model,{bank:q.get('bank')??undefined,section:Number(q.get('section'))||undefined,row:Number(q.get('modelRow'))||undefined,seat:Number(q.get('position'))||undefined});});
  const [mode,setMode]=useState<'circuit'|'stand'|'seat'>('seat'),[playing,setPlaying]=useState(false),[roofs,setRoofs]=useState(true),[reset,setReset]=useState(0),[ready,setReady]=useState(false),[unavailable,setUnavailable]=useState(false),[retry,setRetry]=useState(0),[overview,setOverview]=useState(false),[grid,setGrid]=useState(false),[referencesOpen,setReferencesOpen]=useState(()=>new URLSearchParams(location.search).get("references")==="1"),[saved,setSaved]=useState<ModelPosition[]>([]),[feedback,setFeedback]=useState('');
+ const cameraControls=useRef<ModelCameraControls|null>(null);
+ const [zoomLimits,setZoomLimits]=useState({inward:true,outward:true});
+ const zoomLimitsCallback=useCallback((inward:boolean,outward:boolean)=>setZoomLimits(previous=>previous.inward===inward&&previous.outward===outward?previous:{inward,outward}),[]);
  const dialog=useRef<HTMLDialogElement>(null),readyCallback=useCallback(()=>setReady(true),[]),unavailableCallback=useCallback(()=>{setUnavailable(true);setReady(false);},[]);
  const bank=model.banks.find(b=>b.id===selection.bank)!,count=model.banks.reduce((n,b)=>n+modelCount(b),0),p=modelPosition(model,selection),near=closestTrack(model,[p[0],p[2]]),distance=Math.round(Math.hypot(near[0]-p[0],near[1]-p[2]));
  function choose(next:Partial<ModelPosition>){setSelection(normalizeModelPosition(model,{...selection,...next}));setFeedback('');}
@@ -20,14 +24,19 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
   <main className="circuit-explorer-layout">
    <section className={'circuit-model-stage mode-'+mode} aria-label={`${model.name} 3D seating model`}>
     <div className="circuit-model-canvas" role="region" tabIndex={0} aria-label="Interactive modeled view. Drag to look or orbit. Arrow keys change model row and position." onKeyDown={arrows}>
-     {unavailable?<div className="circuit-model-fallback"><h2>3D view unavailable</h2><p>Your position controls and complete model grid still work.</p><button onClick={()=>{setUnavailable(false);setReady(false);setRetry(r=>r+1);}}>Retry 3D</button><button onClick={()=>setGrid(true)}>Open model grid</button></div>:<Suspense fallback={null}><Scene key={model.id+'-'+retry} model={model} selection={selection} mode={mode} playing={playing} roofs={roofs} reset={reset} onSelect={setSelection} onUnavailable={unavailableCallback} onReady={readyCallback}/></Suspense>}
+     {unavailable?<div className="circuit-model-fallback"><h2>3D view unavailable</h2><p>Your position controls and complete model grid still work.</p><button onClick={()=>{setUnavailable(false);setReady(false);setRetry(r=>r+1);}}>Retry 3D</button><button onClick={()=>setGrid(true)}>Open model grid</button></div>:<Suspense fallback={null}><Scene onZoomLimitsChange={zoomLimitsCallback} cameraControls={cameraControls} key={model.id+'-'+retry} model={model} selection={selection} mode={mode} playing={playing} roofs={roofs} reset={reset} onSelect={setSelection} onUnavailable={unavailableCallback} onReady={readyCallback}/></Suspense>}
     </div>
     {!ready&&!unavailable&&<div className="circuit-model-loading" role="status">Building the circuit view…</div>}
     <button className="circuit-photo-trigger" onClick={()=>{setPlaying(false);setReferencesOpen(true);}}>Photos & fan reports</button>
     <div className="circuit-model-heading"><span>{model.name}</span><h1>{bank.name}</h1><p>{bank.kind==='lawn'?'LAWN STUDY':`MODEL SECTION ${selection.section} / ROW ${selection.row}`} · POSITION {selection.seat}</p></div>
     <nav className="circuit-camera-modes" aria-label="3D camera"><button aria-pressed={mode==='circuit'} onClick={()=>setMode('circuit')}>Full circuit</button><button aria-pressed={mode==='stand'} onClick={()=>setMode('stand')}>Grandstand</button><button aria-pressed={mode==='seat'} onClick={()=>setMode('seat')}>{bank.kind==='lawn'?'Standing view':'Seated view'}</button></nav>
+    {mode==='seat'&&<div className="circuit-seat-zoom" role="group" aria-label="Seated view zoom" title="Zoom keeps your modeled seat fixed">
+     <button disabled={!ready||unavailable||!zoomLimits.inward} aria-label="Zoom in on seated view" title="Zoom in" onClick={()=>cameraControls.current?.zoomIn()}>+</button>
+     <button disabled={!ready||unavailable} aria-label="Reset seated zoom" title="Reset zoom" onClick={()=>cameraControls.current?.resetZoom()}>1×</button>
+     <button disabled={!ready||unavailable||!zoomLimits.outward} aria-label="Zoom out on seated view" title="Zoom out" onClick={()=>cameraControls.current?.zoomOut()}>−</button>
+    </div>}
     <div className="circuit-scene-actions">{bank.roof&&<button aria-pressed={!roofs} onClick={()=>setRoofs(!roofs)}>{roofs?"Roof cutaway":"Restore roofs"}</button>}<button onClick={()=>setReset(r=>r+1)}>Reset camera</button><button aria-pressed={playing} onClick={()=>setPlaying(!playing)}>{playing?'Pause cars':'Show passing cars'}</button></div>
-    <div className="circuit-scene-note"><span>{mode==='seat'?'DRAG TO LOOK / SCROLL TO ZOOM':'DRAG TO ORBIT / SELECT A CHAIR'}</span><span>Estimated reconstruction · cars simulated</span></div>
+    <div className="circuit-scene-note"><span>{mode==='seat'?'DRAG TO LOOK / BUTTONS OR SCROLL TO ZOOM':'DRAG TO ORBIT / SELECT A CHAIR'}</span><span>Estimated reconstruction · cars simulated</span></div>
    </section>
    <aside className="circuit-position-panel" aria-label="Model position controls">
     <div className="circuit-panel-heading"><span className="eyebrow">{model.country.toUpperCase()} {model.season}</span><h2>Explore the seating.</h2><p>{model.dates}</p></div>

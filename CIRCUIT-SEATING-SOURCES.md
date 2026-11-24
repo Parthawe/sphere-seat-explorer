@@ -104,3 +104,19 @@ The model has **19,840 illustrative positions across seven products**. Section/r
 ### Rendering corrections shared with Qatar/Bahrain
 
 Full-circuit framing now uses each venue's geometry and bank bounds, viewport aspect and space reserved for controls. The previous fixed camera clipped the Yas south end. Overview fog/far range now follows camera distance instead of fading away the entire phone overview. Seated/stand mode restores its original fog and projection. The phone overview gets a taller bounded scene. Light-surface map/grid/position hover text stays dark; the prior global white hover rule hid selected bank names.
+
+## Jeddah 2027 source assessment · 24 November 2026 UTC
+
+The [current F1 event](https://www.formula1.com/en/racing/2027/saudi-arabia), [JCC event page](https://www.jeddahcircuit.com/en/events/formula-1-stc-saudi-arabian-grand-prix) and [SMC return announcement](https://www.jeddahcircuit.com/en/news/formula-1-stc-saudi-arabian-grand-prix-confirmed-to-return-in-march-2027) establish Jeddah Corniche Circuit for 19–21 March 2027. Qiddiya is not inferred as a replacement venue from a ticket label.
+
+JCC's Buy Tickets link points to https://tickets.saudiarabiangp.com/en. The browser-visible page explicitly names the same date/year and Jeddah. Its public Grandstands “View prices” table lists Main Grandstand A/B, Central Grandstand A/B, Qiddiya - Central Grandstand C and stc Central Grandstand D. Only the product names were retained in src/jeddahReference.ts and the 2027 race guide. The table explicitly separates pricing from availability; neither prices nor stock were imported. No booking/cart/seat-reservation action, account access or queue entry occurred. The initial text-only web extraction was empty; the normal public page rendered in Chrome. Optional cookies were declined.
+
+The separate saudi.gp sales/guide site was not used as primary organizer evidence. Product identities above came from the organizer-linked catalogue, not inferred from older race guides.
+
+A bounded public OSM snapshot at `39.095,21.618,39.115,21.652` includes GP-labeled way 1007989410, mixed shared/Formula E/WTCR raceway segments 1257884699 and 1359884755–1359884765, plus four unnamed grandstand ways 1154622779–1154622782. Several route segments carry fixme/layout notes. A GP-consistent closed trace and the six current product-to-footprint associations have not been independently verified. No Jeddah geometry file, model chair inventory, inferred stand placement or 3D coverage was published from this assessment. Do not use Formula E/WTCR branches, unnamed polygons or reseller descriptions as a verified 2027 F1 seating layout.
+
+Next obtain current organizer location/diagram evidence and verify the GP routing before extending the meter-space collector. It currently has length guards for the existing venues; add an evidence-based per-venue range when Jeddah is ready instead of removing validation globally. Exact chair/row calibration remains a separate unavailable asset.
+
+## Seated touch zoom
+
+Qatar, Bahrain and Yas now have visible zoom-in, zoom-out and default-zoom buttons in seated/standing-view mode. They change the perspective lens only; the selected modeled eye position and look direction remain fixed. Field of view stays bounded at 35–105 degrees, matching the previous wheel limits. The default is responsive (70 degrees for wide scenes, 90 for portrait); 1× resets that default, rather than reporting current magnification. The buttons disable at limits and during WebGL loss/loading. Wheel input and button bounds stay synchronized. No panorama, optical calibration or change to modeled sightline evidence is implied.

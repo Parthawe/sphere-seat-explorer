@@ -1,6 +1,6 @@
 import FormulaCar from "./FormulaCar";
 import {Canvas,useFrame,useThree,useLoader} from '@react-three/fiber';
-import {Component,Suspense,useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
+import {Component,Suspense,useEffect,useMemo,useRef,useState,type ReactNode,type RefObject} from 'react';
 import * as T from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {RoundedBoxGeometry} from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
@@ -10,8 +10,9 @@ import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass
 import {OutputPass} from 'three/examples/jsm/postprocessing/OutputPass.js';
 import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
 import {bankFrame,circuitOverviewCamera,footprintPlacement,localModelPosition,modelPosition,type CircuitModel,type ModelBank,type ModelPosition} from './circuitSeating';
+export type ModelCameraControls={zoomIn:()=>void;zoomOut:()=>void;resetZoom:()=>void};
 type Mode='circuit'|'stand'|'seat';
-type Props={model:CircuitModel;selection:ModelPosition;mode:Mode;playing:boolean;roofs:boolean;reset:number;onSelect:(p:ModelPosition)=>void;onUnavailable:()=>void;onReady:()=>void};
+type Props={onZoomLimitsChange:(inward:boolean,outward:boolean)=>void;cameraControls:RefObject<ModelCameraControls|null>;model:CircuitModel;selection:ModelPosition;mode:Mode;playing:boolean;roofs:boolean;reset:number;onSelect:(p:ModelPosition)=>void;onUnavailable:()=>void;onReady:()=>void};
 function Instances({items,color,geometry,onClick}:{items:{p:number[];s:number[];r?:number[]}[];color:string;geometry?:T.BufferGeometry;onClick?:(index:number)=>void}){
  const ref=useRef<T.InstancedMesh>(null);
  useEffect(()=>{const o=new T.Object3D();items.forEach((v,i)=>{o.position.set(v.p[0],v.p[1],v.p[2]);o.scale.set(v.s[0],v.s[1],v.s[2]);o.rotation.set(...((v.r??[0,0,0]) as [number,number,number]));o.updateMatrix();ref.current?.setMatrixAt(i,o.matrix);});if(ref.current){ref.current.instanceMatrix.needsUpdate=true;ref.current.computeBoundingSphere();}},[items]);
@@ -86,7 +87,7 @@ function DemoCars({model,playing,selection}:{model:CircuitModel;playing:boolean;
  useFrame((_,delta)=>{if(playing)progress.current=(progress.current+Math.min(delta,.05)/105)%1;refs.current.forEach((r,i)=>{if(!r)return;const u=(progress.current+i*.008)%1,p=curve.getPointAt(u),t=curve.getTangentAt(u);r.position.set(p.x,.45,p.z);r.rotation.y=Math.atan2(t.x,t.z);if(playing)wheels.current[i]?.children.forEach(w=>w.rotation.x-=Math.min(delta,.05)*model.length/105/.36);});if(playing)invalidate();});
  return <>{['#eb3433','#24b9ad','#fc9d34','#668cd9','#f1f3f8'].map((c,i)=><group key={c} ref={r=>{refs.current[i]=r;}}><FormulaCar color={c} wheels={r=>{wheels.current[i]=r;}}/></group>)}</>;
 }
-function Rig({model,selection,mode,reset}:Props){
+function Rig({model,selection,mode,reset,cameraControls,onZoomLimitsChange}:Props){
  const {camera,gl,invalidate,size,scene}=useThree(),control=useRef<OrbitControls|null>(null),tr=useRef<{p:T.Vector3;t:T.Vector3;elapsed:number;from:T.Vector3;fromT:T.Vector3}|null>(null),target=useRef(new T.Vector3());
  useEffect(()=>{const c=new OrbitControls(camera,gl.domElement);c.enablePan=false;c.minDistance=12;c.maxDistance=3000;c.maxPolarAngle=Math.PI*.495;control.current=c;const change=()=>invalidate(),start=()=>{tr.current=null;gl.domElement.dataset.modelReady='true';};c.addEventListener('change',change);c.addEventListener('start',start);return()=>{c.dispose();control.current=null;};},[camera,gl,invalidate]);
  useEffect(()=>{const bank=model.banks.find(b=>b.id===selection.bank)!,p=modelPosition(model,selection),f=bankFrame(model,bank);let position:T.Vector3,look:T.Vector3;
@@ -98,15 +99,22 @@ function Rig({model,selection,mode,reset}:Props){
   const c=control.current;if(c){c.enabled=true;c.minDistance=mode==='seat'?.1:12;c.maxDistance=mode==='circuit'?Math.max(3000,position.distanceTo(look)*1.4):3000;c.enableZoom=mode!=='seat';}
   (camera as T.PerspectiveCamera).clearViewOffset();
   if(mode==='circuit'){const top=Math.min(size.height*.35,size.width<760?250:220);(camera as T.PerspectiveCamera).setViewOffset(size.width,size.height,0,(110-top)/2,size.width,size.height);}
-  (camera as T.PerspectiveCamera).fov=mode==='seat'?(size.width<size.height?90:70):45;(camera as T.PerspectiveCamera).updateProjectionMatrix();
+  (camera as T.PerspectiveCamera).fov=mode==='seat'?(size.width<size.height?90:70):45;(camera as T.PerspectiveCamera).updateProjectionMatrix();gl.domElement.dataset.seatFov=String((camera as T.PerspectiveCamera).fov);onZoomLimitsChange((camera as T.PerspectiveCamera).fov>35,(camera as T.PerspectiveCamera).fov<105);
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){camera.position.copy(position);target.current.copy(look);camera.lookAt(look);c?.target.copy(look);tr.current=null;gl.domElement.dataset.modelReady='true';}
   else{tr.current={p:position,t:look,from:camera.position.clone(),fromT:target.current.clone(),elapsed:0};gl.domElement.dataset.modelReady='moving';}
   invalidate();
- },[model,selection.bank,selection.section,selection.row,selection.seat,mode,reset,size.width,size.height,camera,gl,invalidate,scene]);
+ },[model,selection.bank,selection.section,selection.row,selection.seat,mode,reset,size.width,size.height,camera,gl,invalidate,scene,onZoomLimitsChange]);
+ // Zoom updates the lens only, preserving the selected eye position and look direction.
+ useEffect(()=>{
+  if(mode!=='seat'){cameraControls.current=null;return;}
+  const lens=camera as T.PerspectiveCamera,apply=(degrees:number)=>{lens.fov=T.MathUtils.clamp(degrees,35,105);lens.updateProjectionMatrix();gl.domElement.dataset.seatFov=String(lens.fov);onZoomLimitsChange(lens.fov>35,lens.fov<105);invalidate();};
+  cameraControls.current={zoomIn:()=>apply(lens.fov-10),zoomOut:()=>apply(lens.fov+10),resetZoom:()=>apply(size.width<size.height?90:70)};
+  return()=>{cameraControls.current=null;};
+ },[mode,camera,gl,invalidate,size.width,size.height,cameraControls,onZoomLimitsChange]);
  // In seated mode orbit around the eye position, never move the camera through the stands.
  useEffect(()=>{if(mode!=='seat')return;const c=control.current;if(c)c.enabled=false;const el=gl.domElement;let last:{x:number;y:number}|null=null;const p=modelPosition(model,selection),f=bankFrame(model,model.banks.find(b=>b.id===selection.bank)!);let yaw=f.yaw,pitch=Math.atan2(1.6-p[1]-1.15,90);
-  const down=(e:PointerEvent)=>{last={x:e.clientX,y:e.clientY};el.setPointerCapture(e.pointerId);tr.current=null;gl.domElement.dataset.modelReady='true';};const move=(e:PointerEvent)=>{if(!last)return;yaw-=(e.clientX-last.x)*.003;pitch=T.MathUtils.clamp(pitch+(e.clientY-last.y)*.003,-1.1,.7);last={x:e.clientX,y:e.clientY};target.current.set(camera.position.x+Math.sin(yaw)*90,camera.position.y+Math.sin(pitch)*90,camera.position.z+Math.cos(yaw)*90);camera.lookAt(target.current);invalidate();};const up=()=>{last=null;};const wheel=(e:WheelEvent)=>{e.preventDefault();const c=camera as T.PerspectiveCamera;c.fov=T.MathUtils.clamp(c.fov+e.deltaY*.03,35,105);c.updateProjectionMatrix();invalidate();};el.addEventListener('pointerdown',down);el.addEventListener('pointermove',move);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);el.addEventListener('wheel',wheel,{passive:false});return()=>{el.removeEventListener('pointerdown',down);el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);el.removeEventListener('wheel',wheel);};
- },[mode,selection.bank,selection.section,selection.row,selection.seat,reset,model,camera,gl,invalidate]);
+  const down=(e:PointerEvent)=>{last={x:e.clientX,y:e.clientY};el.setPointerCapture(e.pointerId);tr.current=null;gl.domElement.dataset.modelReady='true';};const move=(e:PointerEvent)=>{if(!last)return;yaw-=(e.clientX-last.x)*.003;pitch=T.MathUtils.clamp(pitch+(e.clientY-last.y)*.003,-1.1,.7);last={x:e.clientX,y:e.clientY};target.current.set(camera.position.x+Math.sin(yaw)*90,camera.position.y+Math.sin(pitch)*90,camera.position.z+Math.cos(yaw)*90);camera.lookAt(target.current);invalidate();};const up=()=>{last=null;};const wheel=(e:WheelEvent)=>{e.preventDefault();const c=camera as T.PerspectiveCamera;c.fov=T.MathUtils.clamp(c.fov+e.deltaY*.03,35,105);c.updateProjectionMatrix();gl.domElement.dataset.seatFov=String(c.fov);onZoomLimitsChange(c.fov>35,c.fov<105);invalidate();};el.addEventListener('pointerdown',down);el.addEventListener('pointermove',move);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);el.addEventListener('wheel',wheel,{passive:false});return()=>{el.removeEventListener('pointerdown',down);el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);el.removeEventListener('wheel',wheel);};
+ },[mode,selection.bank,selection.section,selection.row,selection.seat,reset,model,camera,gl,invalidate,onZoomLimitsChange]);
  useFrame((_,delta)=>{const t=tr.current;if(!t)return;t.elapsed+=Math.min(delta,.05);const f=Math.min(1,t.elapsed/.8),e=1-(1-f)**3;camera.position.lerpVectors(t.from,t.p,e);target.current.lerpVectors(t.fromT,t.t,e);camera.lookAt(target.current);control.current?.target.copy(target.current);if(f===1){tr.current=null;gl.domElement.dataset.modelReady='true';}invalidate();});
  return null;
 }

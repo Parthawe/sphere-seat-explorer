@@ -1,3 +1,4 @@
+import {jeddahReference} from "./jeddahReference";
 import {findCircuitModel} from "./circuitSeating";
 import { findVenue } from "./venueRegistry";
 import { BrandMark } from "./BrandMark";
@@ -330,6 +331,13 @@ export default function RaceHub() {
                 <a href={raceUrl(selected)} target="_blank" rel="noreferrer">
                   Open the official race guide
                 </a>
+                {selected.slug===jeddahReference.race&&route.season===jeddahReference.season&&<div className="jeddah-source-reference">
+                  <h3>{jeddahReference.venue} · {jeddahReference.dates}</h3>
+                  <p>The organizer-linked 2027 catalogue lists six grandstand products. These names are planning references; stand locations and ticket rows are not mapped here yet.</p>
+                  <ul>{jeddahReference.grandstands.map(name=><li key={name}>{name}</li>)}</ul>
+                  <div className="verified-event-links"><a href={jeddahReference.event} target="_blank" rel="noreferrer">Organizer’s event page</a><a href={jeddahReference.catalogue} target="_blank" rel="noreferrer">Organizer-linked ticket catalogue</a></div>
+                  <small>Sources checked {jeddahReference.checked}. Confirm availability, seating and access with the provider.</small>
+                </div>}
               </section>
             )}
             {!findVenue(route.season, selected.slug) && (
