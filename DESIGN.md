@@ -85,3 +85,5 @@ Keep all unfinished Spa inputs outside public routing until the shared renderer 
 When organizer evidence places multiple package options in one grandstand, keep one model bank and show distinct official-information links beside the cover/assignment caveat. Preserve readable 44px links on phones. Never create a second physical stand or assign premium rows from package names alone. The Gold 2 Standard/Premium comparison follows this pattern.
 
 Daylight scene headings now use a light fading canvas scrim beneath the existing title and controls to retain dark-text contrast against trees. It does not intercept pointer input or change the camera/heading spacing. Night scenes retain their existing treatment.
+
+Source-only ticket alternatives are grouped by grandstand, general admission, accessible platform and hospitality within a native details disclosure. Product labels remain headings and source links retain touch targets. The free-seating 17–27 bank shows age eligibility beside admission facts, before position inputs. Roaming and accessible products do not inherit ordinary stand grids or implied access certification.

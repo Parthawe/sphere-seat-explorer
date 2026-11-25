@@ -8,7 +8,7 @@ test('height fields keep meter axes and reject unknown domains while flat models
  assert.equal(groundHeight(circuitModels.qatar,999999,999999),0);assert.throws(()=>groundHeight(circuitModels.belgium,999999,999999),/Outside sampled/);
 });
 test('Spa keeps full road relief, source heights and level bank/eye offsets',()=>{
- const m=circuitModels.belgium;assert.equal(findCircuitModel(2026,'belgium'),undefined);assert.equal(m.banks.length,23);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),25344);
+ const m=circuitModels.belgium;assert.equal(findCircuitModel(2026,'belgium'),undefined);assert.equal(m.banks.length,27);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),30528);
  assert.ok(Math.max(...m.trackHeights!)-Math.min(...m.trackHeights!)>100);assert.equal(m.terrain?.licence,'CC-BY-4.0');
  m.track.forEach((p,i)=>{const road=roadSample(m,...p as [number,number]);assert.ok(Math.abs(road.height-m.trackHeights![i])<.001);assert.ok(Math.abs(groundHeight(m,...p as [number,number])-road.height)<.001);});
  for(const b of m.banks){const selection={bank:b.id,section:1,row:1,seat:1},p=modelPosition(m,selection),local=localModelPosition(b,selection);assert.ok(Math.abs(p[1]-bankGroundHeight(m,b)-local[1])<1e-9);assert.ok(p[1]>groundHeight(m,p[0],p[2]));}
@@ -74,4 +74,15 @@ test('Spa Silver products keep distinct assigned banks and package/cover limits'
  assert.match(get('silver-3').admissionNote!,/newly covered/);assert.match(get('silver-4').admissionNote!,/Bruxelles/);
  assert.equal(new URL(get('silver-6').source).pathname,'/en/silver-6');assert.match(get('silver-6').admissionNote!,/walk takes place elsewhere/);assert.notDeepEqual(get('silver-5').center,get('silver-6').center);
  assert.match(get('silver-7').admissionNote!,/separate product from Combes/);assert.ok(get('silver-7').center[1]<m.banks.find(b=>b.id==='combes-1')!.center[1]);
+});
+
+
+test('Spa public products separate assigned, age-restricted free seating and source-only areas',()=>{
+ const m=circuitModels.belgium,ids=['speed-corner','fanzone','fan-area-double-gauche','area-17-27'];
+ for(const id of ids){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.equal(b.officialView,true);for(const other of m.banks.filter(o=>o.id!==id))assert.ok(bankEnvelopesSeparated(m,b,other),id+' overlaps '+other.id);}
+ const age=m.banks.find(b=>b.id==='area-17-27')!;assert.equal(age.kind,'free');assert.match(age.eligibilityNote!,/Ages 17–27 only/);assert.match(age.admissionNote!,/ages 17–27/);assert.match(age.admissionNote!,/not reserved chairs/);
+ const fanzone=m.banks.find(b=>b.id==='fanzone')!,fan=m.banks.find(b=>b.id==='fan-area-double-gauche')!;assert.equal(fanzone.kind,'assigned');assert.equal(fan.kind,'assigned');assert.notEqual(fanzone.source,fan.source);assert.ok(fanzone.center[1]<0&&fan.center[1]>0);
+ const options=m.unmappedProducts!;assert.equal(options.length,13);assert.equal(new Set(options.map(p=>p.id)).size,13);assert.equal(options.filter(p=>p.group==='Hospitality').length,8);assert.equal(options.filter(p=>p.group==='General admission').length,2);assert.equal(options.filter(p=>p.group==='Accessible platforms').length,2);
+ for(const p of options){assert.ok(!m.banks.some(b=>b.id===p.id));const u=new URL(p.source);assert.equal(u.protocol,'https:');assert.equal(u.hostname,'www.spagrandprix.com');}
+ assert.match(options.find(p=>p.id==='bronze')!.note,/no assigned chair/);assert.match(options.find(p=>p.id==='prm-source')!.note,/no verified platform/);
 });

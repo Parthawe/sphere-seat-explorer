@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "spa-remaining-public-viewing-products",
+  "phase": "monza-identity-and-geography",
   "active_run": null,
-  "next_action": "Finish Spa public viewing-product coverage: verify Speed Corner, Fanzone and 17\u201327 Blanchimont plus Bronze admission from current organizer pages/named map regions. Preserve assigned versus unassigned admission and do not invent GA chair inventories. Audit remaining PRM/hospitality options as source-only where spatial assets are missing, then move to verified Monza geography. Silver 3/4/5/6/7 initial assessment, estimated banks and official virtual-view handoffs are complete; do not repeat them. Preserve 23-bank/25,344-position scope, current newly-covered Silver 3 note, separate Silver 6 grandstand versus Thursday Pitlane Walk, Gold 2 shared-bank options, pending Gold 6 Bis, terrain, chair-switch fix and daylight-heading legibility. Do not recollect terrain.",
+  "next_action": "Begin Monza: verify the current 2027 event/physical venue and public organizer viewing products, then obtain bounded licensed GP/stand geography and implement its own representative study when evidence supports it. Spa initial public-product/unsupported-option audit is complete: 27 modeled banks/30,528 illustrative positions and 13 grouped source-only options. Do not repeat Spa terrain acquisition or completed product-region checks. Preserve distinct Eau Rouge Fanzone versus Fan Area Double Gauche, ages 17\u201327/free seating, unassigned Bronze without chair grids, PRM/hospitality source-only limits, Gold 6 Bis location gap, shared Gold 2 options and all existing scene/replay/privacy/season behavior. Return to Spa precision/photo gaps only with new supporting assets/evidence.",
   "venues": [
     {
       "id": "las-vegas",
@@ -143,7 +143,7 @@
       "id": "belgium",
       "event": "Belgium",
       "venue": "Spa-Francorchamps",
-      "status": "terrain_3d_twenty_three_banks_2027",
+      "status": "representative_3d_and_source_options_2027_initial_audit",
       "sources": [
         "https://www.formula1.com/en/racing/2027/belgium",
         "https://www.spagrandprix.com/en/",
@@ -154,15 +154,24 @@
         "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
         "https://geoportail.wallonie.be/catalogue/e257f5df-6c96-4118-b4d2-1e63e955df53.html"
       ],
-      "next_action": "Finish Spa public viewing-product coverage: verify Speed Corner, Fanzone and 17\u201327 Blanchimont plus Bronze admission from current organizer pages/named map regions. Preserve assigned versus unassigned admission and do not invent GA chair inventories. Audit remaining PRM/hospitality options as source-only where spatial assets are missing, then move to verified Monza geography. Silver 3/4/5/6/7 initial assessment, estimated banks and official virtual-view handoffs are complete; do not repeat them. Preserve 23-bank/25,344-position scope, current newly-covered Silver 3 note, separate Silver 6 grandstand versus Thursday Pitlane Walk, Gold 2 shared-bank options, pending Gold 6 Bis, terrain, chair-switch fix and daylight-heading legibility. Do not recollect terrain.",
+      "next_action": "Begin Monza: verify the current 2027 event/physical venue and public organizer viewing products, then obtain bounded licensed GP/stand geography and implement its own representative study when evidence supports it. Spa initial public-product/unsupported-option audit is complete: 27 modeled banks/30,528 illustrative positions and 13 grouped source-only options. Do not repeat Spa terrain acquisition or completed product-region checks. Preserve distinct Eau Rouge Fanzone versus Fan Area Double Gauche, ages 17\u201327/free seating, unassigned Bronze without chair grids, PRM/hospitality source-only limits, Gold 6 Bis location gap, shared Gold 2 options and all existing scene/replay/privacy/season behavior. Return to Spa precision/photo gaps only with new supporting assets/evidence.",
       "exact_seats_verified": false,
       "terrain_status": "Offline profile and context grid integrated; road grading/platforms/forest density authored",
       "terrain_artifact": "research/spa/terrain-samples.json",
       "seasons_with_3d_coverage": [
         2027
       ],
-      "modeled_positions": 25344,
-      "modeled_banks": 23
+      "modeled_positions": 30528,
+      "modeled_banks": 27,
+      "source_only_options": 13,
+      "initial_public_product_audit": "27 model banks plus grouped unmodeled grandstand/GA/PRM/hospitality handoffs; not a live ticket inventory",
+      "remaining_gaps": [
+        "Actual chairs, canopies, measured obstructions and surveyed temporary envelopes",
+        "Gold 6 Bis distinct location",
+        "Bronze roaming paths/views, verified PRM geometry/access routes and hospitality rooms/tables",
+        "Separate Verstappen product/seat association beyond diagram label",
+        "No checked dated Spa attendee media"
+      ]
     },
     {
       "id": "italy",
@@ -741,6 +750,25 @@
         "No checked dated Spa attendee references or verified upstream panorama playback"
       ],
       "next": "Finish Spa public viewing-product coverage: verify Speed Corner, Fanzone and 17\u201327 Blanchimont plus Bronze admission from current organizer pages/named map regions. Preserve assigned versus unassigned admission and do not invent GA chair inventories. Audit remaining PRM/hospitality options as source-only where spatial assets are missing, then move to verified Monza geography. Silver 3/4/5/6/7 initial assessment, estimated banks and official virtual-view handoffs are complete; do not repeat them. Preserve 23-bank/25,344-position scope, current newly-covered Silver 3 note, separate Silver 6 grandstand versus Thursday Pitlane Walk, Gold 2 shared-bank options, pending Gold 6 Bis, terrain, chair-switch fix and daylight-heading legibility. Do not recollect terrain."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Spa remaining public products and initial unsupported-option audit",
+      "result": "Added Speed Corner, Eau Rouge Fanzone, Fan Area Double Gauche and free-seating 17\u201327, reaching 27 model banks/30,528 illustrative positions. Added 13 grouped source-only options covering Bronze, PRM and hospitality without false chair/access claims.",
+      "evidence": [
+        "80 tests pass; final TypeScript/production build runs in packaging",
+        "Current individual product pages highlight four distinct named map groups and expose virtual-view entry controls",
+        "Bronze roaming zones/Bruxelles and PRM platform identities checked; eight hospitality information routes returned normal public pages, without checkout or stock collection",
+        "Desktop/320px/390px source links, age eligibility, free grid last position, 27-bank map, virtual handoff, zoom, cars and graphics Retry checked; no clean-load page errors",
+        "Source-only categories preserve no chair grids/borrowed views; existing Gold 2 package sharing and Gold 6 Bis gap remain"
+      ],
+      "limitations": [
+        "All new bank centers/setbacks/chairs authored; no actual ticket IDs, surveyed footprints or verified exact views",
+        "Unassigned 17\u201327 ages/eligibility and all service/access terms require organizer confirmation",
+        "Bronze, PRM and hospitality have information links only; no certified routes or facility views",
+        "No dated attendee media or upstream panorama playback verified"
+      ],
+      "next": "Begin Monza: verify the current 2027 event/physical venue and public organizer viewing products, then obtain bounded licensed GP/stand geography and implement its own representative study when evidence supports it. Spa initial public-product/unsupported-option audit is complete: 27 modeled banks/30,528 illustrative positions and 13 grouped source-only options. Do not repeat Spa terrain acquisition or completed product-region checks. Preserve distinct Eau Rouge Fanzone versus Fan Area Double Gauche, ages 17\u201327/free seating, unassigned Bronze without chair grids, PRM/hospitality source-only limits, Gold 6 Bis location gap, shared Gold 2 options and all existing scene/replay/privacy/season behavior. Return to Spa precision/photo gaps only with new supporting assets/evidence."
     }
   ],
   "blockers": [

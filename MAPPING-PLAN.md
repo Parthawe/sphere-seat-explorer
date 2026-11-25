@@ -1,3 +1,7 @@
+## Latest checkpoint: Spa initial public coverage audit
+
+Spa 2027 now has 27 representative model banks and 30,528 illustrative positions. Speed Corner, the Eau Rouge Fanzone, Fan Area Double Gauche and 17–27 are distinct; the latter has free seating and visible ages 17–27 eligibility. Thirteen grouped source-only options expose Bronze, PRM, hospitality and Gold 6 Bis without inventing chair grids, accessible routes or facility views. This is an initial product/source audit, not a complete live inventory or exact-seat survey. Remaining Spa precision and attendee-photo gaps require new evidence. Continue Monza event/product verification and licensed geography; do not repeat completed Spa acquisition/assessments.
+
 ## Latest checkpoint: Spa Silver products
 
 Spa 2027 now covers 23 representative banks and 25,344 illustrative positions, adding Silver 3 Double Gauche, Silver 4 Bruxelles, Silver 5, Silver 6 and Silver 7 All-In. Specific current Silver 3 cover guidance supersedes the older generic FAQ; canopy geometry remains omitted. Silver 6’s assigned grandstand and its separately located Thursday Pitlane Walk are not combined into a fictitious seating area. Next verify Speed Corner/Fanzone/17–27/Bronze, record unsupported PRM/hospitality geography, audit Spa coverage and continue Monza. Terrain acquisition and completed bank assessments must not be repeated.
