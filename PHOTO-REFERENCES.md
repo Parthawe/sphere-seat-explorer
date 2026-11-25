@@ -85,3 +85,5 @@ Speed Corner, Fanzone, Fan Area Double Gauche and 17–27 now have matching orga
 Monza is a distinct reference venue with an honest empty attendee collection. No source date, review, rating or exact-row photo match was inferred from its organizer seating diagram or from another circuit’s media. Bank source links open the current 2027 organizer PDF; they are not labeled as virtual panoramas.
 
 Monza’s eight added product regions retain the honest empty attendee-reference state. All official bank links open the checked 2027 organizer map/list PDF; no panorama, capture date, review or exact-seat photograph is inferred from the new model divisions.
+
+Monza 9/10/33A/33B/34/10 BIS retain the empty dated-attendee collection, with official PDF information links only. Serraglio 11’s source-only link does not imply a photographed view or certified panorama. No source image, capture year, review or exact-row match was inferred from the added regions.

@@ -96,3 +96,13 @@ test('Monza variant regions stay distinct without promoting authored splits to s
  for(const id of ['8a','8b','26a','26b','26c'])assert.match(by(id).admissionNote!,/spans multiple products/);
  assert.notDeepEqual(by('8a').center,by('8b').center);assert.equal(m.banks.some(b=>b.id==='6a'),false);
 });
+
+
+test('Monza north products preserve source envelopes, estimated regions and Serraglio context gap',()=>{
+ const m=circuitModels.italy,ids=['9','10','33a','33b','34','10-bis'];
+ for(const id of ids){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.kind,'assigned');assert.equal(b.roof,false);for(const other of m.banks.filter(o=>o.id!==id))assert.ok(bankEnvelopesSeparated(m,b,other),id+' overlaps '+other.id);}
+ const by=(id:string)=>m.banks.find(b=>b.id===id)!;
+ assert.equal(by('9').footprint,undefined);assert.equal(by('10').footprint,undefined);assert.equal(by('9').width,22);assert.equal(by('10').width,22);
+ for(const id of ['33a','33b','34','10-bis']){assert.equal(by(id).footprint,undefined);assert.match(by(id).confidence,/Estimated Roggia/);}
+ assert.notEqual(by('10').name,by('10-bis').name);assert.equal(m.banks.some(b=>b.id==='11'),false);assert.match(m.unmappedProducts!.find(p=>p.id==='11')!.note,/No seated view/);
+});

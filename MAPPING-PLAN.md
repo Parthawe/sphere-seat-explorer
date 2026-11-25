@@ -1,3 +1,7 @@
+## Latest checkpoint: Monza north-circuit regions
+
+Monza now has nineteen modeled banks and 22,816 illustrative positions, adding 9/10, 33A/B, 34 and 10 BIS. Compact 9/10 models use named source-envelope context with authored bounds; all six additions are estimated regions. Serraglio 11 has official source information without a borrowed view because historic flyover context is missing. Next assess licensed banking/bridge context before Serraglio/Ascari; if unsupported, retain that gap and advance remaining Parabolica/start-finish products. GP/woodland acquisition and north product identities must not be repeated.
+
 ## Latest checkpoint: Monza first-chicane and straight products
 
 Monza 2027 now has thirteen modeled banks and 17,536 illustrative positions, adding 6B/6C, 7, 8A/8B and 26A/B/C. All eight additions are estimated regions; shared-source-envelope divisions and product boundaries are authored, with dashed map outlines. Existing five source-aligned banks remain distinct. Next verify north-circuit products around Roggia/Lesmo/Serraglio from the retained current PDF and geography. Keep missing banking/flyovers, exact chairs and attendee-reference gaps explicit; do not repeat source acquisition.

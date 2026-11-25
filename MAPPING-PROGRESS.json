@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "monza-north-circuit-product-associations",
+  "phase": "monza-historic-flyover-context-assessment",
   "active_run": null,
-  "next_action": "Continue Monza north-circuit products from the retained 2027 organizer PDF and licensed geometry: verify 9 Seconda Variante, 10 Roggia, 33A/33B, 34 Lesmo 1 Esterna, 10 BIS Lesmo 2 Interno and 11 Serraglio regions before placing distinct estimated banks. Current first-chicane/straight batch is complete at 13 banks/17,536 illustrative positions; do not repeat its eight product assessments or GP/woodland acquisition. Preserve estimated 6B/6C/7 regions and authored 8A/8B/26A/B/C shared-envelope partitions without promoting them to surveyed footprints. Missing bridge/banking context must stay explicit near Serraglio/Ascari; source-only gaps are preferable to claiming measured physical views. Keep GF unnumbered/P roaming separate, initial five source envelopes, all cameras, privacy, replay and photo-source boundaries.",
+  "next_action": "Assess Monza historic banking/flyover context from retained licensed OSM segments and attributable public venue evidence before exposing Serraglio 11 or new Ascari views. The GP is flat and 11 is now a visible source-only option; do not borrow another bank view or imply unobstructed physical visibility. If geometry/elevation evidence is insufficient, retain that gap and advance 21A\u2013E/35A\u2013C/25 and remaining start-finish products from the current organizer diagram. North batch is complete: 9,10,33A/B,34,10 BIS are six distinct estimated banks; do not repeat their assessment. Preserve 19-bank/22,816-position scope, compact authored 9/10 envelopes, existing GP/woodland inputs, initial five source envelopes, estimated shared splits, cameras, GA/GF, reference/privacy/replay/season limits.",
   "venues": [
     {
       "id": "las-vegas",
@@ -177,7 +177,7 @@
       "id": "italy",
       "event": "Italy",
       "venue": "Monza",
-      "status": "representative_3d_thirteen_banks_2027",
+      "status": "representative_3d_nineteen_banks_2027",
       "sources": [
         "https://www.formula1.com/en/racing/2027/italy",
         "https://www.monzanet.it/en/f1-grand-prix/",
@@ -185,9 +185,9 @@
         "https://www.monzanet.it/wp-content/uploads/2026/08/GP_F1_2027_LISTINO_PREZZI-1.pdf",
         "https://www.openstreetmap.org/relation/284565"
       ],
-      "next_action": "Continue Monza north-circuit products from the retained 2027 organizer PDF and licensed geometry: verify 9 Seconda Variante, 10 Roggia, 33A/33B, 34 Lesmo 1 Esterna, 10 BIS Lesmo 2 Interno and 11 Serraglio regions before placing distinct estimated banks. Current first-chicane/straight batch is complete at 13 banks/17,536 illustrative positions; do not repeat its eight product assessments or GP/woodland acquisition. Preserve estimated 6B/6C/7 regions and authored 8A/8B/26A/B/C shared-envelope partitions without promoting them to surveyed footprints. Missing bridge/banking context must stay explicit near Serraglio/Ascari; source-only gaps are preferable to claiming measured physical views. Keep GF unnumbered/P roaming separate, initial five source envelopes, all cameras, privacy, replay and photo-source boundaries.",
-      "modeled_banks": 13,
-      "modeled_positions": 17536,
+      "next_action": "Assess Monza historic banking/flyover context from retained licensed OSM segments and attributable public venue evidence before exposing Serraglio 11 or new Ascari views. The GP is flat and 11 is now a visible source-only option; do not borrow another bank view or imply unobstructed physical visibility. If geometry/elevation evidence is insufficient, retain that gap and advance 21A\u2013E/35A\u2013C/25 and remaining start-finish products from the current organizer diagram. North batch is complete: 9,10,33A/B,34,10 BIS are six distinct estimated banks; do not repeat their assessment. Preserve 19-bank/22,816-position scope, compact authored 9/10 envelopes, existing GP/woodland inputs, initial five source envelopes, estimated shared splits, cameras, GA/GF, reference/privacy/replay/season limits.",
+      "modeled_banks": 19,
+      "modeled_positions": 22816,
       "seasons_with_3d_coverage": [
         2027
       ],
@@ -197,7 +197,8 @@
         "Flat ground: historic banking/flyover and structure elevations missing",
         "Actual chair/row IDs, canopies, obstructions and accessible routes",
         "No checked dated attendee photos or historical Monza telemetry"
-      ]
+      ],
+      "source_only_options": 4
     },
     {
       "id": "japan",
@@ -823,6 +824,25 @@
         "Flat terrain, historic banking/flyovers/architecture gaps persist; no attendee photos or historical telemetry added"
       ],
       "next": "Continue Monza north-circuit products from the retained 2027 organizer PDF and licensed geometry: verify 9 Seconda Variante, 10 Roggia, 33A/33B, 34 Lesmo 1 Esterna, 10 BIS Lesmo 2 Interno and 11 Serraglio regions before placing distinct estimated banks. Current first-chicane/straight batch is complete at 13 banks/17,536 illustrative positions; do not repeat its eight product assessments or GP/woodland acquisition. Preserve estimated 6B/6C/7 regions and authored 8A/8B/26A/B/C shared-envelope partitions without promoting them to surveyed footprints. Missing bridge/banking context must stay explicit near Serraglio/Ascari; source-only gaps are preferable to claiming measured physical views. Keep GF unnumbered/P roaming separate, initial five source envelopes, all cameras, privacy, replay and photo-source boundaries."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Monza Roggia/Lesmo products and Serraglio source-only gap",
+      "result": "Added six estimated north-circuit banks, reaching nineteen banks/22,816 illustrative positions. Serraglio 11 is source-only while its missing historic flyover context is addressed.",
+      "evidence": [
+        "86 tests pass, including all Monza chair/road checks, distinct 10/10 BIS identities, new-bank nonoverlap and the unsupported Serraglio view guard",
+        "Current PDF identities/order compared to retained named Roggia/Seconda Variante envelopes and licensed GP corner geometry; no new geography acquisition",
+        "Compact 9/10 source-envelope interpretations reduced after first authored rectangles overlapped; final 22m regions remain estimated with no surveyed footprint flag",
+        "Desktop/320px/390px all six selections, 10 BIS last grid position, nineteen-bank map, empty references, zoom, cars and graphics Retry passed; no page exceptions",
+        "Serraglio official information remains visible without a borrowed seated view; final TypeScript/build runs in packaging"
+      ],
+      "limitations": [
+        "All new bank envelopes/facing/setbacks/rows/chairs authored; source context is not a product survey",
+        "Historic flyovers/banking, terrain, architecture and measured sightlines remain absent",
+        "Tree context is partial and authored crowns/clearing may differ from real obstructions",
+        "No dated attendee photos or historical Monza telemetry added"
+      ],
+      "next": "Assess Monza historic banking/flyover context from retained licensed OSM segments and attributable public venue evidence before exposing Serraglio 11 or new Ascari views. The GP is flat and 11 is now a visible source-only option; do not borrow another bank view or imply unobstructed physical visibility. If geometry/elevation evidence is insufficient, retain that gap and advance 21A\u2013E/35A\u2013C/25 and remaining start-finish products from the current organizer diagram. North batch is complete: 9,10,33A/B,34,10 BIS are six distinct estimated banks; do not repeat their assessment. Preserve 19-bank/22,816-position scope, compact authored 9/10 envelopes, existing GP/woodland inputs, initial five source envelopes, estimated shared splits, cameras, GA/GF, reference/privacy/replay/season limits."
     }
   ],
   "blockers": [
