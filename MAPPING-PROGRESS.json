@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "monza-identity-and-geography",
+  "phase": "monza-first-chicane-and-straight-products",
   "active_run": null,
-  "next_action": "Begin Monza: verify the current 2027 event/physical venue and public organizer viewing products, then obtain bounded licensed GP/stand geography and implement its own representative study when evidence supports it. Spa initial public-product/unsupported-option audit is complete: 27 modeled banks/30,528 illustrative positions and 13 grouped source-only options. Do not repeat Spa terrain acquisition or completed product-region checks. Preserve distinct Eau Rouge Fanzone versus Fan Area Double Gauche, ages 17\u201327/free seating, unassigned Bronze without chair grids, PRM/hospitality source-only limits, Gold 6 Bis location gap, shared Gold 2 options and all existing scene/replay/privacy/season behavior. Return to Spa precision/photo gaps only with new supporting assets/evidence.",
+  "next_action": "Expand Monza 2027 beyond its initial five banks using the checked current organizer PDF and licensed local geography. Verify first-chicane/straight product associations for 6B/6C, 7, 8A/8B and 26A/B/C before adding them. Reuse src/public monza-geometry.json and the documented /tmp XML or bounded collector input; do not repeat event identity, full source catalogue or GP-loop selection. The connected 20-way/294-vertex GP candidate and five named bank associations are checked. Preserve 8,320-position five-bank scope, flat terrain and missing historic banking/flyovers/architecture limitations; inspect bridge context before claims around Serraglio/Ascari. GF is unnumbered, P is roaming GA, and other current products remain explicit. Preserve woodland-source/authoring distinction, phone stand-framing fix, all existing venue/replay/photo/privacy/season behavior.",
   "venues": [
     {
       "id": "las-vegas",
@@ -177,9 +177,27 @@
       "id": "italy",
       "event": "Italy",
       "venue": "Monza",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "representative_3d_five_banks_2027",
+      "sources": [
+        "https://www.formula1.com/en/racing/2027/italy",
+        "https://www.monzanet.it/en/f1-grand-prix/",
+        "https://www.monzanet.it/en/tickets/",
+        "https://www.monzanet.it/wp-content/uploads/2026/08/GP_F1_2027_LISTINO_PREZZI-1.pdf",
+        "https://www.openstreetmap.org/relation/284565"
+      ],
+      "next_action": "Expand Monza 2027 beyond its initial five banks using the checked current organizer PDF and licensed local geography. Verify first-chicane/straight product associations for 6B/6C, 7, 8A/8B and 26A/B/C before adding them. Reuse src/public monza-geometry.json and the documented /tmp XML or bounded collector input; do not repeat event identity, full source catalogue or GP-loop selection. The connected 20-way/294-vertex GP candidate and five named bank associations are checked. Preserve 8,320-position five-bank scope, flat terrain and missing historic banking/flyovers/architecture limitations; inspect bridge context before claims around Serraglio/Ascari. GF is unnumbered, P is roaming GA, and other current products remain explicit. Preserve woodland-source/authoring distinction, phone stand-framing fix, all existing venue/replay/photo/privacy/season behavior.",
+      "modeled_banks": 5,
+      "modeled_positions": 8320,
+      "seasons_with_3d_coverage": [
+        2027
+      ],
+      "exact_seats_verified": false,
+      "remaining_gaps": [
+        "Other 2027 organizer products",
+        "Flat ground: historic banking/flyover and structure elevations missing",
+        "Actual chair/row IDs, canopies, obstructions and accessible routes",
+        "No checked dated attendee photos or historical Monza telemetry"
+      ]
     },
     {
       "id": "japan",
@@ -769,6 +787,25 @@
         "No dated attendee media or upstream panorama playback verified"
       ],
       "next": "Begin Monza: verify the current 2027 event/physical venue and public organizer viewing products, then obtain bounded licensed GP/stand geography and implement its own representative study when evidence supports it. Spa initial public-product/unsupported-option audit is complete: 27 modeled banks/30,528 illustrative positions and 13 grouped source-only options. Do not repeat Spa terrain acquisition or completed product-region checks. Preserve distinct Eau Rouge Fanzone versus Fan Area Double Gauche, ages 17\u201327/free seating, unassigned Bronze without chair grids, PRM/hospitality source-only limits, Gold 6 Bis location gap, shared Gold 2 options and all existing scene/replay/privacy/season behavior. Return to Spa precision/photo gaps only with new supporting assets/evidence."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Monza initial five-bank study and phone grandstand framing",
+      "result": "Verified Monza 2027 identity/current map; added distinct GP/park study with Centrale 1, Laterale Sinistra 4, Piscina 5, Parabolica 22 and Vedano 24 (8,320 illustrative positions). Shared stand camera now fits the full bank on portrait screens.",
+      "evidence": [
+        "84 tests pass, including 2027 isolation, GP route exclusions, current source identities, all Monza positions clear road and independent Three.js camera-frustum checks across supported banks",
+        "Organizer linked 2027 five-page map/list inspected; official F1 GP length 5.793km is consistent with adapted 5,801m source line",
+        "Bounded public OSM snapshot: 20 ordered GP ways/294 closed vertices, pit/oval/Junior/motorcycle routes excluded; 44 source stand envelopes; 179 mapped tree points plus 1,241 authored woodland samples from 41 closed ways",
+        "Desktop/390px/320px guide entry, five bank switches, map, last Vedano section/row/position, reference empty state, zoom, cars, pause and Retry checked with no page exceptions",
+        "Observed phone stand clipping corrected; shared camera regression in Spa/Bahrain passes; final TypeScript/build runs in packaging"
+      ],
+      "limitations": [
+        "All row/chair counts, facing, canopies, facilities and sightlines estimated",
+        "Flat ground and missing historic bank/flyover structures; not a surveyed digital twin",
+        "Current organizer FAQ includes stale 2026 access text; no future access certification imported",
+        "No actual ticket-chair parser, dated attendee references or historical Monza replay added"
+      ],
+      "next": "Expand Monza 2027 beyond its initial five banks using the checked current organizer PDF and licensed local geography. Verify first-chicane/straight product associations for 6B/6C, 7, 8A/8B and 26A/B/C before adding them. Reuse src/public monza-geometry.json and the documented /tmp XML or bounded collector input; do not repeat event identity, full source catalogue or GP-loop selection. The connected 20-way/294-vertex GP candidate and five named bank associations are checked. Preserve 8,320-position five-bank scope, flat terrain and missing historic banking/flyovers/architecture limitations; inspect bridge context before claims around Serraglio/Ascari. GF is unnumbered, P is roaming GA, and other current products remain explicit. Preserve woodland-source/authoring distinction, phone stand-framing fix, all existing venue/replay/photo/privacy/season behavior."
     }
   ],
   "blockers": [

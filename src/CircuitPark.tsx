@@ -33,15 +33,16 @@ export default function CircuitPark({model}:{model:CircuitModel}){
  useEffect(()=>()=>grass.dispose(),[grass]);
  const treeRefs=useRef<T.InstancedMesh[]>([]);
  const trees=useMemo(()=>{
+  const woodland=!!model.terrain||model.vegetationStyle==='woodland';
   const frames=model.banks.map(b=>({bank:b,frame:bankFrame(model,b)}));
   return (model.vegetation??[]).filter(tree=>{
-   const [x,z]=tree.point,track=closestTrack(model,tree.point);if(Math.hypot(x-track[0],z-track[1])<(model.terrain?22:14))return false;
+   const [x,z]=tree.point,track=closestTrack(model,tree.point);if(Math.hypot(x-track[0],z-track[1])<(woodland?22:14))return false;
    return !frames.some(({bank:b,frame:f})=>{const dx=x-b.center[0],dz=z-b.center[1],along=dx*Math.cos(f.yaw)-dz*Math.sin(f.yaw),depth=dx*Math.sin(f.yaw)+dz*Math.cos(f.yaw);return Math.abs(along)<b.width/2+12&&Math.abs(depth)<b.rows*.44+14;});
   });
  },[model]);
  useEffect(()=>{
   const object=new T.Object3D();trees.forEach((tree,i)=>{
-   const [x,z]=tree.point,ground=groundHeight(model,x,z),height=model.terrain?12+(Number(tree.id)%37)/3:5+(Number(tree.id)%37)/12,width=model.terrain?4+(Number(tree.id)%17)/5:2.1+(Number(tree.id)%17)/12;
+   const [x,z]=tree.point,ground=groundHeight(model,x,z),height=(model.terrain||model.vegetationStyle==='woodland')?12+(Number(tree.id)%37)/3:5+(Number(tree.id)%37)/12,width=(model.terrain||model.vegetationStyle==='woodland')?4+(Number(tree.id)%17)/5:2.1+(Number(tree.id)%17)/12;
    object.rotation.set(0,0,0);object.position.set(x,ground+height*.38,z);object.scale.set(.22,height*.76,.22);object.updateMatrix();treeRefs.current[0]?.setMatrixAt(i,object.matrix);
    object.position.set(x,ground+height*.82,z);object.scale.set(width,height*.4,width);object.rotation.y=Number(tree.id)%6;object.updateMatrix();treeRefs.current[1]?.setMatrixAt(i,object.matrix);
   });for(const mesh of treeRefs.current){if(mesh){mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingSphere();}}

@@ -1,3 +1,4 @@
+import monza from './monza-geometry.json';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {circuitModels,findCircuitModel,normalizeModelPosition,modelPosition,localModelPosition,modelCount,modelPositionUrl,positionKey} from './circuitSeating';
@@ -5,7 +6,7 @@ test('physical circuit and season cannot silently cross Qatar/Bahrain references
  assert.equal(findCircuitModel(2026,'qatar')?.id,'qatar');assert.equal(findCircuitModel(2027,'bahrain')?.id,'bahrain');
  assert.equal(findCircuitModel(2026,'bahrain'),undefined);assert.equal(findCircuitModel(2027,'qatar'),undefined);
  assert.notDeepEqual(circuitModels.qatar.track,circuitModels.bahrain.track);
- for(const m of Object.values(circuitModels)){assert.deepEqual(m.track[0],m.track.at(-1));assert.ok(m.length>5000&&m.length<(m.id==='belgium'?7100:m.id==='great-britain'?6000:5600));assert.ok(m.track.flat().every(Number.isFinite));}
+ for(const m of Object.values(circuitModels)){assert.deepEqual(m.track[0],m.track.at(-1));assert.ok(m.length>5000&&m.length<(m.id==='belgium'?7100:m.id==='great-britain'||m.id==='italy'?6000:5600));assert.ok(m.track.flat().every(Number.isFinite));}
 });
 test('all model positions are finite, unique and reachable without claiming ticket IDs',()=>{
  for(const m of Object.values(circuitModels))for(const b of m.banks){const keys=new Set<string>(),coordinates=new Set<string>();
@@ -129,5 +130,27 @@ test('every Silverstone model position stays outside its modeled racing surface'
  const {closestTrack}=await import('./circuitSeating');const m=circuitModels['great-britain'];
  for(const b of m.banks)for(let section=1;section<=b.sections;section++)for(let row=1;row<=b.rows;row++)for(let seat=1;seat<=b.seats;seat++){
   const p=modelPosition(m,{bank:b.id,section,row,seat}),t=closestTrack(m,[p[0],p[2]]);assert.ok(Math.hypot(p[0]-t[0],p[2]-t[1])>15,b.id+' intersects modeled road');
+ }
+});
+
+
+test('Monza 2027 uses its GP loop and five named source envelopes without historic or pit routes',()=>{
+ const m=circuitModels.italy;assert.equal(findCircuitModel(2027,'italy'),m);assert.equal(findCircuitModel(2026,'italy'),undefined);assert.equal(m.banks.length,5);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),8320);
+ assert.equal(monza.licence,'ODbL-1.0');assert.equal(monza.source,'https://www.openstreetmap.org/relation/284565');assert.ok(monza.length_m>5750&&monza.length_m<5850);assert.equal(monza.points.length,294);assert.equal(new Set(monza.ways).size,20);for(const excluded of ['38168747','38168756','34404709','19982933','19983025'])assert.ok(!monza.ways.includes(excluded));
+ assert.deepEqual(m.banks.map(b=>b.footprint),['193647796','193647795','231257063','179794158','231026020']);assert.ok(m.banks.every(b=>b.source.endsWith('GP_F1_2027_LISTINO_PREZZI-1.pdf')&&!b.roof));
+ assert.equal(m.terrain,undefined);assert.match(m.evidence,/flyover bridges/);assert.equal(m.unmappedProducts!.find(p=>p.id==='gf')!.source,m.banks[0].source);assert.match(m.unmappedProducts!.find(p=>p.id==='gf')!.note,/not numbered/);assert.ok(monza.vegetation.length>1000);assert.equal(monza.forest_sources.length,41);
+});
+
+test('every initial Monza modeled position stays clear of its GP racing surface',async()=>{
+ const {closestTrack}=await import('./circuitSeating'),m=circuitModels.italy;
+ for(const b of m.banks)for(let section=1;section<=b.sections;section++)for(let row=1;row<=b.rows;row++)for(let seat=1;seat<=b.seats;seat++){const p=modelPosition(m,{bank:b.id,section,row,seat}),t=closestTrack(m,[p[0],p[2]]);assert.ok(Math.hypot(p[0]-t[0],p[2]-t[1])>15,b.id+' intersects road');}
+});
+
+
+test('stand cameras keep complete bank envelopes clear of controls on phones and desktop',async()=>{
+ const T=await import('three'),{bankOverviewCamera,bankFrame,bankGroundHeight}=await import('./circuitSeating');
+ for(const m of Object.values(circuitModels))for(const b of m.banks)for(const [width,height] of [[320,488],[1075,917]]){
+  const top=Math.min(height*.5,width<760?250:220),fraction=Math.max(.2,1-(top+110)/height)*.95,view=bankOverviewCamera(m,b,width/height,fraction),camera=new T.PerspectiveCamera(45,width/height,.5,6500);camera.position.set(...view.eye);camera.lookAt(...view.target);camera.setViewOffset(width,height,0,(110-top)/2,width,height);camera.updateMatrixWorld();const {yaw}=bankFrame(m,b),c=Math.cos(yaw),s=Math.sin(yaw),ground=bankGroundHeight(m,b);
+  for(const x of [-b.width/2,b.width/2])for(const z of [-b.rows*.44,b.rows*.44])for(const y of [0,b.rows*.43+5]){const p=new T.Vector3(b.center[0]+x*c+z*s,ground+y,b.center[1]-x*s+z*c).project(camera),px=(p.x+1)*width/2,py=(1-p.y)*height/2;assert.ok(px>0&&px<width&&py>top&&py<height-110,m.id+'/'+b.id+' clips stand');}
  }
 });

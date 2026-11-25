@@ -81,3 +81,8 @@ test('Silverstone source references never imply exact or future seat calibration
  const video=referencesFor('great-britain','copse-c','area','photos','2025');assert.equal(video.length,1);assert.equal(video[0].author,'Race Experience');assert.match(video[0].publisher,/travel publisher/);assert.equal(video[0].embed?.type,'youtube');
  assert.equal(referencesFor('great-britain','copse-a','area','photos').length,0);assert.equal(referencesFor('great-britain','becketts','area','review').length,1);assert.equal(referencesFor('great-britain','vale','area','review').length,1);assert.equal(referencesFor('great-britain','vale','area','all','2026').length,0);
 });
+
+
+test('Monza has no borrowed attendee references from another circuit',()=>{
+ assert.deepEqual(referencesFor('italy','1','area'),[]);assert.deepEqual(referencesFor('italy','1','venue'),[]);
+});

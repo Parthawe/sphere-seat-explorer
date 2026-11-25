@@ -1,3 +1,7 @@
+## Latest checkpoint: Monza initial 2027 study
+
+Monza now has an independent GP/park model with five named representative banks and 8,320 illustrative positions. Current organizer/F1 sources confirm 3–5 September 2027. The 20-way source loop excludes pit, historic oval, Junior and motorcycle routes. Source footprints align Centrale 1, Laterale Sinistra 4, Piscina 5, Parabolica 22 and Vedano 24. Ground remains flat; banking/flyovers, actual canopies/chairs and other products are unfinished. Phone grandstand framing now fits the complete bank clear of controls. Next verify remaining first-chicane/straight product regions from the retained 2027 PDF and geography; do not repeat the completed identity/GP selection.
+
 ## Latest checkpoint: Spa initial public coverage audit
 
 Spa 2027 now has 27 representative model banks and 30,528 illustrative positions. Speed Corner, the Eau Rouge Fanzone, Fan Area Double Gauche and 17–27 are distinct; the latter has free seating and visible ages 17–27 eligibility. Thirteen grouped source-only options expose Bronze, PRM, hospitality and Gold 6 Bis without inventing chair grids, accessible routes or facility views. This is an initial product/source audit, not a complete live inventory or exact-seat survey. Remaining Spa precision and attendee-photo gaps require new evidence. Continue Monza event/product verification and licensed geography; do not repeat completed Spa acquisition/assessments.

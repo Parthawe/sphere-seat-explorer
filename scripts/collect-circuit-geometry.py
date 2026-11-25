@@ -10,6 +10,7 @@ SOURCES={
  'yas':{'bbox':'54.598,24.462,54.612,24.480','origin':[54.605,24.471],'ways':['168477013','1469184731','1469184732','188337196','1255169703','1255169704'],'features':['188731381','168411369','133907352','133907079','133907081']}}
 SOURCES['albert-park']={'bbox': '144.961,-37.857,144.984,-37.836', 'origin': [144.972, -37.847], 'ways': ['987030977', '784076843', '784076839', '987030969', '1070446542', '784087846', '987030978', '987030966', '784083210', '987030982', '1050371045', '1013633268', '1013633269', '1050342733', '1021617920', '1021617874', '15856988', '979723480', '987030968', '784071296', '979723479', '979723477', '1253159342', '979723478', '1126808201', '987030972', '987030985', '987030974', '987030973', '784076847'], 'features': [], 'water_relation': '346429', 'trees': True, 'start': '9123374386'}
 SOURCES['silverstone']={'bbox': '-1.035,52.062,-1.005,52.086', 'origin': [-1.02, 52.074], 'ways': ['169800225', '169848882', '169800224', '169800222', '169618242', '169618240', '169618241', '169618245', '169609611', '169730588', '3571477', '169730585', '169730587', '169733768', '169730586', '430075118', '169733766', '169733769', '169733770', '169848880', '169848884', '169848881', '55224168', '55224167', '169854842', '169800226', '169800223'], 'features': ['227332429', '227342440', '227342441', '227342444', '227342445', '227342446', '227342447', '227342448', '227342449', '227342450', '227342451', '227342452', '227342453', '227342454', '227342456', '227342458', '227342459', '1387956625', '1430486596', '1560504709', '1560504711', '1560504712', '1560504713'], 'trees': True, 'start': '2364624111', 'length_range': [5800, 6000]}
+SOURCES['monza']={'bbox': '9.265,45.600,9.299,45.640', 'origin': [9.281, 45.62], 'ways': ['179968257', '179968234', '19842206', '179968242', '179968264', '179968220', '179968262', '179968245', '179968263', '179968229', '179968251', '179968230', '179968252', '179968228', '1443867792', '1443867793', '179968254', '179968226', '179968249', '179968239'], 'features': ['34404645', '179794158', '193647795', '193647796', '194457664', '194457666', '194457667', '194457668', '194457670', '194457671', '194457672', '194457674', '194457675', '194457677', '194457679', '194457680', '194457681', '194457682', '194457684', '194457685', '194457686', '194457687', '194457688', '194457689', '194457690', '194457691', '194457692', '194457693', '194742580', '231026018', '231026019', '231026020', '231026024', '231026025', '231026027', '231257063', '231260684', '231265139', '231265140', '233132517', '338984705', '338984712', '561721691', '1529562455'], 'trees': True, 'start': '1828499259', 'length_range': [5750, 5850], 'forest_samples': True, 'relation': '284565'}
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('venues',nargs='*')
 parser.add_argument('--input',type=Path,help='Use an already retrieved public OSM XML snapshot for one selected venue')
@@ -63,13 +64,33 @@ for venue in selected:
    holes.append([project(nodes[n]) for n in ring_inner])
   features.append({'id':cfg['water_relation'],'name':'Albert Park Lake','kind':'water','points':[project(nodes[n]) for n in ring],'holes':holes})
  vegetation=[]
- if cfg.get('trees'):
+ if cfg.get('trees') or cfg.get('forest_samples'):
   x0,x1=min(p[0] for p in track)-100,max(p[0] for p in track)+100;z0,z1=min(p[1] for p in track)-100,max(p[1] for p in track)+100
   for n in root.findall('node'):
    if any(t.attrib.get('k')=='natural' and t.attrib.get('v')=='tree' for t in n.findall('tag')):
     p=project(nodes[n.attrib['id']])
     if x0<p[0]<x1 and z0<p[1]<z1:vegetation.append({'id':n.attrib['id'],'point':p})
- data={'source':'https://www.openstreetmap.org/way/'+cfg['ways'][0],'queried':str(datetime.datetime.now(datetime.timezone.utc).date()),'licence':'ODbL-1.0','ways':cfg['ways'],'length_m':round(length),'projection':{'origin':cfg['origin'],'units':'meters','z':'south'},'points':track,'features':features}
+ forest_sources=[]
+ if cfg.get('forest_samples'):
+  def inside(point,ring):
+   hit=False
+   for i,a in enumerate(ring):
+    b=ring[i-1]
+    if (a[1]>point[1])!=(b[1]>point[1]) and point[0]<(b[0]-a[0])*(point[1]-a[1])/(b[1]-a[1])+a[0]:hit=not hit
+   return hit
+  seen=set()
+  for way_id,w in ways.items():
+   tags={t.attrib['k']:t.attrib['v'] for t in w.findall('tag')};part=[n.attrib['ref'] for n in w.findall('nd')]
+   if not (tags.get('landuse')=='forest' or tags.get('natural')=='wood') or part[0]!=part[-1]:continue
+   ring=[project(nodes[n]) for n in part];forest_sources.append(way_id)
+   for x in range(int(max(x0,min(p[0] for p in ring)))+10,int(min(x1,max(p[0] for p in ring)))-10,22):
+    for z in range(int(max(z0,min(p[1] for p in ring)))+10,int(min(z1,max(p[1] for p in ring)))-10,22):
+     key=(x//22,z//22);seed=(x*73856093^z*19349663^int(way_id))&0xffffffff;point=[round(x+(seed%131)/10-6.5,2),round(z+((seed//131)%131)/10-6.5,2)]
+     if key not in seen and inside(point,ring):
+      seen.add(key);vegetation.append({'id':str(int(way_id)*10000+len(vegetation)),'point':point})
+ data={'source':('https://www.openstreetmap.org/relation/'+cfg['relation']) if cfg.get('relation') else 'https://www.openstreetmap.org/way/'+cfg['ways'][0],'queried':str(datetime.datetime.now(datetime.timezone.utc).date()),'licence':'ODbL-1.0','ways':cfg['ways'],'length_m':round(length),'projection':{'origin':cfg['origin'],'units':'meters','z':'south'},'points':track,'features':features}
+ if cfg.get('relation'):data['relation']=cfg['relation']
  if vegetation:data['vegetation']=vegetation
+ if forest_sources:data['forest_sources']=forest_sources;data['vegetation_evidence']='Mapped individual tree points plus authored jittered samples inside closed OSM forest/wood ways; not a tree inventory or multipolygon-hole reconstruction. Crowns, heights and event clearing are authored.'
  for directory in ['src','public/data']:(ROOT/directory/(venue+'-geometry.json')).write_text(json.dumps(data)+'\n')
  print(venue,len(track),'track vertices;',len(features),'features')

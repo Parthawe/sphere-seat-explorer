@@ -87,3 +87,5 @@ When organizer evidence places multiple package options in one grandstand, keep 
 Daylight scene headings now use a light fading canvas scrim beneath the existing title and controls to retain dark-text contrast against trees. It does not intercept pointer input or change the camera/heading spacing. Night scenes retain their existing treatment.
 
 Source-only ticket alternatives are grouped by grandstand, general admission, accessible platform and hospitality within a native details disclosure. Product labels remain headings and source links retain touch targets. The free-seating 17–27 bank shows age eligibility beside admission facts, before position inputs. Roaming and accessible products do not inherit ordinary stand grids or implied access certification.
+
+Monza follows the daylight system with its own GP trace, partial park context and named source envelopes. Keep missing historic banking/bridges and flat ground explicit. Stand-mode framing reserves the control area and fits the full bank at portrait and wide aspects; returning to a seated camera restores its lens/view offset. Mapped trees and authored woodland samples remain distinct in provenance.

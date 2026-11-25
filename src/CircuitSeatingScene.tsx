@@ -12,7 +12,7 @@ import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import {OutputPass} from 'three/examples/jsm/postprocessing/OutputPass.js';
 import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
-import {bankGroundHeight,bankFrame,circuitOverviewCamera,footprintPlacement,localModelPosition,modelPosition,type CircuitModel,type ModelBank,type ModelPosition} from './circuitSeating';
+import {bankGroundHeight,bankFrame,bankOverviewCamera,circuitOverviewCamera,footprintPlacement,localModelPosition,modelPosition,type CircuitModel,type ModelBank,type ModelPosition} from './circuitSeating';
 export type ModelCameraControls={zoomIn:()=>void;zoomOut:()=>void;resetZoom:()=>void};
 type Mode='circuit'|'stand'|'seat';
 type Props={onZoomLimitsChange:(inward:boolean,outward:boolean)=>void;cameraControls:RefObject<ModelCameraControls|null>;model:CircuitModel;selection:ModelPosition;mode:Mode;playing:boolean;roofs:boolean;reset:number;onSelect:(p:ModelPosition)=>void;onUnavailable:()=>void;onReady:()=>void};
@@ -105,14 +105,14 @@ function Rig({model,selection,mode,reset,cameraControls,onZoomLimitsChange}:Prop
  useEffect(()=>{const c=new OrbitControls(camera,gl.domElement);c.enablePan=false;c.minDistance=12;c.maxDistance=3000;c.maxPolarAngle=Math.PI*.495;control.current=c;const change=()=>invalidate(),start=()=>{tr.current=null;gl.domElement.dataset.modelReady='true';};c.addEventListener('change',change);c.addEventListener('start',start);return()=>{c.dispose();control.current=null;};},[camera,gl,invalidate]);
  useEffect(()=>{const bank=model.banks.find(b=>b.id===selection.bank)!,p=modelPosition(model,selection),f=bankFrame(model,bank);let position:T.Vector3,look:T.Vector3;
   if(mode==='seat'){position=new T.Vector3(p[0],p[1]+1.15,p[2]);look=new T.Vector3(p[0]+f.forward[0]*90,1.6+roadSample(model,p[0]+f.forward[0]*90,p[2]+f.forward[1]*90).height,p[2]+f.forward[1]*90);}
-  else if(mode==='stand'){const distance=Math.max(90,bank.width*.85);position=new T.Vector3(bank.center[0]+f.forward[0]*distance+f.forward[1]*distance*.25,bankGroundHeight(model,bank)+distance*.65,bank.center[1]+f.forward[1]*distance-f.forward[0]*distance*.25);look=new T.Vector3(bank.center[0],bankGroundHeight(model,bank)+4,bank.center[1]);}
+  else if(mode==='stand'){const top=Math.min(size.height*.5,size.width<760?250:220),fraction=Math.max(.2,1-(top+110)/size.height)*.95,view=bankOverviewCamera(model,bank,size.width/size.height,fraction);position=new T.Vector3(...view.eye);look=new T.Vector3(...view.target);}
   else {const top=Math.min(size.height*.35,size.width<760?250:220),bottom=110,fraction=Math.max(.2,1-(top+bottom)/size.height)*.95,overview=circuitOverviewCamera(model,size.width/size.height,fraction);position=new T.Vector3(...overview.eye);look=new T.Vector3(...overview.target);}
   if(scene.fog instanceof T.Fog){const d=position.distanceTo(look);scene.fog.near=mode==='circuit'?d+1000:1000;scene.fog.far=mode==='circuit'?d+3000:4500;}
   (camera as T.PerspectiveCamera).near=mode==='circuit'?10:mode==='stand'?.5:.15;
   (camera as T.PerspectiveCamera).far=mode==='circuit'?Math.max(6500,position.distanceTo(look)+4000):6500;
   const c=control.current;if(c){c.enabled=true;c.minDistance=mode==='seat'?.1:12;c.maxDistance=mode==='circuit'?Math.max(3000,position.distanceTo(look)*1.4):3000;c.enableZoom=mode!=='seat';}
   (camera as T.PerspectiveCamera).clearViewOffset();
-  if(mode==='circuit'){const top=Math.min(size.height*.35,size.width<760?250:220);(camera as T.PerspectiveCamera).setViewOffset(size.width,size.height,0,(110-top)/2,size.width,size.height);}
+  if(mode!=='seat'){const top=Math.min(size.height*(mode==='stand'?.5:.35),size.width<760?250:220);(camera as T.PerspectiveCamera).setViewOffset(size.width,size.height,0,(110-top)/2,size.width,size.height);}
   (camera as T.PerspectiveCamera).fov=mode==='seat'?(size.width<size.height?90:70):45;(camera as T.PerspectiveCamera).updateProjectionMatrix();gl.domElement.dataset.seatFov=String((camera as T.PerspectiveCamera).fov);onZoomLimitsChange((camera as T.PerspectiveCamera).fov>35,(camera as T.PerspectiveCamera).fov<105);
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){camera.position.copy(position);target.current.copy(look);camera.lookAt(look);c?.target.copy(look);tr.current=null;gl.domElement.dataset.modelReady='true';}
   else{tr.current={p:position,t:look,from:camera.position.clone(),fromT:target.current.clone(),elapsed:0};gl.domElement.dataset.modelReady='moving';}
