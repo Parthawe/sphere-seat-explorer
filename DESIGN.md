@@ -68,3 +68,14 @@ Use the actual Yas circuit line in local meters, with authored blue seating and 
 ## Touch zoom
 
 Follow the existing Vegas toolbar pattern with a compact dark control strip on the scene's right edge. Keep zoom-in/out targets 44px, label reset as the default 1× action, and provide explicit accessible names. Controls appear only for the seated/standing camera. Bound the lens, synchronize wheel limits and preserve the user's modeled position and look direction. Disable controls until the scene is ready and after context loss. Narrow headings must leave a gap above camera modes, including long bank names.
+
+
+## Spa terrain integration requirements
+
+Keep the existing red, ink and paper controls; terrain is a geographic change rather than a new theme. A future Spa model must preserve the elevation profile through the road, cars, fences, bank foundations and camera. Use separately attributed SPW ground samples and OSM horizontal geometry. Sparse research sampling must never be described as a 50cm-resolution crop or surveyed event terrain.
+
+Use one local-meter coordinate frame and a declared vertical offset. Road height interpolation follows the source road profile; context terrain uses the coarse grid. Before blending them, inspect sharp grade changes and possible bare-ground/road-deck differences. Never silently smooth an outlier into a claimed measured height. Mark authored grading and bank platform elevations as estimates. Existing models keep their flat default.
+
+Seat framing adds the selected bank's ground elevation to the authored tier/eye offset. The visible eye-height metric must remain height above local modeled ground, not absolute datum elevation. Stand and whole-circuit cameras need height-aware targets, bounds and fog; source samples must remain inside their domain rather than clamp/extrapolate unknown terrain. Passing cars must follow the same road curve in position and pitch. Fences need the same road base elevation, and terrain must not cover the road ribbon. Preserve source/accuracy notes and identify inaccessible or unsampled areas clearly.
+
+Keep all unfinished Spa inputs outside public routing until the shared renderer and desktop/phone checks pass. A successful data download alone is not a finished scene. Terrain attribution needs its own SPW/CC BY source link alongside the existing OSM/ODbL geography credit.

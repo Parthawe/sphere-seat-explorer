@@ -2,11 +2,11 @@
   "schema": 1,
   "product": "Apex Atlas",
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "cadence_hours": 1,
   "phase": "remaining-venue-source-verification",
   "active_run": null,
-  "next_action": "Resume the bounded SPW collector only after its temporary 502 failure has cleared; use retained research/spa/terrain-partial.json cache to avoid re-querying 157 samples. Fetch the documented bounded OSM XML if /tmp is gone. Complete 330 road-height slots and coarse 17x25 context grid, validate source units/continuity, then integrate a shared height sampler across road/cars/fences/banks/camera/terrain. Current Spa map broad routing is inspected; current product-to-bank assignments still need confirmation. Do not repeat identity checks or claim a complete height field. If service remains unavailable, progress bank/source associations or another venue.",
+  "next_action": "Use completed research/spa/terrain-samples.json offline: 330 source road heights and 425 coarse grid samples are acquired and validated. Implement a shared height-aware sampler/renderer for road/runoff, cars with pitch, fences, bank foundations, camera targets/overview bounds and eye height above local ground; preserve existing flat models. Complete current Spa product-to-bank associations from the checked organizer map. Do not repeat event identity checks or SPW acquisition. Validate source/height consistency, desktop/phone selection and recovery before exposing a Spa 3D route. No exact chair mapping or 50cm terrain-crop claim.",
   "venues": [
     {
       "id": "las-vegas",
@@ -143,7 +143,7 @@
       "id": "belgium",
       "event": "Belgium",
       "venue": "Spa-Francorchamps",
-      "status": "gp_layout_reviewed_partial_terrain_2027",
+      "status": "gp_layout_and_offline_terrain_ready_2027_renderer_pending",
       "sources": [
         "https://www.formula1.com/en/racing/2027/belgium",
         "https://www.spagrandprix.com/en/",
@@ -154,10 +154,10 @@
         "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
         "https://geoportail.wallonie.be/catalogue/e257f5df-6c96-4118-b4d2-1e63e955df53.html"
       ],
-      "next_action": "Resume the bounded SPW collector only after its temporary 502 failure has cleared; use retained research/spa/terrain-partial.json cache to avoid re-querying 157 samples. Fetch the documented bounded OSM XML if /tmp is gone. Complete 330 road-height slots and coarse 17x25 context grid, validate source units/continuity, then integrate a shared height sampler across road/cars/fences/banks/camera/terrain. Current Spa map broad routing is inspected; current product-to-bank assignments still need confirmation. Do not repeat identity checks or claim a complete height field. If service remains unavailable, progress bank/source associations or another venue.",
+      "next_action": "Use completed research/spa/terrain-samples.json offline: 330 source road heights and 425 coarse grid samples are acquired and validated. Implement a shared height-aware sampler/renderer for road/runoff, cars with pitch, fences, bank foundations, camera targets/overview bounds and eye height above local ground; preserve existing flat models. Complete current Spa product-to-bank associations from the checked organizer map. Do not repeat event identity checks or SPW acquisition. Validate source/height consistency, desktop/phone selection and recovery before exposing a Spa 3D route. No exact chair mapping or 50cm terrain-crop claim.",
       "exact_seats_verified": false,
-      "terrain_status": "157 distinct source samples retained; 158 of 330 road slots populated; SPW temporarily returns 502",
-      "terrain_artifact": "research/spa/terrain-partial.json"
+      "terrain_status": "Complete sparse offline input: 330 road-height slots and 425 coarse context-grid samples; renderer not integrated",
+      "terrain_artifact": "research/spa/terrain-samples.json"
     },
     {
       "id": "italy",
@@ -617,6 +617,22 @@
         "Current bank/product associations and structures remain unverified"
       ],
       "next": "Resume the bounded SPW collector only after its temporary 502 failure has cleared; use retained research/spa/terrain-partial.json cache to avoid re-querying 157 samples. Fetch the documented bounded OSM XML if /tmp is gone. Complete 330 road-height slots and coarse 17x25 context grid, validate source units/continuity, then integrate a shared height sampler across road/cars/fences/banks/camera/terrain. Current Spa map broad routing is inspected; current product-to-bank assignments still need confirmation. Do not repeat identity checks or claim a complete height field. If service remains unavailable, progress bank/source associations or another venue."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Spa complete offline terrain input and validation",
+      "result": "SPW recovered. Reused 157 samples, collected 597 additional paced numeric samples, retained complete road/grid input and added profile/projection checks. No public app change.",
+      "evidence": [
+        "330 closed-road height slots and 425 coarse context-grid samples retained with separate ODbL/CC BY attribution",
+        "Road relief 102.228759m; closed seam; no segment above authored 35% grade-review threshold",
+        "70 tests pass including four terrain research checks; Python collector compilation passes"
+      ],
+      "limitations": [
+        "Research input is sparse sampling, not a 50cm-resolution crop",
+        "No terrain-aware renderer or current bank assignment completion yet",
+        "No measured sightlines or official seat calibration"
+      ],
+      "next": "Use completed research/spa/terrain-samples.json offline: 330 source road heights and 425 coarse grid samples are acquired and validated. Implement a shared height-aware sampler/renderer for road/runoff, cars with pitch, fences, bank foundations, camera targets/overview bounds and eye height above local ground; preserve existing flat models. Complete current Spa product-to-bank associations from the checked organizer map. Do not repeat event identity checks or SPW acquisition. Validate source/height consistency, desktop/phone selection and recovery before exposing a Spa 3D route. No exact chair mapping or 50cm terrain-crop claim."
     }
   ],
   "blockers": [

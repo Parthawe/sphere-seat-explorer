@@ -6,6 +6,7 @@ export function validateTerrainResearch(data) {
  if(t.request_crs!=='EPSG:4326'||t.vertical_reference!=='EPSG:5710')throw new Error('Unexpected coordinate/height reference');
  if(t.columns<2||t.rows<2||t.grid_heights_m.length!==t.rows*t.columns||t.grid_lonlat.length!==t.grid_heights_m.length)throw new Error('Incomplete terrain grid');
  if(track.points.length!==track.heights_m.length||track.node_ids.length!==track.points.length||track.lonlat.length!==track.points.length)throw new Error('Incomplete road elevation');
+ if(track.points.some(p=>p.length!==2||!p.every(Number.isFinite))||track.lonlat.some(p=>p.length!==2||!p.every(Number.isFinite)))throw new Error('Invalid source coordinates');
  if(track.node_ids[0]!==track.node_ids.at(-1)||track.heights_m[0]!==track.heights_m.at(-1))throw new Error('Road seam is not closed');
  if(t.grid_heights_m.some(h=>!Number.isFinite(h)||h<200||h>800)||track.heights_m.some(h=>!Number.isFinite(h)||h<200||h>800))throw new Error('Invalid or nodata height');
  const [west,south,east,north]=t.bbox;
@@ -13,6 +14,8 @@ export function validateTerrainResearch(data) {
   const i=row*t.columns+column,p=t.grid_lonlat[i],x=west+(east-west)*column/(t.columns-1),y=north-(north-south)*row/(t.rows-1);
   if(Math.abs(p[0]-x)>1e-7||Math.abs(p[1]-y)>1e-7)throw new Error('Grid coordinate/order mismatch');
  }
+ const origin=track.origin,cos=Math.cos(origin[1]*Math.PI/180);
+ for(let i=0;i<track.points.length;i++){const p=track.lonlat[i],xz=track.points[i];if(Math.abs((p[0]-origin[0])*111320*cos-xz[0])>.002||Math.abs(-(p[1]-origin[1])*111320-xz[1])>.002)throw new Error('Projection units/axis mismatch');}
  const heights=track.heights_m;return {road_points:heights.length,grid_points:t.grid_heights_m.length,road_min_m:Math.min(...heights),road_max_m:Math.max(...heights),road_relief_m:Math.max(...heights)-Math.min(...heights)};
 }
 
@@ -24,4 +27,18 @@ export function sampleResearchGrid(terrain,lon,lat){
  const values=[terrain.grid_heights_m[row*terrain.columns+column],terrain.grid_heights_m[row*terrain.columns+column+1],terrain.grid_heights_m[(row+1)*terrain.columns+column],terrain.grid_heights_m[(row+1)*terrain.columns+column+1]];
  if(values.some(h=>!Number.isFinite(h)))return undefined;
  return values[0]*(1-u)*(1-v)+values[1]*u*(1-v)+values[2]*(1-u)*v+values[3]*u*v;
+}
+
+/** Flag terrain/road mismatches for review; never smooth or invent elevations. */
+export function roadProfileReview(track,{gradeThreshold=.35}={}){
+ const issues=[];
+ for(let i=1;i<track.points.length;i++){
+  const a=track.points[i-1],b=track.points[i],h0=track.heights_m[i-1],h1=track.heights_m[i];
+  if(!Number.isFinite(h0)||!Number.isFinite(h1)){issues.push({index:i,reason:'missing height'});continue;}
+  const distance=Math.hypot(b[0]-a[0],b[1]-a[1]),rise=h1-h0;
+  if(distance<.05){if(Math.abs(rise)>.05)issues.push({index:i,reason:'height discontinuity at coincident points',rise_m:rise});continue;}
+  const grade=rise/distance;
+  if(Math.abs(grade)>gradeThreshold)issues.push({index:i,reason:'grade requires source review',distance_m:distance,rise_m:rise,grade});
+ }
+ return issues;
 }

@@ -1,6 +1,6 @@
-## Latest checkpoint: Spa partial terrain input
+## Latest checkpoint: Spa offline terrain input complete
 
-Spa’s public map and licensed GP trace have been compared at broad layout level. The public SPW numeric terrain service supplied a partial road sample before returning 502; one resume also failed, so acquisition stopped. The retained research artifact, resumable collector and interpolation/partial-data tests are in the repository. This is not a published Spa scene. Follow MAPPING-PROGRESS.json for bounded completion and terrain-aware renderer work; retain the Silverstone release while inputs are incomplete.
+The SPW service recovered and all 330 source road-height slots plus the 425-point coarse context grid are now retained in research/spa/terrain-samples.json. Projection, seam, interpolation, source attribution and profile checks pass. The earlier partial artifact is a regression fixture. Next integrate one height-aware geographic renderer and finish current bank associations; do not re-query already collected terrain or present data completion as a finished Spa scene. Existing public scenes remain unchanged.
 
 ## Latest checkpoint: Silverstone 2027 initial study
 

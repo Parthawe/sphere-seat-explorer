@@ -33,6 +33,11 @@ def fetch(url):
  request=urllib.request.Request(url,headers={'User-Agent':USER_AGENT})
  with urllib.request.urlopen(request,timeout=25) as response:return response.read()
 
+def checkpoint_partial(path,trace,cache,reason):
+ heights=[cache.get(','.join(f'{n:.8f}' for n in p)) for p in trace['lonlat']]
+ data={'status':'partial_research_not_connected_to_scene','queried':datetime.datetime.now(datetime.timezone.utc).isoformat(),'stop_reason':str(reason),'terrain':{'licence':'CC-BY-4.0','source':CATALOGUE,'service':SERVICE,'service_layer':'Relief Wallonie - MNT 2021-2022 - 50cm','request_crs':'EPSG:4326','vertical_reference':'EPSG:5710','source_acquisition':'2021-2022','source_updated':'2024-01-23','credit':'Service public de Wallonie (SPW) - Relief de la Wallonie - Modèle Numérique de Terrain (MNT) 2021-2022 (2024-01-23)','modifications':'Sparse identify point sampling with eight-decimal request coordinates; raw returned values retained in meters. Partial road samples only, no full terrain crop or interpolated height field.'},'track':{**trace,'heights_m':heights},'sample_cache':cache}
+ path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(data,ensure_ascii=False)+'\n')
+
 def main():
  parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--input',type=Path,required=True);parser.add_argument('--output',type=Path,default=ROOT/'research/spa/terrain-samples.json');parser.add_argument('--limit',type=int,default=800,help='Maximum new numeric queries; cache makes resumes cheap');parser.add_argument('--delay',type=float,default=.7,help='Seconds to pause after each sequential request');args=parser.parse_args()
  if not .5<=args.delay<=10:parser.error('--delay must be between .5 and 10 seconds')
@@ -62,7 +67,10 @@ def main():
   cache[key]=h;calls+=1;cache_path.parent.mkdir(parents=True,exist_ok=True);cache_path.write_text(json.dumps(cache,sort_keys=True)+'\n');time.sleep(args.delay)
   if calls%50==0:print('cached',len(cache),flush=True)
   return h
- track_heights=[height(p) for p in trace['lonlat']];grid_heights=[height(p) for p in grid]
+ try:
+  track_heights=[height(p) for p in trace['lonlat']];grid_heights=[height(p) for p in grid]
+ except Exception as error:
+  checkpoint_partial(partial_path,trace,cache,error);raise
  data={'status':'research_not_connected_to_scene','queried':datetime.datetime.now(datetime.timezone.utc).isoformat(),'terrain':{'licence':'CC-BY-4.0','source':CATALOGUE,'service':SERVICE,'service_layer':layer['name'],'service_spatial_reference':metadata['spatialReference'],'request_crs':'EPSG:4326','vertical_reference':'EPSG:5710','source_acquisition':'2021-2022','source_updated':'2024-01-23','credit':'Service public de Wallonie (SPW) - Relief de la Wallonie - Modèle Numérique de Terrain (MNT) 2021-2022 (2024-01-23)','modifications':'Sparse identify point sampling, rounded query coordinates and uniform coarse-grid arrangement; not a 0.5m-resolution crop. Raw returned elevation values retained in meters.','bbox':bbox,'columns':cols,'rows':rows,'order':'north to south rows, west to east columns','grid_lonlat':grid,'grid_heights_m':grid_heights},'track':{**trace,'heights_m':track_heights}}
  args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(data,ensure_ascii=False)+'\n');print('complete',len(track_heights),'track points',len(grid_heights),'grid points','new calls',calls,flush=True)
 if __name__=='__main__':main()
