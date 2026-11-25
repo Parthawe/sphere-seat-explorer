@@ -176,6 +176,7 @@ export default function SpectatorReferences({
   area,
   areaName,
   season,
+  officialView,
 }: {
   open: boolean;
   onClose: () => void;
@@ -183,6 +184,7 @@ export default function SpectatorReferences({
   area: string;
   areaName: string;
   season: number;
+  officialView?:{url:string;name:string};
 }) {
   const dialog = useRef<HTMLDialogElement>(null),
     [scope, setScope] = useState<"area" | "venue">("area"),
@@ -233,6 +235,7 @@ export default function SpectatorReferences({
           experiences.
         </p>
       </div>
+      {officialView&&<section className="spectator-official-view" aria-label="Organizer virtual view"><h3>Organizer’s virtual view</h3><p>On the {officialView.name} page, choose “Open the virtual grandstand”. The organizer controls this preview. Capture date and correspondence to your modeled row are unverified.</p><a className="spectator-source-link" href={officialView.url} target="_blank" rel="noreferrer">Open {officialView.name} virtual-view page</a></section>}
       <div className="spectator-filters">
         <label>
           Location

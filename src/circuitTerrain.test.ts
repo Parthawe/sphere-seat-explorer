@@ -8,12 +8,12 @@ test('height fields keep meter axes and reject unknown domains while flat models
  assert.equal(groundHeight(circuitModels.qatar,999999,999999),0);assert.throws(()=>groundHeight(circuitModels.belgium,999999,999999),/Outside sampled/);
 });
 test('Spa keeps full road relief, source heights and level bank/eye offsets',()=>{
- const m=circuitModels.belgium;assert.equal(findCircuitModel(2026,'belgium'),undefined);assert.equal(m.banks.length,3);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),8784);
+ const m=circuitModels.belgium;assert.equal(findCircuitModel(2026,'belgium'),undefined);assert.equal(m.banks.length,7);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),13392);
  assert.ok(Math.max(...m.trackHeights!)-Math.min(...m.trackHeights!)>100);assert.equal(m.terrain?.licence,'CC-BY-4.0');
  m.track.forEach((p,i)=>{const road=roadSample(m,...p as [number,number]);assert.ok(Math.abs(road.height-m.trackHeights![i])<.001);assert.ok(Math.abs(groundHeight(m,...p as [number,number])-road.height)<.001);});
  for(const b of m.banks){const selection={bank:b.id,section:1,row:1,seat:1},p=modelPosition(m,selection),local=localModelPosition(b,selection);assert.ok(Math.abs(p[1]-bankGroundHeight(m,b)-local[1])<1e-9);assert.ok(p[1]>groundHeight(m,p[0],p[2]));}
 });
-test('all initial Spa positions stay clear of the modeled racing surface',()=>{
+test('all supported Spa positions stay clear of the modeled racing surface',()=>{
  const m=circuitModels.belgium;
  for(const b of m.banks)for(let section=1;section<=b.sections;section++)for(let row=1;row<=b.rows;row++)for(let seat=1;seat<=b.seats;seat++){
   const p=modelPosition(m,{bank:b.id,section,row,seat}),t=closestTrack(m,[p[0],p[2]]);assert.ok(Math.hypot(p[0]-t[0],p[2]-t[1])>15);
@@ -26,4 +26,11 @@ test('Spa overview projects real road heights clear of controls on wide and port
   camera.position.set(...view.eye);camera.lookAt(...view.target);camera.setViewOffset(width,height,0,(bottom-top)/2,width,height);camera.updateMatrixWorld();
   for(let i=0;i<m.track.length;i++){const p=m.track[i],q=new T.Vector3(p[0],m.trackHeights![i],p[1]).project(camera),x=(q.x+1)*width/2,y=(1-q.y)*height/2;assert.ok(x>0&&x<width&&y>top&&y<height-bottom);}
  }
+});
+
+test('Combes products remain distinct and cover options never become invented canopy rows',()=>{
+ const m=circuitModels.belgium,combes=m.banks.filter(b=>b.id.startsWith('combes-'));
+ assert.equal(combes.length,4);assert.equal(new Set(combes.map(b=>b.product)).size,4);
+ for(const b of combes){assert.ok(b.confidence.startsWith('Estimated temporary'));assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.equal(b.officialView,true);assert.equal(new URL(b.source).pathname,'/en/combes-grandstands-'+b.id.at(-1));}
+ assert.match(combes.find(b=>b.id==='combes-2')!.admissionNote!,/covered and uncovered/);assert.match(combes.find(b=>b.id==='combes-3')!.admissionNote!,/unverified/);
 });

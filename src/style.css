@@ -5891,3 +5891,8 @@ dialog::backdrop {
 
 .circuit-model-stage.day-scene .circuit-model-heading { color:#17212b; text-shadow:0 1px 8px #ffffff80; }
 .circuit-model-stage.day-scene .circuit-model-heading>span { color:#344653; }
+
+.spectator-official-view { padding:20px 0; border-bottom:1px solid #c6ccd6; }
+.spectator-official-view h3 { font:600 26px 'Barlow Condensed',sans-serif; margin:0 0 8px; }
+.spectator-official-view p { color:#58657b; font-size:14px; line-height:1.65; margin:0 0 14px; }
+.spectator-official-view .spectator-source-link { display:inline-block; }

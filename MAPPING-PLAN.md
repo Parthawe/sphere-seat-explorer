@@ -1,6 +1,6 @@
-## Latest checkpoint: Spa initial three-bank terrain study
+## Latest checkpoint: Spa Combes 1–4 expansion
 
-Spa 2027 now supports Gold 1, Moët & Chandon/ex Gold 3 and Silver 1 with 8,784 illustrative positions. Road, passing cars, fences, bank foundations and cameras share height-aware rendering; coarse terrain and authored forest context preserve source/accuracy notes. This is initial bank coverage, not all Spa options or a verified ticket layout. Next check and add the remaining current organizer bank regions without repeating terrain collection. Preserve all existing scenes and the explicit exact-seat boundary.
+Spa 2027 now has seven representative banks and 13,392 illustrative positions. Combes 1–4 remain distinct products, with estimated regions, cover caveats and matching official virtual-view page handoffs. Existing source terrain and three initial banks are preserved. Next verify the remaining current Spa Gold/Silver/special-area associations, starting with the La Source/Gold 7 family. Do not assign the OSM Endurance footprint from its name alone. Exact ticket seats and dated attendee photos remain unavailable.
 
 ## Latest checkpoint: Silverstone 2027 initial study
 
