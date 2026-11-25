@@ -124,3 +124,10 @@ test('Monza GF stays unnumbered and unsupported start/finish products have no bo
  for(const id of ['2','3','27','28','29','30','32']){assert.equal(m.banks.some(b=>b.id===id),false);const source=m.unmappedProducts!.find(p=>p.id===id)!;assert.ok(source);assert.equal(source.group,'Start/finish product boundaries');assert.equal(source.source,gf.source);}
  assert.match(m.unmappedProducts!.find(p=>p.id==='32')!.note,/pit buildings/);
 });
+
+
+test('Monza Ascari samples retain distinct identities and leave unsupported Ascari 4 unmapped',()=>{
+ const m=circuitModels.italy;
+ for(const id of ['12','14','16','18']){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.match(b.confidence,/Estimated product region/);assert.match(b.admissionNote!,/named licensed envelope/);for(const other of m.banks.filter(o=>o.id!==id))assert.ok(bankEnvelopesSeparated(m,b,other),id+' overlaps '+other.id);}
+ assert.equal(m.banks.some(b=>b.id==='13'),false);assert.match(m.unmappedProducts!.find(p=>p.id==='13')!.note,/does not borrow 12/);
+});

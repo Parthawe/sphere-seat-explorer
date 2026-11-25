@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "monza-remaining-ascari-products",
+  "phase": "japan-initial-source-audit",
   "active_run": null,
-  "next_action": "Audit remaining Monza Ascari 12/13/14/16/18 against retained licensed geography and the current 2027 organizer map. Keep historic bridge/Serraglio 11 and distinct 35A/B/C unresolved; bridge-context.json already identifies the horizontal crossing but not vertical structure. Start/finish GT 2/3/27\u201330 and Junior Interna 32 are now separate source-only options because their event envelopes and pit context are unsupported; do not invent or borrow neighboring seats. GF now has a compact unnumbered representative sample, not the whole area or actual chairs. Monza currently has 26 banks/27,640 illustrative positions and 13 source-only options. Seek checked attributable dated Monza spectator references when evidence supports location/capture year; do not substitute another circuit or imply exact seat calibration. Preserve scene, replay, photo, privacy and season behavior. After the remaining public-product audit, advance the verified venue queue instead of repeating completed GP/woodland or bridge acquisition.",
+  "next_action": "Begin Japan: verify the current 2027 event date/physical Suzuka venue and organizer public viewing products; obtain bounded licensed circuit/stand geometry and build an independent representative study where evidence supports it. Monza initial 2027 public-diagram audit is complete at 30 model banks/30,232 illustrative positions, thirteen explicitly named source-only products plus one general hospitality/access handoff. Do not repeat completed Monza GP/forest, start/finish, GF, Parabolica or Ascari assessment. Ascari 13, Serraglio 11, GT 2/3/27\u201330, Junior Interna 32 and 35A/B/C remain source-only pending better event/structural evidence; no borrowed seats. Monza Ascari 3 has two attributable 2025 references from the same attendee/publisher, published in April 2026, not two independent reviewers or exact-row calibration. Return to precision/media gaps only with new evidence. Preserve all existing venue, photo, replay, privacy and season behavior.",
   "venues": [
     {
       "id": "las-vegas",
@@ -177,7 +177,7 @@
       "id": "italy",
       "event": "Italy",
       "venue": "Monza",
-      "status": "representative_3d_twenty_six_banks_2027",
+      "status": "representative_3d_and_source_options_2027_initial_audit",
       "sources": [
         "https://www.formula1.com/en/racing/2027/italy",
         "https://www.monzanet.it/en/f1-grand-prix/",
@@ -185,22 +185,24 @@
         "https://www.monzanet.it/wp-content/uploads/2026/08/GP_F1_2027_LISTINO_PREZZI-1.pdf",
         "https://www.openstreetmap.org/relation/284565"
       ],
-      "next_action": "Audit remaining Monza Ascari 12/13/14/16/18 against retained licensed geography and the current 2027 organizer map. Keep historic bridge/Serraglio 11 and distinct 35A/B/C unresolved; bridge-context.json already identifies the horizontal crossing but not vertical structure. Start/finish GT 2/3/27\u201330 and Junior Interna 32 are now separate source-only options because their event envelopes and pit context are unsupported; do not invent or borrow neighboring seats. GF now has a compact unnumbered representative sample, not the whole area or actual chairs. Monza currently has 26 banks/27,640 illustrative positions and 13 source-only options. Seek checked attributable dated Monza spectator references when evidence supports location/capture year; do not substitute another circuit or imply exact seat calibration. Preserve scene, replay, photo, privacy and season behavior. After the remaining public-product audit, advance the verified venue queue instead of repeating completed GP/woodland or bridge acquisition.",
-      "modeled_banks": 26,
-      "modeled_positions": 27640,
+      "next_action": "Begin Japan: verify the current 2027 event date/physical Suzuka venue and organizer public viewing products; obtain bounded licensed circuit/stand geometry and build an independent representative study where evidence supports it. Monza initial 2027 public-diagram audit is complete at 30 model banks/30,232 illustrative positions, thirteen explicitly named source-only products plus one general hospitality/access handoff. Do not repeat completed Monza GP/forest, start/finish, GF, Parabolica or Ascari assessment. Ascari 13, Serraglio 11, GT 2/3/27\u201330, Junior Interna 32 and 35A/B/C remain source-only pending better event/structural evidence; no borrowed seats. Monza Ascari 3 has two attributable 2025 references from the same attendee/publisher, published in April 2026, not two independent reviewers or exact-row calibration. Return to precision/media gaps only with new evidence. Preserve all existing venue, photo, replay, privacy and season behavior.",
+      "modeled_banks": 30,
+      "modeled_positions": 30232,
       "seasons_with_3d_coverage": [
         2027
       ],
       "exact_seats_verified": false,
       "remaining_gaps": [
-        "Ascari 12/13/14/16/18 public-product audit; exact GF extent and unsupported start/finish/35 boundaries",
-        "Flat ground: historic banking/flyover and structure elevations missing",
-        "Actual chair/row IDs, canopies, obstructions and accessible routes",
-        "No checked dated attendee photos or historical Monza telemetry"
+        "Distinct Ascari 13, GT 2/3/27\u201330, Junior Interna 32 and 35A/B/C event boundaries; full GF extent",
+        "Flat ground: historic banking/flyover and structure elevations missing; Serraglio 11 has no seat camera",
+        "Actual chair/row IDs, canopies, obstructions, hospitality and accessible routes",
+        "Dated attendee references for other banks; no historical Monza telemetry"
       ],
-      "source_only_options": 13,
+      "source_only_options": 14,
       "bridge_research_artifact": "research/monza/bridge-context.json",
-      "bridge_status": "Horizontal crossing and vertical order identified; deck clearance, supports and banking profile unverified; no runtime structure"
+      "bridge_status": "Horizontal crossing and vertical order identified; deck clearance, supports and banking profile unverified; no runtime structure",
+      "initial_public_product_audit": "All 43 named products on the current 2027 public diagram retained: 30 modeled and 13 source-only, plus one general hospitality/access handoff; no live or exhaustive ticket inventory",
+      "checked_media_references": 2
     },
     {
       "id": "japan",
@@ -881,6 +883,24 @@
         "No new dated attendee photo or historical Monza telemetry"
       ],
       "next": "Audit remaining Monza Ascari 12/13/14/16/18 against retained licensed geography and the current 2027 organizer map. Keep historic bridge/Serraglio 11 and distinct 35A/B/C unresolved; bridge-context.json already identifies the horizontal crossing but not vertical structure. Start/finish GT 2/3/27\u201330 and Junior Interna 32 are now separate source-only options because their event envelopes and pit context are unsupported; do not invent or borrow neighboring seats. GF now has a compact unnumbered representative sample, not the whole area or actual chairs. Monza currently has 26 banks/27,640 illustrative positions and 13 source-only options. Seek checked attributable dated Monza spectator references when evidence supports location/capture year; do not substitute another circuit or imply exact seat calibration. Preserve scene, replay, photo, privacy and season behavior. After the remaining public-product audit, advance the verified venue queue instead of repeating completed GP/woodland or bridge acquisition."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Monza Ascari expansion, public-product audit and attributed 2025 references",
+      "result": "Added four compact estimated Ascari regions (12/14/16/18) with 2,592 positions. Total 30 banks/30,232 illustrative positions. Ascari 13 remains a distinct source-only product; all 43 public-diagram product identities now appear once across modeled and named source-only entries. Added a qualifying video and attendee report for Ascari 3, both from Adam Rosales/GPDestinations, captured/reported as 2025 and published 19 April 2026.",
+      "evidence": [
+        "Current 2027 organizer PDF checked visually and by product list against retained ODbL named source envelopes",
+        "90 tests pass: distinct source/model product audit, no borrowed Ascari 13 model, all-position road clearance, nonoverlap, finite/unique coordinates, camera framing and reference year/location isolation",
+        "Chrome 1440\u00d71000, 390\u00d7844 and 320\u00d7740: four bank switches, full 12 stand, seated 16, last 18 position through grid, complete map, source-only 13 and photo dialog inspected; no page errors/overflow",
+        "Video absent before consent; opt-in creates youtube-nocookie iframe with matching ID; unload removes it. No video playback or exact camera position certification",
+        "Final TypeScript/production build runs in packaging"
+      ],
+      "limitations": [
+        "Compact bank samples are not surveyed event boundaries, official rows/chairs or calibrated physical views",
+        "Ascari 13 boundary and historic/pit/35 context gaps remain explicit",
+        "Two references describe one attendee/source family, not independent aggregated reviews; no 2026 capture claimed"
+      ],
+      "next": "Begin Japan: verify the current 2027 event date/physical Suzuka venue and organizer public viewing products; obtain bounded licensed circuit/stand geometry and build an independent representative study where evidence supports it. Monza initial 2027 public-diagram audit is complete at 30 model banks/30,232 illustrative positions, thirteen explicitly named source-only products plus one general hospitality/access handoff. Do not repeat completed Monza GP/forest, start/finish, GF, Parabolica or Ascari assessment. Ascari 13, Serraglio 11, GT 2/3/27\u201330, Junior Interna 32 and 35A/B/C remain source-only pending better event/structural evidence; no borrowed seats. Monza Ascari 3 has two attributable 2025 references from the same attendee/publisher, published in April 2026, not two independent reviewers or exact-row calibration. Return to precision/media gaps only with new evidence. Preserve all existing venue, photo, replay, privacy and season behavior."
     }
   ],
   "blockers": [

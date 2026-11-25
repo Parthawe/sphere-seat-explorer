@@ -135,7 +135,7 @@ test('every Silverstone model position stays outside its modeled racing surface'
 
 
 test('Monza 2027 keeps its GP loop and five source envelopes as estimated coverage expands',()=>{
- const m=circuitModels.italy;assert.equal(findCircuitModel(2027,'italy'),m);assert.equal(findCircuitModel(2026,'italy'),undefined);assert.equal(m.banks.length,26);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),27640);
+ const m=circuitModels.italy;assert.equal(findCircuitModel(2027,'italy'),m);assert.equal(findCircuitModel(2026,'italy'),undefined);assert.equal(m.banks.length,30);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),30232);
  assert.equal(monza.licence,'ODbL-1.0');assert.equal(monza.source,'https://www.openstreetmap.org/relation/284565');assert.ok(monza.length_m>5750&&monza.length_m<5850);assert.equal(monza.points.length,294);assert.equal(new Set(monza.ways).size,20);for(const excluded of ['38168747','38168756','34404709','19982933','19983025'])assert.ok(!monza.ways.includes(excluded));
  assert.deepEqual(m.banks.slice(0,5).map(b=>b.footprint),['193647796','193647795','231257063','179794158','231026020']);assert.ok(m.banks.every(b=>b.source.endsWith('GP_F1_2027_LISTINO_PREZZI-1.pdf')&&!b.roof));
  assert.equal(m.terrain,undefined);assert.match(m.evidence,/flyover bridges/);const gf=m.banks.find(b=>b.id==='gf')!;assert.equal(gf.source,m.banks[0].source);assert.equal(gf.kind,'free');assert.match(gf.admissionNote!,/not numbered/);assert.equal(m.unmappedProducts!.some(p=>p.id==='gf'),false);assert.ok(monza.vegetation.length>1000);assert.equal(monza.forest_sources.length,41);
@@ -153,4 +153,10 @@ test('stand cameras keep complete bank envelopes clear of controls on phones and
   const top=Math.min(height*.5,width<760?250:220),fraction=Math.max(.2,1-(top+110)/height)*.95,view=bankOverviewCamera(m,b,width/height,fraction),camera=new T.PerspectiveCamera(45,width/height,.5,6500);camera.position.set(...view.eye);camera.lookAt(...view.target);camera.setViewOffset(width,height,0,(110-top)/2,width,height);camera.updateMatrixWorld();const {yaw}=bankFrame(m,b),c=Math.cos(yaw),s=Math.sin(yaw),ground=bankGroundHeight(m,b);
   for(const x of [-b.width/2,b.width/2])for(const z of [-b.rows*.44,b.rows*.44])for(const y of [0,b.rows*.43+5]){const p=new T.Vector3(b.center[0]+x*c+z*s,ground+y,b.center[1]-x*s+z*c).project(camera),px=(p.x+1)*width/2,py=(1-p.y)*height/2;assert.ok(px>0&&px<width&&py>top&&py<height-110,m.id+'/'+b.id+' clips stand');}
  }
+});
+
+
+test('Monza current diagram audit retains every named public product once across models and source-only entries',()=>{
+ const m=circuitModels.italy,expected=['1','2','3','4','5','6b','6c','7','8a','8b','9','10','10-bis','11','12','13','14','16','18','21a','21b','21c','21d','21e','22','24','25','26a','26b','26c','27','28','29','30','32','33a','33b','34','35a','35b','35c','gf','prato'];
+ const actual=[...m.banks.map(b=>b.id),...m.unmappedProducts!.filter(p=>p.id!=='other-monza-products').map(p=>p.id)];assert.equal(actual.length,43);assert.deepEqual(actual.sort(),expected.sort());assert.equal(new Set(actual).size,actual.length);
 });

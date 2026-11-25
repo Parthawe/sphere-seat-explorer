@@ -89,3 +89,9 @@ Monza’s eight added product regions retain the honest empty attendee-reference
 Monza 9/10/33A/33B/34/10 BIS retain the empty dated-attendee collection, with official PDF information links only. Serraglio 11’s source-only link does not imply a photographed view or certified panorama. No source image, capture year, review or exact-row match was inferred from the added regions.
 
 Monza 21A–E/25 have official 2027 PDF handoffs, with no new dated attendee reference or panoramic view claim. Venue historic documents inform structure research only; no brochure imagery is rehosted or matched to a model chair. Serraglio and Vedano 35A/B/C remain source-only.
+
+## Monza Ascari 3 references · checked 25 November 2026
+
+[Adam Rosales’s travel report](https://gpdestinations.com/adams-travel-report-2025-italian-grand-prix-at-monza/) identifies Saturday in Ascari 3 (12) at the 2025 Italian GP. [GPDestinations’ qualifying video](https://youtu.be/EmtmrRn-Ns0) credits his footage and identifies the same year/grandstand. Both were published on 19 April 2026; neither becomes a 2026 capture. The written account and footage are two reference entries from one attendee/source family, not independent aggregated reviews. Only bank 12 is associated; no exact row/chair, calibrated view or future layout is verified. Other banks retain empty selected-area results.
+
+The written report opens on the publisher’s site; photographs are not downloaded or rehosted. The supported video iframe uses youtube-nocookie only after Load source video and is removed by Unload video. Source attribution, capture evidence and caveats remain beside it. Optional-embed construction/unload was checked; playback availability and image copyright licensing for redistribution are not certified.
