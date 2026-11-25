@@ -41,3 +41,12 @@ export const suzukaOtherOptions=[
  ['zero','16–23 ZERO pass','zero.html','A separate age-limited Thursday/Friday programme. Check eligibility, registration and access conditions with the organizer; it does not assign a race-day seat.'],
 ].map(([id,name,path,note])=>({id,name,source:source(path),note}));
 export const suzukaGeography=geography;
+
+export const suzukaSeatGuides:Partial<Record<string,{diagram:string;note:string}>>={
+ v1:{diagram:source('images/seat/pdf/f1_v1.pdf'),note:'V1-1 and V1-2, including restricted-view variants, share this lower-grandstand family. Match your block, row and seat on the original chart; the area marker does not identify an outlet position.'},
+ v2:{diagram:source('images/seat/pdf/f1_v2.pdf'),note:'Use the original chart to check V2-1 through V2-9 and the outlet category, then match the block printed on your ticket.'},
+ a1:{diagram:source('images/seat/pdf/f1_a1.pdf'),note:'Use the original A1 block, row and seat chart. Its drawn spacing does not establish physical distances, seat height or a calibrated view.'},
+ a2:{diagram:source('images/seat/pdf/f1_a2.pdf'),note:'A2 remains a broad first-corner region here. The original chart can help check your seating labels; it does not calibrate our map marker to an actual chair.'},
+ b1:{diagram:source('images/seat/pdf/f1_b1.pdf'),note:'The organizer’s front-row examples show fences, signs and structures affecting some views. Restrictions differ by block and viewing direction; the B1 area marker does not identify those chairs.'},
+ b2:{diagram:source('images/seat/pdf/f1_b2.pdf'),note:'B2 has its own seating diagram, separate from B1. Check the exact block and any restricted-view variant with the organizer; the broad area map cannot resolve them.'},
+};

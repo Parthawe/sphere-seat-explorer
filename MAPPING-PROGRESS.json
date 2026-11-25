@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "suzuka-start-finish-3d-evidence-audit",
+  "phase": "monaco-initial-source-audit",
   "active_run": null,
-  "next_action": "Continue Suzuka 2027 from the retained suzuka-track.json: nineteen mapped grandstand families and eleven distinct source-only special/admission/hospitality options are implemented. Current event is 9\u201311 April 2027, confirmed by organizer and F1. Japanese catalogue is current; some English ticket pages remain 2026 and must not supply new season claims. Audit named retained start/finish envelopes and organizer seating PDFs (V1/V2, A1/A2, B1/B2) for the next supported representative 3D chunk. The GP loop is already acquired: relation 284570, 40 connected ways, 269 vertices, ~5,813m; no need to repeat the bbox acquisition. Source bridge 175231434 is above covered GP 183391655, but clearance, supports, terrain and tier heights are not measured. Do not render a false flat figure-eight or invent surveyed bridge dimensions. Seek additional licensed elevation/structural evidence; if essential 3D context remains unavailable, retain the area map and explicit gap, then advance to Monaco instead of repeating blocked geometry research. Retain Q1 seat-type differences, S/S-BOX family limits, G/D shared regions, source-only west/accessible/hospitality/limited-day options, comparison/share privacy and all existing venue/photo/replay behavior. Current map handoffs are organizer imagery references with unverified capture date/row match, not dated attendee references.",
+  "next_action": "Begin Monaco 2027: verify event dates and the physical street circuit from current organizer/F1 sources, identify current public viewing products and listed sales channels, then obtain bounded licensed route/stand geography for its own map and supported representative model. Suzuka\u2019s start/finish evidence audit is checkpointed in research/suzuka/start-finish-envelope-audit.json and elevation-diagnostic.json. Six current organizer-linked V1/V2/A1/A2/B1/B2 schematic seating PDFs now have direct UI handoffs. They describe labels/variants but no metric tier/bridge geometry. Three GSI API samples identify available 5m-laser DEM context, not a terrain field or both road decks; no diagnostic value is used as a bridge, tier or eye height. Do not repeat the same three elevation queries, completed GP bbox acquisition or six-PDF audit. Keep Suzuka area-only with its explicit 3D vertical-context gap; revisit only with new licensed structure/elevation assets. Preserve nineteen families, eleven source-only options, distinct V1/V2/Q1/S/G/D limits, outlet visibility guidance, 2027-only routing, comparison/share privacy and all existing scene/photo/replay behavior.",
   "venues": [
     {
       "id": "las-vegas",
@@ -208,7 +208,7 @@
       "id": "japan",
       "event": "Japan",
       "venue": "Suzuka",
-      "status": "area_map_19_families_2027_3d_pending",
+      "status": "area_map_19_families_2027_3d_needs_assets",
       "sources": [
         "https://www.formula1.com/en/racing/2027/japan",
         "https://www.suzukacircuit.jp/eng/f1/index.html?direct=true",
@@ -216,7 +216,7 @@
         "https://www.suzukacircuit.jp/f1/ticket/pdf/grandstand_f1.pdf",
         "https://www.openstreetmap.org/relation/284570"
       ],
-      "next_action": "Continue Suzuka 2027 from the retained suzuka-track.json: nineteen mapped grandstand families and eleven distinct source-only special/admission/hospitality options are implemented. Current event is 9\u201311 April 2027, confirmed by organizer and F1. Japanese catalogue is current; some English ticket pages remain 2026 and must not supply new season claims. Audit named retained start/finish envelopes and organizer seating PDFs (V1/V2, A1/A2, B1/B2) for the next supported representative 3D chunk. The GP loop is already acquired: relation 284570, 40 connected ways, 269 vertices, ~5,813m; no need to repeat the bbox acquisition. Source bridge 175231434 is above covered GP 183391655, but clearance, supports, terrain and tier heights are not measured. Do not render a false flat figure-eight or invent surveyed bridge dimensions. Seek additional licensed elevation/structural evidence; if essential 3D context remains unavailable, retain the area map and explicit gap, then advance to Monaco instead of repeating blocked geometry research. Retain Q1 seat-type differences, S/S-BOX family limits, G/D shared regions, source-only west/accessible/hospitality/limited-day options, comparison/share privacy and all existing venue/photo/replay behavior. Current map handoffs are organizer imagery references with unverified capture date/row match, not dated attendee references.",
+      "next_action": "Begin Monaco 2027: verify event dates and the physical street circuit from current organizer/F1 sources, identify current public viewing products and listed sales channels, then obtain bounded licensed route/stand geography for its own map and supported representative model. Suzuka\u2019s start/finish evidence audit is checkpointed in research/suzuka/start-finish-envelope-audit.json and elevation-diagnostic.json. Six current organizer-linked V1/V2/A1/A2/B1/B2 schematic seating PDFs now have direct UI handoffs. They describe labels/variants but no metric tier/bridge geometry. Three GSI API samples identify available 5m-laser DEM context, not a terrain field or both road decks; no diagnostic value is used as a bridge, tier or eye height. Do not repeat the same three elevation queries, completed GP bbox acquisition or six-PDF audit. Keep Suzuka area-only with its explicit 3D vertical-context gap; revisit only with new licensed structure/elevation assets. Preserve nineteen families, eleven source-only options, distinct V1/V2/Q1/S/G/D limits, outlet visibility guidance, 2027-only routing, comparison/share privacy and all existing scene/photo/replay behavior.",
       "mapped_products": 19,
       "source_only_options": 11,
       "seasons_with_area_coverage": [
@@ -224,9 +224,14 @@
       ],
       "exact_seats_verified": false,
       "remaining_gaps": [
-        "Representative 3D, terrain, measured crossing structure and stand tier heights",
+        "Representative 3D: ground field, road-deck separation, structure/supports and tier heights are unmeasured; three ground DEM samples and schematic charts do not resolve this",
         "Official chair IDs, calibrated photos, temporary boundaries, accessible routes and hospitality room/table views",
         "Dated attendee references and historical Suzuka telemetry"
+      ],
+      "direct_seating_diagram_handoffs": 6,
+      "research_artifacts": [
+        "research/suzuka/start-finish-envelope-audit.json",
+        "research/suzuka/elevation-diagnostic.json"
       ]
     },
     {
@@ -937,6 +942,24 @@
         "Original organizer photos/360/video links have no verified capture year or exact row; no imagery redistributed"
       ],
       "next": "Continue Suzuka 2027 from the retained suzuka-track.json: nineteen mapped grandstand families and eleven distinct source-only special/admission/hospitality options are implemented. Current event is 9\u201311 April 2027, confirmed by organizer and F1. Japanese catalogue is current; some English ticket pages remain 2026 and must not supply new season claims. Audit named retained start/finish envelopes and organizer seating PDFs (V1/V2, A1/A2, B1/B2) for the next supported representative 3D chunk. The GP loop is already acquired: relation 284570, 40 connected ways, 269 vertices, ~5,813m; no need to repeat the bbox acquisition. Source bridge 175231434 is above covered GP 183391655, but clearance, supports, terrain and tier heights are not measured. Do not render a false flat figure-eight or invent surveyed bridge dimensions. Seek additional licensed elevation/structural evidence; if essential 3D context remains unavailable, retain the area map and explicit gap, then advance to Monaco instead of repeating blocked geometry research. Retain Q1 seat-type differences, S/S-BOX family limits, G/D shared regions, source-only west/accessible/hospitality/limited-day options, comparison/share privacy and all existing venue/photo/replay behavior. Current map handoffs are organizer imagery references with unverified capture date/row match, not dated attendee references."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Suzuka start/finish seating references and vertical-context checkpoint",
+      "result": "Added direct original seating-diagram handoffs for V1/V2/A1/A2/B1/B2 with relevant variant/obstruction notes. Preserved nineteen area families and eleven source-only options. Checkpointed licensed horizontal fits and three-point DEM diagnostics; no unsupported 3D scene or new attendee-photo claim. Advanced independent venue queue to Monaco.",
+      "evidence": [
+        "Six PDFs followed from current 2027 Japanese product pages; all label themselves schematic. V1 page1 inspected visually; published block/row/number labels are not treated as metric geometry",
+        "Primary V1/V2 pages distinguish tiers/categories/outlet variants. B1 organizer examples identify direction-dependent front-row obstructions",
+        "Five named OSM envelope fits retained in research artifact; A2 still has no named envelope association",
+        "Exactly three GSI documented API requests return 5m-laser DEM sources; values are diagnostic only and excluded from app runtime",
+        "93 tests pass; desktop six-link switching and unsupported H fallback, 320px V2 panel with ~50px PDF link, no overflow/page errors checked; final production build runs in packaging"
+      ],
+      "limitations": [
+        "Schematic block/row information does not calibrate a physical camera or support a uniform official chair grid",
+        "No road-deck clearance, support profile, tier height or continuous terrain field was established",
+        "No source PDF/photograph redistributed; original handoffs only"
+      ],
+      "next": "Begin Monaco 2027: verify event dates and the physical street circuit from current organizer/F1 sources, identify current public viewing products and listed sales channels, then obtain bounded licensed route/stand geography for its own map and supported representative model. Suzuka\u2019s start/finish evidence audit is checkpointed in research/suzuka/start-finish-envelope-audit.json and elevation-diagnostic.json. Six current organizer-linked V1/V2/A1/A2/B1/B2 schematic seating PDFs now have direct UI handoffs. They describe labels/variants but no metric tier/bridge geometry. Three GSI API samples identify available 5m-laser DEM context, not a terrain field or both road decks; no diagnostic value is used as a bridge, tier or eye height. Do not repeat the same three elevation queries, completed GP bbox acquisition or six-PDF audit. Keep Suzuka area-only with its explicit 3D vertical-context gap; revisit only with new licensed structure/elevation assets. Preserve nineteen families, eleven source-only options, distinct V1/V2/Q1/S/G/D limits, outlet visibility guidance, 2027-only routing, comparison/share privacy and all existing scene/photo/replay behavior."
     }
   ],
   "blockers": [
@@ -951,6 +974,12 @@
       "status": "needs_assets",
       "scope": "Official row/chair matching and measured views only; representative 3D is implemented",
       "reason": "No venue-certified row/seat geometry, calibrated identified-seat photographs or final temporary stand surveys supplied. Generated model labels are not actual ticket IDs."
+    },
+    {
+      "id": "suzuka-3d-vertical-context",
+      "status": "needs_assets",
+      "scope": "Representative 3D and calibrated views only; area map and other venues remain available",
+      "reason": "Named horizontal envelopes and schematic seating charts do not establish tier/structure heights. Three GSI ground DEM queries cannot recover both crossing decks or measured clearance. No unsupported flat figure-eight is rendered; continue Monaco."
     }
   ]
 }

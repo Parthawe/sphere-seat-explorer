@@ -3,11 +3,11 @@ import CircuitAreaMap from './CircuitAreaMap';
 import AreaComparison from './AreaComparison';
 import {requireVenue,venueAreaUrl} from './venueRegistry';
 import {useAreaComparison} from './useAreaComparison';
-import {SUZUKA_TICKETS,suzukaOtherOptions} from './suzuka';
+import {SUZUKA_TICKETS,suzukaOtherOptions,suzukaSeatGuides} from './suzuka';
 const venue=requireVenue('japan',2027);
 export default function SuzukaDesk(){
  const [area,setArea]=useState(()=>venue.areas.find(a=>a.id===new URLSearchParams(location.search).get('area'))?.id??'v1');
- const [feedback,setFeedback]=useState('');const chosen=venue.areas.find(a=>a.id===area)!,comparison=useAreaComparison(venue);
+ const [feedback,setFeedback]=useState('');const chosen=venue.areas.find(a=>a.id===area)!,comparison=useAreaComparison(venue),guide=suzukaSeatGuides[area];
  function choose(id:string){setArea(id);setFeedback('');}
  async function share(){const url=venueAreaUrl(location.href,venue,area);try{await navigator.clipboard.writeText(url);setFeedback('Area link copied. No ticket or personal information included.');}catch{setFeedback('Copy area link: '+url);}}
  return <section className="ticket-desk suzuka-ticket-desk" aria-label="Suzuka 2027 viewing areas">
@@ -17,7 +17,8 @@ export default function SuzukaDesk(){
    <CircuitAreaMap venue={venue} selected={area} onSelect={choose}/>
    <div className="ticket-panel">
     <div className="area-introduction"><span className="eyebrow">YOUR GRANDSTAND / 2027</span><h3>Start with the stand code.</h3><p>A section, row or seat number alone cannot locate a chair. Choose the product name first; outlet and special-access variants need the organizer’s own checks.</p><label htmlFor="suzuka-viewing-area">Grandstand family</label><select id="suzuka-viewing-area" value={area} onChange={e=>choose(e.target.value)}>{venue.areas.map(a=><option key={a.id} value={a.id}>{a.name}</option>)}</select></div>
-    <div className="selected-area-details" aria-live="polite"><h3>{chosen.name}</h3><p>{chosen.position}</p><dl className="suzuka-facts"><div><dt>Published seating type</dt><dd>{chosen.kind}</dd></div><div><dt>Location evidence</dt><dd>{chosen.confidence}</dd></div></dl><p>{chosen.description}</p></div>
+    <div className="selected-area-details" aria-live="polite"><h3>{chosen.name}</h3><p>{chosen.position}</p><dl className="suzuka-facts"><div><dt>Published seating type</dt><dd>{chosen.kind}</dd></div><div><dt>Location evidence</dt><dd>{chosen.confidence}</dd></div></dl>{!guide&&<p>{chosen.description}</p>}</div>
+    {guide&&<section className="suzuka-seat-reference" aria-label="Official seating diagram"><h4>Check your block, row & seat.</h4><p>{guide.note}</p><a href={guide.diagram} target="_blank" rel="noreferrer">Open official seating diagram (PDF)</a><small>The organizer labels these charts as schematic. They do not supply measured tier heights or a view from your exact seat. Opens the original source.</small></section>}
     <a className="abu-provider-primary" href={chosen.source} target="_blank" rel="noreferrer">Organizer’s product & viewing references</a>
     <p className="reference-note">The Japanese-language product pages include seating diagrams and, where supplied, original 360° or video links. Their capture year and exact ticket match are unverified. Photographs stay with the organizer; these are separate from our map.</p>
     <div className="area-actions"><button onClick={()=>setFeedback(comparison.toggle(area)?'Three areas saved. Remove one before adding another.':'')}>{comparison.saved.includes(area)?'Remove from comparison':comparison.saved.length===3?'Comparison full · 3/3':'Compare this area'}</button><button onClick={share}>Share area</button></div><p className="desk-feedback" role="status">{feedback}</p>

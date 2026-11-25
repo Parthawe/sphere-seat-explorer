@@ -1,0 +1,90 @@
+{
+  "checked": "2026-11-25",
+  "source": "https://www.openstreetmap.org/relation/284570",
+  "licence": "ODbL-1.0",
+  "projection": "Same local meter coordinates as retained world_points; origin from source adaptation",
+  "fits": [
+    {
+      "id": "183394522",
+      "name": "V2",
+      "fit": {
+        "center": [
+          247.99173211617145,
+          45.83708729242771
+        ],
+        "width": 187.79466648235655,
+        "axis": [
+          -0.6385959543566843,
+          -0.7695422061714846
+        ]
+      }
+    },
+    {
+      "id": "184107052",
+      "name": "V1",
+      "fit": {
+        "center": [
+          267.3713380254184,
+          97.41176496773164
+        ],
+        "width": 296.402182430175,
+        "axis": [
+          -0.6402402263857766,
+          -0.768174753892296
+        ]
+      }
+    },
+    {
+      "id": "184120096",
+      "name": "A1",
+      "fit": {
+        "center": [
+          443.41805209508505,
+          313.8745714341812
+        ],
+        "width": 117.77942463319533,
+        "axis": [
+          0.6315271629080255,
+          0.7753537531406812
+        ]
+      }
+    },
+    {
+      "id": "184143131",
+      "name": "B1",
+      "fit": {
+        "center": [
+          559.7130809248556,
+          718.2794739884396
+        ],
+        "width": 109.86607708650973,
+        "axis": [
+          -0.9015745850832868,
+          0.43262370199967026
+        ]
+      }
+    },
+    {
+      "id": "184143132",
+      "name": "B2",
+      "fit": {
+        "center": [
+          582.3749916383459,
+          706.3694394006819
+        ],
+        "width": 159.857390101083,
+        "axis": [
+          0.7407774828176534,
+          -0.671750490100559
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Minimum-area horizontal envelope fits only, not measured seat heights, tier profile or event allocation",
+    "V1/V2 and curved B1/B2 envelopes cannot become uniform calibrated chair grids",
+    "A2 has no retained named envelope; keep its area anchor estimated",
+    "Current organizer charts supply schematic blocks/rows/number ranges, not georeferenced metric geometry",
+    "GSI diagnostic has three ground DEM values, not a terrain field or paired bridge decks"
+  ]
+}

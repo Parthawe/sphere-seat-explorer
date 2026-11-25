@@ -1,0 +1,42 @@
+{
+  "checked": "2026-11-25",
+  "purpose": "Three-point diagnostic only; no terrain field or road/bridge height reconstruction",
+  "source": "https://maps.gsi.go.jp/development/elevation_s.html",
+  "terms": "https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html",
+  "interpretation": "GSI DEM samples identify available ground-elevation context. One x/y has one DEM value: it cannot recover both crossing road decks or measured clearance. No result is used as a bridge, tier or eye height.",
+  "samples": [
+    {
+      "label": "crossover-plan-center",
+      "source_way": "175231434",
+      "lon": 136.53062215,
+      "lat": 34.84397035,
+      "url": "https://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php?lon=136.5306221&lat=34.8439703&outtype=JSON",
+      "response": {
+        "elevation": 43.4,
+        "hsrc": "5m（レーザ）"
+      }
+    },
+    {
+      "label": "V1-source-envelope",
+      "source_way": "184107052",
+      "lon": 136.54027396315792,
+      "lat": 34.843780763157895,
+      "url": "https://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php?lon=136.540274&lat=34.8437808&outtype=JSON",
+      "response": {
+        "elevation": 36.4,
+        "hsrc": "5m（レーザ）"
+      }
+    },
+    {
+      "label": "Spoon-road-context",
+      "source_way": "183391647",
+      "lon": 136.52349554545455,
+      "lat": 34.84826662727273,
+      "url": "https://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php?lon=136.5234955&lat=34.8482666&outtype=JSON",
+      "response": {
+        "elevation": 57.6,
+        "hsrc": "5m（レーザ）"
+      }
+    }
+  ]
+}
