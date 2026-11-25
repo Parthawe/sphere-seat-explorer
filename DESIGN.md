@@ -83,3 +83,5 @@ Keep all unfinished Spa inputs outside public routing until the shared renderer 
 ## Shared-bank ticket options
 
 When organizer evidence places multiple package options in one grandstand, keep one model bank and show distinct official-information links beside the cover/assignment caveat. Preserve readable 44px links on phones. Never create a second physical stand or assign premium rows from package names alone. The Gold 2 Standard/Premium comparison follows this pattern.
+
+Daylight scene headings now use a light fading canvas scrim beneath the existing title and controls to retain dark-text contrast against trees. It does not intercept pointer input or change the camera/heading spacing. Night scenes retain their existing treatment.

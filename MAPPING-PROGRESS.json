@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "spa-silver-product-associations",
+  "phase": "spa-remaining-public-viewing-products",
   "active_run": null,
-  "next_action": "Continue Spa remaining Silver products: verify current Silver 3 Double Gauche, Silver 4 Bruxelles, Silver 5, Silver 7 All-In and Pitlane Walk/Silver 6 identities and named organizer-map regions before placing distinct representative banks. Preserve new Gold 2 Standard/Premium links as one physical bank with unknown real row allocation. Gold 2/4/5 initial source-region assessment and virtual-view handoffs are complete; do not repeat them. Gold 6 Bis remains a separate source-only option until new distinct location evidence appears. Reuse eighteen-bank/19,584-position Spa terrain study; do not recollect terrain or revisit resolved Gold 7 ter identity. Then assess Speed Corner/Fanzone/17\u201327 and other verified venues, keeping nonassigned products separate from chair inventories.",
+  "next_action": "Finish Spa public viewing-product coverage: verify Speed Corner, Fanzone and 17\u201327 Blanchimont plus Bronze admission from current organizer pages/named map regions. Preserve assigned versus unassigned admission and do not invent GA chair inventories. Audit remaining PRM/hospitality options as source-only where spatial assets are missing, then move to verified Monza geography. Silver 3/4/5/6/7 initial assessment, estimated banks and official virtual-view handoffs are complete; do not repeat them. Preserve 23-bank/25,344-position scope, current newly-covered Silver 3 note, separate Silver 6 grandstand versus Thursday Pitlane Walk, Gold 2 shared-bank options, pending Gold 6 Bis, terrain, chair-switch fix and daylight-heading legibility. Do not recollect terrain.",
   "venues": [
     {
       "id": "las-vegas",
@@ -143,7 +143,7 @@
       "id": "belgium",
       "event": "Belgium",
       "venue": "Spa-Francorchamps",
-      "status": "terrain_3d_eighteen_banks_2027",
+      "status": "terrain_3d_twenty_three_banks_2027",
       "sources": [
         "https://www.formula1.com/en/racing/2027/belgium",
         "https://www.spagrandprix.com/en/",
@@ -154,15 +154,15 @@
         "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
         "https://geoportail.wallonie.be/catalogue/e257f5df-6c96-4118-b4d2-1e63e955df53.html"
       ],
-      "next_action": "Continue Spa remaining Silver products: verify current Silver 3 Double Gauche, Silver 4 Bruxelles, Silver 5, Silver 7 All-In and Pitlane Walk/Silver 6 identities and named organizer-map regions before placing distinct representative banks. Preserve new Gold 2 Standard/Premium links as one physical bank with unknown real row allocation. Gold 2/4/5 initial source-region assessment and virtual-view handoffs are complete; do not repeat them. Gold 6 Bis remains a separate source-only option until new distinct location evidence appears. Reuse eighteen-bank/19,584-position Spa terrain study; do not recollect terrain or revisit resolved Gold 7 ter identity. Then assess Speed Corner/Fanzone/17\u201327 and other verified venues, keeping nonassigned products separate from chair inventories.",
+      "next_action": "Finish Spa public viewing-product coverage: verify Speed Corner, Fanzone and 17\u201327 Blanchimont plus Bronze admission from current organizer pages/named map regions. Preserve assigned versus unassigned admission and do not invent GA chair inventories. Audit remaining PRM/hospitality options as source-only where spatial assets are missing, then move to verified Monza geography. Silver 3/4/5/6/7 initial assessment, estimated banks and official virtual-view handoffs are complete; do not repeat them. Preserve 23-bank/25,344-position scope, current newly-covered Silver 3 note, separate Silver 6 grandstand versus Thursday Pitlane Walk, Gold 2 shared-bank options, pending Gold 6 Bis, terrain, chair-switch fix and daylight-heading legibility. Do not recollect terrain.",
       "exact_seats_verified": false,
       "terrain_status": "Offline profile and context grid integrated; road grading/platforms/forest density authored",
       "terrain_artifact": "research/spa/terrain-samples.json",
       "seasons_with_3d_coverage": [
         2027
       ],
-      "modeled_positions": 19584,
-      "modeled_banks": 18
+      "modeled_positions": 25344,
+      "modeled_banks": 23
     },
     {
       "id": "italy",
@@ -723,6 +723,24 @@
         "No dated attendee photographs or verified virtual-view playback added"
       ],
       "next": "Continue Spa remaining Silver products: verify current Silver 3 Double Gauche, Silver 4 Bruxelles, Silver 5, Silver 7 All-In and Pitlane Walk/Silver 6 identities and named organizer-map regions before placing distinct representative banks. Preserve new Gold 2 Standard/Premium links as one physical bank with unknown real row allocation. Gold 2/4/5 initial source-region assessment and virtual-view handoffs are complete; do not repeat them. Gold 6 Bis remains a separate source-only option until new distinct location evidence appears. Reuse eighteen-bank/19,584-position Spa terrain study; do not recollect terrain or revisit resolved Gold 7 ter identity. Then assess Speed Corner/Fanzone/17\u201327 and other verified venues, keeping nonassigned products separate from chair inventories."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Spa Silver 3\u20137 viewing regions and daylight heading contrast",
+      "result": "Added five separate estimated banks with 5,760 model positions; Spa now has 23 banks and 25,344 positions. Added current cover/package caveats and five organizer virtual-view page handoffs. Improved dark title contrast against bright forest scenes.",
+      "evidence": [
+        "79 tests pass; final TypeScript/production build runs during packaging",
+        "Current public map names S3/S4/S5/S6/S7; product pages highlight S3/S4/S5/S7, while S6 page has no active highlight",
+        "Current Silver3 product/catalogue labels newly covered; specific current evidence retained over stale general FAQ",
+        "Desktop/320px/390px selection, new source links, map, final Silver5 section/row/position, zoom, cars, reference handoff and graphics Retry checked; zero page errors",
+        "Visual before/after Silver7 title and long Silver6 phone heading reviewed; narrow document stays 320px"
+      ],
+      "limitations": [
+        "All region centers/setbacks/rows authored; no surveyed footprint or certified physical view",
+        "No canopies, actual package facilities, pitlane-walk route, exact chair IDs or premium-row allocation",
+        "No checked dated Spa attendee references or verified upstream panorama playback"
+      ],
+      "next": "Finish Spa public viewing-product coverage: verify Speed Corner, Fanzone and 17\u201327 Blanchimont plus Bronze admission from current organizer pages/named map regions. Preserve assigned versus unassigned admission and do not invent GA chair inventories. Audit remaining PRM/hospitality options as source-only where spatial assets are missing, then move to verified Monza geography. Silver 3/4/5/6/7 initial assessment, estimated banks and official virtual-view handoffs are complete; do not repeat them. Preserve 23-bank/25,344-position scope, current newly-covered Silver 3 note, separate Silver 6 grandstand versus Thursday Pitlane Walk, Gold 2 shared-bank options, pending Gold 6 Bis, terrain, chair-switch fix and daylight-heading legibility. Do not recollect terrain."
     }
   ],
   "blockers": [

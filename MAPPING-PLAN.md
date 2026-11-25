@@ -1,3 +1,7 @@
+## Latest checkpoint: Spa Silver products
+
+Spa 2027 now covers 23 representative banks and 25,344 illustrative positions, adding Silver 3 Double Gauche, Silver 4 Bruxelles, Silver 5, Silver 6 and Silver 7 All-In. Specific current Silver 3 cover guidance supersedes the older generic FAQ; canopy geometry remains omitted. Silver 6’s assigned grandstand and its separately located Thursday Pitlane Walk are not combined into a fictitious seating area. Next verify Speed Corner/Fanzone/17–27/Bronze, record unsupported PRM/hospitality geography, audit Spa coverage and continue Monza. Terrain acquisition and completed bank assessments must not be repeated.
+
 ## Latest checkpoint: Spa Eau Rouge product regions
 
 Spa 2027 now covers eighteen representative banks and 19,584 illustrative positions. Gold 2 GP2, Gold 4 All-In and Gold 5 have independent estimated regions and organizer virtual-view handoffs. Gold 2 Standard/Premium use one physical bank with two official-information links; actual allocation boundaries are unknown. Current product descriptions do not establish surveyed stand envelopes or package availability. Next verify remaining Silver products, then Speed Corner/Fanzone/17–27 and other venues. Reuse existing terrain and preserve the pending Gold 6 Bis gap.

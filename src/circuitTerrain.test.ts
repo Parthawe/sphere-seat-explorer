@@ -8,7 +8,7 @@ test('height fields keep meter axes and reject unknown domains while flat models
  assert.equal(groundHeight(circuitModels.qatar,999999,999999),0);assert.throws(()=>groundHeight(circuitModels.belgium,999999,999999),/Outside sampled/);
 });
 test('Spa keeps full road relief, source heights and level bank/eye offsets',()=>{
- const m=circuitModels.belgium;assert.equal(findCircuitModel(2026,'belgium'),undefined);assert.equal(m.banks.length,18);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),19584);
+ const m=circuitModels.belgium;assert.equal(findCircuitModel(2026,'belgium'),undefined);assert.equal(m.banks.length,23);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),25344);
  assert.ok(Math.max(...m.trackHeights!)-Math.min(...m.trackHeights!)>100);assert.equal(m.terrain?.licence,'CC-BY-4.0');
  m.track.forEach((p,i)=>{const road=roadSample(m,...p as [number,number]);assert.ok(Math.abs(road.height-m.trackHeights![i])<.001);assert.ok(Math.abs(groundHeight(m,...p as [number,number])-road.height)<.001);});
  for(const b of m.banks){const selection={bank:b.id,section:1,row:1,seat:1},p=modelPosition(m,selection),local=localModelPosition(b,selection);assert.ok(Math.abs(p[1]-bankGroundHeight(m,b)-local[1])<1e-9);assert.ok(p[1]>groundHeight(m,p[0],p[2]));}
@@ -64,4 +64,14 @@ test('Eau Rouge banks preserve one Gold 2 region for Standard/Premium and separa
  for(const id of ids){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.equal(b.officialView,true);assert.match(b.confidence,/Estimated Eau Rouge/);for(const other of m.banks.filter(o=>o.id!==id))assert.ok(bankEnvelopesSeparated(m,b,other),id+' overlaps '+other.id);}
  const g2=m.banks.find(b=>b.id==='gold-2')!;assert.equal(m.banks.filter(b=>b.id.startsWith('gold-2')).length,1);assert.equal(g2.ticketOptions!.length,2);assert.deepEqual(g2.ticketOptions!.map(p=>new URL(p.source).pathname),['/en/gold-2-gp2','/en/vip-gold-2']);assert.match(g2.admissionNote!,/row allocation is unknown/);
  assert.match(m.banks.find(b=>b.id==='gold-4')!.name,/All-In/);assert.match(m.banks.find(b=>b.id==='gold-5')!.admissionNote!,/uncovered/);
+});
+
+
+test('Spa Silver products keep distinct assigned banks and package/cover limits',()=>{
+ const m=circuitModels.belgium,ids=['silver-3','silver-4','silver-5','silver-6','silver-7'];
+ for(const id of ids){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.kind,'assigned');assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.equal(b.officialView,true);assert.match(b.confidence,/Estimated Silver/);for(const other of m.banks.filter(o=>o.id!==id))assert.ok(bankEnvelopesSeparated(m,b,other),id+' overlaps '+other.id);}
+ const get=(id:string)=>m.banks.find(b=>b.id===id)!;
+ assert.match(get('silver-3').admissionNote!,/newly covered/);assert.match(get('silver-4').admissionNote!,/Bruxelles/);
+ assert.equal(new URL(get('silver-6').source).pathname,'/en/silver-6');assert.match(get('silver-6').admissionNote!,/walk takes place elsewhere/);assert.notDeepEqual(get('silver-5').center,get('silver-6').center);
+ assert.match(get('silver-7').admissionNote!,/separate product from Combes/);assert.ok(get('silver-7').center[1]<m.banks.find(b=>b.id==='combes-1')!.center[1]);
 });
