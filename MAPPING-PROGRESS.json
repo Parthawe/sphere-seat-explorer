@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "monza-historic-flyover-context-assessment",
+  "phase": "monza-remaining-start-finish-products",
   "active_run": null,
-  "next_action": "Assess Monza historic banking/flyover context from retained licensed OSM segments and attributable public venue evidence before exposing Serraglio 11 or new Ascari views. The GP is flat and 11 is now a visible source-only option; do not borrow another bank view or imply unobstructed physical visibility. If geometry/elevation evidence is insufficient, retain that gap and advance 21A\u2013E/35A\u2013C/25 and remaining start-finish products from the current organizer diagram. North batch is complete: 9,10,33A/B,34,10 BIS are six distinct estimated banks; do not repeat their assessment. Preserve 19-bank/22,816-position scope, compact authored 9/10 envelopes, existing GP/woodland inputs, initial five source envelopes, estimated shared splits, cameras, GA/GF, reference/privacy/replay/season limits.",
+  "next_action": "Continue Monza remaining start/finish products 2/3, 27\u201330 and 32 from the retained 2027 organizer map and licensed geometry; use compact estimated regions only where supported, otherwise expose source-only options. Assess GF as unnumbered seating without assigning actual chairs, then audit remaining Ascari 12/13/14/16/18 against missing historic context. Bridge research is checkpointed in research/monza/bridge-context.json: horizontal GP crossing and layer order are identified, but no deck clearance/support/profile evidence is established. Do not re-query the same three ways or use maximum bank rise as bridge clearance. Keep Serraglio 11 source-only pending new vertical/structural evidence. 35A/B/C boundaries remain unresolved and must not borrow 24. Parabolica 21A\u2013E/25 batch is complete at 25 banks/26,776 illustrative positions; do not repeat it or GP/woodland acquisition. Preserve source/estimated distinctions and all scene/replay/photo/privacy/season behavior.",
   "venues": [
     {
       "id": "las-vegas",
@@ -177,7 +177,7 @@
       "id": "italy",
       "event": "Italy",
       "venue": "Monza",
-      "status": "representative_3d_nineteen_banks_2027",
+      "status": "representative_3d_twenty_five_banks_2027",
       "sources": [
         "https://www.formula1.com/en/racing/2027/italy",
         "https://www.monzanet.it/en/f1-grand-prix/",
@@ -185,9 +185,9 @@
         "https://www.monzanet.it/wp-content/uploads/2026/08/GP_F1_2027_LISTINO_PREZZI-1.pdf",
         "https://www.openstreetmap.org/relation/284565"
       ],
-      "next_action": "Assess Monza historic banking/flyover context from retained licensed OSM segments and attributable public venue evidence before exposing Serraglio 11 or new Ascari views. The GP is flat and 11 is now a visible source-only option; do not borrow another bank view or imply unobstructed physical visibility. If geometry/elevation evidence is insufficient, retain that gap and advance 21A\u2013E/35A\u2013C/25 and remaining start-finish products from the current organizer diagram. North batch is complete: 9,10,33A/B,34,10 BIS are six distinct estimated banks; do not repeat their assessment. Preserve 19-bank/22,816-position scope, compact authored 9/10 envelopes, existing GP/woodland inputs, initial five source envelopes, estimated shared splits, cameras, GA/GF, reference/privacy/replay/season limits.",
-      "modeled_banks": 19,
-      "modeled_positions": 22816,
+      "next_action": "Continue Monza remaining start/finish products 2/3, 27\u201330 and 32 from the retained 2027 organizer map and licensed geometry; use compact estimated regions only where supported, otherwise expose source-only options. Assess GF as unnumbered seating without assigning actual chairs, then audit remaining Ascari 12/13/14/16/18 against missing historic context. Bridge research is checkpointed in research/monza/bridge-context.json: horizontal GP crossing and layer order are identified, but no deck clearance/support/profile evidence is established. Do not re-query the same three ways or use maximum bank rise as bridge clearance. Keep Serraglio 11 source-only pending new vertical/structural evidence. 35A/B/C boundaries remain unresolved and must not borrow 24. Parabolica 21A\u2013E/25 batch is complete at 25 banks/26,776 illustrative positions; do not repeat it or GP/woodland acquisition. Preserve source/estimated distinctions and all scene/replay/photo/privacy/season behavior.",
+      "modeled_banks": 25,
+      "modeled_positions": 26776,
       "seasons_with_3d_coverage": [
         2027
       ],
@@ -198,7 +198,9 @@
         "Actual chair/row IDs, canopies, obstructions and accessible routes",
         "No checked dated attendee photos or historical Monza telemetry"
       ],
-      "source_only_options": 4
+      "source_only_options": 7,
+      "bridge_research_artifact": "research/monza/bridge-context.json",
+      "bridge_status": "Horizontal crossing and vertical order identified; deck clearance, supports and banking profile unverified; no runtime structure"
     },
     {
       "id": "japan",
@@ -843,6 +845,25 @@
         "No dated attendee photos or historical Monza telemetry added"
       ],
       "next": "Assess Monza historic banking/flyover context from retained licensed OSM segments and attributable public venue evidence before exposing Serraglio 11 or new Ascari views. The GP is flat and 11 is now a visible source-only option; do not borrow another bank view or imply unobstructed physical visibility. If geometry/elevation evidence is insufficient, retain that gap and advance 21A\u2013E/35A\u2013C/25 and remaining start-finish products from the current organizer diagram. North batch is complete: 9,10,33A/B,34,10 BIS are six distinct estimated banks; do not repeat their assessment. Preserve 19-bank/22,816-position scope, compact authored 9/10 envelopes, existing GP/woodland inputs, initial five source envelopes, estimated shared splits, cameras, GA/GF, reference/privacy/replay/season limits."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Monza bridge-context checkpoint and Parabolica regions",
+      "result": "Identified the historic bridge/covered-GP horizontal crossing without inventing elevations; retained Serraglio source-only. Added 21A\u2013E and 25, bringing Monza to 25 banks/26,776 illustrative positions. Added separate source-only 35A/B/C options.",
+      "evidence": [
+        "87 tests pass; final TypeScript/production build runs in packaging",
+        "Three bounded public OSM way/full reads retained under ODbL; historic layer 1 and GP covered tags establish ordering, not clearance",
+        "Primary venue history/brochure identify historic banking but do not establish a surveyed GP flyover underside/support profile for the renderer",
+        "Current organizer 21A\u2013E/25/35A\u2013C identities compared to retained source geography; no new GP/forest acquisition",
+        "Desktop/320px/390px all six selections, full 21E grid last position, 25-bank map, source-only options, empty references, zoom, cars and graphics Retry checked; no page exceptions"
+      ],
+      "limitations": [
+        "Bridge dimensions/elevation are unknown; no runtime historic structure or Serraglio camera added",
+        "21A\u2013E letter-to-envelope order and 25 region are estimates, not official row/seat geometry",
+        "35A/B/C have no supported separate envelope or borrowed 24 view",
+        "No dated attendee sources, exact chairs, canopies, access routes or physical sightline verification"
+      ],
+      "next": "Continue Monza remaining start/finish products 2/3, 27\u201330 and 32 from the retained 2027 organizer map and licensed geometry; use compact estimated regions only where supported, otherwise expose source-only options. Assess GF as unnumbered seating without assigning actual chairs, then audit remaining Ascari 12/13/14/16/18 against missing historic context. Bridge research is checkpointed in research/monza/bridge-context.json: horizontal GP crossing and layer order are identified, but no deck clearance/support/profile evidence is established. Do not re-query the same three ways or use maximum bank rise as bridge clearance. Keep Serraglio 11 source-only pending new vertical/structural evidence. 35A/B/C boundaries remain unresolved and must not borrow 24. Parabolica 21A\u2013E/25 batch is complete at 25 banks/26,776 illustrative positions; do not repeat it or GP/woodland acquisition. Preserve source/estimated distinctions and all scene/replay/photo/privacy/season behavior."
     }
   ],
   "blockers": [

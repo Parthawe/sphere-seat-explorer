@@ -135,7 +135,7 @@ test('every Silverstone model position stays outside its modeled racing surface'
 
 
 test('Monza 2027 keeps its GP loop and five source envelopes as estimated coverage expands',()=>{
- const m=circuitModels.italy;assert.equal(findCircuitModel(2027,'italy'),m);assert.equal(findCircuitModel(2026,'italy'),undefined);assert.equal(m.banks.length,19);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),22816);
+ const m=circuitModels.italy;assert.equal(findCircuitModel(2027,'italy'),m);assert.equal(findCircuitModel(2026,'italy'),undefined);assert.equal(m.banks.length,25);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),26776);
  assert.equal(monza.licence,'ODbL-1.0');assert.equal(monza.source,'https://www.openstreetmap.org/relation/284565');assert.ok(monza.length_m>5750&&monza.length_m<5850);assert.equal(monza.points.length,294);assert.equal(new Set(monza.ways).size,20);for(const excluded of ['38168747','38168756','34404709','19982933','19983025'])assert.ok(!monza.ways.includes(excluded));
  assert.deepEqual(m.banks.slice(0,5).map(b=>b.footprint),['193647796','193647795','231257063','179794158','231026020']);assert.ok(m.banks.every(b=>b.source.endsWith('GP_F1_2027_LISTINO_PREZZI-1.pdf')&&!b.roof));
  assert.equal(m.terrain,undefined);assert.match(m.evidence,/flyover bridges/);assert.equal(m.unmappedProducts!.find(p=>p.id==='gf')!.source,m.banks[0].source);assert.match(m.unmappedProducts!.find(p=>p.id==='gf')!.note,/not numbered/);assert.ok(monza.vegetation.length>1000);assert.equal(monza.forest_sources.length,41);

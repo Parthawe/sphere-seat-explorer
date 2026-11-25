@@ -106,3 +106,12 @@ test('Monza north products preserve source envelopes, estimated regions and Serr
  for(const id of ['33a','33b','34','10-bis']){assert.equal(by(id).footprint,undefined);assert.match(by(id).confidence,/Estimated Roggia/);}
  assert.notEqual(by('10').name,by('10-bis').name);assert.equal(m.banks.some(b=>b.id==='11'),false);assert.match(m.unmappedProducts!.find(p=>p.id==='11')!.note,/No seated view/);
 });
+
+
+test('Monza Parabolica letters remain estimated and unresolved Vedano products never borrow bank 24',()=>{
+ const m=circuitModels.italy,ids=['21a','21b','21c','21d','21e','25'];
+ for(const id of ids){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.kind,'assigned');assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.match(b.confidence,/Estimated product region/);for(const other of m.banks.filter(o=>o.id!==id))assert.ok(bankEnvelopesSeparated(m,b,other),id+' overlaps '+other.id);}
+ const letters=['21a','21b','21c','21d','21e'].map(id=>m.banks.find(b=>b.id===id)!);for(let i=1;i<letters.length;i++)assert.ok(letters[i-1].center[1]>letters[i].center[1]);
+ for(const id of ['35a','35b','35c']){assert.equal(m.banks.some(b=>b.id===id),false);assert.match(m.unmappedProducts!.find(p=>p.id===id)!.note,/does not borrow/);}
+ assert.match(m.unmappedProducts!.find(p=>p.id==='11')!.note,/deck clearance/);
+});

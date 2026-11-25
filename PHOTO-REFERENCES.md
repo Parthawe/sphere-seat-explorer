@@ -87,3 +87,5 @@ Monza is a distinct reference venue with an honest empty attendee collection. No
 Monza’s eight added product regions retain the honest empty attendee-reference state. All official bank links open the checked 2027 organizer map/list PDF; no panorama, capture date, review or exact-seat photograph is inferred from the new model divisions.
 
 Monza 9/10/33A/33B/34/10 BIS retain the empty dated-attendee collection, with official PDF information links only. Serraglio 11’s source-only link does not imply a photographed view or certified panorama. No source image, capture year, review or exact-row match was inferred from the added regions.
+
+Monza 21A–E/25 have official 2027 PDF handoffs, with no new dated attendee reference or panoramic view claim. Venue historic documents inform structure research only; no brochure imagery is rehosted or matched to a model chair. Serraglio and Vedano 35A/B/C remain source-only.

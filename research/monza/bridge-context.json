@@ -1,0 +1,176 @@
+{
+  "checked": "2026-11-25",
+  "licence": "ODbL-1.0",
+  "origin": [
+    9.281,
+    45.62
+  ],
+  "units": "meters; x east / z south",
+  "segments": [
+    {
+      "way": "34404729",
+      "source": "https://www.openstreetmap.org/way/34404729",
+      "tags": {
+        "bridge": "yes",
+        "highway": "raceway",
+        "historic": "ruins",
+        "layer": "1",
+        "name": "Autodromo nazionale di Monza - anello alta velocit\u00e0",
+        "note": "draft",
+        "oneway": "yes",
+        "sport": "motor",
+        "surface": "concrete"
+      },
+      "lon_lat": [
+        [
+          9.2891312,
+          45.6248696
+        ],
+        [
+          9.2893082,
+          45.6247233
+        ]
+      ],
+      "local_meters": [
+        [
+          633.085,
+          -542.084
+        ],
+        [
+          646.866,
+          -525.798
+        ]
+      ]
+    },
+    {
+      "way": "725687995",
+      "source": "https://www.openstreetmap.org/way/725687995",
+      "tags": {
+        "bridge": "yes",
+        "highway": "raceway",
+        "historic": "ruins",
+        "layer": "1",
+        "name": "Sopraelevata Nord",
+        "note": "draft",
+        "oneway": "yes",
+        "sport": "motor",
+        "surface": "concrete"
+      },
+      "lon_lat": [
+        [
+          9.2854185,
+          45.6257416
+        ],
+        [
+          9.285491,
+          45.62575
+        ],
+        [
+          9.2855596,
+          45.6257569
+        ],
+        [
+          9.2856268,
+          45.6257628
+        ],
+        [
+          9.2857072,
+          45.6257678
+        ],
+        [
+          9.2857863,
+          45.6257719
+        ],
+        [
+          9.285845,
+          45.6257739
+        ]
+      ],
+      "local_meters": [
+        [
+          344.019,
+          -639.155
+        ],
+        [
+          349.664,
+          -640.09
+        ],
+        [
+          355.005,
+          -640.858
+        ],
+        [
+          360.237,
+          -641.515
+        ],
+        [
+          366.497,
+          -642.071
+        ],
+        [
+          372.655,
+          -642.528
+        ],
+        [
+          377.226,
+          -642.751
+        ]
+      ]
+    },
+    {
+      "way": "1443867793",
+      "source": "https://www.openstreetmap.org/way/1443867793",
+      "tags": {
+        "access": "no",
+        "covered": "yes",
+        "highway": "raceway",
+        "importance": "international",
+        "oneway": "yes",
+        "sport": "motor",
+        "surface": "asphalt"
+      },
+      "lon_lat": [
+        [
+          9.2893552,
+          45.624834
+        ],
+        [
+          9.2891166,
+          45.624688
+        ]
+      ],
+      "local_meters": [
+        [
+          650.525,
+          -538.121
+        ],
+        [
+          631.948,
+          -521.868
+        ]
+      ]
+    }
+  ],
+  "limits": [
+    "Layer 1 and covered tags establish vertical ordering, not measured deck clearance.",
+    "No elevation, deck underside, parapet, support or bank profile is supplied by these tags.",
+    "Organizer maximum bank rise must not be used as bridge clearance."
+  ],
+  "venue_sources": [
+    "https://www.monzanet.it/en/the-flyover-of-monza/",
+    "https://www.monzanet.it/media/2023/05/2023_Brochure_Experience_Monza_compressed.pdf"
+  ],
+  "runtime_status": "Research only; no historic structure is rendered and Serraglio remains source-only.",
+  "candidate_gp_crossing": {
+    "historic_way": "34404729",
+    "covered_gp_way": "1443867793",
+    "local_meters": [
+      642.431,
+      -531.039
+    ],
+    "vertical_order": "Historic bridge tagged layer=1 above covered GP; elevations and clearance unknown"
+  },
+  "other_bridge_limit": "Way 725687995 is a different historic bridge context segment; it is not assigned as the covered GP crossing.",
+  "credit": "\u00a9 OpenStreetMap contributors \u00b7 ODbL-1.0",
+  "horizontal_accuracy": "Projected OSM centerline context, not a survey; numeric precision does not establish positional accuracy."
+}

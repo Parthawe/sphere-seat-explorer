@@ -1,3 +1,7 @@
+## Latest checkpoint: Monza bridge evidence and Parabolica products
+
+Monza now has 25 modeled banks and 26,776 illustrative positions, adding estimated 21A–E and 25. The historic GP crossing is horizontally identified, but layer/covered tags and general banking history do not provide deck clearance, supports or a surveyed bank profile. Serraglio remains source-only. Research is retained in research/monza/bridge-context.json; do not repeat those way queries without new evidence. 35A/B/C have separate official information without a borrowed 24 view. Next finish remaining start/finish products and audit GF/Ascari with the same geometry limits.
+
 ## Latest checkpoint: Monza north-circuit regions
 
 Monza now has nineteen modeled banks and 22,816 illustrative positions, adding 9/10, 33A/B, 34 and 10 BIS. Compact 9/10 models use named source-envelope context with authored bounds; all six additions are estimated regions. Serraglio 11 has official source information without a borrowed view because historic flyover context is missing. Next assess licensed banking/bridge context before Serraglio/Ascari; if unsupported, retain that gap and advance remaining Parabolica/start-finish products. GP/woodland acquisition and north product identities must not be repeated.
