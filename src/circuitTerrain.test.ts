@@ -8,7 +8,7 @@ test('height fields keep meter axes and reject unknown domains while flat models
  assert.equal(groundHeight(circuitModels.qatar,999999,999999),0);assert.throws(()=>groundHeight(circuitModels.belgium,999999,999999),/Outside sampled/);
 });
 test('Spa keeps full road relief, source heights and level bank/eye offsets',()=>{
- const m=circuitModels.belgium;assert.equal(findCircuitModel(2026,'belgium'),undefined);assert.equal(m.banks.length,7);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),13392);
+ const m=circuitModels.belgium;assert.equal(findCircuitModel(2026,'belgium'),undefined);assert.equal(m.banks.length,11);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),15408);
  assert.ok(Math.max(...m.trackHeights!)-Math.min(...m.trackHeights!)>100);assert.equal(m.terrain?.licence,'CC-BY-4.0');
  m.track.forEach((p,i)=>{const road=roadSample(m,...p as [number,number]);assert.ok(Math.abs(road.height-m.trackHeights![i])<.001);assert.ok(Math.abs(groundHeight(m,...p as [number,number])-road.height)<.001);});
  for(const b of m.banks){const selection={bank:b.id,section:1,row:1,seat:1},p=modelPosition(m,selection),local=localModelPosition(b,selection);assert.ok(Math.abs(p[1]-bankGroundHeight(m,b)-local[1])<1e-9);assert.ok(p[1]>groundHeight(m,p[0],p[2]));}
@@ -33,4 +33,11 @@ test('Combes products remain distinct and cover options never become invented ca
  assert.equal(combes.length,4);assert.equal(new Set(combes.map(b=>b.product)).size,4);
  for(const b of combes){assert.ok(b.confidence.startsWith('Estimated temporary'));assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.equal(b.officialView,true);assert.equal(new URL(b.source).pathname,'/en/combes-grandstands-'+b.id.at(-1));}
  assert.match(combes.find(b=>b.id==='combes-2')!.admissionNote!,/covered and uncovered/);assert.match(combes.find(b=>b.id==='combes-3')!.admissionNote!,/unverified/);
+});
+
+test('La Source variants retain organizer identities without borrowing the old-pits Endurance footprint',()=>{
+ const m=circuitModels.belgium,ids=['gold-7','gold-7-bis','gold-7-ter','gold-8'];
+ for(const id of ids){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.product,id);assert.equal(b.footprint,undefined);assert.equal(b.officialView,true);assert.equal(b.roof,false);assert.match(b.confidence,/Estimated La Source/);assert.ok(b.center[1]<-950);assert.equal(b.rows,14);}
+ assert.equal(new URL(m.banks.find(b=>b.id==='gold-7-ter')!.source).pathname,'/en/gold-7-ter');
+ assert.match(m.banks.find(b=>b.id==='gold-7-ter')!.admissionNote!,/uncovered/);
 });

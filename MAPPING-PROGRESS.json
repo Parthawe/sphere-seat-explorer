@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "spa-remaining-viewing-bank-associations",
+  "phase": "spa-pit-chicane-product-associations",
   "active_run": null,
-  "next_action": "Continue Spa remaining products: verify La Source/Gold 7-family bank associations with current organizer location evidence. Gold 7 ter describes La Source/pit-exit views; do not map it to the similarly named old-pits OSM Endurance footprint from name alone. Combes 1\u20134 and their official virtual-view handoffs are complete for this batch; do not repeat that assessment. Preserve seven-bank/13,392-position scope, existing terrain, cover uncertainty and photo/year/privacy boundaries. If evidence remains insufficient, progress another supported Spa region or the next verified venue.",
+  "next_action": "Verify and expand remaining Spa pit/Chicane products, starting with Gold 9/9 Bis and Gold 6/6 Bis/11, using current named organizer map groups and product pages. Gold 7/7 Bis/7 ter/8 broad-region identities and handoffs are now complete; do not repeat that assessment or assign the old-pits OSM Endurance footprint. Preserve eleven-bank/15,408-position scope, existing terrain, estimated geometry, cover/row uncertainty and photo/year/privacy limits. Continue another verified venue if a specific location remains unsupported.",
   "venues": [
     {
       "id": "las-vegas",
@@ -143,7 +143,7 @@
       "id": "belgium",
       "event": "Belgium",
       "venue": "Spa-Francorchamps",
-      "status": "terrain_3d_seven_banks_2027",
+      "status": "terrain_3d_eleven_banks_2027",
       "sources": [
         "https://www.formula1.com/en/racing/2027/belgium",
         "https://www.spagrandprix.com/en/",
@@ -154,15 +154,15 @@
         "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
         "https://geoportail.wallonie.be/catalogue/e257f5df-6c96-4118-b4d2-1e63e955df53.html"
       ],
-      "next_action": "Continue Spa remaining products: verify La Source/Gold 7-family bank associations with current organizer location evidence. Gold 7 ter describes La Source/pit-exit views; do not map it to the similarly named old-pits OSM Endurance footprint from name alone. Combes 1\u20134 and their official virtual-view handoffs are complete for this batch; do not repeat that assessment. Preserve seven-bank/13,392-position scope, existing terrain, cover uncertainty and photo/year/privacy boundaries. If evidence remains insufficient, progress another supported Spa region or the next verified venue.",
+      "next_action": "Verify and expand remaining Spa pit/Chicane products, starting with Gold 9/9 Bis and Gold 6/6 Bis/11, using current named organizer map groups and product pages. Gold 7/7 Bis/7 ter/8 broad-region identities and handoffs are now complete; do not repeat that assessment or assign the old-pits OSM Endurance footprint. Preserve eleven-bank/15,408-position scope, existing terrain, estimated geometry, cover/row uncertainty and photo/year/privacy limits. Continue another verified venue if a specific location remains unsupported.",
       "exact_seats_verified": false,
       "terrain_status": "Offline profile and context grid integrated; road grading/platforms/forest density authored",
       "terrain_artifact": "research/spa/terrain-samples.json",
       "seasons_with_3d_coverage": [
         2027
       ],
-      "modeled_positions": 13392,
-      "modeled_banks": 7
+      "modeled_positions": 15408,
+      "modeled_banks": 11
     },
     {
       "id": "italy",
@@ -672,6 +672,23 @@
         "Gold 7 ter/OSM Endurance association remains unresolved"
       ],
       "next": "Continue Spa remaining products: verify La Source/Gold 7-family bank associations with current organizer location evidence. Gold 7 ter describes La Source/pit-exit views; do not map it to the similarly named old-pits OSM Endurance footprint from name alone. Combes 1\u20134 and their official virtual-view handoffs are complete for this batch; do not repeat that assessment. Preserve seven-bank/13,392-position scope, existing terrain, cover uncertainty and photo/year/privacy boundaries. If evidence remains insufficient, progress another supported Spa region or the next verified venue."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Spa La Source family evidence and expansion",
+      "result": "Named public organizer-map groups establish Gold 7-family and Gold 8 broad regions. Added four distinct estimated banks and handoffs (2,016 new model positions), reaching eleven banks and 15,408 positions. Old-pits Endurance footprint excluded.",
+      "evidence": [
+        "Current Gold 7 ter product map highlights G7-ter and names its product; other Gold groups remain distinct",
+        "76 tests and TypeScript/build pass; exhaustive position/road/height checks include new banks",
+        "Desktop/phone variants, links, grid/map, zoom, pause and recovery checked; no page exceptions",
+        "Bahrain/Silverstone loaded after lateral subdivision of terrain-only margin ribbon"
+      ],
+      "limitations": [
+        "Diagram interpretation is not a surveyed geographic calibration",
+        "Canopies, chair labels and physical views remain unverified",
+        "No new dated attendee photographs or certified upstream virtual-view playback"
+      ],
+      "next": "Verify and expand remaining Spa pit/Chicane products, starting with Gold 9/9 Bis and Gold 6/6 Bis/11, using current named organizer map groups and product pages. Gold 7/7 Bis/7 ter/8 broad-region identities and handoffs are now complete; do not repeat that assessment or assign the old-pits OSM Endurance footprint. Preserve eleven-bank/15,408-position scope, existing terrain, estimated geometry, cover/row uncertainty and photo/year/privacy limits. Continue another verified venue if a specific location remains unsupported."
     }
   ],
   "blockers": [

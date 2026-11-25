@@ -52,13 +52,19 @@ function Bank({bank,model,selection,onSelect,roofs}:{bank:ModelBank;model:Circui
   </group>}
  </group>;
 }
-function ribbon(track:number[][],width:number,height:number,heights?:number[]){const vertices:number[]=[],uv:number[]=[],indices:number[]=[];let distance=0;track.forEach((p,i)=>{const a=track[Math.max(0,i-1)],b=track[Math.min(track.length-1,i+1)],dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz)||1;if(i)distance+=Math.hypot(p[0]-track[i-1][0],p[1]-track[i-1][1]);for(const side of [-1,1]){vertices.push(p[0]-dz/l*width/2*side,height+(heights?.[i]??0),p[1]+dx/l*width/2*side);uv.push(side===-1?0:1,distance/10);}if(i<track.length-1){const j=i*2;indices.push(j,j+1,j+2,j+1,j+3,j+2);}});const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(vertices,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(indices);g.computeVertexNormals();return g;}
+function ribbon(track:number[][],width:number,height:number,heights?:number[],sample?:(x:number,z:number)=>number){
+ const vertices:number[]=[],uv:number[]=[],indices:number[]=[],columns=sample?11:2;let distance=0;
+ track.forEach((p,i)=>{const a=track[Math.max(0,i-1)],b=track[Math.min(track.length-1,i+1)],dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz)||1;if(i)distance+=Math.hypot(p[0]-track[i-1][0],p[1]-track[i-1][1]);
+  for(let col=0;col<columns;col++){const side=-1+2*col/(columns-1),x=p[0]-dz/l*width/2*side,z=p[1]+dx/l*width/2*side;vertices.push(x,height+(sample?sample(x,z):heights?.[i]??0),z);uv.push(col/(columns-1),distance/10);}
+  if(i<track.length-1)for(let col=0;col<columns-1;col++){const j=i*columns+col;indices.push(j,j+1,j+columns,j+1,j+columns+1,j+columns);}
+ });const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(vertices,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(indices);g.computeVertexNormals();return g;
+}
 function Track({model}:{model:CircuitModel}){
  const maps=useLoader(T.TextureLoader,['/materials/asphalt-color.jpg','/materials/asphalt-normal.jpg','/materials/asphalt-roughness.jpg']);
  const textures=useMemo(()=>maps.map((source,i)=>{const t=source.clone();t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(2,1);if(!i)t.colorSpace=T.SRGBColorSpace;return t;}),[maps]);
  const terrainGrass=useMemo(()=>model.terrain?createGrassTexture(2,1):null,[model]);
  useEffect(()=>()=>terrainGrass?.dispose(),[terrainGrass]);
- const road=useMemo(()=>ribbon(model.track,14,.07,model.trackHeights),[model]),runoff=useMemo(()=>ribbon(model.track,model.terrain?52:30,model.terrain?-1:.025,model.trackHeights),[model]);
+ const road=useMemo(()=>ribbon(model.track,14,.07,model.trackHeights),[model]),runoff=useMemo(()=>ribbon(model.track,model.terrain?52:30,model.terrain?-1:.025,model.trackHeights,model.terrain?(x,z)=>roadSample(model,x,z).height:undefined),[model]);
  const curve=useMemo(()=>new T.CatmullRomCurve3(model.track.slice(0,-1).map((p,i)=>new T.Vector3(p[0],model.trackHeights?.[i]??0,p[1])),true,'centripetal'),[model]);
  const curbs=useMemo(()=>{const out:{p:number[];s:number[];r:number[]}[][]=[[],[]];const samples=curve.getSpacedPoints(Math.round(model.length/4));samples.forEach((p,i)=>{const tangent=curve.getTangentAt(i/(samples.length-1)),yaw=Math.atan2(tangent.x,tangent.z);for(const side of [-1,1])out[i%2].push({p:[p.x-tangent.z*7.7*side,(model.terrain?roadSample(model,p.x,p.z).height:p.y)+.13,p.z+tangent.x*7.7*side],s:[1.1,.18,4.1],r:[0,yaw,0]});});return out;},[curve,model]);
  useEffect(()=>()=>{road.dispose();runoff.dispose();textures.forEach(t=>t.dispose());},[road,runoff,textures]);

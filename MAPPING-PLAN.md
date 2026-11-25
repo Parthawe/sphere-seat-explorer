@@ -1,6 +1,6 @@
-## Latest checkpoint: Spa Combes 1–4 expansion
+## Latest checkpoint: Spa La Source region expansion
 
-Spa 2027 now has seven representative banks and 13,392 illustrative positions. Combes 1–4 remain distinct products, with estimated regions, cover caveats and matching official virtual-view page handoffs. Existing source terrain and three initial banks are preserved. Next verify the remaining current Spa Gold/Silver/special-area associations, starting with the La Source/Gold 7 family. Do not assign the OSM Endurance footprint from its name alone. Exact ticket seats and dated attendee photos remain unavailable.
+Spa 2027 now covers eleven representative banks and 15,408 illustrative positions. Gold 7/7 Bis/7 ter/8 have distinct current product links, cover caveats and official virtual-view handoffs. New named organizer-map evidence resolves the broad Gold 7 ter location; the old-pits OSM Endurance footprint remains excluded. All positions and bank boundaries are estimates. Continue remaining pit/Chicane Gold 9/6 variants and other current products; do not repeat terrain collection or the resolved Gold 7-family assessment.
 
 ## Latest checkpoint: Silverstone 2027 initial study
 

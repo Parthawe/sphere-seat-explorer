@@ -69,3 +69,7 @@ The shared video component now uses each reference’s own title/author rather t
 ## Spa official virtual-view handoffs · 25 November 2026 UTC
 
 Combes 1–4 now expose a separate organizer virtual-view handoff within the reference dialog. The checked product pages name the virtual-grandstand control; each app link retains its matching product URL. Capture date, exact camera row and correspondence to the model are unverified. These handoffs sit outside the dated attendee filters and leave the checked attendee-reference count at zero. No images are hosted or embedded and upstream playback is not guaranteed. Current Gold 1/Moët/Silver 1 keep their prior empty-reference behavior. Product cover information does not become a verified canopy or photo match.
+
+## Spa La Source virtual-view handoffs · 25 November 2026 UTC
+
+Gold 7, 7 Bis, 7 ter and Gold 8 now have matching official product-page handoffs in the reference dialog. Each current page names the virtual-grandstand control; source URLs remain distinct. Capture dates, camera rows and playback are unverified, so these links remain outside dated attendee counts/filters. No panorama imagery or screenshots were copied into the app. The dated attendee collection for Spa remains empty.
