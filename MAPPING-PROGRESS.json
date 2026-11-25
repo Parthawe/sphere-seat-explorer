@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "monza-first-chicane-and-straight-products",
+  "phase": "monza-north-circuit-product-associations",
   "active_run": null,
-  "next_action": "Expand Monza 2027 beyond its initial five banks using the checked current organizer PDF and licensed local geography. Verify first-chicane/straight product associations for 6B/6C, 7, 8A/8B and 26A/B/C before adding them. Reuse src/public monza-geometry.json and the documented /tmp XML or bounded collector input; do not repeat event identity, full source catalogue or GP-loop selection. The connected 20-way/294-vertex GP candidate and five named bank associations are checked. Preserve 8,320-position five-bank scope, flat terrain and missing historic banking/flyovers/architecture limitations; inspect bridge context before claims around Serraglio/Ascari. GF is unnumbered, P is roaming GA, and other current products remain explicit. Preserve woodland-source/authoring distinction, phone stand-framing fix, all existing venue/replay/photo/privacy/season behavior.",
+  "next_action": "Continue Monza north-circuit products from the retained 2027 organizer PDF and licensed geometry: verify 9 Seconda Variante, 10 Roggia, 33A/33B, 34 Lesmo 1 Esterna, 10 BIS Lesmo 2 Interno and 11 Serraglio regions before placing distinct estimated banks. Current first-chicane/straight batch is complete at 13 banks/17,536 illustrative positions; do not repeat its eight product assessments or GP/woodland acquisition. Preserve estimated 6B/6C/7 regions and authored 8A/8B/26A/B/C shared-envelope partitions without promoting them to surveyed footprints. Missing bridge/banking context must stay explicit near Serraglio/Ascari; source-only gaps are preferable to claiming measured physical views. Keep GF unnumbered/P roaming separate, initial five source envelopes, all cameras, privacy, replay and photo-source boundaries.",
   "venues": [
     {
       "id": "las-vegas",
@@ -177,7 +177,7 @@
       "id": "italy",
       "event": "Italy",
       "venue": "Monza",
-      "status": "representative_3d_five_banks_2027",
+      "status": "representative_3d_thirteen_banks_2027",
       "sources": [
         "https://www.formula1.com/en/racing/2027/italy",
         "https://www.monzanet.it/en/f1-grand-prix/",
@@ -185,9 +185,9 @@
         "https://www.monzanet.it/wp-content/uploads/2026/08/GP_F1_2027_LISTINO_PREZZI-1.pdf",
         "https://www.openstreetmap.org/relation/284565"
       ],
-      "next_action": "Expand Monza 2027 beyond its initial five banks using the checked current organizer PDF and licensed local geography. Verify first-chicane/straight product associations for 6B/6C, 7, 8A/8B and 26A/B/C before adding them. Reuse src/public monza-geometry.json and the documented /tmp XML or bounded collector input; do not repeat event identity, full source catalogue or GP-loop selection. The connected 20-way/294-vertex GP candidate and five named bank associations are checked. Preserve 8,320-position five-bank scope, flat terrain and missing historic banking/flyovers/architecture limitations; inspect bridge context before claims around Serraglio/Ascari. GF is unnumbered, P is roaming GA, and other current products remain explicit. Preserve woodland-source/authoring distinction, phone stand-framing fix, all existing venue/replay/photo/privacy/season behavior.",
-      "modeled_banks": 5,
-      "modeled_positions": 8320,
+      "next_action": "Continue Monza north-circuit products from the retained 2027 organizer PDF and licensed geometry: verify 9 Seconda Variante, 10 Roggia, 33A/33B, 34 Lesmo 1 Esterna, 10 BIS Lesmo 2 Interno and 11 Serraglio regions before placing distinct estimated banks. Current first-chicane/straight batch is complete at 13 banks/17,536 illustrative positions; do not repeat its eight product assessments or GP/woodland acquisition. Preserve estimated 6B/6C/7 regions and authored 8A/8B/26A/B/C shared-envelope partitions without promoting them to surveyed footprints. Missing bridge/banking context must stay explicit near Serraglio/Ascari; source-only gaps are preferable to claiming measured physical views. Keep GF unnumbered/P roaming separate, initial five source envelopes, all cameras, privacy, replay and photo-source boundaries.",
+      "modeled_banks": 13,
+      "modeled_positions": 17536,
       "seasons_with_3d_coverage": [
         2027
       ],
@@ -806,6 +806,23 @@
         "No actual ticket-chair parser, dated attendee references or historical Monza replay added"
       ],
       "next": "Expand Monza 2027 beyond its initial five banks using the checked current organizer PDF and licensed local geography. Verify first-chicane/straight product associations for 6B/6C, 7, 8A/8B and 26A/B/C before adding them. Reuse src/public monza-geometry.json and the documented /tmp XML or bounded collector input; do not repeat event identity, full source catalogue or GP-loop selection. The connected 20-way/294-vertex GP candidate and five named bank associations are checked. Preserve 8,320-position five-bank scope, flat terrain and missing historic banking/flyovers/architecture limitations; inspect bridge context before claims around Serraglio/Ascari. GF is unnumbered, P is roaming GA, and other current products remain explicit. Preserve woodland-source/authoring distinction, phone stand-framing fix, all existing venue/replay/photo/privacy/season behavior."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Monza first-chicane and main-straight product regions",
+      "result": "Added 6B/6C, 7, 8A/8B and 26A/B/C as eight estimated product banks, reaching thirteen banks and 17,536 illustrative positions. Shared source envelopes remain explicitly authored partitions, not surveyed product footprints.",
+      "evidence": [
+        "85 tests pass, including all positions clear of road, new-envelope nonoverlap, distinct identities and shared-split confidence limits",
+        "Current 2027 organizer labels/order compared to retained licensed OSM source envelopes; no new geography acquisition or proprietary path copying",
+        "Desktop/320px/390px eight selections, source routes, complete 26C grid last position, map, empty references, zoom, cars and forced graphics Retry checked; no page exceptions",
+        "Long 8B phone heading leaves 20px before camera controls; narrow page remains 320px; final TypeScript/production build runs in packaging"
+      ],
+      "limitations": [
+        "Letter-to-surveyed-footprint assignments and exact subdivisions remain unverified",
+        "All tiers, chairs, setbacks, facing, canopy geometry and physical views estimated",
+        "Flat terrain, historic banking/flyovers/architecture gaps persist; no attendee photos or historical telemetry added"
+      ],
+      "next": "Continue Monza north-circuit products from the retained 2027 organizer PDF and licensed geometry: verify 9 Seconda Variante, 10 Roggia, 33A/33B, 34 Lesmo 1 Esterna, 10 BIS Lesmo 2 Interno and 11 Serraglio regions before placing distinct estimated banks. Current first-chicane/straight batch is complete at 13 banks/17,536 illustrative positions; do not repeat its eight product assessments or GP/woodland acquisition. Preserve estimated 6B/6C/7 regions and authored 8A/8B/26A/B/C shared-envelope partitions without promoting them to surveyed footprints. Missing bridge/banking context must stay explicit near Serraglio/Ascari; source-only gaps are preferable to claiming measured physical views. Keep GF unnumbered/P roaming separate, initial five source envelopes, all cameras, privacy, replay and photo-source boundaries."
     }
   ],
   "blockers": [

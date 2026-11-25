@@ -1,3 +1,7 @@
+## Latest checkpoint: Monza first-chicane and straight products
+
+Monza 2027 now has thirteen modeled banks and 17,536 illustrative positions, adding 6B/6C, 7, 8A/8B and 26A/B/C. All eight additions are estimated regions; shared-source-envelope divisions and product boundaries are authored, with dashed map outlines. Existing five source-aligned banks remain distinct. Next verify north-circuit products around Roggia/Lesmo/Serraglio from the retained current PDF and geography. Keep missing banking/flyovers, exact chairs and attendee-reference gaps explicit; do not repeat source acquisition.
+
 ## Latest checkpoint: Monza initial 2027 study
 
 Monza now has an independent GP/park model with five named representative banks and 8,320 illustrative positions. Current organizer/F1 sources confirm 3–5 September 2027. The 20-way source loop excludes pit, historic oval, Junior and motorcycle routes. Source footprints align Centrale 1, Laterale Sinistra 4, Piscina 5, Parabolica 22 and Vedano 24. Ground remains flat; banking/flyovers, actual canopies/chairs and other products are unfinished. Phone grandstand framing now fits the complete bank clear of controls. Next verify remaining first-chicane/straight product regions from the retained 2027 PDF and geography; do not repeat the completed identity/GP selection.

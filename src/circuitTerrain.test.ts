@@ -86,3 +86,13 @@ test('Spa public products separate assigned, age-restricted free seating and sou
  for(const p of options){assert.ok(!m.banks.some(b=>b.id===p.id));const u=new URL(p.source);assert.equal(u.protocol,'https:');assert.equal(u.hostname,'www.spagrandprix.com');}
  assert.match(options.find(p=>p.id==='bronze')!.note,/no assigned chair/);assert.match(options.find(p=>p.id==='prm-source')!.note,/no verified platform/);
 });
+
+
+test('Monza variant regions stay distinct without promoting authored splits to surveyed footprints',()=>{
+ const m=circuitModels.italy,ids=['6b','6c','7','8a','8b','26a','26b','26c'];
+ for(const id of ids){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.product,id);assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.match(b.confidence,/Estimated product region/);assert.equal(b.kind,'assigned');for(const other of m.banks.filter(o=>o.id!==id))assert.ok(bankEnvelopesSeparated(m,b,other),id+' overlaps '+other.id);}
+ const by=(id:string)=>m.banks.find(b=>b.id===id)!;
+ assert.ok(by('26a').center[1]<by('26b').center[1]&&by('26b').center[1]<by('26c').center[1]);
+ for(const id of ['8a','8b','26a','26b','26c'])assert.match(by(id).admissionNote!,/spans multiple products/);
+ assert.notDeepEqual(by('8a').center,by('8b').center);assert.equal(m.banks.some(b=>b.id==='6a'),false);
+});

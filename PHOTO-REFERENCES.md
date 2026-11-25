@@ -83,3 +83,5 @@ Spa Silver 3/4/5/6/7 now have matching organizer virtual-view page handoffs. All
 Speed Corner, Fanzone, Fan Area Double Gauche and 17–27 now have matching organizer virtual-view handoffs, separate from dated attendee references. Bronze’s organizer page also exposes an entry, but no single Bronze modeled-seat view is assigned. PRM and hospitality remain source-only information. Spa still has zero checked dated attendee references; no source imagery was rehosted or capture year invented.
 
 Monza is a distinct reference venue with an honest empty attendee collection. No source date, review, rating or exact-row photo match was inferred from its organizer seating diagram or from another circuit’s media. Bank source links open the current 2027 organizer PDF; they are not labeled as virtual panoramas.
+
+Monza’s eight added product regions retain the honest empty attendee-reference state. All official bank links open the checked 2027 organizer map/list PDF; no panorama, capture date, review or exact-seat photograph is inferred from the new model divisions.

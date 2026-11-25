@@ -134,14 +134,14 @@ test('every Silverstone model position stays outside its modeled racing surface'
 });
 
 
-test('Monza 2027 uses its GP loop and five named source envelopes without historic or pit routes',()=>{
- const m=circuitModels.italy;assert.equal(findCircuitModel(2027,'italy'),m);assert.equal(findCircuitModel(2026,'italy'),undefined);assert.equal(m.banks.length,5);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),8320);
+test('Monza 2027 keeps its GP loop and five source envelopes as estimated coverage expands',()=>{
+ const m=circuitModels.italy;assert.equal(findCircuitModel(2027,'italy'),m);assert.equal(findCircuitModel(2026,'italy'),undefined);assert.equal(m.banks.length,13);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),17536);
  assert.equal(monza.licence,'ODbL-1.0');assert.equal(monza.source,'https://www.openstreetmap.org/relation/284565');assert.ok(monza.length_m>5750&&monza.length_m<5850);assert.equal(monza.points.length,294);assert.equal(new Set(monza.ways).size,20);for(const excluded of ['38168747','38168756','34404709','19982933','19983025'])assert.ok(!monza.ways.includes(excluded));
- assert.deepEqual(m.banks.map(b=>b.footprint),['193647796','193647795','231257063','179794158','231026020']);assert.ok(m.banks.every(b=>b.source.endsWith('GP_F1_2027_LISTINO_PREZZI-1.pdf')&&!b.roof));
+ assert.deepEqual(m.banks.slice(0,5).map(b=>b.footprint),['193647796','193647795','231257063','179794158','231026020']);assert.ok(m.banks.every(b=>b.source.endsWith('GP_F1_2027_LISTINO_PREZZI-1.pdf')&&!b.roof));
  assert.equal(m.terrain,undefined);assert.match(m.evidence,/flyover bridges/);assert.equal(m.unmappedProducts!.find(p=>p.id==='gf')!.source,m.banks[0].source);assert.match(m.unmappedProducts!.find(p=>p.id==='gf')!.note,/not numbered/);assert.ok(monza.vegetation.length>1000);assert.equal(monza.forest_sources.length,41);
 });
 
-test('every initial Monza modeled position stays clear of its GP racing surface',async()=>{
+test('every Monza modeled position stays clear of its GP racing surface',async()=>{
  const {closestTrack}=await import('./circuitSeating'),m=circuitModels.italy;
  for(const b of m.banks)for(let section=1;section<=b.sections;section++)for(let row=1;row<=b.rows;row++)for(let seat=1;seat<=b.seats;seat++){const p=modelPosition(m,{bank:b.id,section,row,seat}),t=closestTrack(m,[p[0],p[2]]);assert.ok(Math.hypot(p[0]-t[0],p[2]-t[1])>15,b.id+' intersects road');}
 });
