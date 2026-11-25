@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "monza-remaining-start-finish-products",
+  "phase": "monza-remaining-ascari-products",
   "active_run": null,
-  "next_action": "Continue Monza remaining start/finish products 2/3, 27\u201330 and 32 from the retained 2027 organizer map and licensed geometry; use compact estimated regions only where supported, otherwise expose source-only options. Assess GF as unnumbered seating without assigning actual chairs, then audit remaining Ascari 12/13/14/16/18 against missing historic context. Bridge research is checkpointed in research/monza/bridge-context.json: horizontal GP crossing and layer order are identified, but no deck clearance/support/profile evidence is established. Do not re-query the same three ways or use maximum bank rise as bridge clearance. Keep Serraglio 11 source-only pending new vertical/structural evidence. 35A/B/C boundaries remain unresolved and must not borrow 24. Parabolica 21A\u2013E/25 batch is complete at 25 banks/26,776 illustrative positions; do not repeat it or GP/woodland acquisition. Preserve source/estimated distinctions and all scene/replay/photo/privacy/season behavior.",
+  "next_action": "Audit remaining Monza Ascari 12/13/14/16/18 against retained licensed geography and the current 2027 organizer map. Keep historic bridge/Serraglio 11 and distinct 35A/B/C unresolved; bridge-context.json already identifies the horizontal crossing but not vertical structure. Start/finish GT 2/3/27\u201330 and Junior Interna 32 are now separate source-only options because their event envelopes and pit context are unsupported; do not invent or borrow neighboring seats. GF now has a compact unnumbered representative sample, not the whole area or actual chairs. Monza currently has 26 banks/27,640 illustrative positions and 13 source-only options. Seek checked attributable dated Monza spectator references when evidence supports location/capture year; do not substitute another circuit or imply exact seat calibration. Preserve scene, replay, photo, privacy and season behavior. After the remaining public-product audit, advance the verified venue queue instead of repeating completed GP/woodland or bridge acquisition.",
   "venues": [
     {
       "id": "las-vegas",
@@ -177,7 +177,7 @@
       "id": "italy",
       "event": "Italy",
       "venue": "Monza",
-      "status": "representative_3d_twenty_five_banks_2027",
+      "status": "representative_3d_twenty_six_banks_2027",
       "sources": [
         "https://www.formula1.com/en/racing/2027/italy",
         "https://www.monzanet.it/en/f1-grand-prix/",
@@ -185,20 +185,20 @@
         "https://www.monzanet.it/wp-content/uploads/2026/08/GP_F1_2027_LISTINO_PREZZI-1.pdf",
         "https://www.openstreetmap.org/relation/284565"
       ],
-      "next_action": "Continue Monza remaining start/finish products 2/3, 27\u201330 and 32 from the retained 2027 organizer map and licensed geometry; use compact estimated regions only where supported, otherwise expose source-only options. Assess GF as unnumbered seating without assigning actual chairs, then audit remaining Ascari 12/13/14/16/18 against missing historic context. Bridge research is checkpointed in research/monza/bridge-context.json: horizontal GP crossing and layer order are identified, but no deck clearance/support/profile evidence is established. Do not re-query the same three ways or use maximum bank rise as bridge clearance. Keep Serraglio 11 source-only pending new vertical/structural evidence. 35A/B/C boundaries remain unresolved and must not borrow 24. Parabolica 21A\u2013E/25 batch is complete at 25 banks/26,776 illustrative positions; do not repeat it or GP/woodland acquisition. Preserve source/estimated distinctions and all scene/replay/photo/privacy/season behavior.",
-      "modeled_banks": 25,
-      "modeled_positions": 26776,
+      "next_action": "Audit remaining Monza Ascari 12/13/14/16/18 against retained licensed geography and the current 2027 organizer map. Keep historic bridge/Serraglio 11 and distinct 35A/B/C unresolved; bridge-context.json already identifies the horizontal crossing but not vertical structure. Start/finish GT 2/3/27\u201330 and Junior Interna 32 are now separate source-only options because their event envelopes and pit context are unsupported; do not invent or borrow neighboring seats. GF now has a compact unnumbered representative sample, not the whole area or actual chairs. Monza currently has 26 banks/27,640 illustrative positions and 13 source-only options. Seek checked attributable dated Monza spectator references when evidence supports location/capture year; do not substitute another circuit or imply exact seat calibration. Preserve scene, replay, photo, privacy and season behavior. After the remaining public-product audit, advance the verified venue queue instead of repeating completed GP/woodland or bridge acquisition.",
+      "modeled_banks": 26,
+      "modeled_positions": 27640,
       "seasons_with_3d_coverage": [
         2027
       ],
       "exact_seats_verified": false,
       "remaining_gaps": [
-        "Other 2027 organizer products",
+        "Ascari 12/13/14/16/18 public-product audit; exact GF extent and unsupported start/finish/35 boundaries",
         "Flat ground: historic banking/flyover and structure elevations missing",
         "Actual chair/row IDs, canopies, obstructions and accessible routes",
         "No checked dated attendee photos or historical Monza telemetry"
       ],
-      "source_only_options": 7,
+      "source_only_options": 13,
       "bridge_research_artifact": "research/monza/bridge-context.json",
       "bridge_status": "Horizontal crossing and vertical order identified; deck clearance, supports and banking profile unverified; no runtime structure"
     },
@@ -864,6 +864,23 @@
         "No dated attendee sources, exact chairs, canopies, access routes or physical sightline verification"
       ],
       "next": "Continue Monza remaining start/finish products 2/3, 27\u201330 and 32 from the retained 2027 organizer map and licensed geometry; use compact estimated regions only where supported, otherwise expose source-only options. Assess GF as unnumbered seating without assigning actual chairs, then audit remaining Ascari 12/13/14/16/18 against missing historic context. Bridge research is checkpointed in research/monza/bridge-context.json: horizontal GP crossing and layer order are identified, but no deck clearance/support/profile evidence is established. Do not re-query the same three ways or use maximum bank rise as bridge clearance. Keep Serraglio 11 source-only pending new vertical/structural evidence. 35A/B/C boundaries remain unresolved and must not borrow 24. Parabolica 21A\u2013E/25 batch is complete at 25 banks/26,776 illustrative positions; do not repeat it or GP/woodland acquisition. Preserve source/estimated distinctions and all scene/replay/photo/privacy/season behavior."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Monza GF unnumbered sample and start/finish product handoffs",
+      "result": "Added GF as free seating with 864 illustrative positions in a compact representative inside-Parabolica region. Monza now has 26 banks/27,640 model positions; GT 2/3/27\u201330 and 32 have distinct source-only information, bringing that list to 13.",
+      "evidence": [
+        "Current 2027 organizer PDF explicitly marks GF not numbered and names seven remaining start/finish products separately",
+        "GF uses source 194457681 axis/center with an authored 40m width; initial 53m sample failed road clearance and was narrowed before release",
+        "88 tests pass, including all-position road clearance, nonoverlap, season identity, camera framing and no borrowed model seats for unsupported products",
+        "1440px/320px rendered GF stand and last section 2/row 12/position 36 via grid; source-only disclosure inspected; no page errors or horizontal overflow"
+      ],
+      "limitations": [
+        "GF does not reconstruct its full extent, actual chairs, canopy, access or physical obstructions",
+        "GT and 32 event boundaries/pit relationships remain unresolved; source-only links provide no seat camera",
+        "No new dated attendee photo or historical Monza telemetry"
+      ],
+      "next": "Audit remaining Monza Ascari 12/13/14/16/18 against retained licensed geography and the current 2027 organizer map. Keep historic bridge/Serraglio 11 and distinct 35A/B/C unresolved; bridge-context.json already identifies the horizontal crossing but not vertical structure. Start/finish GT 2/3/27\u201330 and Junior Interna 32 are now separate source-only options because their event envelopes and pit context are unsupported; do not invent or borrow neighboring seats. GF now has a compact unnumbered representative sample, not the whole area or actual chairs. Monza currently has 26 banks/27,640 illustrative positions and 13 source-only options. Seek checked attributable dated Monza spectator references when evidence supports location/capture year; do not substitute another circuit or imply exact seat calibration. Preserve scene, replay, photo, privacy and season behavior. After the remaining public-product audit, advance the verified venue queue instead of repeating completed GP/woodland or bridge acquisition."
     }
   ],
   "blockers": [

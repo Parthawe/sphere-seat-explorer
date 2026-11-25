@@ -115,3 +115,12 @@ test('Monza Parabolica letters remain estimated and unresolved Vedano products n
  for(const id of ['35a','35b','35c']){assert.equal(m.banks.some(b=>b.id===id),false);assert.match(m.unmappedProducts!.find(p=>p.id===id)!.note,/does not borrow/);}
  assert.match(m.unmappedProducts!.find(p=>p.id==='11')!.note,/deck clearance/);
 });
+
+
+test('Monza GF stays unnumbered and unsupported start/finish products have no borrowed seats',()=>{
+ const m=circuitModels.italy,gf=m.banks.find(b=>b.id==='gf')!;
+ assert.equal(gf.kind,'free');assert.equal(gf.footprint,undefined);assert.equal(gf.roof,false);assert.match(gf.admissionNote!,/part of/);assert.match(gf.admissionNote!,/not numbered/);
+ for(const other of m.banks.filter(b=>b.id!=='gf'))assert.ok(bankEnvelopesSeparated(m,gf,other),'GF overlaps '+other.id);
+ for(const id of ['2','3','27','28','29','30','32']){assert.equal(m.banks.some(b=>b.id===id),false);const source=m.unmappedProducts!.find(p=>p.id===id)!;assert.ok(source);assert.equal(source.group,'Start/finish product boundaries');assert.equal(source.source,gf.source);}
+ assert.match(m.unmappedProducts!.find(p=>p.id==='32')!.note,/pit buildings/);
+});
