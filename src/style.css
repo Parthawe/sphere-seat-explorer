@@ -5912,3 +5912,17 @@ dialog::backdrop {
 .spectator-official-view h3 { font:600 26px 'Barlow Condensed',sans-serif; margin:0 0 8px; }
 .spectator-official-view p { color:#58657b; font-size:14px; line-height:1.65; margin:0 0 14px; }
 .spectator-official-view .spectator-source-link { display:inline-block; }
+.suzuka-ticket-desk .suzuka-facts { display: grid; gap: 16px; margin: 24px 0; }
+.suzuka-facts dt { font-size: 12px; color: #65697c; margin-bottom: 5px; }
+.suzuka-facts dd { margin: 0; font-size: 14px; line-height: 1.5; }
+.suzuka-other-options article { padding: 20px 0; border-bottom: 1px solid #c8cbd4; }
+.suzuka-other-options article h3 { margin: 0 0 8px; }
+.suzuka-other-options article a { display: inline-flex; align-items: center; min-height: 44px; }
+.suzuka-ticket-desk .selected-area-details { padding: 20px 0; }
+.suzuka-ticket-desk .map-area-leader { stroke: #6c7085; }
+.suzuka-ticket-desk .map-area.is-active .map-area-leader { stroke: #e10600; }
+.suzuka-ticket-desk .map-label { text-anchor: middle; }
+.suzuka-ticket-desk .map-area-controls button { min-width: 44px; min-height: 44px; }
+@media (max-width: 600px) {
+  .suzuka-ticket-desk .map-label { font-size: 24px; }
+}

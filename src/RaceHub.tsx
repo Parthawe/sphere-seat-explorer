@@ -14,6 +14,7 @@ import {
   type Race,
 } from "./races";
 const CircuitSeatingExplorer = lazy(() => import("./CircuitSeatingExplorer"));
+const SuzukaDesk = lazy(() => import("./SuzukaDesk"));
 const SingaporeDesk = lazy(() => import("./SingaporeDesk"));
 const AbuDhabiDesk = lazy(() => import("./AbuDhabiDesk"));
 const TicketDesk = lazy(() => import("./TicketDesk"));
@@ -283,6 +284,8 @@ export default function RaceHub() {
               >
                 <SingaporeDesk />
               </Suspense>
+            ) : selected.slug === "japan" && route.season === 2027 ? (
+              <Suspense fallback={<div className="hub-loading">Opening Suzuka viewing areas…</div>}><SuzukaDesk /></Suspense>
             ) : selected.slug === "las-vegas" ? (
               <section className="vegas-feature">
                 <img

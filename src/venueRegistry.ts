@@ -1,3 +1,4 @@
+import {suzukaAreas,suzukaGeography,SUZUKA_CHECKED,SUZUKA_TICKETS} from './suzuka';
 import { singaporeAreas, SINGAPORE_CHECKED, SINGAPORE_MAP } from "./singapore";
 import singaporeGeometry from "./singapore-track.json";
 import type { Season } from "./races";
@@ -134,6 +135,9 @@ export const venueRegistry: readonly VenueDefinition[] = [
     coverage: { level: "area-estimate", exactSeats: false, seat3d: false },
     areas: singaporeAreas,
     map: { markerStyle: "callout", roadStroke: 6, trackStroke: 2.5 },
+  },
+  {
+    id:'japan',circuitId:'suzuka',raceSlug:'japan',season:2027,name:'Suzuka Circuit',watermark:'SUZUKA',checked:SUZUKA_CHECKED,durationDays:3,officialMap:SUZUKA_TICKETS,ticketGuidance:'https://www.suzukacircuit.jp/f1/faq/faq_ticket.html',geography:suzukaGeography,download:'/data/suzuka-track.json',coverage:{level:'area-estimate',exactSeats:false,seat3d:false},areas:suzukaAreas,map:{markerStyle:'callout',roadStroke:9,trackStroke:3,decorations:[{kind:'path',d:'M'+suzukaGeography.grade_separation.upper_map_points.map(p=>p.join(',')).join(' L'),stroke:'#20212b',width:12},{kind:'path',d:'M'+suzukaGeography.grade_separation.upper_map_points.map(p=>p.join(',')).join(' L'),stroke:'#f0f1f4',width:3}]}
   },
 ];
 export function findVenue(season: number, raceSlug: string) {
