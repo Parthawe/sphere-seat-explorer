@@ -5,7 +5,7 @@ test('physical circuit and season cannot silently cross Qatar/Bahrain references
  assert.equal(findCircuitModel(2026,'qatar')?.id,'qatar');assert.equal(findCircuitModel(2027,'bahrain')?.id,'bahrain');
  assert.equal(findCircuitModel(2026,'bahrain'),undefined);assert.equal(findCircuitModel(2027,'qatar'),undefined);
  assert.notDeepEqual(circuitModels.qatar.track,circuitModels.bahrain.track);
- for(const m of Object.values(circuitModels)){assert.deepEqual(m.track[0],m.track.at(-1));assert.ok(m.length>5000&&m.length<(m.id==='great-britain'?6000:5600));assert.ok(m.track.flat().every(Number.isFinite));}
+ for(const m of Object.values(circuitModels)){assert.deepEqual(m.track[0],m.track.at(-1));assert.ok(m.length>5000&&m.length<(m.id==='belgium'?7100:m.id==='great-britain'?6000:5600));assert.ok(m.track.flat().every(Number.isFinite));}
 });
 test('all model positions are finite, unique and reachable without claiming ticket IDs',()=>{
  for(const m of Object.values(circuitModels))for(const b of m.banks){const keys=new Set<string>(),coordinates=new Set<string>();

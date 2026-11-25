@@ -1,6 +1,6 @@
-## Latest checkpoint: Spa offline terrain input complete
+## Latest checkpoint: Spa initial three-bank terrain study
 
-The SPW service recovered and all 330 source road-height slots plus the 425-point coarse context grid are now retained in research/spa/terrain-samples.json. Projection, seam, interpolation, source attribution and profile checks pass. The earlier partial artifact is a regression fixture. Next integrate one height-aware geographic renderer and finish current bank associations; do not re-query already collected terrain or present data completion as a finished Spa scene. Existing public scenes remain unchanged.
+Spa 2027 now supports Gold 1, Moët & Chandon/ex Gold 3 and Silver 1 with 8,784 illustrative positions. Road, passing cars, fences, bank foundations and cameras share height-aware rendering; coarse terrain and authored forest context preserve source/accuracy notes. This is initial bank coverage, not all Spa options or a verified ticket layout. Next check and add the remaining current organizer bank regions without repeating terrain collection. Preserve all existing scenes and the explicit exact-seat boundary.
 
 ## Latest checkpoint: Silverstone 2027 initial study
 

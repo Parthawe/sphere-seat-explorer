@@ -1,12 +1,14 @@
+import {groundHeight,type HeightField} from './circuitTerrain';
+import spa from './spa-geometry.json';
 import qatar from './qatar-geometry.json';
 import bahrain from './bahrain-geometry.json';
 import yas from './yas-geometry.json';
 import albert from './albert-park-geometry.json';
 import silverstone from './silverstone-geometry.json';
-export type CircuitId = 'qatar' | 'bahrain' | 'united-arab-emirates' | 'australia' | 'great-britain';
+export type CircuitId = 'qatar' | 'bahrain' | 'united-arab-emirates' | 'australia' | 'great-britain' | 'belgium';
 export type ModelPosition = {bank:string;section:number;row:number;seat:number};
 export type ModelBank = {id:string;product:string;name:string;center:[number,number];width:number;axis?:[number,number];footprint?:string;sections:number;rows:number;seats:number;roof:boolean;kind:'assigned'|'free'|'lawn'|'check';confidence:string;source:string};
-export type CircuitModel = {id:CircuitId;name:string;country:string;season:2026|2027;dates:string;track:number[][];features:{id:string;name:string;points:number[][];kind?:string;holes?:number[][][]}[];vegetation?:{id:string;point:number[]}[];appearance?:'day';checked?:string;defaultBank?:string;pitBank?:string;banks:ModelBank[];source:string;ticketUrl:string;geometryUrl:string;length:number;evidence:string};
+export type CircuitModel = {id:CircuitId;name:string;country:string;season:2026|2027;dates:string;track:number[][];trackHeights?:number[];terrain?:HeightField;features:{id:string;name:string;points:number[][];kind?:string;holes?:number[][][]}[];vegetation?:{id:string;point:number[]}[];appearance?:'day';checked?:string;defaultBank?:string;pitBank?:string;banks:ModelBank[];source:string;ticketUrl:string;geometryUrl:string;length:number;evidence:string};
 export const BAHRAIN_EVENT='https://www.bahraingp.com/blog/events/f1-2027/';
 const qSource=(path:string)=>'https://www.lcsc.qa/ticket/'+path+'-3-day';
 // Fit the source polygon rather than pointing a rectangular stand at one nearby road point.
@@ -37,6 +39,7 @@ const silverBank=(id:string,name:string,feature:string,sections=3,center?:[numbe
  const f=silverstone.features.find(f=>f.id===feature)!,fit=footprintPlacement(f.points);
  return {id,product:id,name,center:center??fit.center,width:width??Math.min(fit.width,130),axis:fit.axis,sections,rows:16,seats:36,roof:false,kind:'assigned',confidence:'OSM-anchored representative bank; rectangular boundaries, tiers and chairs estimated; not a surveyed event layout',source:SILVERSTONE_SOURCE};
 };
+const spaBank=(id:string,name:string,feature:string,width:number,sections:number,rows:number,seats:number,source:string):ModelBank=>{const fit=footprintPlacement(spa.features.find(f=>f.id===feature)!.points);return {id,product:id,name,center:fit.center,axis:fit.axis,width,sections,rows,seats,roof:false,kind:'assigned',source,confidence:'OSM-anchored representative bank; rectangular boundaries, level platform, tiers and chairs estimated'};};
 export const circuitModels:Record<CircuitId,CircuitModel>={
  qatar:{id:'qatar',name:'Lusail International Circuit',country:'Qatar',season:2026,dates:'27–29 November 2026',track:qatar.points,features:qatar.features,source:'https://www.lcsc.qa/formula12026',ticketUrl:'https://www.lcsc.qa/formula12026',geometryUrl:'/data/qatar-geometry.json',length:qatar.length_m,evidence:'Main has a permanent footprint reference. North, T2, T16 and Hill are estimated regions from organizer descriptions; they are not surveyed temporary layouts.',banks:[
   {id:'main',product:'main',name:'Main Grandstand',...footprint(qatar,'152483596'),sections:9,rows:18,seats:44,roof:true,kind:'assigned',confidence:'OSM permanent footprint-aligned envelope; modeled tiers and chairs; facing inferred',source:qSource('main-grandstand')},
@@ -110,6 +113,11 @@ export const circuitModels:Record<CircuitId,CircuitModel>={
   silverBank('the-view','The View','227342454',2),
   silverBank('landostand','Landostand','227342453',5,[155,1255],150),
  ]},
+ belgium:{id:'belgium',name:'Circuit de Spa-Francorchamps',country:'Belgium',season:2027,checked:'25 Nov 2026',dates:'23–25 July 2027 · racing weekend',track:spa.points,trackHeights:spa.trackHeights,terrain:spa.terrain,features:spa.features,vegetation:spa.forest_samples.map((point,i)=>({id:String(i+1),point})),appearance:'day',defaultBank:'gold-1',pitBank:'gold-1',source:'https://www.spagrandprix.com/en/ticketing/ticket/map',ticketUrl:'https://www.spagrandprix.com/en/ticketing/ticket/list',geometryUrl:'/data/spa-geometry.json',length:spa.length_m,evidence:'Initial three-bank study: Gold 1 Pit, Moët & Chandon (formerly Gold 3) and Silver 1. Other current products are not modeled yet. These are representative OSM-anchored banks, not surveyed event boundaries. All sections, rows and chairs are illustrative. SPW 2021–2022 bare-ground samples supply the road profile and a coarse 17×25 context grid; the road margin and bank foundations are authored earthwork. Tree samples are authored within licensed forest regions, not a tree inventory. This is not a 50cm terrain crop, measured sightline or exact ticket match. Cover, accessible routes, hospitality and premium row boundaries remain unverified; canopies are omitted.',banks:[
+  spaBank('gold-1','Gold 1 · Pit','174882363',150,5,18,40,'https://www.spagrandprix.com/en/tickets-gold-1-pit'),
+  spaBank('moet-chandon','Moët & Chandon · ex Gold 3','1134053908',140,4,18,40,'https://www.spagrandprix.com/en/tickets-moet-et-chandon-grandstand'),
+  spaBank('silver-1','Silver 1 · Francorchamps','1353159437',110,4,16,36,'https://www.spagrandprix.com/en/ticketing/ticket/list'),
+ ]},
 };
 export function findCircuitModel(season:number,race:string){const m=circuitModels[race as CircuitId];return m?.season===season?m:undefined;}
 export function closestTrack(model:CircuitModel,point:readonly number[]):[number,number]{let best=Infinity,hit:[number,number]=[0,0];for(let i=1;i<model.track.length;i++){const a=model.track[i-1],b=model.track[i],dx=b[0]-a[0],dz=b[1]-a[1],f=Math.max(0,Math.min(1,((point[0]-a[0])*dx+(point[1]-a[1])*dz)/(dx*dx+dz*dz||1))),p:[number,number]=[a[0]+f*dx,a[1]+f*dz],d=Math.hypot(p[0]-point[0],p[1]-point[1]);if(d<best){best=d;hit=p;}}return hit;}
@@ -121,17 +129,24 @@ export function bankFrame(model:CircuitModel,bank:ModelBank){
 }
 export function normalizeModelPosition(model:CircuitModel,p:Partial<ModelPosition>):ModelPosition{const b=model.banks.find(b=>b.id===p.bank)??model.banks.find(b=>b.id===model.defaultBank)??model.banks[0];const bound=(n:unknown,max:number,def:number)=>typeof n==='number'&&Number.isFinite(n)?Math.max(1,Math.min(max,Math.round(n))):def;return {bank:b.id,section:bound(p.section,b.sections,Math.ceil(b.sections/2)),row:bound(p.row,b.rows,Math.ceil(b.rows/2)),seat:bound(p.seat,b.seats,Math.ceil(b.seats/2))};}
 export function localModelPosition(bank:ModelBank,p:ModelPosition):[number,number,number]{const lawn=bank.kind==='lawn',pitch=bank.width/(bank.sections*bank.seats+(bank.sections-1)*3);const x=((p.section-1)*(bank.seats+3)+p.seat-.5)*pitch-bank.width/2;return [x,lawn?3+(p.row-1)*.14:.7+(p.row-1)*.43,(bank.rows/2-p.row)*(lawn?3:.88)];}
-export function modelPosition(model:CircuitModel,p:ModelPosition):[number,number,number]{const b=model.banks.find(b=>b.id===p.bank)!;const [x,y,z]=localModelPosition(b,p),{yaw}=bankFrame(model,b);return [b.center[0]+x*Math.cos(yaw)+z*Math.sin(yaw),y,b.center[1]-x*Math.sin(yaw)+z*Math.cos(yaw)];}
+export function bankGroundHeight(model:CircuitModel,bank:ModelBank){
+ if(!model.terrain)return 0;
+ const {yaw}=bankFrame(model,bank),c=Math.cos(yaw),s=Math.sin(yaw),samples=[groundHeight(model,...bank.center)];
+ for(const x of [-bank.width/2,bank.width/2])for(const z of [-bank.rows*.44,bank.rows*.44])samples.push(groundHeight(model,bank.center[0]+x*c+z*s,bank.center[1]-x*s+z*c));
+ return Math.max(...samples)+.3;
+}
+export function modelPosition(model:CircuitModel,p:ModelPosition):[number,number,number]{const b=model.banks.find(b=>b.id===p.bank)!;const [x,y,z]=localModelPosition(b,p),{yaw}=bankFrame(model,b);return [b.center[0]+x*Math.cos(yaw)+z*Math.sin(yaw),y+bankGroundHeight(model,b),b.center[1]-x*Math.sin(yaw)+z*Math.cos(yaw)];}
 export function modelCount(bank:ModelBank){return bank.sections*bank.rows*bank.seats;}
 export function positionKey(p:ModelPosition){return `${p.bank}:${p.section}:${p.row}:${p.seat}`;}
 export function modelPositionUrl(origin:string,model:CircuitModel,p:ModelPosition){const u=new URL(origin);u.search=new URLSearchParams({season:String(model.season),race:model.id,screen:'circuit',bank:p.bank,section:String(p.section),modelRow:String(p.row),position:String(p.seat)}).toString();u.hash='';return u.toString();}
 
 /** Fit overview framing to each physical venue and viewport, with room for scene controls. */
 export function circuitOverviewCamera(model:CircuitModel,aspect:number,verticalFraction=.7){
- const points:number[][]=model.track.map(p=>[p[0],0,p[1]]);
- for(const b of model.banks){const {yaw}=bankFrame(model,b),c=Math.cos(yaw),s=Math.sin(yaw);for(const x of [-b.width/2,b.width/2])for(const z of [-b.rows*.44-3,b.rows*.44+3])for(const y of [0,b.rows*.43+6])points.push([b.center[0]+x*c+z*s,y,b.center[1]-x*s+z*c]);}
- const target:[number,number,number]=[(Math.min(...points.map(p=>p[0]))+Math.max(...points.map(p=>p[0])))/2,0,(Math.min(...points.map(p=>p[2]))+Math.max(...points.map(p=>p[2])))/2];
- const length=Math.hypot(.6,1,.9),normal=[.6/length,1/length,.9/length],rLength=Math.hypot(normal[0],normal[2]),right=[normal[2]/rLength,0,-normal[0]/rLength],up=[-normal[1]*normal[0]/rLength,rLength,-normal[1]*normal[2]/rLength];
+ const points:number[][]=model.track.map((p,i)=>[p[0],model.trackHeights?.[i]??0,p[1]]);
+ for(const b of model.banks){const {yaw}=bankFrame(model,b),c=Math.cos(yaw),s=Math.sin(yaw);for(const x of [-b.width/2,b.width/2])for(const z of [-b.rows*.44-3,b.rows*.44+3])for(const y of [0,b.rows*.43+6])points.push([b.center[0]+x*c+z*s,y+bankGroundHeight(model,b),b.center[1]-x*s+z*c]);}
+ if(model.terrain){const t=model.terrain;for(let row=0;row<t.rows;row++)for(let col=0;col<t.columns;col++)points.push([t.bounds[0]+col/(t.columns-1)*(t.bounds[2]-t.bounds[0]),t.heights[row*t.columns+col],t.bounds[1]+row/(t.rows-1)*(t.bounds[3]-t.bounds[1])]);}
+ const target:[number,number,number]=[(Math.min(...points.map(p=>p[0]))+Math.max(...points.map(p=>p[0])))/2,model.terrain?(Math.min(...points.map(p=>p[1]))+Math.max(...points.map(p=>p[1])))/2:0,(Math.min(...points.map(p=>p[2]))+Math.max(...points.map(p=>p[2])))/2];
+ const direction=model.terrain&&aspect<.8?[0,1,.25]:[.6,1,.9],length=Math.hypot(...direction),normal=direction.map(n=>n/length),rLength=Math.hypot(normal[0],normal[2]),right=[normal[2]/rLength,0,-normal[0]/rLength],up=[-normal[1]*normal[0]/rLength,rLength,-normal[1]*normal[2]/rLength];
  const tan=Math.tan(Math.PI/8),ratio=Number.isFinite(aspect)&&aspect>0?aspect:1;let distance=500;
  for(const p of points){const v=p.map((n,i)=>n-target[i]),depth=v.reduce((n,a,i)=>n+a*normal[i],0),x=v.reduce((n,a,i)=>n+a*right[i],0),y=v.reduce((n,a,i)=>n+a*up[i],0);distance=Math.max(distance,depth+Math.abs(x)/(tan*ratio*.82),depth+Math.abs(y)/(tan*verticalFraction));}
  return {eye:target.map((n,i)=>n+normal[i]*distance) as [number,number,number],target};

@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "remaining-venue-source-verification",
+  "phase": "spa-remaining-viewing-bank-associations",
   "active_run": null,
-  "next_action": "Use completed research/spa/terrain-samples.json offline: 330 source road heights and 425 coarse grid samples are acquired and validated. Implement a shared height-aware sampler/renderer for road/runoff, cars with pitch, fences, bank foundations, camera targets/overview bounds and eye height above local ground; preserve existing flat models. Complete current Spa product-to-bank associations from the checked organizer map. Do not repeat event identity checks or SPW acquisition. Validate source/height consistency, desktop/phone selection and recovery before exposing a Spa 3D route. No exact chair mapping or 50cm terrain-crop claim.",
+  "next_action": "Expand Spa 2027 from the initial three-bank terrain-aware study to remaining current organizer products, verifying broad bank associations and variant identities before placement. Preserve Gold 3/Mo\u00ebt & Chandon rename, existing sourced terrain, explicit unmodeled options, empty photo gaps and illustrative seat limits. Do not repeat terrain acquisition or height-renderer foundation work. Check forest/structure realism and low-end performance as evidence allows; preserve all existing scenes and source/privacy/season boundaries.",
   "venues": [
     {
       "id": "las-vegas",
@@ -143,7 +143,7 @@
       "id": "belgium",
       "event": "Belgium",
       "venue": "Spa-Francorchamps",
-      "status": "gp_layout_and_offline_terrain_ready_2027_renderer_pending",
+      "status": "initial_terrain_3d_three_banks_2027",
       "sources": [
         "https://www.formula1.com/en/racing/2027/belgium",
         "https://www.spagrandprix.com/en/",
@@ -154,10 +154,15 @@
         "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
         "https://geoportail.wallonie.be/catalogue/e257f5df-6c96-4118-b4d2-1e63e955df53.html"
       ],
-      "next_action": "Use completed research/spa/terrain-samples.json offline: 330 source road heights and 425 coarse grid samples are acquired and validated. Implement a shared height-aware sampler/renderer for road/runoff, cars with pitch, fences, bank foundations, camera targets/overview bounds and eye height above local ground; preserve existing flat models. Complete current Spa product-to-bank associations from the checked organizer map. Do not repeat event identity checks or SPW acquisition. Validate source/height consistency, desktop/phone selection and recovery before exposing a Spa 3D route. No exact chair mapping or 50cm terrain-crop claim.",
+      "next_action": "Expand Spa 2027 from the initial three-bank terrain-aware study to remaining current organizer products, verifying broad bank associations and variant identities before placement. Preserve Gold 3/Mo\u00ebt & Chandon rename, existing sourced terrain, explicit unmodeled options, empty photo gaps and illustrative seat limits. Do not repeat terrain acquisition or height-renderer foundation work. Check forest/structure realism and low-end performance as evidence allows; preserve all existing scenes and source/privacy/season boundaries.",
       "exact_seats_verified": false,
-      "terrain_status": "Complete sparse offline input: 330 road-height slots and 425 coarse context-grid samples; renderer not integrated",
-      "terrain_artifact": "research/spa/terrain-samples.json"
+      "terrain_status": "Offline profile and context grid integrated; road grading/platforms/forest density authored",
+      "terrain_artifact": "research/spa/terrain-samples.json",
+      "seasons_with_3d_coverage": [
+        2027
+      ],
+      "modeled_positions": 8784,
+      "modeled_banks": 3
     },
     {
       "id": "italy",
@@ -633,6 +638,23 @@
         "No measured sightlines or official seat calibration"
       ],
       "next": "Use completed research/spa/terrain-samples.json offline: 330 source road heights and 425 coarse grid samples are acquired and validated. Implement a shared height-aware sampler/renderer for road/runoff, cars with pitch, fences, bank foundations, camera targets/overview bounds and eye height above local ground; preserve existing flat models. Complete current Spa product-to-bank associations from the checked organizer map. Do not repeat event identity checks or SPW acquisition. Validate source/height consistency, desktop/phone selection and recovery before exposing a Spa 3D route. No exact chair mapping or 50cm terrain-crop claim."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Initial Spa terrain-aware three-bank 3D study",
+      "result": "Added Gold 1, Mo\u00ebt & Chandon/ex Gold 3 and Silver 1 with 8,784 illustrative positions; integrated height-aware road/cars/fences/foundations/camera and separately attributed terrain/forest context.",
+      "evidence": [
+        "74 tests pass; TypeScript/build pass; final package rebuild required",
+        "All 8,784 positions clear modeled road; source-height and above-ground eye checks pass",
+        "Desktop/phone map/grid/camera/zoom/compare/pause/recovery checked; clean-load errors absent",
+        "Five prior geographic models loaded and switched overview; flat defaults preserved"
+      ],
+      "limitations": [
+        "Other Spa products remain unmodeled",
+        "Sparse terrain sampling and authored earthworks/forest/pit/stand structures are not a surveyed digital twin",
+        "No current photo references, actual ticket-chair calibration, accessibility certification or device-performance benchmark"
+      ],
+      "next": "Expand Spa 2027 from the initial three-bank terrain-aware study to remaining current organizer products, verifying broad bank associations and variant identities before placement. Preserve Gold 3/Mo\u00ebt & Chandon rename, existing sourced terrain, explicit unmodeled options, empty photo gaps and illustrative seat limits. Do not repeat terrain acquisition or height-renderer foundation work. Check forest/structure realism and low-end performance as evidence allows; preserve all existing scenes and source/privacy/season boundaries."
     }
   ],
   "blockers": [
