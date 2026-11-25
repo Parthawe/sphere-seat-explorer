@@ -1,14 +1,14 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {groundHeight,roadSample,sampleHeight} from './circuitTerrain';
-import {circuitModels,bankGroundHeight,localModelPosition,modelPosition,findCircuitModel,modelCount,closestTrack,bankFrame} from './circuitSeating';
+import {circuitModels,bankGroundHeight,localModelPosition,modelPosition,findCircuitModel,modelCount,closestTrack,bankFrame,type CircuitModel,type ModelBank} from './circuitSeating';
 test('height fields keep meter axes and reject unknown domains while flat models retain zero',()=>{
  const f={bounds:[0,0,10,10],columns:2,rows:2,heights:[0,10,20,30],baseline:400,source:'test',licence:'test'};
  assert.equal(sampleHeight(f,5,5),15);assert.equal(sampleHeight(f,0,0),0);assert.equal(sampleHeight(f,10,10),30);assert.equal(sampleHeight(f,-1,5),undefined);
  assert.equal(groundHeight(circuitModels.qatar,999999,999999),0);assert.throws(()=>groundHeight(circuitModels.belgium,999999,999999),/Outside sampled/);
 });
 test('Spa keeps full road relief, source heights and level bank/eye offsets',()=>{
- const m=circuitModels.belgium;assert.equal(findCircuitModel(2026,'belgium'),undefined);assert.equal(m.banks.length,15);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),17424);
+ const m=circuitModels.belgium;assert.equal(findCircuitModel(2026,'belgium'),undefined);assert.equal(m.banks.length,18);assert.equal(m.banks.reduce((n,b)=>n+modelCount(b),0),19584);
  assert.ok(Math.max(...m.trackHeights!)-Math.min(...m.trackHeights!)>100);assert.equal(m.terrain?.licence,'CC-BY-4.0');
  m.track.forEach((p,i)=>{const road=roadSample(m,...p as [number,number]);assert.ok(Math.abs(road.height-m.trackHeights![i])<.001);assert.ok(Math.abs(groundHeight(m,...p as [number,number])-road.height)<.001);});
  for(const b of m.banks){const selection={bank:b.id,section:1,row:1,seat:1},p=modelPosition(m,selection),local=localModelPosition(b,selection);assert.ok(Math.abs(p[1]-bankGroundHeight(m,b)-local[1])<1e-9);assert.ok(p[1]>groundHeight(m,p[0],p[2]));}
@@ -43,13 +43,25 @@ test('La Source variants retain organizer identities without borrowing the old-p
 });
 
 
+function bankEnvelopesSeparated(m:CircuitModel,a:ModelBank,b:ModelBank){
+ const corners=(bank:ModelBank)=>{const {yaw}=bankFrame(m,bank),c=Math.cos(yaw),s=Math.sin(yaw);return [-1,1].flatMap(along=>[-1,1].map(across=>{const x=along*(bank.width/2+2),z=across*(bank.rows*.44+2);return [bank.center[0]+x*c+z*s,bank.center[1]-x*s+z*c];}));};
+ const ca=corners(a),cb=corners(b);
+ return [bankFrame(m,a).yaw,bankFrame(m,b).yaw].some(t=>[[Math.cos(t),-Math.sin(t)],[Math.sin(t),Math.cos(t)]].some(axis=>{const x=ca.map(p=>p[0]*axis[0]+p[1]*axis[1]),y=cb.map(p=>p[0]*axis[0]+p[1]*axis[1]);return Math.max(...x)<Math.min(...y)||Math.max(...y)<Math.min(...x);}));
+}
+
 test('Spa pit products keep distinct model envelopes and unsupported Bis locations stay unmapped',()=>{
  const m=circuitModels.belgium,ids=['gold-9','gold-9-bis','gold-11','gold-6'];
- const corners=(b:typeof m.banks[number])=>{const {yaw}=bankFrame(m,b),c=Math.cos(yaw),s=Math.sin(yaw);return [-1,1].flatMap(a=>[-1,1].map(d=>{const x=a*(b.width/2+2),z=d*(b.rows*.44+2);return [b.center[0]+x*c+z*s,b.center[1]-x*s+z*c];}));};
- const separated=(a:typeof m.banks[number],b:typeof m.banks[number])=>{const ca=corners(a),cb=corners(b);return [bankFrame(m,a).yaw,bankFrame(m,b).yaw].some(t=>[[Math.cos(t),-Math.sin(t)],[Math.sin(t),Math.cos(t)]].some(axis=>{const x=ca.map(p=>p[0]*axis[0]+p[1]*axis[1]),y=cb.map(p=>p[0]*axis[0]+p[1]*axis[1]);return Math.max(...x)<Math.min(...y)||Math.max(...y)<Math.min(...x);}));};
- for(const id of ids){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.match(b.confidence,/Estimated pit-straight/);for(const other of m.banks.filter(o=>o.id!==id))assert.ok(separated(b,other),id+' overlaps '+other.id);}
+ for(const id of ids){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.match(b.confidence,/Estimated pit-straight/);for(const other of m.banks.filter(o=>o.id!==id))assert.ok(bankEnvelopesSeparated(m,b,other),id+' overlaps '+other.id);}
  assert.equal(m.banks.find(b=>b.id==='gold-9-bis')!.officialView,true);
  assert.equal(m.banks.find(b=>b.id==='gold-11')!.officialView,false);
  assert.equal(m.banks.some(b=>b.id==='gold-6-bis'),false);
  const pending=m.unmappedProducts!.find(p=>p.id==='gold-6-bis')!;assert.equal(new URL(pending.source).pathname,'/en/gold-6-bis');assert.match(pending.note,/separate uncovered/);
+});
+
+
+test('Eau Rouge banks preserve one Gold 2 region for Standard/Premium and separate Gold 4/5 identities',()=>{
+ const m=circuitModels.belgium,ids=['gold-2','gold-4','gold-5'];
+ for(const id of ids){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.equal(b.officialView,true);assert.match(b.confidence,/Estimated Eau Rouge/);for(const other of m.banks.filter(o=>o.id!==id))assert.ok(bankEnvelopesSeparated(m,b,other),id+' overlaps '+other.id);}
+ const g2=m.banks.find(b=>b.id==='gold-2')!;assert.equal(m.banks.filter(b=>b.id.startsWith('gold-2')).length,1);assert.equal(g2.ticketOptions!.length,2);assert.deepEqual(g2.ticketOptions!.map(p=>new URL(p.source).pathname),['/en/gold-2-gp2','/en/vip-gold-2']);assert.match(g2.admissionNote!,/row allocation is unknown/);
+ assert.match(m.banks.find(b=>b.id==='gold-4')!.name,/All-In/);assert.match(m.banks.find(b=>b.id==='gold-5')!.admissionNote!,/uncovered/);
 });

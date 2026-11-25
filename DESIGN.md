@@ -79,3 +79,7 @@ Use one local-meter coordinate frame and a declared vertical offset. Road height
 Seat framing adds the selected bank's ground elevation to the authored tier/eye offset. The visible eye-height metric must remain height above local modeled ground, not absolute datum elevation. Stand and whole-circuit cameras need height-aware targets, bounds and fog; source samples must remain inside their domain rather than clamp/extrapolate unknown terrain. Passing cars must follow the same road curve in position and pitch. Fences need the same road base elevation, and terrain must not cover the road ribbon. Preserve source/accuracy notes and identify inaccessible or unsampled areas clearly.
 
 Keep all unfinished Spa inputs outside public routing until the shared renderer and desktop/phone checks pass. A successful data download alone is not a finished scene. Terrain attribution needs its own SPW/CC BY source link alongside the existing OSM/ODbL geography credit.
+
+## Shared-bank ticket options
+
+When organizer evidence places multiple package options in one grandstand, keep one model bank and show distinct official-information links beside the cover/assignment caveat. Preserve readable 44px links on phones. Never create a second physical stand or assign premium rows from package names alone. The Gold 2 Standard/Premium comparison follows this pattern.

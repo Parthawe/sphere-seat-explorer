@@ -75,3 +75,5 @@ Combes 1–4 now expose a separate organizer virtual-view handoff within the ref
 Gold 7, 7 Bis, 7 ter and Gold 8 now have matching official product-page handoffs in the reference dialog. Each current page names the virtual-grandstand control; source URLs remain distinct. Capture dates, camera rows and playback are unverified, so these links remain outside dated attendee counts/filters. No panorama imagery or screenshots were copied into the app. The dated attendee collection for Spa remains empty.
 
 Spa Gold 9 and 9 Bis now link the organizer virtual-view entry from their individual product pages. These handoffs remain separate from dated attendee references; capture dates, playback and actual-row correspondence are unknown. Gold 11/6/6 Bis have official-information links only. No new attendee media is hosted or claimed.
+
+Spa Gold 2/4/5 now offer individual organizer virtual-view page handoffs. The Gold 2 Premium information route describes the same physical grandstand; no distinct model rows or attendee sources are inferred. These links retain unknown capture-year, playback and exact-row limits; there are still zero checked dated Spa attendee references.

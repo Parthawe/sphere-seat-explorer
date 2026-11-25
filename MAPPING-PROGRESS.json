@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "spa-eau-rouge-product-associations",
+  "phase": "spa-silver-product-associations",
   "active_run": null,
-  "next_action": "Continue Spa remaining Eau Rouge products: verify Gold 2/standard versus Premium as one physical bank where supported, and Gold 4 All-In/Gold 5 broad organizer-map regions before placing them. Then continue Silver products and other verified venues. Gold 9/9 Bis and Gold 11/6 now have distinct estimated banks; do not repeat their association checks. Gold 6 Bis is a separate official uncovered product but its public map has no distinct named region; retain the visible unmapped-product handoff until new location evidence appears. Preserve fifteen-bank/17,424-position Spa scope, existing terrain, chair-mesh switching fix, source links and photo/year/privacy limits. Do not recollect terrain.",
+  "next_action": "Continue Spa remaining Silver products: verify current Silver 3 Double Gauche, Silver 4 Bruxelles, Silver 5, Silver 7 All-In and Pitlane Walk/Silver 6 identities and named organizer-map regions before placing distinct representative banks. Preserve new Gold 2 Standard/Premium links as one physical bank with unknown real row allocation. Gold 2/4/5 initial source-region assessment and virtual-view handoffs are complete; do not repeat them. Gold 6 Bis remains a separate source-only option until new distinct location evidence appears. Reuse eighteen-bank/19,584-position Spa terrain study; do not recollect terrain or revisit resolved Gold 7 ter identity. Then assess Speed Corner/Fanzone/17\u201327 and other verified venues, keeping nonassigned products separate from chair inventories.",
   "venues": [
     {
       "id": "las-vegas",
@@ -143,7 +143,7 @@
       "id": "belgium",
       "event": "Belgium",
       "venue": "Spa-Francorchamps",
-      "status": "terrain_3d_fifteen_banks_2027",
+      "status": "terrain_3d_eighteen_banks_2027",
       "sources": [
         "https://www.formula1.com/en/racing/2027/belgium",
         "https://www.spagrandprix.com/en/",
@@ -154,15 +154,15 @@
         "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
         "https://geoportail.wallonie.be/catalogue/e257f5df-6c96-4118-b4d2-1e63e955df53.html"
       ],
-      "next_action": "Continue Spa remaining Eau Rouge products: verify Gold 2/standard versus Premium as one physical bank where supported, and Gold 4 All-In/Gold 5 broad organizer-map regions before placing them. Then continue Silver products and other verified venues. Gold 9/9 Bis and Gold 11/6 now have distinct estimated banks; do not repeat their association checks. Gold 6 Bis is a separate official uncovered product but its public map has no distinct named region; retain the visible unmapped-product handoff until new location evidence appears. Preserve fifteen-bank/17,424-position Spa scope, existing terrain, chair-mesh switching fix, source links and photo/year/privacy limits. Do not recollect terrain.",
+      "next_action": "Continue Spa remaining Silver products: verify current Silver 3 Double Gauche, Silver 4 Bruxelles, Silver 5, Silver 7 All-In and Pitlane Walk/Silver 6 identities and named organizer-map regions before placing distinct representative banks. Preserve new Gold 2 Standard/Premium links as one physical bank with unknown real row allocation. Gold 2/4/5 initial source-region assessment and virtual-view handoffs are complete; do not repeat them. Gold 6 Bis remains a separate source-only option until new distinct location evidence appears. Reuse eighteen-bank/19,584-position Spa terrain study; do not recollect terrain or revisit resolved Gold 7 ter identity. Then assess Speed Corner/Fanzone/17\u201327 and other verified venues, keeping nonassigned products separate from chair inventories.",
       "exact_seats_verified": false,
       "terrain_status": "Offline profile and context grid integrated; road grading/platforms/forest density authored",
       "terrain_artifact": "research/spa/terrain-samples.json",
       "seasons_with_3d_coverage": [
         2027
       ],
-      "modeled_positions": 17424,
-      "modeled_banks": 15
+      "modeled_positions": 19584,
+      "modeled_banks": 18
     },
     {
       "id": "italy",
@@ -706,6 +706,23 @@
         "No new dated attendee photos or certified upstream virtual-view playback"
       ],
       "next": "Continue Spa remaining Eau Rouge products: verify Gold 2/standard versus Premium as one physical bank where supported, and Gold 4 All-In/Gold 5 broad organizer-map regions before placing them. Then continue Silver products and other verified venues. Gold 9/9 Bis and Gold 11/6 now have distinct estimated banks; do not repeat their association checks. Gold 6 Bis is a separate official uncovered product but its public map has no distinct named region; retain the visible unmapped-product handoff until new location evidence appears. Preserve fifteen-bank/17,424-position Spa scope, existing terrain, chair-mesh switching fix, source links and photo/year/privacy limits. Do not recollect terrain."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Spa Eau Rouge product-region expansion",
+      "result": "Added Gold 2 GP2, Gold 4 All-In and Gold 5, bringing Spa to eighteen banks and 19,584 illustrative positions. Gold 2 Standard/Premium retain separate official links within one physical model bank.",
+      "evidence": [
+        "78 tests pass, including source-option identities and separating-axis bank overlap checks",
+        "Current organizer map names G2/G4/Gold5; G2 and Gold5 highlights inspected; Gold4 All-In page has no active map highlight, so placement remains a broad named-region interpretation",
+        "Desktop/320px/390px selection, Gold2 last section/row/position, map, package links, reference gap/handoff, zoom, cars and graphics Retry checked with no page errors",
+        "Final TypeScript/production build runs in release packaging"
+      ],
+      "limitations": [
+        "No surveyed bank/chair/premium-row allocation or canopy geometry",
+        "Gold4 package text refers to its 2026 introduction; no future inclusions or availability promised",
+        "No dated attendee photographs or verified virtual-view playback added"
+      ],
+      "next": "Continue Spa remaining Silver products: verify current Silver 3 Double Gauche, Silver 4 Bruxelles, Silver 5, Silver 7 All-In and Pitlane Walk/Silver 6 identities and named organizer-map regions before placing distinct representative banks. Preserve new Gold 2 Standard/Premium links as one physical bank with unknown real row allocation. Gold 2/4/5 initial source-region assessment and virtual-view handoffs are complete; do not repeat them. Gold 6 Bis remains a separate source-only option until new distinct location evidence appears. Reuse eighteen-bank/19,584-position Spa terrain study; do not recollect terrain or revisit resolved Gold 7 ter identity. Then assess Speed Corner/Fanzone/17\u201327 and other verified venues, keeping nonassigned products separate from chair inventories."
     }
   ],
   "blockers": [

@@ -1,3 +1,7 @@
+## Latest checkpoint: Spa Eau Rouge product regions
+
+Spa 2027 now covers eighteen representative banks and 19,584 illustrative positions. Gold 2 GP2, Gold 4 All-In and Gold 5 have independent estimated regions and organizer virtual-view handoffs. Gold 2 Standard/Premium use one physical bank with two official-information links; actual allocation boundaries are unknown. Current product descriptions do not establish surveyed stand envelopes or package availability. Next verify remaining Silver products, then Speed Corner/Fanzone/17–27 and other venues. Reuse existing terrain and preserve the pending Gold 6 Bis gap.
+
 ## Latest checkpoint: Spa pit straight and Chicane expansion
 
 Spa 2027 now covers fifteen representative banks and 17,424 illustrative positions. Gold 9, Gold 9 Bis, Gold 11 Premium and Gold 6 have separate estimated regions and official product links. Gold 6 Bis remains source-only because its current location map has no distinct named region; the UI exposes that gap. Switching the active bank now restores chair transforms when its mesh geometry changes. Next verify Gold 2/4/5 around Eau Rouge, then remaining Silver products. Reuse existing terrain and keep all actual-chair, cover and photo limits explicit.

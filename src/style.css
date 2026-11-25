@@ -5719,6 +5719,12 @@ dialog::backdrop {
 .circuit-position-actions span { margin-left:6px; font-size:11px; }
 .circuit-feedback { font-size:12px; line-height:1.6; word-break:break-word; }
 .circuit-ticket-link { display:block; padding:14px 0; color:#bb0b07; text-underline-offset:4px; font-size:14px; }
+.circuit-ticket-options { border-block:1px solid #c8cdd8; padding:16px 0; }
+.circuit-ticket-options h3 { margin:0; font-size:15px; }
+.circuit-ticket-options p { margin:8px 0 12px; font-size:12px; line-height:1.65; color:#596172; }
+.circuit-ticket-options>div { padding-top:10px; }
+.circuit-ticket-options a { display:flex; flex-wrap:wrap; gap:6px 16px; align-items:center; min-height:44px; color:#bb0b07; text-underline-offset:4px; font-size:14px; }
+.circuit-ticket-options a span { color:#596172; font-size:11px; text-decoration:none; }
 .circuit-model-sources { padding:16px 0; border-block:1px solid #c8cdd8; font-size:13px; line-height:1.7; }
 .circuit-model-sources summary { font-weight:600; cursor:pointer; }
 .circuit-model-sources a { display:block; color:inherit; margin:9px 0; }
