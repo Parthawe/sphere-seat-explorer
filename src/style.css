@@ -5693,6 +5693,13 @@ dialog::backdrop {
 .circuit-position-panel select,.circuit-grid-dialog select { width:100%; background:#fff; border:1px solid #a8afbf; font:inherit; font-size:14px; padding:12px; color:#1b2231; }
 .circuit-bank-facts { padding:15px 0 18px; }
 .circuit-bank-facts strong { font-size:13px; }
+.circuit-unmapped-products { margin-top:12px; border-block:1px solid #c8cdd8; padding:12px 0; font-size:12px; line-height:1.65; color:#596172; }
+.circuit-unmapped-products summary { min-height:44px; cursor:pointer; color:#242937; font-weight:600; align-content:center; }
+.circuit-unmapped-products summary span { margin-left:8px; font-variant-numeric:tabular-nums; }
+.circuit-unmapped-products article { padding:10px 0 18px; }
+.circuit-unmapped-products h3 { margin:0; color:#242937; font-size:15px; }
+.circuit-unmapped-products p { margin:8px 0; }
+.circuit-unmapped-products a { display:inline-block; padding:10px 0; color:#bb0b07; text-underline-offset:4px; }
 .circuit-model-inputs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
 .circuit-model-inputs label { font-size:12px; color:#4e5769; }
 .circuit-model-inputs input { width:100%; margin:7px 0 4px; padding:10px 7px; color:#151d2b; font:600 22px 'Barlow Condensed',sans-serif; border:1px solid #a8afbf; background:white; }

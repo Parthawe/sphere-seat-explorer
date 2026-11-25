@@ -3,7 +3,7 @@ import SilverstoneWing from './SilverstoneWing';
 import CircuitPark,{createGrassTexture} from "./CircuitPark";
 import FormulaCar from "./FormulaCar";
 import {Canvas,useFrame,useThree,useLoader} from '@react-three/fiber';
-import {Component,Suspense,useEffect,useMemo,useRef,useState,type ReactNode,type RefObject} from 'react';
+import {Component,Suspense,useEffect,useLayoutEffect,useMemo,useRef,useState,type ReactNode,type RefObject} from 'react';
 import * as T from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {RoundedBoxGeometry} from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
@@ -17,8 +17,10 @@ export type ModelCameraControls={zoomIn:()=>void;zoomOut:()=>void;resetZoom:()=>
 type Mode='circuit'|'stand'|'seat';
 type Props={onZoomLimitsChange:(inward:boolean,outward:boolean)=>void;cameraControls:RefObject<ModelCameraControls|null>;model:CircuitModel;selection:ModelPosition;mode:Mode;playing:boolean;roofs:boolean;reset:number;onSelect:(p:ModelPosition)=>void;onUnavailable:()=>void;onReady:()=>void};
 function Instances({items,color,geometry,onClick}:{items:{p:number[];s:number[];r?:number[]}[];color:string;geometry?:T.BufferGeometry;onClick?:(index:number)=>void}){
- const ref=useRef<T.InstancedMesh>(null);
- useEffect(()=>{const o=new T.Object3D();items.forEach((v,i)=>{o.position.set(v.p[0],v.p[1],v.p[2]);o.scale.set(v.s[0],v.s[1],v.s[2]);o.rotation.set(...((v.r??[0,0,0]) as [number,number,number]));o.updateMatrix();ref.current?.setMatrixAt(i,o.matrix);});if(ref.current){ref.current.instanceMatrix.needsUpdate=true;ref.current.computeBoundingSphere();}},[items]);
+ const ref=useRef<T.InstancedMesh>(null),{invalidate}=useThree();
+ // Switching the active bank replaces its mesh geometry. Restore instance transforms
+ // on that replacement before rendering, even when the positions have not changed.
+ useLayoutEffect(()=>{const o=new T.Object3D();items.forEach((v,i)=>{o.position.set(v.p[0],v.p[1],v.p[2]);o.scale.set(v.s[0],v.s[1],v.s[2]);o.rotation.set(...((v.r??[0,0,0]) as [number,number,number]));o.updateMatrix();ref.current?.setMatrixAt(i,o.matrix);});if(ref.current){ref.current.instanceMatrix.needsUpdate=true;ref.current.computeBoundingSphere();}invalidate();},[items,geometry,invalidate]);
  return <instancedMesh ref={ref} args={[geometry,undefined,items.length]} castShadow receiveShadow onClick={e=>{if(onClick&&e.instanceId!==undefined){e.stopPropagation();onClick(e.instanceId);}}}>{!geometry&&<boxGeometry/>}<meshStandardMaterial color={color} metalness={.32} roughness={.46}/></instancedMesh>;
 }
 function Bank({bank,model,selection,onSelect,roofs}:{bank:ModelBank;model:CircuitModel;selection:ModelPosition;onSelect:Props['onSelect'];roofs:boolean}){

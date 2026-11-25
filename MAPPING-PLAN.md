@@ -1,3 +1,7 @@
+## Latest checkpoint: Spa pit straight and Chicane expansion
+
+Spa 2027 now covers fifteen representative banks and 17,424 illustrative positions. Gold 9, Gold 9 Bis, Gold 11 Premium and Gold 6 have separate estimated regions and official product links. Gold 6 Bis remains source-only because its current location map has no distinct named region; the UI exposes that gap. Switching the active bank now restores chair transforms when its mesh geometry changes. Next verify Gold 2/4/5 around Eau Rouge, then remaining Silver products. Reuse existing terrain and keep all actual-chair, cover and photo limits explicit.
+
 ## Latest checkpoint: Spa La Source region expansion
 
 Spa 2027 now covers eleven representative banks and 15,408 illustrative positions. Gold 7/7 Bis/7 ter/8 have distinct current product links, cover caveats and official virtual-view handoffs. New named organizer-map evidence resolves the broad Gold 7 ter location; the old-pits OSM Endurance footprint remains excluded. All positions and bank boundaries are estimates. Continue remaining pit/Chicane Gold 9/6 variants and other current products; do not repeat terrain collection or the resolved Gold 7-family assessment.
