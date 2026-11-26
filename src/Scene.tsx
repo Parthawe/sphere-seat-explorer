@@ -1,3 +1,4 @@
+import { seatedLookTarget } from "./seatLook";
 import { points } from "./racingLine";
 import { nearestTrackFraction } from "./rendering";
 import type { ReplayFrame } from "./replayMath";
@@ -200,6 +201,8 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
       lastX = 0,
       lastY = 0;
     const start = (e: PointerEvent) => {
+      const direction = camera.getWorldDirection(new T.Vector3());
+      seatAngles.current = { yaw: Math.atan2(direction.x, direction.z), pitch: Math.asin(T.MathUtils.clamp(direction.y, -1, 1)) };
       down = true;
       lastX = e.clientX;
       lastY = e.clientY;
@@ -217,11 +220,7 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
       lastX = e.clientX;
       lastY = e.clientY;
       const { yaw, pitch } = seatAngles.current;
-      target.current.set(
-        camera.position.x + Math.sin(yaw) * 90,
-        camera.position.y + Math.sin(pitch) * 90,
-        camera.position.z + Math.cos(yaw) * 90,
-      );
+      target.current.set(...seatedLookTarget(camera.position, yaw, pitch));
       camera.lookAt(target.current);
       invalidate();
     };

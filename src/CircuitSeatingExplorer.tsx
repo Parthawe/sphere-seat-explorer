@@ -47,7 +47,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
      <button disabled={!ready||unavailable} aria-label="Reset seated zoom" title="Reset zoom" onClick={()=>cameraControls.current?.resetZoom()}>1×</button>
      <button disabled={!ready||unavailable||!zoomLimits.outward} aria-label="Zoom out on seated view" title="Zoom out" onClick={()=>cameraControls.current?.zoomOut()}>−</button>
     </div>}
-    <div className="circuit-scene-actions">{bank.roof&&<button aria-pressed={!roofs} onClick={()=>setRoofs(!roofs)}>{roofs?"Roof cutaway":"Restore roofs"}</button>}<button onClick={()=>setReset(r=>r+1)}>Reset camera</button><button aria-pressed={playing} onClick={()=>setPlaying(!playing)}>{playing?'Pause cars':'Show passing cars'}</button></div>
+    <div className="circuit-scene-actions">{bank.roof&&<button aria-pressed={!roofs} onClick={()=>setRoofs(!roofs)}>{roofs?"Roof cutaway":"Restore roofs"}</button>}<button onClick={()=>{setFollowing(false);setReset(r=>r+1);}}>Reset camera</button><button aria-pressed={playing} onClick={()=>setPlaying(!playing)}>{playing?'Pause cars':'Show passing cars'}</button></div>
     <div className="circuit-scene-note"><span>{mode==='seat'?'DRAG TO LOOK / BUTTONS OR SCROLL TO ZOOM':'DRAG TO ORBIT / SELECT A CHAIR'}</span><span>Estimated reconstruction · cars simulated</span></div>
    </section>
    <aside className="circuit-position-panel" aria-label="Model position controls">
