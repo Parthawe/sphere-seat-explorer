@@ -69,7 +69,7 @@ export default function RaceHub() {
     [filter, setFilter] = useState("all"),
     [category, setCategory] = useState("grandstand");
   useEffect(() => {
-    const pop = () => setRoute(readRoute(location.search));
+    const pop = () => {requestNavigationFocus();setRoute(readRoute(location.search));};
     window.addEventListener("popstate", pop);
     return () => window.removeEventListener("popstate", pop);
   }, []);
@@ -101,7 +101,8 @@ export default function RaceHub() {
       matchesCircuitSearch(r, search) &&
       (filter === "all" ||
         (filter === "upcoming" && raceStatus(r) !== "Past") ||
-        (filter === "3d" && raceCoverage(route.season,r.slug).has3d)),
+        (filter === "3d" && raceCoverage(route.season,r.slug).has3d) ||
+        (filter === "seats" && ["model","reference3d"].includes(raceCoverage(route.season,r.slug).kind))),
   );
   const circuitModel = findCircuitModel(route.season,route.race);
   useEffect(() => {
@@ -445,14 +446,15 @@ export default function RaceHub() {
                   {[
                     ["all", "All races"],
                     ["upcoming", "Upcoming"],
-                    ["3d", "3D studies"],
+                    ["3d", "All 3D views"],
+                    ["seats", "Seat studies"],
                   ].map(([value, label]) => (
                     <button
                       key={value}
                       aria-pressed={filter === value}
                       onClick={() => setFilter(value)}
                     >
-                      <UiIcon name={value==='3d'?'cube':value==='upcoming'?'calendar':'circuit'}/>{label}
+                      <UiIcon name={value==='seats'?'seat':value==='3d'?'cube':value==='upcoming'?'calendar':'circuit'}/>{label}
                     </button>
                   ))}
                 </div>

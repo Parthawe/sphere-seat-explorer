@@ -27,3 +27,23 @@ export function priceSummary(watch:PriceWatch) {
  return {first,latest,change:watch.points.length>1?latest.amount-first.amount:null,min:Math.min(...watch.points.map(p=>p.amount)),max:Math.max(...watch.points.map(p=>p.amount)),withinTarget:watch.target!==null&&latest.amount<=watch.target};
 }
 export const priceMoney=(amount:number,currency:PriceCurrency)=>new Intl.NumberFormat(undefined,{style:'currency',currency,maximumFractionDigits:2}).format(amount);
+
+/** Apply local edits to the newest stored notebook without replacing another tab's quotes. */
+export function mergePriceWatches(base:PriceWatch[],next:PriceWatch[],latest:PriceWatch[]):PriceWatch[] {
+ const result=latest.map(w=>({...w,points:[...w.points]}));
+ for(const before of base){
+  const after=next.find(w=>w.id===before.id),index=result.findIndex(w=>w.id===before.id),remote=result[index];
+  const removed=new Set(before.points.filter(p=>!after?.points.some(n=>n.id===p.id)).map(p=>p.id));
+  const added=after?.points.filter(p=>!before.points.some(b=>b.id===p.id))??[];
+  const changedTarget=after&&after.target!==before.target;
+  if(!remote){if(added.length||changedTarget)throw Error('This option was removed in another tab. Add it again to record a new quote.');continue;}
+  if(after&&(remote.product!==before.product||remote.seller!==before.seller||remote.currency!==before.currency||remote.start!==before.start||remote.end!==before.end||remote.url!==before.url))throw Error('This option changed in another tab. Reload it before editing.');
+  remote.points=remote.points.filter(p=>!removed.has(p.id));
+  for(const point of added)if(!remote.points.some(p=>p.id===point.id))remote.points.push(point);
+  if(changedTarget)remote.target=after!.target;
+ }
+ for(const watch of next.filter(w=>!base.some(b=>b.id===w.id))){const remote=result.find(w=>w.id===watch.id);if(remote){for(const point of watch.points)if(!remote.points.some(p=>p.id===point.id))remote.points.push(point);}else result.push({...watch,points:[...watch.points]});}
+ const clean=result.filter(w=>w.points.length).map(w=>({...w,points:w.points.sort((a,b)=>Date.parse(a.observedAt)-Date.parse(b.observedAt))}));
+ if(clean.length>30||clean.some(w=>w.points.length>200))throw Error('The saved-note limit was reached in another tab. Export or remove older notes first.');
+ return clean;
+}

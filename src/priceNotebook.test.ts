@@ -25,3 +25,15 @@ test('restored observations sort by observation time and do not merge sellers or
 test('stored notes reject unknown currencies, duplicate options and out-of-event admission',()=>{
  assert.deepEqual(readWatches([{...option,currency:'FAKE'},{...option,start:'2026-11-26'},{...option,end:'2026-11-30'},{...option,start:race.end,end:race.start}],race,now),[]);assert.equal(readWatches([option,option],race,now).length,1);assert.deepEqual(readWatches({options:[option]},race,now),[]);
 });
+
+test('cross-tab edits preserve independent new quotes, local deletions and the latest target',async()=>{
+ const {mergePriceWatches}=await import('./ticketPriceHistory');const base={...option,points:[option.points[0]]};const local={...base,points:[...base.points,{id:'local',amount:800,observedAt:'2026-11-25T13:00:00Z'}]};const remote={...base,target:1100,points:[...base.points,{id:'remote',amount:950,observedAt:'2026-11-25T12:00:00Z'}]};
+ const merged=mergePriceWatches([base],[local],[remote]);assert.deepEqual(merged[0].points.map(p=>p.id),['a','remote','local']);assert.equal(merged[0].target,1100);
+ const deleted=mergePriceWatches([base],[],[remote]);assert.deepEqual(deleted[0].points.map(p=>p.id),['remote']);
+});
+test('a target update cannot replace another tab’s quotes or revive a removed option',async()=>{
+ const {mergePriceWatches}=await import('./ticketPriceHistory');const remote={...option,points:[...option.points,{id:'new',amount:850,observedAt:'2026-11-25T13:00:00Z'}]};const merged=mergePriceWatches([option],[{...option,target:800}],[remote]);assert.equal(merged[0].points.length,3);assert.equal(merged[0].target,800);assert.throws(()=>mergePriceWatches([option],[{...option,target:800}],[]),/removed in another tab/);
+});
+test('undo restores only the local removed quote while preserving another tab’s additions',async()=>{
+ const {mergePriceWatches}=await import('./ticketPriceHistory');const afterRemove={...option,points:[option.points[0]]};const remote={...afterRemove,points:[...afterRemove.points,{id:'external',amount:850,observedAt:'2026-11-25T13:00:00Z'}]};const restored=mergePriceWatches([afterRemove],[option],[remote]);assert.deepEqual(restored[0].points.map(p=>p.id),['a','b','external']);
+});

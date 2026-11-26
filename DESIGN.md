@@ -187,3 +187,7 @@ Label these as community reference diagrams with unverified layout year, no seat
 ## Race Centre · 26 November 2026
 
 Race Centre uses the existing paper/ink/red identity, with championship rows and proportional point bars only when data is supplied. Drivers and Teams are clear selected-state buttons. Display the source fetch time and each championship's published round; stale or failed updates must not look live. Empty states link official results rather than invent numbers. Retained upcoming weekends link the correct season's 3D diagram. Phone layouts stack championships and weekends; tables retain readable names and numeric alignment. Unconnected feeds never show a live badge or fabricated podium.
+
+## Fan audit refinements · 26 November 2026
+
+Separate All 3D views from Seat studies so a fan can find richer viewing work without mistaking every circuit diagram for seat coverage. Keep filters wrapping and preserve dated-reference labels. Browser history should announce the destination heading just like in-product navigation. Price dialogs return to their actual opener, asynchronous actions retain a useful focus destination, and notes from another tab must not silently replace independent quotes. Failed browser storage retains a clearly labelled exportable session rather than pretending it saved.
