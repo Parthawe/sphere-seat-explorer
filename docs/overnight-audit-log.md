@@ -173,6 +173,16 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: Qatar's locator accepted Melbourne Main Grandstand 2026 as a local Main Grandstand. Its exclusion list omitted that named venue. All three locators bounded wrong-year checks to the 2020s/2030s. Keyboard Clear removed its own button and left focus on BODY.
 - Change: the three local parsers share explicit known foreign-venue and unsupported-year checks, keeping numeric row/seat/section values separate from event years. Known foreign locations cannot borrow a same-named local stand. Qatar, Abu Dhabi and Singapore Clear actions return focus to the seating-details field.
 - Validation: 21 affected parser tests passed, including foreign venue aliases, unsupported 1999/2019/2040/2099 years, own-venue names, numeric identifiers and existing product ambiguity. Six browser journeys (three locators × desktop/phone) rejected Melbourne, matched a valid area with synthetic text, and confirmed that text was absent from request URLs/bodies, browser storage and copied area links. Clear emptied input/result and returned focus. No overflow or page errors. Phone screenshot inspected; TypeScript/production build are part of publication.
-- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Publication: v68, source `002ddd8183a8ba69e88520d54f97cc20f1a25b42`, succeeded; matching GitHub push confirmed.
 - Limits: named-venue exclusions are a conservative local heuristic, not a universal event detector, ticket validation or exact-chair location. Tests used synthetic text and a controlled clipboard implementation; no private ticket was collected.
 - Next useful check: guide shortlist copy/download fallbacks and focus when changing task or unsupported locator input, preserving manual checklist boundaries.
+
+
+## 26 November 2026 · 14:29 UTC · Shortlist export when clipboard access fails
+
+- Starting release: v68, source `002ddd8183a8ba69e88520d54f97cc20f1a25b42`; clean checkout.
+- Evidence and validation: the packaged build was tested at 1440px with a controlled clipboard denial and at 390px with the clipboard API absent. Both showed the download fallback and re-enabled Copy. Actual browser downloads had the Singapore 2027 filename, event-year ticket source, two user-marked and two unchecked booking checks, and the independent-verification caveat. Switching to Already have tickets retained choices/checks. Keyboard Clear returned focus to the first choice, removed the notebook and reset checks for a new selection. No overflow or page errors; phone screenshot inspected.
+- Change: none to application code; no failing export or focus assertion. Reconciled the previous successful release in the audit log.
+- Publication: documentation checkpoint only in GitHub; application remains v68. No unchanged tests/build/deployment were repeated.
+- Limits: clipboard failures were deliberate local fixtures, not evidence of browser-wide clipboard behavior. Download content preserves user declarations and source caveats; it does not verify a booking.
+- Next useful check: cross-season comparison storage isolation and unavailable-storage behavior, retaining public area IDs only and a usable transient comparison.
