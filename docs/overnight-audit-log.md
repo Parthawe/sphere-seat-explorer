@@ -30,6 +30,17 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: source media is correctly opt-in and dialog close removes its frames, but keyboard activation of Unload video removed the focused control and left focus on BODY. The photo-post unload used the same unmount pattern.
 - Change: both embed controls return keyboard focus to their corresponding Load button after explicit unload. Initial dialog opening retains its existing focus behavior.
 - Validation: desktop Bahrain video and phone Qatar post flows covered opt-in, explicit unload, restored focus, Escape, trigger-focus restoration, frame removal on close and no automatic reload on reopen. Controlled iframe/widget responses were used; this does not verify current remote playback. The initial Reddit test fixture failed on its second execution because of a globally redeclared const; an isolated fixture corrected that test setup and the repeat-load flow passed without browser errors. Both dialog screenshots inspected. TypeScript passed; production build is included in this release workflow. The full unchanged suite was not rerun for this small focus-only fix.
-- Publication: prepared as the next code release; exact commit/version can be reconciled from native Sites history at the next audit.
+- Publication: v56, source `b5c79ca0d40752ede6ae9cb2609967d26fe1089a`, succeeded; matching GitHub push confirmed.
 - Limits: external source playback, author-reported location and capture date remain unverified; no media was downloaded or rehosted.
 - Next useful check: calendar and race-page navigation, invalid URLs, season boundaries and back/forward restoration.
+
+
+## 26 November 2026 · 08:01 UTC · Race navigation and focus
+
+- Starting release: v56, source `b5c79ca0d40752ede6ae9cb2609967d26fe1089a`; clean checkout.
+- Evidence: selecting a calendar race with Enter removed the calendar button and left keyboard focus on BODY. The destination heading was not announced through focus. The same gap affected user-requested navigation into and out of lazy-loaded scenes.
+- Change: explicit in-app page navigation focuses the destination H1 after it mounts, without changing the scroll position. Hash navigation keeps its own target handling. Deferred focus cancels if the user begins another interaction while content is loading; initial loads and native browser back/forward do not receive an extra forced focus.
+- Validation: desktop 1440px and phone 390px flows passed calendar-to-race, lazy 3D entry, return-to-guide, browser back/forward route restoration and calendar anchor focus. Invalid season, unknown race and unsupported China 2027 scene retained the correct fallback without a Vegas scene. Four affected route/metadata tests and TypeScript passed. Both destination-heading screenshots inspected; no browser errors.
+- Publication: prepared as the next code release; reconcile exact commit/version from native Sites history at the next audit.
+- Limits: browser back/forward route restoration was checked, not assistive-technology speech output. Existing source-season and approximate-view boundaries remain unchanged.
+- Next useful check: daylight scene title/control contrast and small-screen control spacing under bright geometry, without altering source geometry.

@@ -1,3 +1,4 @@
+import { useNavigationFocus } from "./useNavigationFocus";
 import FundingDisclosure from "./FundingDisclosure";
 import CircuitGuidePanel from "./CircuitGuidePanel";
 import { circuitGuideFor, matchesCircuitSearch } from "./circuitGuides";
@@ -65,7 +66,9 @@ export default function RaceHub() {
     return () => window.removeEventListener("popstate", pop);
   }, []);
   useHashTarget(route);
+  const requestNavigationFocus = useNavigationFocus(route);
   function go(next: Route, hash = "") {
+    requestNavigationFocus();
     const p = new URLSearchParams({ season: String(next.season) });
     if (next.race) p.set("race", next.race);
     if (next.circuit) p.set("screen", "circuit");
