@@ -67,7 +67,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
     <button className="circuit-photo-trigger" onClick={()=>{setPlaying(false);setReferencesOpen(true);}}>Photos & fan reports</button>
     <div ref={heading} className="circuit-model-heading"><span>{model.name}</span><h1>{bank.name}</h1><p>{bank.kind==='lawn'?'LAWN STUDY':`MODEL SECTION ${selection.section} / ROW ${selection.row}`} · POSITION {selection.seat}</p></div>
     <nav ref={cameraModes} className="circuit-camera-modes" aria-label="3D camera"><button aria-pressed={mode==='circuit'} onClick={()=>{setFollowing(false);setMode('circuit');}}>Full circuit</button><button aria-pressed={mode==='stand'} onClick={()=>{setFollowing(false);setMode('stand');}}>Grandstand</button><button aria-pressed={mode==='seat'} onClick={()=>setMode('seat')}>{bank.kind==='lawn'?'Standing view':'Seated view'}</button></nav>
-    {mode==='seat'&&!unavailable&&<div className="circuit-seat-zoom" role="group" aria-label="Seated view zoom" title="Zoom keeps your modeled seat fixed">
+    {mode==='seat'&&ready&&!unavailable&&<div className="circuit-seat-zoom" role="group" aria-label="Seated view zoom" title="Zoom keeps your modeled seat fixed">
      <button disabled={!ready||unavailable||!zoomLimits.inward} aria-label="Zoom in on seated view" title="Zoom in" onClick={()=>cameraControls.current?.zoomIn()}>+</button>
      <button disabled={!ready||unavailable} aria-label="Reset seated zoom" title="Reset zoom" onClick={()=>cameraControls.current?.resetZoom()}>1×</button>
      <button disabled={!ready||unavailable||!zoomLimits.outward} aria-label="Zoom out on seated view" title="Zoom out" onClick={()=>cameraControls.current?.zoomOut()}>−</button>

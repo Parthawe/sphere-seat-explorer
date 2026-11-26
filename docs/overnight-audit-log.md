@@ -141,6 +141,17 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: blocking the lazy 3D scene module replaced the entire Qatar explorer with the root recovery page. The scene's internal graphics boundary could not catch a failure before its module loaded. Position controls, the model grid and direct guide navigation were lost.
 - Change: a local boundary now contains scene import/render failures and uses the existing graphics fallback. Retry creates a fresh lazy component, preserves the selected position, stays paused and returns keyboard focus to the scene. The unavailable view announces its fallback and hides the disabled zoom stack that overlapped its text on phone.
 - Validation: controlled module-request failures at 1440px and 390px retained the explorer. Strict browser assertions covered changing row/position in the fallback grid, successful retry after removing the request block, preserved URL selection, paused cars, focus return and navigation back to the guide. Desktop/phone fallback screenshots inspected; no page errors in those controlled flows. TypeScript passed; production build is part of publication.
-- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Publication: v66, source `d2cb325b45012da6fefa34611a594895fb23b1e3`, succeeded; matching GitHub push confirmed.
 - Limits: a controlled local import failure is not evidence of a current production outage or a guarantee that a permanently unavailable asset can be retried successfully. Complete explorer-module failure still uses the root reload/calendar recovery. No source geography, external media, inventory or commercial tracking changed.
 - Next useful check: production build scene-chunk recovery and keyboard access to reference/guide controls during degraded graphics, then audit slow-network loading states without inventing new venue coverage.
+
+
+## 26 November 2026 · 13:02 UTC · Production chunk recovery and loading clarity
+
+- Starting release: v66, source `d2cb325b45012da6fefa34611a594895fb23b1e3`; clean checkout.
+- Evidence: the packaged production build recovered from a deliberately blocked scene chunk at desktop and phone widths. Keyboard photo-reference open/Escape returned focus correctly while graphics were unavailable. Holding the production chunk also left the model grid and references usable with cars disabled. The phone loading screenshot showed the disabled zoom stack crossing the loading-status panel.
+- Change: seated zoom controls now appear once the scene is ready; they remain hidden during loading and graphics failure.
+- Validation: production request-block assertions confirmed retry after restoring the chunk at 1440px and 390px. Held-chunk assertions confirmed grid selection survives scene load, reference dialog access, no unsolicited iframe, disabled playback and no horizontal overflow at both widths. Loading screenshots inspected. TypeScript and production build are included in publication; the rebuilt phone loading/ready states are checked before deployment.
+- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Limits: requests were controlled locally against the packaged build, not an upstream outage or physical-device network test. No new venue, source, external media, tracking or exact-seat claim.
+- Next useful check: native browser back/forward across guides, model positions and calendar filters, preserving correct season and focus without adding history entries for every chair.
