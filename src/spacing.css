@@ -139,3 +139,21 @@
   .hub-header nav button { min-width: 52px; padding-inline: 8px; }
   .circuit-explorer-header button { padding-inline: 8px; font-size: 11px; }
 }
+
+/* Race controls belong to the scene, with motion reserved for playback state. */
+.race-experience {padding:var(--panel-inset); margin:24px 0; background:#171c25; border:1px solid #343b47; border-radius:8px; color:#f1f3f7;}
+.race-experience-title {display:flex; align-items:center; justify-content:space-between; gap:12px;}
+.race-experience h3 {margin:0; font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:600;}
+.race-experience-title span {font-size:10px; font-weight:600; letter-spacing:.08em; color:#c3cad5;}
+.race-experience-title span[data-playing=true] {color:#ffb6ae;}
+.race-experience p {font-size:13px; line-height:1.6; color:#c3cad5; margin:12px 0 16px;}
+.race-experience button {min-height:44px; border:1px solid #485160; border-radius:4px; background:#232a35; color:#f1f3f7; padding:10px 12px; font:inherit; font-size:12px; cursor:pointer; transition:background-color 150ms ease-out,border-color 150ms ease-out;}
+.race-experience button:hover {background:#343d4c; border-color:#8a95a7;}
+.race-experience button[aria-pressed=true] {background:#a91b15; border-color:#f05246;}
+.race-experience button:disabled {opacity:.45; cursor:default;}
+.race-experience-play {display:grid; grid-template-columns:1fr auto; gap:8px;}
+.race-experience-play button:first-child {background:#b32119; border-color:#d53d32; font-weight:600;}
+.race-experience-speed {display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0;}
+.race-experience .race-follow {width:100%;}
+.race-experience small {display:block; margin-top:12px; color:#bac3d1; font-size:11px; line-height:1.6;}
+@media (prefers-reduced-motion:reduce) {.race-experience button {transition:none;}}
