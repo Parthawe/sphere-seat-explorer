@@ -13,6 +13,7 @@ SOURCES['silverstone']={'bbox': '-1.035,52.062,-1.005,52.086', 'origin': [-1.02,
 SOURCES['monza']={'bbox': '9.265,45.600,9.299,45.640', 'origin': [9.281, 45.62], 'ways': ['179968257', '179968234', '19842206', '179968242', '179968264', '179968220', '179968262', '179968245', '179968263', '179968229', '179968251', '179968230', '179968252', '179968228', '1443867792', '1443867793', '179968254', '179968226', '179968249', '179968239'], 'features': ['34404645', '179794158', '193647795', '193647796', '194457664', '194457666', '194457667', '194457668', '194457670', '194457671', '194457672', '194457674', '194457675', '194457677', '194457679', '194457680', '194457681', '194457682', '194457684', '194457685', '194457686', '194457687', '194457688', '194457689', '194457690', '194457691', '194457692', '194457693', '194742580', '231026018', '231026019', '231026020', '231026024', '231026025', '231026027', '231257063', '231260684', '231265139', '231265140', '233132517', '338984705', '338984712', '561721691', '1529562455'], 'trees': True, 'start': '1828499259', 'length_range': [5750, 5850], 'forest_samples': True, 'relation': '284565'}
 SOURCES['shanghai']={'bbox':'121.207,31.325,121.231,31.350','origin':[121.218,31.338],'ways':['156328670'],'features':['107371135','1372223261','1372223262','156341844','156341848','156341851'],'relation':'2094941','trees':True,'length_range':[5400,5500]}
 SOURCES['miami']={'bbox':'-80.249,25.949,-80.226,25.967','origin':[-80.238,25.958],'ways':['1017340351','1485453204','1472684485','1485453202','1485453200','1472686141','1485453197'],'features':['171419981','171419978'],'trees':True,'length_range':[5350,5500]}
+SOURCES['canada']={'bbox':'-73.54,45.49,-73.515,45.515','origin':[-73.527,45.503],'ways':['136717490'],'features':['129924946','1566564121','1243714696','1243714697','1243714698','1243714699','1381122382'],'water_relation':'2223658','water_name':'Lac des régates','trees':True,'length_range':[4300,4430],'relation':'284595'}
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('venues',nargs='*')
 parser.add_argument('--input',type=Path,help='Use an already retrieved public OSM XML snapshot for one selected venue')
@@ -64,7 +65,7 @@ for venue in selected:
      if part[-1]==ring_inner[-1]:ring_inner+=list(reversed(part))[1:];parts.pop(i);break
     else:raise ValueError('Open lake island')
    holes.append([project(nodes[n]) for n in ring_inner])
-  features.append({'id':cfg['water_relation'],'name':'Albert Park Lake','kind':'water','points':[project(nodes[n]) for n in ring],'holes':holes})
+  features.append({'id':cfg['water_relation'],'name':cfg.get('water_name','Albert Park Lake'),'kind':'water','points':[project(nodes[n]) for n in ring],'holes':holes})
  vegetation=[]
  if cfg.get('trees') or cfg.get('forest_samples'):
   x0,x1=min(p[0] for p in track)-100,max(p[0] for p in track)+100;z0,z1=min(p[1] for p in track)-100,max(p[1] for p in track)+100
@@ -97,6 +98,11 @@ for venue in selected:
   for f in data['features']:
    f['kind']='stadium' if f['id']=='171419981' else 'pitch'
    if f['id']=='171419978':f['name']='Stadium field · source pitch outline'
+ if venue=='canada':
+  data['excluded_ways']=['413000959'];data['route_evidence']='Relation 284595 main_track member 136717490 is the closed GP circuit; pit_lane member 413000959 excluded. Source start vertex is not a calibrated timing line. Current physical geography is not a surveyed 2027 event layout.'
+  for f in data['features']:
+   if f['id'] in ['129924946','1566564121']:f['kind']='water'
+   elif f['id']!='2223658':f['kind']='unassigned-bleachers';f['name']='Unassigned source bleacher envelope'
  if venue=='shanghai':data['source_context']={'main_grandstand_height_tag':{t.attrib['k']:t.attrib['v'] for t in ways['107371135'].findall('tag')}.get('height'),'height_evidence':'Raw OSM building-height tag, not a measured canopy profile or seat elevation'}
  if vegetation:data['vegetation']=vegetation
  if forest_sources:data['forest_sources']=forest_sources;data['vegetation_evidence']='Mapped individual tree points plus authored jittered samples inside closed OSM forest/wood ways; not a tree inventory or multipolygon-hole reconstruction. Crowns, heights and event clearing are authored.'

@@ -344,3 +344,7 @@ See CHINA-SOURCES.md. The 2027 event/date/venue is verified, but no current bank
 ## Miami 2027 initial study · 26 November 2026 UTC
 
 See MIAMI-SOURCES.md. Current F1/promoter sources establish 30 April–2 May 2027 and product identities. Seven connected licensed GP ways form 263 closed vertices/~5,416m, excluding the shorter nested MIA route and pit alternatives. Stadium/field outlines and mapped tree positions provide plan context; all temporary banks, tiers, roof heights, palms and campus surfacing remain authored. Four samples provide 7,072 model positions; eight other references stay source-only. North Beach requires missing grade/flyover context. A 429 product page was not retried or bypassed; no source artwork/photo is redistributed.
+
+## Canada 2027 initial study · 26 November 2026 UTC
+
+See CANADA-SOURCES.md. F1/organizer confirm 21–23 May 2027; public sale is postponed and F1 offers a waitlist. Four independently checked product pages support broad 1 / 11 / 15 / 24 identities. Retained GP way 136717490/relation 284595 has 233 points/~4,367 m;pit 413000959 excluded. Partial licensed lake/basin outlines,100 cropped tree points and five unassigned bleacher envelopes supply plan context. All temporary banks/tiers/chairs are authored estimates;14 other references stay source-only. The linked PAM explorer opens with 2026 artwork and is not a current event survey. No source image or private inventory is redistributed.

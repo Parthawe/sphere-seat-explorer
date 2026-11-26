@@ -1,4 +1,4 @@
-export type ReferenceVenue = "miami" | "china" | "qatar" | "bahrain" | "las-vegas" | "united-arab-emirates" | "australia" | "great-britain" | "belgium" | "italy";
+export type ReferenceVenue = "canada" | "miami" | "china" | "qatar" | "bahrain" | "las-vegas" | "united-arab-emirates" | "australia" | "great-britain" | "belgium" | "italy";
 export type ReferenceKind = "photos" | "review";
 export type SpectatorReference = {
   id: string;
@@ -33,6 +33,12 @@ const q2025 =
 const b2025 =
   "https://www.reddit.com/r/GrandPrixTravel/comments/1jydi1m/how_was_your_bahrain_gp_2025_experience/";
 export const spectatorReferences: SpectatorReference[] = [
+  {
+    id:'canada-main-2025-report',venue:'canada',areas:['1'],title:'Grandstand 1 · grid, garages and sun exposure',year:2025,published:'June 2025 post-race thread',yearEvidence:'The author explicitly describes their 2025 Canadian Grand Prix visit and Grandstand 1, section 3, row F. The thread identifies Montreal GP 2025.',kind:'review',author:'u/MarzipanInfamous2305',publisher:'Reddit · r/GrandPrixTravel',url:'https://www.reddit.com/r/GrandPrixTravel/comments/1le3l4w/thoughts_on_the_montreal_gp_2025/',location:'Grandstand 1, section 3, row F; author-reported ticket labels, not model coordinates',match:'section-reported',summary:'The attendee reports views of the garages, starting grid and podium, alongside sun exposure and a long walk from their entrance.',expectation:'One personal 2025 account. The source section and lettered row do not match our generated model labels. Screens, cover, walking conditions and the 2027 layout may differ.',checked:'2026-11-26'
+  },
+  {
+    id:'canada-senna-2025-report',venue:'canada',areas:['11'],title:'Grandstand 11 · trees and screen angles',year:2025,published:'June 2025 post-race discussion',yearEvidence:'In the Montreal GP 2025 discussion, the commenter reports Grandstand 11, section 7, row J during that weekend.',kind:'review',author:'u/TitleAltruistic9304',publisher:'Reddit · r/GrandPrixTravel',url:'https://www.reddit.com/r/GrandPrixTravel/comments/1le3l4w/comment/myidhdk/',location:'Grandstand 11, section 7, row J; author-reported labels, not model coordinates',match:'section-reported',summary:'The commenter describes a tree beside their view, sightlines across the opening corners and screens at different angles. They also discuss the bench seating.',expectation:'This describes one reported 2025 position, not all Grandstand 11 seats. Our scene does not reconstruct that tree, row, screen placement or an obstruction-free view. Current organizer guidance flags a limited screen view.',checked:'2026-11-26'
+  },
   {
     id:'monza-ascari3-2025-video',venue:'italy',areas:['12'],title:'Ascari 3 · qualifying viewing video',year:2025,published:'2026-04-19',yearEvidence:'The publisher explicitly identifies the 2025 Italian Grand Prix; publication was in April 2026. Capture year is publisher-reported, not the upload year.',kind:'photos',author:'Adam Rosales (footage credited by publisher)',publisher:'YouTube · GPDestinations (travel publisher)',url:'https://youtu.be/EmtmrRn-Ns0',location:'Ascari 3 / grandstand 12, during qualifying; row and chair not supplied',match:'grandstand-reported',summary:'GPDestinations credits Adam Rosales for footage described as qualifying from the inside of the Ascari entrance. This is attendee-supplied video hosted by a travel publisher.',expectation:'Compare broad corner framing and passing cars. Lens, exact position, obstructions and the 2027 layout are unverified; no model row or chair is matched.',checked:'2026-11-25',embed:{type:'youtube',videoId:'EmtmrRn-Ns0'}
   },

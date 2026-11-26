@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-26",
   "cadence_hours": 1,
-  "phase": "canada-initial-source-audit",
+  "phase": "canada-remaining-grandstands",
   "active_run": null,
-  "next_action": "Begin Canada 2027: verify current organizer/F1 event dates, physical Gilles-Villeneuve venue, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography for its own supported map/representative study. Preserve Miami’s initial 2027 four-region study and eight source-only distinctions. MIAMI-SOURCES.md records the full seven-way GP versus shorter MIA route, retained geometry and access limits; do not repeat its completed bbox acquisition or the 429 grandstand-page request. North Beach remains source-only without T13–16 ramp/flyover/grade context. Revisit temporary bank precision and dated attendee views only with new evidence.",
+  "next_action": "Continue Canada 2027 with the remaining ordinary grandstands: verify current organizer detail pages and independent broad placements for 10/12/16/21/31/32/33/34/46/47/Platine against retained GP/source geography. Preserve the initial four samples and 14 source-only distinctions; add only supported estimated regions and keep missing boundaries/vertical context explicit. CANADA-SOURCES.md records postponed public sale/F1 waitlist, the organizer-linked PAM explorer’s 2026 identity, 403 catalogue/AVFMS and throttled YouTube limits. Do not repeat the completed bbox acquisition or blocked media/page attempts. Existing source envelopes are unnamed and must not silently become verified 2027 product boundaries. Two credited 2025 attendee reports cover 1 and 11; photo filters remain empty. If further Canada mapping is externally blocked, checkpoint that evidence and advance Austria 2027 rather than repeating the same source attempts.",
   "venues": [
     {
       "id": "las-vegas",
@@ -335,9 +335,29 @@
       "id": "canada",
       "event": "Canada",
       "venue": "Gilles-Villeneuve",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "representative_3d_initial_2027_remaining_products",
+      "sources": [
+        "https://www.formula1.com/en/racing/2027/canada",
+        "https://gpcanada.ca/en/2027-tickets/",
+        "https://gpcanada.ca/en/discover-our-offer/",
+        "https://gpcanada.ca/en/event/accessibility/",
+        "https://www.openstreetmap.org/relation/284595"
+      ],
+      "next_action": "Continue Canada 2027 with the remaining ordinary grandstands: verify current organizer detail pages and independent broad placements for 10/12/16/21/31/32/33/34/46/47/Platine against retained GP/source geography. Preserve the initial four samples and 14 source-only distinctions; add only supported estimated regions and keep missing boundaries/vertical context explicit. CANADA-SOURCES.md records postponed public sale/F1 waitlist, the organizer-linked PAM explorer’s 2026 identity, 403 catalogue/AVFMS and throttled YouTube limits. Do not repeat the completed bbox acquisition or blocked media/page attempts. Existing source envelopes are unnamed and must not silently become verified 2027 product boundaries. Two credited 2025 attendee reports cover 1 and 11; photo filters remain empty. If further Canada mapping is externally blocked, checkpoint that evidence and advance Austria 2027 rather than repeating the same source attempts.",
+      "asset_assessment": "CANADA-SOURCES.md",
+      "seasons_with_3d_coverage": [
+        2027
+      ],
+      "modeled_banks": 4,
+      "modeled_positions": 6080,
+      "source_only_options": 14,
+      "exact_seats_verified": false,
+      "remaining_gaps": [
+        "Eleven other current ordinary grandstand families require independent spatial assessment",
+        "Temporary boundaries, chair inventory, actual tiers/roofs/screens, pit and bridge geometry",
+        "Accessible platforms/routes and hospitality levels/tables remain source-only",
+        "Dated photographs and historical Canada replay; source reports are 2025 and uncalibrated"
+      ]
     },
     {
       "id": "austria",
@@ -1076,6 +1096,27 @@
         "Promoter grandstand page returned429; no retry or bypass"
       ],
       "next": "Begin Canada 2027: verify current organizer/F1 event dates, physical Gilles-Villeneuve venue, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography for its own supported map/representative study. Preserve Miami’s initial 2027 four-region study and eight source-only distinctions. MIAMI-SOURCES.md records the full seven-way GP versus shorter MIA route, retained geometry and access limits; do not repeat its completed bbox acquisition or the 429 grandstand-page request. North Beach remains source-only without T13–16 ramp/flyover/grade context. Revisit temporary bank precision and dated attendee views only with new evidence."
+    },
+    {
+      "date": "2026-11-26",
+      "scope": "Canada 2027 independent GP study and attendee reports",
+      "result": "Four estimated 1 / 11 / 15 / 24 samples,6080 positions, partial lake/basin/tree context and 14 source-only entries; current sale-postponed/waitlist guidance. Two individually credited 2025 reports for 1 and 11.",
+      "evidence": [
+        "Current F1/organizer identity:21–23 May 2027; organizer public sale postponed, F1 waitlist; no stock inferred",
+        "One bounded OSM snapshot:relation 284595/GP 136717490,233 closed points/~4367m;pit 413000959 excluded",
+        "Olympic Basin, small water polygon and joined Lac des régates;100 mapped tree positions;five unassigned bleacher envelopes",
+        "Main sample moved 15 m west after initial water overlap;all 6080 positions now road/water clear;bank rectangles separate",
+        "108 tests pass;initial production build, collector compile, matching public/source geometry and diff checks pass; final build in packaging",
+        "Chrome 1440×1000,320×740,390×844:four banks, map/circuit/stand/seat, grid 24 / 2 / 18 / 40, zoom, comparison revisit, cars pause/play, source-only options, report authors/empty photo filters, graphics loss/Retry;no page errors or 320 pxoverflow",
+        "Canada 2026 route has no borrowed canvas"
+      ],
+      "limitations": [
+        "All bank extents, tiers, chairs, ground, roof heights and physical sightlines remain uncalibrated;source road/water geometry is plan context",
+        "Organizer-linked PAM artwork identifies 2026;not treated as 2027 ticket layout",
+        "Catalogue direct 403, AVFMS 403, YouTube throttled;no retries or bypasses",
+        "Eleven ordinary grandstands and other product groups need assessment;no checked photos or historicalCanada telemetry"
+      ],
+      "next": "Continue Canada 2027 with the remaining ordinary grandstands: verify current organizer detail pages and independent broad placements for 10/12/16/21/31/32/33/34/46/47/Platine against retained GP/source geography. Preserve the initial four samples and 14 source-only distinctions; add only supported estimated regions and keep missing boundaries/vertical context explicit. CANADA-SOURCES.md records postponed public sale/F1 waitlist, the organizer-linked PAM explorer’s 2026 identity, 403 catalogue/AVFMS and throttled YouTube limits. Do not repeat the completed bbox acquisition or blocked media/page attempts. Existing source envelopes are unnamed and must not silently become verified 2027 product boundaries. Two credited 2025 attendee reports cover 1 and 11; photo filters remain empty. If further Canada mapping is externally blocked, checkpoint that evidence and advance Austria 2027 rather than repeating the same source attempts."
     }
   ],
   "blockers": [

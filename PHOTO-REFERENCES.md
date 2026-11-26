@@ -107,3 +107,7 @@ Shanghai has an independent empty spectator-reference collection and displays it
 ## Miami 2027 initial study · 26 November 2026 UTC
 
 Miami has its own venue label and empty checked attendee collection. The inspected promoter campus illustration supports broad context only; it is not a dated spectator photo, calibrated row view or app asset. No photograph or artwork is redistributed, no capture year is invented and other venue references are not borrowed.
+
+## Canada 2027 initial study · 26 November 2026 UTC
+
+Canada adds two 2025 personal reports: u/MarzipanInfamous2305 at Grandstand 1 section 3/row F, and u/TitleAltruistic9304 at Grandstand 11 section 7/row J. Both link the original discussion with individual authors, capture context and row/model mismatch. Neither is a checked photo or universal obstruction/route guarantee. Other banks and photo filters remain empty. YouTube watch requests were throttled and A View From My Seat returned 403; no retry or download bypass followed. See CANADA-SOURCES.md.

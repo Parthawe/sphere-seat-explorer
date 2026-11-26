@@ -95,3 +95,7 @@ test('Shanghai has its own empty attendee collection without borrowed venue imag
 test('Miami has no borrowed or falsely dated attendee photographs',()=>{
  assert.deepEqual(referencesFor('miami','start-finish','area'),[]);assert.deepEqual(referencesFor('miami','start-finish','venue'),[]);
 });
+
+test('Canada reports retain individual authors, dated source labels and no photographic calibration',()=>{
+ const main=referencesFor('canada','1','area'),senna=referencesFor('canada','11','area');assert.equal(main.length,1);assert.equal(senna.length,1);assert.equal(main[0].author,'u/MarzipanInfamous2305');assert.equal(senna[0].author,'u/TitleAltruistic9304');assert.match(senna[0].url,/comment\/myidhdk/);assert.ok([...main,...senna].every(r=>r.year===2025&&r.kind==='review'&&!r.embed));assert.deepEqual(referencesFor('canada','15','area'),[]);assert.deepEqual(referencesFor('canada','1','venue','photos'),[]);assert.deepEqual(referencesFor('canada','1','area','all','2026'),[]);
+});
