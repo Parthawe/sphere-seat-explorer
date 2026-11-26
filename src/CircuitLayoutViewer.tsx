@@ -4,6 +4,7 @@ import UiIcon from './UiIcon';
 import {calendars,type Race} from './races';
 import {circuitLayoutId,validateCircuitLayout,type CircuitLayout} from './circuitLayouts';
 import type {LayoutCamera} from './CircuitLayoutScene';
+const VenueStands=lazy(()=>import("./VenueStands"));
 class LayoutBoundary extends Component<{children:ReactNode;onUnavailable:()=>void},{failed:boolean}>{state={failed:false};static getDerivedStateFromError(){return {failed:true};}componentDidCatch(){this.props.onUnavailable();}render(){return this.state.failed?null:this.props.children;}}
 export default function CircuitLayoutViewer({race,onBack,onRace}:{race:Race;onBack:()=>void;onRace:(race:Race)=>void}) {
  const [layout,setLayout]=useState<CircuitLayout|null>(null),[failed,setFailed]=useState(false),[ready,setReady]=useState(false),[retry,setRetry]=useState(0),[mode,setMode]=useState<LayoutCamera>('perspective'),[reset,setReset]=useState(0),[playing,setPlaying]=useState(false),[visible,setVisible]=useState(()=>!document.hidden),[zoom,setZoom]=useState(0);
@@ -24,6 +25,7 @@ export default function CircuitLayoutViewer({race,onBack,onRace}:{race:Race;onBa
     <div className="layout-scene-foot"><span>Drag to orbit · Scroll to zoom</span><span>Flat layout diagram · marker is not race data</span></div>
    </div>
    <div className="layout-caption"><p>{layout?.credit??'Community circuit outline'} · Layout year unverified</p><details><summary>Source & limits</summary><p>{layout?.note??'Reference outline only. No racing-season seat layout is supplied.'}</p><p>Vertical depth is a display treatment, not terrain or a bridge survey. The marker runs at a constant illustrative rate; it does not show direction, timing, speed or a historical lap. Use the race guide for supported viewing areas.</p>{layout&&<><a href={layout.source} target="_blank" rel="noreferrer">Original outline</a><a href={layout.licence} target="_blank" rel="noreferrer">MIT licence</a><span>Snapshot {layout.snapshot}</span></>}</details></div>
+   <Suspense fallback={<p>Loading viewing options…</p>}><VenueStands key={`${race.season}-${race.slug}`} race={race}/></Suspense>
   </main>
  </div>;
 }

@@ -191,3 +191,9 @@ Race Centre uses the existing paper/ink/red identity, with championship rows and
 ## Fan audit refinements · 26 November 2026
 
 Separate All 3D views from Seat studies so a fan can find richer viewing work without mistaking every circuit diagram for seat coverage. Keep filters wrapping and preserve dated-reference labels. Browser history should announce the destination heading just like in-product navigation. Price dialogs return to their actual opener, asynchronous actions retain a useful focus destination, and notes from another tab must not silently replace independent quotes. Failed browser storage retains a clearly labelled exportable session rather than pretending it saved.
+
+## Venue-wide stand discovery · 26 November 2026
+
+Detailed seating explorers open to the complete modeled circuit when no camera is specified. Keep explicitly shared stand/seat cameras unchanged. The overview heading and expanded searchable bank list make all available model banks visible; choosing a bank focuses its own stand camera and restores canvas focus. Existing camera fitting includes every modeled bank, not only the selected chair.
+
+Race guides and circuit-diagram pages expose a common searchable Grandstands & viewing options catalogue. Separate modeled studies, approximate area maps and source-only information; link each model to its own bank and preserve original source/eligibility limits. A source-only option never opens a substitute 3D camera. Show reference years before dated Vegas links, avoid claiming the catalogue is a complete current inventory, and keep long lists scrollable and controls usable on phones.

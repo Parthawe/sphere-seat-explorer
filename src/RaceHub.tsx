@@ -26,6 +26,7 @@ import {
   type Season,
   type Race,
 } from "./races";
+const VenueStands=lazy(()=>import("./VenueStands"));
 const RacingCentre=lazy(()=>import("./RacingCentre"));
 const CircuitLayoutViewer=lazy(()=>import("./CircuitLayoutViewer"));
 const CircuitSeatingExplorer = lazy(() => import("./CircuitSeatingExplorer"));
@@ -257,6 +258,7 @@ export default function RaceHub() {
             </section>
             <section className="circuit-model-entry"><div><h2>Explore in 3D.</h2><p>{circuitModel?`Estimated seats and sightlines · ${circuitModel.season}`:"Circuit diagram · no seat preview"}</p></div><div className="circuit-model-entry-actions">{circuitModel&&<button onClick={()=>go({season:route.season,race:route.race,seats:false,circuit:true})}>Open 3D seating</button>}<button onClick={()=>go({season:route.season,race:route.race,seats:false,layout:true})}>3D circuit diagram</button></div></section>
             {route.circuit && !circuitModel && <p className="singapore-reference-note">No 3D seating model is available for this venue and season. Choose a supported race; layouts are not carried across seasons.</p>}
+            <Suspense fallback={<div className="hub-loading">Loading viewing options…</div>}><VenueStands key={`${selected.season}-${selected.slug}`} race={selected}/></Suspense>
             <PriceNotebook key={`${selected.season}-${selected.slug}`} race={selected} />
             <CircuitGuidePanel race={selected} coverage={raceCoverage(route.season,selected.slug).detail} />
             <div id="viewing-areas" tabIndex={-1}>

@@ -404,9 +404,14 @@
       "id": "hungary",
       "event": "Hungary",
       "venue": "Hungaroring",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "source_catalogue_15_stand_families_2027",
+      "sources": [
+        "https://www.gpticketshop.com/en/f1/f1-grand-prix-ungarn-2027/tickets.html"
+      ],
+      "next_action": "Verify a current official stand map and licensed physical/vertical geography before locating these fifteen families. Retain hopping, GA and wheelchair/companion source-only distinctions; community diagram is not a stand or terrain survey.",
+      "asset_assessment": "HUNGARY-SOURCES.md",
+      "grandstand_products_supported": 15,
+      "seat3d_status": "needs_assets"
     },
     {
       "id": "spain-madrid",
@@ -1229,5 +1234,15 @@
     "exact_seats_verified": false,
     "layout_year_verified": false,
     "note": "Interactive 3D plan diagrams only; existing per-venue seat/terrain gaps and next actions remain unchanged."
+  },
+  "stand_catalogues": {
+    "status": "reviewed_entries_exposed",
+    "checked": "2026-11-26",
+    "edition_catalogues": 18,
+    "includes": "All existing modeled banks, reviewed area families, retained source-only entries and Hungary 2027 source catalogue. Not all 47 editions have a verified current stand catalogue.",
+    "new_hungary_stand_families": 15,
+    "new_hungary_source_entries": 23,
+    "implementation": "src/standCatalogueData.ts",
+    "remaining": "Verify missing-edition catalogues and suitable current geographic/vertical assets; no fabricated stand coordinates."
   }
 }
