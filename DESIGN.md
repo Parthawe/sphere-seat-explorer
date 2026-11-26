@@ -197,3 +197,9 @@ Separate All 3D views from Seat studies so a fan can find richer viewing work wi
 Detailed seating explorers open to the complete modeled circuit when no camera is specified. Keep explicitly shared stand/seat cameras unchanged. The overview heading and expanded searchable bank list make all available model banks visible; choosing a bank focuses its own stand camera and restores canvas focus. Existing camera fitting includes every modeled bank, not only the selected chair.
 
 Race guides and circuit-diagram pages expose a common searchable Grandstands & viewing options catalogue. Separate modeled studies, approximate area maps and source-only information; link each model to its own bank and preserve original source/eligibility limits. A source-only option never opens a substitute 3D camera. Show reference years before dated Vegas links, avoid claiming the catalogue is a complete current inventory, and keep long lists scrollable and controls usable on phones.
+
+## Generic stand concepts · 26 November 2026
+
+Use a distinct Concept illustration label with the explicit statement that it is not the actual location's preview. Show the named catalogue option and original source, but isolate the authored example from geographic circuit scenes. Reuse one coherent format where the real architecture is unknown instead of inventing product-specific differences. Separate grandstand, open-admission, hospitality, platform and multi-stand examples. Only the generic grandstand exposes sample row/position controls; these are visibly invented example numbers.
+
+Keep the ink/red identity, model-led scene, compact camera controls, smooth bounded transitions and reduced-motion alternatives. Phone layouts stack controls below the scene. Existing venue studies remain the primary source-backed 3D destination; concepts are a separate action/filter and never a silent substitute. Non-viewing services do not receive fabricated stand geometry.

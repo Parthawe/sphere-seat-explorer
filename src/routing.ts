@@ -9,6 +9,7 @@ export type Route = {
   circuit?: boolean;
   layout?: boolean;
   racing?: boolean;
+  study?: string;
   position?: string;
   mode?: Mode;
   issue?: string;
@@ -28,7 +29,7 @@ export function readRoute(search: string): Route {
     issue = "That season is unavailable. Showing the 2026 calendar instead.";
   if (vegasRequest && !isVegas)
     issue = "That seat-view link belongs to a different venue. Use this race’s available viewing options below.";
-  if (screen && !["vegas", "seats", "circuit", "layout", "racing"].includes(screen))
+  if (screen && !["vegas", "seats", "circuit", "layout", "racing", "stand-study"].includes(screen))
     issue = "That view is unavailable. Choose a viewing option from this race guide.";
   return {
     season: season === "2027" ? 2027 : 2026,
@@ -38,6 +39,7 @@ export function readRoute(search: string): Route {
     circuit: validSeason && screen === "circuit",
     layout: validSeason && screen === "layout",
     racing: validSeason && screen === "racing",
+    study: validSeason && screen === "stand-study" ? p.get("option")??"" : undefined,
     issue,
   };
 }

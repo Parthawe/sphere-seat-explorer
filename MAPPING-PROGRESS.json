@@ -1244,5 +1244,19 @@
     "new_hungary_source_entries": 23,
     "implementation": "src/standCatalogueData.ts",
     "remaining": "Verify missing-edition catalogues and suitable current geographic/vertical assets; no fabricated stand coordinates."
+  },
+  "generic_stand_concepts": {
+    "status": "authored_examples_not_venue_models",
+    "options": 183,
+    "types": {
+      "grandstand": 115,
+      "hospitality": 35,
+      "admission": 12,
+      "platform": 11,
+      "multi": 10
+    },
+    "documentation": "docs/stand-concepts.md",
+    "physical_placement_verified": false,
+    "effect_on_seat3d_gates": "None. Existing needs_assets and source-only venue limits remain unchanged."
   }
 }
