@@ -299,3 +299,12 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Change: reconciled the exact v76 publication in this log. Documentation only; no application deployment needed.
 - Limit: automatic prices, alerts and earning attribution still require the documented permitted feed and commercial inputs. No owner input was fabricated and no commercial feature was activated.
 - Next useful check: rotate to keyboard/focus recovery in existing 3D dialogs, rather than immediately repeating the notebook checks.
+
+## 26 November 2026 · 17:32 UTC keyboard and dialog audit
+
+- Focus: native dialog focus and return paths in the existing Qatar 2026 3D explorer, on a clean checkout at `cf53055` (documentation checkpoint; application remains v76 / `30227a9bb031ba428d8519fdd15e932badda9223`). No overlapping local edits found.
+- Evidence: desktop 1440px and phone 390px checks opened circuit map, photo references and model grid using Enter; focus entered each modal, reverse tabbing did not reach background controls, and Escape restored each opener. Grid row 3 handed back to the focused canvas and URL. F expanded the scene, then restored the bank selector. No horizontal overflow or page errors. Phone screenshot inspected with visible selector focus and retained accuracy label.
+- Test correction: an initial assertion required reverse Tab to stay on a DOM child at all times. Native Chrome dialogs can expose body as focus moves through browser chrome. The corrected check permits that native boundary while rejecting any background page control; no custom focus trap or product change was justified.
+- Change/publication: audit log only. No application defect demonstrated; no repeated unit suite, production rebuild or deployment. Application release remains v76.
+- Limit: Chrome emulation does not certify every browser or assistive technology. External photo playback and calibrated seat accuracy are outside this focused check.
+- Next useful check: inspect price-notebook storage lifecycle across multiple tabs or return to venue-specific camera recovery; preserve manual-quote and commercial boundaries.
