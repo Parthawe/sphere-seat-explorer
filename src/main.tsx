@@ -14,6 +14,7 @@ import "./style.css";
 import "./spacing.css";
 import "./experience.css";
 import "./visualExperience.css";
+import "./explorerVisual.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppBoundary><App /></AppBoundary>

@@ -163,3 +163,10 @@ Keep core ticket admission and no-exact-seat boundaries visible. Put circuit pro
 Reuse World, its shaders/materials, Sphere, instanced seating and simulated cars. HeroRig interpolates eye, target and field of view with bounded quintic easing; both seated endpoint and lens match the existing modeled C/12/18 view. Interruptions begin from the current camera. Manual pause freezes the current view; reduced motion settles to the requested endpoint without a flight.
 
 Keep the poster until the first real frame, defer the lazy module to idle time only while the graphic is visible, cap pixel ratio, stop frames outside the viewport/hidden tab and use demand rendering when static. Data-saver users explicitly load the scene. A local module/render boundary and context-loss recovery restore the poster without taking down race navigation. Retry rebuilds the lazy scene. The primary link enters the existing full explorer; no proprietary geography, exact-seat claim, new tracking or commercial activation is added.
+
+
+## Visual explorer controls · 26 November 2026
+
+Keep the scene primary. Focus expands the existing canvas without resetting the selected bank, row, position or comparison. The Seats action restores focus to bank controls; F toggles only from the scene. Reduced-motion preferences govern scrolling. In landscape Focus, camera/photo/zoom/return controls remain within the viewport.
+
+The circuit locator is one accessible touch target opening the detailed map. Its position and direction fan are illustrative; Front/Middle/High diagrams express relative row choice, not measured tier geometry. Short control labels retain accessible names. Preserve admission eligibility and model-versus-ticket limits while reducing repeated prose.

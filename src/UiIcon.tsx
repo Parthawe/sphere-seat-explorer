@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react';
 const shapes = {
+ expand:<><path d="M3 9V3h6m6 0h6v6M3 15v6h6m6 0h6v-6"/></>,
  circuit:<path d="M7 4 3 9l3 4-1 5 6 2 4-5 5-2 1-6-6-3-3 4-5-4Z"/>,
  seat:<><path d="M6 3h10v10H6zM5 13h14v5H5zM7 18v3m10-3v3M3 10v7m18-7v7"/></>,
  cube:<><path d="m12 2 9 5v10l-9 5-9-5V7l9-5Z M3 7l9 5 9-5M12 12v10"/></>,

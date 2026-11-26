@@ -1,0 +1,39 @@
+.circuit-locator {display:block; width:100%; margin:16px 0; padding:10px 16px 0; border:1px solid #414c60; background:#171d29; color:#f4f5f8; text-align:left;}
+.circuit-locator>svg {display:block; width:100%; height:110px;}
+.circuit-locator-caption {display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:40px; margin-top:8px; border-top:1px solid #414c60; font-size:12px;}
+.circuit-locator-caption>span {display:flex; align-items:center; gap:9px;}
+.circuit-locator:hover:not(:disabled) {background:#202839; color:#fff;}
+.circuit-panel-heading h2 {font-size:30px; margin:0 0 8px;}
+.circuit-panel-heading p {line-height:1.6;}
+.circuit-accuracy {padding-block:16px;}
+.circuit-bank-facts p:empty {display:none;}
+.circuit-row-shortcuts button {display:flex; align-items:center; justify-content:center; flex-direction:column; min-height:64px; gap:5px; padding:10px 4px;}
+.row-profile {display:block; width:42px; height:29px;}
+.circuit-position-actions button {display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:46px;}
+.circuit-position-actions button:last-child {min-width:46px; flex:0 0 46px;}
+.circuit-focus-view .circuit-explorer-layout {grid-template-columns:minmax(0,1fr);}
+.circuit-focus-view .circuit-position-panel {display:none;}
+.circuit-focus-view .circuit-model-stage {height:calc(100dvh - var(--header-height)); min-height:480px;}
+.circuit-scene-actions button {white-space:nowrap;}
+@media(max-width:760px) {
+ .circuit-locator>svg {height:130px;}
+ .circuit-focus-view .circuit-model-stage {height:calc(100svh - var(--header-height)); min-height:480px;}
+ .circuit-row-shortcuts button {min-height:64px;}
+ .circuit-position-panel {padding-top:24px;}
+}
+@media(max-width:400px) {.circuit-scene-actions {flex-wrap:wrap; max-width:calc(100% - 36px);}}
+@media(max-height:600px) and (max-width:1180px) {
+ .circuit-focus-view .circuit-model-stage {height:480px; min-height:480px;}
+}
+@media(max-height:600px) and (min-width:761px) and (max-width:1180px) {
+ .circuit-focus-view .circuit-model-stage {height:100svh; min-height:360px;}
+ .circuit-focus-view .circuit-model-heading {top:12px; left:20px; right:180px;}
+ .circuit-focus-view .circuit-model-heading>span {font-size:10px;}
+ .circuit-focus-view .circuit-model-heading h1 {font-size:28px; margin:4px 0; max-width:100%;}
+ .circuit-focus-view .circuit-model-heading p {font-size:10px; margin:4px 0;}
+ .circuit-focus-view .circuit-camera-modes {top:calc(var(--scene-heading-bottom,80px) + 12px); left:20px;}
+ .circuit-focus-view .circuit-photo-trigger {top:12px; right:20px; left:auto;}
+ .circuit-focus-view .circuit-seat-zoom {top:68px; right:20px;}
+ .circuit-focus-view .circuit-scene-actions {left:20px; bottom:52px;}
+ .circuit-focus-view .circuit-scene-note {flex-direction:row; gap:16px; padding:10px 20px;}
+}
