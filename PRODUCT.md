@@ -150,3 +150,8 @@ Every listed race in 2026 and 2027 has a circuit brief, including venues without
 The owner confirms holding written permission for the current brand/domain; the document scope/reference is still needed for activation. No rebrand or domain migration is authorized by this update. Paid referrals and ads remain inactive. The stronger release checker requires recorded rights review, actual operator/policies, pilot ownership and measurement approval, then per-seller agreement/category/terms/availability/attribution records. This is not automated inspection or proof of conversions.
 
 Qatar 2026's five organizer product identities were rechecked. The area panel now distinguishes admission/duration and the real seller allocation from estimated positions. The commercial folder contains empty research/review ledgers and a revenue worksheet; no real audience, order or income result has been supplied. Official affiliate signup routes are in docs/affiliate-programmes.md. No application or external message was sent.
+
+
+## Live hero scene · 26 November 2026
+
+At the user's request, the landing hero now lazy-loads the existing Three.js Vegas world, with smooth Circuit/Seat camera-and-lens transitions, simulated moving cars, atmosphere and subtle pointer/scroll response. Static captures remain loading/error fallbacks. Pause and reduced motion stop animation; the graphic stops rendering offscreen or in a hidden tab. Data-saver users opt in. Context loss or module failure retains race navigation and a retry. The C/12/18 illustrative seated endpoint matches the full explorer. This adds no measured seat accuracy, historical telemetry, actual Sphere show footage or commercial approval.
