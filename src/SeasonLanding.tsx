@@ -16,7 +16,7 @@ export default function SeasonLanding({season,onRace,onBrowse,onVegas}:{season:S
   const active=inView&&pageVisible;
   const ready=useCallback(()=>setLiveReady(true),[]),unavailable=useCallback(()=>{setLiveFailed(true);setLiveReady(false);},[]);
   useEffect(()=>{const observer=new IntersectionObserver(([entry])=>setInView(entry.isIntersecting));if(world.current)observer.observe(world.current);const visibility=()=>setPageVisible(!document.hidden);document.addEventListener('visibilitychange',visibility);return()=>{observer.disconnect();document.removeEventListener('visibilitychange',visibility);};},[]);
-  useEffect(()=>{if(!active||liveRequested||dataSaver)return;const load=()=>setLiveRequested(true);if('requestIdleCallback' in window){const id=window.requestIdleCallback(load,{timeout:1200});return()=>window.cancelIdleCallback(id);}const timer=setTimeout(load,0);return()=>clearTimeout(timer);},[active,liveRequested,dataSaver]);
+  useEffect(()=>{if(!active||liveRequested||dataSaver||reduced)return;const load=()=>setLiveRequested(true);if('requestIdleCallback' in window){const id=window.requestIdleCallback(load,{timeout:1200});return()=>window.cancelIdleCallback(id);}const timer=setTimeout(load,0);return()=>clearTimeout(timer);},[active,liveRequested,dataSaver,reduced]);
   useHeroDepth(hero,motion&&!reduced&&!liveRequested);
   const [preview,setPreview] = useState<'circuit'|'seat'>('circuit');
   const [loaded,setLoaded] = useState(false);
@@ -45,7 +45,7 @@ export default function SeasonLanding({season,onRace,onBrowse,onVegas}:{season:S
       <div className="hero-scene-caption">
         <strong>Las Vegas / Sphere zone</strong>
         <p aria-live="polite">{liveFailed?'3D unavailable · image preview':liveReady?'3D scene · 2026 reference · simulated cars':previewError?'Preview unavailable. Open the 3D study to explore.':!loaded?'Loading preview…':liveRequested?'Loading 3D scene…':preview==='circuit'?'Circuit overview · illustrative 2026 study':'Chicane east · illustrative 2026 seated study'}</p>
-        {(liveFailed||(!liveRequested&&dataSaver))&&<button className="hero-live-retry" onClick={()=>{setLiveFailed(false);setLiveReady(false);setRetry(value=>value+1);setLiveRequested(true);const rect=world.current?.getBoundingClientRect();if(rect&&(rect.bottom<=0||rect.top>=innerHeight))hero.current?.scrollIntoView({block:'start',behavior:reduced?'instant':'smooth'});}}>{liveFailed?'Retry 3D':'Load 3D'}</button>}
+        {(liveFailed||(!liveRequested&&(dataSaver||reduced)))&&<button className="hero-live-retry" onClick={()=>{setLiveFailed(false);setLiveReady(false);setRetry(value=>value+1);setLiveRequested(true);const rect=world.current?.getBoundingClientRect();if(rect&&(rect.bottom<=0||rect.top>=innerHeight))hero.current?.scrollIntoView({block:'start',behavior:reduced?'instant':'smooth'});}}>{liveFailed?'Retry 3D':'Load 3D'}</button>}
         <span>Scene geography © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a> · Lunar imagery <a href="https://svs.gsfc.nasa.gov/4720/" target="_blank" rel="noreferrer">NASA</a></span>
       </div>
     </section>
