@@ -218,7 +218,7 @@ export default function SpectatorReferences({
               ? "Las Vegas"
               : venue === "qatar"
                 ? "Lusail"
-                : venue === "united-arab-emirates" ? "Yas Marina" : venue === "italy" ? "Monza" : venue === "belgium" ? "Spa-Francorchamps" : venue === "great-britain" ? "Silverstone" : venue === "australia" ? "Albert Park" : "Sakhir"}{" "}
+                : venue === "china" ? "Shanghai" : venue === "united-arab-emirates" ? "Yas Marina" : venue === "italy" ? "Monza" : venue === "belgium" ? "Spa-Francorchamps" : venue === "great-britain" ? "Silverstone" : venue === "australia" ? "Albert Park" : "Sakhir"}{" "}
             · planning {season}
           </p>
         </div>

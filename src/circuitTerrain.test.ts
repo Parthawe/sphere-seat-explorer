@@ -131,3 +131,8 @@ test('Monza Ascari samples retain distinct identities and leave unsupported Asca
  for(const id of ['12','14','16','18']){const b=m.banks.find(b=>b.id===id)!;assert.ok(b);assert.equal(b.footprint,undefined);assert.equal(b.roof,false);assert.match(b.confidence,/Estimated product region/);assert.match(b.admissionNote!,/named licensed envelope/);for(const other of m.banks.filter(o=>o.id!==id))assert.ok(bankEnvelopesSeparated(m,b,other),id+' overlaps '+other.id);}
  assert.equal(m.banks.some(b=>b.id==='13'),false);assert.match(m.unmappedProducts!.find(p=>p.id==='13')!.note,/does not borrow 12/);
 });
+
+
+test('Shanghai compact banks remain separate estimated source regions',()=>{
+ const m=circuitModels.china;for(const b of m.banks)for(const other of m.banks.filter(o=>o.id!==b.id))assert.ok(bankEnvelopesSeparated(m,b,other),b.id+' overlaps '+other.id);
+});

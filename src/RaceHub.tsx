@@ -337,6 +337,7 @@ export default function RaceHub() {
                 <a href={raceUrl(selected)} target="_blank" rel="noreferrer">
                   Open the official race guide
                 </a>
+                {selected.slug==='china'&&route.season===2027&&<div className="jeddah-source-reference"><h3>Shanghai International Circuit · 16–18 April 2027</h3><p>The checked F1 ticket page offers a waitlist. A current 2027 grandstand-product layout has not been established here. The separate 2026 reconstruction uses dated event identities and current physical source geography; it cannot locate a 2027 ticket.</p><div className="verified-event-links"><a href="https://ticketing.formula1.com/china/" target="_blank" rel="noreferrer">Official 2027 ticket page & waitlist</a><a href="?season=2026&race=china&screen=circuit">Explore the labeled 2026 reference study</a></div><small>Checked 26 November 2026. Availability and event layouts must be confirmed with the provider.</small></div>}
                 {selected.slug===jeddahReference.race&&route.season===jeddahReference.season&&<div className="jeddah-source-reference">
                   <h3>{jeddahReference.venue} · {jeddahReference.dates}</h3>
                   <p>The organizer-linked 2027 catalogue lists six grandstand products. These names are planning references; stand locations and ticket rows are not mapped here yet.</p>

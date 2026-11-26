@@ -87,3 +87,7 @@ test('Monza has no borrowed attendee references from another circuit',()=>{
  assert.deepEqual(referencesFor('italy','1','area'),[]);assert.equal(referencesFor('italy','1','venue').length,2);assert.deepEqual(referencesFor('italy','13','area'),[]);
  const photo=referencesFor('italy','12','area','photos','2025');assert.equal(photo.length,1);assert.equal(photo[0].published,'2026-04-19');assert.equal(photo[0].embed?.type,'youtube');assert.match(photo[0].yearEvidence,/not the upload year/);assert.match(photo[0].expectation,/no model row/);assert.equal(referencesFor('italy','12','area','review','2025').length,1);assert.deepEqual(referencesFor('italy','12','area','all','2026'),[]);
 });
+
+test('Shanghai has its own empty attendee collection without borrowed venue images',()=>{
+ assert.deepEqual(referencesFor('china','a','area'),[]);assert.deepEqual(referencesFor('china','a','venue'),[]);
+});

@@ -1,5 +1,6 @@
 import {groundHeight,roadSample} from './circuitTerrain';
 import SilverstoneWing from './SilverstoneWing';
+import ShanghaiCanopy from './ShanghaiCanopy';
 import CircuitPark,{createGrassTexture} from "./CircuitPark";
 import FormulaCar from "./FormulaCar";
 import {Canvas,useFrame,useThree,useLoader} from '@react-three/fiber';
@@ -43,7 +44,7 @@ function Bank({bank,model,selection,onSelect,roofs}:{bank:ModelBank;model:Circui
     <mesh position={[0,.58+bank.rows*.215,0]} rotation={[Math.atan2(.43,.88),0,0]}><boxGeometry args={[1.5,.15,bank.rows*.98]}/><meshStandardMaterial color="#b1b6c0"/></mesh>
    </group>)}
    <mesh position={[0,bank.rows*.43+.45,-bank.rows*.44-.7]}><boxGeometry args={[bank.width+3,1.1,.12]}/><meshStandardMaterial color="#9fa6b3" wireframe/></mesh>
-   {bank.roof&&roofs&&<>
+   {bank.roof&&roofs&&!(model.id==='china'&&bank.id==='a')&&<>
     <mesh position={[0,bank.rows*.43+5,-1]} rotation={[-.04,0,0]} castShadow><boxGeometry args={[bank.width+9,.4,bank.rows*.88+8]}/><meshStandardMaterial color="#d8dadd" metalness={.45} roughness={.4}/></mesh>
     {[-1,1].map(s=><mesh key={s} position={[s*(bank.width/2+2),(bank.rows*.43+5)/2,-bank.rows*.44]}><cylinderGeometry args={[.25,.35,bank.rows*.43+5,8]}/><meshStandardMaterial color="#b9c0ca" metalness={.6} roughness={.3}/></mesh>)}
    </>}
@@ -72,7 +73,7 @@ function Track({model}:{model:CircuitModel}){
  useEffect(()=>()=>{road.dispose();runoff.dispose();textures.forEach(t=>t.dispose());},[road,runoff,textures]);
  return <><mesh geometry={runoff} receiveShadow><meshStandardMaterial map={terrainGrass} color={terrainGrass?'#ffffff':model.appearance==='day'?'#6d8976':model.id==='qatar'?'#355b69':model.id==='united-arab-emirates'?'#347c8c':'#967456'} roughness={.95}/></mesh><mesh geometry={road} receiveShadow><meshStandardMaterial map={textures[0]} normalMap={textures[1]} roughnessMap={textures[2]} normalScale={new T.Vector2(.35,.35)} color="#acb1ba" roughness={.78}/></mesh><Instances items={curbs[0]} color="#dc2529"/><Instances items={curbs[1]} color="#e9e8e5"/></>;
 }
-function Context({model,selection}:{model:CircuitModel;selection:ModelPosition}){
+function Context({model,selection,roofs}:{model:CircuitModel;selection:ModelPosition;roofs:boolean}){
  const bank=model.banks.find(b=>b.id===selection.bank)!,frame=bankFrame(model,bank);
  const poles=useMemo(()=>{const c=new T.CatmullRomCurve3(model.track.slice(0,-1).map((p,i)=>new T.Vector3(p[0],model.trackHeights?.[i]??0,p[1])),true);return c.getSpacedPoints(Math.round(model.length/75)).map((p,i,a)=>{const d=c.getTangentAt(i/(a.length-1));return [p.x-d.z*20,p.z+d.x*20];});},[model]);
  const tower=model.features.find(f=>f.name==='Sakhir Tower'),towerCenter=tower?footprintPlacement(tower.points).center:undefined;
@@ -86,6 +87,7 @@ function Context({model,selection}:{model:CircuitModel;selection:ModelPosition})
    <mesh position={[0,11,0]} castShadow><boxGeometry args={[model.id==='qatar'?320:295,.6,24]}/><meshStandardMaterial color="#c6cbd4"/></mesh>
    {Array.from({length:22},(_,i)=><group key={i} position={[-132+i*12.5,0,-8.1]}><mesh position={[0,2.5,0]}><boxGeometry args={[10,5,.15]}/><meshStandardMaterial color="#222a38"/></mesh><mesh position={[0,7.8,-.05]}><boxGeometry args={[10,2,.2]}/><meshPhysicalMaterial color="#37546b" metalness={.7} roughness={.15} clearcoat={1}/></mesh><mesh position={[0,5.4,-.1]}><boxGeometry args={[10,.4,.2]}/><meshBasicMaterial color={i%3===0?'#d02d36':'#bfc7d6'}/></mesh></group>)}
   </group>}
+  {model.id==='china'&&roofs&&<ShanghaiCanopy model={model}/>}
   {model.id==='bahrain'&&towerCenter&&<group position={[towerCenter[0],0,towerCenter[1]]}>
    {Array.from({length:8},(_,i)=><group key={i} position={[0,5+i*3.2,0]}><mesh castShadow><cylinderGeometry args={[14+i*.8,14+i*.8,2.6,48]}/><meshStandardMaterial color="#243346" metalness={.7} roughness={.22}/></mesh><mesh position={[0,1.5,0]} castShadow><cylinderGeometry args={[16+i*.8,16+i*.8,.4,48]}/><meshStandardMaterial color="#d9d8d3" roughness={.45}/></mesh></group>)}
   </group>}

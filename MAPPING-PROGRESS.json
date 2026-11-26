@@ -2,11 +2,11 @@
   "schema": 1,
   "product": "Apex Atlas",
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "cadence_hours": 1,
-  "phase": "china-initial-source-audit",
+  "phase": "miami-initial-source-audit",
   "active_run": null,
-  "next_action": "Begin China 2027: verify current organizer/F1 event dates and the Shanghai physical venue, public ticket products and listed sales channels; obtain bounded licensed GP/stand geometry and build a supported independent map/representative 3D study. Monaco 2027 now has twelve area families, twenty named category rows and six distinct source-only accessible/hospitality/diagram references. Its organizer event runs 3\u20136 June, F1 sessions 4\u20136 June; comparisons describe day-specific categories, not universal four-day packages. Preserve Gold versus hospitality, K subgroup names, O upper/lower, T covered/upper/lower and unnumbered Z/Rocher. MONACO-SOURCES.md and monaco-track.json checkpoint the source audit. GP street interpretation is 41 ways/416 vertices/~3,325m versus published 3,337 m, excluding pit lane 850261588 and pit-exit 1388331347. Explicit licensed-node adaptations use a 35092475 excerpt and trim 1551240829; do not repeat the source bbox or silently straighten those gaps. Harbour context uses thirteen licensed coastline ways with an authored off-canvas seaward closure. No measured temporary stand geometry, terrain/tunnel structure or calibrated 3D view is supplied. The organizer configurator requires login at actual seat selection; do not repeat attempts or access private inventory. Do not copy its digital-twin assets or original map/photo artwork. Revisit Monaco/Suzuka vertical and precision gaps only with new assets; preserve all existing scene/photo/replay/privacy/season behavior.",
+  "next_action": "Begin Miami 2027: verify current organizer/F1 dates, physical venue identity, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography and build its own supported map/representative study. China investigation confirms the Shanghai 2027 event for 16\u201318 April, but the checked F1 ticket page exposes a waitlist without a reviewed current bank catalogue. Do not reuse its Bahrain-labeled image/template placeholders as Shanghai geography or copy unverified policy/capacity claims. A separate explicitly labeled China 2026 3D reference now has four compact A/B/H/K banks and 5,760 illustrative positions, using a dated 2026 government event guide and current OSM physical geometry; 2027 model lookup remains unsupported. Five other 2026 viewing/hospitality references are source-only. Retained shanghai-geometry.json has the 257-point GP way 156328670, six named permanent envelopes and raw A height tag 35. Source A spans a void/track context; its sample is offset 45 m into a source wing and every generated A point passes polygon/road checks. The A canopy is an approximate building-outline interpretation using the raw height tag, with authored flat profile/supports; it does not certify shade, actual roof or tier height. B uses one B1 physical envelope as context, not recovered B-block allocation. Do not repeat the bounded GP acquisition or silently promote this archive into 2027 ticket mapping. The 2026 original guide image labeled 2025 was inspected only for context, not added as a dated exact-seat reference or rehosted. Preserve rooftop cutaway, full-circuit/grid/seat controls, source/season labels, empty Shanghai photo collection, local privacy and all existing scene/replay behavior. Revisit China 2027 bank layouts only with new primary catalogue evidence; preserve the 2026 reference as a distinct model if future season-aware variants are added.",
   "venues": [
     {
       "id": "las-vegas",
@@ -281,9 +281,27 @@
       "id": "china",
       "event": "China",
       "venue": "Shanghai",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "representative_3d_reference_2026_2027_catalogue_pending",
+      "sources": [
+        "https://www.formula1.com/en/racing/2027/china",
+        "https://ticketing.formula1.com/china/",
+        "https://english.shanghai.gov.cn/en-SportsEvents/20260918/571607957203407298c0c79912b7302e.html",
+        "https://english.shanghai.gov.cn/en-SportsEvents/20260311/933bcc13c7c44363a04a036b4888a7de.html",
+        "https://www.openstreetmap.org/relation/2094941"
+      ],
+      "next_action": "Begin Miami 2027: verify current organizer/F1 dates, physical venue identity, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography and build its own supported map/representative study. China investigation confirms the Shanghai 2027 event for 16\u201318 April, but the checked F1 ticket page exposes a waitlist without a reviewed current bank catalogue. Do not reuse its Bahrain-labeled image/template placeholders as Shanghai geography or copy unverified policy/capacity claims. A separate explicitly labeled China 2026 3D reference now has four compact A/B/H/K banks and 5,760 illustrative positions, using a dated 2026 government event guide and current OSM physical geometry; 2027 model lookup remains unsupported. Five other 2026 viewing/hospitality references are source-only. Retained shanghai-geometry.json has the 257-point GP way 156328670, six named permanent envelopes and raw A height tag 35. Source A spans a void/track context; its sample is offset 45 m into a source wing and every generated A point passes polygon/road checks. The A canopy is an approximate building-outline interpretation using the raw height tag, with authored flat profile/supports; it does not certify shade, actual roof or tier height. B uses one B1 physical envelope as context, not recovered B-block allocation. Do not repeat the bounded GP acquisition or silently promote this archive into 2027 ticket mapping. The 2026 original guide image labeled 2025 was inspected only for context, not added as a dated exact-seat reference or rehosted. Preserve rooftop cutaway, full-circuit/grid/seat controls, source/season labels, empty Shanghai photo collection, local privacy and all existing scene/replay behavior. Revisit China 2027 bank layouts only with new primary catalogue evidence; preserve the 2026 reference as a distinct model if future season-aware variants are added.",
+      "seasons_with_3d_coverage": [
+        2026
+      ],
+      "modeled_banks": 4,
+      "modeled_positions": 5760,
+      "source_only_options": 5,
+      "exact_seats_verified": false,
+      "remaining_gaps": [
+        "Reviewed 2027 primary product catalogue, season-specific geometry/allocation and official chairs",
+        "Other 2026 viewing regions, full A/B/H/K extents, real tiers/roof profiles, road relief/water/pit architecture and access",
+        "Dated spectator views and historical Shanghai telemetry"
+      ]
     },
     {
       "id": "miami",
@@ -997,6 +1015,27 @@
         "Official public-page scripts produced headless errors, but linked original diagrams were inspectable; no seat-selection/login stage was entered"
       ],
       "next": "Begin China 2027: verify current organizer/F1 event dates and the Shanghai physical venue, public ticket products and listed sales channels; obtain bounded licensed GP/stand geometry and build a supported independent map/representative 3D study. Monaco 2027 now has twelve area families, twenty named category rows and six distinct source-only accessible/hospitality/diagram references. Its organizer event runs 3\u20136 June, F1 sessions 4\u20136 June; comparisons describe day-specific categories, not universal four-day packages. Preserve Gold versus hospitality, K subgroup names, O upper/lower, T covered/upper/lower and unnumbered Z/Rocher. MONACO-SOURCES.md and monaco-track.json checkpoint the source audit. GP street interpretation is 41 ways/416 vertices/~3,325m versus published 3,337 m, excluding pit lane 850261588 and pit-exit 1388331347. Explicit licensed-node adaptations use a 35092475 excerpt and trim 1551240829; do not repeat the source bbox or silently straighten those gaps. Harbour context uses thirteen licensed coastline ways with an authored off-canvas seaward closure. No measured temporary stand geometry, terrain/tunnel structure or calibrated 3D view is supplied. The organizer configurator requires login at actual seat selection; do not repeat attempts or access private inventory. Do not copy its digital-twin assets or original map/photo artwork. Revisit Monaco/Suzuka vertical and precision gaps only with new assets; preserve all existing scene/photo/replay/privacy/season behavior."
+    },
+    {
+      "date": "2026-11-26",
+      "scope": "China 2027 source audit and separate Shanghai 2026 3D reference",
+      "result": "Verified 2027 event/venue but retained waitlist/catalogue uncertainty. Built four compact 2026 A/B/H/K samples, 5,760 model positions, full GP view and A building-outline canopy context. Five additional 2026 source-only references and an explicit 2027/archive boundary are implemented. Advanced independent queue to Miami.",
+      "evidence": [
+        "Current F1 and Shanghai government confirm 16\u201318 April 2027; checked F1 ticket root offers waitlist with no reviewed bank catalogue and contains unrelated/placeholder map copy",
+        "A dated 11 March 2026 government guide and its original event diagram identify 2026 A/B/H/K and other areas; header photograph explicitly says 2025 and is not relabeled or rehosted",
+        "One bounded public OSM snapshot: relation 2094941, single closed GP way 156328670, 257 vertices/~5,465m, six named source envelopes; pit lanes 107371138/107371147 excluded",
+        "A envelope center initially intersected the GP; sample moved 45 m into a source seating-side wing before validation. Source canopy outline/raw height tag 35 provide context only; profile/thickness/supports authored",
+        "100 tests pass: season isolation, bank/source identities, count, all-position road clearance, A polygon containment, nonoverlap, camera framing, empty photo references and existing regression suite",
+        "Chrome desktop 1440\u00d71000 and phones 320\u00d7740/390\u00d7844 checked A/B/H/K, canopy cutaway/restore, last K section 2/row 18/position 40 via grid, full circuit/map, empty references/Shanghai label, cars pause/play, graphics loss/Retry and absence of 2027 canvas; no page exceptions or horizontal overflow",
+        "Initial production build and collector compilation pass; final build runs in packaging"
+      ],
+      "limitations": [
+        "Four partial samples are not full capacities, actual ticket coordinates or a frozen 2026 event survey",
+        "Current physical OSM geography and raw building tag do not certify actual tier/canopy/roof/support heights or shade",
+        "2027 catalogue/layout is not established; no 2026 ticket allocation is carried forward",
+        "No terrain/water/actual pit/fence/accessible-route reconstruction, attendee photo collection or historical Shanghai replay"
+      ],
+      "next": "Begin Miami 2027: verify current organizer/F1 dates, physical venue identity, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography and build its own supported map/representative study. China investigation confirms the Shanghai 2027 event for 16\u201318 April, but the checked F1 ticket page exposes a waitlist without a reviewed current bank catalogue. Do not reuse its Bahrain-labeled image/template placeholders as Shanghai geography or copy unverified policy/capacity claims. A separate explicitly labeled China 2026 3D reference now has four compact A/B/H/K banks and 5,760 illustrative positions, using a dated 2026 government event guide and current OSM physical geometry; 2027 model lookup remains unsupported. Five other 2026 viewing/hospitality references are source-only. Retained shanghai-geometry.json has the 257-point GP way 156328670, six named permanent envelopes and raw A height tag 35. Source A spans a void/track context; its sample is offset 45 m into a source wing and every generated A point passes polygon/road checks. The A canopy is an approximate building-outline interpretation using the raw height tag, with authored flat profile/supports; it does not certify shade, actual roof or tier height. B uses one B1 physical envelope as context, not recovered B-block allocation. Do not repeat the bounded GP acquisition or silently promote this archive into 2027 ticket mapping. The 2026 original guide image labeled 2025 was inspected only for context, not added as a dated exact-seat reference or rehosted. Preserve rooftop cutaway, full-circuit/grid/seat controls, source/season labels, empty Shanghai photo collection, local privacy and all existing scene/replay behavior. Revisit China 2027 bank layouts only with new primary catalogue evidence; preserve the 2026 reference as a distinct model if future season-aware variants are added."
     }
   ],
   "blockers": [
