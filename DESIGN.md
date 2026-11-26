@@ -140,3 +140,10 @@ Race guides now separate choosing tickets from orienting an existing ticket. Sou
 The season landing begins with one condensed red/ink headline, a clear calendar action and a linked capture from the actual Sphere-zone renderer. Keep the 2026 reconstruction label beside the preview in both seasons. Upcoming race rows are calendar-derived, not inventory. The full Qatar desk belongs to its own guide, keeping the season entry usable without loading its sources or locator.
 
 Race briefs offer a direct jump to supported area workspaces. Source explanations expand on demand while the estimate boundary and event-year catalogue remain visible. In circuit explorers, place bank/section/row/position controls before the optional replay settings. If replay starts while the scene is offscreen, return to the scene so the action has a visible result; preserve reduced-motion scrolling and offscreen rendering suspension.
+
+
+## Hero preview interaction · 26 November 2026
+
+Only the opening hero changes in this pass. A single ink-dark scene surface replaces the separate paper copy/image columns. Keep display type on the left and the Sphere artifact large on the right; the dark scrim carries text contrast. On phones, show the artifact above the copy and stack the actions. Circuit/seated buttons switch between compressed captures from the actual renderer. They are preview images, not an embedded live canvas or venue photography. The primary link opens the same modeled Chicane east camera/position; the secondary action keeps the selected-season calendar jump.
+
+Keep the 2026 reconstruction boundary, OSM/NASA credit and no-exact-ticket-seat note visible. A brief image reveal respects reduced motion. A failed image leaves an explanatory caption and usable explorer link. No automatic car playback or full scene is added to the landing page.

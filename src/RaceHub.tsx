@@ -402,7 +402,7 @@ export default function RaceHub() {
           </>
         ) : (
           <>
-            <SeasonLanding season={route.season} onRace={select} onBrowse={()=>go({season:route.season,race:"",seats:false},"#race-calendar")} onVegas={()=>go({season:route.season,race:"las-vegas",seats:false,atlas:true})} />
+            <SeasonLanding season={route.season} onRace={select} onBrowse={()=>go({season:route.season,race:"",seats:false},"#race-calendar")} onVegas={mode=>go({season:route.season,race:"las-vegas",seats:true,mode,position:"C"})} />
             <section
               className="race-calendar"
               id="race-calendar"
