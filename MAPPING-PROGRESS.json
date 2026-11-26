@@ -1258,5 +1258,20 @@
     "documentation": "docs/stand-concepts.md",
     "physical_placement_verified": false,
     "effect_on_seat3d_gates": "None. Existing needs_assets and source-only venue limits remain unchanged."
+  },
+  "connected_stand_media": {
+    "updated": "2026-11-26",
+    "calendar_editions_with_reference_ui": 47,
+    "editions_with_reviewed_option_profiles": 18,
+    "option_profiles": 327,
+    "editions_with_matched_media_or_reports": 9,
+    "direct_still_photo_source": "Suzuka original-host images only",
+    "new_verified_video_references": [
+      "H-a210pBFGc",
+      "SWrnIncCgtw",
+      "tXp4t7X0gpo"
+    ],
+    "status": "framework_connected_media_coverage_incomplete",
+    "next_action": "Review attributable primary stand-view media for remaining venues and exact product identities; preserve capture-year, rights, source-only and physical-venue boundaries. Never treat framework availability as complete photo coverage."
   }
 }

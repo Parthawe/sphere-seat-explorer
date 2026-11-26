@@ -69,7 +69,7 @@ export function OriginalVideo({ videoId, title }: { videoId: string; title:strin
     </div>
   );
 }
-function OriginalPost({ reference }: { reference: SpectatorReference }) {
+export function OriginalPost({ reference }: { reference: SpectatorReference }) {
   const host = useRef<HTMLDivElement>(null),
     [enabled, setEnabled] = useState(false),
     [status, setStatus] = useState<"loading" | "ready" | "unavailable">(

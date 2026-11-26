@@ -1,3 +1,4 @@
+import {calendars} from './races';
 import { SITE_ORIGIN, syncPublicUrlMetadata } from "./brand";
 import SpectatorReferences from "./SpectatorReferences";
 import { HistoricalReplay } from "./HistoricalReplay";
@@ -23,6 +24,7 @@ import {
   type Mode,
 } from "./model";
 import { FlatMap, circuitPath } from "./Map";
+const StandMediaGallery=lazy(()=>import('./StandMediaGallery'));
 const Scene = lazy(() => import("./Scene"));
 type DialogKind = "compare" | "sources" | "map" | null;
 function Globe() {
@@ -955,6 +957,7 @@ export default function App({
                     " stay on one side of the modeled aisle."}
               </p>
             </section>
+            <div className="model-stand-media"><Suspense fallback={<p role="status">Loading stand references…</p>}><StandMediaGallery key={String(panelOpen)} race={calendars[season===2027?2027:2026].find(r=>r.slug==='las-vegas')!} optionId={['A','B','C','D','E'].includes(selection.stand)?'sphere-grandstands':selection.stand==='M'?'main':selection.stand==='H'?'hamilton':selection.stand==='K'?'turn3':'heineken'} fixed/></Suspense></div>
             <section className="position-picker">
               <div className="section-label">
                 <h3>Pick your position</h3>
