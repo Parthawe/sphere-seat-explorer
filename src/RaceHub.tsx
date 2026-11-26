@@ -1,3 +1,4 @@
+import { SITE_NAME, SITE_ORIGIN } from "./brand";
 import {jeddahReference} from "./jeddahReference";
 import {findCircuitModel} from "./circuitSeating";
 import { findVenue } from "./venueRegistry";
@@ -113,15 +114,26 @@ export default function RaceHub() {
   );
   const circuitModel = findCircuitModel(route.season,route.race);
   useEffect(() => {
-    document.title = route.circuit && circuitModel ? `${circuitModel.country} ${circuitModel.season} · 3D seating study` : route.atlas
-      ? "Las Vegas · All Areas & Sphere Interior"
-      : route.seats
-        ? "Las Vegas · 3D Seat Explorer"
-        : selected
-          ? `${selected.name} ${route.season} · Apex Atlas`
-          : route.season === 2026
-            ? "Apex Atlas · Qatar 2026 Tickets & Viewing Areas"
-            : "F1 Races 2027 · Apex Atlas";
+    const pageTitle = route.circuit && circuitModel
+      ? `${circuitModel.country} ${circuitModel.season} · 3D seating study`
+      : route.atlas
+        ? "Las Vegas · All Areas & Sphere Interior"
+        : route.seats
+          ? "Las Vegas · 3D Seat Explorer"
+          : selected
+            ? `${selected.name} ${route.season}`
+            : `${route.season} Race Tickets & Seat Views`;
+    document.title = `${pageTitle} · ${SITE_NAME}`;
+    const canonical = new URL(SITE_ORIGIN + "/");
+    const params = new URLSearchParams(location.search);
+    for (const key of ["season", "race", "screen", "area", "venue", "bank", "section", "modelRow", "position", "seat", "view"]) {
+      const value = params.get(key);
+      if (value) canonical.searchParams.set(key, value);
+    }
+    document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonical.href);
+    document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonical.href);
+    document.querySelector('meta[property="og:title"]')?.setAttribute("content", document.title);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", document.title);
   }, [route, selected]);
   if (route.circuit && circuitModel) return <Suspense fallback={<div className="hub-loading">Opening the circuit seating study…</div>}><CircuitSeatingExplorer key={circuitModel.id} model={circuitModel} onBack={() => go({season:route.season,race:route.race,seats:false})}/></Suspense>;
   if (route.atlas)
@@ -192,7 +204,7 @@ export default function RaceHub() {
         >
           <BrandMark />
           <span>
-            APEX ATLAS
+            F1TICKETS.ONLINE
             <span className="wordmark-sub">RACE TICKETS & SEAT EXPLORER</span>
           </span>
         </a>
@@ -215,7 +227,7 @@ export default function RaceHub() {
         </nav>
       </header>
       <main id="race-content">
-        <nav className="product-jump-nav" aria-label="Explore Apex Atlas">
+        <nav className="product-jump-nav" aria-label="Explore F1 Tickets Online">
           <a
             href={`?season=${route.season}#race-content`}
             aria-current={!selected ? "page" : undefined}
@@ -403,7 +415,7 @@ export default function RaceHub() {
                   ))}
                 <p className="provider-note">
                   Provider links open an external catalogue. Select the race and
-                  season there. Apex Atlas does not display live stock, prices
+                  season there. F1 Tickets Online does not display live stock, prices
                   or reservations.
                 </p>
               </section>

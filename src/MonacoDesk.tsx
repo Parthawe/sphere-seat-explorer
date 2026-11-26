@@ -1,3 +1,4 @@
+import { SITE_ORIGIN } from "./brand";
 import {useState} from 'react';
 import CircuitAreaMap from './CircuitAreaMap';
 import AreaComparison from './AreaComparison';
@@ -9,7 +10,7 @@ export default function MonacoDesk(){
  const [area,setArea]=useState(()=>venue.areas.find(a=>a.id===new URLSearchParams(location.search).get('area'))?.id??'k'),[feedback,setFeedback]=useState('');
  const chosen=venue.areas.find(a=>a.id===area)!,comparison=useAreaComparison(venue);
  function choose(id:string){setArea(id);setFeedback('');}
- async function share(){const url=venueAreaUrl(location.href,venue,area);try{await navigator.clipboard.writeText(url);setFeedback('Area link copied. No ticket or personal information included.');}catch{setFeedback('Copy area link: '+url);}}
+ async function share(){const url=venueAreaUrl(SITE_ORIGIN,venue,area);try{await navigator.clipboard.writeText(url);setFeedback('Area link copied. No ticket or personal information included.');}catch{setFeedback('Copy area link: '+url);}}
  return <section className="ticket-desk monaco-ticket-desk" aria-label="Monaco 2027 viewing areas">
   <div className="desk-topline"><div><h2>Find your place around the harbour.</h2><p>Twelve viewing families from the organizer’s 2027 diagram and category list. Compare the first corner, Casino, pool complex and final corner, or explore the unnumbered standing areas.</p></div></div>
   <p className="singapore-reference-note">Organizer event: 3–6 June 2027 · F1 sessions: 4–6 June · North-up geographic map. Stand positions and boundaries are estimates. Heights, tunnel structure, exact chairs and physical views are not reconstructed.</p>

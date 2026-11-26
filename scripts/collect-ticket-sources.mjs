@@ -11,7 +11,7 @@ export const sources = [
   ["experiences", "https://f1experiences.com/2026-qatar-grand-prix"],
 ];
 const agent =
-  "ApexAtlas/1.0 (+https://github.com/Parthawe/sphere-seat-explorer)";
+  "F1TicketsOnline/1.0 (+https://f1tickets.online)";
 const clean = (s) =>
   s
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
@@ -74,7 +74,7 @@ export function robotsAllowed(body, path) {
     }
   }
   const specific = groups.filter((g) =>
-    g.agents.some((a) => a !== "*" && "apexatlas".includes(a)),
+    g.agents.some((a) => a !== "*" && "f1ticketsonline".includes(a)),
   );
   const selected = specific.length
     ? specific

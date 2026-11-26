@@ -1,7 +1,7 @@
 import json,xml.etree.ElementTree as E,math,urllib.request
 from pathlib import Path
 repo=Path(__file__).resolve().parents[1];d=json.loads((repo/'research/spa/terrain-samples.json').read_text());p=Path('/tmp/apex-spa-osm.xml')
-if not p.exists():p.write_bytes(urllib.request.urlopen(urllib.request.Request('https://api.openstreetmap.org/api/0.6/map?bbox=5.959,50.422,5.985,50.451',headers={'User-Agent':'ApexAtlas geographic research'}),timeout=30).read())
+if not p.exists():p.write_bytes(urllib.request.urlopen(urllib.request.Request('https://api.openstreetmap.org/api/0.6/map?bbox=5.959,50.422,5.985,50.451',headers={'User-Agent':'F1TicketsOnline geographic research'}),timeout=30).read())
 r=E.parse(p).getroot();ns={n.get('id'):[float(n.get('lon')),float(n.get('lat'))] for n in r.findall('node')};lon,lat=d['track']['origin']
 def project(p):return [round((p[0]-lon)*111320*math.cos(math.radians(lat)),3),round(-(p[1]-lat)*111320,3)]
 features=[]

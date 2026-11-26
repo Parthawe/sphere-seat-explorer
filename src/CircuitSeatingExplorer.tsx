@@ -1,3 +1,4 @@
+import { SITE_ORIGIN } from "./brand";
 import type {ModelCameraControls} from "./CircuitSeatingScene";
 import CircuitOverview from "./CircuitOverview";
 import SpectatorReferences from "./SpectatorReferences";
@@ -16,11 +17,11 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  function choose(next:Partial<ModelPosition>){setSelection(normalizeModelPosition(model,{...selection,...next}));setFeedback('');}
  useEffect(()=>{const q=window.matchMedia('(prefers-reduced-motion: reduce)'),update=()=>{if(q.matches)setPlaying(false);};q.addEventListener('change',update);return()=>q.removeEventListener('change',update);},[]);
  useEffect(()=>{if(grid)dialog.current?.showModal();else dialog.current?.close();},[grid]);
- async function share(){const url=modelPositionUrl(location.href,model,selection);try{await navigator.clipboard.writeText(url);setFeedback('Model position link copied. No ticket information included.');}catch{setFeedback('Copy model position link: '+url);}}
+ async function share(){const url=modelPositionUrl(SITE_ORIGIN,model,selection);try{await navigator.clipboard.writeText(url);setFeedback('Model position link copied. No ticket information included.');}catch{setFeedback('Copy model position link: '+url);}}
  function save(){if(saved.some(p=>positionKey(p)===positionKey(selection))){setSaved(saved.filter(p=>positionKey(p)!==positionKey(selection)));return;}if(saved.length===3){setFeedback('Three positions saved. Remove one to compare another.');return;}setSaved([...saved,{...selection}]);}
  function arrows(e:React.KeyboardEvent){if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();choose({seat:selection.seat+(e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0),row:selection.row+(e.key==='ArrowUp'?1:e.key==='ArrowDown'?-1:0)});}
  return <div className="circuit-explorer">
-  <header className="circuit-explorer-header"><a className="wordmark" href="?season=2026"><BrandMark/><span>APEX ATLAS<small>3D SEATING STUDIES</small></span></a><div><span>{model.country.toUpperCase()} / {model.season}</span><button onClick={onBack}>Back to race guide</button></div></header>
+  <header className="circuit-explorer-header"><a className="wordmark" href="?season=2026"><BrandMark/><span>F1TICKETS.ONLINE<small>3D SEATING STUDIES</small></span></a><div><span>{model.country.toUpperCase()} / {model.season}</span><button onClick={onBack}>Back to race guide</button></div></header>
   <main className="circuit-explorer-layout">
    <section className={'circuit-model-stage mode-'+mode+(model.appearance==='day'?' day-scene':'')} aria-label={`${model.name} 3D seating model`}>
     <div className="circuit-model-canvas" role="region" tabIndex={0} aria-label="Interactive modeled view. Drag to look or orbit. Arrow keys change model row and position." onKeyDown={arrows}>

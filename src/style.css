@@ -5954,3 +5954,22 @@ dialog::backdrop {
   .austria-ticket-desk .map-area-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .austria-ticket-desk .map-area-controls button { padding: 10px 4px; min-height: 44px; }
 }
+
+/* The domain wordmark uses the existing condensed display family. */
+.wordmark > span,
+.circuit-explorer-header .wordmark > span {
+  font-family: "Barlow Condensed", sans-serif;
+  letter-spacing: .035em;
+}
+.wordmark-sub,
+.circuit-explorer-header .wordmark small {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+@media (max-width: 400px) {
+  .race-hub .hub-header .wordmark-sub { max-width: 148px; }
+  .app-shell .site-header .wordmark { gap: 7px; }
+  .app-shell .site-header .wordmark > span { font-size: 16px; }
+  .app-shell .site-header .wordmark > svg { width: 28px; flex-shrink: 0; }
+  .circuit-explorer-header .wordmark { gap: 7px; }
+  .circuit-explorer-header .wordmark > span { font-size: 15px; }
+}

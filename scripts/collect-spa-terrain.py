@@ -6,7 +6,7 @@ import argparse,datetime,json,math,time,urllib.parse,urllib.request,urllib.robot
 from pathlib import Path
 SERVICE='https://geoservices.wallonie.be/arcgis/rest/services/RELIEF/WALLONIE_MNT_2021_2022/MapServer'
 CATALOGUE='https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html'
-USER_AGENT='ApexAtlas geographic research'
+USER_AGENT='F1TicketsOnline geographic research'
 ROOT=Path(__file__).resolve().parents[1]
 
 def gp_trace(path):

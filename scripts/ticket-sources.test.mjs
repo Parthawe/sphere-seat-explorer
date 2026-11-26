@@ -58,7 +58,7 @@ test("robots disallow, exceptions, agent specificity and wildcards", () => {
   );
   assert.equal(
     robotsAllowed(
-      "User-agent: *\nDisallow: /\nUser-agent: ApexAtlas\nAllow: /",
+      "User-agent: *\nDisallow: /\nUser-agent: F1TicketsOnline\nAllow: /",
       "/ticket/main",
     ),
     true,

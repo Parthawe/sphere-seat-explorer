@@ -1,3 +1,4 @@
+import { SITE_ORIGIN } from "./brand";
 import SpectatorReferences from "./SpectatorReferences";
 import { HistoricalReplay } from "./HistoricalReplay";
 import type { ReplayFrame } from "./replayMath";
@@ -450,8 +451,7 @@ export default function App({
   };
   async function share() {
     const url =
-      window.location.origin +
-      window.location.pathname +
+      SITE_ORIGIN + "/" +
       seatSearch(selection, mode, saved);
     try {
       await navigator.clipboard.writeText(url);
@@ -475,10 +475,10 @@ export default function App({
         Skip to seat controls
       </a>
       <header className="site-header">
-        <a className="wordmark" href="/" aria-label="Apex Atlas home">
+        <a className="wordmark" href="/" aria-label="F1 Tickets Online home">
           <BrandMark />
           <span>
-            APEX ATLAS<span className="wordmark-sub">F1 SEAT EXPLORER</span>
+            F1TICKETS.ONLINE<span className="wordmark-sub">F1 SEAT EXPLORER</span>
           </span>
         </a>
         <div className="header-location">

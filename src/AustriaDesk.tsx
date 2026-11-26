@@ -1,3 +1,4 @@
+import { SITE_ORIGIN } from "./brand";
 import {useState} from 'react';
 import CircuitAreaMap from './CircuitAreaMap';
 import AreaComparison from './AreaComparison';
@@ -9,7 +10,7 @@ export default function AustriaDesk(){
  const [area,setArea]=useState(()=>venue.areas.find(a=>a.id===new URLSearchParams(location.search).get('area'))?.id??'start-ziel'),[feedback,setFeedback]=useState('');
  const chosen=venue.areas.find(a=>a.id===area)!,comparison=useAreaComparison(venue);
  function choose(id:string){setArea(id);setFeedback('');}
- async function share(){const url=venueAreaUrl(location.href,venue,area);try{await navigator.clipboard.writeText(url);setFeedback('Area link copied. No ticket or personal information included.');}catch{setFeedback('Copy area link: '+url);}}
+ async function share(){const url=venueAreaUrl(SITE_ORIGIN,venue,area);try{await navigator.clipboard.writeText(url);setFeedback('Area link copied. No ticket or personal information included.');}catch{setFeedback('Copy area link: '+url);}}
  return <section className="ticket-desk monaco-ticket-desk austria-ticket-desk" aria-label="Austria 2027 viewing areas">
   <div className="desk-topline"><div><h2>Find your place at the Red Bull Ring.</h2><p>Eleven viewing families from the organizer-linked 2027 catalogue and ticket diagram. Compare the opening corner, uphill straight, Turn 3 and final corner, or find the broad general-admission region.</p></div></div>
   <p className="singapore-reference-note">9–11 July 2027 · North-up geographic map. All viewing anchors and boundaries are estimates. Spielberg’s uphill/downhill road, terrain and grandstand heights are not reconstructed; a calibrated 3D seat view is unavailable.</p>

@@ -1,3 +1,4 @@
+import { SITE_ORIGIN } from "./brand";
 import { useEffect, useState } from "react";
 import {
   areas,
@@ -67,7 +68,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
     else setFeedback("");
   }
   async function share() {
-    const url = venueAreaUrl(location.href, venue, area);
+    const url = venueAreaUrl(SITE_ORIGIN, venue, area);
     try {
       await navigator.clipboard.writeText(url);
       setFeedback("Area link copied. Your ticket details are not included.");

@@ -1,4 +1,4 @@
-# Apex Atlas · F1 Race & Seat Explorer
+# F1 Tickets Online · F1 Race & Seat Explorer
 
 An independent, F1-inspired race browser for the published 2026 and 2027 calendars, with a true-3D Las Vegas circuit explorer and illustrative Sphere interior. Browse every listed race, review ticket categories, and open official sources. Las Vegas, Qatar 2026 and Bahrain Sakhir 2027 have illustrative 3D reconstructions; none certify actual seat coordinates. Sphere indoor seating is a separate illustrative venue study.
 
@@ -85,9 +85,9 @@ Fonts are bundled from the `@fontsource` Barlow Condensed and IBM Plex Sans pack
 
 The project is configured as a static Site in `.openai/hosting.json`. Run the production build before packaging `dist/`. Source is mirrored to a dedicated public GitHub repository. The Sites remote is managed separately by the Sites publishing workflow; no publishing credentials belong in this repository.
 
-## Apex Atlas rendering revision
+## F1 Tickets Online rendering revision
 
-The user selected Apex Atlas as the product name. The interface, original A mark, favicon and page titles use it; the existing neutral hosting URL and repository remain unchanged.
+The product is F1 Tickets Online at https://f1tickets.online. The interface, original ticket mark, favicon, page titles, sharing metadata and copied planning links use this identity. The existing source repository and fallback hosting address remain available.
 
 Five detailed illustrative open-wheel cars start near the selected modeled bank, follow the circuit and remain visible when paused. Racing starts automatically unless reduced motion is requested. Scene settings separately control light shafts/airborne motes and choose a simulated lunar, amber-face or racing-ribbon Exosphere display. The lunar surface is NASA's bundled CGI Moon Kit texture; the other displays are original artwork. The official Sphere XO Stream and Google Maps location open externally.
 

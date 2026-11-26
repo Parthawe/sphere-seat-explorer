@@ -25,7 +25,7 @@ if args.input and len(selected)!=1:parser.error('--input requires exactly one ve
 for venue in selected:
  cfg=SOURCES[venue]
  url='https://api.openstreetmap.org/api/0.6/map?bbox='+cfg['bbox']
- request=urllib.request.Request(url,headers={'User-Agent':'ApexAtlas geographic research'})
+ request=urllib.request.Request(url,headers={'User-Agent':'F1TicketsOnline geographic research'})
  if args.input:root=ET.parse(args.input).getroot()
  else:
   with urllib.request.urlopen(request,timeout=30) as response:root=ET.fromstring(response.read())

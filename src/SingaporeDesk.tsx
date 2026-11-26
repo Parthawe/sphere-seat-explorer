@@ -1,3 +1,4 @@
+import { SITE_ORIGIN } from "./brand";
 import { useState } from "react";
 import CircuitAreaMap from "./CircuitAreaMap";
 import AreaComparison from "./AreaComparison";
@@ -37,7 +38,7 @@ export default function SingaporeDesk() {
     if (result.status === "matched") setArea(result.ids[0]);
   }
   async function share() {
-    const url = venueAreaUrl(location.href, venue, area);
+    const url = venueAreaUrl(SITE_ORIGIN, venue, area);
     try {
       await navigator.clipboard.writeText(url);
       setFeedback("Area link copied. Your ticket details are not included.");
@@ -322,7 +323,7 @@ export default function SingaporeDesk() {
         <h2>Continue with the official sources.</h2>
         <p>
           Purchases happen with the provider. The organizer’s catalogue uses
-          AXS. Apex Atlas does not enter ticket queues, reserve seats or display
+          AXS. F1 Tickets Online does not enter ticket queues, reserve seats or display
           live stock.
         </p>
         <div className="verified-event-links">

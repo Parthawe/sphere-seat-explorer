@@ -1,3 +1,4 @@
+import { SITE_ORIGIN } from "./brand";
 import { useState } from "react";
 import CircuitAreaMap from "./CircuitAreaMap";
 import AreaComparison from "./AreaComparison";
@@ -37,7 +38,7 @@ export default function AbuDhabiDesk() {
     if (result.status === "matched") setArea(result.ids[0]);
   }
   async function share() {
-    const url = venueAreaUrl(location.href, venue, area);
+    const url = venueAreaUrl(SITE_ORIGIN, venue, area);
     try {
       await navigator.clipboard.writeText(url);
       setFeedback("Area link copied. Ticket details are not included.");
@@ -314,7 +315,7 @@ export default function AbuDhabiDesk() {
       <section className="abu-ticket-handoffs">
         <h2>Continue with a ticket provider.</h2>
         <p>
-          Use the correct event and year at checkout. Apex Atlas does not
+          Use the correct event and year at checkout. F1 Tickets Online does not
           reserve tickets or display live stock.
         </p>
         <div className="verified-event-links">

@@ -88,7 +88,7 @@ export default function VegasAtlas({
         >
           <BrandMark />
           <span>
-            APEX ATLAS<span className="wordmark-sub">LAS VEGAS EXPLORER</span>
+            F1TICKETS.ONLINE<span className="wordmark-sub">LAS VEGAS EXPLORER</span>
           </span>
         </a>
         <nav>
