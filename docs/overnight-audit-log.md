@@ -467,3 +467,14 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Changes: none to the application; documentation checkpoint only. No build or deployment repeated on unchanged source. No new failure or owner action.
 - Limits: this covers one shared model journey on two browser viewports, not every GPU/browser or measured venue sightlines. Current media/precise-seat/commercial gaps remain unchanged.
 - Next useful check: rotate to race-calendar search/filter and season/history edge states, including an empty result, without rerunning the complete venue rendering sweep or the recovery path just checked.
+
+
+## 26 November 2026 · 21:00 UTC calendar recovery and history audit
+
+- Starting application: v88, source `689e3d854fbdb54a3f53c86eae7388fc85656a8a`; local documentation checkpoint `e2380ca60eb92c3757bf5589107284bef0ff09af`, clean checkout. UTC check 21:00:43, before 27 November 14:00 UTC. No active concurrent edits.
+- Evidence: read-only public-site desktop 1440 and phone 390 checks reproduced lost keyboard focus after clearing an empty race search. The Clear filters button disappeared when the 24 results returned, leaving focus on BODY instead of the race-search input.
+- Change: attach a ref to the existing race search and return focus to it when clearing the empty-result filters. Search matching, result counts, URLs, source data, spacing and all other behavior remain unchanged.
+- Validation: seven affected guide/search/route tests passed. One desktop and one phone browser journey passed keyboard empty-state recovery, search/filter reset, accent-free Sao Paulo matching, race selection, season reset, browser Back/Forward, unknown-race recovery and rejection of a malformed Qatar-to-Vegas seat link. Restored calendars matched the current 24/23 race records for 2027/2026; malformed cross-venue links showed the notice and no borrowed canvas. No page errors or horizontal overflow in those paths. No new unit test for this reversible focus refinement; production build follows supported packaging.
+- Limits: these tests validate local snapshot navigation and focus, not current event stock, dates beyond the dated source snapshot, seller pages or exact seats. No external ticket form, clipboard or account was used.
+- Next useful check: rotate to error/empty states in the new third-party reference panel, particularly explicit unload and fallback behavior with a denied provider request; do not repeat the completed calendar traversal.
+- Publication: pending supported release; reconcile native source/version/deployment at the next checkpoint.

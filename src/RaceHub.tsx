@@ -17,7 +17,7 @@ import {findCircuitModel} from "./circuitSeating";
 import { findVenue } from "./venueRegistry";
 import { BrandIdentity } from "./BrandMark";
 import type { Mode } from "./model";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import {
   calendars,
   calendarUrl,
@@ -71,6 +71,7 @@ export default function RaceHub() {
     [search, setSearch] = useState(""),
     [filter, setFilter] = useState("all"),
     [category, setCategory] = useState("grandstand");
+  const raceSearch = useRef<HTMLInputElement>(null);
   useEffect(() => {
     const pop = () => {requestNavigationFocus();setRoute(readRoute(location.search));};
     window.addEventListener("popstate", pop);
@@ -437,6 +438,7 @@ export default function RaceHub() {
                   <span>Find a race</span>
                   <input
                     type="search"
+                    ref={raceSearch}
                     placeholder="Race, circuit or city"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
@@ -507,6 +509,7 @@ export default function RaceHub() {
                     onClick={() => {
                       setSearch("");
                       setFilter("all");
+                      raceSearch.current?.focus();
                     }}
                   >
                     Clear filters
