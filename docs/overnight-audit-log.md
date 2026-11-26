@@ -436,4 +436,13 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Changes: retain icon dimensions through an automatic flex basis; normalize reference/control icon boxes at 18 pixels, with existing larger editorial icons preserved. Group catalogue header actions and stack them at narrow widths. Align location icons with the first text line, indent wrapped location actions consistently, add label spans where wrapping needs control, align source actions in fixed icon/text/arrow columns, normalize tab/disclosure heights and paragraph gaps, group concept badges/actions, and use the existing arrow icon for photo navigation. No new dependencies, data source or business behavior.
 - Validation: TypeScript and five-width browser paths (1440, 1024, 768, 390, 320 pixels) passed for square 18-pixel header icons, guide/model/photo-control layout, source disclosure and photo-next interaction, with no horizontal overflow or page errors. Desktop and phone before/after screenshots were inspected. No new unit tests for this reversible layout change; production build follows supported publication.
 - Limits: media/source coverage and venue/seat accuracy remain as recorded in the previous release. Next useful check: continue the scheduled audit from actual current source without repeating this completed spacing pass.
-- Publication: pending supported release; reconcile native source/version/deployment at the next checkpoint.
+- Publication: v87, source `c878fd1876230a642588eed220c3b62d2febf45f`; saved version `appgprj_6b03a10b6c388191a92912a1c2dfe070~appgver_3bb4d4e8260c81919c348c3bf95cdf41`, deployment `appgdep_6b088c0781a08191993affefe8bb3cad` succeeded 26 November 2026 at 19:44:11 UTC. Production build and matching GitHub push confirmed. Owned preview stopped; checkout clean at delivery.
+
+
+## 26 November 2026 · 19:45 UTC immediate post-release checkpoint
+
+- Focus: reconcile the just-delivered user-directed icon/spacing release and avoid repeating its completed five-width checks or build.
+- Evidence: current UTC 19:45:39, before the 27 November 14:00 UTC cutoff. Checkout clean at `c878fd1876230a642588eed220c3b62d2febf45f`; v87 deployment succeeded about ninety seconds before this occurrence. The previous all-circuit release is also recorded with its completed 47-diagram traversal and source/coverage limits.
+- Changes: documentation reconciliation only. No new application edit, failed check, deployment or owner action.
+- Limits: the connected framework is global, but actual media, exact seat geometry and commercial prerequisites remain incomplete; the alignment pass does not resolve them.
+- Next useful check: rotate to the pre-purchase viewing-shortlist and original-ticket-source handoff with keyboard/focus review, preserving the new spacing and source-year/media distinctions. Do not rerun unchanged scene or viewport sweeps at the next occurrence.
