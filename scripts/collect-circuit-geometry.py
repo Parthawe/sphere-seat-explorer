@@ -101,7 +101,9 @@ for venue in selected:
  if venue=='canada':
   data['excluded_ways']=['413000959'];data['route_evidence']='Relation 284595 main_track member 136717490 is the closed GP circuit; pit_lane member 413000959 excluded. Source start vertex is not a calibrated timing line. Current physical geography is not a surveyed 2027 event layout.'
   for f in data['features']:
-   if f['id'] in ['129924946','1566564121']:f['kind']='water'
+   if f['id'] in ['129924946','1566564121']:
+    f['kind']='water'
+    if f['id']=='1566564121':f['name']='Small mapped water body'
    elif f['id']!='2223658':f['kind']='unassigned-bleachers';f['name']='Unassigned source bleacher envelope'
  if venue=='shanghai':data['source_context']={'main_grandstand_height_tag':{t.attrib['k']:t.attrib['v'] for t in ways['107371135'].findall('tag')}.get('height'),'height_evidence':'Raw OSM building-height tag, not a measured canopy profile or seat elevation'}
  if vegetation:data['vegetation']=vegetation

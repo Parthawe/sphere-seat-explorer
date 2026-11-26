@@ -1,3 +1,7 @@
+## Current checkpoint: Canada catalogue pass
+
+Canada 2027 now has eleven estimated banks and 15,040 model positions after the first pass through fifteen current ordinary-grandstand families. Grandstands 16/32/34/Platine remain source-only with specific geometry gaps. The original organizer virtual tour is labeled 2026 and does not calibrate current chairs. Eight source-only entries and two credited 2025 reports remain distinct. Continue Austria 2027 from MAPPING-PROGRESS.json; revisit Canada precision/photo gaps only with new evidence.
+
 ## Latest checkpoint: Monza bridge evidence and Parabolica products
 
 Monza now has 25 modeled banks and 26,776 illustrative positions, adding estimated 21A–E and 25. The historic GP crossing is horizontally identified, but layer/covered tags and general banking history do not provide deck clearance, supports or a surveyed bank profile. Serraglio remains source-only. Research is retained in research/monza/bridge-context.json; do not repeat those way queries without new evidence. 35A/B/C have separate official information without a borrowed 24 view. Next finish remaining start/finish products and audit GF/Ascari with the same geometry limits.

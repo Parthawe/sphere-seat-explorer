@@ -348,3 +348,7 @@ See MIAMI-SOURCES.md. Current F1/promoter sources establish 30 April–2 May 202
 ## Canada 2027 initial study · 26 November 2026 UTC
 
 See CANADA-SOURCES.md. F1/organizer confirm 21–23 May 2027; public sale is postponed and F1 offers a waitlist. Four independently checked product pages support broad 1 / 11 / 15 / 24 identities. Retained GP way 136717490/relation 284595 has 233 points/~4,367 m;pit 413000959 excluded. Partial licensed lake/basin outlines,100 cropped tree points and five unassigned bleacher envelopes supply plan context. All temporary banks/tiers/chairs are authored estimates;14 other references stay source-only. The linked PAM explorer opens with 2026 artwork and is not a current event survey. No source image or private inventory is redistributed.
+
+## Canada grandstand catalogue pass · 26 November 2026 UTC
+
+The remaining eleven current Canada product pages have been assessed. Seven broad estimated samples bring coverage to eleven banks/15,040 positions; four unresolved grandstands remain source-only. Current descriptions distinguish 46 outside and 47 inside Casino Straight, 10/11 screen limits and 33 family conditions. The 47 sample was moved 10 m east to face the intended road leg. Organizer 12/Platine virtual-tour destinations identify 2026, not a surveyed 2027 chair view. Retained geometry was regenerated offline only to correct a water label. See CANADA-SOURCES.md; advance Austria with Canada precision gaps open.

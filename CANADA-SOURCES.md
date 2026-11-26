@@ -1,4 +1,8 @@
-# Canada 2027 initial reference study
+# Canada 2027 reference study
+
+Current coverage: eleven estimated banks and 15,040 generated positions, eight source-only entries, two 2025 attendee reports and an explicitly labeled organizer 2026 virtual-tour handoff. Exact chairs and physical sightlines remain uncalibrated.
+
+## Initial four-bank checkpoint
 
 Checked 26 November 2026. [F1’s event page](https://www.formula1.com/en/racing/2027/canada) and [the organizer’s 2027 notice](https://gpcanada.ca/en/2027-tickets/) confirm 21–23 May at Circuit Gilles-Villeneuve, Montréal. The notice says the general public sale was postponed; earlier presale purchases remain confirmed. [F1’s ticket root](https://ticketing.formula1.com/canada/) offers a waitlist. No current stock, reservation, price or reopened sale is inferred. That root’s Bahrain-labeled map and template copy are not Canada geography, policy or inventory evidence.
 
@@ -15,3 +19,26 @@ Olympic Basin way 129924946, small water way 1566564121 and joined Lac des réga
 Two primary 2025 attendee accounts are linked: [u/MarzipanInfamous2305’s report](https://www.reddit.com/r/GrandPrixTravel/comments/1le3l4w/thoughts_on_the_montreal_gp_2025/) identifies Grandstand 1 section 3/row F; [u/TitleAltruistic9304’s comment](https://www.reddit.com/r/GrandPrixTravel/comments/1le3l4w/comment/myidhdk/) identifies Grandstand 11 section 7/row J. Author-reported lettered rows are not matched to generated positions. Accounts discuss different views and conditions, with source/capture year and individual authors retained. No aggregate rating or current policy is derived. Other banks and photo filters remain empty. No Canada historical telemetry is supplied; cars use a simulated lap.
 
 Photo leads were not promoted into checked references: two YouTube watch pages were throttled; A View From My Seat’s venue page returned 403. No retry or media download bypass occurred. A travel guide updated in 2026 uses relative “last year” wording despite older comments, which does not establish the capture year of every image. Do not label those assets 2025/2026 or exact-seat calibrated without new evidence. No external photograph is bundled. src/canada-geometry.json and public/data/canada-geometry.json match with contributor/ODbL provenance. The 2026 event has no borrowed 2027 canvas. Next independently assess the remaining current grandstand families using the retained geography; keep unsupported products source-only if evidence is insufficient.
+
+## Remaining ordinary-grandstand audit · 26 November 2026 UTC
+
+The eleven outstanding current organizer detail pages were checked independently. Their headers identify 21–23 May 2027; descriptions establish broad product/corner identities, not surveyed temporary extents. Seven compact estimated regions now join the initial four. Every addition has two authored sections, sixteen rows and forty positions per row: 8,960 additional positions, for 15,040 across eleven banks. None receives a source-footprint flag. Model selectors now follow numerical grandstand order while preserving existing bank IDs and links.
+
+| Current organizer source | Result and limits |
+| --- | --- |
+| [10](https://gpcanada.ca/en/tickets/grandstand-10/) | Estimated Senna-exit region; the source’s limited-screen guidance is visible. |
+| [12](https://gpcanada.ca/en/tickets/tribune-12en/) | Estimated Senna region; original organizer 360° handoff retains its 2026 destination label. |
+| [16](https://gpcanada.ca/en/tickets/tribune-16-en/) | Source-only. A separate final-corner/pit-straight setback in the track/basin corridor is unverified. The source labels its ticket non-renewable. |
+| [21](https://gpcanada.ca/en/tickets/grandstand-21/) | Estimated hairpin-entry region, separate from accessible 21A and Terrace 21. |
+| [31](https://gpcanada.ca/en/tickets/grandstand-31/) | Estimated Turns 8–9 region; no accessible 41A camera or route is inferred. |
+| [32](https://gpcanada.ca/en/tickets/grandstand-32/) | Source-only. Shares a broad inside Turns 6–7 description with 33, but an independent product boundary/order is not established. The source labels its ticket non-renewable. |
+| [33](https://gpcanada.ca/en/tickets/grandstand-33/) | Estimated inside Turns 6–7 family region. Every child needs a ticket; the source’s child-rate offer has age and one-child-per-adult conditions, displayed before model inputs. |
+| [34](https://gpcanada.ca/en/tickets/grandstand-34/) | Source-only. The narrow hairpin road separation and unnamed bleacher envelope do not establish an official 2027 product platform/tier. |
+| [46](https://gpcanada.ca/en/tickets/grandstand-46/) / [47](https://gpcanada.ca/en/tickets/grandstand-47/) | Separate estimated outside/inside Casino Straight regions. Their setbacks, rows and screen placement remain authored. |
+| [Platine](https://gpcanada.ca/en/tickets/platine-grandstand/) | Source-only. Covered seating is source-described; independent roof/tier/pit-building geometry is unverified. No uncovered ordinary bank substitutes for it. |
+
+The first compact 47 placement faced the nearer incoming hairpin leg. Moving its center 10 m east selects Casino Straight as its forward target; a directional check now keeps 46 facing west and 47 east across that straight. All generated points still clear source road centerlines by more than 15 m and lie outside the three retained water outlines. Bank rectangles remain separate. These checks constrain the authored study, not actual spectator infrastructure or safety. Three offset map labels and leader lines separate the crowded hairpin/Casino annotations on phones; chair coordinates and estimated region polygons do not move with labels.
+
+The current 12 and Platine pages link an [original provider tour](https://tour.avenue360.ca/en/tour/bell-gp-canada?play=1&sr=-.04,1.09&ss=12) whose heading identifies 2026 Canadian Grand Prix. This is distinct from the PAM map and from attendee references. The 12 selection and photo/reference panel now explain that year boundary before opening the organizer page. A separate source-information entry opens the original tour. No capture date, panorama playback, official row match or 2027 chair calibration is verified. No image, panorama tile, screenshot, proprietary mesh or private inventory is imported. Existing 2025 attendee reports and empty photo filters remain unchanged.
+
+The eight source-only entries now comprise four unresolved grandstands, this dated tour, roaming admission, accessible products and grouped hospitality. This completes the first pass through the fifteen ordinary grandstand families named by the checked catalogue; it is not an audit of every saleable package or actual chair. The small retained water way 1566564121 now has an accurate water-body label instead of the collector’s generic unnamed-grandstand fallback. Geometry was regenerated offline from the retained snapshot, without another public bbox request. No blocked page/media attempts were repeated. Remaining Canada precision, access, roof and photograph gaps need new assets; advance the independent queue to Austria 2027.

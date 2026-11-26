@@ -111,3 +111,7 @@ Miami has its own venue label and empty checked attendee collection. The inspect
 ## Canada 2027 initial study · 26 November 2026 UTC
 
 Canada adds two 2025 personal reports: u/MarzipanInfamous2305 at Grandstand 1 section 3/row F, and u/TitleAltruistic9304 at Grandstand 11 section 7/row J. Both link the original discussion with individual authors, capture context and row/model mismatch. Neither is a checked photo or universal obstruction/route guarantee. Other banks and photo filters remain empty. YouTube watch requests were throttled and A View From My Seat returned 403; no retry or download bypass followed. See CANADA-SOURCES.md.
+
+## Canada grandstand catalogue pass · 26 November 2026 UTC
+
+Grandstand 12 now links its organizer-provided 360° preview with an explicit 2026 destination label. It remains separate from the two credited 2025 attendee reports and does not count as a dated attendee photograph or calibrated model position. The original tour and current product pages open externally; no tiles, images or meshes are redistributed. Capture date and panorama playback are unverified. No blocked media request was repeated.

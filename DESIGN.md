@@ -105,3 +105,7 @@ Shanghai’s 2026 scene uses the daylight explorer, full-circuit/stand/seated mo
 ## Canada 2027 initial study · 26 November 2026 UTC
 
 Canada follows the existing red/ink/paper daylight explorer. Keep sale status visible before generated position inputs, the Grandstand 11 screen limitation beside admission facts, and accessible/hospitality/roaming entries separate from ordinary banks. Reported lettered rows and source sections belong to the original author; they do not match generated model labels. Water is plan context with authored flat elevation. The organizer-linked 2026 PAM map is an original external reference, not a 2027 map asset.
+
+## Canada grandstand catalogue pass · 26 November 2026 UTC
+
+Canada selectors now follow numerical grandstand order. Three hairpin/Casino map labels use leader lines to avoid phone collisions while retaining the original estimated region and chair positions. The family 33 ticket condition appears before position controls. Grandstand 12’s organizer preview handoff names its 2026 destination in both the selection panel and reference browser. Other venues retain their existing preview copy and marker positions.

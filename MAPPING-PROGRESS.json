@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-26",
   "cadence_hours": 1,
-  "phase": "canada-remaining-grandstands",
+  "phase": "austria-initial-source-audit",
   "active_run": null,
-  "next_action": "Continue Canada 2027 with the remaining ordinary grandstands: verify current organizer detail pages and independent broad placements for 10/12/16/21/31/32/33/34/46/47/Platine against retained GP/source geography. Preserve the initial four samples and 14 source-only distinctions; add only supported estimated regions and keep missing boundaries/vertical context explicit. CANADA-SOURCES.md records postponed public sale/F1 waitlist, the organizer-linked PAM explorer’s 2026 identity, 403 catalogue/AVFMS and throttled YouTube limits. Do not repeat the completed bbox acquisition or blocked media/page attempts. Existing source envelopes are unnamed and must not silently become verified 2027 product boundaries. Two credited 2025 attendee reports cover 1 and 11; photo filters remain empty. If further Canada mapping is externally blocked, checkpoint that evidence and advance Austria 2027 rather than repeating the same source attempts.",
+  "next_action": "Begin Austria 2027: verify current organizer/F1 event dates, physical Red Bull Ring venue, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography for its own supported map/representative study. Canada’s initial fifteen-family catalogue pass is checkpointed in CANADA-SOURCES.md: eleven estimated banks/15,040 positions, four unresolved ordinary grandstands (16/32/34/Platine), plus dated 2026 organizer tour, roaming, accessible and hospitality source-only entries. Preserve 10/11 limited-screen notes, 33 child-ticket/rate conditions, 21 versus 21A, 31 versus 41A, and 46 outside versus 47 inside. No 2026 map/tour becomes a 2027 ticket survey; no unnamed envelope establishes a current boundary. Do not repeat Canada’s completed bbox, blocked catalogue/AVFMS/YouTube attempts or eleven-page audit. Return to its precision and attendee-photo gaps only with new evidence.",
   "venues": [
     {
       "id": "las-vegas",
@@ -335,29 +335,41 @@
       "id": "canada",
       "event": "Canada",
       "venue": "Gilles-Villeneuve",
-      "status": "representative_3d_initial_2027_remaining_products",
+      "status": "representative_3d_initial_catalogue_audit_2027_precision_needs_assets",
       "sources": [
         "https://www.formula1.com/en/racing/2027/canada",
         "https://gpcanada.ca/en/2027-tickets/",
         "https://gpcanada.ca/en/discover-our-offer/",
         "https://gpcanada.ca/en/event/accessibility/",
-        "https://www.openstreetmap.org/relation/284595"
+        "https://www.openstreetmap.org/relation/284595",
+        "https://gpcanada.ca/en/tickets/grandstand-10/",
+        "https://gpcanada.ca/en/tickets/tribune-12en/",
+        "https://gpcanada.ca/en/tickets/tribune-16-en/",
+        "https://gpcanada.ca/en/tickets/grandstand-21/",
+        "https://gpcanada.ca/en/tickets/grandstand-31/",
+        "https://gpcanada.ca/en/tickets/grandstand-32/",
+        "https://gpcanada.ca/en/tickets/grandstand-33/",
+        "https://gpcanada.ca/en/tickets/grandstand-34/",
+        "https://gpcanada.ca/en/tickets/grandstand-46/",
+        "https://gpcanada.ca/en/tickets/grandstand-47/",
+        "https://gpcanada.ca/en/tickets/platine-grandstand/"
       ],
-      "next_action": "Continue Canada 2027 with the remaining ordinary grandstands: verify current organizer detail pages and independent broad placements for 10/12/16/21/31/32/33/34/46/47/Platine against retained GP/source geography. Preserve the initial four samples and 14 source-only distinctions; add only supported estimated regions and keep missing boundaries/vertical context explicit. CANADA-SOURCES.md records postponed public sale/F1 waitlist, the organizer-linked PAM explorer’s 2026 identity, 403 catalogue/AVFMS and throttled YouTube limits. Do not repeat the completed bbox acquisition or blocked media/page attempts. Existing source envelopes are unnamed and must not silently become verified 2027 product boundaries. Two credited 2025 attendee reports cover 1 and 11; photo filters remain empty. If further Canada mapping is externally blocked, checkpoint that evidence and advance Austria 2027 rather than repeating the same source attempts.",
+      "next_action": "Begin Austria 2027: verify current organizer/F1 event dates, physical Red Bull Ring venue, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography for its own supported map/representative study. Canada’s initial fifteen-family catalogue pass is checkpointed in CANADA-SOURCES.md: eleven estimated banks/15,040 positions, four unresolved ordinary grandstands (16/32/34/Platine), plus dated 2026 organizer tour, roaming, accessible and hospitality source-only entries. Preserve 10/11 limited-screen notes, 33 child-ticket/rate conditions, 21 versus 21A, 31 versus 41A, and 46 outside versus 47 inside. No 2026 map/tour becomes a 2027 ticket survey; no unnamed envelope establishes a current boundary. Do not repeat Canada’s completed bbox, blocked catalogue/AVFMS/YouTube attempts or eleven-page audit. Return to its precision and attendee-photo gaps only with new evidence.",
       "asset_assessment": "CANADA-SOURCES.md",
       "seasons_with_3d_coverage": [
         2027
       ],
-      "modeled_banks": 4,
-      "modeled_positions": 6080,
-      "source_only_options": 14,
+      "modeled_banks": 11,
+      "modeled_positions": 15040,
+      "source_only_options": 8,
       "exact_seats_verified": false,
       "remaining_gaps": [
-        "Eleven other current ordinary grandstand families require independent spatial assessment",
-        "Temporary boundaries, chair inventory, actual tiers/roofs/screens, pit and bridge geometry",
-        "Accessible platforms/routes and hospitality levels/tables remain source-only",
-        "Dated photographs and historical Canada replay; source reports are 2025 and uncalibrated"
-      ]
+        "Grandstands 16/32/34/Platine: independent temporary boundaries, tight road separation, roof/tier/pit context",
+        "Actual chair inventory, tiers/cover/screens, road relief, bridges and access routes",
+        "Hospitality tables/levels, accessible platforms/companion positions and roaming routes",
+        "Dated photographs and historical Canada replay; two source reports remain 2025 and uncalibrated"
+      ],
+      "ordinary_products_assessed": 15
     },
     {
       "id": "austria",
@@ -1117,6 +1129,28 @@
         "Eleven ordinary grandstands and other product groups need assessment;no checked photos or historicalCanada telemetry"
       ],
       "next": "Continue Canada 2027 with the remaining ordinary grandstands: verify current organizer detail pages and independent broad placements for 10/12/16/21/31/32/33/34/46/47/Platine against retained GP/source geography. Preserve the initial four samples and 14 source-only distinctions; add only supported estimated regions and keep missing boundaries/vertical context explicit. CANADA-SOURCES.md records postponed public sale/F1 waitlist, the organizer-linked PAM explorer’s 2026 identity, 403 catalogue/AVFMS and throttled YouTube limits. Do not repeat the completed bbox acquisition or blocked media/page attempts. Existing source envelopes are unnamed and must not silently become verified 2027 product boundaries. Two credited 2025 attendee reports cover 1 and 11; photo filters remain empty. If further Canada mapping is externally blocked, checkpoint that evidence and advance Austria 2027 rather than repeating the same source attempts."
+    },
+    {
+      "date": "2026-11-26",
+      "scope": "Canada remaining ordinary-grandstand catalogue pass",
+      "result": "Added seven estimated 10/12/21/31/33/46/47 regions, reaching eleven banks/15,040 model positions. Four ordinary products retain specific source-only gaps; a labeled 2026 organizer virtual-tour handoff is added. Eight source-only entries total. Independent queue advances to Austria.",
+      "evidence": [
+        "Eleven current organizer product-detail pages checked; no prior-year PAM layout or unnamed source envelope promoted to current product boundary",
+        "10 limited-screen and 33 child-ticket/child-rate conditions retained; ordinary versus accessible products remain distinct",
+        "46/47 outside/inside Casino Straight distinction reviewed; 47 center moved 10 m east to face the intended GP leg",
+        "All model points remain road/water clear and bank rectangles separate; direction check guards opposing 46/47 views",
+        "Three phone map labels separated with leader lines; generated chairs and region polygons unchanged by label offsets",
+        "108 final regression tests pass; production build runs in packaging",
+        "Chrome desktop 1440×1000, phones 320×740/390×844: all seven added banks, complete framing, eleven-bank map, last47/2/16/40 grid, family note, eight source-only entries, dated tour handoff, comparison revisit, zoom, play/pause and graphics Retry; no own-page exceptions or narrow overflow",
+        "Collector compiles; public/source geometry matches; offline regeneration corrects water-body label without new acquisition"
+      ],
+      "limitations": [
+        "All temporary sample extents, tiers, chairs, physical sightlines, screen geometry and ground context remain authored/uncalibrated",
+        "16/32/34/Platine have no model camera; no borrowed neighbor view",
+        "Organizer 360 destination is labeled 2026; capture date, playback and chair calibration unverified",
+        "No new attendee photograph, historical telemetry or live ticket stock"
+      ],
+      "next": "Begin Austria 2027: verify current organizer/F1 event dates, physical Red Bull Ring venue, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography for its own supported map/representative study. Canada’s initial fifteen-family catalogue pass is checkpointed in CANADA-SOURCES.md: eleven estimated banks/15,040 positions, four unresolved ordinary grandstands (16/32/34/Platine), plus dated 2026 organizer tour, roaming, accessible and hospitality source-only entries. Preserve 10/11 limited-screen notes, 33 child-ticket/rate conditions, 21 versus 21A, 31 versus 41A, and 46 outside versus 47 inside. No 2026 map/tour becomes a 2027 ticket survey; no unnamed envelope establishes a current boundary. Do not repeat Canada’s completed bbox, blocked catalogue/AVFMS/YouTube attempts or eleven-page audit. Return to its precision and attendee-photo gaps only with new evidence."
     }
   ],
   "blockers": [
