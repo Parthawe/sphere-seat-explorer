@@ -1220,5 +1220,14 @@
       "scope": "Representative 3D/exact views only; area map and independent venues remain available",
       "reason": "Current primary diagram/list supports broad product regions. No measured temporary stand envelopes, terrain/tunnel structure or licensed redistributable digital-twin geometry is supplied. Actual chair selection requires organizer sign-in; do not access private inventory."
     }
-  ]
+  ],
+  "circuit_diagrams": {
+    "status": "implemented_reference_diagrams",
+    "race_editions": 47,
+    "physical_outlines": 27,
+    "source": "CIRCUIT-DIAGRAMS.md",
+    "exact_seats_verified": false,
+    "layout_year_verified": false,
+    "note": "Interactive 3D plan diagrams only; existing per-venue seat/terrain gaps and next actions remain unchanged."
+  }
 }

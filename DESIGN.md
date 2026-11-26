@@ -176,3 +176,10 @@ The circuit locator is one accessible touch target opening the detailed map. Its
 Place a compact price workspace in every race guide. An empty state explains the first useful action without a fake graph. The populated state gives the observed-price chart and original-currency numbers priority, with a quiet side panel for budget targets and seller checks. Native dialog forms keep recording detail outside the main comparison surface. Use short labels, original icons, strong keyboard focus and 44px controls; phone inputs use 16px text to avoid focus zoom. Tablet/desktop show history beside target controls, phones stack them.
 
 Label quotes as personal, browser-local and manually recorded. A price target compares the last saved quote; it does not enable alerts. Preserve the seller, exact category, currency, admission dates and all-in adult basis for each history. Do not interpolate a claim of live stock, verified totals or future market direction from user notes.
+
+
+## All-race 3D layout viewer · 26 November 2026
+
+Use the established ink/red identity for a full-screen circuit diagram, with the shape as the main artifact. Orbit and overhead are functional camera choices; race and season selectors expose all supported diagrams. Keep measured control space outside the canvas so short or narrow screens do not cover the shape. Static scenes render on demand, motion is opt-in, and reduced-motion preferences settle camera changes immediately.
+
+Label these as community reference diagrams with unverified layout year, no seat preview and omitted elevation/bridges. Display depth belongs to the diagram, not the venue. Preserve richer seat studies and their stricter provenance separately.

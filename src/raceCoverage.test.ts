@@ -21,9 +21,9 @@ test('all 47 calendar entries keep model and area-map coverage bound to their ow
     if (coverage.kind==='guide'||coverage.kind==='area') assert.equal(coverage.has3d,false);
   }
   assert.equal(count,47);
-  assert.equal(raceCoverage(2026,'bahrain').kind,'guide');
+  assert.equal(raceCoverage(2026,'bahrain').kind,'layout3d');
   assert.equal(raceCoverage(2027,'bahrain').kind,'model');
   assert.equal(raceCoverage(2026,'qatar').kind,'model');
-  assert.equal(raceCoverage(2027,'qatar').kind,'guide');
-  assert.equal(raceCoverage(2027,'china').has3d,false);
+  assert.equal(raceCoverage(2027,'qatar').kind,'layout3d');
+  assert.equal(raceCoverage(2027,'china').kind,'layout3d');
 });

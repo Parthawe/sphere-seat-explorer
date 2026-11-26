@@ -7,6 +7,7 @@ export type Route = {
   seats: boolean;
   atlas?: boolean;
   circuit?: boolean;
+  layout?: boolean;
   position?: string;
   mode?: Mode;
   issue?: string;
@@ -26,7 +27,7 @@ export function readRoute(search: string): Route {
     issue = "That season is unavailable. Showing the 2026 calendar instead.";
   if (vegasRequest && !isVegas)
     issue = "That seat-view link belongs to a different venue. Use this race’s available viewing options below.";
-  if (screen && !["vegas", "seats", "circuit"].includes(screen))
+  if (screen && !["vegas", "seats", "circuit", "layout"].includes(screen))
     issue = "That view is unavailable. Choose a viewing option from this race guide.";
   return {
     season: season === "2027" ? 2027 : 2026,
@@ -34,6 +35,7 @@ export function readRoute(search: string): Route {
     seats: validSeason && vegasRequest && isVegas && screen !== "vegas",
     atlas: validSeason && screen === "vegas" && isVegas,
     circuit: validSeason && screen === "circuit",
+    layout: validSeason && screen === "layout",
     issue,
   };
 }

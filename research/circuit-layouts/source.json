@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/bacinger/f1-circuits",
+  "commit": "fda4a2f74728fa033c81ba8d3b628966a4a095d2",
+  "captured": "2026-11-26",
+  "licence": "MIT",
+  "coordinates": "WGS84 converted to centered local meters, north is negative Z, values rounded to centimeters",
+  "variants": "Community reference; no racing-season accuracy or heights inferred. 2026 Bahrain GP in Malaysia maps to Sepang, 2027 Bahrain maps to Sakhir.",
+  "upstream_provenance": "README acknowledges an initial Google My Maps circuit collection. No Google tiles, imagery, mesh or street-view assets are included. The repository distributes these vector outlines under MIT; this is not an official or surveyed venue source."
+}

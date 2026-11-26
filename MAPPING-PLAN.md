@@ -1,3 +1,7 @@
+## All-race diagram layer · 26 November 2026
+
+All 47 listed race editions now have a 3D layout diagram backed by 27 distinct community reference outlines. This supplements existing seat studies and area maps. Layout year is unverified; terrain, bridges, buildings and seats are omitted. See CIRCUIT-DIAGRAMS.md. Per-venue precision gates and the Austria vertical-context action below remain unchanged.
+
 ## Current checkpoint: Austria area map and vertical-context gate
 
 Austria 2027 now has eleven selectable area families, six hopping day-allocation combinations and eleven other source-only entries. Its independent GP plan excludes pit and motorcycle/short branches. The track climbs and descends; no flat 3D chair camera is supplied without vertical context. Follow MAPPING-PROGRESS.json and research/austria/terrain-leads.json to assess licensed bounded terrain before 3D, then advance Hungary if that evidence is unavailable. Do not repeat the completed OSM acquisition; the source snapshot is retained.
