@@ -97,6 +97,17 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: copy and download used separate formatters with different fields and checklist wording. A completed copy could overwrite Shortlist cleared after the visitor cleared the brief while a clipboard request was pending. The settled delayed-result failure was reproduced before editing.
 - Change: both export actions now use one race-bound formatter, with venue dates, curated region descriptions, each manual check’s status, source year, relevant ticket source and estimate limits. Unknown selected strings are omitted. Copy has a disabled busy state, and late results cannot overwrite messages after the selection/checklist was changed or cleared.
 - Validation: six affected guide/export tests passed; TypeScript passed. Desktop and phone browser checks confirmed byte-identical clipboard/download text, exclusion of a private query marker, a helpful clipboard-denied fallback, working download and preservation of the Clear message after delayed clipboard completion. Both brief screenshots inspected. An initial test incorrectly rejected the word Sakhir inside the valid Sepang warning; it was corrected to assert the actual venue line, preserving the warning. Production build is part of publication.
-- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Publication: v62, source `a4ab287430c2cb395778006a070a636baa5fe795`, succeeded; matching GitHub push confirmed.
 - Limits: export contains curated context and user-declared checks, not ticket verification. No pasted ticket details, analytics or server persistence were introduced.
 - Next useful check: complete model-grid edge selection, row/section bounds and keyboard behavior on desktop/phone.
+
+
+## 26 November 2026 · 11:00 UTC · Complete model grid and scene handoff
+
+- Starting release: v62, source `a4ab287430c2cb395778006a070a636baa5fe795`; clean checkout.
+- Evidence: ArrowDown in the top-down grid changed row 12 to row 11, moving the marker visually upward. The grid and seated camera shared a handler despite different spatial row conventions. On phone, View this position in 3D closed the dialog but left the entire scene above the viewport (stage bottom -528px).
+- Change: grid arrows now follow the displayed grid axes while seated-camera arrows retain their existing higher/lower-row behavior. The explicit 3D-view action closes the dialog, stops following, focuses the interactive scene and brings it into view. Reduced motion uses an immediate scroll; normal motion uses the browser's smooth scroll. Escape retains the ordinary dialog-return behavior.
+- Validation: desktop 1440px and phone 390px strict browser assertions covered first-row/seat bounds, Down/Right increments, final section and last dot, final-row/seat bounds and the scene-visible/focused handoff with preserved selection. No browser errors. Both grid screenshots inspected. TypeScript passed; production build is part of publication. No redundant geometry/full-suite test rerun for this interaction-only fix.
+- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Limits: model positions remain illustrative and do not identify actual ticket rows or chairs. These checks do not certify touch accuracy for a physical phone or accessible venue routes.
+- Next useful check: non-destructive comparison removal/clear focus and the three-position capacity message, without adding persistence or commercial tracking.
