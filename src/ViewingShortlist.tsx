@@ -1,47 +1,35 @@
 import { useRef, useState } from 'react';
 import type { Race } from './races';
-import { circuitGuideSource, type CircuitGuide } from './circuitGuides';
+import type { CircuitGuide } from './circuitGuides';
+import { bookingChecks as checks, buildViewingBrief } from './viewingBrief';
 
-const checks = [
-  'Correct event, venue and year',
-  'Ticket days, category and permitted areas',
-  'Final price, fees and delivery terms',
-  'Cover, screens and any access requirements',
-];
-
-export default function ViewingShortlist({ race, guide, ticketUrl }: { race: Race; guide: CircuitGuide; ticketUrl?: string }) {
+export default function ViewingShortlist({ race, guide }: { race: Race; guide: CircuitGuide }) {
   const [intent, setIntent] = useState<'buy' | 'ticket'>('buy');
   const [selected, setSelected] = useState<string[]>([]);
   const [confirmed, setConfirmed] = useState<number[]>([]);
   const [message, setMessage] = useState('');
+  const [copying, setCopying] = useState(false);
+  const revision = useRef(0);
   const firstChoice = useRef<HTMLButtonElement>(null);
   function toggle(name: string) {
+    revision.current++;
     setSelected(previous => previous.includes(name) ? previous.filter(value => value !== name) : [...previous, name]);
     setConfirmed([]);
     setMessage('');
   }
   async function copy() {
-    const brief = [
-      `${race.name} ${race.season} · viewing shortlist`,
-      `${guide.venue} · ${guide.location}`,
-      ...guide.viewing.filter(view => selected.includes(view.name)).map(view => `${view.name}: ${view.detail}`),
-      'Circuit references, not confirmed ticket products or seat allocations.',
-      `Still to confirm with seller: ${checks.filter((_, index) => !confirmed.includes(index)).join('; ') || 'Checklist marked complete by you. Recheck details before paying.'}`,
-      guide.ticketCheck,
-      `Circuit reference (${guide.referenceSeason}): ${circuitGuideSource(guide)}`,
-      ...(ticketUrl ? [`Event-year ticket source: ${ticketUrl}`] : []),
-      'Generated views are estimates. No live availability or price is verified.',
-    ].join('\n');
-    try { await navigator.clipboard.writeText(brief); setMessage('Shortlist copied with source and remaining checks.'); }
-    catch { setMessage('Copy is unavailable. Use Download shortlist instead.'); }
+    const generation = revision.current;
+    const brief = buildViewingBrief(race, selected, confirmed);
+    setCopying(true);
+    try {
+      await navigator.clipboard.writeText(brief);
+      if (generation === revision.current) setMessage('Shortlist copied with sources and your booking checks.');
+    } catch {
+      if (generation === revision.current) setMessage('Copy is unavailable. Use Download shortlist instead.');
+    } finally { setCopying(false); }
   }
   function download() {
-    const text = [`${race.name} ${race.season} · ${guide.venue}`,
-      ...guide.viewing.filter(view => selected.includes(view.name)).map(view => `${view.name}: ${view.detail}`),
-      'Circuit references only. No confirmed ticket product, seat, price or availability.',
-      ...checks.map((check, index) => `${confirmed.includes(index) ? '[Marked checked by you]' : '[To confirm]'} ${check}`),
-      guide.ticketCheck, `Circuit reference (${guide.referenceSeason}): ${circuitGuideSource(guide)}`, ticketUrl || 'No event-year ticket source supplied.',
-    ].join('\n');
+    const text = buildViewingBrief(race, selected, confirmed);
     const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
     const anchor = document.createElement('a'); anchor.href = url; anchor.download = `${race.slug}-${race.season}-shortlist.txt`; anchor.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
@@ -61,12 +49,12 @@ export default function ViewingShortlist({ race, guide, ticketUrl }: { race: Rac
       </button>)}
     </div>
     {selected.length > 0 && <div className="shortlist-notebook">
-      <div className="shortlist-notebook-heading"><h4>Your race brief</h4><button onClick={() => { setSelected([]); setConfirmed([]); setMessage('Shortlist cleared.'); firstChoice.current?.focus(); }}>Clear</button></div>
+      <div className="shortlist-notebook-heading"><h4>Your race brief</h4><button onClick={() => { revision.current++; setSelected([]); setConfirmed([]); setMessage('Shortlist cleared.'); firstChoice.current?.focus(); }}>Clear</button></div>
       <p>{selected.length} viewing {selected.length === 1 ? 'region' : 'regions'} shortlisted. These are circuit references, not a seller’s confirmed products.</p>
       <p>Kept only while this race page is open. Download to keep a copy.</p>
-      <fieldset><legend>Confirm with the seller</legend>{checks.map((check, index) => <label key={check}><input type="checkbox" checked={confirmed.includes(index)} onChange={() => setConfirmed(previous => previous.includes(index) ? previous.filter(value => value !== index) : [...previous, index])} /><span>{check}</span></label>)}</fieldset>
+      <fieldset><legend>Confirm with the seller</legend>{checks.map((check, index) => <label key={check}><input type="checkbox" checked={confirmed.includes(index)} onChange={() => { revision.current++; setMessage(''); setConfirmed(previous => previous.includes(index) ? previous.filter(value => value !== index) : [...previous, index]); }} /><span>{check}</span></label>)}</fieldset>
       <p className="shortlist-check-status">{confirmed.length} of {checks.length} marked checked by you. This does not verify a ticket.</p>
-      <div className="shortlist-export"><button onClick={copy}>Copy shortlist</button><button onClick={download}>Download shortlist</button></div>
+      <div className="shortlist-export"><button disabled={copying} aria-busy={copying} onClick={copy}>{copying ? 'Copying…' : 'Copy shortlist'}</button><button onClick={download}>Download shortlist</button></div>
     </div>}
     <p role="status" className="shortlist-message">{message}</p>
   </div>;

@@ -214,3 +214,4 @@
 .comparison-reference strong {font-size:16px;}
 .comparison-reference time {font-size:12px; color:#535d6e; white-space:nowrap;}
 .comparison-reference a {display:inline-flex; align-items:center; min-height:44px; font-size:12px; color:#9f1b13; text-underline-offset:3px;}
+.shortlist-export button:disabled {opacity:.55; cursor:progress;}

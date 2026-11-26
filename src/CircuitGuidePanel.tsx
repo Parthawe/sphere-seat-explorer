@@ -20,7 +20,7 @@ export default function CircuitGuidePanel({ race, coverage }: { race: Race; cove
       <p className="circuit-brief-overview">{guide.overview}</p>
       <div className="circuit-brief-main">
         <div>
-          <ViewingShortlist key={`${race.season}-${race.slug}`} race={race} guide={guide} ticketUrl={ticketUrl} />
+          <ViewingShortlist key={`${race.season}-${race.slug}`} race={race} guide={guide} />
         </div>
         <div className="circuit-brief-checks">
           <h3>Know what you’re comparing.</h3>
