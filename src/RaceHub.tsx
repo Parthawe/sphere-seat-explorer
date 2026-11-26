@@ -1,3 +1,5 @@
+import CircuitGuidePanel from "./CircuitGuidePanel";
+import { circuitGuideFor, matchesCircuitSearch } from "./circuitGuides";
 import { useHashTarget } from "./useHashTarget";
 import { readRoute, type Route } from "./routing";
 import { SITE_NAME, syncPublicUrlMetadata } from "./brand";
@@ -82,9 +84,7 @@ export default function RaceHub() {
     selected = races.find((r) => r.slug === route.race);
   const filtered = races.filter(
     (r) =>
-      (r.name + " " + r.slug)
-        .toLowerCase()
-        .includes(search.toLowerCase().trim()) &&
+      matchesCircuitSearch(r, search) &&
       (filter === "all" ||
         (filter === "upcoming" && raceStatus(r) !== "Past") ||
         (filter === "3d" && (r.slug === "las-vegas" || !!findCircuitModel(route.season,r.slug)))),
@@ -248,6 +248,7 @@ export default function RaceHub() {
             </section>
             {circuitModel && <section className="circuit-model-entry"><div><span className="eyebrow">CIRCUIT-SPECIFIC 3D / {circuitModel.season}</span><h2>Explore the grandstands in 3D.</h2><p>Move between the circuit, grandstand and seated views. Every modeled position is selectable; chair counts, sections and sightlines are estimates.</p></div><button onClick={()=>go({season:route.season,race:route.race,seats:false,circuit:true})}>Open 3D seating</button></section>}
             {route.circuit && !circuitModel && <p className="singapore-reference-note">No 3D seating model is available for this venue and season. Choose a supported race; layouts are not carried across seasons.</p>}
+            <CircuitGuidePanel race={selected} coverage={circuitModel ? `Illustrative 3D · ${circuitModel.banks.length} modeled banks` : selected.slug === "las-vegas" ? "3D explorer · 2026 reference" : findVenue(route.season, selected.slug) ? "Approximate area map available" : "Circuit guide · no seat model yet"} />
             {selected.slug === "qatar" && route.season === 2026 ? (
               <Suspense
                 fallback={
@@ -539,7 +540,7 @@ export default function RaceHub() {
                   <span>Find a race</span>
                   <input
                     type="search"
-                    placeholder="Search race name"
+                    placeholder="Race, circuit or city"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                   />
@@ -584,7 +585,7 @@ export default function RaceHub() {
                     <span className="race-round">
                       {String(r.round).padStart(2, "0")}
                     </span>
-                    <strong>{r.name}</strong>
+                    <strong>{r.name}<small className="race-circuit-name">{circuitGuideFor(r.season, r.slug)?.venue}</small></strong>
                     <span className="race-dates">{dateLabel(r)}</span>
                     <span
                       className={

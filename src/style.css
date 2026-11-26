@@ -6028,3 +6028,48 @@ dialog::backdrop {
 .flat-map g[role="button"]:focus-visible rect { stroke: #fff; stroke-width: 3px; }
 .atlas-map g[role="button"]:focus-visible circle { stroke: #ffcb69; stroke-width: 4px; }
 .bowl-selection .show-all-levels { min-height: 44px; padding: 8px 0; }
+
+.circuit-brief {
+  margin: 30px 0 40px;
+  padding: 28px 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid #d8d8e1;
+  scroll-margin-top: 24px;
+}
+.circuit-brief > header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.circuit-brief h2 { font: 600 34px/1.1 "Barlow Condensed", sans-serif; margin: 0; }
+.circuit-brief-location { color: #5d5d6c; font-size: 14px; margin: 8px 0 0; }
+.circuit-brief-coverage { color: #474754; border: 1px solid #bdbdc8; padding: 8px 10px; font-size: 12px; flex-shrink: 0; }
+.circuit-brief-overview { max-width: 76ch; font-size: 16px; line-height: 1.65; margin: 22px 0 28px; color: #474754; }
+.circuit-brief-main { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px; }
+.circuit-brief h3 { font-size: 16px; line-height: 1.4; margin: 0 0 16px; }
+.circuit-viewing-choices { margin: 0; }
+.circuit-viewing-choices > div { display: grid; grid-template-columns: minmax(110px, .7fr) minmax(0, 1.5fr); gap: 20px; padding: 17px 0; border-top: 1px solid #d8d8e1; }
+.circuit-viewing-choices dt { font-size: 14px; font-weight: 600; line-height: 1.5; }
+.circuit-viewing-choices dd { font-size: 14px; line-height: 1.65; color: #50505e; margin: 0; }
+.circuit-brief-checks { padding-left: 28px; border-left: 1px solid #d8d8e1; }
+.circuit-brief-checks > p { font-size: 14px; line-height: 1.65; color: #50505e; margin: 0 0 18px; }
+.circuit-ticket-source { display: inline-flex; align-items: center; min-height: 44px; padding: 12px 16px; background: var(--ink); color: #fff; font-size: 14px; }
+.circuit-ticket-source:hover { color: #fff; background: #30303b; }
+.circuit-brief .circuit-edition-note { font-size: 12px; line-height: 1.6; color: #5d5d6c; margin: 16px 0 0; }
+.circuit-arrival-checks { margin-top: 26px; border-top: 1px solid #d8d8e1; padding-top: 12px; }
+.circuit-arrival-checks summary { padding: 10px 0; cursor: pointer; font-size: 14px; min-height: 44px; }
+.circuit-arrival-checks h3 { margin-top: 18px; }
+.circuit-arrival-checks > p { font-size: 14px; line-height: 1.65; color: #50505e; max-width: 80ch; }
+.circuit-brief-sources { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.circuit-brief-sources a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; color: #a80700; }
+.race-row .race-circuit-name { display: block; margin-top: 5px; font: 400 12px/1.4 "IBM Plex Sans", sans-serif; text-transform: none; color: #626273; }
+@media (max-width: 760px) {
+  .circuit-brief > header { flex-direction: column; gap: 14px; }
+  .circuit-brief h2 { font-size: 30px; }
+  .circuit-brief-coverage { flex-shrink: 1; }
+  .circuit-brief-main { grid-template-columns: 1fr; gap: 24px; }
+  .circuit-brief-checks { padding: 22px 0 0; border-left: 0; border-top: 1px solid #d8d8e1; }
+  .circuit-viewing-choices > div { grid-template-columns: 1fr; gap: 7px; }
+  .race-row .race-circuit-name { font-size: 11px; }
+}

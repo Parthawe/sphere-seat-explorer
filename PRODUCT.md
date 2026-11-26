@@ -139,3 +139,7 @@ Canada 2027 now covers eleven estimated grandstand regions and 15,040 generated 
 ## Austria 2027 area study · 26 November 2026 UTC
 
 Austria 2027 now has eleven selectable viewing families on an independently sourced GP area map. Six 3 Corner packages show their Friday/Saturday/Sunday allocation separately. Eleven other entries preserve accessible, Reduced, diagram-only, hospitality and transport distinctions. Users can compare three areas and share a clean area link. Spielberg’s vertical context is not yet sourced, so no flat or borrowed 3D chair view is offered.
+
+## Circuit information coverage · 26 November 2026
+
+Every listed race in 2026 and 2027 has a circuit brief, including venues without a supported map or 3D model. There are 27 season-bound circuit references across 47 race entries. The brief combines official F1 circuit context and published reference lap lengths with authored product/arrival checks. Current 2027 ticket landing pages are linked only as 2027 buying handoffs. Reference sources remain explicitly dated and do not certify seat geometry, live availability, accessibility routes or cross-zone access. Circuit names and cities are searchable.

@@ -139,3 +139,9 @@ The Qatar model has four chair banks plus lawn samples; Bahrain has eight banks 
 Use **Photos & fan reports** in the Qatar/Bahrain 3D studies or Las Vegas seat explorer. Filter by selected area versus venue, reference year and photo sources versus reviews. The structured source notes in `src/photoReferences.ts` retain author, publisher, physical venue, source-reported location, date evidence and uncertainty. This is a checked collection, not a live scraper.
 
 Supported Reddit photo embeds and a linked attendee video load only on request; other photographs open on the publisher's site. Provider blocks retain original-source links. No photo files or scraped review bodies are redistributed. Actual seat codes are not translated to modeled rows. Empty locations stay explicit; see PHOTO-REFERENCES.md for source evidence, exclusions and verification.
+
+## Circuit guides across both seasons
+
+All 47 published race detail pages now have a circuit brief backed by 27 separate F1 circuit references checked on 26 November 2026. The briefs cover venue/location, published reference lap length, two viewing comparisons, ticket-product checks, arrival/access questions and source links. Existing circuit-specific models and area desks keep their separate coverage labels. No ticket stock, exact-seat guarantee or newly certified geometry is implied.
+
+`src/circuitGuides.ts` binds each profile to its race and allowed seasons. `src/circuitGuideFacts.json` retains the official source URL beside each published lap length. Sepang 2026 is distinct from Sakhir 2027; Barcelona-Catalunya is distinct from Madrid; Zandvoort is only listed for 2026. The 24 current F1 ticket landing-page links are offered as 2027 handoffs, without carrying their edition into a 2026 buying action. Search now includes circuit identity and city, with accent-insensitive matching.

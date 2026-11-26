@@ -113,3 +113,7 @@ Canada selectors now follow numerical grandstand order. Three hairpin/Casino map
 ## Austria 2027 area study · 26 November 2026 UTC
 
 Spielberg uses the existing red/ink/paper area workspace, north-up GP trace and readable sector-group leader lines. Phone controls use compact source abbreviations in three columns; the selector retains full product names. Hopping allocations appear as a separate day-by-day table with phone scrolling. The reference note states the terrain/3D gap before selection. Mixed-day comparison wording no longer implies every product includes the same duration; existing fixed-duration defaults are retained.
+
+## Circuit guide surface
+
+Use the established red, ink and paper system for every race brief. Put the actual venue and location before a concise circuit description. Show viewing choices in a definition list and the product checks beside it on desktop; stack them on phones. Arrival, accessibility questions and dated source links sit in an expandable section. Keep existing 3D entry actions ahead of the brief and distinguish a circuit reference from an available seat model. Reference lap length must carry its source edition.
