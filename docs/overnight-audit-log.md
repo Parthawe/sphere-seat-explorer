@@ -130,6 +130,17 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: the 2027 Vegas calendar row said only 3D seat model, although the guide and explorer use a 2026 reference reconstruction. Calendar labels, filtering and guide badges were maintained in separate conditionals, making that distinction inconsistent before entry.
 - Change: one source-aware coverage helper now drives the calendar label, 3D filter and guide badge. Vegas explicitly says 3D · 2026 reference in both seasons; the filter is named 3D studies. Generic models remain illustrative and bound to their own season. The feature heading now names Las Vegas viewing areas rather than claiming all of Las Vegas.
 - Validation: nine affected coverage/route/guide tests passed, including all 47 listed calendar entries and Sepang/Sakhir, Qatar and Shanghai season boundaries. TypeScript passed. Desktop and phone flows checked both seasons, the 3D filter, visible dated Vegas guide badges, absent borrowed Shanghai 2027/Sepang 2026 canvases and no horizontal overflow. Feature screenshots inspected; no browser errors. Production build is part of publication.
-- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Publication: v65, source `4537131236ba5c98a1ec11e0513cd36d32c92795`, succeeded; matching GitHub push confirmed.
 - Limits: this is a consistency audit of retained coverage and sources, not fresh verification of every organizer or a claim of complete/exact-seat 3D coverage. No venue data, calendar dates or commercial accounts changed.
 - Next useful check: lazy scene/module loading failure and recovery navigation, preserving useful guides when 3D assets cannot load.
+
+
+## 26 November 2026 · 12:30 UTC · Scene-module failure recovery
+
+- Starting release: v65, source `4537131236ba5c98a1ec11e0513cd36d32c92795`; clean checkout.
+- Evidence: blocking the lazy 3D scene module replaced the entire Qatar explorer with the root recovery page. The scene's internal graphics boundary could not catch a failure before its module loaded. Position controls, the model grid and direct guide navigation were lost.
+- Change: a local boundary now contains scene import/render failures and uses the existing graphics fallback. Retry creates a fresh lazy component, preserves the selected position, stays paused and returns keyboard focus to the scene. The unavailable view announces its fallback and hides the disabled zoom stack that overlapped its text on phone.
+- Validation: controlled module-request failures at 1440px and 390px retained the explorer. Strict browser assertions covered changing row/position in the fallback grid, successful retry after removing the request block, preserved URL selection, paused cars, focus return and navigation back to the guide. Desktop/phone fallback screenshots inspected; no page errors in those controlled flows. TypeScript passed; production build is part of publication.
+- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Limits: a controlled local import failure is not evidence of a current production outage or a guarantee that a permanently unavailable asset can be retried successfully. Complete explorer-module failure still uses the root reload/calendar recovery. No source geography, external media, inventory or commercial tracking changed.
+- Next useful check: production build scene-chunk recovery and keyboard access to reference/guide controls during degraded graphics, then audit slow-network loading states without inventing new venue coverage.
