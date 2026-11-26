@@ -1,3 +1,4 @@
+import { hasConflictingTicketContext } from "./ticketEventContext";
 import geography from "./yas-track.json";
 export const ABU_CHECKED = "2026-11-23";
 export const ABU_CIRCUIT = "https://www.abudhabigp.com/en/circuit";
@@ -115,15 +116,7 @@ export function locateAbuTicket(raw: string): AbuMatch {
     .toLowerCase()
     .replace(/[–—]/g, "-")
     .replace(/\byas marina(?: circuit)?\b/g, "abu dhabi");
-  const context = text.replace(
-    /\b(?:seat|row|section)\s*[:#-]?\s*\d{1,4}\b/g,
-    "",
-  );
-  if (
-    /\b202[0-57-9]\b|\b203\d\b|\b(qatar|lusail|las vegas|singapore|silverstone|bahrain|jeddah|monza|monaco)\b/.test(
-      context,
-    )
-  )
+  if (hasConflictingTicketContext(text, 2026, "abu-dhabi"))
     return { status: "wrong-event", ids: [] };
   // Club, lounge and suite variants have different access and may have different locations.
   if (

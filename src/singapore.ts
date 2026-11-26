@@ -1,3 +1,4 @@
+import { hasConflictingTicketContext } from "./ticketEventContext";
 export const SINGAPORE_CHECKED = "2026-11-23";
 export const SINGAPORE_TICKETS =
   "https://singaporegp.sg/en/tickets/general-tickets/grandstands/";
@@ -187,15 +188,7 @@ export type SingaporeMatch = {
 };
 export function locateSingaporeTicket(raw: string): SingaporeMatch {
   let text = raw.normalize("NFKC").toLowerCase().replace(/[–—]/g, "-");
-  const context = text.replace(
-    /\b(?:row|seat|section)\s*[:#-]?\s*\d{1,4}\b/g,
-    "",
-  );
-  if (
-    /\b202[0-68-9]\b|\b203\d\b|\b(qatar|lusail|abu dhabi|yas marina|las vegas|silverstone|monza|jeddah|bahrain)\b/.test(
-      context,
-    )
-  )
+  if (hasConflictingTicketContext(text, 2027, "singapore"))
     return { status: "wrong-event", ids: [] };
   // Multi-area/access products do not establish one supported grandstand.
   if (

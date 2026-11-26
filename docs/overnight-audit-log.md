@@ -165,3 +165,14 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Publication: documentation checkpoint only in GitHub; the application remains v67. No unchanged build or deployment was repeated. A later application release will include this log in Sites source.
 - Limits: these checks cover two representative route families in desktop Chrome emulation, not every venue or physical-device browser. Native Back does not add a custom focus change; hash targets retain their existing async focus behavior. Commercial and measured-seat owner/asset dependencies remain unresolved.
 - Next useful check: keyboard and narrow-screen ticket-input validation, including malformed booking text and share/export privacy, without collecting actual private tickets.
+
+
+## 26 November 2026 · 13:58 UTC · Ticket-input uncertainty, privacy and Clear focus
+
+- Starting checkout: `0f02842ace5dcccc6ed5f021e9adb4b2395bce06` (previous audit documentation); application v67. No simultaneous local edits.
+- Evidence: Qatar's locator accepted Melbourne Main Grandstand 2026 as a local Main Grandstand. Its exclusion list omitted that named venue. All three locators bounded wrong-year checks to the 2020s/2030s. Keyboard Clear removed its own button and left focus on BODY.
+- Change: the three local parsers share explicit known foreign-venue and unsupported-year checks, keeping numeric row/seat/section values separate from event years. Known foreign locations cannot borrow a same-named local stand. Qatar, Abu Dhabi and Singapore Clear actions return focus to the seating-details field.
+- Validation: 21 affected parser tests passed, including foreign venue aliases, unsupported 1999/2019/2040/2099 years, own-venue names, numeric identifiers and existing product ambiguity. Six browser journeys (three locators × desktop/phone) rejected Melbourne, matched a valid area with synthetic text, and confirmed that text was absent from request URLs/bodies, browser storage and copied area links. Clear emptied input/result and returned focus. No overflow or page errors. Phone screenshot inspected; TypeScript/production build are part of publication.
+- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Limits: named-venue exclusions are a conservative local heuristic, not a universal event detector, ticket validation or exact-chair location. Tests used synthetic text and a controlled clipboard implementation; no private ticket was collected.
+- Next useful check: guide shortlist copy/download fallbacks and focus when changing task or unsupported locator input, preserving manual checklist boundaries.

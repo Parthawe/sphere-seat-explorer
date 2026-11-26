@@ -1,6 +1,6 @@
 import { useAreaUrl } from "./useAreaUrl";
 import { SITE_ORIGIN } from "./brand";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CircuitAreaMap from "./CircuitAreaMap";
 import AreaComparison from "./AreaComparison";
 import { requireVenue, venueAreaUrl } from "./venueRegistry";
@@ -16,6 +16,7 @@ import {
   type AbuMatch,
 } from "./abuDhabi";
 export default function AbuDhabiDesk() {
+  const ticketInput = useRef<HTMLTextAreaElement>(null);
   const [area, setArea] = useState<AbuAreaId>(
     () =>
       abuAreas.find(
@@ -133,6 +134,7 @@ export default function AbuDhabiDesk() {
                   Ticket seating details
                 </label>
                 <textarea
+                  ref={ticketInput}
                   id="abu-ticket-details"
                   maxLength={1200}
                   value={text}
@@ -169,6 +171,7 @@ export default function AbuDhabiDesk() {
                       type="button"
                       onClick={() => {
                         setText("");
+                        ticketInput.current?.focus();
                         setMatch(null);
                       }}
                     >

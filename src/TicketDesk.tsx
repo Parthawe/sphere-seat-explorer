@@ -2,7 +2,7 @@ import { parseSourceSnapshot } from "./sourceSnapshot";
 import { raceStatus, calendars } from "./races";
 import { useAreaUrl } from "./useAreaUrl";
 import { SITE_ORIGIN } from "./brand";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   areas,
   areaSource,
@@ -25,6 +25,7 @@ const initialArea = () =>
     (a) => a.id === new URLSearchParams(location.search).get("area"),
   )?.id as AreaId) || "main";
 export default function TicketDesk({ compact = false }: { compact?: boolean }) {
+  const ticketInput = useRef<HTMLTextAreaElement>(null);
   const [area, setArea] = useState<AreaId>(initialArea),
     [job, setJob] = useState<"find" | "locate">("find"),
     [text, setText] = useState(""),
@@ -175,6 +176,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
               >
                 <label htmlFor="ticket-details">Ticket seating details</label>
                 <textarea
+                  ref={ticketInput}
                   id="ticket-details"
                   value={text}
                   maxLength={1200}
@@ -209,6 +211,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
                       type="button"
                       onClick={() => {
                         setText("");
+                        ticketInput.current?.focus();
                         setResult(null);
                       }}
                     >

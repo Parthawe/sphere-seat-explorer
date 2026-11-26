@@ -1,6 +1,6 @@
 import { useAreaUrl } from "./useAreaUrl";
 import { SITE_ORIGIN } from "./brand";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CircuitAreaMap from "./CircuitAreaMap";
 import AreaComparison from "./AreaComparison";
 import { requireVenue, venueAreaUrl } from "./venueRegistry";
@@ -16,6 +16,7 @@ import {
 } from "./singapore";
 const venue = requireVenue("singapore", 2027);
 export default function SingaporeDesk() {
+  const ticketInput = useRef<HTMLTextAreaElement>(null);
   const [area, setArea] = useState(
     () =>
       venue.areas.find(
@@ -137,6 +138,7 @@ export default function SingaporeDesk() {
                   Ticket seating details
                 </label>
                 <textarea
+                  ref={ticketInput}
                   id="singapore-ticket-details"
                   required
                   maxLength={1200}
@@ -171,6 +173,7 @@ export default function SingaporeDesk() {
                       type="button"
                       onClick={() => {
                         setText("");
+                        ticketInput.current?.focus();
                         setMatch(null);
                       }}
                     >

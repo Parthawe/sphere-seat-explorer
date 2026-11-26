@@ -1,3 +1,4 @@
+import { hasConflictingTicketContext } from "./ticketEventContext";
 export const CHECKED = "2026-11-23";
 export const FAQ =
   "https://www.lcsc.qa/faq/formula-1r-qatar-airways-qatar-grand-prix-2026";
@@ -84,11 +85,7 @@ export type TicketMatch = {
 // Pure, local parser. Raw ticket text is never persisted, logged, or sent in a URL.
 export function locateTicket(raw: string): TicketMatch {
   const text = raw.normalize("NFKC").toLowerCase().replace(/[–—]/g, "-");
-  if (
-    /\b202[0-57-9]\b|\b203\d\b|\b(abu dhabi|yas marina|las vegas|singapore|silverstone|bahrain|jeddah|monza|monaco)\b/.test(
-      text.replace(/\b(?:seat|row)\s*[:#-]?\s*\d{1,4}\b/g, ""),
-    )
-  )
+  if (hasConflictingTicketContext(text, 2026, "qatar"))
     return { status: "wrong-event", ids: [] };
   if (
     /\b(lounge|hospitality|champions club|paddock club|private suite)\b/.test(
