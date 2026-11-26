@@ -203,3 +203,7 @@ Race guides and circuit-diagram pages expose a common searchable Grandstands & v
 Use a distinct Concept illustration label with the explicit statement that it is not the actual location's preview. Show the named catalogue option and original source, but isolate the authored example from geographic circuit scenes. Reuse one coherent format where the real architecture is unknown instead of inventing product-specific differences. Separate grandstand, open-admission, hospitality, platform and multi-stand examples. Only the generic grandstand exposes sample row/position controls; these are visibly invented example numbers.
 
 Keep the ink/red identity, model-led scene, compact camera controls, smooth bounded transitions and reduced-motion alternatives. Phone layouts stack controls below the scene. Existing venue studies remain the primary source-backed 3D destination; concepts are a separate action/filter and never a silent substitute. Non-viewing services do not receive fabricated stand geometry.
+
+## Connected standings · 26 November 2026
+
+Race Centre now shows F1DB's published driver/team tables, with visible CC BY attribution, retrieval time and an explicit not-live-timing label. Default to five-minute visible-page refresh, retain the last good table during outages and distinguish an unpublished future season from a known-year source failure. Unknown wins and round numbers stay absent. Team labels describe source season entries, not guaranteed current-grid membership. Preserve the paper/ink/red table hierarchy and accessible point bars.

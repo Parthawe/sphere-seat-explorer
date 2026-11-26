@@ -1,13 +1,267 @@
 {
   "schema": 1,
   "season": 2026,
-  "status": "not-connected",
-  "provider": "",
-  "fetchedAt": null,
+  "status": "published",
+  "provider": "F1DB",
+  "fetchedAt": "2026-11-26T18:48:35.357Z",
   "driverRound": null,
   "teamRound": null,
-  "drivers": [],
-  "teams": [],
+  "drivers": [
+    {
+      "position": 1,
+      "name": "Kimi Antonelli",
+      "team": "Mercedes",
+      "points": 402,
+      "wins": null
+    },
+    {
+      "position": 2,
+      "name": "Max Verstappen",
+      "team": "Red Bull",
+      "points": 304,
+      "wins": null
+    },
+    {
+      "position": 3,
+      "name": "Lewis Hamilton",
+      "team": "Ferrari",
+      "points": 267,
+      "wins": null
+    },
+    {
+      "position": 4,
+      "name": "George Russell",
+      "team": "Mercedes",
+      "points": 264,
+      "wins": null
+    },
+    {
+      "position": 5,
+      "name": "Lando Norris",
+      "team": "McLaren",
+      "points": 264,
+      "wins": null
+    },
+    {
+      "position": 6,
+      "name": "Charles Leclerc",
+      "team": "Ferrari",
+      "points": 250,
+      "wins": null
+    },
+    {
+      "position": 7,
+      "name": "Oscar Piastri",
+      "team": "McLaren",
+      "points": 167,
+      "wins": null
+    },
+    {
+      "position": 8,
+      "name": "Isack Hadjar",
+      "team": "Red Bull",
+      "points": 122,
+      "wins": null
+    },
+    {
+      "position": 9,
+      "name": "Liam Lawson",
+      "team": "Red Bull / Racing Bulls",
+      "points": 89,
+      "wins": null
+    },
+    {
+      "position": 10,
+      "name": "Pierre Gasly",
+      "team": "Alpine",
+      "points": 52,
+      "wins": null
+    },
+    {
+      "position": 11,
+      "name": "Arvid Lindblad",
+      "team": "Racing Bulls",
+      "points": 38,
+      "wins": null
+    },
+    {
+      "position": 12,
+      "name": "Franco Colapinto",
+      "team": "Alpine",
+      "points": 35,
+      "wins": null
+    },
+    {
+      "position": 13,
+      "name": "Oliver Bearman",
+      "team": "Haas",
+      "points": 23,
+      "wins": null
+    },
+    {
+      "position": 14,
+      "name": "Gabriel Bortoleto",
+      "team": "Audi",
+      "points": 14,
+      "wins": null
+    },
+    {
+      "position": 15,
+      "name": "Nico Hülkenberg",
+      "team": "Audi",
+      "points": 14,
+      "wins": null
+    },
+    {
+      "position": 16,
+      "name": "Carlos Sainz Jr.",
+      "team": "Williams",
+      "points": 11,
+      "wins": null
+    },
+    {
+      "position": 17,
+      "name": "Esteban Ocon",
+      "team": "Haas",
+      "points": 7,
+      "wins": null
+    },
+    {
+      "position": 18,
+      "name": "Fernando Alonso",
+      "team": "Aston Martin",
+      "points": 7,
+      "wins": null
+    },
+    {
+      "position": 19,
+      "name": "Alexander Albon",
+      "team": "Williams",
+      "points": 5,
+      "wins": null
+    },
+    {
+      "position": 20,
+      "name": "Yuki Tsunoda",
+      "team": "Racing Bulls",
+      "points": 1,
+      "wins": null
+    },
+    {
+      "position": 21,
+      "name": "Ryō Hirakawa",
+      "team": "Haas",
+      "points": 1,
+      "wins": null
+    },
+    {
+      "position": 22,
+      "name": "Lance Stroll",
+      "team": "Aston Martin",
+      "points": 0,
+      "wins": null
+    },
+    {
+      "position": 23,
+      "name": "Valtteri Bottas",
+      "team": "Cadillac",
+      "points": 0,
+      "wins": null
+    },
+    {
+      "position": 24,
+      "name": "Sergio Pérez",
+      "team": "Cadillac",
+      "points": 0,
+      "wins": null
+    },
+    {
+      "position": 25,
+      "name": "Rafael Câmara",
+      "team": "Haas",
+      "points": 0,
+      "wins": null
+    }
+  ],
+  "teams": [
+    {
+      "position": 1,
+      "name": "Mercedes",
+      "team": "",
+      "points": 666,
+      "wins": null
+    },
+    {
+      "position": 2,
+      "name": "Ferrari",
+      "team": "",
+      "points": 517,
+      "wins": null
+    },
+    {
+      "position": 3,
+      "name": "Red Bull",
+      "team": "",
+      "points": 440,
+      "wins": null
+    },
+    {
+      "position": 4,
+      "name": "McLaren",
+      "team": "",
+      "points": 431,
+      "wins": null
+    },
+    {
+      "position": 5,
+      "name": "Racing Bulls",
+      "team": "",
+      "points": 114,
+      "wins": null
+    },
+    {
+      "position": 6,
+      "name": "Alpine",
+      "team": "",
+      "points": 87,
+      "wins": null
+    },
+    {
+      "position": 7,
+      "name": "Haas",
+      "team": "",
+      "points": 31,
+      "wins": null
+    },
+    {
+      "position": 8,
+      "name": "Audi",
+      "team": "",
+      "points": 28,
+      "wins": null
+    },
+    {
+      "position": 9,
+      "name": "Williams",
+      "team": "",
+      "points": 16,
+      "wins": null
+    },
+    {
+      "position": 10,
+      "name": "Aston Martin",
+      "team": "",
+      "points": 7,
+      "wins": null
+    },
+    {
+      "position": 11,
+      "name": "Cadillac",
+      "team": "",
+      "points": 0,
+      "wins": null
+    }
+  ],
   "latest": null,
   "schedule": []
 }

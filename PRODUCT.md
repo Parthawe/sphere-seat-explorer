@@ -160,7 +160,7 @@ Personal price notes are available across all listed race editions. They record 
 
 All 47 listed 2026/2027 race editions also have a separate interactive 3D circuit diagram, with 27 physical reference outlines. These are community plan diagrams with unverified layout year, not current seating reconstructions; existing seat studies remain available separately.
 
-Race Centre provides a prepared, disabled published-results integration for driver/team championships, race classification and a separate provider schedule. Public files show an honest unconnected state. A gated Jolpica collector can prepare validated snapshots after commercial data permission; no provider automation or live timing is activated. Optional browser refresh checks the published snapshot only. See docs/race-data-integration.md.
+Race Centre connects driver/team standings to F1DB under CC BY 4.0, with visible attribution, five-minute visible-page source refresh and saved-snapshot fallback. It does not supply live timing; 2027 remains unpublished until its source tables exist. The separate Jolpica integration stays disabled. See docs/race-data-integration.md.
 
 Reviewed stand catalogues are exposed in race guides and circuit-diagram pages, with independent links to every existing modeled bank and separate source-only options. Detailed models default to their all-bank circuit overview rather than a single seat; explicit shared cameras remain intact. Eighteen race editions currently have reviewed catalogue entries; others show an honest unverified-edition state. Hungary 2027 adds fifteen stand families and eight other source listings without claiming 3D calibration.
 
