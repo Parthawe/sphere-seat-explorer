@@ -26,6 +26,7 @@ const initialArea = () =>
   )?.id as AreaId) || "main";
 export default function TicketDesk({ compact = false }: { compact?: boolean }) {
   const ticketInput = useRef<HTMLTextAreaElement>(null);
+  const snapshotStatus = useRef<HTMLParagraphElement>(null);
   const [area, setArea] = useState<AreaId>(initialArea),
     [job, setJob] = useState<"find" | "locate">("find"),
     [text, setText] = useState(""),
@@ -339,7 +340,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
                 View source
               </a>
             </div>
-            <p className="reference-note">
+            <p ref={snapshotStatus} className="reference-note" role="status" tabIndex={-1}>
               {reference
                 ? `Reference price checked ${new Date(reference.checkedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" })}. Availability and final total are not verified.`
                 : dataError
@@ -348,7 +349,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
                     ? "No readable price in the public snapshot. Check the organizer’s page."
                     : "Loading public source snapshot…"}
             </p>
-            {dataError && <button className="snapshot-retry" onClick={() => setSourceAttempt(n => n + 1)}>Retry reference prices</button>}
+            {dataError && <button className="snapshot-retry" onClick={() => { snapshotStatus.current?.focus({ preventScroll: true }); setSourceAttempt(n => n + 1); }}>Retry reference prices</button>}
             <a className="qatar-model-link" href={`?season=2026&race=qatar&screen=circuit&bank=${area}`}>Explore this area in 3D <span>Illustrative positions, not ticket coordinates</span></a>
             <div className="area-actions">
               <button onClick={toggleSaved}>

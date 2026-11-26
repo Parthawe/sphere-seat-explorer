@@ -196,3 +196,14 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Publication: documentation checkpoint only in GitHub; application remains v68. No unchanged build or deployment repeated.
 - Limits: the unused-season key check demonstrates key isolation, not unsupported Qatar 2027 coverage. Storage denial was a controlled browser fixture. These checks do not cover simultaneous edits from multiple browser tabs.
 - Next useful check: source-snapshot unavailable/malformed-data handling and retry, ensuring organizer links and comparison remain usable without reference prices.
+
+
+## 26 November 2026 · 15:30 UTC · Reference-price failure and retry
+
+- Starting checkout: `ac37c13d5ceb71aef1e03c9fcc6493ae2f61cd39` (audit documentation); application v68. No simultaneous edits.
+- Evidence: a controlled 503 correctly removed reference prices and retained the organizer link/comparison. Keyboard Retry removed its own button during the request and left focus on BODY after success.
+- Change: Retry moves focus to the stable reference-status paragraph before requesting data. That paragraph announces loading, failure and dated reference results.
+- Validation: two affected snapshot-parser tests passed. Four browser journeys (1440px/390px × 503/malformed JSON record) retained safe Check with seller wording, organizer source access and comparison. Restoring the actual local snapshot and activating Retry restored its dated QAR reference, preserved the saved area and kept focus on status. No page errors or horizontal overflow; phone screenshot inspected. TypeScript/production build are part of publication.
+- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Limits: failures were deliberately intercepted local responses, not a live organizer outage. The retained 23 November price snapshot was not refreshed, and restored reference data does not establish live availability or a final total.
+- Next useful check: text zoom and narrow 320px layouts for source/status, navigation and planning controls, preserving the scene camera and current branded spacing.
