@@ -26,7 +26,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  const dialog=useRef<HTMLDialogElement>(null),readyCallback=useCallback(()=>setReady(true),[]),unavailableCallback=useCallback(()=>{setUnavailable(true);setReady(false);setPlaying(false);setFollowing(false);},[]);
  const bank=model.banks.find(b=>b.id===selection.bank)!,count=model.banks.reduce((n,b)=>n+modelCount(b),0),p=modelPosition(model,selection),near=closestTrack(model,[p[0],p[2]]),distance=Math.round(Math.hypot(near[0]-p[0],near[1]-p[2]));
  function choose(next:Partial<ModelPosition>){setFollowing(false);setSelection(normalizeModelPosition(model,{...selection,...next}));setFeedback('');}
- useEffect(()=>{const q=window.matchMedia('(prefers-reduced-motion: reduce)'),update=()=>{if(q.matches)setPlaying(false);};q.addEventListener('change',update);return()=>q.removeEventListener('change',update);},[]);
+ useEffect(()=>{const q=window.matchMedia('(prefers-reduced-motion: reduce)'),update=()=>{if(q.matches){setPlaying(false);setFollowing(false);}};q.addEventListener('change',update);return()=>q.removeEventListener('change',update);},[]);
  useEffect(()=>{const stop=()=>{if(document.hidden){setPlaying(false);setFollowing(false);}};document.addEventListener('visibilitychange',stop);return()=>document.removeEventListener('visibilitychange',stop);},[]);
  useEffect(()=>{if(grid)dialog.current?.showModal();else dialog.current?.close();},[grid]);
  useEffect(()=>{

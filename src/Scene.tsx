@@ -1,3 +1,4 @@
+import { vegasCircuitCamera } from "./vegasCamera";
 import { seatedLookTarget } from "./seatLook";
 import { points } from "./racingLine";
 import { nearestTrackFraction } from "./rendering";
@@ -42,7 +43,7 @@ type Props = {
   onUnavailable?: () => void;
 };
 function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: Props) {
-  const { camera, gl, invalidate } = useThree();
+  const { camera, gl, invalidate, size } = useThree();
   const controls = useRef<OrbitControls | null>(null);
   const transition = useRef<{
     position: T.Vector3;
@@ -79,7 +80,7 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
   }, [camera, gl, invalidate]);
   useEffect(() => {
     const stand = getStand(selection.stand);
-    let p: T.Vector3, t: T.Vector3;
+    let p: T.Vector3, t: T.Vector3, far = 1800;
     if (mode === "seat" || preview) {
       p = new T.Vector3(...seatPosition(selection));
       t = new T.Vector3(...seatTarget(selection));
@@ -98,11 +99,10 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
       );
       t = new T.Vector3(seat[0], seat[1] - 0.4, seat[2] + 2);
     } else if (mode === "circuit") {
-      const narrow = (camera as T.PerspectiveCamera).aspect < 1;
-      p = narrow
-        ? new T.Vector3(1000, 1250, -1450)
-        : new T.Vector3(780, 650, -850);
-      t = new T.Vector3(245, 15, 130);
+      const pose = vegasCircuitCamera((camera as T.PerspectiveCamera).aspect);
+      p = pose.eye;
+      t = pose.target;
+      far = pose.far;
     } else {
       const narrow = (camera as T.PerspectiveCamera).aspect < 1;
       p = narrow
@@ -141,6 +141,8 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
         duration: camera.position.distanceTo(p) < 8 ? 0.38 : 1.15,
       };
     const aspect = (camera as T.PerspectiveCamera).aspect;
+    (camera as T.PerspectiveCamera).far = far;
+    gl.domElement.dataset.cameraFar = String((camera as T.PerspectiveCamera).far);
     (camera as T.PerspectiveCamera).fov =
       mode === "seat" || preview
         ? aspect < 1
@@ -165,6 +167,8 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
     reset,
     preview,
     !!replay,
+    size.width,
+    size.height,
     camera,
     invalidate,
   ]);
@@ -273,6 +277,22 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
     el.addEventListener("viewpointzoom", zoom);
     return () => el.removeEventListener("viewpointzoom", zoom);
   }, [camera, gl, invalidate, mode, preview]);
+  useEffect(() => {
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const reduce = () => {
+      const tr = transition.current;
+      if (!preference.matches || !tr) return;
+      camera.position.copy(tr.position);
+      target.current.copy(tr.target);
+      camera.lookAt(target.current);
+      controls.current?.target.copy(target.current);
+      transition.current = null;
+      gl.domElement.dataset.cameraState = 'ready';
+      invalidate();
+    };
+    preference.addEventListener('change', reduce);
+    return () => preference.removeEventListener('change', reduce);
+  }, [camera, gl, invalidate]);
   useFrame((_, delta) => {
     const tr = transition.current;
     if (!tr) return;

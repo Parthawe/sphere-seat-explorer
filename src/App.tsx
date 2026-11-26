@@ -360,7 +360,10 @@ export default function App({
     const q = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => {
       setReducedMotion(q.matches);
-      if (q.matches) setPlaying(false);
+      if (q.matches) {
+        setPlaying(false);
+        window.dispatchEvent(new Event('apexreplaypause'));
+      }
     };
     q.addEventListener("change", update);
     return () => q.removeEventListener("change", update);

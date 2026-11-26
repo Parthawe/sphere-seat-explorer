@@ -123,6 +123,12 @@ function Rig({model,selection,mode,reset,cameraControls,onZoomLimitsChange,follo
   else{tr.current={p:position,t:look,from:camera.position.clone(),fromT:target.current.clone(),elapsed:0};gl.domElement.dataset.modelReady='moving';}
   invalidate();
  },[model,selection.bank,selection.section,selection.row,selection.seat,mode,reset,size.width,size.height,camera,gl,invalidate,scene,onZoomLimitsChange]);
+ // An OS preference change must also finish a transition already in progress.
+ useEffect(()=>{
+  const preference=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const reduce=()=>{const t=tr.current;if(!preference.matches||!t)return;camera.position.copy(t.p);target.current.copy(t.t);camera.lookAt(target.current);control.current?.target.copy(target.current);tr.current=null;gl.domElement.dataset.modelReady='true';invalidate();};
+  preference.addEventListener('change',reduce);return()=>preference.removeEventListener('change',reduce);
+ },[camera,gl,invalidate]);
  // Zoom updates the lens only, preserving the selected eye position and look direction.
  useEffect(()=>{
   if(mode!=='seat'){cameraControls.current=null;return;}
