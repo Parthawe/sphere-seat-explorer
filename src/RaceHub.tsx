@@ -246,7 +246,7 @@ export default function RaceHub() {
                 Official event & schedule
               </a>
             </section>
-            {circuitModel && <section className="circuit-model-entry"><div><span className="eyebrow">CIRCUIT-SPECIFIC 3D / {circuitModel.season}</span><h2>Explore the grandstands in 3D.</h2><p>Move between the circuit, grandstand and seated views. Every modeled position is selectable; chair counts, sections and sightlines are estimates.</p></div><button onClick={()=>go({season:route.season,race:route.race,seats:false,circuit:true})}>Open 3D seating</button></section>}
+            {circuitModel && <section className="circuit-model-entry"><div><h2>Explore in 3D.</h2><p>Estimated seats and sightlines · {circuitModel.season}</p></div><button onClick={()=>go({season:route.season,race:route.race,seats:false,circuit:true})}>Open 3D seating</button></section>}
             {route.circuit && !circuitModel && <p className="singapore-reference-note">No 3D seating model is available for this venue and season. Choose a supported race; layouts are not carried across seasons.</p>}
             <CircuitGuidePanel race={selected} coverage={circuitModel ? `Illustrative 3D · ${circuitModel.banks.length} modeled banks` : selected.slug === "las-vegas" ? "3D explorer · 2026 reference" : findVenue(route.season, selected.slug) ? "Approximate area map available" : "Circuit guide · no seat model yet"} />
             {selected.slug === "qatar" && route.season === 2026 ? (
@@ -312,44 +312,29 @@ export default function RaceHub() {
                 </div>
               </section>
             ) : (
-              <section className="race-coverage">
-                <h2>Plan your viewing position</h2>
-                <p>
-                  {circuitModel ? "This venue has an illustrative 3D reconstruction above. Exact ticket-seat geometry is not verified. Use the " : "A seat-level 3D model is not available here yet. Use the "}
-                  official event guide and ticket providers to review this
-                  race’s viewing areas and current offers.
-                </p>
+              <>
                 {selected.slug === "singapore" && route.season === 2026 && (
-                  <p>
-                    Our Singapore area pilot covers 2027 ticket products. We do
-                    not locate 2026 tickets against that reference.{" "}
+                  <p className="feature-note">
+                    The Singapore area map covers 2027 only.{" "}
                     <a href="?season=2027&race=singapore">
-                      Explore the explicitly labeled 2027 pilot
+                      View the 2027 map
                     </a>
                     .
                   </p>
                 )}
-                <a href={raceUrl(selected)} target="_blank" rel="noreferrer">
-                  Open the official race guide
-                </a>
-                {selected.slug==='china'&&route.season===2027&&<div className="jeddah-source-reference"><h3>Shanghai International Circuit · 16–18 April 2027</h3><p>The checked F1 ticket page offers a waitlist. A current 2027 grandstand-product layout has not been established here. The separate 2026 reconstruction uses dated event identities and current physical source geography; it cannot locate a 2027 ticket.</p><div className="verified-event-links"><a href="https://ticketing.formula1.com/china/" target="_blank" rel="noreferrer">Official 2027 ticket page & waitlist</a><a href="?season=2026&race=china&screen=circuit">Explore the labeled 2026 reference study</a></div><small>Checked 26 November 2026. Availability and event layouts must be confirmed with the provider.</small></div>}
-                {selected.slug===jeddahReference.race&&route.season===jeddahReference.season&&<div className="jeddah-source-reference">
-                  <h3>{jeddahReference.venue} · {jeddahReference.dates}</h3>
-                  <p>The organizer-linked 2027 catalogue lists six grandstand products. These names are planning references; stand locations and ticket rows are not mapped here yet.</p>
+                {selected.slug==='china'&&route.season===2027&&<details className="jeddah-source-reference"><summary>Shanghai’s 2026 reference model</summary><p>The 2026 model cannot locate a 2027 ticket.</p><a href="?season=2026&race=china&screen=circuit">Open the 2026 model</a></details>}
+                {selected.slug===jeddahReference.race&&route.season===jeddahReference.season&&<details className="jeddah-source-reference">
+                  <summary>Jeddah grandstand catalogue</summary>
+                  <p>Six listed grandstand products; seating locations are not mapped here yet.</p>
                   <ul>{jeddahReference.grandstands.map(name=><li key={name}>{name}</li>)}</ul>
                   <div className="verified-event-links"><a href={jeddahReference.event} target="_blank" rel="noreferrer">Organizer’s event page</a><a href={jeddahReference.catalogue} target="_blank" rel="noreferrer">Organizer-linked ticket catalogue</a></div>
-                  <small>Sources checked {jeddahReference.checked}. Confirm availability, seating and access with the provider.</small>
-                </div>}
-              </section>
+                  <small>Checked {jeddahReference.checked}.</small>
+                </details>}
+              </>
             )}
             {!findVenue(route.season, selected.slug) && (
-              <section className="ticket-options">
-                <h2>Choose how you watch</h2>
-                <p>
-                  Ticket categories to investigate. Availability and inclusions
-                  must be confirmed with the provider for {selected.name}{" "}
-                  {route.season}.
-                </p>
+              <details className="ticket-options">
+                <summary>Other ticket types</summary>
                 <div
                   className="ticket-category-tabs"
                   role="group"
@@ -394,11 +379,9 @@ export default function RaceHub() {
                     </div>
                   ))}
                 <p className="provider-note">
-                  Provider links open an external catalogue. Select the race and
-                  season there. F1 Tickets Online does not display live stock, prices
-                  or reservations.
+                  Select {selected.name} {route.season} in the provider’s catalogue.
                 </p>
-              </section>
+              </details>
             )}
             <section className="other-races">
               <h2>More races this season</h2>
@@ -623,21 +606,19 @@ export default function RaceHub() {
             </section>
           </>
         )}
-        <section className="calendar-source">
-          <strong>Calendar source</strong>
+        <details className="calendar-source">
+          <summary>Calendar source</summary>
           <p>
-            Formula 1’s published {route.season} calendar, checked 23 November
-            2026. Dates can change. The 2026 list reflects the current revised
-            calendar; past weekends remain available for reference.
+            F1’s {route.season} calendar · checked 23 November 2026. Dates may change.
           </p>
           <a href={calendarUrl(route.season)} target="_blank" rel="noreferrer">
             Check the official {route.season} calendar
           </a>
-        </section>
+        </details>
       </main>
       <footer className="hub-footer">
         <span>Independent race planning · no Formula 1 affiliation</span>
-        <span>Illustrative 3D scenes · sourced area maps · no live ticket inventory</span>
+        <span>No live ticket inventory</span>
       </footer>
     </div>
   );

@@ -143,21 +143,16 @@ export default function VegasAtlas({
         <div className="atlas-intro">
           <div>
             <h1>
-              All of Las Vegas.
-              <br />
-              <em>Find your perspective.</em>
+              Las Vegas
             </h1>
             <p>
-              Browse the circuit’s viewing areas, inspect every modeled outdoor
-              seat, or step inside Sphere.
+              Choose a race viewing area or explore the indoor Sphere model.
             </p>
           </div>
           <div className="atlas-edition">
             <strong>{season}</strong>
             <span>
-              2026 venue reference
-              <br />
-              2027 layouts subject to confirmation
+              2026 reference layout
             </span>
           </div>
         </div>
@@ -684,8 +679,7 @@ export default function VegasAtlas({
                 <span>Illustrative rows and seat numbers</span>
               </div>
               <p>
-                All markers in this modeled section are selectable. Arrow keys
-                move the selected position.
+                Use arrow keys to select a modeled position.
               </p>
               <svg
                 viewBox={`-24 -18 ${level.seats * 15 + 35} ${level.rows * 12 + 20}`}
@@ -794,33 +788,7 @@ export default function VegasAtlas({
           </>
         )}
         <section className="atlas-planning">
-          <h2>Before choosing a ticket</h2>
-          <div>
-            <article>
-              <h3>Check the viewing area</h3>
-              <p>
-                For the race, check the corner and permitted zones. For an
-                indoor Sphere show, check the event’s screen and stage
-                restrictions.
-              </p>
-            </article>
-            <article>
-              <h3>Check access and the route</h3>
-              <p>
-                Use official maps for entrances and accessible seating. A nearby
-                area on this schematic does not establish a walkable or
-                accessible route.
-              </p>
-            </article>
-            <article>
-              <h3>Check the season and inclusions</h3>
-              <p>
-                2027 sales are currently promoted through deposits. Confirm the
-                eventual seat, day, zone access and package terms with the
-                organizer.
-              </p>
-            </article>
-          </div>
+          <h2>Visitor information</h2>
           <div className="atlas-resource-links">
             <a
               href="https://www.f1lasvegasgp.com/track-layout/"

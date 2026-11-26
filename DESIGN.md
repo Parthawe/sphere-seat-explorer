@@ -117,3 +117,7 @@ Spielberg uses the existing red/ink/paper area workspace, north-up GP trace and 
 ## Circuit guide surface
 
 Use the established red, ink and paper system for every race brief. Put the actual venue and location before a concise circuit description. Show viewing choices in a definition list and the product checks beside it on desktop; stack them on phones. Arrival, accessibility questions and dated source links sit in an expandable section. Keep existing 3D entry actions ahead of the brief and distinguish a circuit reference from an available seat model. Reference lap length must carry its source edition.
+
+## Content restraint · 26 November 2026
+
+Keep race pages focused on viewing choices and the ticket handoff. Give each viewing choice one short explanation and state the model limit once. Travel, source dates, reference lap lengths and secondary ticket types open on demand. Keep product-specific seating, eligibility and season differences where the choice is made. Avoid repeating generic availability and seat-accuracy paragraphs across adjacent sections.

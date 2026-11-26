@@ -105,8 +105,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
               at the race.
             </h1>
             <p className="ticket-intro-copy">
-              Understand the view. Compare the areas. Find a ticket seller, or
-              locate the ticket you already own.
+              Compare viewing areas, find a seller or locate your ticket.
             </p>
             <div className="intro-ticket-actions">
               <button onClick={() => start("find")}>Find tickets</button>
