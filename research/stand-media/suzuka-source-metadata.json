@@ -1,0 +1,1851 @@
+{
+  "checked": "2026-11-26",
+  "method": "Public organizer stand-page metadata only. Videos remain at YouTube; images are original-source links, not copied assets. No pixels, map tiles, panorama textures or seat coordinates imported.",
+  "stands": [
+    {
+      "id": "v1",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_v1.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "Gcec92drVKg",
+          "sourceLabel": "View.01 V1席 B-6-3方向の動画"
+        },
+        {
+          "videoId": "AzCSA6sIQZw",
+          "sourceLabel": "View.02 V1席 B-15-3方向の動画"
+        },
+        {
+          "videoId": "-ivJviOQlT4",
+          "sourceLabel": "View.03 V1席 C-21-2方向の動画"
+        },
+        {
+          "videoId": "EEUHcdGbeS0",
+          "sourceLabel": "View.04 V1席 C-6-15方向の動画"
+        },
+        {
+          "videoId": "FEe_VWwI720",
+          "sourceLabel": "View.05 V1席 D-15-4方向の動画"
+        },
+        {
+          "videoId": "rjnVW8gTYHE",
+          "sourceLabel": "View.06 V1席 D-1-9方向の動画"
+        },
+        {
+          "videoId": "SD-ZvJG_uMc",
+          "sourceLabel": "View.07 V1席 F-4-4方向の動画"
+        },
+        {
+          "videoId": "B30HIV3g4gE",
+          "sourceLabel": "View.08 V1席 F-15-2方向の動画"
+        },
+        {
+          "videoId": "MItr1YWwHP8",
+          "sourceLabel": "View.09 V1席 G-4-5方向の動画"
+        },
+        {
+          "videoId": "EuNVVoyWiF8",
+          "sourceLabel": "View.10 V1席 G-15-7方向の動画"
+        },
+        {
+          "videoId": "KpiY8W9g4Ek",
+          "sourceLabel": "View.11 V1席 H-15-18方向の動画"
+        },
+        {
+          "videoId": "Icv87x1ZRe8",
+          "sourceLabel": "View.12 V1席 I-12-17方向の動画"
+        },
+        {
+          "videoId": "dV7ZK6PSRas",
+          "sourceLabel": "View.13 V1席 J-2-3方向の動画"
+        },
+        {
+          "videoId": "sz6ceBIZx7c",
+          "sourceLabel": "View.14 V1席 K-7-3方向の動画"
+        },
+        {
+          "videoId": "xaByBnF1Lf4",
+          "sourceLabel": "View.15 V1席 L-9-4方向の動画"
+        },
+        {
+          "videoId": "75fct7yP--g",
+          "sourceLabel": "View.16 V1席 L-4-12方向の動画"
+        },
+        {
+          "videoId": "4C4sEGtWp3c",
+          "sourceLabel": "View.17 V1席 M-1-15方向の動画"
+        },
+        {
+          "videoId": "y22rZV_3zZQ",
+          "sourceLabel": "View.18 V1席 N-3-7方向の動画"
+        },
+        {
+          "videoId": "fQmZK8LmnB8",
+          "sourceLabel": "View.19 V1席 N-11-6方向の動画"
+        },
+        {
+          "videoId": "sOekad2cyGE",
+          "sourceLabel": "View.20 V1席 O-3-11方向の動画"
+        },
+        {
+          "videoId": "aV1tJMHFaBE",
+          "sourceLabel": "View.21 V1席 P-10-5方向の動画"
+        },
+        {
+          "videoId": "vvcj0LVBkw4",
+          "sourceLabel": "View.22 V1席 Q-3-17方向の動画"
+        },
+        {
+          "videoId": "jFSONKULVhg",
+          "sourceLabel": "View.23 V1席 R-10-8方向の動画"
+        },
+        {
+          "videoId": "Ey1eZ9X0Mb0",
+          "sourceLabel": "View.24 V1席 S-2-4方向の動画"
+        },
+        {
+          "videoId": "ER6ruHRvOvI",
+          "sourceLabel": "View.25 V1席 S-9-17方向の動画"
+        },
+        {
+          "videoId": "3q3NwR7q-aU",
+          "sourceLabel": "View.26 V1席 T-4-20方向の動画"
+        },
+        {
+          "videoId": "mYH4xOhLqXg",
+          "sourceLabel": "View.27 V1席 U-7-16方向の動画"
+        },
+        {
+          "videoId": "OqOHidwhRuI",
+          "sourceLabel": "View.28 V1席 V-2-7方向の動画"
+        },
+        {
+          "videoId": "3CMdNpdJE2w",
+          "sourceLabel": "View.29 V1席 V-6-17方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_map_v1.png",
+          "sourceLabel": "V1席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_v1_map.jpg",
+          "sourceLabel": "V1席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_seat_v1.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_v1_01.jpg",
+          "sourceLabel": "J～Kブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_v1_02.jpg",
+          "sourceLabel": "J～Kブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_v1_03.jpg",
+          "sourceLabel": "J～Kブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_v1_04.jpg",
+          "sourceLabel": "Vブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_v1_05.jpg",
+          "sourceLabel": "Vブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_v1_06.jpg",
+          "sourceLabel": "Vブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_v1_07.jpg",
+          "sourceLabel": "Vブロック4列 アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_v1_08.jpg",
+          "sourceLabel": "Vブロック4列 アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v1/img_v1_09.jpg",
+          "sourceLabel": "Vブロック4列 アウトレットシート最終コーナー方向"
+        }
+      ],
+      "panoramas": 3
+    },
+    {
+      "id": "v2",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_v2.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "8YZOFvqi_Hg",
+          "sourceLabel": "View.01 V2席 A-10-8方向の動画"
+        },
+        {
+          "videoId": "uKLpmVpCZFU",
+          "sourceLabel": "View.02 V2席 A-17-7方向の動画"
+        },
+        {
+          "videoId": "7sRDKHOkv5Q",
+          "sourceLabel": "View.03 V2席 C-1-5方向の動画"
+        },
+        {
+          "videoId": "NTJM5bf7YcA",
+          "sourceLabel": "View.04 V2席 C-17-5方向の動画"
+        },
+        {
+          "videoId": "pLhrVqnSBaw",
+          "sourceLabel": "View.05 V2席 E-3-17方向の動画"
+        },
+        {
+          "videoId": "ScWPsETXOk0",
+          "sourceLabel": "View.06 V2席 E-17-15方向の動画"
+        },
+        {
+          "videoId": "RMl0Myvo-wo",
+          "sourceLabel": "View.07 V2席 G-3-10方向の動画"
+        },
+        {
+          "videoId": "sN1s5tRBTMQ",
+          "sourceLabel": "View.08 V2席 G-19-16方向の動画"
+        },
+        {
+          "videoId": "SoHbcUBmb74",
+          "sourceLabel": "View.09 V2席 I-3-9方向の動画"
+        },
+        {
+          "videoId": "5JQkhAxapBA",
+          "sourceLabel": "View.10 V2席 I-19-5方向の動画"
+        },
+        {
+          "videoId": "qrDqo92yqPY",
+          "sourceLabel": "View.11 V2席 J-9-15方向の動画"
+        },
+        {
+          "videoId": "UdcG-H2QhmY",
+          "sourceLabel": "View.12 V2席 K-9-15方向の動画"
+        },
+        {
+          "videoId": "zEUAJplmcG0",
+          "sourceLabel": "View.13 V2席 M-3-7方向の動画"
+        },
+        {
+          "videoId": "JaX2v1MV3Tc",
+          "sourceLabel": "View.14 V2席 O-19-17方向の動画"
+        },
+        {
+          "videoId": "zF8iR87vh6U",
+          "sourceLabel": "View.15 V2席 Q-3-5方向の動画"
+        },
+        {
+          "videoId": "1QcseZyb-ls",
+          "sourceLabel": "View.16 V2席 Q-19-7方向の動画"
+        },
+        {
+          "videoId": "d6Xz3hn3USE",
+          "sourceLabel": "View.17 V2席 S-3-5方向の動画"
+        },
+        {
+          "videoId": "ksMOns7rQJU",
+          "sourceLabel": "View.18 V2席 U-3-7方向の動画"
+        },
+        {
+          "videoId": "j5nZDF5sY88",
+          "sourceLabel": "View.19 V2席 U-19-7方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v2/img_map_v2.png",
+          "sourceLabel": "V2席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v2/img_v2_map.jpg",
+          "sourceLabel": "V2席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v2/img_seat_v2.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v2/img_v_01.jpg",
+          "sourceLabel": "V2席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v2/img_v_02.jpg",
+          "sourceLabel": "V2席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v2/img_v_03.jpg",
+          "sourceLabel": "V2席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/v2/img_v_04.jpg",
+          "sourceLabel": "V2席からのビュー"
+        }
+      ],
+      "panoramas": 3
+    },
+    {
+      "id": "a1",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_a1.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "NUAsZKnouDI",
+          "sourceLabel": "View.01 A1席 A-2-4方向の動画"
+        },
+        {
+          "videoId": "yHWbWISPDvs",
+          "sourceLabel": "View.02 A1席 C-4-3方向の動画"
+        },
+        {
+          "videoId": "UUKuBkpLNFA",
+          "sourceLabel": "View.03 A1席 E-9-5方向の動画"
+        },
+        {
+          "videoId": "-R-QSZ7X0co",
+          "sourceLabel": "View.04 A1席 G-3-8方向の動画"
+        },
+        {
+          "videoId": "5HOVHpP6Z8Q",
+          "sourceLabel": "View.05 A1席 I-11-8方向の動画"
+        },
+        {
+          "videoId": "iOHsPl4N5nA",
+          "sourceLabel": "View.06 A1席 K-2-5方向の動画"
+        },
+        {
+          "videoId": "TZNWmTIaJaE",
+          "sourceLabel": "View.07 A1席 M-17-7方向の動画"
+        },
+        {
+          "videoId": "7aJacrAsJ_o",
+          "sourceLabel": "View.08 A1席 N-2-12方向の動画"
+        },
+        {
+          "videoId": "N7bTy681c0s",
+          "sourceLabel": "View.09 A1席 O-11-12方向の動画"
+        },
+        {
+          "videoId": "RaRpPDJf1As",
+          "sourceLabel": "View.10 A1仮設席 T-7付近方向の動画"
+        },
+        {
+          "videoId": "AWnS1e9m8U0",
+          "sourceLabel": "View.11 A1仮設席 P-7付近方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a1/img_map_a1.png",
+          "sourceLabel": "A1席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a1/img_a1_map.jpg",
+          "sourceLabel": "A1席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a1/img_seat_a1.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a1/img_a1_01.jpg",
+          "sourceLabel": "A～Bブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a1/img_a1_02.jpg",
+          "sourceLabel": "A～Bブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a1/img_a1_03.jpg",
+          "sourceLabel": "M～Oブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a1/img_a1_04.jpg",
+          "sourceLabel": "M～Oブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a1/img_a1_05.jpg",
+          "sourceLabel": "M～Oブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a1/img_a1_06.jpg",
+          "sourceLabel": "Kブロック1列 アウトレットシート"
+        }
+      ],
+      "panoramas": 2
+    },
+    {
+      "id": "a2",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_a2.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a2/img_map_a2.png",
+          "sourceLabel": "A2席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a2/img_a2_map.jpg",
+          "sourceLabel": "A2席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a2/img_seat_a2.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a2/img_a_01.jpg",
+          "sourceLabel": "1コーナーへ向かう外周路"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/a2/img_a_02.jpg",
+          "sourceLabel": "A2席からのビュー（1コーナー方向）"
+        }
+      ],
+      "panoramas": 0
+    },
+    {
+      "id": "b1",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_b1.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "PFfNaYuR6_s",
+          "sourceLabel": "View.01 B1席 A-5-12方向の動画"
+        },
+        {
+          "videoId": "Z4CFp8ZZH0I",
+          "sourceLabel": "View.02 B1席 A-9-10方向の動画"
+        },
+        {
+          "videoId": "8wcxLqlC7eE",
+          "sourceLabel": "View.03 B1席 D-3-12方向の動画"
+        },
+        {
+          "videoId": "rO921QWAkrE",
+          "sourceLabel": "View.04 B1席 D-9-10方向の動画"
+        },
+        {
+          "videoId": "qWpg_6Toa4k",
+          "sourceLabel": "View.05 B1席 G-9-7方向の動画"
+        },
+        {
+          "videoId": "HK3Etrna95Q",
+          "sourceLabel": "View.06 B1席 H-3-9方向の動画"
+        },
+        {
+          "videoId": "Mqng-EbLGiI",
+          "sourceLabel": "View.07 B1席 K-4-4方向の動画"
+        },
+        {
+          "videoId": "IlqiMxhIPpk",
+          "sourceLabel": "View.08 B1席 K-9-8方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_map_b1.png",
+          "sourceLabel": "B1席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_map.jpg",
+          "sourceLabel": "B2席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_seat_b1.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_01.jpg",
+          "sourceLabel": "B1席の様子"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_02.jpg",
+          "sourceLabel": "ベンチシートタイプのB1席"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_03.jpg",
+          "sourceLabel": "B席へ向かう外周路"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_04.jpg",
+          "sourceLabel": "B席下の外周路"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_05.jpg",
+          "sourceLabel": "B席下の売店、自動販売機"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_06.jpg",
+          "sourceLabel": "B席下の売店エリア"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_07.jpg",
+          "sourceLabel": "B席階段上から見る売店エリア"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_08.jpg",
+          "sourceLabel": "B席付近の外周路"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_09.jpg",
+          "sourceLabel": "B1席の様子"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_11.jpg",
+          "sourceLabel": "Aブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_12.jpg",
+          "sourceLabel": "Hブロックあたりの最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_13.jpg",
+          "sourceLabel": "Hブロックあたりの最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_14.jpg",
+          "sourceLabel": "Kブロックあたりの最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_10.jpg",
+          "sourceLabel": "Kブロックあたりの最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_15.jpg",
+          "sourceLabel": "Kブロック3～6列目あたり アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_16.jpg",
+          "sourceLabel": "Kブロック3～6列目あたり アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_17.jpg",
+          "sourceLabel": "Dブロック2列　アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b1/img_b1_18.jpg",
+          "sourceLabel": "Dブロック2列　アウトレットシート"
+        }
+      ],
+      "panoramas": 1
+    },
+    {
+      "id": "b2",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_b2.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "pelzyNJRdQA",
+          "sourceLabel": "View.01 B2席 A-2-6方向の動画"
+        },
+        {
+          "videoId": "sWVkVio2LZY",
+          "sourceLabel": "View.02 B2席 A-21-9方向の動画"
+        },
+        {
+          "videoId": "lbdQCzIBSSE",
+          "sourceLabel": "View.03 B2席 B-7-1方向の動画"
+        },
+        {
+          "videoId": "Rex8nde6VxE",
+          "sourceLabel": "View.04 B2席 D-2-11方向の動画"
+        },
+        {
+          "videoId": "yf97eJcC3U4",
+          "sourceLabel": "View.05 B2席 D-9-5方向の動画"
+        },
+        {
+          "videoId": "KSm8s4k2JWI",
+          "sourceLabel": "View.06 B2席 D-21-8方向の動画"
+        },
+        {
+          "videoId": "CtSvgk1ssmI",
+          "sourceLabel": "View.07 B2席 G-9-11方向の動画"
+        },
+        {
+          "videoId": "XartUL6JB5c",
+          "sourceLabel": "View.08 B2席 G-21-10方向の動画"
+        },
+        {
+          "videoId": "Zfg2kRSyRoM",
+          "sourceLabel": "View.09 B2席 I-2-3方向の動画"
+        },
+        {
+          "videoId": "pDptHPqy5RI",
+          "sourceLabel": "View.10 B2席 K-1-4方向の動画"
+        },
+        {
+          "videoId": "9PdQM5hU-_I",
+          "sourceLabel": "View.11 B2席 K-21-11方向の動画"
+        },
+        {
+          "videoId": "9o3mBrCI4Zs",
+          "sourceLabel": "View.12 B2席 L-9-4方向の動画"
+        },
+        {
+          "videoId": "reOmkah433o",
+          "sourceLabel": "View.13 B2席 M-2-8方向の動画"
+        },
+        {
+          "videoId": "UhIhpWWsrK4",
+          "sourceLabel": "View.14 B2席 N-21-12方向の動画"
+        },
+        {
+          "videoId": "sPgnnoDqIzI",
+          "sourceLabel": "View.15 B2席 O-4-3方向の動画"
+        },
+        {
+          "videoId": "IWR-BKRahcg",
+          "sourceLabel": "View.16 B2席 O-15-4方向の動画"
+        },
+        {
+          "videoId": "UGehYKPeNWo",
+          "sourceLabel": "View.17 B2席 P-7-1方向の動画"
+        },
+        {
+          "videoId": "-hljGQ-la_w",
+          "sourceLabel": "View.18 B2席 Q-4-7方向の動画"
+        },
+        {
+          "videoId": "U9y5bwRYTYA",
+          "sourceLabel": "View.19 B2席 Q-15-12方向の動画"
+        },
+        {
+          "videoId": "86JXqqdNtyM",
+          "sourceLabel": "View.20 B2席 R-10-9方向の動画"
+        },
+        {
+          "videoId": "IvfAgBk_v9w",
+          "sourceLabel": "View.21 B2席 S-1-5方向の動画"
+        },
+        {
+          "videoId": "1_ZQK_V2UmA",
+          "sourceLabel": "View.22 B2席 T-4-8方向の動画"
+        },
+        {
+          "videoId": "CU-L3_Mc0H8",
+          "sourceLabel": "View.23 B2席 T-15-10方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_map_b2.png",
+          "sourceLabel": "B2席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_map.jpg",
+          "sourceLabel": "B2席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_seat_b2.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_01.jpg",
+          "sourceLabel": "B2席からのビュー（1コーナー方面）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_02.jpg",
+          "sourceLabel": "B2席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_11.jpg",
+          "sourceLabel": "Dブロック9列 アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_12.jpg",
+          "sourceLabel": "Dブロック9列 アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_09.jpg",
+          "sourceLabel": "B2席からのビュー（1コーナー方面）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_10.jpg",
+          "sourceLabel": "B2席からのビュー（2コーナー方面）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_03.jpg",
+          "sourceLabel": "B2席の様子"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_04.jpg",
+          "sourceLabel": "B席へ向かう外周路"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_05.jpg",
+          "sourceLabel": "B席下の外周路"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_06.jpg",
+          "sourceLabel": "B席下の売店エリア"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_07.jpg",
+          "sourceLabel": "B席付近の外周路"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/b2/img_b2_08.jpg",
+          "sourceLabel": "ベンチシートタイプのB2席"
+        }
+      ],
+      "panoramas": 2
+    },
+    {
+      "id": "c",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_c.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "2Wj5IeNqdBw",
+          "sourceLabel": "View.01 C席 A-4-23方向の動画"
+        },
+        {
+          "videoId": "919ewRLJ5Fc",
+          "sourceLabel": "View.02 C席 B-22-23方向の動画"
+        },
+        {
+          "videoId": "XBF90mJ4nr4",
+          "sourceLabel": "View.03 C席 C-2-20方向の動画"
+        },
+        {
+          "videoId": "3Rjnho_mGnE",
+          "sourceLabel": "View.04 C席 C-13-14方向の動画"
+        },
+        {
+          "videoId": "O0_QXn87fgY",
+          "sourceLabel": "View.05 C席 D-4-23方向の動画"
+        },
+        {
+          "videoId": "x4s6gIZ7uO4",
+          "sourceLabel": "View.06 C席 F-13-8方向の動画"
+        },
+        {
+          "videoId": "b6Xfj7gMikA",
+          "sourceLabel": "View.07 C席 D-4-23方向の動画"
+        },
+        {
+          "videoId": "vn5OfhKKH0w",
+          "sourceLabel": "View.08 C席 G-26-6方向の動画"
+        },
+        {
+          "videoId": "OmTPUMolHb8",
+          "sourceLabel": "View.09 C席 I-13-21方向の動画"
+        },
+        {
+          "videoId": "cGzmBRCNoW8",
+          "sourceLabel": "View.10 C席 J-4-20方向の動画"
+        },
+        {
+          "videoId": "fni27NnhAhU",
+          "sourceLabel": "View.11 C席 K-26-3方向の動画"
+        },
+        {
+          "videoId": "UCkgldLnGqw",
+          "sourceLabel": "View.12 C席 M-13-9方向の動画"
+        },
+        {
+          "videoId": "wnkaenJDs1s",
+          "sourceLabel": "View.13 C席 N-4-8方向の動画"
+        },
+        {
+          "videoId": "b8j_OG7vEQc",
+          "sourceLabel": "View.14 C席 O-26-7方向の動画"
+        },
+        {
+          "videoId": "CDXcqDeNp0U",
+          "sourceLabel": "View.15 C席 Q-4-6方向の動画"
+        },
+        {
+          "videoId": "xlHKUijtU-U",
+          "sourceLabel": "View.16 C席 Q-13-3方向の動画"
+        },
+        {
+          "videoId": "LC_2GlNtr9E",
+          "sourceLabel": "View.17 C席 S-24-8方向の動画"
+        },
+        {
+          "videoId": "ua0paz2pd-0",
+          "sourceLabel": "View.18 C席 T-4-5方向の動画"
+        },
+        {
+          "videoId": "k9sPC2iL1dY",
+          "sourceLabel": "View.19 C席 U-13-17方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_map_c.png",
+          "sourceLabel": "マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_ouen_map.jpg",
+          "sourceLabel": "C席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_seat_c.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_01.jpg",
+          "sourceLabel": "C席からのビュー（2コーナー方面）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_09.jpg",
+          "sourceLabel": "ベンチシートタイプのC席"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_02.jpg",
+          "sourceLabel": "C席からのビュー（S字進入）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_03.jpg",
+          "sourceLabel": "C席スタンドと売店エリア"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_04.jpg",
+          "sourceLabel": "C席の様子"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_05.jpg",
+          "sourceLabel": "C席裏のトイレ（女子）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_06.jpg",
+          "sourceLabel": "C席裏のトイレ（男子）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_07.jpg",
+          "sourceLabel": "C席裏の売店（S字コーナー寄り）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_08.jpg",
+          "sourceLabel": "ベンチシートタイプのC席"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_10.jpg",
+          "sourceLabel": "Pブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_11.jpg",
+          "sourceLabel": "Pブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_12.jpg",
+          "sourceLabel": "T～Vブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_13.jpg",
+          "sourceLabel": "T～Vブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_14.jpg",
+          "sourceLabel": "Pブロック6列 アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/c/img_c_15.jpg",
+          "sourceLabel": "Pブロック6列 アウトレットシート"
+        }
+      ],
+      "panoramas": 2
+    },
+    {
+      "id": "d",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_d.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "UcSWs7pgSh8",
+          "sourceLabel": "View.01 D席 AA-10-7方向の動画"
+        },
+        {
+          "videoId": "oO7FqR1fUQI",
+          "sourceLabel": "View.02 D席 AD-4-15方向の動画"
+        },
+        {
+          "videoId": "skhJeDbOUE8",
+          "sourceLabel": "View.03 D席 AE-10-9方向の動画"
+        },
+        {
+          "videoId": "mHqtHu6K-FY",
+          "sourceLabel": "View.04 D席 AF-3-5方向の動画"
+        },
+        {
+          "videoId": "940zl8uSkDk",
+          "sourceLabel": "View.05 D席 AH-4-11方向の動画"
+        },
+        {
+          "videoId": "kWMhBCb9x1E",
+          "sourceLabel": "View.06 D席 AI-10-15方向の動画"
+        },
+        {
+          "videoId": "TrAGMczL02Q",
+          "sourceLabel": "View.07 D席 AL-8-12方向の動画"
+        },
+        {
+          "videoId": "sepghvyli44",
+          "sourceLabel": "View.08 D席 AQ-6-5方向の動画"
+        },
+        {
+          "videoId": "aEUYkbrkRm4",
+          "sourceLabel": "View.09 D席 AR-18-7方向の動画"
+        },
+        {
+          "videoId": "vcwwZshxCuw",
+          "sourceLabel": "View.10 D席 AU-5-7方向の動画"
+        },
+        {
+          "videoId": "D6dZaES2Ry0",
+          "sourceLabel": "View.11 D席 AW-20-16方向の動画"
+        },
+        {
+          "videoId": "ldQHOaSbESc",
+          "sourceLabel": "View.12 D席 AY-13-6方向の動画"
+        },
+        {
+          "videoId": "T3mDLrIPnz8",
+          "sourceLabel": "View.13 D席 AZ-4-9方向の動画"
+        },
+        {
+          "videoId": "xG54YxtRuhw",
+          "sourceLabel": "View.14 D席 BA-20-4方向の動画"
+        },
+        {
+          "videoId": "l9597y3rOwU",
+          "sourceLabel": "View.15 D席 BC-4-13方向の動画"
+        },
+        {
+          "videoId": "nx6UdClP8Tw",
+          "sourceLabel": "View.16 D席 BD-20-4方向の動画"
+        },
+        {
+          "videoId": "9nYpt_GfmtE",
+          "sourceLabel": "View.17 D席 B-3-5方向の動画"
+        },
+        {
+          "videoId": "NiYBADOfbsg",
+          "sourceLabel": "View.18 D席 B-20-7方向の動画"
+        },
+        {
+          "videoId": "UUOSkJ2NRJg",
+          "sourceLabel": "View.19 D席 D-11-10方向の動画"
+        },
+        {
+          "videoId": "kM0qXCLFcuI",
+          "sourceLabel": "View.20 D席 F-16-14方向の動画"
+        },
+        {
+          "videoId": "ZpOykkVs47E",
+          "sourceLabel": "View.21 D席 G-3-10方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_map_d.png",
+          "sourceLabel": "D席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_map.jpg",
+          "sourceLabel": "D席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_seat_d.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d2.jpg",
+          "sourceLabel": "D-5席からの観戦イメージ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_01.jpg",
+          "sourceLabel": "D2席からのビュー（逆バンク正面）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_02.jpg",
+          "sourceLabel": "D3席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_03.jpg",
+          "sourceLabel": "D3席裏の常設トイレ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_04.jpg",
+          "sourceLabel": "D5席のビュー（S字方面）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_05.jpg",
+          "sourceLabel": "D5席の様子"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_06.jpg",
+          "sourceLabel": "D席へ向かう外周路"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_07.jpg",
+          "sourceLabel": "ベンチシートスタイルのD1席"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_08.jpg",
+          "sourceLabel": "日陰になる席も多いD4席"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_13.jpg",
+          "sourceLabel": "D席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_14.jpg",
+          "sourceLabel": "D席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_15.jpg",
+          "sourceLabel": "ALブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_16.jpg",
+          "sourceLabel": "ALブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_17.jpg",
+          "sourceLabel": "AJ～AKブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_18.jpg",
+          "sourceLabel": "AJ～AKブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_19.jpg",
+          "sourceLabel": "AMブロック10列 アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/d/img_d_20.jpg",
+          "sourceLabel": "AMブロック10列 アウトレットシート"
+        }
+      ],
+      "panoramas": 3
+    },
+    {
+      "id": "e",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_e.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "-davMZEoo5A",
+          "sourceLabel": "View.01 E席 A-13-9方向の動画"
+        },
+        {
+          "videoId": "eLJKn9qHp5Y",
+          "sourceLabel": "View.02 E席 C-3-15方向の動画"
+        },
+        {
+          "videoId": "K9b6TdZuwjg",
+          "sourceLabel": "View.03 E席 D-15-3方向の動画"
+        },
+        {
+          "videoId": "LUuWrJ06dQ0",
+          "sourceLabel": "View.04 E席 F-12-11方向の動画"
+        },
+        {
+          "videoId": "c5dJBjkb6x8",
+          "sourceLabel": "View.05 E席 H-7-10方向の動画"
+        },
+        {
+          "videoId": "7TUtIEFVCm0",
+          "sourceLabel": "View.06 E席 I-3-6方向の動画"
+        },
+        {
+          "videoId": "xC9Wjo6kiQ8",
+          "sourceLabel": "View.07 E席 J-3-12方向の動画"
+        },
+        {
+          "videoId": "AANEXTZkTbo",
+          "sourceLabel": "View.08 E席 K-16-6方向の動画"
+        },
+        {
+          "videoId": "J-sH7FaJmH0",
+          "sourceLabel": "View.09 E席 M-3-10方向の動画"
+        },
+        {
+          "videoId": "q0naR5-3SGY",
+          "sourceLabel": "View.10 E席 M-16-12方向の動画"
+        },
+        {
+          "videoId": "KCFFwPh6bUg",
+          "sourceLabel": "View.11 E席 Q-16-4方向の動画"
+        },
+        {
+          "videoId": "fHCNGVA32IU",
+          "sourceLabel": "View.12 E席 R-3-15方向の動画"
+        },
+        {
+          "videoId": "p8DFU4hjaT4",
+          "sourceLabel": "View.13 E席 E1方向の動画"
+        },
+        {
+          "videoId": "BxXH474B1yI",
+          "sourceLabel": "View.14 E席 E2方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_map_e.png",
+          "sourceLabel": "E席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_map.jpg",
+          "sourceLabel": "E席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_seat_e.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_01.jpg",
+          "sourceLabel": "E2席からのビュー（NIPPOコーナー正面）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_02.jpg",
+          "sourceLabel": "E2席からのビュー（NIPPOコーナー方面）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_03.jpg",
+          "sourceLabel": "E2席からのビュー（逆バンク方面）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_04.jpg",
+          "sourceLabel": "GPスクエアへ抜ける地下通路入口"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_05.jpg",
+          "sourceLabel": "GPスクエアへ抜ける地下通路方面"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_06.jpg",
+          "sourceLabel": "ベンチシートタイプのE席"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_07.jpg",
+          "sourceLabel": "地下通路のGPスクエア側"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_08.jpg",
+          "sourceLabel": "地下通路を抜けるとグランドスタンド横に出る"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_12.jpg",
+          "sourceLabel": "E席（仮設）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_13.jpg",
+          "sourceLabel": "E席（仮設）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_09.jpg",
+          "sourceLabel": "E席（仮設）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_10.jpg",
+          "sourceLabel": "E席（仮設）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/e/img_e_11.jpg",
+          "sourceLabel": "E席からのビュー（逆バンク方面）"
+        }
+      ],
+      "panoramas": 4
+    },
+    {
+      "id": "g",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_g.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "NYIfDZ5NfxM",
+          "sourceLabel": "View.01 G席 G 1 1方向の動画"
+        },
+        {
+          "videoId": "zqXJ33zU28s",
+          "sourceLabel": "View.02 G席 G 1 2方向の動画"
+        },
+        {
+          "videoId": "b7LySGzXviI",
+          "sourceLabel": "View.03 G席 G 2方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/g/img_map_g.png",
+          "sourceLabel": "G席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/g/img_g_map.jpg",
+          "sourceLabel": "G席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/g/img_seat_g.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/g/img_g_01.jpg",
+          "sourceLabel": "G-4（Umamusume 130R側）（仮設）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/g/img_g_02.jpg",
+          "sourceLabel": "G-4（Umamusume 130R側）（仮設）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/g/img_g_05.jpg",
+          "sourceLabel": "G-3（仮設）からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/g/img_g_06.jpg",
+          "sourceLabel": "G-5（立体交差）（仮設）"
+        }
+      ],
+      "panoramas": 3
+    },
+    {
+      "id": "h",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_h.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "_ULFdR1HgvI",
+          "sourceLabel": "View.01 H席 H 2方向の動画"
+        },
+        {
+          "videoId": "i0Pi7dQlpy0",
+          "sourceLabel": "View.02 H席 H 1方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/h/img_map_h.png",
+          "sourceLabel": "H席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/h/img_h_map.jpg",
+          "sourceLabel": "H席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/h/img_seat_h.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/h/img_h_01.jpg",
+          "sourceLabel": "H席（仮設）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/h/img_h_02.jpg",
+          "sourceLabel": "H席（仮設）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/h/img_h_03.jpg",
+          "sourceLabel": "H席（仮設）"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/h/img_h_04.jpg",
+          "sourceLabel": "H席（仮設）からのビュー"
+        }
+      ],
+      "panoramas": 1
+    },
+    {
+      "id": "i",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_i.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "sorYFJtOxp4",
+          "sourceLabel": "View.01 I席 A-11-8方向の動画"
+        },
+        {
+          "videoId": "jfD88djpzoU",
+          "sourceLabel": "View.02 I席 C-2-4方向の動画"
+        },
+        {
+          "videoId": "vqNphQ0GkmY",
+          "sourceLabel": "View.03 I席 E-10-5方向の動画"
+        },
+        {
+          "videoId": "PBXY9ETbeO4",
+          "sourceLabel": "View.04 I席 F-6-2方向の動画"
+        },
+        {
+          "videoId": "NCwP4F5G3RU",
+          "sourceLabel": "View.05 I席 H1-1-1方向の動画"
+        },
+        {
+          "videoId": "s6_PVxg9zhM",
+          "sourceLabel": "View.06 I席 J-2-3方向の動画"
+        },
+        {
+          "videoId": "TJZncgjnqp4",
+          "sourceLabel": "View.07 I席 I 1方向の動画"
+        },
+        {
+          "videoId": "NPkAADnW-eE",
+          "sourceLabel": "View.08 I席 I 2方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/i/img_map_i.png",
+          "sourceLabel": "I席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/i/img_i_map.jpg",
+          "sourceLabel": "I席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/i/img_seat_i.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/i/img_i_06.jpg",
+          "sourceLabel": "I-1席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/i/img_i_05.jpg",
+          "sourceLabel": "I席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/i/img_i_02.jpg",
+          "sourceLabel": "I席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/i/img_i_03.jpg",
+          "sourceLabel": "I席からのビュー"
+        }
+      ],
+      "panoramas": 2
+    },
+    {
+      "id": "m",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_m.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/m/img_map_m.png",
+          "sourceLabel": "M席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/m/img_m_map.jpg",
+          "sourceLabel": "M席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/m/img_m01.jpg",
+          "sourceLabel": "M-1（仮設）からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/m/img_m02.jpg",
+          "sourceLabel": "M-1（仮設）からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/m/img_m03.jpg",
+          "sourceLabel": "M-2（仮設）からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/m/img_m04.jpg",
+          "sourceLabel": "M-3（仮設）からのビュー"
+        }
+      ],
+      "panoramas": 2
+    },
+    {
+      "id": "o",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_o.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "cyC7VktjCEI",
+          "sourceLabel": "View.01 O席 O 1方向の動画"
+        },
+        {
+          "videoId": "FS5OBkrzoho",
+          "sourceLabel": "View.02 O席 O 2方向の動画"
+        },
+        {
+          "videoId": "PEK1OzUPpOI",
+          "sourceLabel": "View.03 O席 O 3方向の動画"
+        },
+        {
+          "videoId": "bQtz6jVmHus",
+          "sourceLabel": "View.04 O席 O 4方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/o/img_map_o.png",
+          "sourceLabel": "O席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/o/img_o_map.jpg",
+          "sourceLabel": "O席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/o/img_seat_o.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/o/img_o_01.jpg",
+          "sourceLabel": "Umamusume 130R側"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/o/img_o_02.jpg",
+          "sourceLabel": "Umamusume 130R側"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/o/img_o_03.jpg",
+          "sourceLabel": "スプーン側"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/o/img_o_04.jpg",
+          "sourceLabel": "スプーン側"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/o/img_o_05.jpg",
+          "sourceLabel": "スプーン側"
+        }
+      ],
+      "panoramas": 2
+    },
+    {
+      "id": "p",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_p.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/p/img_map_p.png",
+          "sourceLabel": "P席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/p/img_p_map.jpg",
+          "sourceLabel": "P席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/p/img_p01.jpg",
+          "sourceLabel": "P席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/p/img_p02.jpg",
+          "sourceLabel": "P席からのビュー"
+        }
+      ],
+      "panoramas": 2
+    },
+    {
+      "id": "q1",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_q1.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "3hbZ5hAgN2s",
+          "sourceLabel": "View.01 Q1席 B-12-9方向の動画"
+        },
+        {
+          "videoId": "bUoVjhoX2lo",
+          "sourceLabel": "View.02 Q1席 C-2-6方向の動画"
+        },
+        {
+          "videoId": "0Vo_qdQ43J0",
+          "sourceLabel": "View.03 Q1席 E-10-12方向の動画"
+        },
+        {
+          "videoId": "n0H6fQJGM_8",
+          "sourceLabel": "View.04 Q1席 G-3-9方向の動画"
+        },
+        {
+          "videoId": "JvmZkplgsDs",
+          "sourceLabel": "View.05 Q1席 H-9-12方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_map_q1.png",
+          "sourceLabel": "Q1席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_map.jpg",
+          "sourceLabel": "Q1席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_seat_q1.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_01.jpg",
+          "sourceLabel": "Q1席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_02.jpg",
+          "sourceLabel": "F～Gブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_03.jpg",
+          "sourceLabel": "F～Gブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_04.jpg",
+          "sourceLabel": "G～Hブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_05.jpg",
+          "sourceLabel": "G～Hブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_06.jpg",
+          "sourceLabel": "G～Hブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_07.jpg",
+          "sourceLabel": "I～Jブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_08.jpg",
+          "sourceLabel": "I～Jブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_09.jpg",
+          "sourceLabel": "I～Jブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_10.jpg",
+          "sourceLabel": "Cブロック最前列　アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q1/img_q1_11.jpg",
+          "sourceLabel": "Cブロック最前列　アウトレットシート"
+        }
+      ],
+      "panoramas": 1
+    },
+    {
+      "id": "q2",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_q2.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "c_JTgjmpWN8",
+          "sourceLabel": "View.01 Q2席 A-2-7方向の動画"
+        },
+        {
+          "videoId": "OXXIk3UgkbU",
+          "sourceLabel": "View.02 Q2席 A-12-3方向の動画"
+        },
+        {
+          "videoId": "6rixgF4TeUc",
+          "sourceLabel": "View.03 Q2席 D-1-5方向の動画"
+        },
+        {
+          "videoId": "5tqiiO-_rfs",
+          "sourceLabel": "View.04 Q2席 F-12-9方向の動画"
+        },
+        {
+          "videoId": "LQOZSkyKIEs",
+          "sourceLabel": "View.05 Q2席 H-4-2方向の動画"
+        },
+        {
+          "videoId": "Ff_TbgPej2o",
+          "sourceLabel": "View.06 Q2席 H-13-5方向の動画"
+        },
+        {
+          "videoId": "TFLA9g6rabE",
+          "sourceLabel": "View.07 Q2席 K-4-9方向の動画"
+        },
+        {
+          "videoId": "P6C236o19Ds",
+          "sourceLabel": "View.08 Q2席 K-13-5方向の動画"
+        },
+        {
+          "videoId": "GcBrZ9PFJRw",
+          "sourceLabel": "View.09 Q2席 N-4-7方向の動画"
+        },
+        {
+          "videoId": "r-v4FZjST_A",
+          "sourceLabel": "View.10 Q2席 N-13-5方向の動画"
+        },
+        {
+          "videoId": "zsTBybUK-uY",
+          "sourceLabel": "View.11 Q2席 O-4-3方向の動画"
+        },
+        {
+          "videoId": "y3o0oQMnex4",
+          "sourceLabel": "View.12 Q2席 O-14-3方向の動画"
+        },
+        {
+          "videoId": "aK26YPkxsJM",
+          "sourceLabel": "View.13 Q2席 R-4-5方向の動画"
+        },
+        {
+          "videoId": "wdjhos1e3Do",
+          "sourceLabel": "View.14 Q2席 R-14-6方向の動画"
+        },
+        {
+          "videoId": "DO8Apekr214",
+          "sourceLabel": "View.15 Q2席 U-4-8方向の動画"
+        },
+        {
+          "videoId": "jNK0zQIdQ4A",
+          "sourceLabel": "View.16 Q2席 U-14-7方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q2/img_map_q2.png",
+          "sourceLabel": "Q2席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q2/img_q2_map.jpg",
+          "sourceLabel": "Q2席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q2/img_seat_q2.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q2/img_q2_01.jpg",
+          "sourceLabel": "Q2席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q2/img_q2_02.jpg",
+          "sourceLabel": "Q2席からのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q2/img_q2_03.jpg",
+          "sourceLabel": "Hブロック最前列　アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q2/img_q2_04.jpg",
+          "sourceLabel": "Hブロック最前列　アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/q2/img_q2_05.jpg",
+          "sourceLabel": "Hブロック最前列　アウトレットシート"
+        }
+      ],
+      "panoramas": 3
+    },
+    {
+      "id": "r",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/seat_r.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "yAoAfZN3ySQ",
+          "sourceLabel": "View.01 R席 A-7-6方向の動画"
+        },
+        {
+          "videoId": "Uh-aXqXy_VI",
+          "sourceLabel": "View.02 R席 B-16-1方向の動画"
+        },
+        {
+          "videoId": "UHVuyo_jO8Q",
+          "sourceLabel": "View.03 R席 E-3-6方向の動画"
+        },
+        {
+          "videoId": "mN4ylz88438",
+          "sourceLabel": "View.04 R席 G-19-1方向の動画"
+        },
+        {
+          "videoId": "MTaii7ogs_M",
+          "sourceLabel": "View.05 R席 J-13-6方向の動画"
+        },
+        {
+          "videoId": "151UjbcvThw",
+          "sourceLabel": "View.06 R席 L-11-14方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_map_r.png",
+          "sourceLabel": "R席マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_r_map.jpg",
+          "sourceLabel": "R席の詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_seat_r.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_r_03.jpg",
+          "sourceLabel": "R席 Astemo シケイン側のビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_r_04.jpg",
+          "sourceLabel": "C～Dブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_r_05.jpg",
+          "sourceLabel": "C～Dブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_r_06.jpg",
+          "sourceLabel": "G～Hブロック最前列 スーパーアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_r_07.jpg",
+          "sourceLabel": "H～Iブロック最前列 アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_r_08.jpg",
+          "sourceLabel": "H～Iブロック最前列 アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_r_09.jpg",
+          "sourceLabel": "H～Iブロック最前列 アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_r_10.jpg",
+          "sourceLabel": "Hブロック最前列　アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_r_11.jpg",
+          "sourceLabel": "Hブロック最前列　アウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/r/img_r_12.jpg",
+          "sourceLabel": "Hブロック最前列　アウトレットシート"
+        }
+      ],
+      "panoramas": 1
+    },
+    {
+      "id": "s",
+      "source": "https://www.suzukacircuit.jp/f1/ticket/family-seat.html",
+      "edition": 2027,
+      "checked": "2026-11-26",
+      "captureYear": null,
+      "videos": [
+        {
+          "videoId": "xA_3W5pJkT4",
+          "sourceLabel": "View.01 S席 A-18-11方向の動画"
+        },
+        {
+          "videoId": "HVAaEZbvYPo",
+          "sourceLabel": "View.02 S席 B-4-9方向の動画"
+        },
+        {
+          "videoId": "Ufn61q2XM0g",
+          "sourceLabel": "View.03 S席 D-22-8方向の動画"
+        },
+        {
+          "videoId": "jMFJcapCYfs",
+          "sourceLabel": "View.04 S席 F-6-3方向の動画"
+        },
+        {
+          "videoId": "1N606vVTLTI",
+          "sourceLabel": "View.05 S席 H-19-5方向の動画"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_sbox-xl.png",
+          "sourceLabel": "S-BOX XL"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_sbox-l.png",
+          "sourceLabel": "S-BOX L"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_sbox-m.png",
+          "sourceLabel": "S-BOX M"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_sbox-mwide.png",
+          "sourceLabel": "S-BOX M ワイド"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_map_s.png",
+          "sourceLabel": "ファミリーシートマップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_family_map.jpg",
+          "sourceLabel": "S席ファミリーシート／S-BOXの詳細マップ"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_seat_s.jpg",
+          "sourceLabel": "座席表と席からの眺め"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_family_02.jpg",
+          "sourceLabel": "ベビーカー駐車場"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_family_06.jpg",
+          "sourceLabel": "おむつ交換スペース"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_family_07.jpg",
+          "sourceLabel": "S-BOXからのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_family_04.jpg",
+          "sourceLabel": "S席ファミリーシートからのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_family_05.jpg",
+          "sourceLabel": "S席ファミリーシートからのビュー"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_family_08.jpg",
+          "sourceLabel": "Aブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_family_09.jpg",
+          "sourceLabel": "Bブロック最前列 ウルトラアウトレットシート"
+        },
+        {
+          "url": "https://www.suzukacircuit.jp/f1/ticket/images/seat/family-seat/img_family_10.jpg",
+          "sourceLabel": "Bブロック最前列 ウルトラアウトレットシート"
+        }
+      ],
+      "panoramas": 1
+    }
+  ]
+}

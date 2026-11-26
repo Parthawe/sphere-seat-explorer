@@ -14,7 +14,7 @@ function useEmbedReturnFocus(enabled: boolean) {
   }, [enabled]);
   return button;
 }
-function OriginalVideo({ videoId, title }: { videoId: string; title:string }) {
+export function OriginalVideo({ videoId, title }: { videoId: string; title:string }) {
   const [enabled, setEnabled] = useState(false);
   const loadButton = useEmbedReturnFocus(enabled);
   return (
@@ -53,7 +53,7 @@ function OriginalVideo({ videoId, title }: { videoId: string; title:string }) {
             Load source video
           </button>
           <p>
-            The photos stay on the author’s site. This optional clip connects to
+            This optional player connects to
             YouTube;{" "}
             <a
               href="https://policies.google.com/privacy"
