@@ -10,7 +10,7 @@ const venue=requireVenue('austria',2027);
 export default function AustriaDesk(){
  const [area,setArea]=useState(()=>venue.areas.find(a=>a.id===new URLSearchParams(location.search).get('area'))?.id??'start-ziel'),[feedback,setFeedback]=useState('');
  const chosen=venue.areas.find(a=>a.id===area)!,comparison=useAreaComparison(venue);
-  useAreaUrl(venue, area);
+  useAreaUrl(venue, area, setArea, "start-ziel");
  function choose(id:string){setArea(id);setFeedback('');}
  async function share(){const url=venueAreaUrl(SITE_ORIGIN,venue,area);try{await navigator.clipboard.writeText(url);setFeedback('Area link copied. No ticket or personal information included.');}catch{setFeedback('Copy area link: '+url);}}
  return <section className="ticket-desk monaco-ticket-desk austria-ticket-desk" aria-label="Austria 2027 viewing areas">

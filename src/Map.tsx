@@ -12,13 +12,17 @@ export function FlatMap({
     <div className="flat-map">
       <svg
         viewBox="-300 -210 1100 730"
-        role="img"
+        role={onStand ? "group" : "img"}
         aria-label="Circuit orientation map"
       >
         <path d={circuitPath} fill="none" stroke="#7c7c91" strokeWidth="9" />
         <circle cx="0" cy="0" r={SPHERE.radius} fill="#e10600" />
         {stands.map((s) => (
-          <g key={s.id} onClick={() => onStand?.(s.id)}>
+          <g key={s.id} role={onStand ? "button" : undefined} tabIndex={onStand ? 0 : undefined}
+            aria-label={onStand ? `Select ${s.name}, modeled bank ${s.id}` : undefined}
+            aria-pressed={onStand ? selected === s.id : undefined}
+            onKeyDown={e => { if (onStand && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); onStand(s.id); } }}
+            onClick={() => onStand?.(s.id)}>
             <rect
               x={s.center[0] - 22}
               y={s.center[2] - 12}

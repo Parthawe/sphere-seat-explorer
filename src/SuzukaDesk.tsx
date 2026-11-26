@@ -10,7 +10,7 @@ const venue=requireVenue('japan',2027);
 export default function SuzukaDesk(){
  const [area,setArea]=useState(()=>venue.areas.find(a=>a.id===new URLSearchParams(location.search).get('area'))?.id??'v1');
  const [feedback,setFeedback]=useState('');const chosen=venue.areas.find(a=>a.id===area)!,comparison=useAreaComparison(venue),guide=suzukaSeatGuides[area];
-  useAreaUrl(venue, area);
+  useAreaUrl(venue, area, setArea, "v1");
  function choose(id:string){setArea(id);setFeedback('');}
  async function share(){const url=venueAreaUrl(SITE_ORIGIN,venue,area);try{await navigator.clipboard.writeText(url);setFeedback('Area link copied. No ticket or personal information included.');}catch{setFeedback('Copy area link: '+url);}}
  return <section className="ticket-desk suzuka-ticket-desk" aria-label="Suzuka 2027 viewing areas">

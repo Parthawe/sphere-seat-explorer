@@ -1,4 +1,4 @@
-import { SITE_ORIGIN } from "./brand";
+import { SITE_ORIGIN, syncPublicUrlMetadata } from "./brand";
 import SpectatorReferences from "./SpectatorReferences";
 import { HistoricalReplay } from "./HistoricalReplay";
 import type { ReplayFrame } from "./replayMath";
@@ -394,6 +394,7 @@ export default function App({
     const url = window.location.pathname + seatSearch(next, view, shortlist);
     if (window.location.search !== seatSearch(next, view, shortlist))
       window.history[replace ? "replaceState" : "pushState"]({}, "", url);
+    syncPublicUrlMetadata();
   }
   useEffect(() => {
     const pop = () => {

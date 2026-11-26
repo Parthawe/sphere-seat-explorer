@@ -52,7 +52,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
       });
     return () => controller.abort();
   }, [sourceAttempt]);
-  useAreaUrl(venue, area);
+  useAreaUrl(venue, area, setArea, "main");
   const chosen = areas.find((a) => a.id === area)!;
   const priceFor = (id: AreaId) =>
     snapshot?.sources.find(

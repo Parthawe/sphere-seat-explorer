@@ -6003,3 +6003,28 @@ dialog::backdrop {
 .circuit-overview-dialog header > button,
 .spectator-dialog > header > button,
 .dialog-header > button { min-width: 44px; min-height: 44px; flex-shrink: 0; }
+
+.sphere-share-view {
+  min-height: 44px;
+  padding: 12px 16px;
+  border: 1px solid #777f90;
+  color: #15151e;
+  background: transparent;
+  width: 100%;
+  text-align: center;
+}
+.bowl-selection .sphere-share-feedback {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.bowl-fallback button {
+  min-height: 44px;
+  padding: 12px 16px;
+  color: #f5f5f7;
+  border: 1px solid #8994ad;
+  background: #15151e;
+}
+.flat-map g[role="button"] { cursor: pointer; }
+.flat-map g[role="button"]:focus-visible rect { stroke: #fff; stroke-width: 3px; }
+.atlas-map g[role="button"]:focus-visible circle { stroke: #ffcb69; stroke-width: 4px; }
+.bowl-selection .show-all-levels { min-height: 44px; padding: 8px 0; }

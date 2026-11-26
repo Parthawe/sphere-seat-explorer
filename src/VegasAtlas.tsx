@@ -1,5 +1,8 @@
+import { SITE_ORIGIN, syncPublicUrlMetadata } from "./brand";
+import { bowlViewUrl, normalizeBowlSeat, readBowlView } from "./sphereView";
+import { sanitizeComparison } from "./comparisonState";
 import { BrandMark } from "./BrandMark";
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { circuitPath } from "./Map";
 import { stands, type Mode } from "./model";
 import {
@@ -35,28 +38,59 @@ export default function VegasAtlas({
           (a) => a.id === new URLSearchParams(location.search).get("area"),
         ) || vegasAreas[0],
     );
-  const [comparison, setComparison] = useState<string[]>([]),
-    [seat, setSeat] = useState<BowlSeat>({
-      level: 200,
-      section: 206,
-      row: 8,
-      seat: 10,
-    }),
-    [eye, setEye] = useState(false),
-    [all, setAll] = useState(true);
+  const storageKey = `f1tickets-vegas-${season}-areas`;
+  const [storageAvailable, setStorageAvailable] = useState(true);
+  const [shareFeedback, setShareFeedback] = useState("");
+  const [comparison, setComparison] = useState<string[]>(() => {
+    try { return sanitizeComparison(JSON.parse(localStorage.getItem(storageKey) || "[]"), vegasAreas.map(a => a.id)); }
+    catch { return []; }
+  }),
+    [seat, setSeat] = useState<BowlSeat>(() => readBowlView(location.search).seat),
+    [eye, setEye] = useState(() => readBowlView(location.search).eye),
+    [all, setAll] = useState(() => readBowlView(location.search).all);
+  useEffect(() => {
+    try { if (comparison.length) localStorage.setItem(storageKey, JSON.stringify(comparison)); else localStorage.removeItem(storageKey); setStorageAvailable(true); }
+    catch { setStorageAvailable(false); }
+  }, [storageKey, comparison]);
+  useEffect(() => {
+    setShareFeedback("");
+    if (tab !== "inside") { syncPublicUrlMetadata(); return; }
+    const url = new URL(bowlViewUrl(location.origin, season, seat, eye, all));
+    if (url.search !== location.search) history.replaceState(history.state, "", url.pathname + url.search);
+    syncPublicUrlMetadata();
+  }, [tab, season, seat, eye, all]);
+  useEffect(() => {
+    const restore = () => {
+      const params = new URLSearchParams(location.search);
+      if (params.get("screen") !== "vegas") return;
+      setTab(params.get("venue") === "sphere" ? "inside" : "circuit");
+      const restored = readBowlView(location.search);
+      setSeat(restored.seat); setEye(restored.eye); setAll(restored.all);
+      setArea(vegasAreas.find(a => a.id === params.get("area")) || vegasAreas[0]);
+    };
+    window.addEventListener("popstate", restore);
+    return () => window.removeEventListener("popstate", restore);
+  }, []);
+  async function shareSphere() {
+    const url = bowlViewUrl(SITE_ORIGIN, season, seat, eye, all);
+    try { await navigator.clipboard.writeText(url); setShareFeedback("Sphere model link copied. No ticket details included."); }
+    catch { setShareFeedback("Copy this Sphere model link: " + url); }
+  }
   const filtered = vegasAreas.filter(
     (a) =>
       (kind === "all" || a.kind === kind) &&
       `${a.name} ${a.zone} ${a.focus}`
         .toLowerCase()
-        .includes(query.toLowerCase()),
+        .includes(query.trim().toLowerCase()),
   );
   const level = bowlLevels.find((l) => l.level === seat.level)!;
   function switchTab(next: string) {
     setTab(next);
     const p = new URLSearchParams(location.search);
     next === "inside" ? p.set("venue", "sphere") : p.delete("venue");
+    if (next === "circuit") for (const key of ["sphereLevel", "sphereSection", "sphereRow", "sphereSeat", "sphereView", "sphereLevels"]) p.delete(key);
     history.replaceState({}, "", `?${p}`);
+    syncPublicUrlMetadata();
   }
   function select(id: string) {
     const a = vegasAreas.find((a) => a.id === id);
@@ -65,6 +99,7 @@ export default function VegasAtlas({
     const p = new URLSearchParams(location.search);
     p.set("area", id);
     history.replaceState({}, "", `?${p}`);
+    syncPublicUrlMetadata();
   }
   function toggleCompare(id: string) {
     setComparison((c) =>
@@ -150,7 +185,7 @@ export default function VegasAtlas({
                 </div>
                 <svg
                   viewBox="-330 -240 1220 880"
-                  role="img"
+                  role="group"
                   aria-label="Las Vegas circuit and all listed viewing areas"
                 >
                   <path
@@ -209,6 +244,7 @@ export default function VegasAtlas({
                       role="button"
                       tabIndex={0}
                       aria-label={`Show ${a.name}`}
+                      aria-pressed={area.id === a.id}
                       onClick={() => select(a.id)}
                       onKeyDown={(e) => {
                         if (e.key === "Enter" || e.key === " ") {
@@ -352,6 +388,8 @@ export default function VegasAtlas({
             {comparison.length > 0 && (
               <section className="area-comparison">
                 <h2>Compare viewing areas</h2>
+                <p>{storageAvailable ? "Saved on this device for this season." : "Device storage is unavailable. This comparison lasts while this page stays open."}</p>
+                <button className="vegas-clear-comparison" onClick={() => setComparison([])}>Clear area comparison</button>
                 <div className="area-comparison-table">
                   {comparison.map((id) => {
                     const a = vegasAreas.find((a) => a.id === id)!;
@@ -541,12 +579,12 @@ export default function VegasAtlas({
                       const l = bowlLevels.find(
                         (l) => l.level === Number(e.target.value),
                       )!;
-                      setSeat({
+                      setSeat(normalizeBowlSeat({
                         level: l.level,
                         section: l.first + Math.floor(l.sections / 2),
                         row: Math.min(seat.row, l.rows),
                         seat: seat.seat,
-                      });
+                      }));
                     }}
                   >
                     {bowlLevels.map((l) => (
@@ -616,6 +654,8 @@ export default function VegasAtlas({
                     />
                   </label>
                 </div>
+                <button className="sphere-share-view" onClick={shareSphere}>Share Sphere view</button>
+                <p className="sphere-share-feedback" role="status">{shareFeedback}</p>
                 <label className="show-all-levels">
                   <input
                     type="checkbox"
@@ -651,7 +691,7 @@ export default function VegasAtlas({
                 viewBox={`-24 -18 ${level.seats * 15 + 35} ${level.rows * 12 + 20}`}
                 tabIndex={0}
                 role="img"
-                aria-label={`Model seat grid for section ${seat.section}`}
+                aria-label={`Model seat grid for section ${seat.section}. Row ${seat.row}, seat ${seat.seat}. Use arrow keys to move.`}
                 onKeyDown={(e) => {
                   if (
                     ![
@@ -671,9 +711,9 @@ export default function VegasAtlas({
                         level.rows,
                         seat.row +
                           (e.key === "ArrowUp"
-                            ? 1
+                            ? -1
                             : e.key === "ArrowDown"
-                              ? -1
+                              ? 1
                               : 0),
                       ),
                     ),

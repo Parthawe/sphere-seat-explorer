@@ -28,7 +28,7 @@ export default function AbuDhabiDesk() {
     [feedback, setFeedback] = useState("");
   const comparison = useAreaComparison(venue);
   const chosen = abuAreas.find((a) => a.id === area)!;
-  useAreaUrl(venue, area);
+  useAreaUrl(venue, area, setArea, "main");
   function choose(id: string) {
     setArea(id as AbuAreaId);
     setMatch(null);

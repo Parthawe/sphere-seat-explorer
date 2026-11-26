@@ -28,7 +28,7 @@ export default function SingaporeDesk() {
     [feedback, setFeedback] = useState("");
   const comparison = useAreaComparison(venue),
     chosen = singaporeAreas.find((a) => a.id === area)!;
-  useAreaUrl(venue, area);
+  useAreaUrl(venue, area, setArea, "pit");
   function choose(id: string) {
     setArea(id);
     setMatch(null);

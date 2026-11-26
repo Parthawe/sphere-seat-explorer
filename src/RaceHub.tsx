@@ -1,5 +1,6 @@
+import { useHashTarget } from "./useHashTarget";
 import { readRoute, type Route } from "./routing";
-import { SITE_NAME, SITE_ORIGIN } from "./brand";
+import { SITE_NAME, syncPublicUrlMetadata } from "./brand";
 import {jeddahReference} from "./jeddahReference";
 import {findCircuitModel} from "./circuitSeating";
 import { findVenue } from "./venueRegistry";
@@ -60,7 +61,8 @@ export default function RaceHub() {
     window.addEventListener("popstate", pop);
     return () => window.removeEventListener("popstate", pop);
   }, []);
-  function go(next: Route) {
+  useHashTarget(route);
+  function go(next: Route, hash = "") {
     const p = new URLSearchParams({ season: String(next.season) });
     if (next.race) p.set("race", next.race);
     if (next.circuit) p.set("screen", "circuit");
@@ -72,7 +74,7 @@ export default function RaceHub() {
         p.set("view", next.mode || "seat");
       }
     }
-    history.pushState({}, "", `?${p}`);
+    history.pushState({}, "", `?${p}${hash}`);
     setRoute({ ...next, issue: undefined });
     window.scrollTo(0, 0);
   }
@@ -99,14 +101,7 @@ export default function RaceHub() {
             ? `${selected.name} ${route.season}`
             : `${route.season} Race Tickets & Seat Views`;
     document.title = `${pageTitle} · ${SITE_NAME}`;
-    const canonical = new URL(SITE_ORIGIN + "/");
-    const params = new URLSearchParams(location.search);
-    for (const key of ["season", "race", "screen", "area", "venue", "bank", "section", "modelRow", "position", "seat", "view", "camera"]) {
-      const value = params.get(key);
-      if (value) canonical.searchParams.set(key, value);
-    }
-    document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonical.href);
-    document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonical.href);
+    syncPublicUrlMetadata();
     document.querySelector('meta[property="og:title"]')?.setAttribute("content", document.title);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", document.title);
   }, [route, selected]);
@@ -119,6 +114,7 @@ export default function RaceHub() {
         }
       >
         <VegasAtlas
+          key={route.season}
           season={route.season}
           onBack={() =>
             go({ season: route.season, race: "las-vegas", seats: false })
@@ -205,11 +201,12 @@ export default function RaceHub() {
         <nav className="product-jump-nav" aria-label="Explore F1 Tickets Online">
           <a
             href={`?season=${route.season}#race-content`}
+            onClick={e => { e.preventDefault(); go({ season: route.season, race: "", seats: false }, "#race-content"); }}
             aria-current={!selected ? "page" : undefined}
           >
             Ticket planning
           </a>
-          <a href={`?season=${route.season}#race-calendar`}>All races</a>
+          <a href={`?season=${route.season}#race-calendar`} onClick={e => { e.preventDefault(); go({ season: route.season, race: "", seats: false }, "#race-calendar"); }}>All races</a>
           <a href={`?season=${route.season}&race=las-vegas&screen=vegas`}>
             Las Vegas 3D
           </a>

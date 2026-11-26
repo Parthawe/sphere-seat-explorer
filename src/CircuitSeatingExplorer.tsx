@@ -1,4 +1,4 @@
-import { SITE_ORIGIN } from "./brand";
+import { SITE_ORIGIN, syncPublicUrlMetadata } from "./brand";
 import type {ModelCameraControls} from "./CircuitSeatingScene";
 import CircuitOverview from "./CircuitOverview";
 import SpectatorReferences from "./SpectatorReferences";
@@ -20,6 +20,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  useEffect(()=>{
   const url=new URL(modelPositionUrl(location.origin,model,selection,mode));
   if(location.search!==url.search)history.replaceState(history.state,'',url.pathname+url.search);
+  syncPublicUrlMetadata();
  },[model,selection,mode]);
  useEffect(()=>{const restore=()=>{const q=new URLSearchParams(location.search);if(q.get('race')!==model.id||q.get('screen')!=='circuit')return;setSelection(normalizeModelPosition(model,{bank:q.get('bank')??undefined,section:Number(q.get('section')),row:Number(q.get('modelRow')),seat:Number(q.get('position'))}));const camera=q.get('camera');setMode(camera==='stand'||camera==='circuit'?camera:'seat');};window.addEventListener('popstate',restore);return()=>window.removeEventListener('popstate',restore);},[model]);
  async function share(){const url=modelPositionUrl(SITE_ORIGIN,model,selection,mode);try{await navigator.clipboard.writeText(url);setFeedback('Model position link copied. No ticket information included.');}catch{setFeedback('Copy model position link: '+url);}}

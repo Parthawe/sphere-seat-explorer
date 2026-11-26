@@ -219,13 +219,14 @@ function Tiers({ all, level }: { all: boolean; level: number }) {
   );
 }
 class BowlBoundary extends Component<
-  { children: ReactNode },
+  { children: ReactNode; onUnavailable: () => void },
   { failed: boolean }
 > {
   state = { failed: false };
   static getDerivedStateFromError() {
     return { failed: true };
   }
+  componentDidCatch() { this.props.onUnavailable(); }
   render() {
     return this.state.failed ? (
       <div className="bowl-fallback">
@@ -286,7 +287,7 @@ export default function SphereBowl({
       </div>
     );
   return (
-    <BowlBoundary>
+    <BowlBoundary onUnavailable={() => setLost(true)}>
       <Canvas
         frameloop="demand"
         dpr={[1, 1.5]}
