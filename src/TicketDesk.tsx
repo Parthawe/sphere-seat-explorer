@@ -369,8 +369,8 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
         saved={saved}
         persistent={comparison.persistent}
         onSelect={(id) => choose(id as AreaId)}
-        onRemove={comparison.remove}
-        onClear={comparison.clear}
+        onRemove={id=>{comparison.remove(id);setFeedback('Area removed from comparison.');}}
+        onClear={()=>{comparison.clear();setFeedback('Area comparison cleared.');}}
         referencePrice={(id) => {
           const price = priceFor(id as AreaId);
           return price ? { label: `${price.price?.toLocaleString("en")} QAR`, checkedAt: price.checkedAt, sourceUrl: price.url } : undefined;

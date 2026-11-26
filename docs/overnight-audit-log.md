@@ -108,6 +108,17 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: ArrowDown in the top-down grid changed row 12 to row 11, moving the marker visually upward. The grid and seated camera shared a handler despite different spatial row conventions. On phone, View this position in 3D closed the dialog but left the entire scene above the viewport (stage bottom -528px).
 - Change: grid arrows now follow the displayed grid axes while seated-camera arrows retain their existing higher/lower-row behavior. The explicit 3D-view action closes the dialog, stops following, focuses the interactive scene and brings it into view. Reduced motion uses an immediate scroll; normal motion uses the browser's smooth scroll. Escape retains the ordinary dialog-return behavior.
 - Validation: desktop 1440px and phone 390px strict browser assertions covered first-row/seat bounds, Down/Right increments, final section and last dot, final-row/seat bounds and the scene-visible/focused handoff with preserved selection. No browser errors. Both grid screenshots inspected. TypeScript passed; production build is part of publication. No redundant geometry/full-suite test rerun for this interaction-only fix.
-- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Publication: v63, source `202c55714fe10a9fb01d4640988a60966a999b3d`, succeeded; matching GitHub push confirmed.
 - Limits: model positions remain illustrative and do not identify actual ticket rows or chairs. These checks do not certify touch accuracy for a physical phone or accessible venue routes.
 - Next useful check: non-destructive comparison removal/clear focus and the three-position capacity message, without adding persistence or commercial tracking.
+
+
+## 26 November 2026 · 11:30 UTC · Comparison removal and capacity feedback
+
+- Starting release: v63, source `202c55714fe10a9fb01d4640988a60966a999b3d`; clean checkout.
+- Evidence: keyboard Clear in Qatar and Vegas and last-position removal in the circuit explorer all left focus on BODY. A removal after reaching model-comparison capacity also left the old Three positions saved message displayed.
+- Change: a shared removal-focus hook moves to the next remaining Remove control or returns to the comparison entry button when the list is cleared. It is used by the shared area table, Vegas area list and circuit-position list. Shared desk remove/clear actions and circuit removals now replace stale capacity feedback with the actual action result. Capacity remains three and existing storage behavior is unchanged.
+- Validation: strict desktop and phone assertions covered next-item focus, Clear focus, Vegas Clear, rejecting a fourth modeled position without losing the three saved choices, and last-item focus return. A second shared desk family (Monaco) confirmed focus and clear feedback; the circuit capacity message updated after removal. Six affected registry/comparison tests and TypeScript passed. Screenshots of the phone remaining-position list and desktop/phone return states were inspected; no browser errors in the main flows. Production build is part of publication.
+- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Limits: no new comparison persistence, accounts, inventory or tracking was added. Browser focus assertions are not a screen-reader certification.
+- Next useful check: inspect 2026/2027 public coverage labels and unsupported model handoffs for stale claims, avoiding repeated venue research without new evidence.

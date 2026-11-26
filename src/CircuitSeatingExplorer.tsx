@@ -1,3 +1,4 @@
+import { useListRemovalFocus } from "./useListRemovalFocus";
 import { SITE_ORIGIN, syncPublicUrlMetadata } from "./brand";
 import type {ModelCameraControls} from "./CircuitSeatingScene";
 import CircuitOverview from "./CircuitOverview";
@@ -20,6 +21,8 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
   const observer=new ResizeObserver(measure);observer.observe(title);observer.observe(modes);measure();return()=>observer.disconnect();
  },[]);
  const manualLook=useCallback(()=>setFollowing(false),[]);
+ const comparisonRoot=useRef<HTMLElement>(null),compareButton=useRef<HTMLButtonElement>(null);
+ const prepareRemoval=useListRemovalFocus(saved.map(positionKey),comparisonRoot,()=>compareButton.current);
  const cameraControls=useRef<ModelCameraControls|null>(null);
  const [zoomLimits,setZoomLimits]=useState({inward:true,outward:true});
  const zoomLimitsCallback=useCallback((inward:boolean,outward:boolean)=>setZoomLimits(previous=>previous.inward===inward&&previous.outward===outward?previous:{inward,outward}),[]);
@@ -85,9 +88,9 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
     <div className="circuit-row-shortcuts">{[['Front',1],['Middle',Math.ceil(bank.rows/2)],['High',bank.rows]].map(([label,row])=><button key={label} aria-pressed={selection.row===row} onClick={()=>choose({row:Number(row)})}>{label}</button>)}</div>
     <button className="circuit-grid-trigger" onClick={()=>setGrid(true)}>Open complete model grid <span>{modelCount(bank).toLocaleString()} positions</span></button>
     <dl className="circuit-view-metrics"><div><dt>Modeled eye height</dt><dd>{(p[1]-bankGroundHeight(model,bank)+1.15).toFixed(1)} m</dd></div><div><dt>Track-center distance</dt><dd>~{distance} m</dd></div></dl>
-    <div className="circuit-position-actions"><button onClick={save}>{saved.some(p=>positionKey(p)===positionKey(selection))?'Remove saved position':'Compare position'} <span>{saved.length}/3</span></button><button onClick={share}>Share view</button></div>
+    <div className="circuit-position-actions"><button ref={compareButton} onClick={save}>{saved.some(p=>positionKey(p)===positionKey(selection))?'Remove saved position':'Compare position'} <span>{saved.length}/3</span></button><button onClick={share}>Share view</button></div>
     <p className="circuit-feedback" role="status">{feedback}</p>
-    {saved.length>0&&<section className="circuit-saved"><h3>Compare modeled views</h3><p>Choose a saved position to revisit its 3D view.</p>{saved.map(s=>{const b=model.banks.find(b=>b.id===s.bank)!,p=modelPosition(model,s);return <div key={positionKey(s)}><button aria-label={`View ${b.name} model section ${s.section} row ${s.row} position ${s.seat}`} onClick={()=>{setSelection(s);setMode('seat');}}><b>{b.name}</b><span>S{s.section} / R{s.row} / P{s.seat} · eye {(p[1]-bankGroundHeight(model,b)+1.15).toFixed(1)} m</span></button><button aria-label={`Remove saved ${positionKey(s)}`} onClick={()=>setSaved(saved.filter(p=>positionKey(p)!==positionKey(s)))}>×</button></div>;})}</section>}
+    {saved.length>0&&<section ref={comparisonRoot} className="circuit-saved"><h3>Compare modeled views</h3><p>Choose a saved position to revisit its 3D view.</p>{saved.map(s=>{const b=model.banks.find(b=>b.id===s.bank)!,p=modelPosition(model,s);return <div key={positionKey(s)} data-comparison-id={positionKey(s)}><button aria-label={`View ${b.name} model section ${s.section} row ${s.row} position ${s.seat}`} onClick={()=>{setSelection(s);setMode('seat');}}><b>{b.name}</b><span>S{s.section} / R{s.row} / P{s.seat} · eye {(p[1]-bankGroundHeight(model,b)+1.15).toFixed(1)} m</span></button><button aria-label={`Remove saved ${positionKey(s)}`} data-remove-comparison onClick={()=>{prepareRemoval(positionKey(s));setSaved(saved.filter(p=>positionKey(p)!==positionKey(s)));setFeedback('Position removed from comparison.');}}>×</button></div>;})}</section>}
     {bank.admissionNote&&<div className="circuit-bank-facts"><strong>Ticket options & cover</strong><p>{bank.admissionNote}</p></div>}
     {!!bank.ticketOptions?.length&&<section className="circuit-ticket-options" aria-label="Official ticket options for this bank"><h3>One grandstand. Different ticket options.</h3><p>These options share this representative model. Your package does not identify a model row.</p>{bank.ticketOptions.map(option=><div key={option.source}><a href={option.source} target="_blank" rel="noreferrer">{option.name}<span>Official information ↗</span></a><p>{option.note}</p></div>)}</section>}
     <a className="circuit-ticket-link" href={bank.source} target="_blank" rel="noreferrer">{bank.officialView?'Official information & virtual view':'Official grandstand information'}</a>

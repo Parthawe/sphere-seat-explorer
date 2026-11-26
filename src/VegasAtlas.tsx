@@ -1,8 +1,9 @@
+import { useListRemovalFocus } from "./useListRemovalFocus";
 import { SITE_ORIGIN, syncPublicUrlMetadata } from "./brand";
 import { bowlViewUrl, normalizeBowlSeat, readBowlView } from "./sphereView";
 import { sanitizeComparison } from "./comparisonState";
 import { BrandIdentity } from "./BrandMark";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { circuitPath } from "./Map";
 import { stands, type Mode } from "./model";
 import {
@@ -38,6 +39,7 @@ export default function VegasAtlas({
           (a) => a.id === new URLSearchParams(location.search).get("area"),
         ) || vegasAreas[0],
     );
+  const comparisonRoot = useRef<HTMLElement>(null), compareButton = useRef<HTMLButtonElement>(null);
   const storageKey = `f1tickets-vegas-${season}-areas`;
   const [storageAvailable, setStorageAvailable] = useState(true);
   const [shareFeedback, setShareFeedback] = useState("");
@@ -48,6 +50,7 @@ export default function VegasAtlas({
     [seat, setSeat] = useState<BowlSeat>(() => readBowlView(location.search).seat),
     [eye, setEye] = useState(() => readBowlView(location.search).eye),
     [all, setAll] = useState(() => readBowlView(location.search).all);
+  const prepareRemoval = useListRemovalFocus(comparison, comparisonRoot, () => compareButton.current);
   useEffect(() => {
     try { if (comparison.length) localStorage.setItem(storageKey, JSON.stringify(comparison)); else localStorage.removeItem(storageKey); setStorageAvailable(true); }
     catch { setStorageAvailable(false); }
@@ -352,7 +355,7 @@ export default function VegasAtlas({
                 )}
                 <button
                   className="atlas-compare-button"
-                  aria-pressed={comparison.includes(area.id)}
+                  ref={compareButton} aria-pressed={comparison.includes(area.id)}
                   disabled={
                     !comparison.includes(area.id) && comparison.length >= 3
                   }
@@ -378,15 +381,15 @@ export default function VegasAtlas({
               </aside>
             </section>
             {comparison.length > 0 && (
-              <section className="area-comparison">
+              <section ref={comparisonRoot} className="area-comparison">
                 <h2>Compare viewing areas</h2>
                 <p>{storageAvailable ? "Saved on this device for this season." : "Device storage is unavailable. This comparison lasts while this page stays open."}</p>
-                <button className="vegas-clear-comparison" onClick={() => setComparison([])}>Clear area comparison</button>
+                <button className="vegas-clear-comparison" onClick={() => { prepareRemoval(); setComparison([]); }}>Clear area comparison</button>
                 <div className="area-comparison-table">
                   {comparison.map((id) => {
                     const a = vegasAreas.find((a) => a.id === id)!;
                     return (
-                      <article key={id}>
+                      <article key={id} data-comparison-id={id}>
                         <h3>{a.name}</h3>
                         <p>{a.kind}</p>
                         <dl>
@@ -413,7 +416,7 @@ export default function VegasAtlas({
                         >
                           Show on map
                         </button>
-                        <button onClick={() => toggleCompare(id)}>
+                        <button data-remove-comparison onClick={() => { prepareRemoval(id); toggleCompare(id); }}>
                           Remove
                         </button>
                       </article>

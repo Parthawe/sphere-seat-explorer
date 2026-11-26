@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { useListRemovalFocus } from "./useListRemovalFocus";
 import type { VenueDefinition } from "./venueRegistry";
 export default function AreaComparison({
   venue,
@@ -16,15 +18,17 @@ export default function AreaComparison({
   onClear: () => void;
   referencePrice?: (id: string) => { label: string; checkedAt: string; sourceUrl: string } | undefined;
 }) {
+  const root = useRef<HTMLElement>(null);
+  const prepareRemoval = useListRemovalFocus(saved, root, () => root.current?.parentElement?.querySelector<HTMLButtonElement>('.area-actions > button'));
   if (!saved.length) return null;
   const showAccess = venue.areas.some((a) => a.access);
   return (
-    <section className="area-comparison" aria-label="Saved area comparison">
+    <section ref={root} className="area-comparison" aria-label="Saved area comparison">
       <div className="section-line">
         <h2>
           Your area comparison <span>{saved.length}/3</span>
         </h2>
-        <button onClick={onClear}>Clear comparison</button>
+        <button onClick={() => { prepareRemoval(); onClear(); }}>Clear comparison</button>
       </div>
       <p className="comparison-scroll-hint">
         Scroll horizontally to see every column.
@@ -59,7 +63,7 @@ export default function AreaComparison({
               if (!a) return null;
               const price = referencePrice?.(id);
               return (
-                <tr key={id}>
+                <tr key={id} data-comparison-id={id}>
                   <th scope="row">
                     <button onClick={() => onSelect(id)}>{a.name}</button>
                   </th>
@@ -72,7 +76,7 @@ export default function AreaComparison({
                   )}
                   <td>
                     <button
-                      onClick={() => onRemove(id)}
+                      data-remove-comparison onClick={() => { prepareRemoval(id); onRemove(id); }}
                       aria-label={`Remove ${a.name}`}
                     >
                       Remove

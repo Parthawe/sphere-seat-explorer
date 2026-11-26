@@ -318,8 +318,8 @@ export default function SingaporeDesk() {
         saved={comparison.saved}
         persistent={comparison.persistent}
         onSelect={choose}
-        onRemove={comparison.remove}
-        onClear={comparison.clear}
+        onRemove={id=>{comparison.remove(id);setFeedback('Area removed from comparison.');}}
+        onClear={()=>{comparison.clear();setFeedback('Area comparison cleared.');}}
       />
       <section className="abu-ticket-handoffs">
         <h2>Continue with the official sources.</h2>
