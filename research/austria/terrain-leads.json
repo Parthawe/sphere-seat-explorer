@@ -1,0 +1,29 @@
+{
+  "checked": "2026-11-26",
+  "status": "candidate_sources_not_integrated",
+  "runtime_heights": false,
+  "gp_node_elevation_tags": 0,
+  "osm_snapshot": "research/austria/osm-source.xml.gz",
+  "osm_source": "https://api.openstreetmap.org/api/0.6/map?bbox=14.749,47.215,14.777,47.240",
+  "osm_licence": "ODbL-1.0",
+  "candidates": [
+    {
+      "source": "https://data.steiermark.at/cms/beitrag/12803290/97428847/",
+      "evidence": "Agency page advertises 1m airborne-laser terrain and surface models through GeoTIFF and WCS. Its terrain metadata deep link hit a redirect limit; no coverage was retrieved. Verify exact source licence, CRS, capture epoch, bare-ground versus road-deck meaning and bounded request before runtime use."
+    },
+    {
+      "source": "https://www.data.gv.at/datasets/4a813c09-1170-462e-b440-fea9b02a31bf~~1?locale=de",
+      "evidence": "Candidate Styrian 1m ALS catalogue record; web tool returned no readable lines. Public metadata/service discovery remains to be completed."
+    },
+    {
+      "source": "https://www.data.gv.at/datasets/b5de6975-417b-4320-afdb-eb2a9e2a1dbf",
+      "evidence": "Candidate national 10m DGM in EPSG:31287. Search metadata lists CC BY 4.0; source record, applicability and actual raster were not yet inspected."
+    }
+  ],
+  "limits": [
+    "No height values enter the app",
+    "A bare-earth raster does not establish road decks, bank tiers, roofs or exact chair eyes",
+    "Do not relabel sparse samples as a full 1 m-resolution model",
+    "Do not repeat the completed GP bbox acquisition; decompress retained source for offline collector reuse"
+  ]
+}

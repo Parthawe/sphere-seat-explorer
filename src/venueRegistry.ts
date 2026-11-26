@@ -1,3 +1,4 @@
+import {austriaAreas,austriaGeography,AUSTRIA_CHECKED,AUSTRIA_TICKETS} from './austria';
 import {monacoAreas,monacoGeography,MONACO_CHECKED,MONACO_MAP} from './monaco';
 import {suzukaAreas,suzukaGeography,SUZUKA_CHECKED,SUZUKA_TICKETS} from './suzuka';
 import { singaporeAreas, SINGAPORE_CHECKED, SINGAPORE_MAP } from "./singapore";
@@ -144,6 +145,7 @@ export const venueRegistry: readonly VenueDefinition[] = [
   },
   {id:'monaco',raceSlug:'monaco',circuitId:'monaco-streets',season:2027,name:'Circuit de Monaco',watermark:'MONACO',checked:MONACO_CHECKED,durationDays:4,comparisonPeriod:'Day-specific ticket categories',officialMap:MONACO_MAP,ticketGuidance:'https://acm.mc/epreuves/formula-1-grand-prix-de-monaco/infos-pratiques/venir-au-formula-1-grand-prix-de-monaco/',geography:monacoGeography,download:'/data/monaco-track.json',areas:monacoAreas,coverage:{level:'area-estimate',exactSeats:false,seat3d:false},map:{markerStyle:'callout',roadStroke:9,trackStroke:3,decorations:[{kind:'text',x:350,y:350,text:'PORT HERCULE'}]}},
 
+ {id:'austria',raceSlug:'austria',circuitId:'red-bull-ring',season:2027,name:'Red Bull Ring',watermark:'SPIELBERG',checked:AUSTRIA_CHECKED,durationDays:3,comparisonPeriod:'Weekend / Sunday product references',officialMap:AUSTRIA_TICKETS,ticketGuidance:AUSTRIA_TICKETS,geography:austriaGeography,download:'/data/austria-track.json',areas:austriaAreas,coverage:{level:'area-estimate',exactSeats:false,seat3d:false},map:{markerStyle:'callout',roadStroke:9,trackStroke:3}},
 ];
 export function findVenue(season: number, raceSlug: string) {
   return venueRegistry.find(

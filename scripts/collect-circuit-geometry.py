@@ -14,6 +14,7 @@ SOURCES['monza']={'bbox': '9.265,45.600,9.299,45.640', 'origin': [9.281, 45.62],
 SOURCES['shanghai']={'bbox':'121.207,31.325,121.231,31.350','origin':[121.218,31.338],'ways':['156328670'],'features':['107371135','1372223261','1372223262','156341844','156341848','156341851'],'relation':'2094941','trees':True,'length_range':[5400,5500]}
 SOURCES['miami']={'bbox':'-80.249,25.949,-80.226,25.967','origin':[-80.238,25.958],'ways':['1017340351','1485453204','1472684485','1485453202','1485453200','1472686141','1485453197'],'features':['171419981','171419978'],'trees':True,'length_range':[5350,5500]}
 SOURCES['canada']={'bbox':'-73.54,45.49,-73.515,45.515','origin':[-73.527,45.503],'ways':['136717490'],'features':['129924946','1566564121','1243714696','1243714697','1243714698','1243714699','1381122382'],'water_relation':'2223658','water_name':'Lac des régates','trees':True,'length_range':[4300,4430],'relation':'284595'}
+SOURCES['austria']={'bbox':'14.749,47.215,14.777,47.240','origin':[14.763,47.228],'ways':['347958266','822592398','822592399','822592400','822592401','822592402','822592405','822592406','822592407','822592408','822592409','822592410','822592403','822592404'],'features':[],'relation':'5309181','trees':True,'length_range':[4250,4400]}
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('venues',nargs='*')
 parser.add_argument('--input',type=Path,help='Use an already retrieved public OSM XML snapshot for one selected venue')
@@ -93,6 +94,7 @@ for venue in selected:
       seen.add(key);vegetation.append({'id':str(int(way_id)*10000+len(vegetation)),'point':point})
  data={'source':('https://www.openstreetmap.org/relation/'+cfg['relation']) if cfg.get('relation') else 'https://www.openstreetmap.org/way/'+cfg['ways'][0],'queried':str(datetime.datetime.now(datetime.timezone.utc).date()),'licence':'ODbL-1.0','ways':cfg['ways'],'length_m':round(length),'projection':{'origin':cfg['origin'],'units':'meters','z':'south'},'points':track,'features':features}
  if cfg.get('relation'):data['relation']=cfg['relation']
+ if venue=='austria':data['excluded_ways']=['289111668','823820476','1077423714','84416610'];data['route_evidence']='Fourteen connected GP ways from relation 5309181; pit lane, MotoGP chicane, long-lap penalty and National Circuit branch excluded. Current plan geography is not a surveyed 2027 event layout. Vertical context is absent.'
  if venue=='miami':data['excluded_ways']=['1017340352','1233165737','1485453201','1485454063'];data['route_evidence']='Explicit seven-way GP centerline interpretation, checked against the 19-turn GP layout and length. Venue relation 20204222 nests a shorter MIA configuration and is not used as the GP route. Pit lane and short connectors excluded.'
  if venue=='miami':
   for f in data['features']:

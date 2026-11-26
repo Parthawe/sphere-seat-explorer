@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-26",
   "cadence_hours": 1,
-  "phase": "austria-initial-source-audit",
+  "phase": "austria-terrain-assessment",
   "active_run": null,
-  "next_action": "Begin Austria 2027: verify current organizer/F1 event dates, physical Red Bull Ring venue, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography for its own supported map/representative study. Canada’s initial fifteen-family catalogue pass is checkpointed in CANADA-SOURCES.md: eleven estimated banks/15,040 positions, four unresolved ordinary grandstands (16/32/34/Platine), plus dated 2026 organizer tour, roaming, accessible and hospitality source-only entries. Preserve 10/11 limited-screen notes, 33 child-ticket/rate conditions, 21 versus 21A, 31 versus 41A, and 46 outside versus 47 inside. No 2026 map/tour becomes a 2027 ticket survey; no unnamed envelope establishes a current boundary. Do not repeat Canada’s completed bbox, blocked catalogue/AVFMS/YouTube attempts or eleven-page audit. Return to its precision and attendee-photo gaps only with new evidence.",
+  "next_action": "Continue Austria vertical-context assessment before representative 3D: use research/austria/terrain-leads.json to resolve the Styrian government’s public ALS terrain/WCS metadata or the national 10 m DGM source, verify applicable licence/credit, CRS, capture epoch and road/bare-earth meaning, then obtain a bounded licensed extract for the retained GP if supported. The eleven-family 2027 area map, six hopping day-allocation rows and eleven other source-only entries are implemented; preserve those boundaries and all privacy/year behavior. AUSTRIA-SOURCES.md records fourteen GP ways/248 points/~4,305 m, excluding pit/MotoGP/short branches. No GP node has elevation; no flat 3D camera is supplied. Do not repeat the completed OSM bbox: retained research/austria/osm-source.xml.gz supports offline reuse. Original ticket diagram is 2027; separate venue visitor map is 2026 and cannot locate 2027 tickets. No image asset is imported. If suitable terrain/vertical support is unavailable, checkpoint the precise gap and advance Hungary 2027 rather than repeat the same failed metadata requests.",
   "venues": [
     {
       "id": "las-vegas",
@@ -375,9 +375,30 @@
       "id": "austria",
       "event": "Austria",
       "venue": "Red Bull Ring",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "area_locator_11_products_2027_3d_needs_terrain",
+      "sources": [
+        "https://www.formula1.com/en/racing/2027/austria",
+        "https://www.redbullring.com/en/events-tickets/formula-1/",
+        "https://tickets.redbullring.com/en/f1/f1-grand-prix-oesterreich-2027/tickets.html",
+        "https://www.openstreetmap.org/relation/5309181",
+        "https://data.steiermark.at/cms/beitrag/12803290/97428847/"
+      ],
+      "next_action": "Continue Austria vertical-context assessment before representative 3D: use research/austria/terrain-leads.json to resolve the Styrian government’s public ALS terrain/WCS metadata or the national 10 m DGM source, verify applicable licence/credit, CRS, capture epoch and road/bare-earth meaning, then obtain a bounded licensed extract for the retained GP if supported. The eleven-family 2027 area map, six hopping day-allocation rows and eleven other source-only entries are implemented; preserve those boundaries and all privacy/year behavior. AUSTRIA-SOURCES.md records fourteen GP ways/248 points/~4,305 m, excluding pit/MotoGP/short branches. No GP node has elevation; no flat 3D camera is supplied. Do not repeat the completed OSM bbox: retained research/austria/osm-source.xml.gz supports offline reuse. Original ticket diagram is 2027; separate venue visitor map is 2026 and cannot locate 2027 tickets. No image asset is imported. If suitable terrain/vertical support is unavailable, checkpoint the precise gap and advance Hungary 2027 rather than repeat the same failed metadata requests.",
+      "asset_assessment": "AUSTRIA-SOURCES.md",
+      "seasons_with_area_coverage": [
+        2027
+      ],
+      "area_families": 11,
+      "hopping_combinations": 6,
+      "other_source_only_options": 11,
+      "seat3d_status": "needs_terrain_assets",
+      "exact_seats_verified": false,
+      "remaining_gaps": [
+        "Licensed bounded road/terrain profile and datum/epoch interpretation for meaningful 3D",
+        "Surveyed event footprints, actual sectors/rows/chairs and tier/roof geometry",
+        "Accessible platforms/routes, diagram-only product eligibility and hospitality levels",
+        "Dated attendee photographs and historical Austrian telemetry"
+      ]
     },
     {
       "id": "hungary",
@@ -1151,6 +1172,27 @@
         "No new attendee photograph, historical telemetry or live ticket stock"
       ],
       "next": "Begin Austria 2027: verify current organizer/F1 event dates, physical Red Bull Ring venue, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography for its own supported map/representative study. Canada’s initial fifteen-family catalogue pass is checkpointed in CANADA-SOURCES.md: eleven estimated banks/15,040 positions, four unresolved ordinary grandstands (16/32/34/Platine), plus dated 2026 organizer tour, roaming, accessible and hospitality source-only entries. Preserve 10/11 limited-screen notes, 33 child-ticket/rate conditions, 21 versus 21A, 31 versus 41A, and 46 outside versus 47 inside. No 2026 map/tour becomes a 2027 ticket survey; no unnamed envelope establishes a current boundary. Do not repeat Canada’s completed bbox, blocked catalogue/AVFMS/YouTube attempts or eleven-page audit. Return to its precision and attendee-photo gaps only with new evidence."
+    },
+    {
+      "date": "2026-11-26",
+      "scope": "Austria 2027 independent area map and product-source audit",
+      "result": "Eleven selectable area families, six explicit hopping day allocations, eleven other source-only entries, three-area comparison and sanitized sharing. 3D withheld pending licensed vertical context.",
+      "evidence": [
+        "Current F1/venue/link to provider confirm 9–11 July 2027 and published 4.326 km; source ticket diagram identifies 2027 while separate visitor map is 2026",
+        "One bounded OSM snapshot retained compressed for offline reuse; fourteen GP ways/248 closed points/~4,305 m, pit/MotoGP/short branches excluded",
+        "Current diagram viewed through normal public catalogue rendering after web-tool image timeout; no source asset downloaded or rehosted",
+        "Two-way map/selector and keyboard selection,three-area cap/clear,clean clipboard share,all eleven families,source-only and hopping rows checked in Chrome 1440×1000,390×844,320×740; no own-page errors or page overflow; 2026 has no borrowed pilot/canvas",
+        "110 tests pass; initial production build,Python compilation,matching public/source geography and diff checks pass; final build runs in packaging",
+        "Mobile control labels shortened and arranged in three columns after an initial wrapping defect; hopping table gains readable spacing/phone scroll; shared mixed-day comparison footer no longer implies uniform 3-day duration",
+        "Terrain source leads recorded from official agencies; zero selected GP elevation tags and no runtime height values"
+      ],
+      "limitations": [
+        "Area anchors,subdivisions and all physical seat views remain uncalibrated; no flat 3D interpretation of the hills",
+        "No current stock/prices/accounts/checkout/private inventory; all accessible/hospitality products remain separate",
+        "Styrian terrain metadata deep link hit redirect limit and candidate catalogue had no readable lines; no coverage retrieved",
+        "No new attendee photograph or historical replay"
+      ],
+      "next": "Continue Austria vertical-context assessment before representative 3D: use research/austria/terrain-leads.json to resolve the Styrian government’s public ALS terrain/WCS metadata or the national 10 m DGM source, verify applicable licence/credit, CRS, capture epoch and road/bare-earth meaning, then obtain a bounded licensed extract for the retained GP if supported. The eleven-family 2027 area map, six hopping day-allocation rows and eleven other source-only entries are implemented; preserve those boundaries and all privacy/year behavior. AUSTRIA-SOURCES.md records fourteen GP ways/248 points/~4,305 m, excluding pit/MotoGP/short branches. No GP node has elevation; no flat 3D camera is supplied. Do not repeat the completed OSM bbox: retained research/austria/osm-source.xml.gz supports offline reuse. Original ticket diagram is 2027; separate venue visitor map is 2026 and cannot locate 2027 tickets. No image asset is imported. If suitable terrain/vertical support is unavailable, checkpoint the precise gap and advance Hungary 2027 rather than repeat the same failed metadata requests."
     }
   ],
   "blockers": [

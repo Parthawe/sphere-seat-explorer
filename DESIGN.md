@@ -109,3 +109,7 @@ Canada follows the existing red/ink/paper daylight explorer. Keep sale status vi
 ## Canada grandstand catalogue pass · 26 November 2026 UTC
 
 Canada selectors now follow numerical grandstand order. Three hairpin/Casino map labels use leader lines to avoid phone collisions while retaining the original estimated region and chair positions. The family 33 ticket condition appears before position controls. Grandstand 12’s organizer preview handoff names its 2026 destination in both the selection panel and reference browser. Other venues retain their existing preview copy and marker positions.
+
+## Austria 2027 area study · 26 November 2026 UTC
+
+Spielberg uses the existing red/ink/paper area workspace, north-up GP trace and readable sector-group leader lines. Phone controls use compact source abbreviations in three columns; the selector retains full product names. Hopping allocations appear as a separate day-by-day table with phone scrolling. The reference note states the terrain/3D gap before selection. Mixed-day comparison wording no longer implies every product includes the same duration; existing fixed-duration defaults are retained.

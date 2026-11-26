@@ -86,7 +86,9 @@ export default function AreaComparison({
       <p>
         {referencePrice
           ? "Same race and duration. Reference prices exclude any unverified fees or changes; this is not a live offer comparison."
-          : `Same race and ${venue.durationDays}-day product duration. Compare track regions and location evidence; exact seats, prices and availability are not verified.`}{" "}
+          : venue.comparisonPeriod
+            ? 'Compare regions within this race. Ticket days and access vary by product; exact seats, prices and availability are not verified.'
+            : `Same race and ${venue.durationDays}-day product duration. Compare track regions and location evidence; exact seats, prices and availability are not verified.`}{" "}
         {persistent
           ? "Saved on this device for this race and season."
           : "Device storage is unavailable; this comparison lasts only while this page is open."}

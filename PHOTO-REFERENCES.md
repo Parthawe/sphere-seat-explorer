@@ -115,3 +115,7 @@ Canada adds two 2025 personal reports: u/MarzipanInfamous2305 at Grandstand 1 se
 ## Canada grandstand catalogue pass · 26 November 2026 UTC
 
 Grandstand 12 now links its organizer-provided 360° preview with an explicit 2026 destination label. It remains separate from the two credited 2025 attendee reports and does not count as a dated attendee photograph or calibrated model position. The original tour and current product pages open externally; no tiles, images or meshes are redistributed. Capture date and panorama playback are unverified. No blocked media request was repeated.
+
+## Austria 2027 area study · 26 November 2026 UTC
+
+The original organizer-linked Austrian 2027 ticket diagram was inspected through the public catalogue’s normal browser rendering. It is product/location evidence, not an attendee photograph or calibrated seat view. No image, panorama tile or proprietary mesh is bundled. The venue’s separate visitor map is labeled 2026. No Austrian photo collection or historical telemetry is supplied in this area-map release.

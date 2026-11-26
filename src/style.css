@@ -5942,3 +5942,15 @@ dialog::backdrop {
 .monaco-other-options article { padding: 20px 0; border-bottom: 1px solid #c8cbd4; }
 .monaco-other-options article a { display: inline-flex; align-items: center; min-height: 44px; }
 @media (max-width: 600px) { .monaco-ticket-desk .map-label { font-size: 24px; } }
+
+.austria-hopping table { width: 100%; min-width: 660px; border-collapse: collapse; margin: 16px 0; color: #232633; }
+.austria-hopping th, .austria-hopping td { padding: 16px; text-align: left; vertical-align: top; border-bottom: 1px solid #c8cbd4; line-height: 1.5; }
+.austria-hopping thead th { color: #555d6f; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+.austria-hopping tbody th { width: 30%; font-weight: 600; }
+.austria-hopping > a { display: inline-flex; align-items: center; min-height: 44px; }
+.austria-hopping .comparison-scroll-hint { display: none; }
+@media (max-width: 700px) { .austria-hopping .comparison-scroll-hint { display: block; font-size: 12px; color: #555d6f; } }
+@media (max-width: 600px) {
+  .austria-ticket-desk .map-area-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .austria-ticket-desk .map-area-controls button { padding: 10px 4px; min-height: 44px; }
+}

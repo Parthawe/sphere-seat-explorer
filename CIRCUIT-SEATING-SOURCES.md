@@ -352,3 +352,7 @@ See CANADA-SOURCES.md. F1/organizer confirm 21–23 May 2027; public sale is pos
 ## Canada grandstand catalogue pass · 26 November 2026 UTC
 
 The remaining eleven current Canada product pages have been assessed. Seven broad estimated samples bring coverage to eleven banks/15,040 positions; four unresolved grandstands remain source-only. Current descriptions distinguish 46 outside and 47 inside Casino Straight, 10/11 screen limits and 33 family conditions. The 47 sample was moved 10 m east to face the intended road leg. Organizer 12/Platine virtual-tour destinations identify 2026, not a surveyed 2027 chair view. Retained geometry was regenerated offline only to correct a water label. See CANADA-SOURCES.md; advance Austria with Canada precision gaps open.
+
+## Austria 2027 area study · 26 November 2026 UTC
+
+See AUSTRIA-SOURCES.md. F1 and the venue-linked public catalogue confirm 9–11 July 2027 at the Red Bull Ring. Eleven broad area families use the current ticket diagram and independent licensed GP geography. Six hopping combinations and eleven other source-only references remain distinct. Fourteen connected OSM ways close over 248 vertices/~4,305 m, excluding pit, MotoGP and short branches. The source snapshot and reversible map transform are retained. No GP elevation tags support a road profile; official terrain leads require further metadata/licence/coverage assessment before 3D.

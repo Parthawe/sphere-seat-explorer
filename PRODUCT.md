@@ -135,3 +135,7 @@ Canada 2027 now has four estimated Grandstand 1 / 11 / 15 / 24 samples and 6,080
 ## Canada grandstand catalogue pass · 26 November 2026 UTC
 
 Canada 2027 now covers eleven estimated grandstand regions and 15,040 generated positions. Seven additions distinguish Senna, hairpin, Turns 8–9, family and opposite Casino Straight products. Grandstands 16/32/34/Platine retain specific source-only gaps. A dated organizer 2026 virtual-tour handoff accompanies Grandstand 12 without implying a current chair match. Eight source-only entries total preserve the remaining products and references; actual ticket coordinates remain unverified. Austria is next.
+
+## Austria 2027 area study · 26 November 2026 UTC
+
+Austria 2027 now has eleven selectable viewing families on an independently sourced GP area map. Six 3 Corner packages show their Friday/Saturday/Sunday allocation separately. Eleven other entries preserve accessible, Reduced, diagram-only, hospitality and transport distinctions. Users can compare three areas and share a clean area link. Spielberg’s vertical context is not yet sourced, so no flat or borrowed 3D chair view is offered.

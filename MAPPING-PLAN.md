@@ -1,3 +1,7 @@
+## Current checkpoint: Austria area map and vertical-context gate
+
+Austria 2027 now has eleven selectable area families, six hopping day-allocation combinations and eleven other source-only entries. Its independent GP plan excludes pit and motorcycle/short branches. The track climbs and descends; no flat 3D chair camera is supplied without vertical context. Follow MAPPING-PROGRESS.json and research/austria/terrain-leads.json to assess licensed bounded terrain before 3D, then advance Hungary if that evidence is unavailable. Do not repeat the completed OSM acquisition; the source snapshot is retained.
+
 ## Current checkpoint: Canada catalogue pass
 
 Canada 2027 now has eleven estimated banks and 15,040 model positions after the first pass through fifteen current ordinary-grandstand families. Grandstands 16/32/34/Platine remain source-only with specific geometry gaps. The original organizer virtual tour is labeled 2026 and does not calibrate current chairs. Eight source-only entries and two credited 2025 reports remain distinct. Continue Austria 2027 from MAPPING-PROGRESS.json; revisit Canada precision/photo gaps only with new evidence.
