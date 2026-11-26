@@ -1,3 +1,4 @@
+import { raceCoverage } from "./raceCoverage";
 import { useNavigationFocus } from "./useNavigationFocus";
 import FundingDisclosure from "./FundingDisclosure";
 import CircuitGuidePanel from "./CircuitGuidePanel";
@@ -91,7 +92,7 @@ export default function RaceHub() {
       matchesCircuitSearch(r, search) &&
       (filter === "all" ||
         (filter === "upcoming" && raceStatus(r) !== "Past") ||
-        (filter === "3d" && (r.slug === "las-vegas" || !!findCircuitModel(route.season,r.slug)))),
+        (filter === "3d" && raceCoverage(route.season,r.slug).has3d)),
   );
   const circuitModel = findCircuitModel(route.season,route.race);
   useEffect(() => {
@@ -248,7 +249,7 @@ export default function RaceHub() {
             </section>
             {circuitModel && <section className="circuit-model-entry"><div><h2>Explore in 3D.</h2><p>Estimated seats and sightlines · {circuitModel.season}</p></div><button onClick={()=>go({season:route.season,race:route.race,seats:false,circuit:true})}>Open 3D seating</button></section>}
             {route.circuit && !circuitModel && <p className="singapore-reference-note">No 3D seating model is available for this venue and season. Choose a supported race; layouts are not carried across seasons.</p>}
-            <CircuitGuidePanel race={selected} coverage={circuitModel ? `Illustrative 3D · ${circuitModel.banks.length} modeled banks` : selected.slug === "las-vegas" ? "3D explorer · 2026 reference" : findVenue(route.season, selected.slug) ? "Approximate area map available" : "Circuit guide · no seat model yet"} />
+            <CircuitGuidePanel race={selected} coverage={raceCoverage(route.season,selected.slug).detail} />
             {selected.slug === "qatar" && route.season === 2026 ? (
               <Suspense
                 fallback={
@@ -294,7 +295,7 @@ export default function RaceHub() {
                   height="800"
                 />
                 <div>
-                  <h2>Explore all of Las Vegas.</h2>
+                  <h2>Explore Las Vegas viewing areas.</h2>
                   <p>
                     Browse all listed viewing products, nine modeled outdoor
                     seating banks and an illustrative Sphere interior.
@@ -303,7 +304,7 @@ export default function RaceHub() {
                     className="primary-button"
                     onClick={() => go({ ...route, seats: false, atlas: true })}
                   >
-                    Explore all Las Vegas areas
+                    Explore Las Vegas areas
                   </button>
                   <span className="feature-note">
                     2026 reference geometry · estimated seats and sightlines,
@@ -537,7 +538,7 @@ export default function RaceHub() {
                   {[
                     ["all", "All races"],
                     ["upcoming", "Upcoming"],
-                    ["3d", "3D seat views"],
+                    ["3d", "3D studies"],
                   ].map(([value, label]) => (
                     <button
                       key={value}
@@ -571,18 +572,12 @@ export default function RaceHub() {
                     <span className="race-dates">{dateLabel(r)}</span>
                     <span
                       className={
-                        r.slug === "las-vegas" || findCircuitModel(route.season,r.slug)
+                        raceCoverage(route.season,r.slug).has3d
                           ? "coverage-3d"
                           : "coverage-guide"
                       }
                     >
-                      {findCircuitModel(route.season,r.slug)
-                        ? "3D seating reconstruction"
-                        : findVenue(route.season, r.slug)
-                        ? "Ticket desk & area map"
-                        : r.slug === "las-vegas"
-                          ? "3D seat model"
-                          : "Race & ticket guide"}
+                      {raceCoverage(route.season,r.slug).label}
                     </span>
                     <span className="race-status">{raceStatus(r)}</span>
                   </button>

@@ -119,6 +119,17 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: keyboard Clear in Qatar and Vegas and last-position removal in the circuit explorer all left focus on BODY. A removal after reaching model-comparison capacity also left the old Three positions saved message displayed.
 - Change: a shared removal-focus hook moves to the next remaining Remove control or returns to the comparison entry button when the list is cleared. It is used by the shared area table, Vegas area list and circuit-position list. Shared desk remove/clear actions and circuit removals now replace stale capacity feedback with the actual action result. Capacity remains three and existing storage behavior is unchanged.
 - Validation: strict desktop and phone assertions covered next-item focus, Clear focus, Vegas Clear, rejecting a fourth modeled position without losing the three saved choices, and last-item focus return. A second shared desk family (Monaco) confirmed focus and clear feedback; the circuit capacity message updated after removal. Six affected registry/comparison tests and TypeScript passed. Screenshots of the phone remaining-position list and desktop/phone return states were inspected; no browser errors in the main flows. Production build is part of publication.
-- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Publication: v64, source `c66596795c08cf580b00e77ec36b9f22b1ecca7e`, succeeded; matching GitHub push confirmed.
 - Limits: no new comparison persistence, accounts, inventory or tracking was added. Browser focus assertions are not a screen-reader certification.
 - Next useful check: inspect 2026/2027 public coverage labels and unsupported model handoffs for stale claims, avoiding repeated venue research without new evidence.
+
+
+## 26 November 2026 · 11:59 UTC · Coverage labels and source seasons
+
+- Starting release: v64, source `c66596795c08cf580b00e77ec36b9f22b1ecca7e`; clean checkout.
+- Evidence: the 2027 Vegas calendar row said only 3D seat model, although the guide and explorer use a 2026 reference reconstruction. Calendar labels, filtering and guide badges were maintained in separate conditionals, making that distinction inconsistent before entry.
+- Change: one source-aware coverage helper now drives the calendar label, 3D filter and guide badge. Vegas explicitly says 3D · 2026 reference in both seasons; the filter is named 3D studies. Generic models remain illustrative and bound to their own season. The feature heading now names Las Vegas viewing areas rather than claiming all of Las Vegas.
+- Validation: nine affected coverage/route/guide tests passed, including all 47 listed calendar entries and Sepang/Sakhir, Qatar and Shanghai season boundaries. TypeScript passed. Desktop and phone flows checked both seasons, the 3D filter, visible dated Vegas guide badges, absent borrowed Shanghai 2027/Sepang 2026 canvases and no horizontal overflow. Feature screenshots inspected; no browser errors. Production build is part of publication.
+- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Limits: this is a consistency audit of retained coverage and sources, not fresh verification of every organizer or a claim of complete/exact-seat 3D coverage. No venue data, calendar dates or commercial accounts changed.
+- Next useful check: lazy scene/module loading failure and recovery navigation, preserving useful guides when 3D assets cannot load.
