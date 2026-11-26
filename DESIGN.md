@@ -170,3 +170,9 @@ Keep the poster until the first real frame, defer the lazy module to idle time o
 Keep the scene primary. Focus expands the existing canvas without resetting the selected bank, row, position or comparison. The Seats action restores focus to bank controls; F toggles only from the scene. Reduced-motion preferences govern scrolling. In landscape Focus, camera/photo/zoom/return controls remain within the viewport.
 
 The circuit locator is one accessible touch target opening the detailed map. Its position and direction fan are illustrative; Front/Middle/High diagrams express relative row choice, not measured tier geometry. Short control labels retain accessible names. Preserve admission eligibility and model-versus-ticket limits while reducing repeated prose.
+
+## Personal ticket price notebook · 26 November 2026
+
+Place a compact price workspace in every race guide. An empty state explains the first useful action without a fake graph. The populated state gives the observed-price chart and original-currency numbers priority, with a quiet side panel for budget targets and seller checks. Native dialog forms keep recording detail outside the main comparison surface. Use short labels, original icons, strong keyboard focus and 44px controls; phone inputs use 16px text to avoid focus zoom. Tablet/desktop show history beside target controls, phones stack them.
+
+Label quotes as personal, browser-local and manually recorded. A price target compares the last saved quote; it does not enable alerts. Preserve the seller, exact category, currency, admission dates and all-in adult basis for each history. Do not interpolate a claim of live stock, verified totals or future market direction from user notes.

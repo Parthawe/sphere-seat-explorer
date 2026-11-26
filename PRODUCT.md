@@ -155,3 +155,5 @@ Qatar 2026's five organizer product identities were rechecked. The area panel no
 ## Live hero scene · 26 November 2026
 
 At the user's request, the landing hero now lazy-loads the existing Three.js Vegas world, with smooth Circuit/Seat camera-and-lens transitions, simulated moving cars, atmosphere and subtle pointer/scroll response. Static captures remain loading/error fallbacks. Pause and reduced motion stop animation; the graphic stops rendering offscreen or in a hidden tab. Data-saver users opt in. Context loss or module failure retains race navigation and a retry. The C/12/18 illustrative seated endpoint matches the full explorer. This adds no measured seat accuracy, historical telemetry, actual Sphere show footage or commercial approval.
+
+Personal price notes are available across all listed race editions. They record exact seller/product all-in adult quotes with admission dates and currency, show changes over time and compare a saved quote with a personal target. Storage is browser-local with export and deletion. Automated feeds, notifications and paid referrals remain separate launch dependencies; no live price coverage is claimed.

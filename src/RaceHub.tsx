@@ -1,3 +1,4 @@
+import PriceNotebook from "./PriceNotebook";
 import UiIcon from "./UiIcon";
 import CircuitThumbnail from "./CircuitThumbnail";
 import SeasonLanding from "./SeasonLanding";
@@ -245,6 +246,7 @@ export default function RaceHub() {
             </section>
             {circuitModel && <section className="circuit-model-entry"><div><h2>Explore in 3D.</h2><p>Estimated seats and sightlines · {circuitModel.season}</p></div><button onClick={()=>go({season:route.season,race:route.race,seats:false,circuit:true})}>Open 3D seating</button></section>}
             {route.circuit && !circuitModel && <p className="singapore-reference-note">No 3D seating model is available for this venue and season. Choose a supported race; layouts are not carried across seasons.</p>}
+            <PriceNotebook key={`${selected.season}-${selected.slug}`} race={selected} />
             <CircuitGuidePanel race={selected} coverage={raceCoverage(route.season,selected.slug).detail} />
             <div id="viewing-areas" tabIndex={-1}>
             {selected.slug === "qatar" && route.season === 2026 ? (
