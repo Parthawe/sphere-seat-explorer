@@ -10,12 +10,14 @@ const poles: [number, number, number][] = [
   [111, 22, 65],
   [-85, 22, 60],
 ];
-function LightShaft({
+export function LightShaft({
   origin,
   target,
+  strength=1,
 }: {
   origin: [number, number, number];
   target: [number, number, number];
+  strength?:number;
 }) {
   const { position, quaternion, length } = useMemo(() => {
     const a = new T.Vector3(...origin),
@@ -37,9 +39,9 @@ function LightShaft({
         depthWrite={false}
         side={T.DoubleSide}
         blending={T.AdditiveBlending}
-        uniforms={{ tint: { value: new T.Color("#b8ceff") } }}
+        uniforms={{ tint: { value: new T.Color("#b8ceff") }, strength:{value:strength} }}
         vertexShader={`varying vec2 vUv;varying vec3 vWorld;varying vec3 vNormal;void main(){vUv=uv;vWorld=(modelMatrix*vec4(position,1.)).xyz;vNormal=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*vec4(vWorld,1.);}`}
-        fragmentShader={`uniform vec3 tint;varying vec2 vUv;varying vec3 vWorld;varying vec3 vNormal;void main(){float facing=pow(abs(dot(normalize(vNormal),normalize(cameraPosition-vWorld))),1.6);float falloff=pow(vUv.y,.7);float edge=smoothstep(0.,.13,vUv.y)*smoothstep(1.,.8,vUv.y);float alpha=facing*mix(.018,.085,falloff)*edge;gl_FragColor=vec4(tint,alpha);}`}
+        fragmentShader={`uniform vec3 tint;uniform float strength;varying vec2 vUv;varying vec3 vWorld;varying vec3 vNormal;void main(){float facing=pow(abs(dot(normalize(vNormal),normalize(cameraPosition-vWorld))),1.6);float falloff=pow(vUv.y,.7);float edge=smoothstep(0.,.13,vUv.y)*(1.-smoothstep(.8,1.,vUv.y));float alpha=facing*mix(.018,.085,falloff)*edge*strength;gl_FragColor=vec4(tint,alpha);}`}
       />
     </mesh>
   );

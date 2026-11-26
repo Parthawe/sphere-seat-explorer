@@ -225,3 +225,15 @@ Stand concepts use F1-red coated seats, neutral concrete, warm key/fill lighting
 All circuit diagrams use arc-length UVs for thin red edge illumination and a moving shader accent tied to the existing Play marker control. Stop removes the animated accent; hidden/paused views retain their existing demand/never frame policy. This accent is illustrative, not telemetry, direction or lap-time evidence.
 
 Shader compile/link failures invoke the existing unavailable/Retry path through one renderer-level ShaderGuard per canvas. Retry remounts fresh materials. No new accounts, texture downloads, vendor dependencies or mandatory post-processing passes are required.
+
+## Lighting and passing cars across every circuit · 26 November 2026
+
+All 47 race editions have three authored open-wheel miniatures in their circuit diagram. They follow each diagram's own arc-length path; diagram scale is exaggerated and travel direction/rate is illustrative. The existing shader accent follows the lead car. Play/Pause uses one Cars control; preserve explicit telemetry and terrain limits.
+
+All five stand-concept formats have three full-detail passing cars on their authored straight. Place the Cars control on the stage, close to the visual. These remain generic examples, separate from the selected stand's original photos/videos. Cars start paused and require an explicit action. Scene visibility and document visibility suspend rendering; changing to reduced motion stops playback.
+
+Use shared prefiltered studio environment lighting for material highlights/reflections, with lower ambient fill so forms retain contrast. Restore and dispose environment resources on unmount. Existing detailed venue studies use tighter directional-shadow bounds around the selected bank in stand/seat mode, retaining broad circuit shadows for overview. Update the shadow camera projection when the bounds change. Attach subtle static light shafts to three nearby modeled floodlights in night studies; these are artistic lighting, not measured atmosphere or a shade prediction. Sphere interior gains environment reflection only; there is no circuit inside it.
+
+Cars retain their authored, unbranded geometry. Full-detail and compact versions share paint treatment, tyre contact shadows and wheel rotation. No mirrored wet-road or weather claim is introduced; reflections come from an authored environment rather than venue photography. Preserve the existing historical replay's provenance and controls.
+
+Align tyre grounding to the road top plus the authored 0.36 wheel radius. Vegas uses 0.54 above the scene origin; detailed studies use local road height plus 0.43; the generic straight uses 0.395. The detailed-model replay starts one illustrative second before the selected model position so the first pass is visible promptly. This changes simulation staging, not historical race data.

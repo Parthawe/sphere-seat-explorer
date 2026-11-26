@@ -30,7 +30,7 @@ function Beam({
     </mesh>
   );
 }
-export default function FormulaCar({color,wheels}:{color:string;wheels?:Ref<T.Group>}){
+export default function FormulaCar({color,wheels,compact=false}:{color:string;wheels?:Ref<T.Group>;compact?:boolean}){
   const body = useMemo(() => {
     const sections = [
       [-2.2, 0.38, 0.35],
@@ -84,14 +84,22 @@ export default function FormulaCar({color,wheels}:{color:string;wheels?:Ref<T.Gr
     },
     [body, halo],
   );
+  if(compact)return <group name="formula-car-miniature">
+    <mesh geometry={body} castShadow receiveShadow><meshPhysicalMaterial color={color} metalness={.4} roughness={.24} clearcoat={1} clearcoatRoughness={.12}/></mesh>
+    <mesh position={[0,.14,2.25]} castShadow><boxGeometry args={[1.95,.1,.5]}/><meshStandardMaterial color="#26262b" metalness={.45} roughness={.3}/></mesh>
+    <mesh position={[0,.85,-2.12]} castShadow><boxGeometry args={[1.9,.12,.5]}/><meshStandardMaterial color={color} metalness={.45} roughness={.3}/></mesh>
+    <mesh position={[0,.6,-.2]}><sphereGeometry args={[.3,8,6]}/><meshStandardMaterial color="#15151e" roughness={.3}/></mesh>
+    <group ref={wheels}>{[-1,1].flatMap(x=>[-1.5,1.5].map(z=><group key={`${x}:${z}`} position={[x*1.02,0,z]}><mesh rotation={[0,0,Math.PI/2]} castShadow><cylinderGeometry args={[.36,.36,.42,12]}/><meshStandardMaterial color="#101014" roughness={.9}/></mesh></group>))}</group>
+    <CarContactShadow/>
+  </group>;
   return <group name="formula-car-body">
       <mesh geometry={body} castShadow>
         <meshPhysicalMaterial
           color={color}
-          metalness={0.65}
+          metalness={0.4}
           roughness={0.22}
           clearcoat={1}
-          clearcoatRoughness={0.15}
+          clearcoatRoughness={0.12}
         />
       </mesh>
       <mesh position={[0, 0.06, 0]} castShadow>
@@ -196,5 +204,11 @@ export default function FormulaCar({color,wheels}:{color:string;wheels?:Ref<T.Gr
         intensity={4}
         distance={2.5}
       />
+      <CarContactShadow/>
   </group>;
 }
+function CarContactShadow(){return <mesh position={[0,-.35,0]} rotation={[-Math.PI/2,0,0]}>
+  <planeGeometry args={[3.1,6.3]}/><shaderMaterial transparent depthWrite={false}
+    vertexShader={`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`}
+    fragmentShader={`varying vec2 vUv;void main(){vec2 p=(vUv-.5)*2.;float a=exp(-dot(p,p)*3.5)*.3;gl_FragColor=vec4(0.,0.,0.,a);}`}/>
+</mesh>;}

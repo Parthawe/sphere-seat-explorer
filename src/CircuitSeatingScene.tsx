@@ -1,4 +1,5 @@
-import {SurfaceMaterial,ShaderGuard} from './SceneMaterials';
+import {SurfaceMaterial,ShaderGuard,StudioReflections} from './SceneMaterials';
+import {LightShaft} from './Atmosphere';
 import {seatedLookTarget} from "./seatLook";
 import {groundHeight,roadSample} from './circuitTerrain';
 import SilverstoneWing from './SilverstoneWing';
@@ -15,7 +16,6 @@ import {EffectComposer} from 'three/examples/jsm/postprocessing/EffectComposer.j
 import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import {OutputPass} from 'three/examples/jsm/postprocessing/OutputPass.js';
-import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
 import {bankGroundHeight,bankFrame,bankOverviewCamera,circuitOverviewCamera,footprintPlacement,localModelPosition,modelPosition,type CircuitModel,type ModelBank,type ModelPosition} from './circuitSeating';
 export type ModelCameraControls={zoomIn:()=>void;zoomOut:()=>void;resetZoom:()=>void};
 type Mode='circuit'|'stand'|'seat';
@@ -80,11 +80,13 @@ function Context({model,selection,roofs}:{model:CircuitModel;selection:ModelPosi
  const bank=model.banks.find(b=>b.id===selection.bank)!,frame=bankFrame(model,bank);
  const poles=useMemo(()=>{const c=new T.CatmullRomCurve3(model.track.slice(0,-1).map((p,i)=>new T.Vector3(p[0],model.trackHeights?.[i]??0,p[1])),true);return c.getSpacedPoints(Math.round(model.length/75)).map((p,i,a)=>{const d=c.getTangentAt(i/(a.length-1));return [p.x-d.z*20,p.z+d.x*20];});},[model]);
  const tower=model.features.find(f=>f.name==='Sakhir Tower'),towerCenter=tower?footprintPlacement(tower.points).center:undefined;
+ const nearPoles=useMemo(()=>[...poles].sort((a,b)=>Math.hypot(a[0]-bank.center[0],a[1]-bank.center[1])-Math.hypot(b[0]-bank.center[0],b[1]-bank.center[1])).slice(0,3),[poles,bank]);
  const main=model.banks.find(b=>b.id===model.pitBank)??model.banks[0],mf=bankFrame(model,main),pit=[mf.target[0]+mf.forward[0]*28,mf.target[1]+mf.forward[1]*28];
  return <>
   {model.appearance!=='day'&&<mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><meshStandardMaterial color={model.appearance==='day'?'#70905d':model.id==='qatar'?'#29282b':model.id==='united-arab-emirates'?'#25343b':'#493e36'} roughness={1}/></mesh>}
   {model.appearance!=='day'&&poles.map((p,i)=><group key={i} position={[p[0],0,p[1]]}><mesh position={[0,12,0]}><cylinderGeometry args={[.17,.33,24,6]}/><meshStandardMaterial color="#7c8796" metalness={.6}/></mesh><mesh position={[0,24,0]} rotation={[-.2,0,0]}><boxGeometry args={[4,.45,1.1]}/><meshBasicMaterial color={new T.Color(2.2,2.4,3)} toneMapped={false}/></mesh></group>)}
   {model.appearance!=='day'&&<pointLight position={[bank.center[0]+frame.forward[0]*20,30,bank.center[1]+frame.forward[1]*20]} intensity={12500} distance={220} decay={2} color="#d5e5ff"/>}
+  {model.appearance!=='day'&&nearPoles.map((p,i)=><LightShaft key={i} origin={[p[0],24,p[1]]} target={[p[0]+frame.forward[0]*18,.2,p[1]+frame.forward[1]*18]} strength={.55}/>)}
   {model.id==='great-britain'?<SilverstoneWing model={model}/>:<group position={[pit[0],groundHeight(model,pit[0],pit[1]),pit[1]]} rotation={[0,mf.yaw,0]}>
    <mesh position={[0,5,0]} castShadow><boxGeometry args={[model.id==='qatar'?310:285,10,16]}/><meshStandardMaterial color="#737d8a" metalness={.35} roughness={.6}/></mesh>
    <mesh position={[0,11,0]} castShadow><boxGeometry args={[model.id==='qatar'?320:295,.6,24]}/><meshStandardMaterial color="#c6cbd4"/></mesh>
@@ -102,8 +104,8 @@ function DemoCars({model,playing,selection,speed,pass,lead}:{model:CircuitModel;
  const refs=useRef<(T.Group|null)[]>([]),wheels=useRef<(T.Group|null)[]>([]),progress=useRef(0);const {invalidate,gl}=useThree();
  useEffect(()=>{gl.domElement.dataset.carsPlaying=String(playing);gl.domElement.dataset.carDetail='formula';gl.domElement.dataset.replaySpeed=String(speed);invalidate();},[playing,speed,gl,invalidate]);
  const curve=useMemo(()=>new T.CatmullRomCurve3(model.track.slice(0,-1).map((p,i)=>new T.Vector3(p[0],model.trackHeights?.[i]??0,p[1])),true,'centripetal'),[model]);
- useEffect(()=>{const b=model.banks.find(b=>b.id===selection.bank)!,samples=curve.getSpacedPoints(1500);let best=Infinity,index=0;samples.forEach((p,i)=>{const d=Math.hypot(p.x-b.center[0],p.z-b.center[1]);if(d<best){best=d;index=i;}});progress.current=(index/(samples.length-1)-8/105+1)%1;invalidate();},[model,selection.bank,pass,curve,invalidate]);
- useFrame((_,delta)=>{if(playing)progress.current=(progress.current+Math.min(delta,.05)*speed/105)%1;refs.current.forEach((r,i)=>{if(!r)return;const u=(progress.current-i*.008+1)%1,p=curve.getPointAt(u),t=curve.getTangentAt(u);r.position.set(p.x,(model.terrain?roadSample(model,p.x,p.z).height:p.y)+.45,p.z);if(i===0)lead.current.copy(r.position);r.rotation.set(-Math.atan2(t.y,Math.hypot(t.x,t.z)),Math.atan2(t.x,t.z),0,'YXZ');if(playing)wheels.current[i]?.children.forEach(w=>w.rotation.x-=Math.min(delta,.05)*speed*model.length/105/.36);});if(playing)invalidate();});
+ useEffect(()=>{const selected=modelPosition(model,selection),samples=curve.getSpacedPoints(1500);let best=Infinity,index=0;samples.forEach((p,i)=>{const d=Math.hypot(p.x-selected[0],p.z-selected[2]);if(d<best){best=d;index=i;}});progress.current=(index/(samples.length-1)-1/105+1)%1;invalidate();},[model,selection.bank,selection.section,selection.row,selection.seat,pass,curve,invalidate]);
+ useFrame((_,delta)=>{if(playing)progress.current=(progress.current+Math.min(delta,.05)*speed/105)%1;refs.current.forEach((r,i)=>{if(!r)return;const u=(progress.current-i*.008+1)%1,p=curve.getPointAt(u),t=curve.getTangentAt(u);r.position.set(p.x,(model.terrain?roadSample(model,p.x,p.z).height:p.y)+.43,p.z);if(i===0)lead.current.copy(r.position);r.rotation.set(-Math.atan2(t.y,Math.hypot(t.x,t.z)),Math.atan2(t.x,t.z),0,'YXZ');if(playing)wheels.current[i]?.children.forEach(w=>w.rotation.x-=Math.min(delta,.05)*speed*model.length/105/.36);});if(playing)invalidate();});
  return <>{['#eb3433','#24b9ad','#fc9d34','#668cd9','#f1f3f8'].map((c,i)=><group key={c} ref={r=>{refs.current[i]=r;}}><FormulaCar color={c} wheels={r=>{wheels.current[i]=r;}}/></group>)}</>;
 }
 function Rig({model,selection,mode,reset,cameraControls,onZoomLimitsChange,following,onManualLook,lead}:Props&{lead:RefObject<T.Vector3>}){
@@ -144,7 +146,19 @@ function Rig({model,selection,mode,reset,cameraControls,onZoomLimitsChange,follo
  useFrame((_,delta)=>{const t=tr.current;if(!t){if(following&&mode==='seat'){target.current.lerp(lead.current,1-Math.exp(-delta*5));camera.lookAt(target.current);invalidate();}return;}t.elapsed+=Math.min(delta,.05);const f=Math.min(1,t.elapsed/.8),e=1-(1-f)**3;camera.position.lerpVectors(t.from,t.p,e);target.current.lerpVectors(t.fromT,t.t,e);camera.lookAt(target.current);control.current?.target.copy(target.current);if(f===1){tr.current=null;gl.domElement.dataset.modelReady='true';}invalidate();});
  return null;
 }
-function Lighting({model,selection}:{model:CircuitModel;selection:ModelPosition}){const {gl,scene}=useThree(),p=modelPosition(model,selection);useEffect(()=>{const pmrem=new T.PMREMGenerator(gl),room=new RoomEnvironment(),map=pmrem.fromScene(room,.05);scene.environment=map.texture;scene.environmentIntensity=.3;return()=>{scene.environment=null;map.dispose();room.dispose();pmrem.dispose();};},[gl,scene]);const target=useMemo(()=>new T.Object3D(),[]);target.position.set(p[0],model.terrain?p[1]:0,p[2]);target.updateMatrixWorld();return <><primitive object={target}/><ambientLight intensity={model.appearance==='day'?.45:.18}/><hemisphereLight args={model.appearance==='day'?['#deedff','#687c4c',1.2]:['#c9d9f5','#554439',.55]}/><directionalLight target={target} position={[p[0]-60,(model.terrain?p[1]:0)+130,p[2]+50]} intensity={model.appearance==='day'?2.4:2.1} color={model.appearance==='day'?'#fff4de':'#deeaff'} castShadow shadow-mapSize={[2048,2048]} shadow-camera-left={-250} shadow-camera-right={250} shadow-camera-top={250} shadow-camera-bottom={-250} shadow-camera-far={350} shadow-bias={-.00015}/></>;}
+function Lighting({model,selection,mode}:{model:CircuitModel;selection:ModelPosition;mode:Mode}){
+ const light=useRef<T.DirectionalLight>(null),{invalidate}=useThree();
+ const p=modelPosition(model,selection),bank=model.banks.find(b=>b.id===selection.bank)!;
+ const target=useMemo(()=>new T.Object3D(),[]);
+ const span=mode==='circuit'?250:Math.max(45,Math.min(150,bank.width*.65));
+ useEffect(()=>{light.current?.shadow.camera.updateProjectionMatrix();invalidate();},[span,invalidate]);
+ target.position.set(p[0],p[1],p[2]);target.updateMatrixWorld();
+ return <><StudioReflections intensity={model.appearance==='day'?.65:.5}/><primitive object={target}/>
+  <ambientLight intensity={model.appearance==='day'?.25:.12}/>
+  <hemisphereLight args={model.appearance==='day'?['#deedff','#687c4c',.85]:['#c9d9f5','#554439',.45]}/>
+  <directionalLight ref={light} target={target} position={[p[0]-60,p[1]+130,p[2]+50]} intensity={model.appearance==='day'?3:2.5} color={model.appearance==='day'?'#fff4de':'#deeaff'} castShadow shadow-mapSize={[2048,2048]} shadow-camera-left={-span} shadow-camera-right={span} shadow-camera-top={span} shadow-camera-bottom={-span} shadow-camera-far={350} shadow-bias={-.00012} shadow-normalBias={.025}/>
+ </>;
+}
 function TrackFence({model}:{model:CircuitModel}){
  const geometry=useMemo(()=>{const c=new T.CatmullRomCurve3(model.track.slice(0,-1).map((p,i)=>new T.Vector3(p[0],model.trackHeights?.[i]??0,p[1])),true,'centripetal'),samples=c.getSpacedPoints(Math.round(model.length/8)),vertices:number[]=[];for(const side of [-1,1]){let previous:T.Vector3|undefined;samples.forEach((p,i)=>{const t=c.getTangentAt(i/(samples.length-1)),q=new T.Vector3(p.x-t.z*12*side,(model.terrain?roadSample(model,p.x,p.z).height:p.y)+.4,p.z+t.x*12*side);vertices.push(q.x,q.y,q.z,q.x,q.y+3,q.z);if(previous)for(const y of [.8,1.7,2.6,3.4])vertices.push(previous.x,previous.y+y-.4,previous.z,q.x,q.y+y-.4,q.z);previous=q;});}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(vertices,3));return g;},[model]);
  useEffect(()=>()=>geometry.dispose(),[geometry]);return <lineSegments geometry={geometry}><lineBasicMaterial color="#7e8b9e" transparent opacity={.65}/></lineSegments>;

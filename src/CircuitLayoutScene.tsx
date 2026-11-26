@@ -1,4 +1,5 @@
-import {SurfaceMaterial,CircuitTraceMaterial,ShaderGuard} from './SceneMaterials';
+import {CircuitCars} from './PassingCars';
+import {SurfaceMaterial,CircuitTraceMaterial,ShaderGuard,StudioReflections} from './SceneMaterials';
 import {Canvas,useFrame,useThree} from '@react-three/fiber';
 import {useEffect,useMemo,useRef} from 'react';
 import * as THREE from 'three';
@@ -6,10 +7,10 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import type {CircuitLayout} from './circuitLayouts';
 export type LayoutCamera='perspective'|'top';
 export default function CircuitLayoutScene({layout,mode,reset,zoom,playing,visible,onReady,onUnavailable}:{layout:CircuitLayout;mode:LayoutCamera;reset:number;zoom:number;playing:boolean;visible:boolean;onReady:()=>void;onUnavailable:()=>void}) {
- return <Canvas shadows dpr={[1,1.5]} frameloop={!visible?'never':playing?'always':'demand'} camera={{position:[10,13,14],fov:44,near:.05,far:200}} gl={{antialias:true,alpha:false}} fallback={<span>3D requires WebGL.</span>}><ShaderGuard onUnavailable={onUnavailable}/><World {...{layout,mode,reset,zoom,playing,onReady,onUnavailable}}/></Canvas>;
+ return <Canvas shadows dpr={[1,1.5]} frameloop={!visible?'never':playing?'always':'demand'} camera={{position:[10,13,14],fov:44,near:.05,far:200}} gl={{antialias:true,alpha:false}} fallback={<span>3D requires WebGL.</span>}><ShaderGuard onUnavailable={onUnavailable}/><World {...{layout,mode,reset,zoom,onReady,onUnavailable}} playing={playing&&visible}/></Canvas>;
 }
 function World({layout,mode,reset,zoom,playing,onReady,onUnavailable}:{layout:CircuitLayout;mode:LayoutCamera;reset:number;zoom:number;playing:boolean;onReady:()=>void;onUnavailable:()=>void}) {
- const {camera,gl,invalidate,size}=useThree(),controls=useRef<OrbitControls|null>(null),target=useRef<THREE.Vector3|null>(null),pulse=useRef<THREE.Mesh>(null),phase=useRef(0);
+ const {camera,gl,invalidate,size}=useThree(),controls=useRef<OrbitControls|null>(null),target=useRef<THREE.Vector3|null>(null),phase=useRef(.1);
  const points=useMemo(()=>{const xs=layout.points.map(p=>p[0]),zs=layout.points.map(p=>p[1]),span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...zs)-Math.min(...zs));const cx=(Math.max(...xs)+Math.min(...xs))/2,cz=(Math.max(...zs)+Math.min(...zs))/2;return layout.points.map(p=>new THREE.Vector3((p[0]-cx)/span*12,.11,(p[1]-cz)/span*12));},[layout]);
  const lastZoom=useRef(zoom);
  const road=useMemo(()=>ribbon(points,.09),[points]);
@@ -28,11 +29,11 @@ function World({layout,mode,reset,zoom,playing,onReady,onUnavailable}:{layout:Ci
  useEffect(()=>{const delta=zoom-lastZoom.current;lastZoom.current=zoom;if(!delta)return;target.current=null;camera.position.multiplyScalar(delta>0?.85:1.18);controls.current?.update();invalidate();},[zoom,camera,invalidate]);
  useEffect(()=>{const q=matchMedia('(prefers-reduced-motion: reduce)'),update=()=>{if(q.matches&&target.current){camera.position.copy(target.current);target.current=null;controls.current?.update();invalidate();}};q.addEventListener('change',update);return()=>q.removeEventListener('change',update);},[camera,invalidate]);
  useEffect(()=>()=>road.dispose(),[road]);
- useFrame((_,dt)=>{if(target.current){camera.position.lerp(target.current,1-Math.exp(-Math.min(dt,.05)*7));if(camera.position.distanceTo(target.current)<.01){camera.position.copy(target.current);target.current=null;}else invalidate();}controls.current?.update();if(playing&&pulse.current){phase.current=(phase.current+Math.min(dt,.05)/24)%1;pulse.current.position.copy(path.getPointAt(phase.current));pulse.current.position.y=.2;}});
- return <><ambientLight intensity={1.4}/><directionalLight position={[-8,16,8]} intensity={3} castShadow shadow-mapSize={[1024,1024]} shadow-camera-left={-12} shadow-camera-right={12} shadow-camera-top={12} shadow-camera-bottom={-12}/><directionalLight position={[10,5,-10]} intensity={1.5} color="#9ab5df"/>
+ useFrame((_,dt)=>{if(target.current){camera.position.lerp(target.current,1-Math.exp(-Math.min(dt,.05)*7));if(camera.position.distanceTo(target.current)<.01){camera.position.copy(target.current);target.current=null;}else invalidate();}controls.current?.update();if(playing)phase.current=(phase.current+Math.min(dt,.05)/24)%1;});
+ return <><StudioReflections intensity={.45}/><ambientLight intensity={.25}/><hemisphereLight args={['#f7f4f1','#202028',.55]}/><directionalLight position={[-8,16,8]} intensity={2.5} color="#fff2e3" castShadow shadow-bias={-.0001} shadow-normalBias={.006} shadow-mapSize={[1024,1024]} shadow-camera-left={-12} shadow-camera-right={12} shadow-camera-top={12} shadow-camera-bottom={-12}/><directionalLight position={[10,5,-10]} intensity={.6} color="#e6e8f1"/>
   <mesh receiveShadow position={[0,-.14,0]}><boxGeometry args={[16,.3,16]}/><SurfaceMaterial surface="concrete" color="#26262b" roughness={.7} metalness={.22} grainScale={3}/></mesh>
   <mesh geometry={road} castShadow receiveShadow><CircuitTraceMaterial phase={phase} playing={playing}/></mesh>
-  {playing&&<mesh ref={pulse} position={points[0]} castShadow><sphereGeometry args={[.12,16,12]}/><meshStandardMaterial color="#ed170f" roughness={.3} emissive="#810800" emissiveIntensity={.3}/></mesh>}
+  <CircuitCars path={path} phase={phase} playing={playing}/>
  </>;
 }
 function ribbon(points:THREE.Vector3[],width:number){

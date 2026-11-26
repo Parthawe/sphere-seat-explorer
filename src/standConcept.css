@@ -27,6 +27,8 @@
 .concept-media-rail .stand-media-heading h3 {font-size:30px;}
 .concept-stage {position:relative; min-height:560px; height:65svh; overflow:hidden; touch-action:none;}
 .concept-stage>div:first-child {position:absolute!important; inset:0;}
+.concept-scene-actions {position:absolute;right:16px;bottom:62px;z-index:1;}
+.concept-scene-actions button {display:inline-flex;align-items:center;gap:8px;background:var(--color-ink);color:var(--color-white);}
 .concept-loading {position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:24px;background:var(--color-ink);z-index:2;text-align:center;}
 .concept-loading h2 {font:600 30px 'Barlow Condensed',sans-serif;}
 .concept-scene-caption {position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--color-ink);font-size:11px;color:var(--color-line);pointer-events:none;}

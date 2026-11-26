@@ -1,4 +1,4 @@
-import {SurfaceMaterial,ShaderGuard} from './SceneMaterials';
+import {SurfaceMaterial,ShaderGuard,StudioReflections} from './SceneMaterials';
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import {
   Component,
@@ -296,7 +296,7 @@ export default function SphereBowl({
         gl={{ antialias: true }}
         aria-label="Illustrative Sphere interior seating model"
       >
-        <ShaderGuard onUnavailable={() => setLost(true)}/><color attach="background" args={["#090b12"]} />
+        <ShaderGuard onUnavailable={() => setLost(true)}/><StudioReflections intensity={.5}/><color attach="background" args={["#090b12"]} />
         <ambientLight intensity={1} />
         <hemisphereLight args={["#d2d9ee", "#17151b", 1]} />
         <directionalLight position={[10, 100, 20]} intensity={2} />

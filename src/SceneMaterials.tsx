@@ -1,10 +1,24 @@
-import {useLayoutEffect, useMemo, type RefObject} from 'react';
+import {useEffect, useLayoutEffect, useMemo, type RefObject} from 'react';
 import {useFrame, useThree, type ThreeElements} from '@react-three/fiber';
 import * as T from 'three';
+import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
 
 type StandardProps=Omit<ThreeElements['meshStandardMaterial'],'onBeforeCompile'|'customProgramCacheKey'>;
 type Shader=Parameters<T.MeshStandardMaterial['onBeforeCompile']>[0];
 type Surface='asphalt'|'concrete'|'coated';
+export function StudioReflections({intensity=.6}:{intensity?:number}) {
+  const {gl,scene,invalidate}=useThree();
+  useEffect(()=>{
+    const room=new RoomEnvironment(),generator=new T.PMREMGenerator(gl);
+    const target=generator.fromScene(room,.055);
+    const previous=scene.environment,previousIntensity=scene.environmentIntensity;
+    scene.environment=target.texture;scene.environmentIntensity=intensity;
+    gl.domElement.dataset.environmentReflections='ready';invalidate();
+    room.dispose();generator.dispose();
+    return()=>{scene.environment=previous;scene.environmentIntensity=previousIntensity;target.dispose();};
+  },[gl,scene,invalidate,intensity]);
+  return null;
+}
 export function ShaderGuard({onUnavailable}:{onUnavailable:()=>void}) {
   const {gl}=useThree();
   useLayoutEffect(()=>{

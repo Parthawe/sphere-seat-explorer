@@ -1,4 +1,4 @@
-import {SurfaceMaterial} from './SceneMaterials';
+import {SurfaceMaterial,StudioReflections} from './SceneMaterials';
 import FormulaCar from "./FormulaCar";
 import { curve, points } from "./racingLine";
 import { replaySample, type ReplayFrame, type ReplayDriver } from "./replayMath";
@@ -12,7 +12,6 @@ import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
-import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import { GTAOPass } from "three/examples/jsm/postprocessing/GTAOPass.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import {
@@ -1049,7 +1048,7 @@ function Car({
     const p = curve.getPointAt(progress.current),
       d = curve.getTangentAt(progress.current);
     if (ref.current) {
-      ref.current.position.set(p.x, 0.38, p.z);
+      ref.current.position.set(p.x, 0.54, p.z);
       ref.current.rotation.y = Math.atan2(d.x, d.z);
     }
     invalidate();
@@ -1060,7 +1059,7 @@ function Car({
       ref.current.visible = !!sample;
       if (sample) {
         const p = curve.getPointAt(sample[1]), tangent = curve.getTangentAt(sample[1]);
-        ref.current.position.set(p.x, 0.38, p.z);
+        ref.current.position.set(p.x, 0.54, p.z);
         ref.current.rotation.y = Math.atan2(tangent.x, tangent.z);
         if (replay.playing && wheels.current) wheels.current.children.forEach(w => w.rotation.x -= delta * (sample[4] ?? 0) / 3.6);
       }
@@ -1076,7 +1075,7 @@ function Car({
       1;
     const p = curve.getPointAt(progress.current),
       t = curve.getTangentAt(progress.current);
-    ref.current.position.set(p.x, 0.38, p.z);
+    ref.current.position.set(p.x, 0.54, p.z);
     ref.current.rotation.y = Math.atan2(t.x, t.z);
     if (wheels.current)
       wheels.current.children.forEach((w) => (w.rotation.x -= delta * 95));
@@ -1354,27 +1353,8 @@ function FanZone() {
     </>
   );
 }
-function MetalReflections() {
-  const { gl, scene, invalidate } = useThree();
-  useEffect(() => {
-    const room = new RoomEnvironment();
-    const pmrem = new T.PMREMGenerator(gl);
-    const target = pmrem.fromScene(room, 0.06);
-    const previous = scene.environment,
-      previousIntensity = scene.environmentIntensity;
-    scene.environment = target.texture;
-    scene.environmentIntensity = 0.22;
-    room.dispose();
-    pmrem.dispose();
-    invalidate();
-    return () => {
-      scene.environment = previous;
-      scene.environmentIntensity = previousIntensity;
-      target.dispose();
-    };
-  }, [gl, scene, invalidate]);
-  return null;
-}
+function MetalReflections() { return <StudioReflections intensity={.45}/>; }
+
 function Finish({
   playing,
   preview,
@@ -1450,6 +1430,11 @@ export function World({
   replay?: ReplayFrame | null;
 }) {
   const { invalidate } = useThree();
+  const shadowLight=useRef<T.DirectionalLight>(null),shadowTarget=useMemo(()=>new T.Object3D(),[]);
+  const wideShadow=mode==='overview'||mode==='circuit',shadowSpan=wideShadow?230:90;
+  const center=getStand(selection.stand).center;
+  shadowTarget.position.set(wideShadow?0:center[0],0,wideShadow?0:center[1]);shadowTarget.updateMatrixWorld();
+  useEffect(()=>{shadowLight.current?.shadow.camera.updateProjectionMatrix();invalidate();},[shadowSpan,invalidate]);
   useEffect(() => {
     const refresh = () => invalidate();
     window.addEventListener("apexreplaychange", refresh);
@@ -1465,16 +1450,17 @@ export function World({
       />
       <ambientLight intensity={0.16} />
       <hemisphereLight args={["#bac8e7", "#17131b", 0.4]} />
-      <directionalLight
-        position={[-60, 160, -120]}
+      <primitive object={shadowTarget}/>
+      <directionalLight ref={shadowLight} target={shadowTarget}
+        position={[shadowTarget.position.x-60,160,shadowTarget.position.z-120]}
         intensity={2.8}
         color="#e1e7f6"
         castShadow
         shadow-mapSize={[2048, 2048]}
-        shadow-camera-left={-230}
-        shadow-camera-right={230}
-        shadow-camera-top={230}
-        shadow-camera-bottom={-230}
+        shadow-camera-left={-shadowSpan}
+        shadow-camera-right={shadowSpan}
+        shadow-camera-top={shadowSpan}
+        shadow-camera-bottom={-shadowSpan}
         shadow-camera-near={0.5}
         shadow-camera-far={650}
         shadow-normalBias={0.035}
