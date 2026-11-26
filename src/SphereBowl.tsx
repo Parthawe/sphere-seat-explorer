@@ -1,3 +1,4 @@
+import {SurfaceMaterial,ShaderGuard} from './SceneMaterials';
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import {
   Component,
@@ -132,7 +133,7 @@ function Seats({
       }}
     >
       <boxGeometry args={[0.2, 0.7, 0.48]} />
-      <meshStandardMaterial roughness={0.7} metalness={0.1} />
+      <SurfaceMaterial surface="coated" roughness={0.7} metalness={0.1} />
     </instancedMesh>
   );
 }
@@ -295,13 +296,13 @@ export default function SphereBowl({
         gl={{ antialias: true }}
         aria-label="Illustrative Sphere interior seating model"
       >
-        <color attach="background" args={["#090b12"]} />
+        <ShaderGuard onUnavailable={() => setLost(true)}/><color attach="background" args={["#090b12"]} />
         <ambientLight intensity={1} />
         <hemisphereLight args={["#d2d9ee", "#17151b", 1]} />
         <directionalLight position={[10, 100, 20]} intensity={2} />
         <mesh position={[0, -0.6, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <circleGeometry args={[90, 100]} />
-          <meshStandardMaterial color="#11141c" />
+          <SurfaceMaterial surface="concrete" color="#11141c" roughness={.85} />
         </mesh>
         <mesh position={[0, 33, -12]}>
           <sphereGeometry

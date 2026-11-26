@@ -215,3 +215,13 @@ All UI surfaces use `src/theme.css`: action red #e10600, hover #ca0500, strong r
 Use red for primary actions and selected states, with white labels. Small red text on light surfaces uses strong red; large hero lettering may use action red. The lighter signal red is reserved for dark-surface marks where additional contrast is needed. Global keyboard outlines use action red, which clears 3:1 on both paper and ink. Keep semantic warnings, success, team colors, source imagery and physical scene materials independent. Do not recolor real photos or terrain to match the UI.
 
 Calendar, guides, local price notes, all explorer shells, reference media and Race Centre share these roles. Preserve reduced-motion and data-saver opt-in on the landing preview; standalone 3D destinations are already explicit user navigation, with their existing paused motion and static recovery paths.
+
+## 3D surface shaders · 26 November 2026
+
+`SceneMaterials.tsx` layers procedural aggregate, roughness variation and shallow normal detail into Three's PBR materials. Preserve lighting, shadows, image maps, instance colors and selection raycasts. Filter subpixel grain with screen derivatives to reduce distant shimmer. Keep the shared material static; it must not start a continuous animation loop. Coated chairs receive much quieter detail than concrete/asphalt.
+
+Stand concepts use F1-red coated seats, neutral concrete, warm key/fill lighting and a static shader backdrop. The backdrop is authored studio atmosphere, not venue/weather evidence. Detailed circuit models and Vegas retain their existing terrain, source textures and atmosphere.
+
+All circuit diagrams use arc-length UVs for thin red edge illumination and a moving shader accent tied to the existing Play marker control. Stop removes the animated accent; hidden/paused views retain their existing demand/never frame policy. This accent is illustrative, not telemetry, direction or lap-time evidence.
+
+Shader compile/link failures invoke the existing unavailable/Retry path through one renderer-level ShaderGuard per canvas. Retry remounts fresh materials. No new accounts, texture downloads, vendor dependencies or mandatory post-processing passes are required.

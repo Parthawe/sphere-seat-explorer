@@ -1,3 +1,4 @@
+import {ShaderGuard} from './SceneMaterials';
 import { vegasCircuitCamera } from "./vegasCamera";
 import { seatedLookTarget } from "./seatLook";
 import { points } from "./racingLine";
@@ -386,7 +387,7 @@ export default function Scene(props: Props) {
           </div>
         }
       >
-        <World {...props} />
+        <ShaderGuard onUnavailable={() => props.onUnavailable?.()}/><World {...props} />
         <Rig {...props} />
       </Canvas>
     </Boundary>

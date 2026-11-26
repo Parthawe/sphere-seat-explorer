@@ -1,3 +1,4 @@
+import {ShaderGuard} from './SceneMaterials';
 import {Canvas,useFrame,useThree} from '@react-three/fiber';
 import {Suspense,useEffect,useRef,type RefObject} from 'react';
 import * as T from 'three';
@@ -66,6 +67,6 @@ function HeroRig({view,motion,reduced,active,interactionRef,onReady}:Props) {
 export default function HeroScene(props:Props) {
  const visibleMotion=props.active&&props.motion&&!props.reduced;
  return <Canvas frameloop={!props.active?'never':visibleMotion?'always':'demand'} shadows="soft" dpr={[1,1.25]} camera={{position:[210,260,-365],fov:46,near:.25,far:1800}} gl={{antialias:true,powerPreference:'default'}} fallback={<span>3D unavailable</span>} onCreated={({gl})=>{gl.domElement.setAttribute('aria-label','Live illustrative Las Vegas 3D scene');gl.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();props.onUnavailable();},{once:true});}}>
-  <Suspense fallback={null}><World selection={HERO_SELECTION} mode={props.view==='circuit'?'overview':'seat'} playing={visibleMotion} ambientMotion={visibleMotion} atmosphere sphereDisplay="moon"/><HeroRig {...props}/></Suspense>
+  <ShaderGuard onUnavailable={props.onUnavailable}/><Suspense fallback={null}><World selection={HERO_SELECTION} mode={props.view==='circuit'?'overview':'seat'} playing={visibleMotion} ambientMotion={visibleMotion} atmosphere sphereDisplay="moon"/><HeroRig {...props}/></Suspense>
  </Canvas>;
 }

@@ -1,3 +1,4 @@
+import {SurfaceMaterial} from './SceneMaterials';
 import FormulaCar from "./FormulaCar";
 import { curve, points } from "./racingLine";
 import { replaySample, type ReplayFrame, type ReplayDriver } from "./replayMath";
@@ -85,7 +86,7 @@ function Instances({
       args={[undefined, undefined, pieces.length]}
     >
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial metalness={metal} roughness={roughness} />
+      <SurfaceMaterial surface="concrete" strength={.4} metalness={metal} roughness={roughness} />
     </instancedMesh>
   );
 }
@@ -235,7 +236,7 @@ function Track() {
         <meshStandardMaterial color="#b8b9c0" side={T.DoubleSide} />
       </mesh>
       <mesh geometry={road} receiveShadow>
-        <meshStandardMaterial
+        <SurfaceMaterial surface="asphalt" strength={.35}
           map={maps[0]}
           normalMap={maps[1]}
           normalScale={new T.Vector2(0.55, 0.55)}
@@ -843,7 +844,7 @@ function Grandstand({
           document.body.style.cursor = "auto";
         }}
       >
-        <meshStandardMaterial metalness={0.24} roughness={0.5} />
+        <SurfaceMaterial surface="coated" metalness={0.24} roughness={0.5} strength={.4} />
       </instancedMesh>
       {[-width / 2 - 1.5, 0, width / 2 + 1.5].map((x, i) => (
         <group key={i}>
