@@ -152,6 +152,16 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: the packaged production build recovered from a deliberately blocked scene chunk at desktop and phone widths. Keyboard photo-reference open/Escape returned focus correctly while graphics were unavailable. Holding the production chunk also left the model grid and references usable with cars disabled. The phone loading screenshot showed the disabled zoom stack crossing the loading-status panel.
 - Change: seated zoom controls now appear once the scene is ready; they remain hidden during loading and graphics failure.
 - Validation: production request-block assertions confirmed retry after restoring the chunk at 1440px and 390px. Held-chunk assertions confirmed grid selection survives scene load, reference dialog access, no unsolicited iframe, disabled playback and no horizontal overflow at both widths. Loading screenshots inspected. TypeScript and production build are included in publication; the rebuilt phone loading/ready states are checked before deployment.
-- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Publication: v67, source `4c3864e0e0be833961d45b0a66b5d806087aaa2e`, succeeded; matching GitHub push confirmed.
 - Limits: requests were controlled locally against the packaged build, not an upstream outage or physical-device network test. No new venue, source, external media, tracking or exact-seat claim.
 - Next useful check: native browser back/forward across guides, model positions and calendar filters, preserving correct season and focus without adding history entries for every chair.
+
+
+## 26 November 2026 · 13:30 UTC · Native history and selected-position restoration
+
+- Starting release: v67, application source `4c3864e0e0be833961d45b0a66b5d806087aaa2e`; clean checkout.
+- Evidence and validation: browser checks against the existing production build at 1440px and 390px confirmed a Lusail search plus 3D filter survives calendar → Qatar guide → native Back; Forward returns the correct guide. A changed model row/position survives model → guide → native Back/Forward. Chair changes replace their URL without adding history entries. Separate Bahrain 2027 guide/model history retained the Sakhir season throughout.
+- Change: none to application code; this pass found no failing route or selection assertion. The audit log reconciles the previous successful release.
+- Publication: documentation checkpoint only in GitHub; the application remains v67. No unchanged build or deployment was repeated. A later application release will include this log in Sites source.
+- Limits: these checks cover two representative route families in desktop Chrome emulation, not every venue or physical-device browser. Native Back does not add a custom focus change; hash targets retain their existing async focus behavior. Commercial and measured-seat owner/asset dependencies remain unresolved.
+- Next useful check: keyboard and narrow-screen ticket-input validation, including malformed booking text and share/export privacy, without collecting actual private tickets.
