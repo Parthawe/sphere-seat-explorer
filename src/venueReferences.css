@@ -53,3 +53,38 @@
 
 .stand-media-player .spectator-original>p {color:#d6dce7;}
 .stand-media-player .spectator-original .spectator-unload {color:#fff; min-height:44px;}
+.stand-media-display {max-width:920px;}
+.stand-media-fixed .stand-media-display {max-width:none;}
+.stand-media-tabs {display:flex;gap:8px;margin-bottom:18px;}
+.stand-media-tabs button {display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 14px;border:1px solid #949dae;background:transparent;color:#171d29;font:inherit;font-size:13px;cursor:pointer;}
+.stand-media-tabs button[aria-pressed=true] {background:#171d29;color:#fff;}
+.stand-media-tabs button:disabled {opacity:.5;cursor:default;}
+.stand-media-tabs span {font-size:11px;}
+.stand-media-actions {display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;}
+.stand-media-compare {border:1px solid #ad0a04;padding:8px 12px;}
+.stand-media-provenance {margin-top:16px;border-top:1px solid #b7bdc9;}
+.stand-photo-optin {min-height:240px;background:#171d29;color:#fff;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:14px;padding:24px;}
+.stand-photo-optin>.ui-icon {width:32px;height:32px;}
+.stand-photo-optin strong {font:600 26px 'Barlow Condensed',sans-serif;}
+.stand-photo-optin p {color:#d6dce7;}
+.stand-photo-optin button {background:transparent!important;color:#fff!important;min-height:44px;padding:10px 14px;border:1px solid #949dae;font:inherit;font-size:14px;cursor:pointer;}
+.stand-photo-figure {position:relative;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;margin:0;background:#171d29;overflow:hidden;}
+.stand-photo-figure>img {width:100%;height:100%;object-fit:contain;}
+.stand-photo-status {position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;background:#171d29;color:#fff;font-size:13px;}
+.stand-photo-status p,.stand-photo-status a {color:#fff;}
+.stand-photo-status button {min-height:44px;padding:10px 14px;color:#fff;background:transparent;border:1px solid #949dae;}
+.stand-photo-figure .stand-photo-expand {position:absolute;right:12px;bottom:12px;width:44px;height:44px;background:#171d29;color:#fff;border:1px solid #b7bdc9;display:grid;place-items:center;padding:10px;cursor:pointer;}
+.stand-photo-controls {display:flex;align-items:center;gap:8px;margin:10px 0;}
+.stand-photo-controls button {min-height:44px;min-width:44px;padding:10px;border:1px solid #949dae;background:transparent;color:#171d29;font:inherit;font-size:12px;cursor:pointer;}
+.stand-photo-controls>span {font-size:12px;min-width:48px;text-align:center;}
+.stand-photo-controls>button:last-child {margin-left:auto;}
+.stand-photo-kind {font-weight:600;color:#171d29!important;}
+.stand-photo-caption {overflow-wrap:anywhere;}
+.stand-photo-dialog {width:min(1200px,96vw);max-height:94dvh;padding:20px;border:1px solid #949dae;background:#171d29;color:#fff;}
+.stand-photo-dialog::backdrop {background:rgb(0 0 0 / .78);}
+.stand-photo-dialog-bar {display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px;font-size:14px;}
+.stand-photo-dialog button {display:grid;place-items:center;min-width:44px;min-height:44px;background:transparent;color:#fff;border:1px solid #949dae;cursor:pointer;}
+.stand-photo-dialog img {display:block;width:100%;max-height:70dvh;object-fit:contain;}
+.stand-photo-dialog a,.stand-photo-dialog p {color:#d6dce7;}
+.stand-photo-empty {padding:24px;border:1px solid #949dae;}
+.concept-media-rail .stand-photo-optin p,.concept-media-rail .stand-photo-status p {color:#d6dce7;}
