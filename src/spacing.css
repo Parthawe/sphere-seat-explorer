@@ -157,3 +157,11 @@
 .race-experience .race-follow {width:100%;}
 .race-experience small {display:block; margin-top:12px; color:#bac3d1; font-size:11px; line-height:1.6;}
 @media (prefers-reduced-motion:reduce) {.race-experience button {transition:none;}}
+
+.ticket-partners {margin-block:24px; padding-block:24px; border-top:1px solid #c9ced7; border-bottom:1px solid #c9ced7;}
+.ticket-partners h3 {margin:0 0 8px;}
+.ticket-partners p,.ticket-partners small {display:block; max-width:70ch; font-size:12px; line-height:1.6; color:#525b6b;}
+.ticket-partners>div {display:flex; flex-wrap:wrap; gap:12px; margin-block:16px;}
+.ticket-partners a {display:flex; flex-direction:column; justify-content:center; min-height:48px; padding:12px 16px; border:1px solid #7a8392; text-decoration:none; color:#202735; font-weight:600;}
+.ticket-partners a:hover {background:#e3e7ed;}
+.ticket-partners a span {font-size:11px; font-weight:400; margin-top:4px;}
