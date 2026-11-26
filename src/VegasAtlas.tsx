@@ -93,7 +93,7 @@ export default function VegasAtlas({
         </a>
         <nav>
           <button className="all-races-button" onClick={onBack}>
-            All races
+            Race guide
           </button>
           <a
             href="https://www.f1lasvegasgp.com/2027-deposits/"

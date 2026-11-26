@@ -205,13 +205,14 @@ export default function SpectatorReferences({
     <dialog
       ref={dialog}
       className="spectator-dialog"
+      aria-labelledby="spectator-references-title"
       onCancel={onClose}
       onClose={onClose}
     >
       <header>
         <div>
           <span className="eyebrow">PHOTO REFERENCES / FAN REPORTS</span>
-          <h2>From the grandstands.</h2>
+          <h2 id="spectator-references-title">From the grandstands.</h2>
           <p>
             {areaName} ·{" "}
             {venue === "las-vegas"

@@ -1,3 +1,4 @@
+import { readRoute, type Route } from "./routing";
 import { SITE_NAME, SITE_ORIGIN } from "./brand";
 import {jeddahReference} from "./jeddahReference";
 import {findCircuitModel} from "./circuitSeating";
@@ -23,37 +24,11 @@ const AbuDhabiDesk = lazy(() => import("./AbuDhabiDesk"));
 const TicketDesk = lazy(() => import("./TicketDesk"));
 const VegasAtlas = lazy(() => import("./VegasAtlas"));
 const Explorer = lazy(() => import("./App"));
-type Route = {
-  season: Season;
-  race: string;
-  seats: boolean;
-  atlas?: boolean;
-  circuit?: boolean;
-  position?: string;
-  mode?: Mode;
-};
-function readRoute(): Route {
-  const p = new URLSearchParams(location.search);
-  return {
-    season:
-      p.get("season") === "2026"
-        ? 2026
-        : p.get("season") === "2027"
-          ? 2027
-          : p.has("seat") || p.has("view")
-            ? 2026
-            : 2026,
-    race: p.get("race") || "",
-    atlas: p.get("screen") === "vegas",
-    circuit: p.get("screen") === "circuit",
-    seats: p.get("screen") !== "circuit" && (p.get("screen") === "seats" || p.has("seat") || p.has("view")),
-  };
-}
 const categories = [
   [
     "grandstand",
     "Grandstand",
-    "An assigned viewing position",
+    "A dedicated trackside viewing area",
     "Compare the corner, row height, screen access and potential fencing. Check whether your pass includes one day or the whole weekend.",
   ],
   [
@@ -76,12 +51,12 @@ const categories = [
   ],
 ] as const;
 export default function RaceHub() {
-  const [route, setRoute] = useState(readRoute),
+  const [route, setRoute] = useState(() => readRoute(location.search)),
     [search, setSearch] = useState(""),
     [filter, setFilter] = useState("all"),
     [category, setCategory] = useState("grandstand");
   useEffect(() => {
-    const pop = () => setRoute(readRoute());
+    const pop = () => setRoute(readRoute(location.search));
     window.addEventListener("popstate", pop);
     return () => window.removeEventListener("popstate", pop);
   }, []);
@@ -98,7 +73,7 @@ export default function RaceHub() {
       }
     }
     history.pushState({}, "", `?${p}`);
-    setRoute(next);
+    setRoute({ ...next, issue: undefined });
     window.scrollTo(0, 0);
   }
   const races = calendars[route.season],
@@ -126,7 +101,7 @@ export default function RaceHub() {
     document.title = `${pageTitle} · ${SITE_NAME}`;
     const canonical = new URL(SITE_ORIGIN + "/");
     const params = new URLSearchParams(location.search);
-    for (const key of ["season", "race", "screen", "area", "venue", "bank", "section", "modelRow", "position", "seat", "view"]) {
+    for (const key of ["season", "race", "screen", "area", "venue", "bank", "section", "modelRow", "position", "seat", "view", "camera"]) {
       const value = params.get(key);
       if (value) canonical.searchParams.set(key, value);
     }
@@ -239,7 +214,14 @@ export default function RaceHub() {
             Las Vegas 3D
           </a>
         </nav>
-        {selected ? (
+        {route.issue && <p className="route-notice" role="alert">{route.issue}</p>}
+        {route.race && !selected ? (
+          <section className="route-not-found">
+            <h1>Race link unavailable.</h1>
+            <p>This race is not listed in our {route.season} calendar. Choose a listed race to see its ticket guide and supported views.</p>
+            <button onClick={() => go({ season: route.season, race: "", seats: false })}>Browse {route.season} races</button>
+          </section>
+        ) : selected ? (
           <>
             <div className="race-breadcrumb">
               <button onClick={() => go({ ...route, race: "" })}>
@@ -335,7 +317,7 @@ export default function RaceHub() {
               <section className="race-coverage">
                 <h2>Plan your viewing position</h2>
                 <p>
-                  {circuitModel ? "This venue has an illustrative 3D reconstruction above. Exact ticket-seat geometry is not verified. Use the" : "A seat-level 3D model is not available here yet. Use the"}
+                  {circuitModel ? "This venue has an illustrative 3D reconstruction above. Exact ticket-seat geometry is not verified. Use the " : "A seat-level 3D model is not available here yet. Use the "}
                   official event guide and ticket providers to review this
                   race’s viewing areas and current offers.
                 </p>
@@ -502,7 +484,7 @@ export default function RaceHub() {
                 <div>
                   <h2>Explore Singapore’s 2027 viewing areas.</h2>
                   <p>
-                    Twelve standard grandstands, official preview links and private
+                    Twelve standard grandstands, official preview links and local
                     ticket-area matching. Approximate regions; exact seats are
                     not verified.
                   </p>

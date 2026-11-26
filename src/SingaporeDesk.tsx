@@ -1,3 +1,4 @@
+import { useAreaUrl } from "./useAreaUrl";
 import { SITE_ORIGIN } from "./brand";
 import { useState } from "react";
 import CircuitAreaMap from "./CircuitAreaMap";
@@ -27,6 +28,7 @@ export default function SingaporeDesk() {
     [feedback, setFeedback] = useState("");
   const comparison = useAreaComparison(venue),
     chosen = singaporeAreas.find((a) => a.id === area)!;
+  useAreaUrl(venue, area);
   function choose(id: string) {
     setArea(id);
     setMatch(null);

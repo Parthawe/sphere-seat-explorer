@@ -221,7 +221,7 @@ export function bankGroundHeight(model:CircuitModel,bank:ModelBank){
 export function modelPosition(model:CircuitModel,p:ModelPosition):[number,number,number]{const b=model.banks.find(b=>b.id===p.bank)!;const [x,y,z]=localModelPosition(b,p),{yaw}=bankFrame(model,b);return [b.center[0]+x*Math.cos(yaw)+z*Math.sin(yaw),y+bankGroundHeight(model,b),b.center[1]-x*Math.sin(yaw)+z*Math.cos(yaw)];}
 export function modelCount(bank:ModelBank){return bank.sections*bank.rows*bank.seats;}
 export function positionKey(p:ModelPosition){return `${p.bank}:${p.section}:${p.row}:${p.seat}`;}
-export function modelPositionUrl(origin:string,model:CircuitModel,p:ModelPosition){const u=new URL(origin);u.search=new URLSearchParams({season:String(model.season),race:model.id,screen:'circuit',bank:p.bank,section:String(p.section),modelRow:String(p.row),position:String(p.seat)}).toString();u.hash='';return u.toString();}
+export function modelPositionUrl(origin:string,model:CircuitModel,p:ModelPosition,camera:'circuit'|'stand'|'seat'='seat'){const u=new URL(origin);u.search=new URLSearchParams({season:String(model.season),race:model.id,screen:'circuit',bank:p.bank,section:String(p.section),modelRow:String(p.row),position:String(p.seat),camera}).toString();u.hash='';return u.toString();}
 
 /** Fit the whole selected bank into the usable scene, including portrait phones. */
 export function bankOverviewCamera(model:CircuitModel,bank:ModelBank,aspect:number,verticalFraction:number){

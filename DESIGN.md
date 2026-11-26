@@ -1,4 +1,4 @@
-# Apex Atlas design direction
+# F1 Tickets Online design direction
 
 The user explicitly requested the F1 visual language and Las Vegas Grand Prix theme after rejecting the olive/gold release. Preserve the working selection, comparison, sharing and estimated-data boundaries. Replace the weak scene and visual treatment.
 
@@ -18,7 +18,7 @@ The calendar extension retains the same F1 visual system. The root opens the 202
 
 The whole-Las-Vegas extension uses a schematic circuit atlas with a selected-area panel, filterable product directory and three-area comparison. It connects nine outdoor banks through a full-circuit camera and bank-specific inset. The indoor Sphere study has a separate tab, cutaway 3D bowl, four-level/section controls, a selected-section model grid and official access-map links. Counts describe illustrative geometry only. Keep the distinction between outdoor race views and indoor Sphere shows explicit. Source-linked product names do not imply inventory or a verified 2027 layout.
 
-The user selected **Apex Atlas** as the new name. Use the original red A/apex mark and the existing motorsport typography; preserve the established red, ink and paper system. The scene settings remain beside the racing control, with a bounded upward-opening panel. Distinguish simulated Sphere artwork from the official live exterior stream. Cars and atmosphere have separate motion controls. Respect reduced motion, show map attribution in the scene and keep model limits accessible.
+The user selected **F1 Tickets Online** as the new name. Use the original red ticket mark and the existing motorsport typography; preserve the established red, ink and paper system. The scene settings remain beside the racing control, with a bounded upward-opening panel. Distinguish simulated Sphere artwork from the official live exterior stream. Cars and atmosphere have separate motion controls. Respect reduced motion, show map attribution in the scene and keep model limits accessible.
 
 
 ## Qatar ticket desk
@@ -46,7 +46,7 @@ Place sourced, published zone access beside the selected product and retain the 
 
 ## Qatar/Bahrain seating studies
 
-Use the existing Apex Atlas red, ink and paper system with the scene leading and operational position controls alongside it. Keep each venue's own source geometry, with separate model grids, confidence labels and organizer handoffs. The full scene, stand cutaway and eye-level camera serve different spatial questions. Chair and bank colours distinguish the Qatar/Bahrain studies without replacing the product brand. Put “modeled positions, not ticket numbers” beside the selectors, retain admission rules and keep exact-seat uncertainty visible. Phone layouts put a bounded scene above the controls and offer precise grid inputs as well as pointer selection.
+Use the existing F1 Tickets Online red, ink and paper system with the scene leading and operational position controls alongside it. Keep each venue's own source geometry, with separate model grids, confidence labels and organizer handoffs. The full scene, stand cutaway and eye-level camera serve different spatial questions. Chair and bank colours distinguish the Qatar/Bahrain studies without replacing the product brand. Put “modeled positions, not ticket numbers” beside the selectors, retain admission rules and keep exact-seat uncertainty visible. Phone layouts put a bounded scene above the controls and offer precise grid inputs as well as pointer selection.
 
 
 ## Spectator references

@@ -1110,6 +1110,7 @@ export default function App({
       </div>
       <dialog
         ref={dialogRef}
+        aria-labelledby="seat-dialog-title"
         onCancel={() => setDialog(null)}
         onClick={(e) => {
           if (e.target === e.currentTarget) setDialog(null);
@@ -1129,7 +1130,7 @@ export default function App({
                 ? "YOUR SHORTLIST"
                 : "2026 REFERENCE EDITION"}
             </span>
-            <h2>
+            <h2 id="seat-dialog-title">
               {dialog === "compare"
                 ? "Find the view that feels right."
                 : dialog === "map"

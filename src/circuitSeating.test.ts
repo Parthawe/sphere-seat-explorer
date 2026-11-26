@@ -160,3 +160,13 @@ test('Monza current diagram audit retains every named public product once across
  const m=circuitModels.italy,expected=['1','2','3','4','5','6b','6c','7','8a','8b','9','10','10-bis','11','12','13','14','16','18','21a','21b','21c','21d','21e','22','24','25','26a','26b','26c','27','28','29','30','32','33a','33b','34','35a','35b','35c','gf','prato'];
  const actual=[...m.banks.map(b=>b.id),...m.unmappedProducts!.filter(p=>p.id!=='other-monza-products').map(p=>p.id)];assert.equal(actual.length,43);assert.deepEqual(actual.sort(),expected.sort());assert.equal(new Set(actual).size,actual.length);
 });
+
+
+test('shared model views retain the camera mode without unrelated private fields',()=>{
+ const model=circuitModels.qatar;
+ const position=normalizeModelPosition(model,{});
+ const url=new URL(modelPositionUrl('https://example.com/?ticket=secret#private',model,position,'circuit'));
+ assert.equal(url.searchParams.get('camera'),'circuit');
+ assert.equal(url.searchParams.get('ticket'),null);
+ assert.equal(url.hash,'');
+});

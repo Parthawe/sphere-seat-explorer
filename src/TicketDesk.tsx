@@ -1,3 +1,6 @@
+import { parseSourceSnapshot } from "./sourceSnapshot";
+import { raceStatus, calendars } from "./races";
+import { useAreaUrl } from "./useAreaUrl";
 import { SITE_ORIGIN } from "./brand";
 import { useEffect, useState } from "react";
 import {
@@ -28,23 +31,28 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
     [result, setResult] = useState<TicketMatch | null>(null),
     [snapshot, setSnapshot] = useState<SourceSnapshot | null>(null),
     [dataError, setDataError] = useState(false),
+    [sourceAttempt, setSourceAttempt] = useState(0),
     [sellerFilter, setSellerFilter] = useState("all"),
     [feedback, setFeedback] = useState("");
   const comparison = useAreaComparison(venue),
     saved = comparison.saved;
   useEffect(() => {
     const controller = new AbortController();
+    setDataError(false);
+    setSnapshot(null);
     fetch("/data/ticket-sources.json", { signal: controller.signal })
       .then((r) => {
         if (!r.ok) throw Error();
         return r.json();
       })
+      .then(parseSourceSnapshot)
       .then(setSnapshot)
       .catch((e) => {
         if (e.name !== "AbortError") setDataError(true);
       });
     return () => controller.abort();
-  }, []);
+  }, [sourceAttempt]);
+  useAreaUrl(venue, area);
   const chosen = areas.find((a) => a.id === area)!;
   const priceFor = (id: AreaId) =>
     snapshot?.sources.find(
@@ -90,7 +98,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
       {!compact && (
         <div className="ticket-intro">
           <div>
-            <p className="eyebrow">NEXT RACE · 27–29 NOVEMBER 2026</p>
+            <p className="eyebrow">{raceStatus(calendars[2026].find(r => r.slug === "qatar")!) === "Past" ? "PAST RACE REFERENCE" : "QATAR RACE WEEKEND"} · 27–29 NOVEMBER 2026</p>
             <h1>
               Find your place
               <br />
@@ -338,6 +346,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
                     ? "No readable price in the public snapshot. Check the organizer’s page."
                     : "Loading public source snapshot…"}
             </p>
+            {dataError && <button className="snapshot-retry" onClick={() => setSourceAttempt(n => n + 1)}>Retry reference prices</button>}
             <a className="qatar-model-link" href={`?season=2026&race=qatar&screen=circuit&bank=${area}`}>Explore this area in 3D <span>Illustrative positions, not ticket coordinates</span></a>
             <div className="area-actions">
               <button onClick={toggleSaved}>

@@ -19,7 +19,7 @@ npm run preview
 
 ## Calendar and ticket guides
 
-The default entry opens the 2027 race browser. Both seasons list every Grand Prix in Formula 1’s current published calendar: 23 in the revised 2026 season and 24 in 2027, inspected 22 November 2026. These are checked-in snapshots, not a live feed. Search, upcoming filtering, race detail pages and four ticket-category guides are available. External ticket and hospitality links open verified official season selectors; availability, inclusions and prices remain with providers.
+The default entry opens the Qatar 2026 ticket desk, with the 2026 calendar below and a separate 2027 season. Both seasons list every Grand Prix in Formula 1’s current published calendar: 23 in the revised 2026 season and 24 in 2027, inspected 22 November 2026. These are checked-in snapshots, not a live feed. Search, upcoming filtering, race detail pages and four ticket-category guides are available. External ticket and hospitality links open verified official season selectors; availability, inclusions and prices remain with providers.
 
 Deep links preserve the season and selected race. Existing `?seat=...` links continue to open the explorer. Browsing 2027 uses the labeled 2026 reference geometry, not a verified 2027 seating plan.
 

@@ -9,9 +9,10 @@ import "@fontsource/barlow-condensed/600.css";
 import "@fontsource/barlow-condensed/700.css";
 import "@fontsource/barlow-condensed/700-italic.css";
 import App from "./RaceHub";
+import AppBoundary from "./AppBoundary";
 import "./style.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
+    <AppBoundary><App /></AppBoundary>
   </React.StrictMode>,
 );
