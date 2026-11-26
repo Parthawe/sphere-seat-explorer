@@ -186,3 +186,13 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Publication: documentation checkpoint only in GitHub; application remains v68. No unchanged tests/build/deployment were repeated.
 - Limits: clipboard failures were deliberate local fixtures, not evidence of browser-wide clipboard behavior. Download content preserves user declarations and source caveats; it does not verify a booking.
 - Next useful check: cross-season comparison storage isolation and unavailable-storage behavior, retaining public area IDs only and a usable transient comparison.
+
+
+## 26 November 2026 · 15:00 UTC · Comparison storage boundaries
+
+- Starting checkout: `197c43f` (previous audit documentation); application v68. No simultaneous local edits.
+- Evidence and validation: the existing packaged build at 1440px and 390px sanitized a seeded Qatar comparison containing duplicates, an unknown synthetic private-like string, a number and a fourth valid area. Only three permitted public IDs remained, in order. A separate Abu Dhabi selection loaded independently; clearing it left Qatar and a seeded unused-season key unchanged. Controlled get/set/remove storage denial retained a usable in-page comparison with the transient-storage explanation and no page errors. A phone reload rechecked after the desk remounted confirmed it did not persist. Phone layout inspected.
+- Change: none to application code; no failing storage or isolation assertion.
+- Publication: documentation checkpoint only in GitHub; application remains v68. No unchanged build or deployment repeated.
+- Limits: the unused-season key check demonstrates key isolation, not unsupported Qatar 2027 coverage. Storage denial was a controlled browser fixture. These checks do not cover simultaneous edits from multiple browser tabs.
+- Next useful check: source-snapshot unavailable/malformed-data handling and retry, ensuring organizer links and comparison remain usable without reference prices.
