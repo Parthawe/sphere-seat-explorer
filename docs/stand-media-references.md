@@ -45,3 +45,12 @@ Three newly added viewing clips were checked against primary public YouTube oEmb
 - Spa Fanzone Grandstand: https://www.youtube.com/watch?v=tXp4t7X0gpo , matched to Fanzone Grandstand, not the separate Fan Area Double Gauche.
 
 An Apex 1 search candidate remains unused pending clearer source review. No image bytes or organizer digital-twin geometry were acquired for these additions. Missing picture permissions and current-year stand mappings remain separate requirements. The media framework's global availability does not complete those requirements.
+
+
+## Visual photo browsing refinement (26 November 2026)
+
+The onsite viewer now shows a bounded strip of five original-host thumbnails after photo connection approval. The selected frame stays marked while its neighboring previews move with the current image. Thumbnail requests use the same original Suzuka host; none load before approval and no thumbnail files or image proxy are added. Original-file links now follow the selected photograph rather than always opening the first file.
+
+Enlarged photos have previous/next buttons, Left/Right navigation, Home/End, wraparound and Escape. Moving between photos keeps the dialog open. The close bar stays visible while scrolling; the source caption, restricted-view label, capture-year uncertainty and lack of model-seat calibration remain visible.
+
+A persistent reload control replaces the disappearing error-only Retry button, preserving keyboard focus through an image failure and recovery. Thumbnail reloads recover with the main frame. Closing a still-loading photo returns focus to an existing viewer control instead of the page background, and image completion does not move focus again. Original YouTube fallback/unload behavior is retained for blocked players.
