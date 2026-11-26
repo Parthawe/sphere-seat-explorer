@@ -1,0 +1,141 @@
+/* Shared dimensions across race guides, venue directories and seat workspaces. */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --page-width: 1280px;
+  --page-gutter: 32px;
+  --panel-inset: 24px;
+  --header-height: 80px;
+  --brand-size: 24px;
+}
+
+:is(.race-hub, .vegas-atlas) > .site-header {
+  padding-inline: max(var(--page-gutter), calc((100% - var(--page-width)) / 2 + var(--page-gutter)));
+  border-bottom-color: #383843;
+}
+.site-header,
+.circuit-explorer > .circuit-explorer-header {
+  height: var(--header-height);
+  min-height: var(--header-height);
+  padding-block: 0;
+  border-top: 4px solid var(--red);
+  border-bottom: 1px solid #383843;
+  gap: var(--space-4);
+}
+.app-shell > .site-header,
+.circuit-explorer > .circuit-explorer-header { padding-inline: var(--panel-inset); }
+:is(.race-hub, .vegas-atlas, .app-shell, .circuit-explorer) > :is(.site-header, .circuit-explorer-header) .wordmark {
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+:is(.race-hub, .vegas-atlas, .app-shell, .circuit-explorer) .wordmark > .brand-icon {
+  width: 40px;
+  height: 32px;
+  flex: 0 0 40px;
+  color: var(--red);
+}
+.wordmark .brand-copy { display: block; min-width: 0; }
+.wordmark .brand-name {
+  display: block;
+  color: #f5f5f7;
+  font: 600 var(--brand-size)/1 "Barlow Condensed", sans-serif;
+  letter-spacing: .035em;
+  white-space: nowrap;
+}
+:is(.race-hub, .vegas-atlas, .app-shell, .circuit-explorer) .wordmark .wordmark-sub {
+  display: block;
+  font: 400 9px/1.35 "IBM Plex Sans", sans-serif;
+  letter-spacing: .1em;
+  color: #b7b7c5;
+  margin-top: var(--space-1);
+}
+.hub-header nav { gap: var(--space-2); }
+.hub-header nav button { min-height: 44px; padding: 10px 16px; font-variant-numeric: tabular-nums; }
+.circuit-explorer-header button,
+.all-races-button { min-height: 44px; padding: 10px 16px; }
+
+.race-hub > main,
+.race-hub:has(.ticket-desk) > main,
+.vegas-atlas > main {
+  display: flow-root;
+  width: 100%;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: var(--space-5) var(--page-gutter) var(--space-7);
+}
+.product-jump-nav {
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+.product-jump-nav a { display: inline-flex; align-items: center; min-height: 44px; }
+.race-breadcrumb { padding: 0; margin: 0 0 var(--space-4); min-height: 44px; gap: var(--space-3); }
+.race-detail-heading { margin: 0 0 var(--space-6); gap: var(--space-5); }
+.race-detail-heading h1 { margin: 0; line-height: 1; }
+.race-detail-heading h1 > span { margin-top: var(--space-2); }
+.race-detail-heading p { margin-top: var(--space-3); }
+.circuit-model-entry { margin: 0 0 var(--space-5); }
+.circuit-brief { margin: 0 0 var(--space-6); padding-block: var(--space-5); }
+.circuit-brief > header { gap: var(--space-4); }
+.circuit-brief-overview { margin: var(--space-4) 0 var(--space-5); }
+.circuit-brief-main { gap: var(--space-6); }
+.circuit-viewing-choices > div { padding-block: var(--space-4); gap: var(--space-4); }
+.circuit-brief-checks { padding-left: var(--space-5); }
+.circuit-arrival-checks { margin-top: var(--space-5); padding-top: var(--space-2); }
+.circuit-ticket-source,
+.hub-outline-link { min-height: 44px; padding: 12px 16px; }
+.ticket-panel,
+.abu-ticket-desk .ticket-panel,
+.singapore-ticket-desk .ticket-panel,
+.atlas-area-detail,
+.bowl-selection,
+.circuit-position-panel { padding: var(--panel-inset); }
+.desk-topline { margin-bottom: var(--space-5); gap: var(--space-5); }
+.map-heading { padding: var(--panel-inset) var(--panel-inset) 0; }
+.circuit-model-heading { left: var(--panel-inset); right: var(--panel-inset); }
+.circuit-camera-modes,
+.circuit-scene-actions { left: var(--panel-inset); }
+.circuit-photo-trigger,
+.circuit-seat-zoom { right: var(--panel-inset); }
+.atlas-intro { padding: var(--space-4) 0 var(--space-6); gap: var(--space-5); }
+.atlas-intro p { margin-top: var(--space-4); }
+.hub-footer {
+  padding: var(--space-5) max(var(--page-gutter), calc((100% - var(--page-width)) / 2 + var(--page-gutter)));
+  gap: var(--space-5);
+}
+@media (min-width: 761px) {
+  .circuit-model-stage { height: calc(100dvh - var(--header-height)); }
+}
+@media (max-width: 1100px) {
+  :root { --page-gutter: 24px; }
+}
+@media (max-width: 760px) {
+  :root { --page-gutter: 20px; --panel-inset: 20px; --header-height: 72px; --brand-size: 20px; }
+  :is(.race-hub, .vegas-atlas, .app-shell, .circuit-explorer) > :is(.site-header, .circuit-explorer-header) .wordmark { gap: var(--space-2); }
+  :is(.race-hub, .vegas-atlas, .app-shell, .circuit-explorer) .wordmark > .brand-icon { width: 28px; height: 28px; flex-basis: 28px; }
+  :is(.race-hub, .vegas-atlas, .app-shell, .circuit-explorer) .wordmark .wordmark-sub { font-size: 8px; max-width: 144px; }
+  .hub-header nav { gap: var(--space-1); }
+  .hub-header nav button { padding-inline: 10px; }
+  .hub-header .season-label { display: none; }
+  .app-shell > .site-header { gap: var(--space-2); }
+  .app-shell > .site-header nav { gap: var(--space-1); }
+  .product-jump-nav { gap: var(--space-4); }
+  .circuit-brief-main { gap: var(--space-5); }
+  .circuit-brief-checks { padding: var(--space-5) 0 0; }
+  .circuit-viewing-choices > div { gap: var(--space-2); }
+  .circuit-photo-trigger { left: var(--panel-inset); right: auto; }
+  .atlas-intro { padding-top: var(--space-2); }
+  .hub-footer { flex-wrap: wrap; gap: var(--space-2); }
+}
+@media (max-width: 360px) {
+  :root { --page-gutter: 16px; --panel-inset: 16px; --brand-size: 18px; }
+  :is(.race-hub, .vegas-atlas, .app-shell, .circuit-explorer) .wordmark .wordmark-sub { max-width: 128px; font-size: 8px; }
+  .hub-header nav button { min-width: 52px; padding-inline: 8px; }
+  .circuit-explorer-header button { padding-inline: 8px; font-size: 11px; }
+}

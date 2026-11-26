@@ -6,7 +6,7 @@ import { SITE_NAME, syncPublicUrlMetadata } from "./brand";
 import {jeddahReference} from "./jeddahReference";
 import {findCircuitModel} from "./circuitSeating";
 import { findVenue } from "./venueRegistry";
-import { BrandMark } from "./BrandMark";
+import { BrandIdentity } from "./BrandMark";
 import type { Mode } from "./model";
 import { lazy, Suspense, useEffect, useState } from "react";
 import {
@@ -173,11 +173,7 @@ export default function RaceHub() {
             go({ ...route, race: "", seats: false });
           }}
         >
-          <BrandMark />
-          <span>
-            F1TICKETS.ONLINE
-            <span className="wordmark-sub">RACE TICKETS & SEAT EXPLORER</span>
-          </span>
+          <BrandIdentity subtitle="TICKETS & SEAT VIEWS" />
         </a>
         <nav aria-label="Seasons">
           {([2026, 2027] as Season[]).map((y) => (

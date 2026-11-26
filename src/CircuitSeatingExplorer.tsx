@@ -3,7 +3,7 @@ import type {ModelCameraControls} from "./CircuitSeatingScene";
 import CircuitOverview from "./CircuitOverview";
 import SpectatorReferences from "./SpectatorReferences";
 import {lazy,Suspense,useCallback,useEffect,useRef,useState} from 'react';
-import {BrandMark} from './BrandMark';
+import {BrandIdentity} from './BrandMark';
 import {bankGroundHeight,bankFrame,closestTrack,modelCount,modelPosition,modelPositionUrl,normalizeModelPosition,positionKey,type CircuitModel,type ModelPosition} from './circuitSeating';
 const Scene=lazy(()=>import('./CircuitSeatingScene'));
 export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitModel;onBack:()=>void}){
@@ -27,7 +27,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  function save(){if(saved.some(p=>positionKey(p)===positionKey(selection))){setSaved(saved.filter(p=>positionKey(p)!==positionKey(selection)));return;}if(saved.length===3){setFeedback('Three positions saved. Remove one to compare another.');return;}setSaved([...saved,{...selection}]);}
  function arrows(e:React.KeyboardEvent){if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();choose({seat:selection.seat+(e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0),row:selection.row+(e.key==='ArrowUp'?1:e.key==='ArrowDown'?-1:0)});}
  return <div className="circuit-explorer">
-  <header className="circuit-explorer-header"><a className="wordmark" href={`?season=${model.season}`}><BrandMark/><span>F1TICKETS.ONLINE<small>3D SEATING STUDIES</small></span></a><div><span>{model.country.toUpperCase()} / {model.season}</span><button onClick={onBack}>Back to race guide</button></div></header>
+  <header className="circuit-explorer-header"><a className="wordmark" href={`?season=${model.season}`}><BrandIdentity subtitle="3D SEATING STUDIES" /></a><div><span>{model.country.toUpperCase()} / {model.season}</span><button onClick={onBack}>Back to race guide</button></div></header>
   <main className="circuit-explorer-layout">
    <section className={'circuit-model-stage mode-'+mode+(model.appearance==='day'?' day-scene':'')} aria-label={`${model.name} 3D seating model`}>
     <div className="circuit-model-canvas" role="region" tabIndex={0} aria-label="Interactive modeled view. Drag to look or orbit. Arrow keys change model row and position." onKeyDown={arrows}>

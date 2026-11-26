@@ -1,7 +1,7 @@
 import { SITE_ORIGIN, syncPublicUrlMetadata } from "./brand";
 import { bowlViewUrl, normalizeBowlSeat, readBowlView } from "./sphereView";
 import { sanitizeComparison } from "./comparisonState";
-import { BrandMark } from "./BrandMark";
+import { BrandIdentity } from "./BrandMark";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { circuitPath } from "./Map";
 import { stands, type Mode } from "./model";
@@ -121,10 +121,7 @@ export default function VegasAtlas({
             onBack();
           }}
         >
-          <BrandMark />
-          <span>
-            F1TICKETS.ONLINE<span className="wordmark-sub">LAS VEGAS EXPLORER</span>
-          </span>
+          <BrandIdentity subtitle="LAS VEGAS EXPLORER" />
         </a>
         <nav>
           <button className="all-races-button" onClick={onBack}>

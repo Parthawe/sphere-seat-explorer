@@ -3,7 +3,7 @@ import SpectatorReferences from "./SpectatorReferences";
 import { HistoricalReplay } from "./HistoricalReplay";
 import type { ReplayFrame } from "./replayMath";
 import { sphereDisplays, type SphereDisplay } from "./rendering";
-import { BrandMark } from "./BrandMark";
+import { BrandIdentity } from "./BrandMark";
 import { FullSeatMap } from "./FullSeatMap";
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -477,10 +477,7 @@ export default function App({
       </a>
       <header className="site-header">
         <a className="wordmark" href="/" aria-label="F1 Tickets Online home">
-          <BrandMark />
-          <span>
-            F1TICKETS.ONLINE<span className="wordmark-sub">F1 SEAT EXPLORER</span>
-          </span>
+          <BrandIdentity subtitle="F1 SEAT EXPLORER" />
         </a>
         <div className="header-location">
           <span className="location-mark" />

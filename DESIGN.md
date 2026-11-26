@@ -121,3 +121,9 @@ Use the established red, ink and paper system for every race brief. Put the actu
 ## Content restraint · 26 November 2026
 
 Keep race pages focused on viewing choices and the ticket handoff. Give each viewing choice one short explanation and state the model limit once. Travel, source dates, reference lap lengths and secondary ticket types open on demand. Keep product-specific seating, eligibility and season differences where the choice is made. Avoid repeating generic availability and seat-accuracy paragraphs across adjacent sections.
+
+## Shared branding and spacing
+
+`BrandIdentity` owns the ticket mark, domain wordmark and contextual caption across all four product surfaces. Keep the same mark proportions, condensed wordmark and caption treatment. Headers are 80px on desktop and 72px on phones; the primary brand type is 24px, 20px on phones and 18px on the narrowest screens. Captions stay on one line.
+
+`src/spacing.css` defines shared 4/8/12/16/24/32/48px spacing, a 1280px reading frame, responsive page gutters and panel insets. Reading-page headers, content and footers align to the same gutters. Full-width 3D workspaces use the panel inset instead. Keep navigation below the header without negative margins; model/photo/zoom controls must stay separate on small screens.

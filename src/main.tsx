@@ -11,6 +11,7 @@ import "@fontsource/barlow-condensed/700-italic.css";
 import App from "./RaceHub";
 import AppBoundary from "./AppBoundary";
 import "./style.css";
+import "./spacing.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppBoundary><App /></AppBoundary>
