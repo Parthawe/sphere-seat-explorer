@@ -457,3 +457,13 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Limits: clipboard was replaced inside the test page to avoid changing the system clipboard. Downloads contain only public curated choices and manual test checkmarks. Manual checks do not establish seller verification. Existing precise-seat/media/commercial dependencies remain unresolved.
 - Next useful check: rotate to shared 3D loading/recovery and keyboard selection on a currently supported venue, without repeating completed source-media/spacing sweeps or blocked asset requests.
 - Publication: v88, source `689e3d854fbdb54a3f53c86eae7388fc85656a8a`; saved version `appgprj_6b03a10b6c388191a92912a1c2dfe070~appgver_659e153f09bc8191898887cc8bb0e7e1`, deployment `appgdep_6b089164fe848191bde46d6b14d033bb` succeeded 26 November 2026 at 20:07:05 UTC. Production build and matching GitHub push confirmed; owned preview stopped. This release metadata reconciliation is documentation only and needs no additional application deployment.
+
+
+## 26 November 2026 · 20:28 UTC 3D recovery and keyboard audit
+
+- Focus: one supported venue’s shared 3D loading/recovery and keyboard-position journey, rotating away from the completed shortlist/spacing checks.
+- Starting state: published v88, source `689e3d854fbdb54a3f53c86eae7388fc85656a8a`; local documentation checkpoint `c5a57df`, clean checkout. UTC check 20:28:45, before 27 November 14:00 UTC. No concurrent local edits.
+- Evidence/validation: read-only public-site Qatar 2026 North model at 1440 and 390 pixels, with reduced motion enabled. Actual renderer loaded; right/up keys updated the modeled position and URL. The complete model grid accepted row 16/position 40 and its 3D action returned focus to the canvas. Real `WEBGL_lose_context` loss displayed the unavailable state; Retry created a working scene without changing the selected bank/row/position URL. Passing-car controls switched between play and pause. Both browser paths passed without page errors. These are generated positions, not ticket seat identities or a historical replay.
+- Changes: none to the application; documentation checkpoint only. No build or deployment repeated on unchanged source. No new failure or owner action.
+- Limits: this covers one shared model journey on two browser viewports, not every GPU/browser or measured venue sightlines. Current media/precise-seat/commercial gaps remain unchanged.
+- Next useful check: rotate to race-calendar search/filter and season/history edge states, including an empty result, without rerunning the complete venue rendering sweep or the recovery path just checked.
