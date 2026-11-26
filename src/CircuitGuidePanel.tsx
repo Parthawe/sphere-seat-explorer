@@ -1,3 +1,4 @@
+import ViewingShortlist from "./ViewingShortlist";
 import TicketPartners from "./TicketSellerLinks";
 import { circuitGuideFor, circuitGuideSource, circuitTicketSource, circuitPublishedLength, CIRCUIT_GUIDES_CHECKED } from "./circuitGuides";
 import { raceStatus, type Race } from "./races";
@@ -19,15 +20,17 @@ export default function CircuitGuidePanel({ race, coverage }: { race: Race; cove
       <p className="circuit-brief-overview">{guide.overview}</p>
       <div className="circuit-brief-main">
         <div>
-          <h3>Viewing choices</h3>
-          <dl className="circuit-viewing-choices">
-            {guide.viewing.map(view => <div key={view.name}><dt>{view.name}</dt><dd>{view.detail}</dd></div>)}
-          </dl>
+          <ViewingShortlist key={`${race.season}-${race.slug}`} race={race} guide={guide} ticketUrl={ticketUrl} />
         </div>
         <div className="circuit-brief-checks">
-          <h3>Before booking</h3>
+          <h3>Know what you’re comparing.</h3>
+          <dl className="booking-evidence">
+            <div><dt>Circuit context</dt><dd>Linked F1 reference · {guide.referenceSeason}. Product names and access can change by year.</dd></div>
+            <div><dt>Our maps & 3D views</dt><dd>Estimated viewing studies. Generated positions do not identify a purchased seat.</dd></div>
+            <div><dt>Check with the seller</dt><dd>Actual seat, availability, final fees, cover, access and delivery.</dd></div>
+          </dl>
           <p>{guide.ticketCheck}</p>
-          {ticketUrl ? <a className="circuit-ticket-source" href={ticketUrl} target="_blank" rel="noreferrer">F1 tickets · {race.season}</a> : raceStatus(race) === "Past" && <p className="circuit-edition-note">Past race reference · {race.season}</p>}
+          {ticketUrl ? <a className="circuit-ticket-source" href={ticketUrl} target="_blank" rel="noreferrer">Open {race.season} ticket catalogue</a> : raceStatus(race) === "Past" && <p className="circuit-edition-note">Past race reference · {race.season}</p>}
         </div>
       </div>
       <TicketPartners race={race} />

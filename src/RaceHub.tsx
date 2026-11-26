@@ -1,3 +1,4 @@
+import FundingDisclosure from "./FundingDisclosure";
 import CircuitGuidePanel from "./CircuitGuidePanel";
 import { circuitGuideFor, matchesCircuitSearch } from "./circuitGuides";
 import { useHashTarget } from "./useHashTarget";
@@ -421,9 +422,8 @@ export default function RaceHub() {
                     <em>race calendar.</em>
                   </h1>
                   <p>
-                    Browse the published calendar and official race guides.
-                    Singapore has a sourced 2027 area pilot. Qatar and Abu Dhabi
-                    ticket desks apply to 2026 only.
+                    Shortlist viewing regions, explore supported 3D studies and
+                    check event-year ticket sources before booking.
                   </p>
                 </div>
                 <div className="season-year" aria-hidden="true">
@@ -612,6 +612,7 @@ export default function RaceHub() {
           </a>
         </details>
       </main>
+      <FundingDisclosure />
       <footer className="hub-footer">
         <span>Independent race planning · no Formula 1 affiliation</span>
         <span>No live ticket inventory</span>

@@ -130,3 +130,6 @@ Keep race pages focused on viewing choices and the ticket handoff. Give each vie
 
 ### Circuit replay interaction
 The existing Three.js world remains the spatial source. Replay starts the simulated pack eight illustrative seconds before its closest pass to the selected bank. Quarter, normal and double speed affect cars and wheel rotation together. Following eases the look direction toward the lead car without moving the modeled seat. Pointer drag immediately returns control, retaining the current look direction. Playback starts only by request, stops when the tab is hidden, and rendering suspends while the scene is offscreen. These passes are simulations, not historical telemetry or photographic evidence.
+
+### Before-purchase race brief
+Race guides now separate choosing tickets from orienting an existing ticket. Source-backed viewing regions are selectable rows, leading to an inline notebook of unresolved booking checks and a downloadable brief. Selecting a region does not recommend or certify a seller product. The evidence column separates dated circuit context, authored reconstruction and seller-confirmed details. Manual checks never receive a verified or ready-to-buy badge. Funding information lives in an expandable section outside the primary journey. Empty commercial configuration renders no advertising or referral placeholders.

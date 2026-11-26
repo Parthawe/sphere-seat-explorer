@@ -165,3 +165,41 @@
 .ticket-partners a {display:flex; flex-direction:column; justify-content:center; min-height:48px; padding:12px 16px; border:1px solid #7a8392; text-decoration:none; color:#202735; font-weight:600;}
 .ticket-partners a:hover {background:#e3e7ed;}
 .ticket-partners a span {font-size:11px; font-weight:400; margin-top:4px;}
+
+/* A race brief keeps the viewing decision and unresolved booking checks together. */
+.planning-intent {display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;}
+.planning-intent button,.shortlist-export button,.shortlist-notebook-heading button {min-height:44px; border:1px solid #a4aab5; background:transparent; color:#252b37; padding:10px 14px; font:inherit; font-size:13px; cursor:pointer; border-radius:3px;}
+.planning-intent button[aria-pressed=true] {background:#202632; border-color:#202632; color:#fff;}
+.shortlist-context {font-size:14px; line-height:1.65; color:#505867; max-width:65ch; margin:0 0 16px;}
+.viewing-choice-list {display:flex; flex-direction:column;}
+.viewing-choice-list>button {display:flex; justify-content:space-between; align-items:center; gap:16px; text-align:left; border:0; border-top:1px solid #ccd0d8; background:transparent; color:#252b37; padding:20px 0; font:inherit; cursor:pointer; min-height:88px;}
+.viewing-choice-list>button:last-child {border-bottom:1px solid #ccd0d8;}
+.viewing-choice-list>button>span:first-child {display:flex; flex-direction:column; gap:8px;}
+.viewing-choice-list strong {font-size:16px; font-weight:600;}
+.viewing-choice-list>button>span:first-child>span {font-size:14px; line-height:1.65; color:#505867;}
+.viewing-choice-list>button:hover strong {text-decoration:underline; text-underline-offset:4px;}
+.shortlist-choice-state {flex-shrink:0; font-size:12px; min-width:76px; text-align:center; border:1px solid #a4aab5; border-radius:3px; padding:8px;}
+.viewing-choice-list>button[aria-pressed=true] .shortlist-choice-state {background:#a51d17; border-color:#a51d17; color:#fff;}
+.shortlist-notebook {margin-top:24px; padding:24px; background:#e5e8ee; border-radius:6px;}
+.shortlist-notebook-heading {display:flex; justify-content:space-between; align-items:center; gap:16px;}
+.shortlist-notebook h4 {font:600 24px/1.2 'Barlow Condensed',sans-serif; margin:0;}
+.shortlist-notebook p {font-size:13px; line-height:1.65; color:#414b5b;}
+.shortlist-notebook fieldset {padding:0; margin:20px 0 0; border:0;}
+.shortlist-notebook legend {font-size:13px; font-weight:600; margin-bottom:8px;}
+.shortlist-notebook label {display:flex; align-items:center; gap:12px; min-height:44px; padding-block:6px; font-size:13px; line-height:1.5; cursor:pointer;}
+.shortlist-notebook input {width:18px; height:18px; flex-shrink:0; accent-color:#ad2118;}
+.shortlist-export {display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+.shortlist-export button:hover,.shortlist-notebook-heading button:hover {background:#d2d8e2;}
+.shortlist-message {font-size:12px; line-height:1.6; color:#505867;}
+.shortlist-message:empty {display:none;}
+.booking-evidence {margin:0 0 24px;}
+.booking-evidence>div {padding-block:12px; border-bottom:1px solid #d8dbe2;}
+.booking-evidence dt {font-size:13px; font-weight:600;}
+.booking-evidence dd {margin:6px 0 0; font-size:13px; line-height:1.65; color:#505867;}
+.funding-disclosure {max-width:1280px; margin:24px auto; padding-inline:32px; color:#3e4655;}
+.funding-disclosure summary {font-size:13px; min-height:44px; padding-block:12px; cursor:pointer;}
+.funding-disclosure>div {max-width:70ch; padding-block:16px 24px;}
+.funding-disclosure h2 {font:600 28px/1.2 'Barlow Condensed',sans-serif; margin:0 0 16px;}
+.funding-disclosure p {font-size:13px; line-height:1.7;}
+@media (max-width:760px) {.funding-disclosure {padding-inline:20px;} .shortlist-notebook {padding:20px;} .viewing-choice-list>button {gap:12px;} .shortlist-choice-state {min-width:64px; font-size:11px; padding:8px 6px;}}
+@media (max-width:360px) {.funding-disclosure {padding-inline:16px;} .shortlist-notebook {padding:16px;} .planning-intent button {padding-inline:10px; font-size:12px;} .viewing-choice-list>button {align-items:flex-start;}}
