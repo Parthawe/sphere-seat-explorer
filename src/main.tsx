@@ -17,6 +17,7 @@ import "./visualExperience.css";
 import "./explorerVisual.css";
 import "./priceNotebook.css";
 import "./circuitLayout.css";
+import "./racingCentre.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppBoundary><App /></AppBoundary>

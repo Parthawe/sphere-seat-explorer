@@ -1,0 +1,63 @@
+.racing-centre {min-height:100svh; background:#f1f2f6; color:#171d29;}
+.racing-header {display:flex; align-items:center; justify-content:space-between; gap:20px; padding:16px 24px; border-top:4px solid #d00b05; background:#14151f; color:#fff;}
+.racing-centre button,.racing-centre select {min-height:44px; border:1px solid #929aac; border-radius:0; padding:10px 14px; background:transparent; font:inherit; font-size:13px; cursor:pointer; color:inherit;}
+.racing-centre button:hover:not(:disabled) {background:#e2e5ed; color:#171d29;}
+.racing-header button:hover:not(:disabled) {background:#2b3244; color:#fff;}
+.racing-centre button:disabled {opacity:.6; cursor:default;}
+.racing-centre main {max-width:1280px; margin:auto; padding:40px 24px;}
+.racing-title {display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:28px;}
+.racing-title h1 {font:700 clamp(42px,6vw,70px)/1 'Barlow Condensed',sans-serif; margin:0 0 12px;}
+.racing-title p {font-size:14px; margin:0;}
+.racing-title label {font-size:12px;}
+.racing-title select {display:block; background:#fff; margin-top:6px;}
+.racing-feed-state {display:flex; align-items:center; flex-wrap:wrap; gap:16px; padding:20px 24px; background:#192233; color:#eef0f7;}
+.racing-feed-state>div {flex:1; min-width:180px;}
+.racing-feed-state strong {font-size:16px;}
+.racing-feed-state p {font-size:12px; line-height:1.6; margin:8px 0 0;}
+.racing-feed-state button {display:flex; align-items:center; gap:8px;}
+.racing-feed-state label {flex-basis:100%; display:flex; align-items:center; gap:10px; font-size:12px;}
+.racing-feed-state input {accent-color:#d00b05; width:20px; height:20px;}
+.racing-columns {display:grid; grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr); gap:36px; margin-top:36px;}
+.racing-centre h2 {font:600 30px 'Barlow Condensed',sans-serif; margin:0 0 18px;}
+.championship>header {display:flex; justify-content:space-between; align-items:center; gap:16px; border-bottom:1px solid #aeb7c8; padding-bottom:16px;}
+.championship>header h2 {margin:0;}
+.championship [role=group] {display:flex; gap:6px;}
+.championship button[aria-pressed=true] {background:#ce0903; border-color:#ce0903; color:white;}
+.racing-empty,.racing-loading {padding:36px 0; font-size:13px; line-height:1.7;}
+.racing-empty>.ui-icon {width:36px; height:36px; margin-bottom:16px;}
+.racing-empty h3 {margin:0 0 10px; font-size:19px;}
+.racing-empty p {margin:8px 0 18px;}
+.racing-empty a {display:inline-flex; align-items:center; gap:10px; min-height:44px; color:#ad0a04; text-underline-offset:3px;}
+.racing-round {font-size:12px; line-height:1.6; color:#485369;}
+.racing-next>button {display:flex; width:100%; align-items:center; text-align:left; gap:16px; padding:16px 0; border:0; border-bottom:1px solid #b7bdc9;}
+.racing-next button>span {flex:1; min-width:0;}
+.racing-next strong {display:block; font:600 24px 'Barlow Condensed',sans-serif;}
+.racing-next small {display:block; font-size:12px; margin-top:6px;}
+.racing-results {margin-top:36px; border-top:1px solid #aeb7c8; padding-top:24px;}
+.racing-results h3 {font-size:18px;}
+.racing-results ol,.standing-list {list-style:none; padding:0; margin:0;}
+.standing-list li {display:grid; grid-template-columns:30px minmax(0,1fr) auto; align-items:center; gap:16px; padding:18px 0; border-bottom:1px solid #b7bdc9;}
+.standing-rank {font:600 26px 'Barlow Condensed',sans-serif;}
+.standing-list small,.racing-results li small {display:block; color:#485369; font-size:12px; margin-top:4px;}
+.standing-points {text-align:right; font-variant-numeric:tabular-nums;}
+.standing-points>strong {font:600 28px 'Barlow Condensed',sans-serif;}
+.standing-bar {height:3px; background:#d9dfe8; margin-top:10px;}
+.standing-bar>span {display:block; height:100%; background:#ce0903;}
+.racing-results li {display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #b7bdc9; font-size:12px;}
+.racing-results li>div {flex:1;}
+.racing-source {font-size:12px; line-height:1.7; margin-top:28px; padding-top:16px; border-top:1px solid #aeb7c8;}
+.racing-source summary {cursor:pointer; min-height:36px;}
+.racing-source p {max-width:75ch;}
+.racing-source a {display:inline-block; margin-right:24px; min-height:36px; color:#ad0a04; text-underline-offset:3px;}
+@media(max-width:760px) {
+ .racing-header {padding:12px 18px;}
+ .racing-centre main {padding:28px 20px;}
+ .racing-title {gap:16px;}
+ .racing-title select {font-size:16px;}
+ .racing-title p {font-size:13px; line-height:1.5;}
+ .racing-feed-state {padding:20px;}
+ .racing-columns {grid-template-columns:minmax(0,1fr); gap:28px;}
+ .championship>header {flex-wrap:wrap;}
+ .racing-next {border-top:1px solid #aeb7c8; padding-top:24px;}
+ .standing-list li {gap:12px;}
+}

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "season": 2026,
+  "status": "not-connected",
+  "provider": "",
+  "fetchedAt": null,
+  "driverRound": null,
+  "teamRound": null,
+  "drivers": [],
+  "teams": [],
+  "latest": null,
+  "schedule": []
+}

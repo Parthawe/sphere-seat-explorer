@@ -183,3 +183,7 @@ Label quotes as personal, browser-local and manually recorded. A price target co
 Use the established ink/red identity for a full-screen circuit diagram, with the shape as the main artifact. Orbit and overhead are functional camera choices; race and season selectors expose all supported diagrams. Keep measured control space outside the canvas so short or narrow screens do not cover the shape. Static scenes render on demand, motion is opt-in, and reduced-motion preferences settle camera changes immediately.
 
 Label these as community reference diagrams with unverified layout year, no seat preview and omitted elevation/bridges. Display depth belongs to the diagram, not the venue. Preserve richer seat studies and their stricter provenance separately.
+
+## Race Centre · 26 November 2026
+
+Race Centre uses the existing paper/ink/red identity, with championship rows and proportional point bars only when data is supplied. Drivers and Teams are clear selected-state buttons. Display the source fetch time and each championship's published round; stale or failed updates must not look live. Empty states link official results rather than invent numbers. Retained upcoming weekends link the correct season's 3D diagram. Phone layouts stack championships and weekends; tables retain readable names and numeric alignment. Unconnected feeds never show a live badge or fabricated podium.

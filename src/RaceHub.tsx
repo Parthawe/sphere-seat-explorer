@@ -26,6 +26,7 @@ import {
   type Season,
   type Race,
 } from "./races";
+const RacingCentre=lazy(()=>import("./RacingCentre"));
 const CircuitLayoutViewer=lazy(()=>import("./CircuitLayoutViewer"));
 const CircuitSeatingExplorer = lazy(() => import("./CircuitSeatingExplorer"));
 const AustriaDesk = lazy(() => import("./AustriaDesk"));
@@ -78,7 +79,8 @@ export default function RaceHub() {
     requestNavigationFocus();
     const p = new URLSearchParams({ season: String(next.season) });
     if (next.race) p.set("race", next.race);
-    if (next.layout) p.set("screen", "layout");
+    if (next.racing) p.set("screen", "racing");
+    else if (next.layout) p.set("screen", "layout");
     else if (next.circuit) p.set("screen", "circuit");
     else if (next.atlas) p.set("screen", "vegas");
     else if (next.seats) {
@@ -103,7 +105,7 @@ export default function RaceHub() {
   );
   const circuitModel = findCircuitModel(route.season,route.race);
   useEffect(() => {
-    const pageTitle = route.layout && selected
+    const pageTitle = route.racing ? `${route.season} Race Centre` : route.layout && selected
       ? `${selected.name} ${selected.season} · 3D circuit diagram`
       : route.circuit && circuitModel
       ? `${circuitModel.country} ${circuitModel.season} · 3D seating study`
@@ -119,6 +121,7 @@ export default function RaceHub() {
     document.querySelector('meta[property="og:title"]')?.setAttribute("content", document.title);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", document.title);
   }, [route, selected]);
+  if(route.racing)return <Suspense fallback={<div className="hub-loading">Opening Race Centre…</div>}><RacingCentre key={route.season} season={route.season} onSeason={season=>go({season,race:"",seats:false,racing:true})} onBack={()=>go({season:route.season,race:"",seats:false})} onRace={race=>go({season:race.season,race:race.slug,seats:false,layout:true})}/></Suspense>;
   if(route.layout&&selected&&circuitLayoutId(selected.season,selected.slug))return <Suspense fallback={<div className="hub-loading">Opening 3D circuit diagram…</div>}><CircuitLayoutViewer key={`${selected.season}-${selected.slug}`} race={selected} onBack={()=>go({season:route.season,race:route.race,seats:false})} onRace={race=>go({season:race.season,race:race.slug,seats:false,layout:true})}/></Suspense>;
   if (route.circuit && circuitModel) return <Suspense fallback={<div className="hub-loading">Opening the circuit seating study…</div>}><CircuitSeatingExplorer key={circuitModel.id} model={circuitModel} onBack={() => go({season:route.season,race:route.race,seats:false})}/></Suspense>;
   if (route.atlas)
@@ -210,6 +213,7 @@ export default function RaceHub() {
       </header>
       <main id="race-content">
         <nav className="product-jump-nav" aria-label="Explore F1 Tickets Online">
+          <a href={`?season=${route.season}&screen=racing`} onClick={e=>{e.preventDefault();go({season:route.season,race:"",seats:false,racing:true});}}><UiIcon name="grid"/>Race Centre</a>
           <a href={`?season=${route.season}#race-calendar`} onClick={e => { e.preventDefault(); go({ season: route.season, race: "", seats: false }, "#race-calendar"); }}><UiIcon name="calendar"/>All races</a>
           <a href={`?season=${route.season}&race=las-vegas&screen=vegas`}>
             <UiIcon name="cube"/>Las Vegas 3D

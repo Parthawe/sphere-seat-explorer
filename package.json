@@ -10,7 +10,8 @@
     "test": "tsx --test src/*.test.ts scripts/*.test.mjs",
     "collect:tickets": "node scripts/collect-ticket-sources.mjs",
     "audit:partners": "tsx scripts/audit-ticket-partners.ts",
-    "model:revenue": "tsx scripts/revenue-report.ts"
+    "model:revenue": "tsx scripts/revenue-report.ts",
+    "sync:racing": "tsx scripts/sync-racing.ts"
   },
   "dependencies": {
     "@react-three/fiber": "^9.0.0",
