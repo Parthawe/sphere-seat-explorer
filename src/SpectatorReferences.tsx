@@ -5,8 +5,18 @@ import {
   type ReferenceVenue,
   type SpectatorReference,
 } from "./photoReferences";
+// Only restore after an explicit unload; opening a dialog must retain its own focus flow.
+function useEmbedReturnFocus(enabled: boolean) {
+  const button = useRef<HTMLButtonElement>(null), previouslyEnabled = useRef(false);
+  useLayoutEffect(() => {
+    if (previouslyEnabled.current && !enabled) button.current?.focus();
+    previouslyEnabled.current = enabled;
+  }, [enabled]);
+  return button;
+}
 function OriginalVideo({ videoId, title }: { videoId: string; title:string }) {
   const [enabled, setEnabled] = useState(false);
+  const loadButton = useEmbedReturnFocus(enabled);
   return (
     <div className="spectator-original">
       {enabled ? (
@@ -39,7 +49,7 @@ function OriginalVideo({ videoId, title }: { videoId: string; title:string }) {
         </>
       ) : (
         <>
-          <button onClick={() => setEnabled(true)}>
+          <button ref={loadButton} onClick={() => setEnabled(true)}>
             Load source video
           </button>
           <p>
@@ -65,6 +75,7 @@ function OriginalPost({ reference }: { reference: SpectatorReference }) {
     [status, setStatus] = useState<"loading" | "ready" | "unavailable">(
       "loading",
     );
+  const loadButton = useEmbedReturnFocus(enabled);
   useEffect(() => {
     if (
       !enabled ||
@@ -125,7 +136,7 @@ function OriginalPost({ reference }: { reference: SpectatorReference }) {
     <div className="spectator-original">
       {!enabled ? (
         <>
-          <button onClick={() => setEnabled(true)}>
+          <button ref={loadButton} onClick={() => setEnabled(true)}>
             Load original photo post
           </button>
           <p>
