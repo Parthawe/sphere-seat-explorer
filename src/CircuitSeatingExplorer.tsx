@@ -2,7 +2,7 @@ import { SITE_ORIGIN, syncPublicUrlMetadata } from "./brand";
 import type {ModelCameraControls} from "./CircuitSeatingScene";
 import CircuitOverview from "./CircuitOverview";
 import SpectatorReferences from "./SpectatorReferences";
-import {lazy,Suspense,useCallback,useEffect,useRef,useState} from 'react';
+import {lazy,Suspense,useCallback,useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {BrandIdentity} from './BrandMark';
 import {bankGroundHeight,bankFrame,closestTrack,modelCount,modelPosition,modelPositionUrl,normalizeModelPosition,positionKey,type CircuitModel,type ModelPosition} from './circuitSeating';
 const Scene=lazy(()=>import('./CircuitSeatingScene'));
@@ -10,8 +10,15 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  const [selection,setSelection]=useState(()=>{const q=new URLSearchParams(location.search);return normalizeModelPosition(model,{bank:q.get('bank')??undefined,section:Number(q.get('section'))||undefined,row:Number(q.get('modelRow'))||undefined,seat:Number(q.get('position'))||undefined});});
  const [mode,setMode]=useState<'circuit'|'stand'|'seat'>(()=>{const mode=new URLSearchParams(location.search).get('camera');return mode==='stand'||mode==='circuit'?mode:'seat';}),[playing,setPlaying]=useState(false),[roofs,setRoofs]=useState(true),[reset,setReset]=useState(0),[ready,setReady]=useState(false),[unavailable,setUnavailable]=useState(false),[retry,setRetry]=useState(0),[overview,setOverview]=useState(false),[grid,setGrid]=useState(false),[referencesOpen,setReferencesOpen]=useState(()=>new URLSearchParams(location.search).get("references")==="1"),[saved,setSaved]=useState<ModelPosition[]>([]),[feedback,setFeedback]=useState('');
  const [speed,setSpeed]=useState(1),[pass,setPass]=useState(0),[following,setFollowing]=useState(false);
+ const heading=useRef<HTMLDivElement>(null),cameraModes=useRef<HTMLElement>(null);
  const stage=useRef<HTMLElement|null>(null),[sceneVisible,setSceneVisible]=useState(true);
  useEffect(()=>{const observer=new IntersectionObserver(([entry])=>setSceneVisible(entry.isIntersecting));if(stage.current)observer.observe(stage.current);return()=>observer.disconnect();},[]);
+ useLayoutEffect(()=>{
+  const surface=stage.current,title=heading.current,modes=cameraModes.current;
+  if(!surface||!title||!modes)return;
+  const measure=()=>{surface.style.setProperty('--scene-heading-bottom',`${title.offsetTop+title.offsetHeight}px`);surface.style.setProperty('--scene-camera-height',`${modes.offsetHeight}px`);};
+  const observer=new ResizeObserver(measure);observer.observe(title);observer.observe(modes);measure();return()=>observer.disconnect();
+ },[]);
  const manualLook=useCallback(()=>setFollowing(false),[]);
  const cameraControls=useRef<ModelCameraControls|null>(null);
  const [zoomLimits,setZoomLimits]=useState({inward:true,outward:true});
@@ -40,8 +47,8 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
     </div>
     {!ready&&!unavailable&&<div className="circuit-model-loading" role="status">Building the circuit view…</div>}
     <button className="circuit-photo-trigger" onClick={()=>{setPlaying(false);setReferencesOpen(true);}}>Photos & fan reports</button>
-    <div className="circuit-model-heading"><span>{model.name}</span><h1>{bank.name}</h1><p>{bank.kind==='lawn'?'LAWN STUDY':`MODEL SECTION ${selection.section} / ROW ${selection.row}`} · POSITION {selection.seat}</p></div>
-    <nav className="circuit-camera-modes" aria-label="3D camera"><button aria-pressed={mode==='circuit'} onClick={()=>{setFollowing(false);setMode('circuit');}}>Full circuit</button><button aria-pressed={mode==='stand'} onClick={()=>{setFollowing(false);setMode('stand');}}>Grandstand</button><button aria-pressed={mode==='seat'} onClick={()=>setMode('seat')}>{bank.kind==='lawn'?'Standing view':'Seated view'}</button></nav>
+    <div ref={heading} className="circuit-model-heading"><span>{model.name}</span><h1>{bank.name}</h1><p>{bank.kind==='lawn'?'LAWN STUDY':`MODEL SECTION ${selection.section} / ROW ${selection.row}`} · POSITION {selection.seat}</p></div>
+    <nav ref={cameraModes} className="circuit-camera-modes" aria-label="3D camera"><button aria-pressed={mode==='circuit'} onClick={()=>{setFollowing(false);setMode('circuit');}}>Full circuit</button><button aria-pressed={mode==='stand'} onClick={()=>{setFollowing(false);setMode('stand');}}>Grandstand</button><button aria-pressed={mode==='seat'} onClick={()=>setMode('seat')}>{bank.kind==='lawn'?'Standing view':'Seated view'}</button></nav>
     {mode==='seat'&&<div className="circuit-seat-zoom" role="group" aria-label="Seated view zoom" title="Zoom keeps your modeled seat fixed">
      <button disabled={!ready||unavailable||!zoomLimits.inward} aria-label="Zoom in on seated view" title="Zoom in" onClick={()=>cameraControls.current?.zoomIn()}>+</button>
      <button disabled={!ready||unavailable} aria-label="Reset seated zoom" title="Reset zoom" onClick={()=>cameraControls.current?.resetZoom()}>1×</button>

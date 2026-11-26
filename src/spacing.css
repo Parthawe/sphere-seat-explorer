@@ -203,3 +203,9 @@
 .funding-disclosure p {font-size:13px; line-height:1.7;}
 @media (max-width:760px) {.funding-disclosure {padding-inline:20px;} .shortlist-notebook {padding:20px;} .viewing-choice-list>button {gap:12px;} .shortlist-choice-state {min-width:64px; font-size:11px; padding:8px 6px;}}
 @media (max-width:360px) {.funding-disclosure {padding-inline:16px;} .shortlist-notebook {padding:16px;} .planning-intent button {padding-inline:10px; font-size:12px;} .viewing-choice-list>button {align-items:flex-start;}}
+
+/* Titles retain contrast when the camera points at bright track furniture. */
+.circuit-model-stage:not(.day-scene) .circuit-model-canvas::after {content:""; position:absolute; inset:0 0 auto; height:calc(var(--scene-heading-bottom,176px) + 44px); background:linear-gradient(#080f1cf5,#080f1cdd calc(100% - 44px),#080f1c00); pointer-events:none;}
+.circuit-model-stage.day-scene .circuit-model-canvas::after {height:calc(var(--scene-heading-bottom,176px) + 44px); background:linear-gradient(#e7eeebf5,#e7eeebea calc(100% - 44px),#e7eeeb00);}
+.circuit-camera-modes {top:calc(var(--scene-heading-bottom,134px) + 16px);}
+@media(max-width:760px) {.circuit-photo-trigger,.circuit-seat-zoom {top:calc(var(--scene-heading-bottom,134px) + var(--scene-camera-height,52px) + 32px);}}

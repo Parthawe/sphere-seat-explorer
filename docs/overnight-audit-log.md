@@ -41,6 +41,17 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: selecting a calendar race with Enter removed the calendar button and left keyboard focus on BODY. The destination heading was not announced through focus. The same gap affected user-requested navigation into and out of lazy-loaded scenes.
 - Change: explicit in-app page navigation focuses the destination H1 after it mounts, without changing the scroll position. Hash navigation keeps its own target handling. Deferred focus cancels if the user begins another interaction while content is loading; initial loads and native browser back/forward do not receive an extra forced focus.
 - Validation: desktop 1440px and phone 390px flows passed calendar-to-race, lazy 3D entry, return-to-guide, browser back/forward route restoration and calendar anchor focus. Invalid season, unknown race and unsupported China 2027 scene retained the correct fallback without a Vegas scene. Four affected route/metadata tests and TypeScript passed. Both destination-heading screenshots inspected; no browser errors.
-- Publication: prepared as the next code release; reconcile exact commit/version from native Sites history at the next audit.
+- Publication: v57, source `b3af1226814b1290b9f7d3be9734d567738377d7`, succeeded; matching GitHub push confirmed.
 - Limits: browser back/forward route restoration was checked, not assistive-technology speech output. Existing source-season and approximate-view boundaries remain unchanged.
 - Next useful check: daylight scene title/control contrast and small-screen control spacing under bright geometry, without altering source geometry.
+
+
+## 26 November 2026 · 08:32 UTC · Scene title contrast and responsive control spacing
+
+- Starting release: v57, source `b3af1226814b1290b9f7d3be9734d567738377d7`; clean checkout.
+- Evidence: the night scene had no title scrim. Looking down placed white title text over bright track furniture, including white pixels with a 1:1 white-on-white contrast before text-shadow effects. Monza’s longest bank label overlapped the camera bar at 1024px (heading bottom 230.72px versus bar top 230px). The 320px Spa sample itself was healthy.
+- Change: night titles now have a dark contrast backing. Day and night backing heights follow the actual title height. A ResizeObserver keeps the camera bar below wrapped titles and phone photo/zoom controls below the bar, preserving approximately 16px gaps as fonts and bank names change. No scene geometry changed.
+- Validation: ten day/night layouts across 320, 390, 768, 1024 and 1440px had approximately 16px title/control gaps, no photo/zoom overlap and no horizontal overflow. No browser errors. Desktop and phone night screenshots plus the longest Monza phone heading were inspected. TypeScript passed; production build is part of publication. No redundant full-suite rerun for this layout-only change.
+- Publication: prepared as the next code release; reconcile exact commit/version from native Sites history at the next audit.
+- Limits: this addresses heading readability and overlay geometry, not a full-site contrast certification or calibrated seat views.
+- Next useful check: loading/error recovery and saved comparisons with unavailable or corrupted device storage.
