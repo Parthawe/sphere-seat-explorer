@@ -50,6 +50,7 @@ export default function CircuitAreaMap({
           </pattern>
         </defs>
         <rect width="620" height="570" fill={`url(#${grid})`} />
+        {venue.geography.water&&<path d={'M'+venue.geography.water.map(p=>p.join(',')).join(' L')+' Z'} fill="#203c48" stroke="none"/>}
         <path
           d={path}
           fill="#20212b"

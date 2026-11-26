@@ -37,7 +37,7 @@ export default function AreaComparison({
       >
         <table>
           <caption className="sr-only">
-            {venue.name} {venue.season} · {venue.durationDays}-day products ·
+            {venue.name} {venue.season} · {venue.comparisonPeriod??`${venue.durationDays}-day products`} ·
             broad areas only
           </caption>
           <thead>

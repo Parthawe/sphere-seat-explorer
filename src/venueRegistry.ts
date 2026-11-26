@@ -1,3 +1,4 @@
+import {monacoAreas,monacoGeography,MONACO_CHECKED,MONACO_MAP} from './monaco';
 import {suzukaAreas,suzukaGeography,SUZUKA_CHECKED,SUZUKA_TICKETS} from './suzuka';
 import { singaporeAreas, SINGAPORE_CHECKED, SINGAPORE_MAP } from "./singapore";
 import singaporeGeometry from "./singapore-track.json";
@@ -39,6 +40,7 @@ export type VenueDefinition = {
   watermark: string;
   checked: string;
   durationDays: number;
+  comparisonPeriod?: string;
   officialMap: string;
   ticketGuidance: string;
   geography: {
@@ -46,6 +48,7 @@ export type VenueDefinition = {
     licence: string;
     queried: string;
     points: number[][];
+    water?: number[][];
   };
   download: string;
   areas: readonly VenueArea[];
@@ -139,6 +142,8 @@ export const venueRegistry: readonly VenueDefinition[] = [
   {
     id:'japan',circuitId:'suzuka',raceSlug:'japan',season:2027,name:'Suzuka Circuit',watermark:'SUZUKA',checked:SUZUKA_CHECKED,durationDays:3,officialMap:SUZUKA_TICKETS,ticketGuidance:'https://www.suzukacircuit.jp/f1/faq/faq_ticket.html',geography:suzukaGeography,download:'/data/suzuka-track.json',coverage:{level:'area-estimate',exactSeats:false,seat3d:false},areas:suzukaAreas,map:{markerStyle:'callout',roadStroke:9,trackStroke:3,decorations:[{kind:'path',d:'M'+suzukaGeography.grade_separation.upper_map_points.map(p=>p.join(',')).join(' L'),stroke:'#20212b',width:12},{kind:'path',d:'M'+suzukaGeography.grade_separation.upper_map_points.map(p=>p.join(',')).join(' L'),stroke:'#f0f1f4',width:3}]}
   },
+  {id:'monaco',raceSlug:'monaco',circuitId:'monaco-streets',season:2027,name:'Circuit de Monaco',watermark:'MONACO',checked:MONACO_CHECKED,durationDays:4,comparisonPeriod:'Day-specific ticket categories',officialMap:MONACO_MAP,ticketGuidance:'https://acm.mc/epreuves/formula-1-grand-prix-de-monaco/infos-pratiques/venir-au-formula-1-grand-prix-de-monaco/',geography:monacoGeography,download:'/data/monaco-track.json',areas:monacoAreas,coverage:{level:'area-estimate',exactSeats:false,seat3d:false},map:{markerStyle:'callout',roadStroke:9,trackStroke:3,decorations:[{kind:'text',x:350,y:350,text:'PORT HERCULE'}]}},
+
 ];
 export function findVenue(season: number, raceSlug: string) {
   return venueRegistry.find(

@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-25",
   "cadence_hours": 1,
-  "phase": "monaco-initial-source-audit",
+  "phase": "china-initial-source-audit",
   "active_run": null,
-  "next_action": "Begin Monaco 2027: verify event dates and the physical street circuit from current organizer/F1 sources, identify current public viewing products and listed sales channels, then obtain bounded licensed route/stand geography for its own map and supported representative model. Suzuka\u2019s start/finish evidence audit is checkpointed in research/suzuka/start-finish-envelope-audit.json and elevation-diagnostic.json. Six current organizer-linked V1/V2/A1/A2/B1/B2 schematic seating PDFs now have direct UI handoffs. They describe labels/variants but no metric tier/bridge geometry. Three GSI API samples identify available 5m-laser DEM context, not a terrain field or both road decks; no diagnostic value is used as a bridge, tier or eye height. Do not repeat the same three elevation queries, completed GP bbox acquisition or six-PDF audit. Keep Suzuka area-only with its explicit 3D vertical-context gap; revisit only with new licensed structure/elevation assets. Preserve nineteen families, eleven source-only options, distinct V1/V2/Q1/S/G/D limits, outlet visibility guidance, 2027-only routing, comparison/share privacy and all existing scene/photo/replay behavior.",
+  "next_action": "Begin China 2027: verify current organizer/F1 event dates and the Shanghai physical venue, public ticket products and listed sales channels; obtain bounded licensed GP/stand geometry and build a supported independent map/representative 3D study. Monaco 2027 now has twelve area families, twenty named category rows and six distinct source-only accessible/hospitality/diagram references. Its organizer event runs 3\u20136 June, F1 sessions 4\u20136 June; comparisons describe day-specific categories, not universal four-day packages. Preserve Gold versus hospitality, K subgroup names, O upper/lower, T covered/upper/lower and unnumbered Z/Rocher. MONACO-SOURCES.md and monaco-track.json checkpoint the source audit. GP street interpretation is 41 ways/416 vertices/~3,325m versus published 3,337 m, excluding pit lane 850261588 and pit-exit 1388331347. Explicit licensed-node adaptations use a 35092475 excerpt and trim 1551240829; do not repeat the source bbox or silently straighten those gaps. Harbour context uses thirteen licensed coastline ways with an authored off-canvas seaward closure. No measured temporary stand geometry, terrain/tunnel structure or calibrated 3D view is supplied. The organizer configurator requires login at actual seat selection; do not repeat attempts or access private inventory. Do not copy its digital-twin assets or original map/photo artwork. Revisit Monaco/Suzuka vertical and precision gaps only with new assets; preserve all existing scene/photo/replay/privacy/season behavior.",
   "venues": [
     {
       "id": "las-vegas",
@@ -238,9 +238,27 @@
       "id": "monaco",
       "event": "Monaco",
       "venue": "Monte Carlo",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "area_map_12_families_2027_3d_needs_assets",
+      "sources": [
+        "https://www.formula1.com/en/racing/2027/monaco",
+        "https://acm.mc/billetterie-2027-top-depart/",
+        "https://monaco-grandprix.com/edition/formula-1-grand-prix-de-monaco-2027/evenement/circuit-de-monaco/",
+        "https://monaco-grandprix.com/edition/formula-1-grand-prix-de-monaco-2027/evenement/tarifs-2027/",
+        "https://www.openstreetmap.org/relation/148194"
+      ],
+      "next_action": "Begin China 2027: verify current organizer/F1 event dates and the Shanghai physical venue, public ticket products and listed sales channels; obtain bounded licensed GP/stand geometry and build a supported independent map/representative 3D study. Monaco 2027 now has twelve area families, twenty named category rows and six distinct source-only accessible/hospitality/diagram references. Its organizer event runs 3\u20136 June, F1 sessions 4\u20136 June; comparisons describe day-specific categories, not universal four-day packages. Preserve Gold versus hospitality, K subgroup names, O upper/lower, T covered/upper/lower and unnumbered Z/Rocher. MONACO-SOURCES.md and monaco-track.json checkpoint the source audit. GP street interpretation is 41 ways/416 vertices/~3,325m versus published 3,337 m, excluding pit lane 850261588 and pit-exit 1388331347. Explicit licensed-node adaptations use a 35092475 excerpt and trim 1551240829; do not repeat the source bbox or silently straighten those gaps. Harbour context uses thirteen licensed coastline ways with an authored off-canvas seaward closure. No measured temporary stand geometry, terrain/tunnel structure or calibrated 3D view is supplied. The organizer configurator requires login at actual seat selection; do not repeat attempts or access private inventory. Do not copy its digital-twin assets or original map/photo artwork. Revisit Monaco/Suzuka vertical and precision gaps only with new assets; preserve all existing scene/photo/replay/privacy/season behavior.",
+      "mapped_products": 12,
+      "named_category_rows": 20,
+      "source_only_options": 6,
+      "seasons_with_area_coverage": [
+        2027
+      ],
+      "exact_seats_verified": false,
+      "remaining_gaps": [
+        "Terrain, tunnel/building context and measured temporary stand/tier geometry for representative 3D",
+        "Exact chairs, Gold/tier subdivisions, accessible routes and hospitality rooms/tables",
+        "Dated spectator media and historical Monaco telemetry; source map access-legend H codes are not additional verified priced families"
+      ]
     },
     {
       "id": "australia",
@@ -960,6 +978,25 @@
         "No source PDF/photograph redistributed; original handoffs only"
       ],
       "next": "Begin Monaco 2027: verify event dates and the physical street circuit from current organizer/F1 sources, identify current public viewing products and listed sales channels, then obtain bounded licensed route/stand geography for its own map and supported representative model. Suzuka\u2019s start/finish evidence audit is checkpointed in research/suzuka/start-finish-envelope-audit.json and elevation-diagnostic.json. Six current organizer-linked V1/V2/A1/A2/B1/B2 schematic seating PDFs now have direct UI handoffs. They describe labels/variants but no metric tier/bridge geometry. Three GSI API samples identify available 5m-laser DEM context, not a terrain field or both road decks; no diagnostic value is used as a bridge, tier or eye height. Do not repeat the same three elevation queries, completed GP bbox acquisition or six-PDF audit. Keep Suzuka area-only with its explicit 3D vertical-context gap; revisit only with new licensed structure/elevation assets. Preserve nineteen families, eleven source-only options, distinct V1/V2/Q1/S/G/D limits, outlet visibility guidance, 2027-only routing, comparison/share privacy and all existing scene/photo/replay behavior."
+    },
+    {
+      "date": "2026-11-25",
+      "scope": "Monaco 2027 event/product audit and source-led harbour area map",
+      "result": "Added twelve viewing families, retaining twenty listed categories and six distinct source-only accessible/hospitality/diagram references. Licensed north-up street/coastline map, three-area comparison, sanitized sharing and official ticket handoffs are implemented. No unsupported 3D seat preview. Advanced independent queue to China.",
+      "evidence": [
+        "F1 confirms4\u20136 June2027; ACM official pages confirm supporting event3\u20136 June and identify monaco-grandprix.com as official sales channel",
+        "Current2027 category sheet and original circuit diagram inspected visually; Gold, K groups, O/T levels and unnumbered Z/Rocher remain distinct; prices/stock not copied",
+        "One bounded public OSM snapshot supplies relation148194 and thirteen coastline ways. Pit lane/exit excluded; documented licensed-node excerpts resolve current relation split-way stubs. Closed adapted street trace41 ways/416 points/~3,325m",
+        "95 tests pass including season isolation, twenty-category/standing distinctions, no 3D fallback, sanitized share, source-only options, closed route/adaptations, source coastline and segment-metadata alias regression",
+        "Desktop1440\u00d71000 and phones320\u00d7740/390\u00d7844: six varied category selections, keyboard map, three-area comparison, six source-only references, proper2026 unsupported state; own app has no exceptions/overflow. Final production build runs in packaging"
+      ],
+      "limitations": [
+        "Temporary stand anchors/Gold/tier boundaries are estimates; no official row/chair geometry",
+        "No terrain/tunnel heights, real access route or calibrated physical view",
+        "Original current map access legend contains H labels absent from the current priced-family list; no extra H product is inferred",
+        "Official public-page scripts produced headless errors, but linked original diagrams were inspectable; no seat-selection/login stage was entered"
+      ],
+      "next": "Begin China 2027: verify current organizer/F1 event dates and the Shanghai physical venue, public ticket products and listed sales channels; obtain bounded licensed GP/stand geometry and build a supported independent map/representative 3D study. Monaco 2027 now has twelve area families, twenty named category rows and six distinct source-only accessible/hospitality/diagram references. Its organizer event runs 3\u20136 June, F1 sessions 4\u20136 June; comparisons describe day-specific categories, not universal four-day packages. Preserve Gold versus hospitality, K subgroup names, O upper/lower, T covered/upper/lower and unnumbered Z/Rocher. MONACO-SOURCES.md and monaco-track.json checkpoint the source audit. GP street interpretation is 41 ways/416 vertices/~3,325m versus published 3,337 m, excluding pit lane 850261588 and pit-exit 1388331347. Explicit licensed-node adaptations use a 35092475 excerpt and trim 1551240829; do not repeat the source bbox or silently straighten those gaps. Harbour context uses thirteen licensed coastline ways with an authored off-canvas seaward closure. No measured temporary stand geometry, terrain/tunnel structure or calibrated 3D view is supplied. The organizer configurator requires login at actual seat selection; do not repeat attempts or access private inventory. Do not copy its digital-twin assets or original map/photo artwork. Revisit Monaco/Suzuka vertical and precision gaps only with new assets; preserve all existing scene/photo/replay/privacy/season behavior."
     }
   ],
   "blockers": [
@@ -980,6 +1017,12 @@
       "status": "needs_assets",
       "scope": "Representative 3D and calibrated views only; area map and other venues remain available",
       "reason": "Named horizontal envelopes and schematic seating charts do not establish tier/structure heights. Three GSI ground DEM queries cannot recover both crossing decks or measured clearance. No unsupported flat figure-eight is rendered; continue Monaco."
+    },
+    {
+      "id": "monaco-3d-context",
+      "status": "needs_assets",
+      "scope": "Representative 3D/exact views only; area map and independent venues remain available",
+      "reason": "Current primary diagram/list supports broad product regions. No measured temporary stand envelopes, terrain/tunnel structure or licensed redistributable digital-twin geometry is supplied. Actual chair selection requires organizer sign-in; do not access private inventory."
     }
   ]
 }
