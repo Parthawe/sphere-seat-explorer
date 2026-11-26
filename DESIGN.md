@@ -207,3 +207,11 @@ Keep the ink/red identity, model-led scene, compact camera controls, smooth boun
 ## Connected standings · 26 November 2026
 
 Race Centre now shows F1DB's published driver/team tables, with visible CC BY attribution, retrieval time and an explicit not-live-timing label. Default to five-minute visible-page refresh, retain the last good table during outages and distinguish an unpublished future season from a known-year source failure. Unknown wins and round numbers stay absent. Team labels describe source season entries, not guaranteed current-grid membership. Preserve the paper/ink/red table hierarchy and accessible point bars.
+
+## Shared F1 color palette · 26 November 2026
+
+All UI surfaces use `src/theme.css`: action red #e10600, hover #ca0500, strong red #9d0400, ink #15151e, panel #1c1c25, raised #26262b, warm paper #f7f4f1, separators #e0dedc/#cdcdcd and secondary text #606066. These anchors were checked against styles served by https://www.formula1.com/ on 26 November 2026. Other neutrals are supporting UI roles, not claimed official brand specifications.
+
+Use red for primary actions and selected states, with white labels. Small red text on light surfaces uses strong red; large hero lettering may use action red. The lighter signal red is reserved for dark-surface marks where additional contrast is needed. Global keyboard outlines use action red, which clears 3:1 on both paper and ink. Keep semantic warnings, success, team colors, source imagery and physical scene materials independent. Do not recolor real photos or terrain to match the UI.
+
+Calendar, guides, local price notes, all explorer shells, reference media and Race Centre share these roles. Preserve reduced-motion and data-saver opt-in on the landing preview; standalone 3D destinations are already explicit user navigation, with their existing paused motion and static recovery paths.

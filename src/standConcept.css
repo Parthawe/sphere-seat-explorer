@@ -1,36 +1,36 @@
-.venue-stand-options>li>.stand-concept-link {display:inline-flex; gap:9px; min-height:44px; padding:8px 12px; margin:8px 0; border:1px solid #929aac; font-size:13px;}
-.concept-viewer {min-height:100svh; background:#101827; color:#f2f4f8;}
-.concept-viewer button,.concept-viewer select,.concept-viewer input {min-height:44px; padding:10px 14px; border:1px solid #8593a9; border-radius:0; background:#1a2638; color:#f2f4f8; font:inherit; font-size:13px;}
+.venue-stand-options>li>.stand-concept-link {display:inline-flex; gap:9px; min-height:44px; padding:8px 12px; margin:8px 0; border:1px solid var(--color-control-border); font-size:13px;}
+.concept-viewer {min-height:100svh; background:var(--color-ink); color:var(--color-surface);}
+.concept-viewer button,.concept-viewer select,.concept-viewer input {min-height:44px; padding:10px 14px; border:1px solid var(--color-control-border); border-radius:0; background:var(--color-raised); color:var(--color-surface); font:inherit; font-size:13px;}
 .concept-viewer button {cursor:pointer;}
-.concept-viewer button:hover:not(:disabled) {background:#34445b; color:#fff;}
-.concept-viewer button[aria-pressed=true] {background:#c70b05; border-color:#ec3c35; color:#fff;}
+.concept-viewer button:hover:not(:disabled) {background:var(--color-text-strong); color:var(--color-white);}
+.concept-viewer button[aria-pressed=true] {background:var(--color-action); border-color:var(--color-signal); color:var(--color-white);}
 .concept-viewer button:disabled {opacity:.5;cursor:default;}
 .concept-viewer main {max-width:1700px; padding:28px 24px; margin:auto;}
 .concept-title {display:flex; justify-content:space-between; align-items:end; gap:24px; margin-bottom:24px;}
 .concept-title h1 {font:600 clamp(32px,4vw,48px)/1.1 'Barlow Condensed',sans-serif; margin:8px 0 16px; max-width:30ch;}
-.concept-title p {font-size:13px; line-height:1.6; margin:8px 0; color:#c5cfdd;}
-.concept-status {display:inline-block; border:1px solid #de938e; color:#ffe1dd; padding:6px 10px; font-size:12px;}
+.concept-title p {font-size:13px; line-height:1.6; margin:8px 0; color:var(--color-line);}
+.concept-status {display:inline-block; border:1px solid #de938e; color:var(--color-divider); padding:6px 10px; font-size:12px;}
 .concept-title>label {display:block; flex:0 1 340px; min-width:0; font-size:12px;}
 .concept-title select {display:block; width:100%; margin-top:8px;}
-.concept-workspace {display:grid; grid-template-columns:minmax(0,1fr) 320px; border:1px solid #45536a;}
+.concept-workspace {display:grid; grid-template-columns:minmax(0,1fr) 320px; border:1px solid var(--color-text-muted);}
 .concept-with-media {grid-template-columns:minmax(0,1.35fr) minmax(340px,1fr);}
 .concept-with-media .concept-stage {grid-column:1;grid-row:1;}
 .concept-with-media .concept-media-rail {grid-column:2;grid-row:1 / span 2;}
 .concept-with-media .concept-controls {grid-column:1;grid-row:2;}
 .concept-with-media .concept-stage {height:60svh;min-height:440px;}
-.concept-with-media .concept-controls {border-left:0;border-top:1px solid #45536a;}
-.concept-media-rail {min-width:0;padding:24px;background:#f0f1f5;color:#171d29;border-left:1px solid #45536a;}
+.concept-with-media .concept-controls {border-left:0;border-top:1px solid var(--color-text-muted);}
+.concept-media-rail {min-width:0;padding:24px;background:var(--color-surface);color:var(--color-panel);border-left:1px solid var(--color-text-muted);}
 .concept-media-rail .stand-media-gallery {margin:0;padding:0;border:0;}
-.concept-media-rail p {font-size:12px;line-height:1.65;color:#485369;}
-.concept-media-rail button,.concept-media-rail select {background:#fff;color:#171d29;border-color:#949dae;}
-.concept-media-rail .stand-media-player button,.concept-media-rail .stand-photo-optin button {background:transparent;color:#fff;}
+.concept-media-rail p {font-size:12px;line-height:1.65;color:var(--color-text-muted);}
+.concept-media-rail button,.concept-media-rail select {background:var(--color-white);color:var(--color-panel);border-color:var(--color-control-border);}
+.concept-media-rail .stand-media-player button,.concept-media-rail .stand-photo-optin button {background:transparent;color:var(--color-white);}
 .concept-media-rail .stand-media-heading h3 {font-size:30px;}
 .concept-stage {position:relative; min-height:560px; height:65svh; overflow:hidden; touch-action:none;}
 .concept-stage>div:first-child {position:absolute!important; inset:0;}
-.concept-loading {position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:24px;background:#101827;z-index:2;text-align:center;}
+.concept-loading {position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:24px;background:var(--color-ink);z-index:2;text-align:center;}
 .concept-loading h2 {font:600 30px 'Barlow Condensed',sans-serif;}
-.concept-scene-caption {position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:12px 16px;background:#101827;font-size:11px;color:#c5cfdd;pointer-events:none;}
-.concept-controls {padding:24px; border-left:1px solid #45536a; background:#182131;}
+.concept-scene-caption {position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--color-ink);font-size:11px;color:var(--color-line);pointer-events:none;}
+.concept-controls {padding:24px; border-left:1px solid var(--color-text-muted); background:var(--color-raised);}
 .concept-controls h2 {font:600 28px 'Barlow Condensed',sans-serif;margin:0 0 22px;}
 .concept-camera {display:flex;flex-wrap:wrap;gap:8px;}
 .concept-camera button {display:inline-flex;align-items:center;gap:7px;}
@@ -39,14 +39,14 @@
 .concept-sample {display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .concept-sample label {display:block;min-width:0;font-size:12px;}
 .concept-sample input {display:block;width:100%;margin-top:8px;min-width:0;}
-.concept-controls p {font-size:12px;line-height:1.7;color:#c5cfdd;}
-.concept-controls details {border-top:1px solid #45536a;padding-top:16px;margin-top:24px;}
+.concept-controls p {font-size:12px;line-height:1.7;color:var(--color-line);}
+.concept-controls details {border-top:1px solid var(--color-text-muted);padding-top:16px;margin-top:24px;}
 .concept-controls summary {min-height:44px;font-size:13px;cursor:pointer;}
-.concept-controls a {display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#fff;font-size:12px;}
-.concept-boundary {margin-top:24px;padding-top:20px;border-top:1px solid #45536a;}
+.concept-controls a {display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--color-white);font-size:12px;}
+.concept-boundary {margin-top:24px;padding-top:20px;border-top:1px solid var(--color-text-muted);}
 .concept-boundary strong {font-size:13px;}
 .concept-unavailable {max-width:640px;padding:40px 0;}
 .concept-unavailable p {line-height:1.7;}
-@media(max-width:900px){.concept-workspace {grid-template-columns:minmax(0,1fr);} .concept-controls {border-left:0;border-top:1px solid #45536a;} .concept-stage {min-height:400px;height:55svh;} .concept-title {display:block;} .concept-title>label {margin-top:20px;max-width:500px;} .concept-viewer select,.concept-viewer input {font-size:16px;}}
-@media(max-width:900px){.concept-with-media {display:flex;flex-direction:column;}.concept-with-media .concept-stage {order:0;min-height:360px;height:48svh;}.concept-with-media .concept-media-rail {order:1;border-left:0;border-top:1px solid #45536a;padding:20px;}.concept-with-media .concept-controls {order:2;}}
+@media(max-width:900px){.concept-workspace {grid-template-columns:minmax(0,1fr);} .concept-controls {border-left:0;border-top:1px solid var(--color-text-muted);} .concept-stage {min-height:400px;height:55svh;} .concept-title {display:block;} .concept-title>label {margin-top:20px;max-width:500px;} .concept-viewer select,.concept-viewer input {font-size:16px;}}
+@media(max-width:900px){.concept-with-media {display:flex;flex-direction:column;}.concept-with-media .concept-stage {order:0;min-height:360px;height:48svh;}.concept-with-media .concept-media-rail {order:1;border-left:0;border-top:1px solid var(--color-text-muted);padding:20px;}.concept-with-media .concept-controls {order:2;}}
 @media(max-width:400px){.concept-viewer main {padding:22px 16px;} .concept-viewer .layout-header {gap:10px;} .concept-viewer .layout-header .brand-name {font-size:19px;} .concept-viewer .layout-header>button {padding:10px;font-size:12px;} .concept-scene-caption {flex-direction:column;gap:5px;} .concept-controls {padding:20px;}}

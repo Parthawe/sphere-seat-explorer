@@ -1,8 +1,8 @@
-.circuit-locator {display:block; width:100%; margin:16px 0; padding:10px 16px 0; border:1px solid #414c60; background:#171d29; color:#f4f5f8; text-align:left;}
+.circuit-locator {display:block; width:100%; margin:16px 0; padding:10px 16px 0; border:1px solid var(--color-text-strong); background:var(--color-panel); color:var(--color-paper); text-align:left;}
 .circuit-locator>svg {display:block; width:100%; height:110px;}
-.circuit-locator-caption {display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:40px; margin-top:8px; border-top:1px solid #414c60; font-size:12px;}
+.circuit-locator-caption {display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:40px; margin-top:8px; border-top:1px solid var(--color-text-strong); font-size:12px;}
 .circuit-locator-caption>span {display:flex; align-items:center; gap:9px;}
-.circuit-locator:hover:not(:disabled) {background:#202839; color:#fff;}
+.circuit-locator:hover:not(:disabled) {background:var(--color-raised); color:var(--color-white);}
 .circuit-panel-heading h2 {font-size:30px; margin:0 0 8px;}
 .circuit-panel-heading p {line-height:1.6;}
 .circuit-accuracy {padding-block:16px;}

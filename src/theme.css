@@ -1,0 +1,31 @@
+/* Shared UI palette, referenced against formula1.com on 26 November 2026.
+   Geometry, team identifiers, photographs and semantic status colors are separate. */
+:root {
+  --color-action: #e10600;
+  --color-action-hover: #ca0500;
+  --color-action-strong: #9d0400;
+  --color-signal: #ff6259;
+  --color-night: #101014;
+  --color-night-rgb: 16 16 20;
+  --color-ink: #15151e;
+  --color-panel: #1c1c25;
+  --color-raised: #26262b;
+  --color-hover-surface: #303037;
+  --color-text-strong: #47464c;
+  --color-text-muted: #606066;
+  --color-control-border: #89888d;
+  --color-line: #cdcdcd;
+  --color-divider: #e0dedc;
+  --color-surface: #efeeec;
+  --color-paper: #f7f4f1;
+  --color-white: #fff;
+}
+::selection { background: var(--color-action-strong); color: var(--color-white); }
+:focus-visible { outline: 2px solid var(--color-action); outline-offset: 3px; }
+input, textarea { caret-color: var(--color-action); }
+input[type=checkbox], input[type=radio], input[type=range] { accent-color: var(--color-action); }
+:is(.concept-viewer, .layout-viewer, .racing-centre) button[aria-pressed=true]:hover:not(:disabled) {
+  background: var(--color-action-hover);
+  border-color: var(--color-action-hover);
+  color: var(--color-white);
+}

@@ -1,36 +1,36 @@
-.venue-stands {margin:28px 0; padding:26px; border:1px solid #b7bdc9; background:#f0f1f5; color:#171d29;}
+.venue-stands {margin:28px 0; padding:26px; border:1px solid var(--color-line); background:var(--color-surface); color:var(--color-panel);}
 .venue-stands>header {display:flex; align-items:center; gap:24px;}
 .venue-stands>header>div:first-child {flex:1;min-width:0;}
 .venue-stands-header-actions {display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-left:auto;}
 .venue-stands h2 {font:600 32px 'Barlow Condensed',sans-serif; margin:0 0 8px;}
 .venue-stands p {font-size:13px; line-height:1.65; margin:8px 0;}
-.venue-stands-overview {display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:44px; padding:12px 16px; border:1px solid #949dae; color:#171d29; text-decoration:none; font-size:13px;}
-.venue-stands-note {padding:12px 0 20px; border-bottom:1px solid #b7bdc9;}
+.venue-stands-overview {display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:44px; padding:12px 16px; border:1px solid var(--color-control-border); color:var(--color-panel); text-decoration:none; font-size:13px;}
+.venue-stands-note {padding:12px 0 20px; border-bottom:1px solid var(--color-line);}
 .venue-stand-tools {display:flex; align-items:center; flex-wrap:wrap; gap:16px; margin-top:20px;}
 .venue-stand-tools>label {display:flex; align-items:center; gap:8px; flex:1 1 230px;}
-.venue-stands input {width:100%; min-width:0; min-height:44px; border:1px solid #929aac; padding:10px 12px; background:#fff; border-radius:0; font:inherit; font-size:14px;}
+.venue-stands input {width:100%; min-width:0; min-height:44px; border:1px solid var(--color-control-border); padding:10px 12px; background:var(--color-white); border-radius:0; font:inherit; font-size:14px;}
 .venue-stand-tools [role=group] {display:flex; flex-wrap:wrap; gap:6px;}
-.venue-stands button {min-height:44px; padding:10px 14px; border:1px solid #929aac; background:transparent; color:#171d29; font:inherit; font-size:13px; border-radius:0;}
-.venue-stands button[aria-pressed=true] {background:#171d29; color:#fff;}
-.venue-stand-count {color:#485369; padding:8px 0;}
+.venue-stands button {min-height:44px; padding:10px 14px; border:1px solid var(--color-control-border); background:transparent; color:var(--color-panel); font:inherit; font-size:13px; border-radius:0;}
+.venue-stands button[aria-pressed=true] {background:var(--color-panel); color:var(--color-white);}
+.venue-stand-count {color:var(--color-text-muted); padding:8px 0;}
 .venue-stand-options {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 28px; max-height:480px; overflow:auto; list-style:none; padding:0 10px 0 0; margin:0; overscroll-behavior:contain;}
-.venue-stand-options>li {border-top:1px solid #b7bdc9; padding:12px 0; min-width:0;}
-.venue-stand-options>li>a {display:flex; align-items:center; gap:12px; padding:6px 0; min-height:52px; color:#171d29; text-decoration:none;}
+.venue-stand-options>li {border-top:1px solid var(--color-line); padding:12px 0; min-width:0;}
+.venue-stand-options>li>a {display:flex; align-items:center; gap:12px; padding:6px 0; min-height:52px; color:var(--color-panel); text-decoration:none;}
 .venue-stand-options>li>a>span:not(.sr-only) {flex:1; min-width:0;}
 .venue-stand-options strong {display:block; font-size:14px; line-height:1.5; overflow-wrap:anywhere;}
-.venue-stand-options small {display:block; margin-top:5px; color:#485369; font-size:12px;}
+.venue-stand-options small {display:block; margin-top:5px; color:var(--color-text-muted); font-size:12px;}
 .venue-stand-options summary {min-height:44px; padding:12px 0; line-height:20px; cursor:pointer; font-size:12px;}
 .venue-stand-options details p {font-size:12px;}
-.venue-stand-options details a {display:flex;align-items:center;gap:8px;color:#ad0a04;font-size:12px;line-height:20px;min-height:44px;padding:10px 0;}
-.venue-stands>footer {display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; border-top:1px solid #b7bdc9; padding-top:18px; margin-top:18px; font-size:12px; line-height:1.6;}
-.venue-stands>footer a {display:inline-flex; align-items:center; gap:8px; color:#ad0a04;}
+.venue-stand-options details a {display:flex;align-items:center;gap:8px;color:var(--color-action-strong);font-size:12px;line-height:20px;min-height:44px;padding:10px 0;}
+.venue-stands>footer {display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; border-top:1px solid var(--color-line); padding-top:18px; margin-top:18px; font-size:12px; line-height:1.6;}
+.venue-stands>footer a {display:inline-flex; align-items:center; gap:8px; color:var(--color-action-strong);}
 .venue-stands a:hover {text-decoration:underline; text-underline-offset:3px;}
-.circuit-bank-browser {border-bottom:1px solid #bec4d1; padding:16px 0;}
+.circuit-bank-browser {border-bottom:1px solid var(--color-line); padding:16px 0;}
 .circuit-bank-browser summary {display:flex; align-items:center; gap:9px; min-height:44px; cursor:pointer; font-size:14px; font-weight:600;}
-.circuit-bank-browser input {width:100%; min-height:44px; margin:10px 0; padding:10px 12px; border:1px solid #929aac; background:#fff; color:#171d29; border-radius:0;}
+.circuit-bank-browser input {width:100%; min-height:44px; margin:10px 0; padding:10px 12px; border:1px solid var(--color-control-border); background:var(--color-white); color:var(--color-panel); border-radius:0;}
 .circuit-bank-browser>div {max-height:260px; overflow:auto; overscroll-behavior:contain;}
-.circuit-bank-browser button {display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; min-height:44px; margin:4px 0; padding:12px; border:1px solid #b7bdc9; color:#171d29; background:#fff; text-align:left; font-size:12px;}
-.circuit-bank-browser button[aria-pressed=true] {border-color:#d00903; color:#b00803; background:#ececf1;}
+.circuit-bank-browser button {display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; min-height:44px; margin:4px 0; padding:12px; border:1px solid var(--color-line); color:var(--color-panel); background:var(--color-white); text-align:left; font-size:12px;}
+.circuit-bank-browser button[aria-pressed=true] {border-color:var(--color-action); color:var(--color-action-strong); background:var(--color-surface);}
 @media(max-width:1000px){.venue-stands>header {display:grid;grid-template-columns:minmax(0,1fr);gap:16px;}.venue-stands-header-actions {margin-left:0;justify-content:flex-start;}}
 @media(max-width:760px) {
  .venue-stands {padding:20px;}

@@ -10,6 +10,7 @@ import "@fontsource/barlow-condensed/700.css";
 import "@fontsource/barlow-condensed/700-italic.css";
 import App from "./RaceHub";
 import AppBoundary from "./AppBoundary";
+import "./theme.css";
 import "./style.css";
 import "./spacing.css";
 import "./experience.css";

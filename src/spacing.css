@@ -16,7 +16,7 @@
 
 :is(.race-hub, .vegas-atlas) > .site-header {
   padding-inline: max(var(--page-gutter), calc((100% - var(--page-width)) / 2 + var(--page-gutter)));
-  border-bottom-color: #383843;
+  border-bottom-color: var(--color-hover-surface);
 }
 .site-header,
 .circuit-explorer > .circuit-explorer-header {
@@ -24,7 +24,7 @@
   min-height: var(--header-height);
   padding-block: 0;
   border-top: 4px solid var(--red);
-  border-bottom: 1px solid #383843;
+  border-bottom: 1px solid var(--color-hover-surface);
   gap: var(--space-4);
 }
 .app-shell > .site-header,
@@ -42,7 +42,7 @@
 .wordmark .brand-copy { display: block; min-width: 0; }
 .wordmark .brand-name {
   display: block;
-  color: #f5f5f7;
+  color: var(--color-paper);
   font: 600 var(--brand-size)/1 "Barlow Condensed", sans-serif;
   letter-spacing: .035em;
   white-space: nowrap;
@@ -51,7 +51,7 @@
   display: block;
   font: 400 9px/1.35 "IBM Plex Sans", sans-serif;
   letter-spacing: .1em;
-  color: #b7b7c5;
+  color: var(--color-line);
   margin-top: var(--space-1);
 }
 .hub-header nav { gap: var(--space-2); }
@@ -141,62 +141,62 @@
 }
 
 /* Race controls belong to the scene, with motion reserved for playback state. */
-.race-experience {padding:var(--panel-inset); margin:24px 0; background:#171c25; border:1px solid #343b47; border-radius:8px; color:#f1f3f7;}
+.race-experience {padding:var(--panel-inset); margin:24px 0; background:var(--color-panel); border:1px solid var(--color-hover-surface); border-radius:8px; color:var(--color-surface);}
 .race-experience-title {display:flex; align-items:center; justify-content:space-between; gap:12px;}
 .race-experience h3 {margin:0; font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:600;}
-.race-experience-title span {font-size:10px; font-weight:600; letter-spacing:.08em; color:#c3cad5;}
+.race-experience-title span {font-size:10px; font-weight:600; letter-spacing:.08em; color:var(--color-line);}
 .race-experience-title span[data-playing=true] {color:#ffb6ae;}
-.race-experience p {font-size:13px; line-height:1.6; color:#c3cad5; margin:12px 0 16px;}
-.race-experience button {min-height:44px; border:1px solid #485160; border-radius:4px; background:#232a35; color:#f1f3f7; padding:10px 12px; font:inherit; font-size:12px; cursor:pointer; transition:background-color 150ms ease-out,border-color 150ms ease-out;}
-.race-experience button:hover {background:#343d4c; border-color:#8a95a7;}
-.race-experience button[aria-pressed=true] {background:#a91b15; border-color:#f05246;}
+.race-experience p {font-size:13px; line-height:1.6; color:var(--color-line); margin:12px 0 16px;}
+.race-experience button {min-height:44px; border:1px solid var(--color-text-strong); border-radius:4px; background:var(--color-raised); color:var(--color-surface); padding:10px 12px; font:inherit; font-size:12px; cursor:pointer; transition:background-color 150ms ease-out,border-color 150ms ease-out;}
+.race-experience button:hover {background:var(--color-hover-surface); border-color:var(--color-control-border);}
+.race-experience button[aria-pressed=true] {background:var(--color-action-strong); border-color:var(--color-signal);}
 .race-experience button:disabled {opacity:.45; cursor:default;}
 .race-experience-play {display:grid; grid-template-columns:1fr auto; gap:8px;}
-.race-experience-play button:first-child {background:#b32119; border-color:#d53d32; font-weight:600;}
+.race-experience-play button:first-child {background:var(--color-action-strong); border-color:var(--color-signal); font-weight:600;}
 .race-experience-speed {display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0;}
 .race-experience .race-follow {width:100%;}
-.race-experience small {display:block; margin-top:12px; color:#bac3d1; font-size:11px; line-height:1.6;}
+.race-experience small {display:block; margin-top:12px; color:var(--color-line); font-size:11px; line-height:1.6;}
 @media (prefers-reduced-motion:reduce) {.race-experience button {transition:none;}}
 
-.ticket-partners {margin-block:24px; padding-block:24px; border-top:1px solid #c9ced7; border-bottom:1px solid #c9ced7;}
+.ticket-partners {margin-block:24px; padding-block:24px; border-top:1px solid var(--color-line); border-bottom:1px solid var(--color-line);}
 .ticket-partners h3 {margin:0 0 8px;}
-.ticket-partners p,.ticket-partners small {display:block; max-width:70ch; font-size:12px; line-height:1.6; color:#525b6b;}
+.ticket-partners p,.ticket-partners small {display:block; max-width:70ch; font-size:12px; line-height:1.6; color:var(--color-text-muted);}
 .ticket-partners>div {display:flex; flex-wrap:wrap; gap:12px; margin-block:16px;}
-.ticket-partners a {display:flex; flex-direction:column; justify-content:center; min-height:48px; padding:12px 16px; border:1px solid #7a8392; text-decoration:none; color:#202735; font-weight:600;}
-.ticket-partners a:hover {background:#e3e7ed;}
+.ticket-partners a {display:flex; flex-direction:column; justify-content:center; min-height:48px; padding:12px 16px; border:1px solid var(--color-control-border); text-decoration:none; color:var(--color-raised); font-weight:600;}
+.ticket-partners a:hover {background:var(--color-divider);}
 .ticket-partners a span {font-size:11px; font-weight:400; margin-top:4px;}
 
 /* A race brief keeps the viewing decision and unresolved booking checks together. */
 .planning-intent {display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;}
-.planning-intent button,.shortlist-export button,.shortlist-notebook-heading button {min-height:44px; border:1px solid #a4aab5; background:transparent; color:#252b37; padding:10px 14px; font:inherit; font-size:13px; cursor:pointer; border-radius:3px;}
-.planning-intent button[aria-pressed=true] {background:#202632; border-color:#202632; color:#fff;}
-.shortlist-context {font-size:14px; line-height:1.65; color:#505867; max-width:65ch; margin:0 0 16px;}
+.planning-intent button,.shortlist-export button,.shortlist-notebook-heading button {min-height:44px; border:1px solid var(--color-control-border); background:transparent; color:var(--color-raised); padding:10px 14px; font:inherit; font-size:13px; cursor:pointer; border-radius:3px;}
+.planning-intent button[aria-pressed=true] {background:var(--color-raised); border-color:var(--color-raised); color:var(--color-white);}
+.shortlist-context {font-size:14px; line-height:1.65; color:var(--color-text-muted); max-width:65ch; margin:0 0 16px;}
 .viewing-choice-list {display:flex; flex-direction:column;}
-.viewing-choice-list>button {display:flex; justify-content:space-between; align-items:center; gap:16px; text-align:left; border:0; border-top:1px solid #ccd0d8; background:transparent; color:#252b37; padding:20px 0; font:inherit; cursor:pointer; min-height:88px;}
-.viewing-choice-list>button:last-child {border-bottom:1px solid #ccd0d8;}
+.viewing-choice-list>button {display:flex; justify-content:space-between; align-items:center; gap:16px; text-align:left; border:0; border-top:1px solid var(--color-line); background:transparent; color:var(--color-raised); padding:20px 0; font:inherit; cursor:pointer; min-height:88px;}
+.viewing-choice-list>button:last-child {border-bottom:1px solid var(--color-line);}
 .viewing-choice-list>button>span:first-child {display:flex; flex-direction:column; gap:8px;}
 .viewing-choice-list strong {font-size:16px; font-weight:600;}
-.viewing-choice-list>button>span:first-child>span {font-size:14px; line-height:1.65; color:#505867;}
+.viewing-choice-list>button>span:first-child>span {font-size:14px; line-height:1.65; color:var(--color-text-muted);}
 .viewing-choice-list>button:hover strong {text-decoration:underline; text-underline-offset:4px;}
-.shortlist-choice-state {flex-shrink:0; font-size:12px; min-width:76px; text-align:center; border:1px solid #a4aab5; border-radius:3px; padding:8px;}
-.viewing-choice-list>button[aria-pressed=true] .shortlist-choice-state {background:#a51d17; border-color:#a51d17; color:#fff;}
-.shortlist-notebook {margin-top:24px; padding:24px; background:#e5e8ee; border-radius:6px;}
+.shortlist-choice-state {flex-shrink:0; font-size:12px; min-width:76px; text-align:center; border:1px solid var(--color-control-border); border-radius:3px; padding:8px;}
+.viewing-choice-list>button[aria-pressed=true] .shortlist-choice-state {background:var(--color-action-strong); border-color:var(--color-action-strong); color:var(--color-white);}
+.shortlist-notebook {margin-top:24px; padding:24px; background:var(--color-divider); border-radius:6px;}
 .shortlist-notebook-heading {display:flex; justify-content:space-between; align-items:center; gap:16px;}
 .shortlist-notebook h4 {font:600 24px/1.2 'Barlow Condensed',sans-serif; margin:0;}
-.shortlist-notebook p {font-size:13px; line-height:1.65; color:#414b5b;}
+.shortlist-notebook p {font-size:13px; line-height:1.65; color:var(--color-text-strong);}
 .shortlist-notebook fieldset {padding:0; margin:20px 0 0; border:0;}
 .shortlist-notebook legend {font-size:13px; font-weight:600; margin-bottom:8px;}
 .shortlist-notebook label {display:flex; align-items:center; gap:12px; min-height:44px; padding-block:6px; font-size:13px; line-height:1.5; cursor:pointer;}
-.shortlist-notebook input {width:18px; height:18px; flex-shrink:0; accent-color:#ad2118;}
+.shortlist-notebook input {width:18px; height:18px; flex-shrink:0; accent-color:var(--color-action-strong);}
 .shortlist-export {display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
-.shortlist-export button:hover,.shortlist-notebook-heading button:hover {background:#d2d8e2;}
-.shortlist-message {font-size:12px; line-height:1.6; color:#505867;}
+.shortlist-export button:hover,.shortlist-notebook-heading button:hover {background:var(--color-divider);}
+.shortlist-message {font-size:12px; line-height:1.6; color:var(--color-text-muted);}
 .shortlist-message:empty {display:none;}
 .booking-evidence {margin:0 0 24px;}
-.booking-evidence>div {padding-block:12px; border-bottom:1px solid #d8dbe2;}
+.booking-evidence>div {padding-block:12px; border-bottom:1px solid var(--color-divider);}
 .booking-evidence dt {font-size:13px; font-weight:600;}
-.booking-evidence dd {margin:6px 0 0; font-size:13px; line-height:1.65; color:#505867;}
-.funding-disclosure {max-width:1280px; margin:24px auto; padding-inline:32px; color:#3e4655;}
+.booking-evidence dd {margin:6px 0 0; font-size:13px; line-height:1.65; color:var(--color-text-muted);}
+.funding-disclosure {max-width:1280px; margin:24px auto; padding-inline:32px; color:var(--color-text-strong);}
 .funding-disclosure summary {font-size:13px; min-height:44px; padding-block:12px; cursor:pointer;}
 .funding-disclosure>div {max-width:70ch; padding-block:16px 24px;}
 .funding-disclosure h2 {font:600 28px/1.2 'Barlow Condensed',sans-serif; margin:0 0 16px;}
@@ -212,6 +212,6 @@
 
 .comparison-reference {display:flex; flex-direction:column; align-items:flex-start; gap:8px; min-width:150px;}
 .comparison-reference strong {font-size:16px;}
-.comparison-reference time {font-size:12px; color:#535d6e; white-space:nowrap;}
-.comparison-reference a {display:inline-flex; align-items:center; min-height:44px; font-size:12px; color:#9f1b13; text-underline-offset:3px;}
+.comparison-reference time {font-size:12px; color:var(--color-text-muted); white-space:nowrap;}
+.comparison-reference a {display:inline-flex; align-items:center; min-height:44px; font-size:12px; color:var(--color-action-strong); text-underline-offset:3px;}
 .shortlist-export button:disabled {opacity:.55; cursor:progress;}

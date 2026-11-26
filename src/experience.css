@@ -1,27 +1,27 @@
 /* A scene from the working explorer anchors the opening; previews load without WebGL. */
-.season-landing {position:relative; isolation:isolate; overflow:hidden; min-height:620px; margin:24px 0 32px; background:#0b0d15; color:#f5f5f7; display:flex; align-items:center;}
-.hero-world {position:absolute; z-index:-2; inset:0 0 0 29%; background:#0b0d15;}
+.season-landing {position:relative; isolation:isolate; overflow:hidden; min-height:620px; margin:24px 0 32px; background:var(--color-night); color:var(--color-paper); display:flex; align-items:center;}
+.hero-world {position:absolute; z-index:-2; inset:0 0 0 29%; background:var(--color-night);}
 .hero-world img {width:100%; height:100%; display:block; object-fit:cover; object-position:52% center;}
-.season-landing::before {content:""; position:absolute; z-index:-1; inset:0; pointer-events:none; background:linear-gradient(90deg,#0b0d15 0%,#0b0d15f5 27%,#0b0d15ab 44%,#0b0d1500 68%),linear-gradient(0deg,#0b0d15 0%,#0b0d1500 32%);}
+.season-landing::before {content:""; position:absolute; z-index:-1; inset:0; pointer-events:none; background:linear-gradient(90deg,var(--color-night) 0%,rgb(var(--color-night-rgb) / 0.961) 27%,rgb(var(--color-night-rgb) / 0.671) 44%,rgb(var(--color-night-rgb) / 0.000) 68%),linear-gradient(0deg,var(--color-night) 0%,rgb(var(--color-night-rgb) / 0.000) 32%);}
 .season-landing-copy {width:56%; padding:64px 0 72px 40px;}
-.season-landing-copy h1 {margin:0 0 28px; font:700 clamp(56px,5.6vw,80px)/.98 'Barlow Condensed',sans-serif; letter-spacing:-.02em; text-transform:uppercase; color:#f5f5f7;}
-.season-landing-copy h1 em {color:#ff342e; font-weight:700;}
-.season-landing-copy>p {max-width:36ch; margin:0 0 28px; font-size:16px; line-height:1.75; color:#d2d4de;}
+.season-landing-copy h1 {margin:0 0 28px; font:700 clamp(56px,5.6vw,80px)/.98 'Barlow Condensed',sans-serif; letter-spacing:-.02em; text-transform:uppercase; color:var(--color-paper);}
+.season-landing-copy h1 em {color:var(--color-action); font-weight:700;}
+.season-landing-copy>p {max-width:36ch; margin:0 0 28px; font-size:16px; line-height:1.75; color:var(--color-divider);}
 .hero-actions {display:flex; align-items:center; flex-wrap:wrap; gap:12px;}
-.landing-primary {display:inline-flex; align-items:center; justify-content:space-between; gap:20px; min-height:48px; padding:14px 18px; border:1px solid #e10600; background:#e10600; color:#fff; font:600 13px 'IBM Plex Sans',sans-serif; cursor:pointer; text-decoration:none;}
-.landing-primary:hover {background:#bc0500; border-color:#bc0500; color:#fff;}
-.hero-secondary {min-height:48px; padding:12px 16px; background:#11131c; border:1px solid #727784; font:500 13px 'IBM Plex Sans',sans-serif; color:#f5f5f7; cursor:pointer;}
-.hero-secondary:hover {background:#262a36;}
-.season-landing-copy .landing-boundary {margin:24px 0 0; font-size:11px; line-height:1.8; color:#b8bdcb;}
-.hero-camera-switch {position:absolute; top:24px; right:24px; display:flex; gap:4px; padding:4px; background:#10131e; border:1px solid #5e6473;}
-.hero-camera-switch button {min-height:40px; padding:9px 16px; background:transparent; border:0; color:#d2d4df; font:500 12px 'IBM Plex Sans',sans-serif; cursor:pointer;}
-.hero-camera-switch button[aria-pressed=true] {background:#e10600; color:#fff;}
-.race-hub .season-landing button:hover:not(:disabled) {color:#f5f5f7;}
-.hero-camera-switch button:hover:not([aria-pressed=true]) {background:#272c39;}
+.landing-primary {display:inline-flex; align-items:center; justify-content:space-between; gap:20px; min-height:48px; padding:14px 18px; border:1px solid var(--color-action); background:var(--color-action); color:var(--color-white); font:600 13px 'IBM Plex Sans',sans-serif; cursor:pointer; text-decoration:none;}
+.landing-primary:hover {background:var(--color-action-hover); border-color:var(--color-action-hover); color:var(--color-white);}
+.hero-secondary {min-height:48px; padding:12px 16px; background:var(--color-ink); border:1px solid var(--color-text-muted); font:500 13px 'IBM Plex Sans',sans-serif; color:var(--color-paper); cursor:pointer;}
+.hero-secondary:hover {background:var(--color-raised);}
+.season-landing-copy .landing-boundary {margin:24px 0 0; font-size:11px; line-height:1.8; color:var(--color-line);}
+.hero-camera-switch {position:absolute; top:24px; right:24px; display:flex; gap:4px; padding:4px; background:var(--color-ink); border:1px solid var(--color-text-muted);}
+.hero-camera-switch button {min-height:40px; padding:9px 16px; background:transparent; border:0; color:var(--color-divider); font:500 12px 'IBM Plex Sans',sans-serif; cursor:pointer;}
+.hero-camera-switch button[aria-pressed=true] {background:var(--color-action); color:var(--color-white);}
+.race-hub .season-landing button:hover:not(:disabled) {color:var(--color-paper);}
+.hero-camera-switch button:hover:not([aria-pressed=true]) {background:var(--color-raised);}
 .hero-scene-caption {position:absolute; right:24px; bottom:24px; max-width:44%; text-align:right;}
-.hero-scene-caption strong {font:600 25px/1.1 'Barlow Condensed',sans-serif; color:#f5f5f7;}
-.hero-scene-caption p {margin:6px 0; color:#c4c8d3; font-size:11px;}
-.hero-scene-caption>span {color:#aeb5c6; font-size:9px; line-height:1.5; display:block;}
+.hero-scene-caption strong {font:600 25px/1.1 'Barlow Condensed',sans-serif; color:var(--color-paper);}
+.hero-scene-caption p {margin:6px 0; color:var(--color-line); font-size:11px;}
+.hero-scene-caption>span {color:var(--color-line); font-size:9px; line-height:1.5; display:block;}
 .hero-scene-caption a {color:inherit; text-decoration:underline; text-underline-offset:2px;}
 :is(.season-landing,.landing-upcoming) svg {width:20px; height:20px; flex:0 0 20px; fill:none; stroke:currentColor; stroke-width:1.7;}
 @media(max-width:1050px) {
@@ -35,7 +35,7 @@
  .season-landing {display:block; margin-top:16px; min-height:0;}
  .hero-world {inset:0 0 auto; height:335px;}
  .hero-world img {object-position:52% 44%;}
- .season-landing::before {background:linear-gradient(0deg,#0b0d15 0%,#0b0d15 52%,#0b0d1500 78%);}
+ .season-landing::before {background:linear-gradient(0deg,var(--color-night) 0%,var(--color-night) 52%,rgb(var(--color-night-rgb) / 0.000) 78%);}
  .season-landing-copy {width:100%; padding:280px 24px 24px;}
  .season-landing-copy h1 {font-size:clamp(41px,10.8vw,68px); margin-bottom:20px;}
  .season-landing-copy>p {font-size:14px; margin-bottom:20px; max-width:38ch; line-height:1.7;}
@@ -44,7 +44,7 @@
  .season-landing-copy .landing-boundary {margin-top:18px; font-size:10px;}
  .hero-camera-switch {top:16px; right:16px;}
  .hero-camera-switch button {min-height:40px; padding-inline:14px; font-size:11px;}
- .hero-scene-caption {position:relative; right:auto; bottom:auto; text-align:left; max-width:none; margin:0 24px; padding:18px 0 20px; border-top:1px solid #343a48;}
+ .hero-scene-caption {position:relative; right:auto; bottom:auto; text-align:left; max-width:none; margin:0 24px; padding:18px 0 20px; border-top:1px solid var(--color-hover-surface);}
  .hero-scene-caption strong {font-size:22px;}
 }
 @media(max-width:360px) {
@@ -57,29 +57,29 @@
  @keyframes hero-preview-enter {from {clip-path:inset(0 0 0 6%);} to {clip-path:inset(0);}}
  .landing-primary,.hero-secondary,.hero-camera-switch button {transition:background-color .18s,border-color .18s;}
 }
-.landing-upcoming {display:grid; grid-template-columns:200px minmax(0,1fr); gap:32px; align-items:center; padding:24px 0; border-top:1px solid #cbd0da; border-bottom:1px solid #cbd0da;}
+.landing-upcoming {display:grid; grid-template-columns:200px minmax(0,1fr); gap:32px; align-items:center; padding:24px 0; border-top:1px solid var(--color-line); border-bottom:1px solid var(--color-line);}
 .landing-upcoming h2 {margin:0; font:600 30px/1.1 'Barlow Condensed',sans-serif;}
-.landing-upcoming h2>span {display:block; margin-top:8px; color:#5a6070; font:400 12px 'IBM Plex Sans',sans-serif;}
+.landing-upcoming h2>span {display:block; margin-top:8px; color:var(--color-text-muted); font:400 12px 'IBM Plex Sans',sans-serif;}
 .landing-upcoming>div {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;}
-.landing-upcoming button {display:flex; align-items:center; gap:16px; width:100%; min-height:76px; padding:12px 0; border:0; background:transparent; text-align:left; color:#15151e; cursor:pointer;}
-.landing-race-round {font-size:12px; color:#5a6070; font-variant-numeric:tabular-nums;}
+.landing-upcoming button {display:flex; align-items:center; gap:16px; width:100%; min-height:76px; padding:12px 0; border:0; background:transparent; text-align:left; color:var(--color-ink); cursor:pointer;}
+.landing-race-round {font-size:12px; color:var(--color-text-muted); font-variant-numeric:tabular-nums;}
 .landing-race-name {flex:1;}
 .landing-race-name strong {display:block; font:600 28px/1.1 'Barlow Condensed',sans-serif;}
-.landing-race-name>span {display:block; margin-top:6px; font-size:12px; color:#515766;}
-.landing-race-action {display:flex; gap:8px; align-items:center; color:#bc0500; font-size:12px;}
+.landing-race-name>span {display:block; margin-top:6px; font-size:12px; color:var(--color-text-muted);}
+.landing-race-action {display:flex; gap:8px; align-items:center; color:var(--color-action-hover); font-size:12px;}
 .landing-upcoming button:hover .landing-race-name strong {text-decoration:underline; text-underline-offset:4px;}
 .season-landing~.race-calendar {margin-top:40px; padding-top:0;}
 .circuit-guide-actions {display:flex; flex-direction:column; align-items:flex-end; gap:8px;}
-.circuit-guide-actions>a {display:inline-flex; align-items:center; gap:8px; min-height:44px; color:#b70500; font-size:13px; text-underline-offset:4px;}
+.circuit-guide-actions>a {display:inline-flex; align-items:center; gap:8px; min-height:44px; color:var(--color-action-hover); font-size:13px; text-underline-offset:4px;}
 .circuit-guide-actions svg {width:16px; height:16px; stroke:currentColor; stroke-width:1.7; fill:none;}
 .booking-model-note {line-height:1.7;}
-.booking-evidence-disclosure {margin:16px 0; border-block:1px solid #d3d6df;}
+.booking-evidence-disclosure {margin:16px 0; border-block:1px solid var(--color-divider);}
 .booking-evidence-disclosure summary {padding:14px 0; font-size:13px; cursor:pointer;}
 .booking-evidence-disclosure .booking-evidence {margin:0 0 16px;}
 #viewing-areas {scroll-margin-top:24px;}
-.circuit-replay-details {margin:24px 0; border-block:1px solid #c4cad5;}
+.circuit-replay-details {margin:24px 0; border-block:1px solid var(--color-line);}
 .circuit-replay-details>summary {padding:16px 0; font-weight:600; font-size:14px; cursor:pointer;}
-.circuit-replay-details>summary>span {float:right; font-size:11px; font-weight:400; color:#535b6d;}
+.circuit-replay-details>summary>span {float:right; font-size:11px; font-weight:400; color:var(--color-text-muted);}
 .circuit-replay-details .race-experience {margin:0 0 16px; border-radius:0;}
 .circuit-panel-heading h2 {font-size:34px; line-height:1.05; text-transform:none; font-style:normal;}
 @media(max-width:1050px) {
@@ -92,7 +92,7 @@
  .landing-upcoming h2>span {margin:0;}
  .landing-upcoming>div {grid-template-columns:1fr; gap:0;}
  .landing-upcoming button {min-height:80px; padding-block:16px;}
- .landing-upcoming button+button {border-top:1px solid #d3d6df;}
+ .landing-upcoming button+button {border-top:1px solid var(--color-divider);}
  .landing-race-action {font-size:12px; gap:8px;}
  .season-landing~.race-calendar {margin-top:32px;}
  .circuit-guide-actions {align-items:flex-start;}
@@ -100,13 +100,13 @@
  .circuit-panel-heading h2 {font-size:32px;}
 }
 
-.ticket-product-context {padding-block:20px; margin-block:24px; border-top:1px solid #cbd0da;}
+.ticket-product-context {padding-block:20px; margin-block:24px; border-top:1px solid var(--color-line);}
 .ticket-product-context h4 {font-size:15px; margin:0 0 16px;}
 .ticket-product-context dl {margin:0;}
 .ticket-product-context dl>div {display:grid; grid-template-columns:110px 1fr; gap:12px; margin-top:10px; font-size:12px; line-height:1.6;}
-.ticket-product-context dt {color:#535b6d;}
+.ticket-product-context dt {color:var(--color-text-muted);}
 .ticket-product-context dd {margin:0; font-weight:500;}
 .ticket-product-context p {font-size:13px; line-height:1.7; margin:16px 0 8px;}
-.ticket-product-context>a {display:inline-flex; align-items:center; min-height:44px; font-size:13px; color:#b70500; text-decoration:underline; text-underline-offset:3px;}
-.product-context-date {display:block; color:#535b6d; font-size:11px; line-height:1.7;}
+.ticket-product-context>a {display:inline-flex; align-items:center; min-height:44px; font-size:13px; color:var(--color-action-hover); text-decoration:underline; text-underline-offset:3px;}
+.product-context-date {display:block; color:var(--color-text-muted); font-size:11px; line-height:1.7;}
 @media(max-width:360px) {.ticket-product-context dl>div {grid-template-columns:1fr; gap:2px;}}
