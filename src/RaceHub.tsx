@@ -1,3 +1,4 @@
+import SeasonLanding from "./SeasonLanding";
 import { raceCoverage } from "./raceCoverage";
 import { useNavigationFocus } from "./useNavigationFocus";
 import FundingDisclosure from "./FundingDisclosure";
@@ -175,7 +176,7 @@ export default function RaceHub() {
           className="wordmark"
           onClick={(e) => {
             e.preventDefault();
-            go({ ...route, race: "", seats: false });
+            go({ season:route.season, race: "", seats: false });
           }}
         >
           <BrandIdentity subtitle="TICKETS & SEAT VIEWS" />
@@ -200,13 +201,6 @@ export default function RaceHub() {
       </header>
       <main id="race-content">
         <nav className="product-jump-nav" aria-label="Explore F1 Tickets Online">
-          <a
-            href={`?season=${route.season}#race-content`}
-            onClick={e => { e.preventDefault(); go({ season: route.season, race: "", seats: false }, "#race-content"); }}
-            aria-current={!selected ? "page" : undefined}
-          >
-            Ticket planning
-          </a>
           <a href={`?season=${route.season}#race-calendar`} onClick={e => { e.preventDefault(); go({ season: route.season, race: "", seats: false }, "#race-calendar"); }}>All races</a>
           <a href={`?season=${route.season}&race=las-vegas&screen=vegas`}>
             Las Vegas 3D
@@ -250,6 +244,7 @@ export default function RaceHub() {
             {circuitModel && <section className="circuit-model-entry"><div><h2>Explore in 3D.</h2><p>Estimated seats and sightlines · {circuitModel.season}</p></div><button onClick={()=>go({season:route.season,race:route.race,seats:false,circuit:true})}>Open 3D seating</button></section>}
             {route.circuit && !circuitModel && <p className="singapore-reference-note">No 3D seating model is available for this venue and season. Choose a supported race; layouts are not carried across seasons.</p>}
             <CircuitGuidePanel race={selected} coverage={raceCoverage(route.season,selected.slug).detail} />
+            <div id="viewing-areas" tabIndex={-1}>
             {selected.slug === "qatar" && route.season === 2026 ? (
               <Suspense
                 fallback={
@@ -333,6 +328,7 @@ export default function RaceHub() {
                 </details>}
               </>
             )}
+            </div>
             {!findVenue(route.season, selected.slug) && (
               <details className="ticket-options">
                 <summary>Other ticket types</summary>
@@ -406,110 +402,7 @@ export default function RaceHub() {
           </>
         ) : (
           <>
-            {route.season === 2026 ? (
-              <Suspense
-                fallback={
-                  <div className="hub-loading">
-                    Opening the 2026 ticket desk…
-                  </div>
-                }
-              >
-                <TicketDesk />
-              </Suspense>
-            ) : (
-              <section className="season-heading">
-                <div>
-                  <p className="eyebrow">PLAN THE NEXT SEASON</p>
-                  <h1>
-                    The 2027
-                    <br />
-                    <em>race calendar.</em>
-                  </h1>
-                  <p>
-                    Shortlist viewing regions, explore supported 3D studies and
-                    check event-year ticket sources before booking.
-                  </p>
-                </div>
-                <div className="season-year" aria-hidden="true">
-                  2027
-                </div>
-              </section>
-            )}
-            {route.season === 2026 && (
-              <section
-                className="remaining-races"
-                aria-label="Remaining 2026 races"
-              >
-                <div className="section-line">
-                  <h2>Still to race in 2026</h2>
-                  <span>Race weekends · local dates</span>
-                </div>
-                {calendars[2026]
-                  .filter((r) => raceStatus(r) !== "Past")
-                  .map((r) => (
-                    <button key={r.slug} onClick={() => select(r)}>
-                      <span>ROUND {r.round}</span>
-                      <strong>{r.name}</strong>
-                      <span>{dateLabel(r)}</span>
-                      <span>
-                        {r.slug === "qatar"
-                          ? "Ticket desk & area map"
-                          : "Ticket sources & area map"}
-                      </span>
-                    </button>
-                  ))}
-              </section>
-            )}
-            {route.season === 2027 && (
-              <section className="singapore-pilot-link">
-                <div>
-                  <h2>Explore Singapore’s 2027 viewing areas.</h2>
-                  <p>
-                    Twelve standard grandstands, official preview links and local
-                    ticket-area matching. Approximate regions; exact seats are
-                    not verified.
-                  </p>
-                </div>
-                <button
-                  onClick={() =>
-                    go({ season: 2027, race: "singapore", seats: false })
-                  }
-                >
-                  Open Singapore area map
-                </button>
-              </section>
-            )}
-            <section className="race-feature-strip compact-vegas">
-              <div>
-                <span>LAS VEGAS · THE 3D ATLAS</span>
-                <h2>Step into the Sphere zone.</h2>
-                <p>
-                  Explore reconstructed seat views, moving cars and the Vegas
-                  night skyline. Estimated geometry, not official seat
-                  inventory.
-                </p>
-                <button
-                  onClick={() =>
-                    go({
-                      season: route.season,
-                      race: "las-vegas",
-                      seats: false,
-                      atlas: true,
-                    })
-                  }
-                >
-                  Explore Las Vegas in 3D
-                </button>
-              </div>
-              <img
-                className="venue-preview-image"
-                src="/las-vegas-preview.webp"
-                alt="Reconstructed Las Vegas circuit with Sphere and modeled viewing areas"
-                width="1000"
-                height="800"
-                loading="lazy"
-              />
-            </section>
+            <SeasonLanding season={route.season} onRace={select} onBrowse={()=>go({season:route.season,race:"",seats:false},"#race-calendar")} onVegas={()=>go({season:route.season,race:"las-vegas",seats:false,atlas:true})} />
             <section
               className="race-calendar"
               id="race-calendar"

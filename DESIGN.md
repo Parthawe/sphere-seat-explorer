@@ -133,3 +133,10 @@ The existing Three.js world remains the spatial source. Replay starts the simula
 
 ### Before-purchase race brief
 Race guides now separate choosing tickets from orienting an existing ticket. Source-backed viewing regions are selectable rows, leading to an inline notebook of unresolved booking checks and a downloadable brief. Selecting a region does not recommend or certify a seller product. The evidence column separates dated circuit context, authored reconstruction and seller-confirmed details. Manual checks never receive a verified or ready-to-buy badge. Funding information lives in an expandable section outside the primary journey. Empty commercial configuration renders no advertising or referral placeholders.
+
+
+## Race-first entry and quieter explorer · 26 November 2026
+
+The season landing begins with one condensed red/ink headline, a clear calendar action and a linked capture from the actual Sphere-zone renderer. Keep the 2026 reconstruction label beside the preview in both seasons. Upcoming race rows are calendar-derived, not inventory. The full Qatar desk belongs to its own guide, keeping the season entry usable without loading its sources or locator.
+
+Race briefs offer a direct jump to supported area workspaces. Source explanations expand on demand while the estimate boundary and event-year catalogue remain visible. In circuit explorers, place bank/section/row/position controls before the optional replay settings. If replay starts while the scene is offscreen, return to the scene so the action has a visible result; preserve reduced-motion scrolling and offscreen rendering suspension.

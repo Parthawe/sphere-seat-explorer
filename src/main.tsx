@@ -12,6 +12,7 @@ import App from "./RaceHub";
 import AppBoundary from "./AppBoundary";
 import "./style.css";
 import "./spacing.css";
+import "./experience.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppBoundary><App /></AppBoundary>

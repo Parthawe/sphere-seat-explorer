@@ -217,3 +217,14 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Publication: documentation checkpoint only in GitHub; application remains v69. No unchanged build/deployment repeated.
 - Limits: this checks narrow CSS-viewport reflow in Chrome, not physical-device testing or native text-only zoom. It does not certify every offscreen control or 3D overlay at enlarged font sizes.
 - Next useful check: landscape phone scene overlays with the model grid and source dialogs, keeping controls reachable when viewport height is constrained.
+
+
+## 26 November 2026 · 16:23 UTC · User-requested visual hierarchy improvement
+
+- Starting checkout: `95662cb27cd242594b3f26d099f49c945deee92d`; application v69. User requested a broader visual/experience improvement, beyond the scheduled micro-audits.
+- Evidence: the home entry embedded the full Qatar tool before the season calendar; the product's actual 3D demonstration was far below the first screen. The 2027 Singapore promo still said twelve standard stands despite the expanded area workspace. Generic source caveats repeated on guides. The explorer's large replay block pushed bank/position selection below the desktop fold. Mobile replay could start while its scene was offscreen and therefore rendering was suspended.
+- Change: a shared season landing leads with race selection, an existing renderer preview, two calendar-derived upcoming guides and the calendar. Removed duplicate home navigation and stale promo content. Guides retain a visible estimate boundary and ticket handoff, with source explanations in a disclosure and a direct link to supported area workspaces. Seat controls now precede optional replay settings. Starting replay offscreen focuses/scrolls to the scene, respecting reduced motion.
+- Validation: 11 affected route/coverage/guide/brief tests and TypeScript passed. Desktop 1440px, phone 390px and narrow 320px browser journeys confirmed season changes, calendar filtering, focused calendar jump, guide-to-area navigation and Qatar locator access. Desktop/phone checks also confirmed selection/grid handoff, photo dialog focus return and simulated playback visible after starting from below the scene. No page errors or document overflow in confirmation flows. Batched screenshots inspected; production build is included in publication.
+- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Limits: existing 3D materials/geography and illustrative accuracy remain unchanged; this pass improves entry, hierarchy and operation, not photographic realism or measured chairs. No commercial tracking or new source facts.
+- Next useful check: landscape phone source/grid dialogs and scene overlays, preserving this updated entry and selection hierarchy.

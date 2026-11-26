@@ -33,7 +33,7 @@ The user renamed the product to F1 Tickets Online on 26 November 2026. They requ
 
 ## Ticket product pilot · 23 November 2026
 
-The default entry prioritizes Qatar 2026, the next remaining weekend on the checked calendar. It connects five viewing areas, nine ticket providers, a three-area comparison and a local text locator for an owned ticket. Pasted ticket text is never persisted or transmitted; shared links contain only the public race, year and area ID. Saved comparisons persist public IDs only. The parser recognizes ambiguous, unsupported and wrong-event input, and never infers an exact row or chair location. Hospitality is explicitly unsupported.
+The season entry now begins with race selection and a preview from the existing Las Vegas renderer. Upcoming race guides are derived from the selected calendar; the Qatar 2026 ticket desk lives in its race guide. It connects five viewing areas, nine ticket providers, a three-area comparison and a local text locator for an owned ticket. Pasted ticket text is never persisted or transmitted; shared links contain only the public race, year and area ID. Saved comparisons persist public IDs only. The parser recognizes ambiguous, unsupported and wrong-event input, and never infers an exact row or chair location. Hospitality is explicitly unsupported.
 
 Only Main Grandstand has assigned seats in Lusail’s current guidance. North, T2 and T16 use free seating; Lusail Hill is general admission. The circuit line is adapted OSM data (ODbL); area markers are schematic callouts based on organizer descriptions, not stand boundaries, entrances or photographic sightlines. No 2026 ticket information is shown as a 2027 offer.
 

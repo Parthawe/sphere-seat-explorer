@@ -54,6 +54,12 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  },[model,selection,mode]);
  useEffect(()=>{const restore=()=>{const q=new URLSearchParams(location.search);if(q.get('race')!==model.id||q.get('screen')!=='circuit')return;setSelection(normalizeModelPosition(model,{bank:q.get('bank')??undefined,section:Number(q.get('section')),row:Number(q.get('modelRow')),seat:Number(q.get('position'))}));const camera=q.get('camera');setMode(camera==='stand'||camera==='circuit'?camera:'seat');};window.addEventListener('popstate',restore);return()=>window.removeEventListener('popstate',restore);},[model]);
  async function share(){const url=modelPositionUrl(SITE_ORIGIN,model,selection,mode);try{await navigator.clipboard.writeText(url);setFeedback('Model position link copied. No ticket information included.');}catch{setFeedback('Copy model position link: '+url);}}
+ function startReplay(restart=false){
+  if(restart)setPass(p=>p+1);
+  setPlaying(true);
+  const surface=stage.current;
+  if(surface){const rect=surface.getBoundingClientRect();if(rect.bottom<=0||rect.top>=innerHeight){surface.querySelector<HTMLElement>('.circuit-model-canvas')?.focus({preventScroll:true});surface.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}}
+ }
  function save(){if(saved.some(p=>positionKey(p)===positionKey(selection))){setSaved(saved.filter(p=>positionKey(p)!==positionKey(selection)));return;}if(saved.length===3){setFeedback('Three positions saved. Remove one to compare another.');return;}setSaved([...saved,{...selection}]);}
  function arrows(e:React.KeyboardEvent,gridView=false){if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();choose({seat:selection.seat+(e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0),row:selection.row+(e.key==='ArrowUp'?1:e.key==='ArrowDown'?-1:0)*(gridView?-1:1)});}
  return <div className="circuit-explorer">
@@ -76,16 +82,9 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
     <div className="circuit-scene-note"><span>{mode==='seat'?'DRAG TO LOOK / BUTTONS OR SCROLL TO ZOOM':'DRAG TO ORBIT / SELECT A CHAIR'}</span><span>Estimated reconstruction · cars simulated</span></div>
    </section>
    <aside className="circuit-position-panel" aria-label="Model position controls">
-    <div className="circuit-panel-heading"><span className="eyebrow">{model.country.toUpperCase()} {model.season}</span><h2>Explore the seating.</h2><p>{model.dates}</p></div>
+    <div className="circuit-panel-heading"><span className="eyebrow">{model.country.toUpperCase()} {model.season}</span><h2>Choose your position.</h2><p>{model.dates}</p></div>
     <div className="circuit-accuracy"><strong>Estimated seat views</strong><p>Model rows and positions do not match ticket numbers.</p></div>
-    <section className="race-experience" aria-label="Race simulation controls">
-     <div className="race-experience-title"><h3>Feel the fly-by.</h3><span data-playing={playing}>{playing?'RUNNING':'PAUSED'}</span></div>
-     <p>Watch a simulated pack pass your stand. Slow it down to explore the sightline.</p>
-     <div className="race-experience-play"><button disabled={!ready||unavailable} onClick={()=>{setPass(p=>p+1);setPlaying(true);}}>Replay near this stand</button><button disabled={!ready||unavailable} aria-pressed={playing} onClick={()=>setPlaying(p=>!p)}>{playing?'Pause':'Play'}</button></div>
-     <div className="race-experience-speed" role="group" aria-label="Simulation speed">{[.25,1,2].map(value=><button key={value} aria-pressed={speed===value} onClick={()=>setSpeed(value)}>{value===.25?'¼×':value+'×'}</button>)}</div>
-     <button className="race-follow" disabled={!ready||unavailable} aria-pressed={following&&mode==='seat'} onClick={()=>{if(following){setFollowing(false);}else{setMode('seat');setPass(p=>p+1);setPlaying(true);setFollowing(true);}}}>{following&&mode==='seat'?'Stop following car':'Follow lead car from my seat'}</button>
-     <small>Illustrative motion, not recorded race footage. Drag to take control.</small>
-    </section>
+
     <button className="circuit-overview-trigger" onClick={()=>{setPlaying(false);setOverview(true);}}>Circuit map & viewing banks<span>See the full layout and your viewing direction</span></button>
     <label htmlFor="model-bank">Grandstand / viewing bank</label><select id="model-bank" value={bank.id} onChange={e=>{const b=model.banks.find(b=>b.id===e.target.value)!;setSelection(normalizeModelPosition(model,{bank:b.id}));}}>{model.banks.map(b=><option key={b.id} value={b.id}>{b.name}</option>)}</select>
     {!!model.unmappedProducts?.length&&<details className="circuit-unmapped-products"><summary>More ticket options · source information <span>{model.unmappedProducts.length}</span></summary><p>These options have organizer information, but no supported 3D view here. Some cover roaming areas, accessible platforms or hospitality. This study does not list all available tickets.</p>{Array.from(new Set(model.unmappedProducts.map(p=>p.group??'Other ticket options'))).map(group=><section className="circuit-source-group" key={group}><h3>{group}</h3>{model.unmappedProducts!.filter(p=>(p.group??'Other ticket options')===group).map(product=><article key={product.id}><h4>{product.name}</h4><p>{product.note}</p><a href={product.source} target="_blank" rel="noreferrer">View official product information</a></article>)}</section>)}<a href={model.ticketUrl} target="_blank" rel="noreferrer">{model.catalogueLabel??'Browse the organizer’s full catalogue'}</a></details>}
@@ -97,6 +96,16 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
     <div className="circuit-position-actions"><button ref={compareButton} onClick={save}>{saved.some(p=>positionKey(p)===positionKey(selection))?'Remove saved position':'Compare position'} <span>{saved.length}/3</span></button><button onClick={share}>Share view</button></div>
     <p className="circuit-feedback" role="status">{feedback}</p>
     {saved.length>0&&<section ref={comparisonRoot} className="circuit-saved"><h3>Compare modeled views</h3><p>Choose a saved position to revisit its 3D view.</p>{saved.map(s=>{const b=model.banks.find(b=>b.id===s.bank)!,p=modelPosition(model,s);return <div key={positionKey(s)} data-comparison-id={positionKey(s)}><button aria-label={`View ${b.name} model section ${s.section} row ${s.row} position ${s.seat}`} onClick={()=>{setSelection(s);setMode('seat');}}><b>{b.name}</b><span>S{s.section} / R{s.row} / P{s.seat} · eye {(p[1]-bankGroundHeight(model,b)+1.15).toFixed(1)} m</span></button><button aria-label={`Remove saved ${positionKey(s)}`} data-remove-comparison onClick={()=>{prepareRemoval(positionKey(s));setSaved(saved.filter(p=>positionKey(p)!==positionKey(s)));setFeedback('Position removed from comparison.');}}>×</button></div>;})}</section>}
+    <details className="circuit-replay-details"><summary>Watch cars pass<span>Simulated replay</span></summary>
+    <section className="race-experience" aria-label="Race simulation controls">
+     <div className="race-experience-title"><h3>Feel the fly-by.</h3><span data-playing={playing}>{playing?'RUNNING':'PAUSED'}</span></div>
+     <p>Watch a simulated pack pass your stand. Slow it down to explore the sightline.</p>
+     <div className="race-experience-play"><button disabled={!ready||unavailable} onClick={()=>startReplay(true)}>Replay near this stand</button><button disabled={!ready||unavailable} aria-pressed={playing} onClick={()=>{if(playing)setPlaying(false);else startReplay();}}>{playing?'Pause':'Play'}</button></div>
+     <div className="race-experience-speed" role="group" aria-label="Simulation speed">{[.25,1,2].map(value=><button key={value} aria-pressed={speed===value} onClick={()=>setSpeed(value)}>{value===.25?'¼×':value+'×'}</button>)}</div>
+     <button className="race-follow" disabled={!ready||unavailable} aria-pressed={following&&mode==='seat'} onClick={()=>{if(following){setFollowing(false);}else{setMode('seat');startReplay(true);setFollowing(true);}}}>{following&&mode==='seat'?'Stop following car':'Follow lead car from my seat'}</button>
+     <small>Illustrative motion, not recorded race footage. Drag to take control.</small>
+    </section>
+    </details>
     {bank.admissionNote&&<div className="circuit-bank-facts"><strong>Ticket options & cover</strong><p>{bank.admissionNote}</p></div>}
     {!!bank.ticketOptions?.length&&<section className="circuit-ticket-options" aria-label="Official ticket options for this bank"><h3>One grandstand. Different ticket options.</h3><p>These options share this representative model. Your package does not identify a model row.</p>{bank.ticketOptions.map(option=><div key={option.source}><a href={option.source} target="_blank" rel="noreferrer">{option.name}<span>Official information ↗</span></a><p>{option.note}</p></div>)}</section>}
     <a className="circuit-ticket-link" href={bank.source} target="_blank" rel="noreferrer">{bank.officialView?'Official information & virtual view':'Official grandstand information'}</a>
