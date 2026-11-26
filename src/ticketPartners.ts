@@ -1,5 +1,5 @@
 import { findVenue } from "./venueRegistry";
-import { commercialLaunch, commercialLaunchIssues, safeCommercialUrl } from "./commercialLaunch";
+import { commercialLaunch, safeCommercialUrl } from "./commercialLaunch";
 import type { Race } from './races';
 
 export type TicketPartner = {
@@ -17,11 +17,7 @@ export type TicketPartner = {
   attribution: { result: 'passed' | 'pending'; testedAt: string; method: 'partner-confirmed' | 'sandbox'; trackingUrl: string; destinationUrl: string };
 };
 
-// These are release requirements, not evidence of rights or account approval.
-export const monetizationReadiness = commercialLaunchIssues(commercialLaunch);
-export const ticketPartnersEnabled = monetizationReadiness.length === 0;
-// Add only exact event links issued under an approved agreement. No fabricated IDs.
-export const ticketPartners: TicketPartner[] = [];
+export {monetizationReadiness,ticketPartnersEnabled,ticketPartners} from './ticketPartnerConfig';
 export const PARTNER_REVIEW_DAYS = 7;
 
 export function partnerIssue(race: Race, partner: TicketPartner, now = new Date()): string | null {

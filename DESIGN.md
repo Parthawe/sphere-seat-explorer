@@ -237,3 +237,11 @@ Use shared prefiltered studio environment lighting for material highlights/refle
 Cars retain their authored, unbranded geometry. Full-detail and compact versions share paint treatment, tyre contact shadows and wheel rotation. No mirrored wet-road or weather claim is introduced; reflections come from an authored environment rather than venue photography. Preserve the existing historical replay's provenance and controls.
 
 Align tyre grounding to the road top plus the authored 0.36 wheel radius. Vegas uses 0.54 above the scene origin; detailed studies use local road height plus 0.43; the generic straight uses 0.395. The detailed-model replay starts one illustrative second before the selected model position so the first pass is visible promptly. This changes simulation staging, not historical race data.
+
+## Race planning from entry to booking · 26 November 2026
+
+Keep the calendar lightweight: derive its existing outlines, search text and coverage labels at build time, then load the full guide/model only after a destination is selected. Preserve each source edition, including the Sepang/Sakhir and dated Vegas distinctions. Calendar hash links prioritize their target and leave hero 3D opt-in; the normal landing experience keeps its automatic scene.
+
+Each guide has four compact icon shortcuts: Stands, Photos, Compare and Booking. Stack into two columns on narrow phones. Jump within the existing route without discarding public area/query context, and focus the actual target after lazy content resolves. Put booking comparison ahead of optional manual price notes. Price notes must say manual and distinguish persistent browser storage from session-only fallback. They do not become market prices or automated alerts.
+
+For upcoming 2026 races with a supported model, retain a direct organizer ticket-page handoff when no event-year F1 catalogue URL is supplied. Past models never become current sales offers. A destination load failure returns to the selected season's calendar rather than silently changing years.

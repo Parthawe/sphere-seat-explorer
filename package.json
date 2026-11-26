@@ -12,7 +12,8 @@
     "audit:partners": "tsx scripts/audit-ticket-partners.ts",
     "model:revenue": "tsx scripts/revenue-report.ts",
     "sync:racing": "tsx scripts/sync-racing.ts",
-    "sync:f1db": "tsx scripts/sync-f1db.ts"
+    "sync:f1db": "tsx scripts/sync-f1db.ts",
+    "prebuild": "tsx scripts/build-calendar-index.ts"
   },
   "dependencies": {
     "@fontsource/barlow-condensed": "^5.2.0",

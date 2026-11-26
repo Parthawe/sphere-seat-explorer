@@ -1,6 +1,7 @@
 import UiIcon from "./UiIcon";
 import CircuitThumbnail from "./CircuitThumbnail";
 import { findVenue } from "./venueRegistry";
+import {findCircuitModel} from './circuitSeating';
 import ViewingShortlist from "./ViewingShortlist";
 import TicketPartners from "./TicketSellerLinks";
 import { circuitGuideFor, circuitGuideSource, circuitTicketSource, circuitPublishedLength, CIRCUIT_GUIDES_CHECKED } from "./circuitGuides";
@@ -9,7 +10,8 @@ import { raceStatus, type Race } from "./races";
 export default function CircuitGuidePanel({ race, coverage }: { race: Race; coverage: string }) {
   const guide = circuitGuideFor(race.season, race.slug);
   if (!guide) return null;
-  const ticketUrl = circuitTicketSource(guide, race.season);
+  const catalogueUrl=circuitTicketSource(guide,race.season);
+  const ticketUrl=catalogueUrl??(raceStatus(race)!=='Past'?findCircuitModel(race.season,race.slug)?.ticketUrl:undefined);
   const length = circuitPublishedLength(guide);
   const hasAreaMap = !!findVenue(race.season,race.slug);
   return (
@@ -27,7 +29,7 @@ export default function CircuitGuidePanel({ race, coverage }: { race: Race; cove
         <div>
           <ViewingShortlist key={`${race.season}-${race.slug}`} race={race} guide={guide} />
         </div>
-        <div className="circuit-brief-checks">
+        <div className="circuit-brief-checks" id="booking-checks" tabIndex={-1}>
           <h3>Before you book</h3>
           <p className="booking-model-note">Estimated views. Confirm your seat, access and final price with the seller.</p>
           <details className="booking-evidence-disclosure"><summary>Source limits</summary>
@@ -37,7 +39,7 @@ export default function CircuitGuidePanel({ race, coverage }: { race: Race; cove
             <div><dt>Check with the seller</dt><dd>Actual seat, availability, final fees, cover, access and delivery.</dd></div>
           </dl></details>
           <p>{guide.ticketCheck}</p>
-          {ticketUrl ? <a className="circuit-ticket-source" href={ticketUrl} target="_blank" rel="noreferrer"><UiIcon name="ticket"/>{race.season} ticket catalogue</a> : raceStatus(race) === "Past" && <p className="circuit-edition-note">Past race reference · {race.season}</p>}
+          {ticketUrl ? <a className="circuit-ticket-source" href={ticketUrl} target="_blank" rel="noreferrer"><UiIcon name="ticket"/>{catalogueUrl?`${race.season} ticket catalogue`:'Organizer ticket page'}</a> : raceStatus(race) === "Past" && <p className="circuit-edition-note">Past race reference · {race.season}</p>}
         </div>
       </div>
       <TicketPartners race={race} />

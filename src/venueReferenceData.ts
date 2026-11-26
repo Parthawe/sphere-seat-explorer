@@ -5,8 +5,7 @@ import {venueStandCatalogue} from './standCatalogueData';
 import {findCircuitModel} from './circuitSeating';
 import {spectatorReferences} from './photoReferences';
 
-export const standAnchor=(id:string)=>`stand-option-${encodeURIComponent(id)}`;
-export const raceGuideUrl=(race:Pick<Race,'season'|'slug'>,anchor='venue-stands')=>`?season=${race.season}&race=${encodeURIComponent(race.slug)}#${anchor}`;
+export {standAnchor,raceGuideUrl} from './venueLinks';
 export type VenueReferenceLink={title:string;url:string;note:string};
 /** Links retain their source edition. No source media is downloaded or rehosted. */
 export function venueReferenceData(race:Pick<Race,'season'|'slug'>,optionId?:string){

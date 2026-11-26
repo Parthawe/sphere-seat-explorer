@@ -1,4 +1,4 @@
-import { ticketPartnersEnabled, ticketPartners } from './ticketPartners';
+import { ticketPartnersEnabled, ticketPartners } from './ticketPartnerConfig';
 
 export default function FundingDisclosure() {
   return <details className="funding-disclosure" id="funding-independence">

@@ -110,3 +110,9 @@
 .ticket-product-context>a {display:inline-flex; align-items:center; min-height:44px; font-size:13px; color:var(--color-action-hover); text-decoration:underline; text-underline-offset:3px;}
 .product-context-date {display:block; color:var(--color-text-muted); font-size:11px; line-height:1.7;}
 @media(max-width:360px) {.ticket-product-context dl>div {grid-template-columns:1fr; gap:2px;}}
+
+.race-guide-nav {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:20px 0 24px;}
+.race-guide-nav a {display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:12px;border:1px solid var(--color-control-border);background:var(--color-white);color:var(--color-ink);text-decoration:none;font-size:13px;}
+.race-guide-nav a:hover {background:var(--color-ink);border-color:var(--color-ink);color:var(--color-white);}
+#booking-checks {scroll-margin-top:24px;}
+@media(max-width:480px){.race-guide-nav {grid-template-columns:repeat(2,minmax(0,1fr));}}
