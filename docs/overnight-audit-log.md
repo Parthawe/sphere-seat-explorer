@@ -52,6 +52,17 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: the night scene had no title scrim. Looking down placed white title text over bright track furniture, including white pixels with a 1:1 white-on-white contrast before text-shadow effects. Monza’s longest bank label overlapped the camera bar at 1024px (heading bottom 230.72px versus bar top 230px). The 320px Spa sample itself was healthy.
 - Change: night titles now have a dark contrast backing. Day and night backing heights follow the actual title height. A ResizeObserver keeps the camera bar below wrapped titles and phone photo/zoom controls below the bar, preserving approximately 16px gaps as fonts and bank names change. No scene geometry changed.
 - Validation: ten day/night layouts across 320, 390, 768, 1024 and 1440px had approximately 16px title/control gaps, no photo/zoom overlap and no horizontal overflow. No browser errors. Desktop and phone night screenshots plus the longest Monza phone heading were inspected. TypeScript passed; production build is part of publication. No redundant full-suite rerun for this layout-only change.
-- Publication: prepared as the next code release; reconcile exact commit/version from native Sites history at the next audit.
+- Publication: v58, source `4433c079ad979bedb9d7d23668dabad735b308a6`, succeeded; matching GitHub push confirmed.
 - Limits: this addresses heading readability and overlay geometry, not a full-site contrast certification or calibrated seat views.
 - Next useful check: loading/error recovery and saved comparisons with unavailable or corrupted device storage.
+
+
+## 26 November 2026 · 09:01 UTC · Graphics recovery and unavailable storage
+
+- Starting release: v58, source `4433c079ad979bedb9d7d23668dabad735b308a6`; clean checkout.
+- Evidence: a real WEBGL_lose_context event left the replay status RUNNING, and Retry 3D automatically restarted cars and following. The stage’s passing-car button could also enable playback while graphics were unavailable.
+- Change: losing graphics now pauses cars and clears following. The stage passing-car action is disabled until graphics are ready, matching the main replay controls. Retrying preserves the modeled bank, row and position without automatically restarting motion.
+- Validation: actual context-loss/retry passed on desktop and phone; the fallback grid remained usable, playback stayed paused after retry and row 7/position 9 were retained. The phone check waited for the camera transition to settle. Blocked localStorage in Qatar and Vegas still allowed in-memory comparisons, showed the temporary-storage warning and supported Clear. Corrupt/duplicate/unsupported Qatar comparison data sanitized to the single allowed north ID. A controlled 503 on the public price snapshot showed Retry; restoring the response recovered it. Eight affected registry/snapshot tests and TypeScript passed. No full-suite rerun. Production build is part of publication.
+- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Limits: this validates browser context-loss handling, not every possible GPU/driver failure. Device-local storage and reference-price limitations remain explicit; no inventory or monetization was activated.
+- Next useful check: public ticket-source link labels and dated reference-price presentation, without claiming live availability or repeatedly crawling sellers.

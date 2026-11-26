@@ -23,7 +23,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  const cameraControls=useRef<ModelCameraControls|null>(null);
  const [zoomLimits,setZoomLimits]=useState({inward:true,outward:true});
  const zoomLimitsCallback=useCallback((inward:boolean,outward:boolean)=>setZoomLimits(previous=>previous.inward===inward&&previous.outward===outward?previous:{inward,outward}),[]);
- const dialog=useRef<HTMLDialogElement>(null),readyCallback=useCallback(()=>setReady(true),[]),unavailableCallback=useCallback(()=>{setUnavailable(true);setReady(false);},[]);
+ const dialog=useRef<HTMLDialogElement>(null),readyCallback=useCallback(()=>setReady(true),[]),unavailableCallback=useCallback(()=>{setUnavailable(true);setReady(false);setPlaying(false);setFollowing(false);},[]);
  const bank=model.banks.find(b=>b.id===selection.bank)!,count=model.banks.reduce((n,b)=>n+modelCount(b),0),p=modelPosition(model,selection),near=closestTrack(model,[p[0],p[2]]),distance=Math.round(Math.hypot(near[0]-p[0],near[1]-p[2]));
  function choose(next:Partial<ModelPosition>){setFollowing(false);setSelection(normalizeModelPosition(model,{...selection,...next}));setFeedback('');}
  useEffect(()=>{const q=window.matchMedia('(prefers-reduced-motion: reduce)'),update=()=>{if(q.matches)setPlaying(false);};q.addEventListener('change',update);return()=>q.removeEventListener('change',update);},[]);
@@ -54,7 +54,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
      <button disabled={!ready||unavailable} aria-label="Reset seated zoom" title="Reset zoom" onClick={()=>cameraControls.current?.resetZoom()}>1×</button>
      <button disabled={!ready||unavailable||!zoomLimits.outward} aria-label="Zoom out on seated view" title="Zoom out" onClick={()=>cameraControls.current?.zoomOut()}>−</button>
     </div>}
-    <div className="circuit-scene-actions">{bank.roof&&<button aria-pressed={!roofs} onClick={()=>setRoofs(!roofs)}>{roofs?"Roof cutaway":"Restore roofs"}</button>}<button onClick={()=>{setFollowing(false);setReset(r=>r+1);}}>Reset camera</button><button aria-pressed={playing} onClick={()=>setPlaying(!playing)}>{playing?'Pause cars':'Show passing cars'}</button></div>
+    <div className="circuit-scene-actions">{bank.roof&&<button aria-pressed={!roofs} onClick={()=>setRoofs(!roofs)}>{roofs?"Roof cutaway":"Restore roofs"}</button>}<button onClick={()=>{setFollowing(false);setReset(r=>r+1);}}>Reset camera</button><button disabled={!ready||unavailable} aria-pressed={playing} onClick={()=>setPlaying(!playing)}>{playing?'Pause cars':'Show passing cars'}</button></div>
     <div className="circuit-scene-note"><span>{mode==='seat'?'DRAG TO LOOK / BUTTONS OR SCROLL TO ZOOM':'DRAG TO ORBIT / SELECT A CHAIR'}</span><span>Estimated reconstruction · cars simulated</span></div>
    </section>
    <aside className="circuit-position-panel" aria-label="Model position controls">
