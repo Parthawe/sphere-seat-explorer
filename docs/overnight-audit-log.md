@@ -204,6 +204,16 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: a controlled 503 correctly removed reference prices and retained the organizer link/comparison. Keyboard Retry removed its own button during the request and left focus on BODY after success.
 - Change: Retry moves focus to the stable reference-status paragraph before requesting data. That paragraph announces loading, failure and dated reference results.
 - Validation: two affected snapshot-parser tests passed. Four browser journeys (1440px/390px × 503/malformed JSON record) retained safe Check with seller wording, organizer source access and comparison. Restoring the actual local snapshot and activating Retry restored its dated QAR reference, preserved the saved area and kept focus on status. No page errors or horizontal overflow; phone screenshot inspected. TypeScript/production build are part of publication.
-- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Publication: v69, source `db80beff9cf0cb9746fdd004d334a999ee466371`, succeeded; matching GitHub push confirmed.
 - Limits: failures were deliberately intercepted local responses, not a live organizer outage. The retained 23 November price snapshot was not refreshed, and restored reference data does not establish live availability or a final total.
 - Next useful check: text zoom and narrow 320px layouts for source/status, navigation and planning controls, preserving the scene camera and current branded spacing.
+
+
+## 26 November 2026 · 16:02 UTC · Narrow-screen planning reflow
+
+- Starting release: v69, source `db80beff9cf0cb9746fdd004d334a999ee466371`; clean checkout.
+- Evidence and validation: after lazy desk content and fonts settled, the 320px calendar, Qatar guide and Singapore guide had no document-level horizontal overflow. Branding, season controls, product navigation and 3D-entry panels were visually inspected. Singapore shortlist creation/download controls and Qatar's unsupported row/seat-only notice also remained within the viewport. An initial Singapore check used the wrong accessible region name and timed out; the corrected region selector passed.
+- Change: none to application code; no demonstrated reflow defect. Reconciled the previous successful release in this log.
+- Publication: documentation checkpoint only in GitHub; application remains v69. No unchanged build/deployment repeated.
+- Limits: this checks narrow CSS-viewport reflow in Chrome, not physical-device testing or native text-only zoom. It does not certify every offscreen control or 3D overlay at enlarged font sizes.
+- Next useful check: landscape phone scene overlays with the model grid and source dialogs, keeping controls reachable when viewport height is constrained.
