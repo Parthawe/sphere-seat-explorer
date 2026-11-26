@@ -147,7 +147,7 @@ export default function VegasAtlas({
             </h1>
             <p>
               Choose a race viewing area or explore the indoor Sphere model.
-            </p>
+            </p><a className="reference-header-link" href={`?season=${season}&race=las-vegas#venue-references`}>Photos & sources</a>
           </div>
           <div className="atlas-edition">
             <strong>{season}</strong>
