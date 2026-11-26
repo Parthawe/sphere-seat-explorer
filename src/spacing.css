@@ -209,3 +209,8 @@
 .circuit-model-stage.day-scene .circuit-model-canvas::after {height:calc(var(--scene-heading-bottom,176px) + 44px); background:linear-gradient(#e7eeebf5,#e7eeebea calc(100% - 44px),#e7eeeb00);}
 .circuit-camera-modes {top:calc(var(--scene-heading-bottom,134px) + 16px);}
 @media(max-width:760px) {.circuit-photo-trigger,.circuit-seat-zoom {top:calc(var(--scene-heading-bottom,134px) + var(--scene-camera-height,52px) + 32px);}}
+
+.comparison-reference {display:flex; flex-direction:column; align-items:flex-start; gap:8px; min-width:150px;}
+.comparison-reference strong {font-size:16px;}
+.comparison-reference time {font-size:12px; color:#535d6e; white-space:nowrap;}
+.comparison-reference a {display:inline-flex; align-items:center; min-height:44px; font-size:12px; color:#9f1b13; text-underline-offset:3px;}

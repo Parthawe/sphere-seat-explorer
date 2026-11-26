@@ -14,7 +14,7 @@ export default function AreaComparison({
   onSelect: (id: string) => void;
   onRemove: (id: string) => void;
   onClear: () => void;
-  referencePrice?: (id: string) => string | undefined;
+  referencePrice?: (id: string) => { label: string; checkedAt: string; sourceUrl: string } | undefined;
 }) {
   if (!saved.length) return null;
   const showAccess = venue.areas.some((a) => a.access);
@@ -57,6 +57,7 @@ export default function AreaComparison({
             {saved.map((id) => {
               const a = venue.areas.find((v) => v.id === id);
               if (!a) return null;
+              const price = referencePrice?.(id);
               return (
                 <tr key={id}>
                   <th scope="row">
@@ -67,7 +68,7 @@ export default function AreaComparison({
                   <td>{a.focus}</td>
                   <td>{a.confidence}</td>
                   {referencePrice && (
-                    <td>{referencePrice(id) || "Check seller"}</td>
+                    <td>{price ? <div className="comparison-reference"><strong>{price.label}</strong><time dateTime={price.checkedAt}>Checked {new Date(price.checkedAt).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})}</time><a href={price.sourceUrl} target="_blank" rel="noreferrer" aria-label={`${a.name} reference price source`}>Source page</a></div> : "Check seller"}</td>
                   )}
                   <td>
                     <button
@@ -85,7 +86,7 @@ export default function AreaComparison({
       </div>
       <p>
         {referencePrice
-          ? "Same race and duration. Reference prices exclude any unverified fees or changes; this is not a live offer comparison."
+          ? "Recorded reference prices, checked on the dates shown. Confirm current prices, fees and availability with the seller."
           : venue.comparisonPeriod
             ? 'Compare regions within this race. Ticket days and access vary by product; exact seats, prices and availability are not verified.'
             : `Same race and ${venue.durationDays}-day product duration. Compare track regions and location evidence; exact seats, prices and availability are not verified.`}{" "}

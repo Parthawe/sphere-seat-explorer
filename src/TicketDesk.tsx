@@ -373,7 +373,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
         onClear={comparison.clear}
         referencePrice={(id) => {
           const price = priceFor(id as AreaId);
-          return price ? `${price.price?.toLocaleString("en")} QAR` : undefined;
+          return price ? { label: `${price.price?.toLocaleString("en")} QAR`, checkedAt: price.checkedAt, sourceUrl: price.url } : undefined;
         }}
       />
       <section id="ticket-sellers" className="ticket-sellers">

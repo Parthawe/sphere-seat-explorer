@@ -63,6 +63,17 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Evidence: a real WEBGL_lose_context event left the replay status RUNNING, and Retry 3D automatically restarted cars and following. The stage’s passing-car button could also enable playback while graphics were unavailable.
 - Change: losing graphics now pauses cars and clears following. The stage passing-car action is disabled until graphics are ready, matching the main replay controls. Retrying preserves the modeled bank, row and position without automatically restarting motion.
 - Validation: actual context-loss/retry passed on desktop and phone; the fallback grid remained usable, playback stayed paused after retry and row 7/position 9 were retained. The phone check waited for the camera transition to settle. Blocked localStorage in Qatar and Vegas still allowed in-memory comparisons, showed the temporary-storage warning and supported Clear. Corrupt/duplicate/unsupported Qatar comparison data sanitized to the single allowed north ID. A controlled 503 on the public price snapshot showed Retry; restoring the response recovered it. Eight affected registry/snapshot tests and TypeScript passed. No full-suite rerun. Production build is part of publication.
-- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Publication: v59, source `243e550e3fe39bf91200c4bd8bd24d2991c697e9`, succeeded; matching GitHub push confirmed.
 - Limits: this validates browser context-loss handling, not every possible GPU/driver failure. Device-local storage and reference-price limitations remain explicit; no inventory or monetization was activated.
 - Next useful check: public ticket-source link labels and dated reference-price presentation, without claiming live availability or repeatedly crawling sellers.
+
+
+## 26 November 2026 · 09:29 UTC · Dated comparison prices and source handoffs
+
+- Starting release: v59, source `243e550e3fe39bf91200c4bd8bd24d2991c697e9`; clean checkout.
+- Evidence: Qatar’s selected-area price showed its check date, but the saved-comparison price cell contained only 2,000 QAR, with no per-record date or source handoff. A user viewing just the table could miss when that reference was captured. The source validator also accepted credentials and non-standard ports on an otherwise allowlisted hostname.
+- Change: each available comparison reference price now carries its recorded UTC check date and an explicitly named source link. The footer asks users to confirm current prices, fees and availability without assuming whether reference prices include fees. Source metadata rejects embedded credentials and non-standard ports before its URL can reach the new handoff.
+- Validation: eight affected snapshot/registry tests passed, including added credential/port cases. TypeScript passed. Desktop and phone comparisons showed Checked 23 Nov 2026 beside the recorded price, linked the existing Lusail product URL and retained horizontal table scrolling without page overflow. Both screenshots inspected; no browser errors. The copy clarification does not alter layout or data. Production build is part of publication.
+- Publication: prepared as the next code release; reconcile exact source/version from native Sites history at the next audit.
+- Limits: no seller recrawl, stock check, new price or discount was claimed. The collection remains a dated reference snapshot, not live inventory or an affiliate offer.
+- Next useful check: reduced-motion changes during active camera transitions and page-visibility playback behavior.

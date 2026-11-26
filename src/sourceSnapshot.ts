@@ -15,7 +15,7 @@ export function parseSourceSnapshot(value: unknown): SourceSnapshot {
       if (source[field] !== undefined && typeof source[field] !== "string")
         throw new Error("Invalid source field");
     const url = new URL(source.url);
-    if (url.protocol !== "https:" || !["www.lcsc.qa", "tickets.formula1.com", "f1experiences.com"].includes(url.hostname))
+    if (url.protocol !== "https:" || url.username || url.password || url.port || !["www.lcsc.qa", "tickets.formula1.com", "f1experiences.com"].includes(url.hostname))
       throw new Error("Unsupported source URL");
     if (source.status === "reference-price" &&
       (typeof source.price !== "number" || !Number.isFinite(source.price) || source.price <= 0 || source.currency !== "QAR"))
