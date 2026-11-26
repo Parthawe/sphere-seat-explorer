@@ -1,4 +1,4 @@
-export type ReferenceVenue = "china" | "qatar" | "bahrain" | "las-vegas" | "united-arab-emirates" | "australia" | "great-britain" | "belgium" | "italy";
+export type ReferenceVenue = "miami" | "china" | "qatar" | "bahrain" | "las-vegas" | "united-arab-emirates" | "australia" | "great-britain" | "belgium" | "italy";
 export type ReferenceKind = "photos" | "review";
 export type SpectatorReference = {
   id: string;

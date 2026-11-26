@@ -4,9 +4,9 @@
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
   "updated": "2026-11-26",
   "cadence_hours": 1,
-  "phase": "miami-initial-source-audit",
+  "phase": "canada-initial-source-audit",
   "active_run": null,
-  "next_action": "Begin Miami 2027: verify current organizer/F1 dates, physical venue identity, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography and build its own supported map/representative study. China investigation confirms the Shanghai 2027 event for 16\u201318 April, but the checked F1 ticket page exposes a waitlist without a reviewed current bank catalogue. Do not reuse its Bahrain-labeled image/template placeholders as Shanghai geography or copy unverified policy/capacity claims. A separate explicitly labeled China 2026 3D reference now has four compact A/B/H/K banks and 5,760 illustrative positions, using a dated 2026 government event guide and current OSM physical geometry; 2027 model lookup remains unsupported. Five other 2026 viewing/hospitality references are source-only. Retained shanghai-geometry.json has the 257-point GP way 156328670, six named permanent envelopes and raw A height tag 35. Source A spans a void/track context; its sample is offset 45 m into a source wing and every generated A point passes polygon/road checks. The A canopy is an approximate building-outline interpretation using the raw height tag, with authored flat profile/supports; it does not certify shade, actual roof or tier height. B uses one B1 physical envelope as context, not recovered B-block allocation. Do not repeat the bounded GP acquisition or silently promote this archive into 2027 ticket mapping. The 2026 original guide image labeled 2025 was inspected only for context, not added as a dated exact-seat reference or rehosted. Preserve rooftop cutaway, full-circuit/grid/seat controls, source/season labels, empty Shanghai photo collection, local privacy and all existing scene/replay behavior. Revisit China 2027 bank layouts only with new primary catalogue evidence; preserve the 2026 reference as a distinct model if future season-aware variants are added.",
+  "next_action": "Begin Canada 2027: verify current organizer/F1 event dates, physical Gilles-Villeneuve venue, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography for its own supported map/representative study. Preserve Miami’s initial 2027 four-region study and eight source-only distinctions. MIAMI-SOURCES.md records the full seven-way GP versus shorter MIA route, retained geometry and access limits; do not repeat its completed bbox acquisition or the 429 grandstand-page request. North Beach remains source-only without T13–16 ramp/flyover/grade context. Revisit temporary bank precision and dated attendee views only with new evidence.",
   "venues": [
     {
       "id": "las-vegas",
@@ -154,7 +154,7 @@
         "https://geoportail.wallonie.be/catalogue/a004e570-99d6-4fe5-b83d-49b774409278.html",
         "https://geoportail.wallonie.be/catalogue/e257f5df-6c96-4118-b4d2-1e63e955df53.html"
       ],
-      "next_action": "Begin Monza: verify the current 2027 event/physical venue and public organizer viewing products, then obtain bounded licensed GP/stand geography and implement its own representative study when evidence supports it. Spa initial public-product/unsupported-option audit is complete: 27 modeled banks/30,528 illustrative positions and 13 grouped source-only options. Do not repeat Spa terrain acquisition or completed product-region checks. Preserve distinct Eau Rouge Fanzone versus Fan Area Double Gauche, ages 17\u201327/free seating, unassigned Bronze without chair grids, PRM/hospitality source-only limits, Gold 6 Bis location gap, shared Gold 2 options and all existing scene/replay/privacy/season behavior. Return to Spa precision/photo gaps only with new supporting assets/evidence.",
+      "next_action": "Begin Monza: verify the current 2027 event/physical venue and public organizer viewing products, then obtain bounded licensed GP/stand geography and implement its own representative study when evidence supports it. Spa initial public-product/unsupported-option audit is complete: 27 modeled banks/30,528 illustrative positions and 13 grouped source-only options. Do not repeat Spa terrain acquisition or completed product-region checks. Preserve distinct Eau Rouge Fanzone versus Fan Area Double Gauche, ages 17–27/free seating, unassigned Bronze without chair grids, PRM/hospitality source-only limits, Gold 6 Bis location gap, shared Gold 2 options and all existing scene/replay/privacy/season behavior. Return to Spa precision/photo gaps only with new supporting assets/evidence.",
       "exact_seats_verified": false,
       "terrain_status": "Offline profile and context grid integrated; road grading/platforms/forest density authored",
       "terrain_artifact": "research/spa/terrain-samples.json",
@@ -185,7 +185,7 @@
         "https://www.monzanet.it/wp-content/uploads/2026/08/GP_F1_2027_LISTINO_PREZZI-1.pdf",
         "https://www.openstreetmap.org/relation/284565"
       ],
-      "next_action": "Begin Japan: verify the current 2027 event date/physical Suzuka venue and organizer public viewing products; obtain bounded licensed circuit/stand geometry and build an independent representative study where evidence supports it. Monza initial 2027 public-diagram audit is complete at 30 model banks/30,232 illustrative positions, thirteen explicitly named source-only products plus one general hospitality/access handoff. Do not repeat completed Monza GP/forest, start/finish, GF, Parabolica or Ascari assessment. Ascari 13, Serraglio 11, GT 2/3/27\u201330, Junior Interna 32 and 35A/B/C remain source-only pending better event/structural evidence; no borrowed seats. Monza Ascari 3 has two attributable 2025 references from the same attendee/publisher, published in April 2026, not two independent reviewers or exact-row calibration. Return to precision/media gaps only with new evidence. Preserve all existing venue, photo, replay, privacy and season behavior.",
+      "next_action": "Begin Japan: verify the current 2027 event date/physical Suzuka venue and organizer public viewing products; obtain bounded licensed circuit/stand geometry and build an independent representative study where evidence supports it. Monza initial 2027 public-diagram audit is complete at 30 model banks/30,232 illustrative positions, thirteen explicitly named source-only products plus one general hospitality/access handoff. Do not repeat completed Monza GP/forest, start/finish, GF, Parabolica or Ascari assessment. Ascari 13, Serraglio 11, GT 2/3/27–30, Junior Interna 32 and 35A/B/C remain source-only pending better event/structural evidence; no borrowed seats. Monza Ascari 3 has two attributable 2025 references from the same attendee/publisher, published in April 2026, not two independent reviewers or exact-row calibration. Return to precision/media gaps only with new evidence. Preserve all existing venue, photo, replay, privacy and season behavior.",
       "modeled_banks": 30,
       "modeled_positions": 30232,
       "seasons_with_3d_coverage": [
@@ -193,7 +193,7 @@
       ],
       "exact_seats_verified": false,
       "remaining_gaps": [
-        "Distinct Ascari 13, GT 2/3/27\u201330, Junior Interna 32 and 35A/B/C event boundaries; full GF extent",
+        "Distinct Ascari 13, GT 2/3/27–30, Junior Interna 32 and 35A/B/C event boundaries; full GF extent",
         "Flat ground: historic banking/flyover and structure elevations missing; Serraglio 11 has no seat camera",
         "Actual chair/row IDs, canopies, obstructions, hospitality and accessible routes",
         "Dated attendee references for other banks; no historical Monza telemetry"
@@ -216,7 +216,7 @@
         "https://www.suzukacircuit.jp/f1/ticket/pdf/grandstand_f1.pdf",
         "https://www.openstreetmap.org/relation/284570"
       ],
-      "next_action": "Begin Monaco 2027: verify event dates and the physical street circuit from current organizer/F1 sources, identify current public viewing products and listed sales channels, then obtain bounded licensed route/stand geography for its own map and supported representative model. Suzuka\u2019s start/finish evidence audit is checkpointed in research/suzuka/start-finish-envelope-audit.json and elevation-diagnostic.json. Six current organizer-linked V1/V2/A1/A2/B1/B2 schematic seating PDFs now have direct UI handoffs. They describe labels/variants but no metric tier/bridge geometry. Three GSI API samples identify available 5m-laser DEM context, not a terrain field or both road decks; no diagnostic value is used as a bridge, tier or eye height. Do not repeat the same three elevation queries, completed GP bbox acquisition or six-PDF audit. Keep Suzuka area-only with its explicit 3D vertical-context gap; revisit only with new licensed structure/elevation assets. Preserve nineteen families, eleven source-only options, distinct V1/V2/Q1/S/G/D limits, outlet visibility guidance, 2027-only routing, comparison/share privacy and all existing scene/photo/replay behavior.",
+      "next_action": "Begin Monaco 2027: verify event dates and the physical street circuit from current organizer/F1 sources, identify current public viewing products and listed sales channels, then obtain bounded licensed route/stand geography for its own map and supported representative model. Suzuka’s start/finish evidence audit is checkpointed in research/suzuka/start-finish-envelope-audit.json and elevation-diagnostic.json. Six current organizer-linked V1/V2/A1/A2/B1/B2 schematic seating PDFs now have direct UI handoffs. They describe labels/variants but no metric tier/bridge geometry. Three GSI API samples identify available 5m-laser DEM context, not a terrain field or both road decks; no diagnostic value is used as a bridge, tier or eye height. Do not repeat the same three elevation queries, completed GP bbox acquisition or six-PDF audit. Keep Suzuka area-only with its explicit 3D vertical-context gap; revisit only with new licensed structure/elevation assets. Preserve nineteen families, eleven source-only options, distinct V1/V2/Q1/S/G/D limits, outlet visibility guidance, 2027-only routing, comparison/share privacy and all existing scene/photo/replay behavior.",
       "mapped_products": 19,
       "source_only_options": 11,
       "seasons_with_area_coverage": [
@@ -246,7 +246,7 @@
         "https://monaco-grandprix.com/edition/formula-1-grand-prix-de-monaco-2027/evenement/tarifs-2027/",
         "https://www.openstreetmap.org/relation/148194"
       ],
-      "next_action": "Begin China 2027: verify current organizer/F1 event dates and the Shanghai physical venue, public ticket products and listed sales channels; obtain bounded licensed GP/stand geometry and build a supported independent map/representative 3D study. Monaco 2027 now has twelve area families, twenty named category rows and six distinct source-only accessible/hospitality/diagram references. Its organizer event runs 3\u20136 June, F1 sessions 4\u20136 June; comparisons describe day-specific categories, not universal four-day packages. Preserve Gold versus hospitality, K subgroup names, O upper/lower, T covered/upper/lower and unnumbered Z/Rocher. MONACO-SOURCES.md and monaco-track.json checkpoint the source audit. GP street interpretation is 41 ways/416 vertices/~3,325m versus published 3,337 m, excluding pit lane 850261588 and pit-exit 1388331347. Explicit licensed-node adaptations use a 35092475 excerpt and trim 1551240829; do not repeat the source bbox or silently straighten those gaps. Harbour context uses thirteen licensed coastline ways with an authored off-canvas seaward closure. No measured temporary stand geometry, terrain/tunnel structure or calibrated 3D view is supplied. The organizer configurator requires login at actual seat selection; do not repeat attempts or access private inventory. Do not copy its digital-twin assets or original map/photo artwork. Revisit Monaco/Suzuka vertical and precision gaps only with new assets; preserve all existing scene/photo/replay/privacy/season behavior.",
+      "next_action": "Begin China 2027: verify current organizer/F1 event dates and the Shanghai physical venue, public ticket products and listed sales channels; obtain bounded licensed GP/stand geometry and build a supported independent map/representative 3D study. Monaco 2027 now has twelve area families, twenty named category rows and six distinct source-only accessible/hospitality/diagram references. Its organizer event runs 3–6 June, F1 sessions 4–6 June; comparisons describe day-specific categories, not universal four-day packages. Preserve Gold versus hospitality, K subgroup names, O upper/lower, T covered/upper/lower and unnumbered Z/Rocher. MONACO-SOURCES.md and monaco-track.json checkpoint the source audit. GP street interpretation is 41 ways/416 vertices/~3,325m versus published 3,337 m, excluding pit lane 850261588 and pit-exit 1388331347. Explicit licensed-node adaptations use a 35092475 excerpt and trim 1551240829; do not repeat the source bbox or silently straighten those gaps. Harbour context uses thirteen licensed coastline ways with an authored off-canvas seaward closure. No measured temporary stand geometry, terrain/tunnel structure or calibrated 3D view is supplied. The organizer configurator requires login at actual seat selection; do not repeat attempts or access private inventory. Do not copy its digital-twin assets or original map/photo artwork. Revisit Monaco/Suzuka vertical and precision gaps only with new assets; preserve all existing scene/photo/replay/privacy/season behavior.",
       "mapped_products": 12,
       "named_category_rows": 20,
       "source_only_options": 6,
@@ -289,7 +289,7 @@
         "https://english.shanghai.gov.cn/en-SportsEvents/20260311/933bcc13c7c44363a04a036b4888a7de.html",
         "https://www.openstreetmap.org/relation/2094941"
       ],
-      "next_action": "Begin Miami 2027: verify current organizer/F1 dates, physical venue identity, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography and build its own supported map/representative study. China investigation confirms the Shanghai 2027 event for 16\u201318 April, but the checked F1 ticket page exposes a waitlist without a reviewed current bank catalogue. Do not reuse its Bahrain-labeled image/template placeholders as Shanghai geography or copy unverified policy/capacity claims. A separate explicitly labeled China 2026 3D reference now has four compact A/B/H/K banks and 5,760 illustrative positions, using a dated 2026 government event guide and current OSM physical geometry; 2027 model lookup remains unsupported. Five other 2026 viewing/hospitality references are source-only. Retained shanghai-geometry.json has the 257-point GP way 156328670, six named permanent envelopes and raw A height tag 35. Source A spans a void/track context; its sample is offset 45 m into a source wing and every generated A point passes polygon/road checks. The A canopy is an approximate building-outline interpretation using the raw height tag, with authored flat profile/supports; it does not certify shade, actual roof or tier height. B uses one B1 physical envelope as context, not recovered B-block allocation. Do not repeat the bounded GP acquisition or silently promote this archive into 2027 ticket mapping. The 2026 original guide image labeled 2025 was inspected only for context, not added as a dated exact-seat reference or rehosted. Preserve rooftop cutaway, full-circuit/grid/seat controls, source/season labels, empty Shanghai photo collection, local privacy and all existing scene/replay behavior. Revisit China 2027 bank layouts only with new primary catalogue evidence; preserve the 2026 reference as a distinct model if future season-aware variants are added.",
+      "next_action": "Begin Miami 2027: verify current organizer/F1 dates, physical venue identity, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography and build its own supported map/representative study. China investigation confirms the Shanghai 2027 event for 16–18 April, but the checked F1 ticket page exposes a waitlist without a reviewed current bank catalogue. Do not reuse its Bahrain-labeled image/template placeholders as Shanghai geography or copy unverified policy/capacity claims. A separate explicitly labeled China 2026 3D reference now has four compact A/B/H/K banks and 5,760 illustrative positions, using a dated 2026 government event guide and current OSM physical geometry; 2027 model lookup remains unsupported. Five other 2026 viewing/hospitality references are source-only. Retained shanghai-geometry.json has the 257-point GP way 156328670, six named permanent envelopes and raw A height tag 35. Source A spans a void/track context; its sample is offset 45 m into a source wing and every generated A point passes polygon/road checks. The A canopy is an approximate building-outline interpretation using the raw height tag, with authored flat profile/supports; it does not certify shade, actual roof or tier height. B uses one B1 physical envelope as context, not recovered B-block allocation. Do not repeat the bounded GP acquisition or silently promote this archive into 2027 ticket mapping. The 2026 original guide image labeled 2025 was inspected only for context, not added as a dated exact-seat reference or rehosted. Preserve rooftop cutaway, full-circuit/grid/seat controls, source/season labels, empty Shanghai photo collection, local privacy and all existing scene/replay behavior. Revisit China 2027 bank layouts only with new primary catalogue evidence; preserve the 2026 reference as a distinct model if future season-aware variants are added.",
       "seasons_with_3d_coverage": [
         2026
       ],
@@ -307,9 +307,29 @@
       "id": "miami",
       "event": "Miami",
       "venue": "Miami International Autodrome",
-      "status": "queued_unverified",
-      "sources": [],
-      "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
+      "status": "representative_3d_initial_2027_precision_needs_assets",
+      "sources": [
+        "https://www.formula1.com/en/racing/2027/miami",
+        "https://f1miamigp.com/news/press-release/tickets-on-sale-2027/",
+        "https://ticketing.formula1.com/tickets/en/miami/general-admission-f1-miami-international-autodrome",
+        "https://www.openstreetmap.org/way/1017340351",
+        "https://www.openstreetmap.org/way/171419981"
+      ],
+      "next_action": "Begin Canada 2027: verify current organizer/F1 event dates, physical Gilles-Villeneuve venue, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography for its own supported map/representative study. Preserve Miami’s initial 2027 four-region study and eight source-only distinctions. MIAMI-SOURCES.md records the full seven-way GP versus shorter MIA route, retained geometry and access limits; do not repeat its completed bbox acquisition or the 429 grandstand-page request. North Beach remains source-only without T13–16 ramp/flyover/grade context. Revisit temporary bank precision and dated attendee views only with new evidence.",
+      "asset_assessment": "MIAMI-SOURCES.md",
+      "seasons_with_3d_coverage": [
+        2027
+      ],
+      "modeled_banks": 4,
+      "modeled_positions": 7072,
+      "source_only_options": 8,
+      "exact_seats_verified": false,
+      "remaining_gaps": [
+        "Surveyed temporary bank boundaries, actual sections/rows, tiers, roofs, chair coordinates and access",
+        "T13–16 grade/flyovers and North Beach context; no North Beach seated camera",
+        "Real marina/yacht, team village, hospitality, pit and stadium vertical geometry",
+        "Dated attendee references and historical Miami telemetry"
+      ]
     },
     {
       "id": "canada",
@@ -362,7 +382,7 @@
     {
       "id": "mexico",
       "event": "Mexico",
-      "venue": "Hermanos Rodr\u00edguez",
+      "venue": "Hermanos Rodríguez",
       "status": "queued_unverified",
       "sources": [],
       "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
@@ -378,14 +398,14 @@
     {
       "id": "portugal",
       "event": "Portugal",
-      "venue": "Portim\u00e3o",
+      "venue": "Portimão",
       "status": "queued_unverified",
       "sources": [],
       "next_action": "Verify event/venue identity and gather official circuit/viewing-area sources."
     },
     {
       "id": "turkiye",
-      "event": "T\u00fcrkiye",
+      "event": "Türkiye",
       "venue": "Istanbul Park",
       "status": "queued_unverified",
       "sources": [],
@@ -485,7 +505,7 @@
       "work": "Expanded Singapore 2027 to twelve standard grandstands by adding Marina Bay, Bayfront, Promenade, Raffles, Empress and Stamford with distinct estimated regions, private parser matching, published zone access, comparison/share and official 180-degree preview handoffs. Assessed representative 3D assets separately and retained needs_assets. Preserved the newly shipped Las Vegas 2024 historical replay.",
       "sources_checked": "2026-11-23",
       "evidence": [
-        "F1 8\u201310 October 2027 event dates and organizer 2027 catalogue rechecked; six individual product descriptions and zone guidance verified",
+        "F1 8–10 October 2027 event dates and organizer 2027 catalogue rechecked; six individual product descriptions and zone guidance verified",
         "46 automated tests passed; TypeScript and production build checked in publication workflow",
         "Desktop 1440x1050 all twelve pointer/keyboard targets, six new source/zone selections, comparison persistence/removal/clear, parser privacy and public-only sharing checked",
         "Mobile 390x844 and 320px selection, ambiguity recovery and comparison checked; viewport/document both 320px and table scrolling contained in its 280px region",
@@ -634,7 +654,7 @@
       "work": "Verified Jeddah 2027 venue/date and six grandstand names in the organizer-linked public catalogue; added source links/names to its guide. Added touch/keyboard seated zoom to Qatar/Bahrain/Yas, with bounds, reset and context-loss states.",
       "evidence": [
         "61 tests pass; final release build required",
-        "Organizer-linked normal public ticket page names Jeddah 19\u201321 March 2027; six names read in public Grandstands table without booking or queue entry",
+        "Organizer-linked normal public ticket page names Jeddah 19–21 March 2027; six names read in public Grandstands table without booking or queue entry",
         "OSM snapshot contains mixed route variants and unnamed stands; no new geometry/model published",
         "Three geographic scenes: desktop/phone zoom, keyboard, 35/105 bounds, disabled controls, wheel synchronization, reference-dialog preservation and reset checked",
         "WebGL loss disabled zoom; Retry restored controls and responsive lens",
@@ -732,7 +752,7 @@
     {
       "date": "2026-11-25",
       "scope": "Initial Spa terrain-aware three-bank 3D study",
-      "result": "Added Gold 1, Mo\u00ebt & Chandon/ex Gold 3 and Silver 1 with 8,784 illustrative positions; integrated height-aware road/cars/fences/foundations/camera and separately attributed terrain/forest context.",
+      "result": "Added Gold 1, Moët & Chandon/ex Gold 3 and Silver 1 with 8,784 illustrative positions; integrated height-aware road/cars/fences/foundations/camera and separately attributed terrain/forest context.",
       "evidence": [
         "74 tests pass; TypeScript/build pass; final package rebuild required",
         "All 8,784 positions clear modeled road; source-height and above-ground eye checks pass",
@@ -744,11 +764,11 @@
         "Sparse terrain sampling and authored earthworks/forest/pit/stand structures are not a surveyed digital twin",
         "No current photo references, actual ticket-chair calibration, accessibility certification or device-performance benchmark"
       ],
-      "next": "Expand Spa 2027 from the initial three-bank terrain-aware study to remaining current organizer products, verifying broad bank associations and variant identities before placement. Preserve Gold 3/Mo\u00ebt & Chandon rename, existing sourced terrain, explicit unmodeled options, empty photo gaps and illustrative seat limits. Do not repeat terrain acquisition or height-renderer foundation work. Check forest/structure realism and low-end performance as evidence allows; preserve all existing scenes and source/privacy/season boundaries."
+      "next": "Expand Spa 2027 from the initial three-bank terrain-aware study to remaining current organizer products, verifying broad bank associations and variant identities before placement. Preserve Gold 3/Moët & Chandon rename, existing sourced terrain, explicit unmodeled options, empty photo gaps and illustrative seat limits. Do not repeat terrain acquisition or height-renderer foundation work. Check forest/structure realism and low-end performance as evidence allows; preserve all existing scenes and source/privacy/season boundaries."
     },
     {
       "date": "2026-11-25",
-      "scope": "Spa Combes 1\u20134 expansion and official virtual-view handoffs",
+      "scope": "Spa Combes 1–4 expansion and official virtual-view handoffs",
       "result": "Added four distinct estimated bank regions (4,608 new model positions); Spa now has seven banks and 13,392 positions. Added product cover caveats and official virtual-view handoffs outside dated attendee filters.",
       "evidence": [
         "75 tests and TypeScript/production build pass",
@@ -761,7 +781,7 @@
         "No canopy boundaries, dated attendee photos or verified exact-view mapping",
         "Gold 7 ter/OSM Endurance association remains unresolved"
       ],
-      "next": "Continue Spa remaining products: verify La Source/Gold 7-family bank associations with current organizer location evidence. Gold 7 ter describes La Source/pit-exit views; do not map it to the similarly named old-pits OSM Endurance footprint from name alone. Combes 1\u20134 and their official virtual-view handoffs are complete for this batch; do not repeat that assessment. Preserve seven-bank/13,392-position scope, existing terrain, cover uncertainty and photo/year/privacy boundaries. If evidence remains insufficient, progress another supported Spa region or the next verified venue."
+      "next": "Continue Spa remaining products: verify La Source/Gold 7-family bank associations with current organizer location evidence. Gold 7 ter describes La Source/pit-exit views; do not map it to the similarly named old-pits OSM Endurance footprint from name alone. Combes 1–4 and their official virtual-view handoffs are complete for this batch; do not repeat that assessment. Preserve seven-bank/13,392-position scope, existing terrain, cover uncertainty and photo/year/privacy boundaries. If evidence remains insufficient, progress another supported Spa region or the next verified venue."
     },
     {
       "date": "2026-11-25",
@@ -812,11 +832,11 @@
         "Gold4 package text refers to its 2026 introduction; no future inclusions or availability promised",
         "No dated attendee photographs or verified virtual-view playback added"
       ],
-      "next": "Continue Spa remaining Silver products: verify current Silver 3 Double Gauche, Silver 4 Bruxelles, Silver 5, Silver 7 All-In and Pitlane Walk/Silver 6 identities and named organizer-map regions before placing distinct representative banks. Preserve new Gold 2 Standard/Premium links as one physical bank with unknown real row allocation. Gold 2/4/5 initial source-region assessment and virtual-view handoffs are complete; do not repeat them. Gold 6 Bis remains a separate source-only option until new distinct location evidence appears. Reuse eighteen-bank/19,584-position Spa terrain study; do not recollect terrain or revisit resolved Gold 7 ter identity. Then assess Speed Corner/Fanzone/17\u201327 and other verified venues, keeping nonassigned products separate from chair inventories."
+      "next": "Continue Spa remaining Silver products: verify current Silver 3 Double Gauche, Silver 4 Bruxelles, Silver 5, Silver 7 All-In and Pitlane Walk/Silver 6 identities and named organizer-map regions before placing distinct representative banks. Preserve new Gold 2 Standard/Premium links as one physical bank with unknown real row allocation. Gold 2/4/5 initial source-region assessment and virtual-view handoffs are complete; do not repeat them. Gold 6 Bis remains a separate source-only option until new distinct location evidence appears. Reuse eighteen-bank/19,584-position Spa terrain study; do not recollect terrain or revisit resolved Gold 7 ter identity. Then assess Speed Corner/Fanzone/17–27 and other verified venues, keeping nonassigned products separate from chair inventories."
     },
     {
       "date": "2026-11-25",
-      "scope": "Spa Silver 3\u20137 viewing regions and daylight heading contrast",
+      "scope": "Spa Silver 3–7 viewing regions and daylight heading contrast",
       "result": "Added five separate estimated banks with 5,760 model positions; Spa now has 23 banks and 25,344 positions. Added current cover/package caveats and five organizer virtual-view page handoffs. Improved dark title contrast against bright forest scenes.",
       "evidence": [
         "79 tests pass; final TypeScript/production build runs during packaging",
@@ -830,12 +850,12 @@
         "No canopies, actual package facilities, pitlane-walk route, exact chair IDs or premium-row allocation",
         "No checked dated Spa attendee references or verified upstream panorama playback"
       ],
-      "next": "Finish Spa public viewing-product coverage: verify Speed Corner, Fanzone and 17\u201327 Blanchimont plus Bronze admission from current organizer pages/named map regions. Preserve assigned versus unassigned admission and do not invent GA chair inventories. Audit remaining PRM/hospitality options as source-only where spatial assets are missing, then move to verified Monza geography. Silver 3/4/5/6/7 initial assessment, estimated banks and official virtual-view handoffs are complete; do not repeat them. Preserve 23-bank/25,344-position scope, current newly-covered Silver 3 note, separate Silver 6 grandstand versus Thursday Pitlane Walk, Gold 2 shared-bank options, pending Gold 6 Bis, terrain, chair-switch fix and daylight-heading legibility. Do not recollect terrain."
+      "next": "Finish Spa public viewing-product coverage: verify Speed Corner, Fanzone and 17–27 Blanchimont plus Bronze admission from current organizer pages/named map regions. Preserve assigned versus unassigned admission and do not invent GA chair inventories. Audit remaining PRM/hospitality options as source-only where spatial assets are missing, then move to verified Monza geography. Silver 3/4/5/6/7 initial assessment, estimated banks and official virtual-view handoffs are complete; do not repeat them. Preserve 23-bank/25,344-position scope, current newly-covered Silver 3 note, separate Silver 6 grandstand versus Thursday Pitlane Walk, Gold 2 shared-bank options, pending Gold 6 Bis, terrain, chair-switch fix and daylight-heading legibility. Do not recollect terrain."
     },
     {
       "date": "2026-11-25",
       "scope": "Spa remaining public products and initial unsupported-option audit",
-      "result": "Added Speed Corner, Eau Rouge Fanzone, Fan Area Double Gauche and free-seating 17\u201327, reaching 27 model banks/30,528 illustrative positions. Added 13 grouped source-only options covering Bronze, PRM and hospitality without false chair/access claims.",
+      "result": "Added Speed Corner, Eau Rouge Fanzone, Fan Area Double Gauche and free-seating 17–27, reaching 27 model banks/30,528 illustrative positions. Added 13 grouped source-only options covering Bronze, PRM and hospitality without false chair/access claims.",
       "evidence": [
         "80 tests pass; final TypeScript/production build runs in packaging",
         "Current individual product pages highlight four distinct named map groups and expose virtual-view entry controls",
@@ -845,11 +865,11 @@
       ],
       "limitations": [
         "All new bank centers/setbacks/chairs authored; no actual ticket IDs, surveyed footprints or verified exact views",
-        "Unassigned 17\u201327 ages/eligibility and all service/access terms require organizer confirmation",
+        "Unassigned 17–27 ages/eligibility and all service/access terms require organizer confirmation",
         "Bronze, PRM and hospitality have information links only; no certified routes or facility views",
         "No dated attendee media or upstream panorama playback verified"
       ],
-      "next": "Begin Monza: verify the current 2027 event/physical venue and public organizer viewing products, then obtain bounded licensed GP/stand geography and implement its own representative study when evidence supports it. Spa initial public-product/unsupported-option audit is complete: 27 modeled banks/30,528 illustrative positions and 13 grouped source-only options. Do not repeat Spa terrain acquisition or completed product-region checks. Preserve distinct Eau Rouge Fanzone versus Fan Area Double Gauche, ages 17\u201327/free seating, unassigned Bronze without chair grids, PRM/hospitality source-only limits, Gold 6 Bis location gap, shared Gold 2 options and all existing scene/replay/privacy/season behavior. Return to Spa precision/photo gaps only with new supporting assets/evidence."
+      "next": "Begin Monza: verify the current 2027 event/physical venue and public organizer viewing products, then obtain bounded licensed GP/stand geography and implement its own representative study when evidence supports it. Spa initial public-product/unsupported-option audit is complete: 27 modeled banks/30,528 illustrative positions and 13 grouped source-only options. Do not repeat Spa terrain acquisition or completed product-region checks. Preserve distinct Eau Rouge Fanzone versus Fan Area Double Gauche, ages 17–27/free seating, unassigned Bronze without chair grids, PRM/hospitality source-only limits, Gold 6 Bis location gap, shared Gold 2 options and all existing scene/replay/privacy/season behavior. Return to Spa precision/photo gaps only with new supporting assets/evidence."
     },
     {
       "date": "2026-11-25",
@@ -904,31 +924,31 @@
         "Tree context is partial and authored crowns/clearing may differ from real obstructions",
         "No dated attendee photos or historical Monza telemetry added"
       ],
-      "next": "Assess Monza historic banking/flyover context from retained licensed OSM segments and attributable public venue evidence before exposing Serraglio 11 or new Ascari views. The GP is flat and 11 is now a visible source-only option; do not borrow another bank view or imply unobstructed physical visibility. If geometry/elevation evidence is insufficient, retain that gap and advance 21A\u2013E/35A\u2013C/25 and remaining start-finish products from the current organizer diagram. North batch is complete: 9,10,33A/B,34,10 BIS are six distinct estimated banks; do not repeat their assessment. Preserve 19-bank/22,816-position scope, compact authored 9/10 envelopes, existing GP/woodland inputs, initial five source envelopes, estimated shared splits, cameras, GA/GF, reference/privacy/replay/season limits."
+      "next": "Assess Monza historic banking/flyover context from retained licensed OSM segments and attributable public venue evidence before exposing Serraglio 11 or new Ascari views. The GP is flat and 11 is now a visible source-only option; do not borrow another bank view or imply unobstructed physical visibility. If geometry/elevation evidence is insufficient, retain that gap and advance 21A–E/35A–C/25 and remaining start-finish products from the current organizer diagram. North batch is complete: 9,10,33A/B,34,10 BIS are six distinct estimated banks; do not repeat their assessment. Preserve 19-bank/22,816-position scope, compact authored 9/10 envelopes, existing GP/woodland inputs, initial five source envelopes, estimated shared splits, cameras, GA/GF, reference/privacy/replay/season limits."
     },
     {
       "date": "2026-11-25",
       "scope": "Monza bridge-context checkpoint and Parabolica regions",
-      "result": "Identified the historic bridge/covered-GP horizontal crossing without inventing elevations; retained Serraglio source-only. Added 21A\u2013E and 25, bringing Monza to 25 banks/26,776 illustrative positions. Added separate source-only 35A/B/C options.",
+      "result": "Identified the historic bridge/covered-GP horizontal crossing without inventing elevations; retained Serraglio source-only. Added 21A–E and 25, bringing Monza to 25 banks/26,776 illustrative positions. Added separate source-only 35A/B/C options.",
       "evidence": [
         "87 tests pass; final TypeScript/production build runs in packaging",
         "Three bounded public OSM way/full reads retained under ODbL; historic layer 1 and GP covered tags establish ordering, not clearance",
         "Primary venue history/brochure identify historic banking but do not establish a surveyed GP flyover underside/support profile for the renderer",
-        "Current organizer 21A\u2013E/25/35A\u2013C identities compared to retained source geography; no new GP/forest acquisition",
+        "Current organizer 21A–E/25/35A–C identities compared to retained source geography; no new GP/forest acquisition",
         "Desktop/320px/390px all six selections, full 21E grid last position, 25-bank map, source-only options, empty references, zoom, cars and graphics Retry checked; no page exceptions"
       ],
       "limitations": [
         "Bridge dimensions/elevation are unknown; no runtime historic structure or Serraglio camera added",
-        "21A\u2013E letter-to-envelope order and 25 region are estimates, not official row/seat geometry",
+        "21A–E letter-to-envelope order and 25 region are estimates, not official row/seat geometry",
         "35A/B/C have no supported separate envelope or borrowed 24 view",
         "No dated attendee sources, exact chairs, canopies, access routes or physical sightline verification"
       ],
-      "next": "Continue Monza remaining start/finish products 2/3, 27\u201330 and 32 from the retained 2027 organizer map and licensed geometry; use compact estimated regions only where supported, otherwise expose source-only options. Assess GF as unnumbered seating without assigning actual chairs, then audit remaining Ascari 12/13/14/16/18 against missing historic context. Bridge research is checkpointed in research/monza/bridge-context.json: horizontal GP crossing and layer order are identified, but no deck clearance/support/profile evidence is established. Do not re-query the same three ways or use maximum bank rise as bridge clearance. Keep Serraglio 11 source-only pending new vertical/structural evidence. 35A/B/C boundaries remain unresolved and must not borrow 24. Parabolica 21A\u2013E/25 batch is complete at 25 banks/26,776 illustrative positions; do not repeat it or GP/woodland acquisition. Preserve source/estimated distinctions and all scene/replay/photo/privacy/season behavior."
+      "next": "Continue Monza remaining start/finish products 2/3, 27–30 and 32 from the retained 2027 organizer map and licensed geometry; use compact estimated regions only where supported, otherwise expose source-only options. Assess GF as unnumbered seating without assigning actual chairs, then audit remaining Ascari 12/13/14/16/18 against missing historic context. Bridge research is checkpointed in research/monza/bridge-context.json: horizontal GP crossing and layer order are identified, but no deck clearance/support/profile evidence is established. Do not re-query the same three ways or use maximum bank rise as bridge clearance. Keep Serraglio 11 source-only pending new vertical/structural evidence. 35A/B/C boundaries remain unresolved and must not borrow 24. Parabolica 21A–E/25 batch is complete at 25 banks/26,776 illustrative positions; do not repeat it or GP/woodland acquisition. Preserve source/estimated distinctions and all scene/replay/photo/privacy/season behavior."
     },
     {
       "date": "2026-11-25",
       "scope": "Monza GF unnumbered sample and start/finish product handoffs",
-      "result": "Added GF as free seating with 864 illustrative positions in a compact representative inside-Parabolica region. Monza now has 26 banks/27,640 model positions; GT 2/3/27\u201330 and 32 have distinct source-only information, bringing that list to 13.",
+      "result": "Added GF as free seating with 864 illustrative positions in a compact representative inside-Parabolica region. Monza now has 26 banks/27,640 model positions; GT 2/3/27–30 and 32 have distinct source-only information, bringing that list to 13.",
       "evidence": [
         "Current 2027 organizer PDF explicitly marks GF not numbered and names seven remaining start/finish products separately",
         "GF uses source 194457681 axis/center with an authored 40m width; initial 53m sample failed road clearance and was narrowed before release",
@@ -940,7 +960,7 @@
         "GT and 32 event boundaries/pit relationships remain unresolved; source-only links provide no seat camera",
         "No new dated attendee photo or historical Monza telemetry"
       ],
-      "next": "Audit remaining Monza Ascari 12/13/14/16/18 against retained licensed geography and the current 2027 organizer map. Keep historic bridge/Serraglio 11 and distinct 35A/B/C unresolved; bridge-context.json already identifies the horizontal crossing but not vertical structure. Start/finish GT 2/3/27\u201330 and Junior Interna 32 are now separate source-only options because their event envelopes and pit context are unsupported; do not invent or borrow neighboring seats. GF now has a compact unnumbered representative sample, not the whole area or actual chairs. Monza currently has 26 banks/27,640 illustrative positions and 13 source-only options. Seek checked attributable dated Monza spectator references when evidence supports location/capture year; do not substitute another circuit or imply exact seat calibration. Preserve scene, replay, photo, privacy and season behavior. After the remaining public-product audit, advance the verified venue queue instead of repeating completed GP/woodland or bridge acquisition."
+      "next": "Audit remaining Monza Ascari 12/13/14/16/18 against retained licensed geography and the current 2027 organizer map. Keep historic bridge/Serraglio 11 and distinct 35A/B/C unresolved; bridge-context.json already identifies the horizontal crossing but not vertical structure. Start/finish GT 2/3/27–30 and Junior Interna 32 are now separate source-only options because their event envelopes and pit context are unsupported; do not invent or borrow neighboring seats. GF now has a compact unnumbered representative sample, not the whole area or actual chairs. Monza currently has 26 banks/27,640 illustrative positions and 13 source-only options. Seek checked attributable dated Monza spectator references when evidence supports location/capture year; do not substitute another circuit or imply exact seat calibration. Preserve scene, replay, photo, privacy and season behavior. After the remaining public-product audit, advance the verified venue queue instead of repeating completed GP/woodland or bridge acquisition."
     },
     {
       "date": "2026-11-25",
@@ -949,7 +969,7 @@
       "evidence": [
         "Current 2027 organizer PDF checked visually and by product list against retained ODbL named source envelopes",
         "90 tests pass: distinct source/model product audit, no borrowed Ascari 13 model, all-position road clearance, nonoverlap, finite/unique coordinates, camera framing and reference year/location isolation",
-        "Chrome 1440\u00d71000, 390\u00d7844 and 320\u00d7740: four bank switches, full 12 stand, seated 16, last 18 position through grid, complete map, source-only 13 and photo dialog inspected; no page errors/overflow",
+        "Chrome 1440×1000, 390×844 and 320×740: four bank switches, full 12 stand, seated 16, last 18 position through grid, complete map, source-only 13 and photo dialog inspected; no page errors/overflow",
         "Video absent before consent; opt-in creates youtube-nocookie iframe with matching ID; unload removes it. No video playback or exact camera position certification",
         "Final TypeScript/production build runs in packaging"
       ],
@@ -958,18 +978,18 @@
         "Ascari 13 boundary and historic/pit/35 context gaps remain explicit",
         "Two references describe one attendee/source family, not independent aggregated reviews; no 2026 capture claimed"
       ],
-      "next": "Begin Japan: verify the current 2027 event date/physical Suzuka venue and organizer public viewing products; obtain bounded licensed circuit/stand geometry and build an independent representative study where evidence supports it. Monza initial 2027 public-diagram audit is complete at 30 model banks/30,232 illustrative positions, thirteen explicitly named source-only products plus one general hospitality/access handoff. Do not repeat completed Monza GP/forest, start/finish, GF, Parabolica or Ascari assessment. Ascari 13, Serraglio 11, GT 2/3/27\u201330, Junior Interna 32 and 35A/B/C remain source-only pending better event/structural evidence; no borrowed seats. Monza Ascari 3 has two attributable 2025 references from the same attendee/publisher, published in April 2026, not two independent reviewers or exact-row calibration. Return to precision/media gaps only with new evidence. Preserve all existing venue, photo, replay, privacy and season behavior."
+      "next": "Begin Japan: verify the current 2027 event date/physical Suzuka venue and organizer public viewing products; obtain bounded licensed circuit/stand geometry and build an independent representative study where evidence supports it. Monza initial 2027 public-diagram audit is complete at 30 model banks/30,232 illustrative positions, thirteen explicitly named source-only products plus one general hospitality/access handoff. Do not repeat completed Monza GP/forest, start/finish, GF, Parabolica or Ascari assessment. Ascari 13, Serraglio 11, GT 2/3/27–30, Junior Interna 32 and 35A/B/C remain source-only pending better event/structural evidence; no borrowed seats. Monza Ascari 3 has two attributable 2025 references from the same attendee/publisher, published in April 2026, not two independent reviewers or exact-row calibration. Return to precision/media gaps only with new evidence. Preserve all existing venue, photo, replay, privacy and season behavior."
     },
     {
       "date": "2026-11-25",
       "scope": "Suzuka 2027 event/source audit and nineteen-family area map",
       "result": "Verified event/physical venue and current Japanese organizer products. Added an independent north-up licensed GP map with nineteen selectable families, comparison/share and original organizer viewing handoffs. Eleven special/admission/hospitality options are source-only. No 3D chair or dated attendee preview is claimed.",
       "evidence": [
-        "Organizer/F1 confirm 9\u201311 April 2027; Japanese ticket root names current products, seating type differences and listed sales channels; English ticket root remains mixed/2026",
+        "Organizer/F1 confirm 9–11 April 2027; Japanese ticket root names current products, seating type differences and listed sales channels; English ticket root remains mixed/2026",
         "One bounded public OSM API snapshot; relation 284570 ordered into forty connected GP ways/269 closed vertices, ~5,813m, excluding pit lane",
         "Named source bleacher envelopes retained; A2/H/I are authored corner-region anchors with no unnamed footprint claim. Source bridge/lower ordering retained without fake height",
         "92 tests pass, covering season isolation, product identities, named source-only options, privacy-safe share URL, closed GP/excluded pit, crossing ordering and all existing scenes",
-        "Desktop 1440\u00d71000 and phone 320\u00d7740/390\u00d7844 selection, keyboard map, three-area comparison, source-only options and 2026 unsupported state inspected; no page exceptions or overflow; map labels enlarged and targets made at least44px",
+        "Desktop 1440×1000 and phone 320×740/390×844 selection, keyboard map, three-area comparison, source-only options and 2026 unsupported state inspected; no page exceptions or overflow; map labels enlarged and targets made at least44px",
         "Final TypeScript/production build runs in packaging"
       ],
       "limitations": [
@@ -977,7 +997,7 @@
         "Central crossover height, terrain and structure are missing; 3D remains unavailable",
         "Original organizer photos/360/video links have no verified capture year or exact row; no imagery redistributed"
       ],
-      "next": "Continue Suzuka 2027 from the retained suzuka-track.json: nineteen mapped grandstand families and eleven distinct source-only special/admission/hospitality options are implemented. Current event is 9\u201311 April 2027, confirmed by organizer and F1. Japanese catalogue is current; some English ticket pages remain 2026 and must not supply new season claims. Audit named retained start/finish envelopes and organizer seating PDFs (V1/V2, A1/A2, B1/B2) for the next supported representative 3D chunk. The GP loop is already acquired: relation 284570, 40 connected ways, 269 vertices, ~5,813m; no need to repeat the bbox acquisition. Source bridge 175231434 is above covered GP 183391655, but clearance, supports, terrain and tier heights are not measured. Do not render a false flat figure-eight or invent surveyed bridge dimensions. Seek additional licensed elevation/structural evidence; if essential 3D context remains unavailable, retain the area map and explicit gap, then advance to Monaco instead of repeating blocked geometry research. Retain Q1 seat-type differences, S/S-BOX family limits, G/D shared regions, source-only west/accessible/hospitality/limited-day options, comparison/share privacy and all existing venue/photo/replay behavior. Current map handoffs are organizer imagery references with unverified capture date/row match, not dated attendee references."
+      "next": "Continue Suzuka 2027 from the retained suzuka-track.json: nineteen mapped grandstand families and eleven distinct source-only special/admission/hospitality options are implemented. Current event is 9–11 April 2027, confirmed by organizer and F1. Japanese catalogue is current; some English ticket pages remain 2026 and must not supply new season claims. Audit named retained start/finish envelopes and organizer seating PDFs (V1/V2, A1/A2, B1/B2) for the next supported representative 3D chunk. The GP loop is already acquired: relation 284570, 40 connected ways, 269 vertices, ~5,813m; no need to repeat the bbox acquisition. Source bridge 175231434 is above covered GP 183391655, but clearance, supports, terrain and tier heights are not measured. Do not render a false flat figure-eight or invent surveyed bridge dimensions. Seek additional licensed elevation/structural evidence; if essential 3D context remains unavailable, retain the area map and explicit gap, then advance to Monaco instead of repeating blocked geometry research. Retain Q1 seat-type differences, S/S-BOX family limits, G/D shared regions, source-only west/accessible/hospitality/limited-day options, comparison/share privacy and all existing venue/photo/replay behavior. Current map handoffs are organizer imagery references with unverified capture date/row match, not dated attendee references."
     },
     {
       "date": "2026-11-25",
@@ -995,18 +1015,18 @@
         "No road-deck clearance, support profile, tier height or continuous terrain field was established",
         "No source PDF/photograph redistributed; original handoffs only"
       ],
-      "next": "Begin Monaco 2027: verify event dates and the physical street circuit from current organizer/F1 sources, identify current public viewing products and listed sales channels, then obtain bounded licensed route/stand geography for its own map and supported representative model. Suzuka\u2019s start/finish evidence audit is checkpointed in research/suzuka/start-finish-envelope-audit.json and elevation-diagnostic.json. Six current organizer-linked V1/V2/A1/A2/B1/B2 schematic seating PDFs now have direct UI handoffs. They describe labels/variants but no metric tier/bridge geometry. Three GSI API samples identify available 5m-laser DEM context, not a terrain field or both road decks; no diagnostic value is used as a bridge, tier or eye height. Do not repeat the same three elevation queries, completed GP bbox acquisition or six-PDF audit. Keep Suzuka area-only with its explicit 3D vertical-context gap; revisit only with new licensed structure/elevation assets. Preserve nineteen families, eleven source-only options, distinct V1/V2/Q1/S/G/D limits, outlet visibility guidance, 2027-only routing, comparison/share privacy and all existing scene/photo/replay behavior."
+      "next": "Begin Monaco 2027: verify event dates and the physical street circuit from current organizer/F1 sources, identify current public viewing products and listed sales channels, then obtain bounded licensed route/stand geography for its own map and supported representative model. Suzuka’s start/finish evidence audit is checkpointed in research/suzuka/start-finish-envelope-audit.json and elevation-diagnostic.json. Six current organizer-linked V1/V2/A1/A2/B1/B2 schematic seating PDFs now have direct UI handoffs. They describe labels/variants but no metric tier/bridge geometry. Three GSI API samples identify available 5m-laser DEM context, not a terrain field or both road decks; no diagnostic value is used as a bridge, tier or eye height. Do not repeat the same three elevation queries, completed GP bbox acquisition or six-PDF audit. Keep Suzuka area-only with its explicit 3D vertical-context gap; revisit only with new licensed structure/elevation assets. Preserve nineteen families, eleven source-only options, distinct V1/V2/Q1/S/G/D limits, outlet visibility guidance, 2027-only routing, comparison/share privacy and all existing scene/photo/replay behavior."
     },
     {
       "date": "2026-11-25",
       "scope": "Monaco 2027 event/product audit and source-led harbour area map",
       "result": "Added twelve viewing families, retaining twenty listed categories and six distinct source-only accessible/hospitality/diagram references. Licensed north-up street/coastline map, three-area comparison, sanitized sharing and official ticket handoffs are implemented. No unsupported 3D seat preview. Advanced independent queue to China.",
       "evidence": [
-        "F1 confirms4\u20136 June2027; ACM official pages confirm supporting event3\u20136 June and identify monaco-grandprix.com as official sales channel",
+        "F1 confirms4–6 June2027; ACM official pages confirm supporting event3–6 June and identify monaco-grandprix.com as official sales channel",
         "Current2027 category sheet and original circuit diagram inspected visually; Gold, K groups, O/T levels and unnumbered Z/Rocher remain distinct; prices/stock not copied",
         "One bounded public OSM snapshot supplies relation148194 and thirteen coastline ways. Pit lane/exit excluded; documented licensed-node excerpts resolve current relation split-way stubs. Closed adapted street trace41 ways/416 points/~3,325m",
         "95 tests pass including season isolation, twenty-category/standing distinctions, no 3D fallback, sanitized share, source-only options, closed route/adaptations, source coastline and segment-metadata alias regression",
-        "Desktop1440\u00d71000 and phones320\u00d7740/390\u00d7844: six varied category selections, keyboard map, three-area comparison, six source-only references, proper2026 unsupported state; own app has no exceptions/overflow. Final production build runs in packaging"
+        "Desktop1440×1000 and phones320×740/390×844: six varied category selections, keyboard map, three-area comparison, six source-only references, proper2026 unsupported state; own app has no exceptions/overflow. Final production build runs in packaging"
       ],
       "limitations": [
         "Temporary stand anchors/Gold/tier boundaries are estimates; no official row/chair geometry",
@@ -1014,19 +1034,19 @@
         "Original current map access legend contains H labels absent from the current priced-family list; no extra H product is inferred",
         "Official public-page scripts produced headless errors, but linked original diagrams were inspectable; no seat-selection/login stage was entered"
       ],
-      "next": "Begin China 2027: verify current organizer/F1 event dates and the Shanghai physical venue, public ticket products and listed sales channels; obtain bounded licensed GP/stand geometry and build a supported independent map/representative 3D study. Monaco 2027 now has twelve area families, twenty named category rows and six distinct source-only accessible/hospitality/diagram references. Its organizer event runs 3\u20136 June, F1 sessions 4\u20136 June; comparisons describe day-specific categories, not universal four-day packages. Preserve Gold versus hospitality, K subgroup names, O upper/lower, T covered/upper/lower and unnumbered Z/Rocher. MONACO-SOURCES.md and monaco-track.json checkpoint the source audit. GP street interpretation is 41 ways/416 vertices/~3,325m versus published 3,337 m, excluding pit lane 850261588 and pit-exit 1388331347. Explicit licensed-node adaptations use a 35092475 excerpt and trim 1551240829; do not repeat the source bbox or silently straighten those gaps. Harbour context uses thirteen licensed coastline ways with an authored off-canvas seaward closure. No measured temporary stand geometry, terrain/tunnel structure or calibrated 3D view is supplied. The organizer configurator requires login at actual seat selection; do not repeat attempts or access private inventory. Do not copy its digital-twin assets or original map/photo artwork. Revisit Monaco/Suzuka vertical and precision gaps only with new assets; preserve all existing scene/photo/replay/privacy/season behavior."
+      "next": "Begin China 2027: verify current organizer/F1 event dates and the Shanghai physical venue, public ticket products and listed sales channels; obtain bounded licensed GP/stand geometry and build a supported independent map/representative 3D study. Monaco 2027 now has twelve area families, twenty named category rows and six distinct source-only accessible/hospitality/diagram references. Its organizer event runs 3–6 June, F1 sessions 4–6 June; comparisons describe day-specific categories, not universal four-day packages. Preserve Gold versus hospitality, K subgroup names, O upper/lower, T covered/upper/lower and unnumbered Z/Rocher. MONACO-SOURCES.md and monaco-track.json checkpoint the source audit. GP street interpretation is 41 ways/416 vertices/~3,325m versus published 3,337 m, excluding pit lane 850261588 and pit-exit 1388331347. Explicit licensed-node adaptations use a 35092475 excerpt and trim 1551240829; do not repeat the source bbox or silently straighten those gaps. Harbour context uses thirteen licensed coastline ways with an authored off-canvas seaward closure. No measured temporary stand geometry, terrain/tunnel structure or calibrated 3D view is supplied. The organizer configurator requires login at actual seat selection; do not repeat attempts or access private inventory. Do not copy its digital-twin assets or original map/photo artwork. Revisit Monaco/Suzuka vertical and precision gaps only with new assets; preserve all existing scene/photo/replay/privacy/season behavior."
     },
     {
       "date": "2026-11-26",
       "scope": "China 2027 source audit and separate Shanghai 2026 3D reference",
       "result": "Verified 2027 event/venue but retained waitlist/catalogue uncertainty. Built four compact 2026 A/B/H/K samples, 5,760 model positions, full GP view and A building-outline canopy context. Five additional 2026 source-only references and an explicit 2027/archive boundary are implemented. Advanced independent queue to Miami.",
       "evidence": [
-        "Current F1 and Shanghai government confirm 16\u201318 April 2027; checked F1 ticket root offers waitlist with no reviewed bank catalogue and contains unrelated/placeholder map copy",
+        "Current F1 and Shanghai government confirm 16–18 April 2027; checked F1 ticket root offers waitlist with no reviewed bank catalogue and contains unrelated/placeholder map copy",
         "A dated 11 March 2026 government guide and its original event diagram identify 2026 A/B/H/K and other areas; header photograph explicitly says 2025 and is not relabeled or rehosted",
         "One bounded public OSM snapshot: relation 2094941, single closed GP way 156328670, 257 vertices/~5,465m, six named source envelopes; pit lanes 107371138/107371147 excluded",
         "A envelope center initially intersected the GP; sample moved 45 m into a source seating-side wing before validation. Source canopy outline/raw height tag 35 provide context only; profile/thickness/supports authored",
         "100 tests pass: season isolation, bank/source identities, count, all-position road clearance, A polygon containment, nonoverlap, camera framing, empty photo references and existing regression suite",
-        "Chrome desktop 1440\u00d71000 and phones 320\u00d7740/390\u00d7844 checked A/B/H/K, canopy cutaway/restore, last K section 2/row 18/position 40 via grid, full circuit/map, empty references/Shanghai label, cars pause/play, graphics loss/Retry and absence of 2027 canvas; no page exceptions or horizontal overflow",
+        "Chrome desktop 1440×1000 and phones 320×740/390×844 checked A/B/H/K, canopy cutaway/restore, last K section 2/row 18/position 40 via grid, full circuit/map, empty references/Shanghai label, cars pause/play, graphics loss/Retry and absence of 2027 canvas; no page exceptions or horizontal overflow",
         "Initial production build and collector compilation pass; final build runs in packaging"
       ],
       "limitations": [
@@ -1035,7 +1055,27 @@
         "2027 catalogue/layout is not established; no 2026 ticket allocation is carried forward",
         "No terrain/water/actual pit/fence/accessible-route reconstruction, attendee photo collection or historical Shanghai replay"
       ],
-      "next": "Begin Miami 2027: verify current organizer/F1 dates, physical venue identity, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography and build its own supported map/representative study. China investigation confirms the Shanghai 2027 event for 16\u201318 April, but the checked F1 ticket page exposes a waitlist without a reviewed current bank catalogue. Do not reuse its Bahrain-labeled image/template placeholders as Shanghai geography or copy unverified policy/capacity claims. A separate explicitly labeled China 2026 3D reference now has four compact A/B/H/K banks and 5,760 illustrative positions, using a dated 2026 government event guide and current OSM physical geometry; 2027 model lookup remains unsupported. Five other 2026 viewing/hospitality references are source-only. Retained shanghai-geometry.json has the 257-point GP way 156328670, six named permanent envelopes and raw A height tag 35. Source A spans a void/track context; its sample is offset 45 m into a source wing and every generated A point passes polygon/road checks. The A canopy is an approximate building-outline interpretation using the raw height tag, with authored flat profile/supports; it does not certify shade, actual roof or tier height. B uses one B1 physical envelope as context, not recovered B-block allocation. Do not repeat the bounded GP acquisition or silently promote this archive into 2027 ticket mapping. The 2026 original guide image labeled 2025 was inspected only for context, not added as a dated exact-seat reference or rehosted. Preserve rooftop cutaway, full-circuit/grid/seat controls, source/season labels, empty Shanghai photo collection, local privacy and all existing scene/replay behavior. Revisit China 2027 bank layouts only with new primary catalogue evidence; preserve the 2026 reference as a distinct model if future season-aware variants are added."
+      "next": "Begin Miami 2027: verify current organizer/F1 dates, physical venue identity, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography and build its own supported map/representative study. China investigation confirms the Shanghai 2027 event for 16–18 April, but the checked F1 ticket page exposes a waitlist without a reviewed current bank catalogue. Do not reuse its Bahrain-labeled image/template placeholders as Shanghai geography or copy unverified policy/capacity claims. A separate explicitly labeled China 2026 3D reference now has four compact A/B/H/K banks and 5,760 illustrative positions, using a dated 2026 government event guide and current OSM physical geometry; 2027 model lookup remains unsupported. Five other 2026 viewing/hospitality references are source-only. Retained shanghai-geometry.json has the 257-point GP way 156328670, six named permanent envelopes and raw A height tag 35. Source A spans a void/track context; its sample is offset 45 m into a source wing and every generated A point passes polygon/road checks. The A canopy is an approximate building-outline interpretation using the raw height tag, with authored flat profile/supports; it does not certify shade, actual roof or tier height. B uses one B1 physical envelope as context, not recovered B-block allocation. Do not repeat the bounded GP acquisition or silently promote this archive into 2027 ticket mapping. The 2026 original guide image labeled 2025 was inspected only for context, not added as a dated exact-seat reference or rehosted. Preserve rooftop cutaway, full-circuit/grid/seat controls, source/season labels, empty Shanghai photo collection, local privacy and all existing scene/replay behavior. Revisit China 2027 bank layouts only with new primary catalogue evidence; preserve the 2026 reference as a distinct model if future season-aware variants are added."
+    },
+    {
+      "date": "2026-11-26",
+      "scope": "Miami 2027 initial independent map and representative 3D study",
+      "result": "Four estimated viewing samples, 7,072 model positions, full GP, approximate stadium and palm campus context; eight source-only references. Independent queue advances to Canada.",
+      "evidence": [
+        "Current F1 date/venue and 2027 promoter/catalogue identities verified",
+        "One bounded OSM snapshot: seven connected GP ways, 263 closed points, ~5,416m; shorter MIA loop and pit excluded",
+        "Licensed stadium/field outlines and 328 tree source positions; heights, palms, paving, clearing and all bank geometry authored",
+        "104 tests pass; production build, collector compilation, identical public/source geometry and diff checks pass",
+        "Chrome 1440×1000,320×740,390×844: all four bank selections, full map/circuit/stand/seat, last Turn 18 section2/row18/position40 via grid, seated zoom, comparison, pause/play, eight source-only options, empty Miami references, graphics loss/Retry; no page exceptions or narrow overflow",
+        "Miami 2026 route has no borrowed canvas"
+      ],
+      "limitations": [
+        "No surveyed actual chairs, temporary extents, roof/tier/access calibration or guaranteed physical view",
+        "Road remains flat; North Beach held source-only pending ramp/flyover context",
+        "No dated attendee collection or historical Miami replay; cars simulated",
+        "Promoter grandstand page returned429; no retry or bypass"
+      ],
+      "next": "Begin Canada 2027: verify current organizer/F1 event dates, physical Gilles-Villeneuve venue, public viewing products and listed sales channels; obtain bounded licensed GP/stand geography for its own supported map/representative study. Preserve Miami’s initial 2027 four-region study and eight source-only distinctions. MIAMI-SOURCES.md records the full seven-way GP versus shorter MIA route, retained geometry and access limits; do not repeat its completed bbox acquisition or the 429 grandstand-page request. North Beach remains source-only without T13–16 ramp/flyover/grade context. Revisit temporary bank precision and dated attendee views only with new evidence."
     }
   ],
   "blockers": [

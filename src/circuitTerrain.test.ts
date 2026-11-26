@@ -136,3 +136,7 @@ test('Monza Ascari samples retain distinct identities and leave unsupported Asca
 test('Shanghai compact banks remain separate estimated source regions',()=>{
  const m=circuitModels.china;for(const b of m.banks)for(const other of m.banks.filter(o=>o.id!==b.id))assert.ok(bankEnvelopesSeparated(m,b,other),b.id+' overlaps '+other.id);
 });
+
+test('Miami temporary model samples remain separate estimated regions',()=>{
+ const m=circuitModels.miami;for(const b of m.banks)for(const other of m.banks.filter(o=>o.id!==b.id))assert.ok(bankEnvelopesSeparated(m,b,other),b.id+' overlaps '+other.id);
+});

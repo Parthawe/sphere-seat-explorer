@@ -1,6 +1,7 @@
 import {groundHeight,roadSample} from './circuitTerrain';
 import SilverstoneWing from './SilverstoneWing';
 import ShanghaiCanopy from './ShanghaiCanopy';
+import HardRockStadium from './HardRockStadium';
 import CircuitPark,{createGrassTexture} from "./CircuitPark";
 import FormulaCar from "./FormulaCar";
 import {Canvas,useFrame,useThree,useLoader} from '@react-three/fiber';
@@ -38,8 +39,8 @@ function Bank({bank,model,selection,onSelect,roofs}:{bank:ModelBank;model:Circui
   {bank.kind==='lawn'?<mesh position={[0,1.7,0]} scale={[bank.width/2,3.2,22]}><sphereGeometry args={[1,32,12]}/><meshStandardMaterial color="#777348" roughness={1}/></mesh>:<>
    <Instances items={tiers} color="#646a73"/>
    <Instances items={supports} color="#b5bbc4"/>
-   <Instances geometry={active?rounded:undefined} items={chairs} color={model.id==='qatar'?'#783b4d':'#3d647c'} onClick={i=>onSelect(positions[i])}/>
-   <Instances geometry={active?rounded:undefined} items={backs} color={model.id==='qatar'?'#8a4056':'#4c7895'} onClick={i=>onSelect(positions[i])}/>
+   <Instances geometry={active?rounded:undefined} items={chairs} color={model.id==='qatar'?'#783b4d':model.id==='miami'?'#356d73':'#3d647c'} onClick={i=>onSelect(positions[i])}/>
+   <Instances geometry={active?rounded:undefined} items={backs} color={model.id==='qatar'?'#8a4056':model.id==='miami'?'#447f86':'#4c7895'} onClick={i=>onSelect(positions[i])}/>
    {Array.from({length:bank.sections-1},(_,i)=><group key={i} position={[-bank.width/2+(i+1)*(bank.seats+3)*pitch-1.5*pitch,0,0]}>
     <mesh position={[0,.58+bank.rows*.215,0]} rotation={[Math.atan2(.43,.88),0,0]}><boxGeometry args={[1.5,.15,bank.rows*.98]}/><meshStandardMaterial color="#b1b6c0"/></mesh>
    </group>)}
@@ -88,6 +89,7 @@ function Context({model,selection,roofs}:{model:CircuitModel;selection:ModelPosi
    {Array.from({length:22},(_,i)=><group key={i} position={[-132+i*12.5,0,-8.1]}><mesh position={[0,2.5,0]}><boxGeometry args={[10,5,.15]}/><meshStandardMaterial color="#222a38"/></mesh><mesh position={[0,7.8,-.05]}><boxGeometry args={[10,2,.2]}/><meshPhysicalMaterial color="#37546b" metalness={.7} roughness={.15} clearcoat={1}/></mesh><mesh position={[0,5.4,-.1]}><boxGeometry args={[10,.4,.2]}/><meshBasicMaterial color={i%3===0?'#d02d36':'#bfc7d6'}/></mesh></group>)}
   </group>}
   {model.id==='china'&&roofs&&<ShanghaiCanopy model={model}/>}
+  {model.id==='miami'&&<HardRockStadium model={model}/>}
   {model.id==='bahrain'&&towerCenter&&<group position={[towerCenter[0],0,towerCenter[1]]}>
    {Array.from({length:8},(_,i)=><group key={i} position={[0,5+i*3.2,0]}><mesh castShadow><cylinderGeometry args={[14+i*.8,14+i*.8,2.6,48]}/><meshStandardMaterial color="#243346" metalness={.7} roughness={.22}/></mesh><mesh position={[0,1.5,0]} castShadow><cylinderGeometry args={[16+i*.8,16+i*.8,.4,48]}/><meshStandardMaterial color="#d9d8d3" roughness={.45}/></mesh></group>)}
   </group>}

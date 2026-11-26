@@ -103,3 +103,7 @@ Suzuka’s six direct seating-diagram links are original organizer documents, no
 Monaco’s original 2027 circuit diagram and category sheet were inspected as primary event/product sources. They are not dated spectator photographs or exact-row previews. The app opens original organizer pages and does not redistribute the diagram, artwork, source digital-twin meshes or private chair views. No attendee review, capture year or aggregated rating is inferred.
 
 Shanghai has an independent empty spectator-reference collection and displays its own venue label. The public 2026 guide’s original header photograph is explicitly labeled 2025; it was inspected for context and is not relabeled as 2026/2027, rehosted or associated with a model row. The original 2026 event diagram supports product identities, not an exact-seat photo. The 2027 ticket page’s unrelated/placeholder map content is not a source for Shanghai views.
+
+## Miami 2027 initial study · 26 November 2026 UTC
+
+Miami has its own venue label and empty checked attendee collection. The inspected promoter campus illustration supports broad context only; it is not a dated spectator photo, calibrated row view or app asset. No photograph or artwork is redistributed, no capture year is invented and other venue references are not borrowed.

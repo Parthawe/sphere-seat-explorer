@@ -91,3 +91,7 @@ test('Monza has no borrowed attendee references from another circuit',()=>{
 test('Shanghai has its own empty attendee collection without borrowed venue images',()=>{
  assert.deepEqual(referencesFor('china','a','area'),[]);assert.deepEqual(referencesFor('china','a','venue'),[]);
 });
+
+test('Miami has no borrowed or falsely dated attendee photographs',()=>{
+ assert.deepEqual(referencesFor('miami','start-finish','area'),[]);assert.deepEqual(referencesFor('miami','start-finish','venue'),[]);
+});
