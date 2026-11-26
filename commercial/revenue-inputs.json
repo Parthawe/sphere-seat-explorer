@@ -1,0 +1,12 @@
+{
+  "currency": null,
+  "scenario": null,
+  "observed": {
+    "qualifiedVisitors": null,
+    "sellerClicks": null,
+    "partnerReportedOrders": null,
+    "approvedCommission": null,
+    "operatingCosts": null,
+    "reportReference": null
+  }
+}

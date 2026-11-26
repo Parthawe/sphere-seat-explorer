@@ -1,3 +1,4 @@
+import QatarProductContext from "./QatarProductContext";
 import { parseSourceSnapshot } from "./sourceSnapshot";
 import { raceStatus, calendars } from "./races";
 import { useAreaUrl } from "./useAreaUrl";
@@ -323,6 +324,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
               <span className="seating-tag">{chosen.kind}</span>
             </div>
             <p>{chosen.description}</p>
+            <QatarProductContext area={area} />
             <div className="reference-price">
               <div>
                 <span>Published by Lusail · 3 days</span>

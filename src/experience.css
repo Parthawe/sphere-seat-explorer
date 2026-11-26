@@ -73,3 +73,14 @@
 @media(prefers-reduced-motion:no-preference) {
  .landing-primary,.landing-scene {transition:background-color .18s,border-color .18s;}
 }
+
+.ticket-product-context {padding-block:20px; margin-block:24px; border-top:1px solid #cbd0da;}
+.ticket-product-context h4 {font-size:15px; margin:0 0 16px;}
+.ticket-product-context dl {margin:0;}
+.ticket-product-context dl>div {display:grid; grid-template-columns:110px 1fr; gap:12px; margin-top:10px; font-size:12px; line-height:1.6;}
+.ticket-product-context dt {color:#535b6d;}
+.ticket-product-context dd {margin:0; font-weight:500;}
+.ticket-product-context p {font-size:13px; line-height:1.7; margin:16px 0 8px;}
+.ticket-product-context>a {display:inline-flex; align-items:center; min-height:44px; font-size:13px; color:#b70500; text-decoration:underline; text-underline-offset:3px;}
+.product-context-date {display:block; color:#535b6d; font-size:11px; line-height:1.7;}
+@media(max-width:360px) {.ticket-product-context dl>div {grid-template-columns:1fr; gap:2px;}}

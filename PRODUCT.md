@@ -143,3 +143,10 @@ Austria 2027 now has eleven selectable viewing families on an independently sour
 ## Circuit information coverage · 26 November 2026
 
 Every listed race in 2026 and 2027 has a circuit brief, including venues without a supported map or 3D model. There are 27 season-bound circuit references across 47 race entries. The brief combines official F1 circuit context and published reference lap lengths with authored product/arrival checks. Current 2027 ticket landing pages are linked only as 2027 buying handoffs. Reference sources remain explicitly dated and do not certify seat geometry, live availability, accessibility routes or cross-zone access. Circuit names and cities are searchable.
+
+
+## Commercial pilot preparation · 26 November 2026
+
+The owner confirms holding written permission for the current brand/domain; the document scope/reference is still needed for activation. No rebrand or domain migration is authorized by this update. Paid referrals and ads remain inactive. The stronger release checker requires recorded rights review, actual operator/policies, pilot ownership and measurement approval, then per-seller agreement/category/terms/availability/attribution records. This is not automated inspection or proof of conversions.
+
+Qatar 2026's five organizer product identities were rechecked. The area panel now distinguishes admission/duration and the real seller allocation from estimated positions. The commercial folder contains empty research/review ledgers and a revenue worksheet; no real audience, order or income result has been supplied. Official affiliate signup routes are in docs/affiliate-programmes.md. No application or external message was sent.

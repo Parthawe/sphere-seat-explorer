@@ -8,7 +8,7 @@ export default function FundingDisclosure() {
       <p>{ticketPartnersEnabled && ticketPartners.length ? 'Participating sellers may pay us a commission when you book through a clearly labeled affiliate link. Organizer and reference links remain separate.' : 'There are currently no active paid ticket referrals or display ads on this site.'}</p>
       <p>Commercial relationships must not determine our viewing descriptions or model accuracy labels. A referral link does not verify a ticket’s availability, suitability or price.</p>
       <p>Our 3D scenes are estimated reconstructions. Rows, chairs and car movements are illustrative. Use the seller’s own category, seat and access information before paying.</p>
-      <p>Any future advertising will be labeled and kept outside the 3D scenes and seat controls.</p>
+      <p>Display advertising is deferred while the ticket-referral pilot is evaluated. There are no analytics or advertising scripts added by this pilot.</p>
     </div>
   </details>;
 }
