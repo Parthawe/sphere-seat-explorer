@@ -1,5 +1,5 @@
 /* Shared visual controls: icons support actions, sourced outlines support race choice. */
-.ui-icon {display:inline-block; width:20px; height:20px; flex:0 0 20px; vertical-align:middle;}
+.ui-icon {display:inline-block; width:20px; height:20px; flex:0 0 auto; vertical-align:middle;}
 :is(.product-jump-nav a,.calendar-filters button,.planning-intent button,.shortlist-export button,.circuit-ticket-source,.hero-secondary,.hero-camera-switch button,.circuit-camera-modes button,.circuit-photo-trigger,.circuit-scene-actions button) {display:inline-flex; align-items:center; justify-content:center; gap:8px;}
 .product-jump-nav a {justify-content:flex-start;}
 .product-jump-nav .ui-icon {width:17px; height:17px; flex-basis:17px;}
