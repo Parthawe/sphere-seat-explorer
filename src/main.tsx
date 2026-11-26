@@ -13,6 +13,7 @@ import AppBoundary from "./AppBoundary";
 import "./style.css";
 import "./spacing.css";
 import "./experience.css";
+import "./visualExperience.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppBoundary><App /></AppBoundary>

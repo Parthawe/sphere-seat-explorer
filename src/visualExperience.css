@@ -1,0 +1,115 @@
+/* Shared visual controls: icons support actions, sourced outlines support race choice. */
+.ui-icon {display:inline-block; width:20px; height:20px; flex:0 0 20px; vertical-align:middle;}
+:is(.product-jump-nav a,.calendar-filters button,.planning-intent button,.shortlist-export button,.circuit-ticket-source,.hero-secondary,.hero-camera-switch button,.circuit-camera-modes button,.circuit-photo-trigger,.circuit-scene-actions button) {display:inline-flex; align-items:center; justify-content:center; gap:8px;}
+.product-jump-nav a {justify-content:flex-start;}
+.product-jump-nav .ui-icon {width:17px; height:17px; flex-basis:17px;}
+.hero-motion-control {position:absolute; top:24px; left:24px; z-index:2; display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:10px 12px; border:1px solid #626a7a; background:#10131e; color:#e1e5ee; font-size:11px;}
+.hero-motion-control .ui-icon {width:18px; height:18px; flex-basis:18px;}
+.season-landing-copy {padding-top:88px;}
+.season-landing-copy h1 {font-size:clamp(64px,6.6vw,94px);}
+.season-landing-copy>p {max-width:30ch;}
+.hero-world {inset:-20px -22px -20px 27%; transform:perspective(1000px) translate3d(var(--depth-x,0px),var(--depth-y,0px),0) rotateX(var(--depth-rx,0deg)) rotateY(var(--depth-ry,0deg)); transform-origin:60% 50%;}
+.circuit-thumbnail {display:block; width:88px; height:58px; color:#333e50; flex:0 0 auto;}
+.circuit-outline-base {fill:none; stroke:currentColor; stroke-width:2.7; stroke-linecap:round; stroke-linejoin:round;}
+.circuit-outline-active {fill:none; stroke:#e10600; stroke-width:2.7; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:12 600;}
+.circuit-thumbnail-empty {display:flex; align-items:center; justify-content:center; color:#737d8f;}
+.circuit-thumbnail-empty .ui-icon {width:28px; height:28px;}
+.race-list-head,.race-row {grid-template-columns:100px minmax(180px,1.7fr) 1.05fr 1.15fr .7fr;}
+.race-round {display:flex; flex-direction:column; align-items:center; gap:5px; font:500 11px 'IBM Plex Sans',sans-serif;}
+.race-row {padding-block:18px;}
+.race-row .coverage-3d,.race-row .coverage-guide {display:flex; align-items:center; gap:8px; font-size:12px; line-height:1.6;}
+.race-row .coverage-guide .ui-icon,.race-row .coverage-3d .ui-icon {width:17px; height:17px; flex-basis:17px;}
+.circuit-brief-title {display:flex; align-items:center; gap:20px; min-width:0;}
+.circuit-brief-title .circuit-thumbnail {width:112px; height:76px;}
+.circuit-brief-title h2 {text-wrap:balance;}
+.shortlist-choice-state {display:flex; align-items:center; justify-content:center; min-width:44px; min-height:44px;}
+.shortlist-choice-state .ui-icon {width:18px; height:18px;}
+.viewing-choice-list>button {min-height:72px;}
+.viewing-choice-list>button[aria-pressed=true] .shortlist-choice-state {background:#bd0803; color:#fff;}
+.shortlist-notebook input {accent-color:#c60700;}
+.product-quick-facts {display:flex; flex-wrap:wrap; gap:12px 20px; font-size:12px; line-height:1.6;}
+.product-quick-facts>span {display:flex; align-items:center; gap:8px;}
+.product-quick-facts .ui-icon {width:17px; height:17px;}
+.ticket-product-context>a {gap:8px;}
+.circuit-camera-modes button {min-height:44px; padding:10px 12px;}
+.circuit-photo-trigger,.circuit-scene-actions button {min-height:44px;}
+.circuit-scene-actions button[aria-label="Reset camera"] {min-width:44px;}
+.circuit-overview-trigger,.circuit-grid-trigger {display:flex; align-items:center; flex-wrap:wrap; gap:10px; min-height:48px;}
+.circuit-grid-trigger small {margin-left:auto;}
+.circuit-scene-note {font-size:11px;}
+@media(max-width:1100px) and (min-width:761px) {
+ .race-list-head,.race-row {grid-template-columns:82px minmax(150px,1fr) 110px 130px; gap:14px;}
+ .race-status,.race-list-head>span:last-child {display:none;}
+ .race-row strong {font-size:24px;}
+ .race-row .race-dates {font-size:12px;}
+ .race-round {grid-row:auto;}
+ .race-row strong,.race-dates,.race-row .coverage-guide,.race-row .coverage-3d {grid-column:auto;}
+ .calendar-toolbar {flex-direction:row; align-items:flex-end;}
+ .race-search input {width:210px;}
+ .race-list-head {display:grid;}
+ .circuit-brief-title .circuit-thumbnail {width:90px; height:64px;}
+}
+@media(max-width:1000px) and (min-width:761px) {
+ .season-landing-copy {width:61%; padding-top:88px;}
+ .season-landing-copy h1 {font-size:64px;}
+ .hero-world {left:30%;}
+ .circuit-guide-actions {max-width:180px;}
+}
+@media(max-width:760px) {
+ .hero-world {inset:-10px -12px auto; height:355px;}
+ .season-landing-copy {padding-top:280px;}
+ .season-landing-copy h1 {font-size:clamp(50px,12.8vw,76px);}
+ .hero-motion-control {top:16px; left:16px; min-width:44px; padding:10px;}
+ .hero-motion-control>span {display:none;}
+ .hero-camera-switch {max-width:calc(100% - 88px);}
+ .hero-camera-switch button {padding-inline:10px; gap:6px;}
+ .hero-camera-switch .ui-icon {width:17px; height:17px; flex-basis:17px;}
+ .hero-secondary {gap:8px;}
+ .circuit-brief>header {flex-wrap:wrap;}
+ .circuit-brief-title {gap:12px;}
+ .circuit-brief-title .circuit-thumbnail {width:84px; height:60px;}
+ .circuit-brief-title h2 {font-size:28px;}
+ .circuit-guide-actions {flex-direction:row; flex-wrap:wrap; align-items:center; gap:12px;}
+ .circuit-camera-modes button {padding-inline:9px; gap:6px; font-size:12px;}
+ .circuit-camera-modes .ui-icon {width:17px; height:17px; flex-basis:17px;}
+ .circuit-photo-trigger {padding-inline:10px;}
+ .circuit-scene-actions {gap:8px;}
+ .circuit-scene-actions button {padding-inline:12px; gap:6px;}
+ .shortlist-export button {min-height:44px;}
+}
+@media(max-width:760px) {
+ .race-list-head {display:none;}
+ .race-row {grid-template-columns:76px minmax(0,1fr); padding:16px 0; gap:6px 14px;}
+ .race-round {grid-row:1/4; align-self:center;}
+ .race-row strong,.race-dates,.race-row .coverage-guide,.race-row .coverage-3d {grid-column:2;}
+ .race-row strong {font-size:25px;}
+ .race-row .coverage-guide,.race-row .coverage-3d {font-size:11px;}
+ .circuit-thumbnail {width:72px; height:50px;}
+ .race-status {display:none;}
+}
+@media(max-width:360px) {
+ .hero-camera-switch button {font-size:10px; padding-inline:8px;}
+ .hero-camera-switch .ui-icon {width:15px; height:15px; flex-basis:15px;}
+ .season-landing-copy h1 {font-size:48px;}
+ .circuit-brief-title .circuit-thumbnail {width:66px; height:50px;}
+}
+@media(max-height:600px) and (max-width:1180px) {
+ .circuit-explorer-layout {display:block;}
+ .circuit-model-stage {position:relative; height:480px; min-height:480px;}
+ .circuit-position-panel {border-left:0;}
+ .circuit-grid-dialog,.spectator-dialog {max-height:calc(100dvh - 24px); overflow:auto;}
+}
+@media(prefers-reduced-motion:no-preference) {
+ .hero-world {transition:transform .22s cubic-bezier(.16,1,.3,1);}
+ .race-row:hover .circuit-outline-active,.race-row:focus-visible .circuit-outline-active {stroke-dasharray:600 0; transition:stroke-dasharray .4s;}
+}
+@media(prefers-reduced-motion:reduce) {
+ .hero-world {transform:none; transition:none;}
+}
+
+.calendar-filters button {min-height:44px;}
+.circuit-context-disclosure {margin:16px 0 24px; max-width:72ch;}
+.circuit-context-disclosure summary {display:flex; align-items:center; gap:8px; min-height:44px; font-size:13px; cursor:pointer;}
+.circuit-context-disclosure summary::after {content:'+'; margin-left:auto; font-size:18px;}
+.circuit-context-disclosure[open] summary::after {content:'−';}
+.circuit-context-disclosure p {color:#4b5262; line-height:1.75; margin:8px 0 16px;}

@@ -1,3 +1,5 @@
+import UiIcon from "./UiIcon";
+import CircuitThumbnail from "./CircuitThumbnail";
 import { findVenue } from "./venueRegistry";
 import ViewingShortlist from "./ViewingShortlist";
 import TicketPartners from "./TicketSellerLinks";
@@ -13,28 +15,29 @@ export default function CircuitGuidePanel({ race, coverage }: { race: Race; cove
   return (
     <section className="circuit-brief" id="circuit-guide" aria-labelledby="circuit-guide-title">
       <header>
-        <div>
+        <div className="circuit-brief-title">
+          <CircuitThumbnail season={race.season} race={race.slug}/><div>
           <h2 id="circuit-guide-title">{guide.venue}</h2>
           <p className="circuit-brief-location">{guide.location}</p>
-        </div>
-        <div className="circuit-guide-actions"><span className="circuit-brief-coverage">{coverage}</span>{hasAreaMap&&<a href="#viewing-areas">Jump to viewing areas <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6"/></svg></a>}</div>
+        </div></div>
+        <div className="circuit-guide-actions"><span className="circuit-brief-coverage">{coverage}</span>{hasAreaMap&&<a href="#viewing-areas"><UiIcon name="map"/>Area map</a>}</div>
       </header>
-      <p className="circuit-brief-overview">{guide.overview}</p>
+      <details className="circuit-context-disclosure"><summary><UiIcon name="info"/>Circuit notes</summary><p>{guide.overview}</p></details>
       <div className="circuit-brief-main">
         <div>
           <ViewingShortlist key={`${race.season}-${race.slug}`} race={race} guide={guide} />
         </div>
         <div className="circuit-brief-checks">
           <h3>Before you book</h3>
-          <p className="booking-model-note">Views and map positions are estimates. Confirm your actual allocation, access and final price with the seller.</p>
-          <details className="booking-evidence-disclosure"><summary>What the sources can tell you</summary>
+          <p className="booking-model-note">Estimated views. Confirm your seat, access and final price with the seller.</p>
+          <details className="booking-evidence-disclosure"><summary>Source limits</summary>
           <dl className="booking-evidence">
             <div><dt>Circuit context</dt><dd>Linked F1 reference · {guide.referenceSeason}. Product names and access can change by year.</dd></div>
             <div><dt>Our maps & 3D views</dt><dd>Estimated viewing studies. Generated positions do not identify a purchased seat.</dd></div>
             <div><dt>Check with the seller</dt><dd>Actual seat, availability, final fees, cover, access and delivery.</dd></div>
           </dl></details>
           <p>{guide.ticketCheck}</p>
-          {ticketUrl ? <a className="circuit-ticket-source" href={ticketUrl} target="_blank" rel="noreferrer">Open {race.season} ticket catalogue</a> : raceStatus(race) === "Past" && <p className="circuit-edition-note">Past race reference · {race.season}</p>}
+          {ticketUrl ? <a className="circuit-ticket-source" href={ticketUrl} target="_blank" rel="noreferrer"><UiIcon name="ticket"/>{race.season} ticket catalogue</a> : raceStatus(race) === "Past" && <p className="circuit-edition-note">Past race reference · {race.season}</p>}
         </div>
       </div>
       <TicketPartners race={race} />

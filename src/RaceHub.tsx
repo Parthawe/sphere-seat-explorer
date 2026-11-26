@@ -1,3 +1,5 @@
+import UiIcon from "./UiIcon";
+import CircuitThumbnail from "./CircuitThumbnail";
 import SeasonLanding from "./SeasonLanding";
 import { raceCoverage } from "./raceCoverage";
 import { useNavigationFocus } from "./useNavigationFocus";
@@ -201,9 +203,9 @@ export default function RaceHub() {
       </header>
       <main id="race-content">
         <nav className="product-jump-nav" aria-label="Explore F1 Tickets Online">
-          <a href={`?season=${route.season}#race-calendar`} onClick={e => { e.preventDefault(); go({ season: route.season, race: "", seats: false }, "#race-calendar"); }}>All races</a>
+          <a href={`?season=${route.season}#race-calendar`} onClick={e => { e.preventDefault(); go({ season: route.season, race: "", seats: false }, "#race-calendar"); }}><UiIcon name="calendar"/>All races</a>
           <a href={`?season=${route.season}&race=las-vegas&screen=vegas`}>
-            Las Vegas 3D
+            <UiIcon name="cube"/>Las Vegas 3D
           </a>
         </nav>
         {route.issue && <p className="route-notice" role="alert">{route.issue}</p>}
@@ -438,7 +440,7 @@ export default function RaceHub() {
                       aria-pressed={filter === value}
                       onClick={() => setFilter(value)}
                     >
-                      {label}
+                      <UiIcon name={value==='3d'?'cube':value==='upcoming'?'calendar':'circuit'}/>{label}
                     </button>
                   ))}
                 </div>
@@ -459,18 +461,19 @@ export default function RaceHub() {
                     onClick={() => select(r)}
                   >
                     <span className="race-round">
-                      {String(r.round).padStart(2, "0")}
+                      <CircuitThumbnail season={r.season} race={r.slug}/><span>R{String(r.round).padStart(2, "0")}</span>
                     </span>
                     <strong>{r.name}<small className="race-circuit-name">{circuitGuideFor(r.season, r.slug)?.venue}</small></strong>
                     <span className="race-dates">{dateLabel(r)}</span>
                     <span
+                      title={raceCoverage(route.season,r.slug).label}
                       className={
                         raceCoverage(route.season,r.slug).has3d
                           ? "coverage-3d"
                           : "coverage-guide"
                       }
                     >
-                      {raceCoverage(route.season,r.slug).label}
+                      <UiIcon name={raceCoverage(route.season,r.slug).has3d?'cube':'map'}/>{raceCoverage(route.season,r.slug).label}
                     </span>
                     <span className="race-status">{raceStatus(r)}</span>
                   </button>
@@ -501,6 +504,7 @@ export default function RaceHub() {
           <a href={calendarUrl(route.season)} target="_blank" rel="noreferrer">
             Check the official {route.season} calendar
           </a>
+          <p>Circuit outlines use retained source geography where available. <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL</a>. A map icon indicates no outline is supplied for that event and season.</p>
         </details>
       </main>
       <FundingDisclosure />

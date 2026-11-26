@@ -147,3 +147,12 @@ Race briefs offer a direct jump to supported area workspaces. Source explanation
 Only the opening hero changes in this pass. A single ink-dark scene surface replaces the separate paper copy/image columns. Keep display type on the left and the Sphere artifact large on the right; the dark scrim carries text contrast. On phones, show the artifact above the copy and stack the actions. Circuit/seated buttons switch between compressed captures from the actual renderer. They are preview images, not an embedded live canvas or venue photography. The primary link opens the same modeled Chicane east camera/position; the secondary action keeps the selected-season calendar jump.
 
 Keep the 2026 reconstruction boundary, OSM/NASA credit and no-exact-ticket-seat note visible. A brief image reveal respects reduced motion. A failed image leaves an explanatory caption and usable explorer link. No automatic car playback or full scene is added to the landing page.
+
+
+## Visual navigation and responsive motion · 26 November 2026
+
+The user requests less copy, more icons/visuals, purposeful parallax and phone/tablet/desktop compatibility. A shared original outline icon set supports actions while short labels or accessible names retain recognition. Race rows and guide headers show retained circuit outlines only where that event/season has source geography; a generic map/cube icon represents a missing outline. Shapes do not imply calibrated seats or official start/finish markers. Keep source attribution in calendar sources.
+
+The hero's background preview alone responds to pointer depth and bounded scroll parallax; text and buttons stay fixed. Event-driven animation frames avoid a permanent loop, stop offscreen, disable for reduced motion and have an explicit pause control. Coarse-pointer devices use scroll depth without hover dependence. The actual Three.js worlds, camera movement, replay and geometry remain separate from these preview images.
+
+Keep core ticket admission and no-exact-seat boundaries visible. Put circuit prose and secondary source context in disclosures. Shortlist/export and scene camera/photo/map/grid controls use icons and compact labels; never remove accessible names to shorten the screen. Race rows become two-column visual rows at 760px and below, compact four-column rows on tablets and full rows on wide screens. Landscape scenes retain scroll access and constrained dialogs instead of trapping controls outside the viewport.
