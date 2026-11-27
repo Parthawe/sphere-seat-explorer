@@ -25,3 +25,14 @@ test('inline model cameras keep every track point visible in phone and wide prev
   for(let i=0;i<model.track.length;i++){const p=model.track[i],v=new Vector3(p[0],model.trackHeights?.[i]??0,p[1]).project(camera);assert(Number.isFinite(v.x)&&Number.isFinite(v.y));assert(Math.abs(v.x)<1&&Math.abs(v.y)<1,`${model.id} preview crop at aspect ${aspect}`);}
  }
 });
+
+test('outline-only editions never offer a seat-exploration action',()=>{
+ for(const race of Object.values(calendars).flat()){
+  const preview=racePreview(race);
+  if(preview.kind==='outline'){
+   assert.equal(preview.action,'Explore circuit');assert.match(preview.note,/no seating/);
+  }else{
+   assert.equal(preview.action,'Explore seats');assert.match(preview.note,/unverified/);
+  }
+ }
+});

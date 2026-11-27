@@ -154,3 +154,20 @@
 }
 
 .hero-race-picker .hero-race-select {color:var(--color-ink);}
+
+/* Shared identity and direct position controls across the exploration journey. */
+.wordmark .brand-name {font:500 19px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.04em;text-transform:lowercase;}
+.circuit-position-panel .circuit-bank-facts {margin-block:16px;padding-block:12px;}
+.circuit-position-panel .circuit-view-position {display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:48px;margin:16px 0 8px;padding:12px 16px;background:var(--color-action);color:var(--color-white);border:0;font-size:14px;}
+.circuit-position-panel .circuit-view-position:hover {background:var(--color-action-hover);}
+.circuit-position-panel .circuit-bank-browser {margin-top:24px;}
+.circuit-grid-precise {margin-block:16px;}
+@media(max-width:760px) {
+ .wordmark .brand-name {font-size:16px;}
+ .circuit-explorer-header .wordmark {gap:8px;min-width:0;}
+ .circuit-explorer-header .wordmark .brand-icon {width:26px;height:22px;flex-shrink:0;}
+ .circuit-scene-actions .circuit-quick-position-label,.circuit-scene-actions .circuit-focus-label {display:none;}
+ .circuit-scene-actions button {min-width:44px;min-height:44px;}
+ .circuit-scene-actions {right:18px;}
+ .circuit-grid-dialog .circuit-grid-map svg {max-height:32dvh;}
+}

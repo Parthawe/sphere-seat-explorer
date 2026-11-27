@@ -36,7 +36,7 @@ export default function Race3DPreview({race,onOpen,animated=false}:{race:Race;on
      {spec.kind==='outline'&&layout&&<Scenes.Outline autoRotate={animated} preview layout={layout} playing={playing} visible={visible} reset={0} zoom={0} onReady={onReady} onUnavailable={unavailable}/>}
     </Suspense></HeroSceneBoundary></div>}
    </div>
-   <div className="race-3d-preview-footer"><span>{spec.note}</span><strong><UiIcon name="cube"/>Explore 3D<UiIcon name="arrow"/></strong></div>
+   <div className="race-3d-preview-footer"><span>{spec.note}</span><strong><UiIcon name={spec.kind==='outline'?'circuit':'seat'}/>{spec.action}<UiIcon name="arrow"/></strong></div>
   </a>
   <a className="race-3d-preview-credit" href="/circuit-previews/CREDITS.md" target="_blank" rel="noreferrer" aria-label="3D preview credits" title="3D preview credits"><UiIcon name="info"/></a>
   <div className="race-3d-preview-tools">
