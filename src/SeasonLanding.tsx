@@ -18,7 +18,7 @@ export default function SeasonLanding({season,onRace}:{season:Season;onRace:(rac
     <div className="season-landing-copy"><h1 id="season-landing-title">Know the track.<br/><em>Choose your view.</em></h1><p>Explore circuits and grandstands before you choose your ticket.</p></div>
     <form className="hero-race-picker" onSubmit={event=>{event.preventDefault();onRace(chosenRace);}}>
      <label htmlFor="hero-race-choice">Choose a race</label>
-     <div><select id="hero-race-choice" value={chosenRace.slug} onChange={event=>setChoice({season,slug:event.target.value})}>{races.map(race=><option key={race.slug} value={race.slug}>{race.name}</option>)}</select><button className="landing-primary" type="submit">Explore race<UiIcon name="arrow"/></button></div>
+     <div><span className="hero-race-select"><select id="hero-race-choice" value={chosenRace.slug} onChange={event=>setChoice({season,slug:event.target.value})}>{races.map(race=><option key={race.slug} value={race.slug}>{race.name}</option>)}</select><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></span><button className="landing-primary" type="submit">Explore race<UiIcon name="arrow"/></button></div>
      <p>{raceStatus(chosenRace,today)==='Race weekend'?'This weekend · ':chosenRace.slug===defaultRace.slug&&raceStatus(chosenRace,today)==='Upcoming'?'Next race · ':''}{dateLabel(chosenRace)} · {season}</p>
     </form>
    </div>

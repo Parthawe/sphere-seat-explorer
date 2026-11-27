@@ -152,3 +152,5 @@
  .race-hub .hub-header nav[aria-label=Seasons] button {min-width:42px;}
  .hero-race-picker .landing-primary {gap:8px;padding-inline:10px;}
 }
+
+.hero-race-picker .hero-race-select {color:var(--color-ink);}

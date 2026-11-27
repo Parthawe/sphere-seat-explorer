@@ -80,3 +80,7 @@
 
 .calendar-page .calendar-toolbar h2 {font-size:36px;}
 @media(max-width:600px) {.calendar-page .hero-world>img {object-position:center 40%;} .calendar-page .calendar-toolbar h2 {font-size:30px;}}
+
+.hero-race-select {position:relative;display:block;flex:1;min-width:0;color:var(--color-paper);}
+.hero-race-picker .hero-race-select select {appearance:none;-webkit-appearance:none;padding-inline:16px 48px;}
+.hero-race-select>svg {position:absolute;inset-inline-end:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;pointer-events:none;}
