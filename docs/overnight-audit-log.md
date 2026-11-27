@@ -681,3 +681,11 @@ Human request: lower font weights throughout and remove eyebrow text. Shared int
 Validation: TypeScript, production build and all 206 source tests passed. Browser checks at 320/390/768/1440px confirmed medium hero/brand/action weights, no eyebrow nodes or horizontal overflow, and working calendar action. Qatar guide checks at 390/1440px confirmed no eyebrow nodes, no overflow and no visible heading/emphasis weights above 500. Final desktop and phone hero screenshots visually inspected.
 
 Published source `576dd66cc41c50b4dd05991c11b73d155e053a7d`, pushed to GitHub main. Saved version `appgprj_6b03a10b6c388191a92912a1c2dfe070~appgver_18c4856460488191b6ac05036e1abe8b` (v106); deployment `appgdep_6b08fa7218e48191accf602c42385202` succeeded at `2026-11-27T03:35:18.692080+00:00`. Archive `f1tickets-lighter-type-deployment.tar.gz` is outside the repo.
+
+### Scheduled audit · 27 November 2026, 03:38 UTC
+
+Focus: published Race Centre deep-link and browser-history recovery after the latest owner-directed releases. Started from clean checkout `ed3a0b5`, live v106/source `576dd66cc41c50b4dd05991c11b73d155e053a7d`; no simultaneous edits observed.
+
+Read-only production browser checks at 390px and 1440px passed: direct 2026 Drivers link loads all 22 profile links; All races → browser Back restores Drivers; switching to the unsupported 2027 roster → browser Back restores 2026 Drivers; reload retains the driver hash/view. Blocking the external standings source leaves the local Drivers gallery usable, and switching to Standings presents the explicit unavailable-source message without a stale driver hash. No browser exceptions or horizontal overflow in these checked states. Browser processes closed. No application defect demonstrated, no app edits/build/deployment performed.
+
+Limits: this does not verify a successful remote standings refresh, live race telemetry, exact ticket coordinates, affiliate attribution or commercial approvals. Those source/assets/operator dependencies remain as recorded. Next useful check: keyboard submission/cancellation and focus recovery in the personal quote dialog at browser text zoom after the typography reduction; avoid repeating this history matrix without related changes.
