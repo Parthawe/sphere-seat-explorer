@@ -1,8 +1,9 @@
+import {loadCircuitLayout} from './loadCircuitLayout';
 import {Component,lazy,Suspense,useCallback,useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import {BrandIdentity} from './BrandMark';
 import UiIcon from './UiIcon';
 import {calendars,type Race} from './races';
-import {circuitLayoutId,validateCircuitLayout,type CircuitLayout} from './circuitLayouts';
+import type {CircuitLayout} from './circuitLayouts';
 import {buildStudyGeometry,circuitStudyUrl} from './circuitStudy';
 import CircuitAreaMap from './CircuitAreaMap';
 import {findVenue} from './venueRegistry';
@@ -16,7 +17,7 @@ export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Rac
  const [areaId,setAreaId]=useState(()=>venue?.areas[0]?.id??'');
  const area=venue?.areas.find(a=>a.id===areaId)??venue?.areas[0];
  const onReady=useCallback(()=>setReady(true),[]),onUnavailable=useCallback(()=>{setFailed(true);setReady(false);setPlaying(false);},[]);
- useEffect(()=>{const controller=new AbortController();setLayout(null);setFailed(false);setReady(false);fetch('/data/circuit-layouts.json',{signal:controller.signal}).then(r=>{if(!r.ok)throw Error('Study data unavailable');return r.json();}).then(data=>{const id=circuitLayoutId(race.season,race.slug),found=validateCircuitLayout(data[id??''],race);if(!found)throw Error('Study identity unavailable');setLayout(found);}).catch(e=>{if(e.name!=='AbortError')onUnavailable();});return()=>controller.abort();},[race.season,race.slug,retry,onUnavailable]);
+ useEffect(()=>{const controller=new AbortController();setLayout(null);setFailed(false);setReady(false);loadCircuitLayout(race,controller.signal).then(setLayout).catch(()=>{if(!controller.signal.aborted)onUnavailable();});return()=>controller.abort();},[race.season,race.slug,retry,onUnavailable]);
  useEffect(()=>{history.replaceState(history.state,'',circuitStudyUrl(race));syncPublicUrlMetadata();},[race]);
  useEffect(()=>{let inView=true;const update=()=>setVisible(inView&&!document.hidden),observer=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;update();}),q=matchMedia('(prefers-reduced-motion: reduce)'),motion=()=>{if(q.matches)setPlaying(false);};if(stage.current)observer.observe(stage.current);document.addEventListener('visibilitychange',update);q.addEventListener('change',motion);return()=>{observer.disconnect();document.removeEventListener('visibilitychange',update);q.removeEventListener('change',motion);};},[]);
  async function copy(){const url=new URL(circuitStudyUrl(race),location.origin).href;setCopying(true);try{await navigator.clipboard.writeText(url);if(location.href===url)setMessage('Study link copied.');}catch{setMessage('Copy is unavailable. Copy the study link from your browser’s address bar.');}finally{setCopying(false);}}

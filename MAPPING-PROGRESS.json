@@ -2,8 +2,8 @@
   "schema": 1,
   "product": "F1 Tickets Online",
   "scope": "All physical F1 venues represented on the official 2026 and 2027 calendars; provisional venue inventory must be revalidated before implementation.",
-  "updated": "2026-11-26",
-  "cadence_hours": 1,
+  "updated": "2026-11-27",
+  "cadence_hours": 0.5,
   "phase": "shared-illustrative-circuit-studies",
   "active_run": null,
   "next_action": "Preserve the validated shared plan-based circuit studies for all 47 listed editions. Continue venue-specific precision work only with suitable new source evidence and the retained precision queue. Keep detailed seating studies, area maps, media and source-only products distinct; shared illustration does not satisfy exact-seat or surveyed-venue completion criteria.",
@@ -1284,5 +1284,10 @@
     "validated_editions": 47,
     "published_version": 100,
     "published_source": "83aec5e774b0644dc91c0d4972567ab2967e39fe"
+  },
+  "current_audit": {
+    "deadline_utc": "2026-11-27T14:00:00Z",
+    "focus": "Existing product journeys and demonstrated failures; precision queue below remains conditional on suitable new assets.",
+    "next_check": "Confirm stalled circuit-data recovery, then check manual shortlist and brief export recovery. Avoid repeating unchanged all-circuit GPU and asset research."
   }
 }

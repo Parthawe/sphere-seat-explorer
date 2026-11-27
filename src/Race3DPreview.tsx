@@ -1,7 +1,8 @@
+import {loadCircuitLayout} from './loadCircuitLayout';
 import {lazy,Suspense,useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import type {Race} from './races';
 import {racePreview} from './racePreview';
-import {circuitLayoutId,validateCircuitLayout,type CircuitLayout} from './circuitLayouts';
+import {circuitLayoutId,type CircuitLayout} from './circuitLayouts';
 import {findCircuitModel,normalizeModelPosition} from './circuitSeating';
 import type {ModelCameraControls} from './CircuitSeatingScene';
 import HeroSceneBoundary from './HeroSceneBoundary';
@@ -18,7 +19,7 @@ export default function Race3DPreview({race,onOpen}:{race:Race;onOpen:()=>void})
  useEffect(()=>{let inView=false;const update=()=>setVisible(inView&&!document.hidden),observer=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;update();},{rootMargin:'80px'});if(stage.current)observer.observe(stage.current);document.addEventListener('visibilitychange',update);return()=>{observer.disconnect();document.removeEventListener('visibilitychange',update);};},[]);
  useEffect(()=>{const q=matchMedia('(prefers-reduced-motion: reduce)'),change=()=>{setReduced(q.matches);if(q.matches)setMotion(false);};q.addEventListener('change',change);return()=>q.removeEventListener('change',change);},[]);
  useEffect(()=>{if(visible&&!saver)setRequested(true);},[visible,saver]);
- useEffect(()=>{if(!requested||spec.kind!=='outline')return;const controller=new AbortController();fetch('/data/circuit-layouts.json',{signal:controller.signal}).then(r=>{if(!r.ok)throw Error('Circuit data unavailable');return r.json();}).then(data=>{const found=validateCircuitLayout(data[circuitLayoutId(race.season,race.slug)!],race);if(!found)throw Error('Circuit identity unavailable');setLayout(found);}).catch(e=>{if(e.name!=='AbortError')unavailable();});return()=>controller.abort();},[race.season,race.slug,requested,retry,spec.kind,unavailable]);
+ useEffect(()=>{if(!requested||spec.kind!=='outline')return;const controller=new AbortController();loadCircuitLayout(race,controller.signal).then(setLayout).catch(()=>{if(!controller.signal.aborted)unavailable();});return()=>controller.abort();},[race.season,race.slug,requested,retry,spec.kind,unavailable]);
  function load(){setFailed(false);setReady(false);setRetry(n=>n+1);setRequested(true);}
  const playing=motion&&visible&&!reduced;
  return <div className="race-3d-preview" data-preview-key={spec.key} data-preview-ready={ready&&!failed} data-preview-visible={visible}>

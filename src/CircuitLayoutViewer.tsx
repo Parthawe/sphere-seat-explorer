@@ -1,8 +1,9 @@
+import {loadCircuitLayout} from './loadCircuitLayout';
 import {Component,lazy,Suspense,useCallback,useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import {BrandIdentity} from './BrandMark';
 import UiIcon from './UiIcon';
 import {calendars,type Race} from './races';
-import {circuitLayoutId,validateCircuitLayout,type CircuitLayout} from './circuitLayouts';
+import type {CircuitLayout} from './circuitLayouts';
 import type {LayoutCamera} from './CircuitLayoutScene';
 const VenueStands=lazy(()=>import("./VenueStands"));
 class LayoutBoundary extends Component<{children:ReactNode;onUnavailable:()=>void},{failed:boolean}>{state={failed:false};static getDerivedStateFromError(){return {failed:true};}componentDidCatch(){this.props.onUnavailable();}render(){return this.state.failed?null:this.props.children;}}
@@ -12,7 +13,7 @@ export default function CircuitLayoutViewer({race,onBack,onRace}:{race:Race;onBa
  const tools=useRef<HTMLDivElement>(null),scene=useRef<HTMLDivElement>(null),Scene=useMemo(()=>lazy(()=>import('./CircuitLayoutScene')),[retry]);
  useEffect(()=>{const element=tools.current;if(!element)return;const measure=()=>scene.current?.style.setProperty('--layout-tools-height',`${element.offsetHeight}px`);const observer=new ResizeObserver(measure);observer.observe(element);measure();return()=>observer.disconnect();},[]);
  const onReady=useCallback(()=>setReady(true),[]),onUnavailable=useCallback(()=>{setFailed(true);setReady(false);setPlaying(false);},[]);
- useEffect(()=>{const controller=new AbortController();setLayout(null);setFailed(false);setReady(false);fetch('/data/circuit-layouts.json',{signal:controller.signal}).then(r=>{if(!r.ok)throw Error('Layout data unavailable');return r.json();}).then(data=>{const id=circuitLayoutId(race.season,race.slug),found=validateCircuitLayout(data[id??''],race);if(!found)throw Error('Layout identity unavailable');setLayout(found);}).catch(e=>{if(e.name!=='AbortError')onUnavailable();});return()=>controller.abort();},[race.season,race.slug,retry,onUnavailable]);
+ useEffect(()=>{const controller=new AbortController();setLayout(null);setFailed(false);setReady(false);loadCircuitLayout(race,controller.signal).then(setLayout).catch(()=>{if(!controller.signal.aborted)onUnavailable();});return()=>controller.abort();},[race.season,race.slug,retry,onUnavailable]);
  useEffect(()=>{let inView=true;const update=()=>setVisible(inView&&!document.hidden),observer=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;update();}),q=matchMedia('(prefers-reduced-motion: reduce)'),motion=()=>{if(q.matches)setPlaying(false);};if(scene.current)observer.observe(scene.current);document.addEventListener('visibilitychange',update);q.addEventListener('change',motion);return()=>{observer.disconnect();document.removeEventListener('visibilitychange',update);q.removeEventListener('change',motion);};},[]);
  return <div className="layout-viewer">
   <header className="layout-header"><a className="wordmark" href={`?season=${race.season}`}><BrandIdentity subtitle="CIRCUIT DIAGRAMS"/></a><button onClick={onBack}>Back to race guide</button></header>
