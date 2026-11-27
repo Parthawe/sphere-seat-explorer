@@ -464,7 +464,8 @@ export default function App({
       announce("Link copied. It includes your selected seat and comparison.");
     } catch {
       announce("Copy the link from your address bar to share this view.");
-      window.history.replaceState({}, "", url);
+      const shared = new URL(url);
+      window.history.replaceState({}, "", shared.pathname + shared.search);
     }
   }
   async function fullscreen() {
@@ -593,7 +594,7 @@ export default function App({
                   {stand.name}
                   <span>
                     {mode === "seat"
-                      ? "ROW " +
+                      ? "MODEL ROW " +
                         selection.row +
                         " / " +
                         selectionLabel(selection).toUpperCase()
@@ -881,7 +882,7 @@ export default function App({
             <span className="mobile-summary">
               {stand.name}
               <strong>
-                ROW {selection.row} / {selectionLabel(selection).toUpperCase()}
+                MODEL ROW {selection.row} / {selectionLabel(selection).toUpperCase()}
               </strong>
             </span>
             <span className="mobile-action">
@@ -896,7 +897,7 @@ export default function App({
                 </p>
               )}
               <h2>
-                FIND YOUR SEAT<span className="panel-edition">2026</span>
+                EXPLORE YOUR VIEW<span className="panel-edition">2026</span>
               </h2>
               <p>{stand.zone || "T-Mobile Zone at Sphere"}</p>
             </div>

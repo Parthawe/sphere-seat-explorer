@@ -1,3 +1,4 @@
+import {SITE_ORIGIN} from './brand';
 import type { Race } from './races';
 import { circuitGuideFor, circuitGuideSource, circuitTicketSource } from './circuitGuides';
 
@@ -17,6 +18,7 @@ export function buildViewingBrief(race: Race, selected: readonly string[], confi
     `${race.name} ${race.season} · viewing shortlist`,
     `${guide.venue} · ${guide.location}`,
     `Race weekend: ${race.start} to ${race.end} (venue dates)`,
+    `Race guide: ${SITE_ORIGIN}/?${new URLSearchParams({season:String(race.season),race:race.slug})}`,
     ...guide.viewing.filter(view => selected.includes(view.name)).map(view => `${view.name}: ${view.detail}`),
     '', 'Booking checks (marked by you, not independently verified):',
     ...bookingChecks.map((check, index) => `${confirmed.includes(index) ? '[Marked checked by you]' : '[To confirm]'} ${check}`),
