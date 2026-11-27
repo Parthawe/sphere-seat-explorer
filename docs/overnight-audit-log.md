@@ -580,3 +580,11 @@ Deadline: 27 November 2026, 09:00 America/New_York (14:00 UTC). Commercial activ
 - Public reproduction before deployment: the phone form's minimum was `2026-12-04`; selecting organizer-supported `2026-12-03` failed native validity. No quote was saved on the public site during this read-only reproduction.
 - Publication: v96, source `2d627a2f02beb8f0c83006cebb09719f1d582aae`; saved version `appgprj_6b03a10b6c388191a92912a1c2dfe070~appgver_c1ddb5bb51cc8191b2acb7b64cd86a11`, deployment `appgdep_6b08c9dcfd6c81918d4709001ed33596` succeeded 27 November 2026 at 00:08:00 UTC. Supported production TypeScript/build and matching GitHub source push passed. Owned preview stopped; unchanged optional-renderer chunk warning remains. Release reconciliation is documentation only.
 - Next useful check: rotate to stand-catalogue empty-search keyboard recovery and return context. Do not repeat this corrected date-window flow or infer other venues' package access from event duration alone.
+
+## 27 November 2026 · 00:28 UTC stand-search recovery audit
+
+- UTC start 00:28:46, before the 14:00 UTC cutoff. Clean checkpoint `43f5316`; public v96/source `2d627a2f02beb8f0c83006cebb09719f1d582aae`. No overlapping edit or preview was present.
+- Public evidence: desktop 1440 and phone 390 Japan catalogue searches with no matches returned all 30 entries after keyboard activation of Clear filters, but removed the focused button and left focus on BODY. This interrupted the next search.
+- Change: attach a ref to the existing stand-search input and focus it when clearing filters. No new control, label, search algorithm, source record, layout or model change.
+- Validation: nine existing catalogue/reference tests passed. Four browser paths covered the race guide and circuit-diagram catalogue at desktop/phone widths. Each passed empty-result recovery, reset of both text and coverage filter, restored full catalogue, preserved input focus after fonts settled, immediate typing of a new stand query, and no page errors or horizontal overflow. No implementation-mirroring unit test was added for this reversible focus fix. Production TypeScript/build follows supported packaging.
+- Limits: this improves keyboard recovery, not venue/photo coverage, exact-seat matching or source completeness. The data remains a curated catalogue rather than live inventory.
