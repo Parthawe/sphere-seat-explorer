@@ -1,0 +1,9 @@
+# Event schedules and circuit facts
+
+All 47 retained race editions were checked against their exact public Formula 1 event pages on 27 November 2026 UTC. robots.txt allowed these paths; bounded requests used two workers and a stop on 403/429. No account, checkout, restricted API, proprietary circuit artwork, video file or F1 media thumbnail was accessed or copied. collection.json retains factual fields, source URLs and page hashes, not publisher prose or full page HTML.
+
+Visible timetable rows take precedence over schema.org metadata. The 2027 pages displayed TBC while embedded JSON-LD contained placeholder hours. Those hours were rejected: all 120 future rows have dates and TBC, and no session export. Confirmed 2026 timestamps were reconstructed from public meeting offsets and checked against visible UTC times. Race end times stay absent when the visible timetable supplies only a start. IANA zones handle user/track display and cross-midnight dates.
+
+Statistics are the published Circuit Length, First Grand Prix, Number of Laps, Fastest lap time/attribution and Race Distance fields. Missing fields remain absent, especially future laps/distances. Original circuit illustrations use the retained independent MIT geometry, with the original credit/licence. They omit elevations and do not locate actual stands or seats.
+
+Bahrain testing at Sakhir was an interface reference, not an identity override: the 2026 Bahrain race in Malaysia remains Sepang/Asia-Kuala_Lumpur; the 2027 Bahrain event remains Sakhir/Asia-Bahrain. Media links with an explicitly different season were omitted. The remaining links are publisher references, not matched stand views; their labels are concise categories or short title fragments. Videos and articles open at Formula 1. No autoplay, embedded official player, copied thumbnail or claim of redistributing footage is introduced.

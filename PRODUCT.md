@@ -175,3 +175,9 @@ The study is deliberately a unitless flat tabletop. It omits terrain, bridges, a
 ## Visual season browsing
 
 The calendar opens with photographic previous/current/next highlights for the selected season. Future seasons begin with the opener and following events. All race guides remain reachable through photo cards or a compact list; each card also links directly to its supported illustrative study. Licensed context images carry source dates and credits and are separate from matched stand-view photographs. Twenty-five physical destinations have photographs; Silverstone and Jeddah use original circuit illustrations. Existing detailed 3D and all 47 generic circuit studies are preserved. A downloadable all-day .ics file contains the selected season's race weekends, with exclusive end dates; session times and ticket admission are not inferred.
+
+## Connected event reference pages
+
+All 47 listed race guides now include a photographic event cover, independent source-outline drawing, published circuit facts and event-year schedule rows. Confirmed 2026 sessions switch between the user's and circuit's IANA timezone and can be exported. The 2027 pages show TBC rather than source-schema placeholder hours. Missing future lap counts and race distances are not inferred. Related media opens on the original publisher; thumbnails/footage are not copied. Existing matched stand media and 3D/booking flows remain separate.
+
+Race Centre's Drivers view contains the checked 2026 official 22-driver line-up, source-linked profiles, nationality flags, team filters and 22 independently licensed source portraits. Portrait years and credits do not assert current team apparel. No 2027 roster is supplied until verified. The existing F1DB standings feed remains separately attributed and does not populate missing roster years.

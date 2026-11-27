@@ -24,7 +24,6 @@ export default function CircuitGuidePanel({ race, coverage }: { race: Race; cove
         </div></div>
         <div className="circuit-guide-actions"><span className="circuit-brief-coverage">{coverage}</span>{hasAreaMap&&<a href="#viewing-areas"><UiIcon name="map"/>Area map</a>}</div>
       </header>
-      <details className="circuit-context-disclosure"><summary><UiIcon name="info"/>Circuit notes</summary><p>{guide.overview}</p></details>
       <div className="circuit-brief-main">
         <div>
           <ViewingShortlist key={`${race.season}-${race.slug}`} race={race} guide={guide} />

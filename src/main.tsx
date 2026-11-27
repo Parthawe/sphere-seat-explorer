@@ -20,6 +20,7 @@ import "./priceNotebook.css";
 import "./circuitLayout.css";
 import "./circuitStudy.css";
 import "./raceCards.css";
+import "./raceEvents.css";
 import "./racingCentre.css";
 import "./venueStands.css";
 import "./venueReferences.css";

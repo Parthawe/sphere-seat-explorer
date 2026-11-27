@@ -1,0 +1,1 @@
+Original reference drawings by F1 Tickets Online, adapted from circuit outlines by Tomislav Bacinger (2019–2025), MIT. Exact source links and retained licence: /data/circuit-layouts.json and /data/circuit-layouts-LICENSE.txt. No elevation, turn labels, stand geometry or event-year layout is inferred.

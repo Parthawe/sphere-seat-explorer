@@ -1,0 +1,3859 @@
+{
+  "2026:australia": {
+    "season": 2026,
+    "race": "australia",
+    "source": "https://www.formula1.com/en/racing/2026/australia",
+    "checked": "2026-11-27",
+    "timeZone": "Australia/Melbourne",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-03-06",
+        "start": "2026-03-06T01:30:00.000Z",
+        "end": "2026-03-06T02:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-03-06",
+        "start": "2026-03-06T05:00:00.000Z",
+        "end": "2026-03-06T06:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-03-07",
+        "start": "2026-03-07T01:30:00.000Z",
+        "end": "2026-03-07T02:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-03-07",
+        "start": "2026-03-07T05:00:00.000Z",
+        "end": "2026-03-07T06:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-03-08",
+        "start": "2026-03-08T04:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.278,
+      "firstGrandPrix": 1996,
+      "laps": 58,
+      "lapRecord": {
+        "time": "1:19.813",
+        "credit": "Charles Leclerc (2024)"
+      },
+      "distanceKm": 306.124
+    },
+    "videos": [
+      {
+        "label": "Onboard action",
+        "duration": "9:09",
+        "url": "https://www.formula1.com/en/video/top-10-onboard-moments-2026-australian-grand-prix.1859387997169087875"
+      },
+      {
+        "label": "Team radio",
+        "duration": "16:44",
+        "url": "https://www.formula1.com/en/video/radio-rewind-2026-australian-grand-prix.1859195005558016323"
+      },
+      {
+        "label": "Driver interview",
+        "duration": "0:44",
+        "url": "https://www.formula1.com/en/video/dhl-fastest-pit-stop-2026-australian-grand-prix.1859192714831533491"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 leclerc leads first practice session…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-leclerc-leads-first-practice-session-of-2026-from-hamilton-and.3ovgyYzAAKrXtq4xx1UAfI"
+      },
+      {
+        "label": "Highlights watch the action from fp1…",
+        "url": "https://www.formula1.com/en/latest/article/highlights-watch-the-action-from-fp1-in-australia-as-the-2026-season.6znE6NxTcefvoF3Ky5eCsc"
+      }
+    ],
+    "status": "checked",
+    "sha256": "05805fbd0179b53272ed40d7eeb496e2591f0ad5061dd3d449ef49eb75182b00",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:china": {
+    "season": 2026,
+    "race": "china",
+    "source": "https://www.formula1.com/en/racing/2026/china",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Shanghai",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-03-13",
+        "start": "2026-03-13T03:30:00.000Z",
+        "end": "2026-03-13T04:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2026-03-13",
+        "start": "2026-03-13T07:30:00.000Z",
+        "end": "2026-03-13T08:14:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2026-03-14",
+        "start": "2026-03-14T03:00:00.000Z",
+        "end": "2026-03-14T04:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-03-14",
+        "start": "2026-03-14T07:00:00.000Z",
+        "end": "2026-03-14T08:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-03-15",
+        "start": "2026-03-15T07:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.451,
+      "firstGrandPrix": 2004,
+      "laps": 56,
+      "lapRecord": {
+        "time": "1:32.238",
+        "credit": "Michael Schumacher (2004)"
+      },
+      "distanceKm": 305.066
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp1-highlights-2026-chinese-grand-prix.1859525136871959760"
+      },
+      {
+        "label": "Post-race reactions",
+        "duration": "1:15",
+        "url": "https://www.formula1.com/en/video/the-cooldown-room-reflects-on-kimi-antonelli-s-maiden-win.1860016205226081181"
+      },
+      {
+        "label": "Onboard action",
+        "duration": "16:09",
+        "url": "https://www.formula1.com/en/video/top-10-onboard-moments-2026-chinese-grand-prix.1859927805108190105"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 russell sets the pace from…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-russell-sets-the-pace-from-antonelli-and-norris-during-sole-chinese.5mXgmJfYHY5aWepDGxjbi0"
+      },
+      {
+        "label": "Live coverage first practice in china…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-china-2026.2EC9e7QXTzrOXG44vFBqjf"
+      }
+    ],
+    "status": "checked",
+    "sha256": "009bc01aba9f8703bd23af97b70b87c864926ede41acdf3f58ac34b932014871",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:japan": {
+    "season": 2026,
+    "race": "japan",
+    "source": "https://www.formula1.com/en/racing/2026/japan",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Tokyo",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-03-27",
+        "start": "2026-03-27T02:30:00.000Z",
+        "end": "2026-03-27T03:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-03-27",
+        "start": "2026-03-27T06:00:00.000Z",
+        "end": "2026-03-27T07:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-03-28",
+        "start": "2026-03-28T02:30:00.000Z",
+        "end": "2026-03-28T03:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-03-28",
+        "start": "2026-03-28T06:00:00.000Z",
+        "end": "2026-03-28T07:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-03-29",
+        "start": "2026-03-29T05:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.807,
+      "firstGrandPrix": 1987,
+      "laps": 53,
+      "lapRecord": {
+        "time": "1:30.965",
+        "credit": "Kimi Antonelli (2025)"
+      },
+      "distanceKm": 307.471
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/race-highlights-2026-japanese-grand-prix.1860981885174442903"
+      },
+      {
+        "label": "Driver interview",
+        "duration": "1:59",
+        "url": "https://www.formula1.com/en/video/2026-japanese-grand-prix-the-top-three-drivers-chat-in-the-cool-down-room.1860992121108164522"
+      },
+      {
+        "label": "Onboard action",
+        "duration": "12:00",
+        "url": "https://www.formula1.com/en/video/top-10-onboard-moments-2026-japanese-grand-prix.1861194493047859393"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 russell heads mercedes 1 2…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-russell-heads-mercedes-1-2-in-opening-practice-session-for-japanese.1WB5ian2z0xW2JirY293oM"
+      },
+      {
+        "label": "Highlights watch the action from fp1…",
+        "url": "https://www.formula1.com/en/latest/article/highlights-watch-the-action-from-fp1-in-japan-as-russell-leads-antonelli.7m6OuH3JwxBUSPoUDDINDF"
+      }
+    ],
+    "status": "checked",
+    "sha256": "3ada00aeadfc8f8168e2164cb8c5535e6319c1824de2bdf13c6ec8aea513d7cd",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:miami": {
+    "season": 2026,
+    "race": "miami",
+    "source": "https://www.formula1.com/en/racing/2026/miami",
+    "checked": "2026-11-27",
+    "timeZone": "America/New_York",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-05-01",
+        "start": "2026-05-01T16:00:00.000Z",
+        "end": "2026-05-01T17:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2026-05-01",
+        "start": "2026-05-01T20:30:00.000Z",
+        "end": "2026-05-01T21:14:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2026-05-02",
+        "start": "2026-05-02T16:00:00.000Z",
+        "end": "2026-05-02T17:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-05-02",
+        "start": "2026-05-02T20:00:00.000Z",
+        "end": "2026-05-02T21:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-05-03",
+        "start": "2026-05-03T17:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.412,
+      "firstGrandPrix": 2022,
+      "laps": 57,
+      "lapRecord": {
+        "time": "1:29.708",
+        "credit": "Max Verstappen (2023)"
+      },
+      "distanceKm": 308.326
+    },
+    "videos": [
+      {
+        "label": "Team radio",
+        "duration": "12:41",
+        "url": "https://www.formula1.com/en/video/unheard-radio-the-strategy-behind-kimi-antonelli-s-miami-win.1865806734969814144"
+      },
+      {
+        "label": "Onboard action",
+        "duration": "12:16",
+        "url": "https://www.formula1.com/en/video/top-10-onboard-moments-2026-miami-grand-prix.1864359051526489359"
+      },
+      {
+        "label": "Technical analysis",
+        "duration": "13:59",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-miami-grand-prix.1864355557152502481"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 leclerc leads verstappen and piastri…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-leclerc-leads-verstappen-and-piastri-during-miami-practice-as-mercedes-hit-trouble.5DlhsKDvclB0W01S0mk1lB"
+      },
+      {
+        "label": "Highlights watch the action from fp1…",
+        "url": "https://www.formula1.com/en/latest/article/highlights-watch-the-action-from-fp1-in-miami-2026.7zM2k3QhjErzNi1yrCmYFi"
+      }
+    ],
+    "status": "checked",
+    "sha256": "6c10560d329e5964ceb4b2eca4602d0480e2b9277691c1dee73812adb842be11",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:canada": {
+    "season": 2026,
+    "race": "canada",
+    "source": "https://www.formula1.com/en/racing/2026/canada",
+    "checked": "2026-11-27",
+    "timeZone": "America/Toronto",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-05-22",
+        "start": "2026-05-22T16:30:00.000Z",
+        "end": "2026-05-22T17:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2026-05-22",
+        "start": "2026-05-22T20:30:00.000Z",
+        "end": "2026-05-22T21:14:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2026-05-23",
+        "start": "2026-05-23T16:00:00.000Z",
+        "end": "2026-05-23T17:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-05-23",
+        "start": "2026-05-23T20:00:00.000Z",
+        "end": "2026-05-23T21:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-05-24",
+        "start": "2026-05-24T20:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.361,
+      "firstGrandPrix": 1978,
+      "laps": 70,
+      "lapRecord": {
+        "time": "1:13.078",
+        "credit": "Valtteri Bottas (2019)"
+      },
+      "distanceKm": 305.27
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/FP1-Highlights-2026-Canadian-Grand-Prix.1865918143480095056"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/Sprint-Qualifying-Highlights-2026-Canadian-Grand-Prix.1865928131098391268"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/Sprint-Highlights-2026-Canadian-Grand-Prix.1866001530889040674"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 antonelli leads russell as mercedes…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-antonelli-leads-russell-as-mercedes-dominate-disrupted-canadian-gp-practice-session.52B0jh2hwB6deh2lcWmGt5"
+      },
+      {
+        "label": "Live coverage first practice in canada…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-canada-2026.11M3LKGp7Na5GLPRtxkGwR"
+      }
+    ],
+    "status": "checked",
+    "sha256": "bb8092a11d12ceadff2248f7db7183821ebd24d5c192df92566587e0722327ee",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:monaco": {
+    "season": 2026,
+    "race": "monaco",
+    "source": "https://www.formula1.com/en/racing/2026/monaco",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Monaco",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-06-05",
+        "start": "2026-06-05T11:30:00.000Z",
+        "end": "2026-06-05T12:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-06-05",
+        "start": "2026-06-05T15:00:00.000Z",
+        "end": "2026-06-05T16:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-06-06",
+        "start": "2026-06-06T10:30:00.000Z",
+        "end": "2026-06-06T11:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-06-06",
+        "start": "2026-06-06T14:00:00.000Z",
+        "end": "2026-06-06T15:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-06-07",
+        "start": "2026-06-07T13:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 3.337,
+      "firstGrandPrix": 1950,
+      "laps": 78,
+      "lapRecord": {
+        "time": "1:12.909",
+        "credit": "Lewis Hamilton (2021)"
+      },
+      "distanceKm": 260.286
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/FP1-Highlights-2026-Monaco-Grand-Prix.1867166695873434086"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-monaco-grand-prix.1867178195543217019"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-monaco-grand-prix.1867252782976041344"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 leclerc sets the pace ahead…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-leclerc-sets-the-pace-ahead-of-hamilton-and-verstappen-during-disrupted-first-practice-in-monaco.1yE6wEXZmEwE2WRfoLXVXz"
+      },
+      {
+        "label": "Live coverage first practice in monaco…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-monaco-2026.164Va7lYQCQV0GDbSt9JXh"
+      }
+    ],
+    "status": "checked",
+    "sha256": "a94b07372b76530479d3e1ffc2b2cb6808ea376a936c36f5ffd3e31d389d9b51",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:barcelona-catalunya": {
+    "season": 2026,
+    "race": "barcelona-catalunya",
+    "source": "https://www.formula1.com/en/racing/2026/barcelona-catalunya",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Madrid",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-06-12",
+        "start": "2026-06-12T11:30:00.000Z",
+        "end": "2026-06-12T12:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-06-12",
+        "start": "2026-06-12T15:00:00.000Z",
+        "end": "2026-06-12T16:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-06-13",
+        "start": "2026-06-13T10:30:00.000Z",
+        "end": "2026-06-13T11:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-06-13",
+        "start": "2026-06-13T14:00:00.000Z",
+        "end": "2026-06-13T15:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-06-14",
+        "start": "2026-06-14T13:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.657,
+      "firstGrandPrix": 1991,
+      "laps": 66,
+      "lapRecord": {
+        "time": "1:15.743",
+        "credit": "Oscar Piastri (2025)"
+      },
+      "distanceKm": 307.236
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/FP1-Highlights-2026-Barcelona-Catalunya-Grand-Prix.1867799500930863412"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/FP2-Highlights-2026-Barcelona-Catalunya-Grand-Prix.1867812827910295868"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-barcelona-catalunya-grand-prix.1867885991442003101"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Russell sets the pace in free…",
+        "url": "https://www.formula1.com/en/latest/article/russell-sets-the-pace-in-free-practice-1-from-piastri-and-leclerc-for-barcelona-catalunya-grand-prix.6O6m3kDW16TxvfADOr5Lj8"
+      },
+      {
+        "label": "Live coverage first practice in barcelona…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-barcelona-catalunya-2026.4Io1heYbHY0cCUiDlLMgWz"
+      }
+    ],
+    "status": "checked",
+    "sha256": "b9e2a760b11a98170586bcfeda85ad31e47aa9428a275a1e131d087148b8a651",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:austria": {
+    "season": 2026,
+    "race": "austria",
+    "source": "https://www.formula1.com/en/racing/2026/austria",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Vienna",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-06-26",
+        "start": "2026-06-26T11:30:00.000Z",
+        "end": "2026-06-26T12:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-06-26",
+        "start": "2026-06-26T15:00:00.000Z",
+        "end": "2026-06-26T16:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-06-27",
+        "start": "2026-06-27T10:30:00.000Z",
+        "end": "2026-06-27T11:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-06-27",
+        "start": "2026-06-27T14:00:00.000Z",
+        "end": "2026-06-27T15:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-06-28",
+        "start": "2026-06-28T13:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.326,
+      "firstGrandPrix": 1970,
+      "laps": 71,
+      "lapRecord": {
+        "time": "1:07.924",
+        "credit": "Oscar Piastri (2025)"
+      },
+      "distanceKm": 307.026
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp1-highlights-2026-austrian-grand-prix.1869067810306083742"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-austrian-grand-prix.1869079899333332870"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-austrian-grand-prix.1869154371283329241"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Antonelli sets the pace in free…",
+        "url": "https://www.formula1.com/en/latest/article/antonelli-sets-the-pace-in-free-practice-1-from-russell-and-piastri-as-mercedes-dominate-ahead-of-austrian-gp.3KQzRZKdP5gbERaPBKH7rP"
+      },
+      {
+        "label": "Live coverage first practice in austria…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-austria-2026.3cnJkVyBkpudwIe3KrM4C5"
+      }
+    ],
+    "status": "checked",
+    "sha256": "1e2679bf2d17821f5433efc0c7b0a9813f847bceadbef27cd911a52cdc105ad4",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:great-britain": {
+    "season": 2026,
+    "race": "great-britain",
+    "source": "https://www.formula1.com/en/racing/2026/great-britain",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/London",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-07-03",
+        "start": "2026-07-03T11:30:00.000Z",
+        "end": "2026-07-03T12:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2026-07-03",
+        "start": "2026-07-03T15:30:00.000Z",
+        "end": "2026-07-03T16:14:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2026-07-04",
+        "start": "2026-07-04T11:00:00.000Z",
+        "end": "2026-07-04T12:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-07-04",
+        "start": "2026-07-04T15:00:00.000Z",
+        "end": "2026-07-04T16:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-07-05",
+        "start": "2026-07-05T14:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.891,
+      "firstGrandPrix": 1950,
+      "laps": 52,
+      "lapRecord": {
+        "time": "1:27.097",
+        "credit": "Max Verstappen (2020)"
+      },
+      "distanceKm": 306.198
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp1-highlights-2026-british-grand-prix.1869701482112649996"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/sprint-qualifying-highlights-2026-british-grand-prix.1869712235564445908"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/sprint-highlights-2026-british-grand-prix.1869786155404554160"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 hamilton quickest from antonelli and…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-hamilton-quickest-from-antonelli-and-leclerc-in-sole-practice-session-for-british-grand-prix.0n6XNvZ2nIUJGbmTX1k66"
+      },
+      {
+        "label": "Hamilton snatches pole position in british…",
+        "url": "https://www.formula1.com/en/latest/article/hamilton-snatches-pole-position-in-british-grand-prix-sprint-qualifying-from-antonelli-and-verstappen.52qV7M1yI9KWgWowrlCYlG"
+      }
+    ],
+    "status": "checked",
+    "sha256": "afc8e9adac3644249757b8e3438b1d696b2918e425217b544585b1ee5b36486e",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:belgium": {
+    "season": 2026,
+    "race": "belgium",
+    "source": "https://www.formula1.com/en/racing/2026/belgium",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Brussels",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-07-17",
+        "start": "2026-07-17T11:30:00.000Z",
+        "end": "2026-07-17T12:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-07-17",
+        "start": "2026-07-17T15:00:00.000Z",
+        "end": "2026-07-17T16:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-07-18",
+        "start": "2026-07-18T10:30:00.000Z",
+        "end": "2026-07-18T11:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-07-18",
+        "start": "2026-07-18T14:00:00.000Z",
+        "end": "2026-07-18T15:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-07-19",
+        "start": "2026-07-19T13:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 7.004,
+      "firstGrandPrix": 1950,
+      "laps": 44,
+      "lapRecord": {
+        "time": "1:44.701",
+        "credit": "Sergio Perez (2024)"
+      },
+      "distanceKm": 308.054
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp1-highlights-2026-belgian-grand-prix.1870970522563668427"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-belgian-grand-prix.1870982674614768402"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-belgian-grand-prix.1871056223703927967"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 verstappen tops the times from…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-verstappen-tops-the-times-from-hamilton-and-leclerc-in-first-practice-for-belgian-gp.16Xa12L2dv9mGNzvROgahH"
+      },
+      {
+        "label": "Fp2 antonelli fastest from norris and…",
+        "url": "https://www.formula1.com/en/latest/article/fp2-antonelli-fastest-from-norris-and-verstappen-ahead-of-belgian-grand-prix.1dMk9a7WgNgOXPPOnAy9NW"
+      }
+    ],
+    "status": "checked",
+    "sha256": "a93caa54202fa293c726daa43c679dff254d20166b1b078a0dab6a6b5b052875",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:hungary": {
+    "season": 2026,
+    "race": "hungary",
+    "source": "https://www.formula1.com/en/racing/2026/hungary",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Budapest",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-07-24",
+        "start": "2026-07-24T11:30:00.000Z",
+        "end": "2026-07-24T12:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-07-24",
+        "start": "2026-07-24T15:00:00.000Z",
+        "end": "2026-07-24T16:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-07-25",
+        "start": "2026-07-25T10:30:00.000Z",
+        "end": "2026-07-25T11:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-07-25",
+        "start": "2026-07-25T14:00:00.000Z",
+        "end": "2026-07-25T15:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-07-26",
+        "start": "2026-07-26T13:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.381,
+      "firstGrandPrix": 1986,
+      "laps": 70,
+      "lapRecord": {
+        "time": "1:16.627",
+        "credit": "Lewis Hamilton (2020)"
+      },
+      "distanceKm": 306.63
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp1-highlights-2026-hungarian-grand-prix.1871604720584498229"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-hungarian-grand-prix.1871617341875532839"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-hungarian-grand-prix.1871690797560697985"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 leclerc leads verstappen before suffering…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-leclerc-leads-verstappen-before-suffering-mechanical-problem-ahead-of-hungarian-grand-prix.32cQFweYzhr1Gr3UmYc5YU"
+      },
+      {
+        "label": "Fp2 hamilton beats leclerc to top…",
+        "url": "https://www.formula1.com/en/latest/article/fp2-hamilton-beats-leclerc-to-top-spot-in-tricky-second-practice-for-hungarian-grand-prix.7qr57bgnk0ba1rXSyrijLw"
+      }
+    ],
+    "status": "checked",
+    "sha256": "29a55aa239a001473680311ea958eb31fdb49bd4098825025cefbd0412396e54",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:netherlands": {
+    "season": 2026,
+    "race": "netherlands",
+    "source": "https://www.formula1.com/en/racing/2026/netherlands",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Amsterdam",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-08-21",
+        "start": "2026-08-21T10:30:00.000Z",
+        "end": "2026-08-21T11:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2026-08-21",
+        "start": "2026-08-21T14:30:00.000Z",
+        "end": "2026-08-21T15:14:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2026-08-22",
+        "start": "2026-08-22T10:00:00.000Z",
+        "end": "2026-08-22T11:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-08-22",
+        "start": "2026-08-22T14:00:00.000Z",
+        "end": "2026-08-22T15:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-08-23",
+        "start": "2026-08-23T13:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.259,
+      "firstGrandPrix": 1952,
+      "laps": 72,
+      "lapRecord": {
+        "time": "1:11.097",
+        "credit": "Lewis Hamilton (2021)"
+      },
+      "distanceKm": 306.592
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp1-highlights-2026-dutch-grand-prix.1874137932792979299"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/sprint-qualifying-highlights-2026-dutch-grand-prix.1874147886167834104"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/sprint-highlights-2026-dutch-grand-prix.1874221501937687363"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 antonelli leads norris and russell…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-antonelli-leads-norris-and-russell-in-sole-practice-session-ahead-of-dutch-gp.6UhqlSxsUab9wkQWyJbuPo"
+      },
+      {
+        "label": "Live coverage first practice in the…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-the-netherlands-2026.64e37W8UkefevMUBvXyrhX"
+      }
+    ],
+    "status": "checked",
+    "sha256": "c2df49672a38a3e32069ed4bbd4f0053983f824c887f2c82169c5d1b6f6f91df",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:italy": {
+    "season": 2026,
+    "race": "italy",
+    "source": "https://www.formula1.com/en/racing/2026/italy",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Rome",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-09-04",
+        "start": "2026-09-04T10:30:00.000Z",
+        "end": "2026-09-04T11:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-09-04",
+        "start": "2026-09-04T14:00:00.000Z",
+        "end": "2026-09-04T15:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-09-05",
+        "start": "2026-09-05T10:30:00.000Z",
+        "end": "2026-09-05T11:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-09-05",
+        "start": "2026-09-05T14:00:00.000Z",
+        "end": "2026-09-05T15:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-09-06",
+        "start": "2026-09-06T13:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.793,
+      "firstGrandPrix": 1950,
+      "laps": 53,
+      "lapRecord": {
+        "time": "1:20.901",
+        "credit": "Lando Norris (2025)"
+      },
+      "distanceKm": 306.72
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/FP1-Highlights-2026-Italian-Grand-Prix.1875406137856734013"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-italian-grand-prix.1875419349249374574"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-italian-grand-prix.1875497005161305878"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 leclerc leads hamilton and russell…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-leclerc-leads-hamilton-and-russell-during-first-practice-at-the-italian-grand-prix.7DUTqVtZlb4zvqNfBsyl1t"
+      },
+      {
+        "label": "Fp2 russell beats leclerc and antonelli…",
+        "url": "https://www.formula1.com/en/latest/article/fp2-russell-beats-leclerc-and-antonelli-to-the-fastest-time-in-free-practice-2-ahead-of-italian-grand-prix.4mVLF757oe0NuWE9Caw1wO"
+      }
+    ],
+    "status": "checked",
+    "sha256": "524f747c7195d2b7d3e882642ce6e49ae4e58b9efbdb42cffba826b5c47ac43f",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:spain": {
+    "season": 2026,
+    "race": "spain",
+    "source": "https://www.formula1.com/en/racing/2026/spain",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Madrid",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-09-11",
+        "start": "2026-09-11T11:30:00.000Z",
+        "end": "2026-09-11T12:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-09-11",
+        "start": "2026-09-11T15:00:00.000Z",
+        "end": "2026-09-11T16:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-09-12",
+        "start": "2026-09-12T10:30:00.000Z",
+        "end": "2026-09-12T11:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-09-12",
+        "start": "2026-09-12T14:00:00.000Z",
+        "end": "2026-09-12T15:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-09-13",
+        "start": "2026-09-13T13:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.414,
+      "firstGrandPrix": 2026,
+      "laps": 57,
+      "lapRecord": {
+        "time": "1:35.587",
+        "credit": "George Russell (2026)"
+      },
+      "distanceKm": 308.399
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp1-highlights-2026-spanish-grand-prix.1876044496885918158"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-spanish-grand-prix.1876056998828998547"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-spanish-grand-prix.1876130925898933373"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 russell leads antonelli and leclerc…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-russell-leads-antonelli-and-leclerc-as-cars-hit-madring-for-first-time.1CiLnqKjDFMohqIlyx5uAm"
+      },
+      {
+        "label": "Live coverage first practice in spain…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-spain-2026.zDUa1TwrBl4R1mJoU7siA"
+      }
+    ],
+    "status": "checked",
+    "sha256": "1e38c38d1ed82b726ed77f0260793a7b529fe40ef6b2936ed3e2475816845c2e",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:azerbaijan": {
+    "season": 2026,
+    "race": "azerbaijan",
+    "source": "https://www.formula1.com/en/racing/2026/azerbaijan",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Baku",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-09-24",
+        "start": "2026-09-24T08:30:00.000Z",
+        "end": "2026-09-24T09:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-09-24",
+        "start": "2026-09-24T12:00:00.000Z",
+        "end": "2026-09-24T13:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-09-25",
+        "start": "2026-09-25T08:30:00.000Z",
+        "end": "2026-09-25T09:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-09-25",
+        "start": "2026-09-25T12:00:00.000Z",
+        "end": "2026-09-25T13:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-09-26",
+        "start": "2026-09-26T11:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 6.003,
+      "firstGrandPrix": 2016,
+      "laps": 51,
+      "lapRecord": {
+        "time": "1:43.009",
+        "credit": "Charles Leclerc (2019)"
+      },
+      "distanceKm": 306.042
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/FP1-Highlights-2026-Azerbaijan-Grand-Prix.1877213432983480698"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-azerbaijan-grand-prix.1877226384300393627"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-azerbaijan-grand-prix.1877301100239214860"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 russell leads opening azerbaijan gp…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-russell-leads-opening-azerbaijan-gp-practice-from-verstappen-as-antonelli-suffers-hydraulic-issue.1vpwyIqrue0aq0qtifIKCC"
+      },
+      {
+        "label": "Live coverage first practice in azerbaijan…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-azerbaijan-2026.5KauH3ZeaPf3kxWyHAux1b"
+      }
+    ],
+    "status": "checked",
+    "sha256": "5552903694535e9efc60d25e9c05a136e1d508fd20c2fd0bc65c09d5ba0e76dc",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:bahrain": {
+    "season": 2026,
+    "race": "bahrain",
+    "source": "https://www.formula1.com/en/racing/2026/bahrain",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-10-02",
+        "start": "2026-10-02T04:30:00.000Z",
+        "end": "2026-10-02T05:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-10-02",
+        "start": "2026-10-02T08:00:00.000Z",
+        "end": "2026-10-02T09:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-10-03",
+        "start": "2026-10-03T04:30:00.000Z",
+        "end": "2026-10-03T05:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-10-03",
+        "start": "2026-10-03T08:00:00.000Z",
+        "end": "2026-10-03T09:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-10-04",
+        "start": "2026-10-04T07:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.543,
+      "firstGrandPrix": 1999,
+      "laps": 56,
+      "lapRecord": {
+        "time": "1:34.080",
+        "credit": "Sebastian Vettel (2017)"
+      },
+      "distanceKm": 310.417
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp1-highlights-2026-bahrain-grand-prix-in-malaysia.1877920238563335584"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-bahrain-grand-prix-in-malaysia.1877934510293000161"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-bahrain-grand-prix-in-malaysia.1878009426762873907"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 verstappen leads russell and hadjar…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-verstappen-leads-russell-and-hadjar-during-first-practice-at-bahrain-grand-prix-in-malaysia.1uVl0K8NpL3uVim3eUa1Px"
+      },
+      {
+        "label": "Fp2 leclerc tops second practice from…",
+        "url": "https://www.formula1.com/en/latest/article/fp2-leclerc-tops-second-practice-from-hadjar-and-norris-at-bahrain-grand-prix-in-malaysia.3bf3CEVk3BxOfpkGM7S6fq"
+      }
+    ],
+    "status": "checked",
+    "sha256": "4c9c42b8e19265f2b2dd7ad0738b3dc5c85378ef33429e30463d759e4dfbeae3",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:singapore": {
+    "season": 2026,
+    "race": "singapore",
+    "source": "https://www.formula1.com/en/racing/2026/singapore",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Singapore",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-10-09",
+        "start": "2026-10-09T08:30:00.000Z",
+        "end": "2026-10-09T09:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2026-10-09",
+        "start": "2026-10-09T12:30:00.000Z",
+        "end": "2026-10-09T13:14:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2026-10-10",
+        "start": "2026-10-10T09:00:00.000Z",
+        "end": "2026-10-10T09:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-10-10",
+        "start": "2026-10-10T13:00:00.000Z",
+        "end": "2026-10-10T14:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-10-11",
+        "start": "2026-10-11T12:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.927,
+      "firstGrandPrix": 2008,
+      "laps": 62,
+      "lapRecord": {
+        "time": "1:33.808",
+        "credit": "Lewis Hamilton (2025)"
+      },
+      "distanceKm": 305.337
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp1-highlights-2026-singapore-grand-prix.1878570533685601946"
+      },
+      {
+        "label": "Driver interview",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/2026-Singapore-GP-Sprint-Qualifying-Perez-hits-the-wall-and-causes-a-red-flag-in-SQ1.1878577709664431504"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/sprint-highlights-2026-singapore-grand-prix.1878660960273042920"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 russell beats leclerc and norris…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-russell-beats-leclerc-and-norris-to-top-spot-in-sole-practice-ahead-of-singapore-gp.6gZxy1UbfI5R8VLWXUBwZu"
+      },
+      {
+        "label": "Live coverage first practice in singapore…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-singapore-2026.4H4grIbGCd0WQkdW3OAT5m"
+      }
+    ],
+    "status": "checked",
+    "sha256": "11978ec54b7ce0a67c2d0f9befeed244134a10ae4344df102c5948b625f38da9",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:united-states": {
+    "season": 2026,
+    "race": "united-states",
+    "source": "https://www.formula1.com/en/racing/2026/united-states",
+    "checked": "2026-11-27",
+    "timeZone": "America/Chicago",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-10-23",
+        "start": "2026-10-23T17:30:00.000Z",
+        "end": "2026-10-23T18:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-10-23",
+        "start": "2026-10-23T21:00:00.000Z",
+        "end": "2026-10-23T22:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-10-24",
+        "start": "2026-10-24T17:30:00.000Z",
+        "end": "2026-10-24T18:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-10-24",
+        "start": "2026-10-24T21:00:00.000Z",
+        "end": "2026-10-24T22:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-10-25",
+        "start": "2026-10-25T20:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.513,
+      "firstGrandPrix": 2012,
+      "laps": 56,
+      "lapRecord": {
+        "time": "1:36.169",
+        "credit": "Charles Leclerc (2019)"
+      },
+      "distanceKm": 308.432
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/FP1-Highlights-2026-United-States-Grand%20Prix.1879872025975539600"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-united-states-grand-prix.1879884864483975025"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-united-states-grand-prix.1879962297593997910"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 leclerc fastest in first practice…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-leclerc-fastest-in-first-practice-for-the-united-states-gp-ahead-of-verstappen-and-norris.125WlaFK7K1mXXyLgb93ui"
+      },
+      {
+        "label": "Fp2 leclerc sets the pace from…",
+        "url": "https://www.formula1.com/en/latest/article/fp2-leclerc-sets-the-pace-from-antonelli-and-verstappen-in-second-practice-at-united-states-grand-prix.4lRGhApoylA3exqOxagIqx"
+      }
+    ],
+    "status": "checked",
+    "sha256": "24da84d64cdb6d179037707e82a73751ac3009ac411d8d70c01da5a3e784539b",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:mexico": {
+    "season": 2026,
+    "race": "mexico",
+    "source": "https://www.formula1.com/en/racing/2026/mexico",
+    "checked": "2026-11-27",
+    "timeZone": "America/Mexico_City",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-10-30",
+        "start": "2026-10-30T18:30:00.000Z",
+        "end": "2026-10-30T19:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-10-30",
+        "start": "2026-10-30T22:00:00.000Z",
+        "end": "2026-10-30T23:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-10-31",
+        "start": "2026-10-31T17:30:00.000Z",
+        "end": "2026-10-31T18:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-10-31",
+        "start": "2026-10-31T21:00:00.000Z",
+        "end": "2026-10-31T22:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-11-01",
+        "start": "2026-11-01T20:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.304,
+      "firstGrandPrix": 1963,
+      "laps": 71,
+      "lapRecord": {
+        "time": "1:17.774",
+        "credit": "Valtteri Bottas (2021)"
+      },
+      "distanceKm": 305.354
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp1-highlights-2026-mexico-city-grand-prix.1880510573531753774"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-mexico-city-grand-prix.1880522651878020849"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-mexico-city-grand-prix.1880596084677925494"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 leclerc leads antonelli in mexico…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-leclerc-leads-antonelli-in-mexico-city-as-new-faces-make-formula-1-debuts.5IkozqYxX25QgmGJqc0NlA"
+      },
+      {
+        "label": "Live coverage first practice in mexico…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-mexico-city-2026.3EQXBZtUSy8UX3vcLOrmta"
+      }
+    ],
+    "status": "checked",
+    "sha256": "668ed79ed5df76596f4e17727cfb5b537eea554bb7f341572104a794ee7020b8",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:brazil": {
+    "season": 2026,
+    "race": "brazil",
+    "source": "https://www.formula1.com/en/racing/2026/brazil",
+    "checked": "2026-11-27",
+    "timeZone": "America/Sao_Paulo",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-11-06",
+        "start": "2026-11-06T15:30:00.000Z",
+        "end": "2026-11-06T16:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-11-06",
+        "start": "2026-11-06T19:00:00.000Z",
+        "end": "2026-11-06T20:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-11-07",
+        "start": "2026-11-07T14:30:00.000Z",
+        "end": "2026-11-07T15:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-11-07",
+        "start": "2026-11-07T18:00:00.000Z",
+        "end": "2026-11-07T19:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-11-08",
+        "start": "2026-11-08T17:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.309,
+      "firstGrandPrix": 1973,
+      "laps": 71,
+      "lapRecord": {
+        "time": "1:10.540",
+        "credit": "Valtteri Bottas (2018)"
+      },
+      "distanceKm": 305.879
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/FP1-Highlights-2026-Sao-Paulo-Grand%20Prix.1881134128834317282"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-sao-paulo-grand-prix.1881144331681197184"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-sao-paulo-grand-prix.1881218274686428941"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 norris leads antonelli and verstappen…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-norris-leads-antonelli-and-verstappen-in-opening-sao-paulo-gp-practice-session.3GXL3rAROwHsLxnxn9hReY"
+      },
+      {
+        "label": "Live coverage first practice in brazil…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-brazil-2026.CYzUtCJCISC6hBcDRrctB"
+      }
+    ],
+    "status": "checked",
+    "sha256": "a8322a68d6f13eba48bed69ad4a1114ef1f975983a48aaa476fcc216939d8a8c",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:las-vegas": {
+    "season": 2026,
+    "race": "las-vegas",
+    "source": "https://www.formula1.com/en/racing/2026/las-vegas",
+    "checked": "2026-11-27",
+    "timeZone": "America/Los_Angeles",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-11-19",
+        "start": "2026-11-20T00:30:00.000Z",
+        "end": "2026-11-20T01:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-11-19",
+        "start": "2026-11-20T04:00:00.000Z",
+        "end": "2026-11-20T05:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-11-20",
+        "start": "2026-11-21T00:30:00.000Z",
+        "end": "2026-11-21T01:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-11-20",
+        "start": "2026-11-21T04:00:00.000Z",
+        "end": "2026-11-21T05:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-11-21",
+        "start": "2026-11-22T04:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 6.201,
+      "firstGrandPrix": 2023,
+      "laps": 50,
+      "lapRecord": {
+        "time": "1:33.365",
+        "credit": "Max Verstappen (2025)"
+      },
+      "distanceKm": 309.958
+    },
+    "videos": [
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp1-highlights-2026-las-vegas-grand-prix.1882343286620982728"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp2-highlights-2026-las-vegas-grand-prix.1882356816882001761"
+      },
+      {
+        "label": "Session highlights",
+        "duration": null,
+        "url": "https://www.formula1.com/en/video/fp3-highlights-2026-las-vegas-grand-prix.1882433514654660880"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Fp1 wet conditions limit running in…",
+        "url": "https://www.formula1.com/en/latest/article/fp1-wet-conditions-limit-running-in-first-practice-at-las-vegas-grand-prix.7H085JgIW1k8jM3ysejVqJ"
+      },
+      {
+        "label": "Live coverage first practice in las…",
+        "url": "https://www.formula1.com/en/latest/article/live-coverage-first-practice-in-las-vegas-2026.6znaP19Dx0zBrPVStcB2BP"
+      }
+    ],
+    "status": "checked",
+    "sha256": "51d7defced3f00c45489984e93b3ea4bd1e486bc73a2198b6ada00634d86d900",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:qatar": {
+    "season": 2026,
+    "race": "qatar",
+    "source": "https://www.formula1.com/en/racing/2026/qatar",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Qatar",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-11-27",
+        "start": "2026-11-27T13:30:00.000Z",
+        "end": "2026-11-27T14:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-11-27",
+        "start": "2026-11-27T17:00:00.000Z",
+        "end": "2026-11-27T18:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-11-28",
+        "start": "2026-11-28T14:30:00.000Z",
+        "end": "2026-11-28T15:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-11-28",
+        "start": "2026-11-28T18:00:00.000Z",
+        "end": "2026-11-28T19:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-11-29",
+        "start": "2026-11-29T16:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.419,
+      "firstGrandPrix": 2021,
+      "laps": 57,
+      "lapRecord": {
+        "time": "1:22.384",
+        "credit": "Lando Norris (2024)"
+      },
+      "distanceKm": 308.611
+    },
+    "videos": [
+      {
+        "label": "Driver interview",
+        "duration": "1:55",
+        "url": "https://www.formula1.com/en/video/antonelli-hoping-to-finish-2026-season-on-a-high.1882948897563957076"
+      },
+      {
+        "label": "Driver interview",
+        "duration": "2:43",
+        "url": "https://www.formula1.com/en/video/hamilton-focused-on-maximising-points-in-the-final-two-races.1882941365527163027"
+      }
+    ],
+    "articles": [
+      {
+        "label": "What makes the qatar grand prix…",
+        "url": "https://www.formula1.com/en/latest/article/what-makes-the-qatar-grand-prix-special-and-why-you-should-see-it.2zZj0wc7e1CHMuZNMnvBX4"
+      },
+      {
+        "label": "Destination doha an f1 fans guide",
+        "url": "https://www.formula1.com/en/latest/article/destination-doha-an-f1-fans-guide.23jP3fyXjA3AXiJPESt7Ps"
+      }
+    ],
+    "status": "checked",
+    "sha256": "f83051be47955901bf333f909715cb3442173d3d4716b19e63bfe01d5beee9c4",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2026:united-arab-emirates": {
+    "season": 2026,
+    "race": "united-arab-emirates",
+    "source": "https://www.formula1.com/en/racing/2026/united-arab-emirates",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Dubai",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2026-12-04",
+        "start": "2026-12-04T09:30:00.000Z",
+        "end": "2026-12-04T10:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2026-12-04",
+        "start": "2026-12-04T13:00:00.000Z",
+        "end": "2026-12-04T14:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2026-12-05",
+        "start": "2026-12-05T10:30:00.000Z",
+        "end": "2026-12-05T11:30:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2026-12-05",
+        "start": "2026-12-05T14:00:00.000Z",
+        "end": "2026-12-05T15:00:00.000Z",
+        "status": "confirmed"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2026-12-06",
+        "start": "2026-12-06T13:00:00.000Z",
+        "end": null,
+        "status": "confirmed"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.281,
+      "firstGrandPrix": 2009,
+      "laps": 58,
+      "lapRecord": {
+        "time": "1:25.637",
+        "credit": "Kevin Magnussen (2024)"
+      },
+      "distanceKm": 306.188
+    },
+    "videos": [
+      {
+        "label": "Technical analysis",
+        "duration": "15:01",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-season-showdown-in-abu-dhabi.1851049259971077628"
+      }
+    ],
+    "articles": [
+      {
+        "label": "What makes the abu dhabi grand…",
+        "url": "https://www.formula1.com/en/latest/article/what-makes-the-abu-dhabi-grand-prix-special-and-why-you-should-see-it.2SPlcsPWUwX6RgS752fMKh"
+      },
+      {
+        "label": "Destination abu dhabi an f1 fans…",
+        "url": "https://www.formula1.com/en/latest/article/destination-abu-dhabi-an-f1-fans-guide.3C2Yl1m2gOdoZor5c5pQs5"
+      }
+    ],
+    "status": "checked",
+    "sha256": "b5493787cfccad63b4a191ffd9aff0367dd0842a71ab3e5effae1d95434fc58a",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:bahrain": {
+    "season": 2027,
+    "race": "bahrain",
+    "source": "https://www.formula1.com/en/racing/2027/bahrain",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Bahrain",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-03-12",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2027-03-12",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2027-03-13",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-03-13",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-03-14",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.412,
+      "firstGrandPrix": 2004,
+      "lapRecord": {
+        "time": "1:31.447",
+        "credit": "Pedro de la Rosa (2005)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Post-race reactions",
+        "duration": "2:09",
+        "url": "https://www.formula1.com/en/video/how-to-stay-cool-in-singapore-the-cooldown-room.1878405582646962150"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Can red bull keep up their…",
+        "url": "https://www.formula1.com/en/latest/article/can-red-bull-keep-up-their-momentum-after-verstappens-sepang-win.2YqIG9uyvXkWJPSexKwgwh"
+      }
+    ],
+    "status": "checked",
+    "sha256": "5254a47902ab148e319cb8c5a885610643f9ed75747f006f17bf1741d9aaab07",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:saudi-arabia": {
+    "season": 2027,
+    "race": "saudi-arabia",
+    "source": "https://www.formula1.com/en/racing/2027/saudi-arabia",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Riyadh",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-03-19",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-03-19",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-03-20",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-03-20",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-03-21",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 6.175,
+      "firstGrandPrix": 2021,
+      "lapRecord": {
+        "time": "1:30.734",
+        "credit": "Lewis Hamilton (2021)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Post-race reactions",
+        "duration": "3:32",
+        "url": "https://www.formula1.com/en/video/sebastian-vettel-papaya-domination-and-anagrams-the-cooldown-room.1830210972620254875"
+      },
+      {
+        "label": "Driver interview",
+        "duration": "2:59",
+        "url": "https://www.formula1.com/en/video/sebastian-vettel-hosts-race-for-women-in-saudi.1830210436090237754"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Bahrain and saudi arabian grands prix…",
+        "url": "https://www.formula1.com/en/latest/article/bahrain-and-saudi-arabian-grands-prix-will-not-take-place-in-april.1hnqllVG85RSt8pbFc5Ivx"
+      },
+      {
+        "label": "Formula 1 announces annual promoter awards…",
+        "url": "https://www.formula1.com/en/latest/article/formula-1-announces-annual-promoter-awards-winners.5pWJ7w5QG1CSNaUQhmGOX7"
+      }
+    ],
+    "status": "checked",
+    "sha256": "f388f5bbf20e742486b46cf4f4e2fe8c841d8ef318a1271fed8ce40de24de477",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:australia": {
+    "season": 2027,
+    "race": "australia",
+    "source": "https://www.formula1.com/en/racing/2027/australia",
+    "checked": "2026-11-27",
+    "timeZone": "Australia/Melbourne",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-04-02",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2027-04-02",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2027-04-03",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-04-03",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-04-04",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.278,
+      "firstGrandPrix": 1996,
+      "lapRecord": {
+        "time": "1:19.813",
+        "credit": "Charles Leclerc (2024)"
+      }
+    },
+    "videos": [],
+    "articles": [
+      {
+        "label": "10 times f1 drivers have suffered…",
+        "url": "https://www.formula1.com/en/latest/article/10-times-f1-drivers-have-suffered-heartbreak-at-their-home-grand-prix.1aJMCMUW23aJrsmuOw5j1b"
+      }
+    ],
+    "status": "checked",
+    "sha256": "90c7286b0f551931cf7fbfb70226dfe8fc6a8dec0b9f5a099fcbb6b643cb1cec",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:japan": {
+    "season": 2027,
+    "race": "japan",
+    "source": "https://www.formula1.com/en/racing/2027/japan",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Tokyo",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-04-09",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2027-04-09",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2027-04-10",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-04-10",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-04-11",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.807,
+      "firstGrandPrix": 1987,
+      "lapRecord": {
+        "time": "1:30.965",
+        "credit": "Kimi Antonelli (2025)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Technical analysis",
+        "duration": "13:46",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-japanese-grand-prix.1861186245273890492"
+      }
+    ],
+    "articles": [],
+    "status": "checked",
+    "sha256": "7001c67b616c37e227e4ab81780ca43262df32e34e88e6a2472b5ec74d38bdfd",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:china": {
+    "season": 2027,
+    "race": "china",
+    "source": "https://www.formula1.com/en/racing/2027/china",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Shanghai",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-04-16",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-04-16",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-04-17",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-04-17",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-04-18",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.451,
+      "firstGrandPrix": 2004,
+      "lapRecord": {
+        "time": "1:32.238",
+        "credit": "Michael Schumacher (2004)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Post-race reactions",
+        "duration": "1:15",
+        "url": "https://www.formula1.com/en/video/the-cooldown-room-reflects-on-kimi-antonelli-s-maiden-win.1860016205226081181"
+      },
+      {
+        "label": "Driver interview",
+        "duration": "10:54",
+        "url": "https://www.formula1.com/en/video/kimi-antonelli-born-to-win.1859837200344514348"
+      }
+    ],
+    "articles": [],
+    "status": "checked",
+    "sha256": "fad3dd705fd98fcdeead71c00c80feb0dd29bf4ec141be635acc15e8fc14c583",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:miami": {
+    "season": 2027,
+    "race": "miami",
+    "source": "https://www.formula1.com/en/racing/2027/miami",
+    "checked": "2026-11-27",
+    "timeZone": "America/New_York",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-04-30",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-04-30",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-05-01",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-05-01",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-05-02",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.412,
+      "firstGrandPrix": 2022,
+      "lapRecord": {
+        "time": "1:29.708",
+        "credit": "Max Verstappen (2023)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Team radio",
+        "duration": "12:41",
+        "url": "https://www.formula1.com/en/video/unheard-radio-the-strategy-behind-kimi-antonelli-s-miami-win.1865806734969814144"
+      },
+      {
+        "label": "Technical analysis",
+        "duration": "13:59",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-miami-grand-prix.1864355557152502481"
+      }
+    ],
+    "articles": [],
+    "status": "checked",
+    "sha256": "274a2ab90908836bc9b1ad09fbf38da25b003a2749ea6efd20ec3a147397a975",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:canada": {
+    "season": 2027,
+    "race": "canada",
+    "source": "https://www.formula1.com/en/racing/2027/canada",
+    "checked": "2026-11-27",
+    "timeZone": "America/Toronto",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-05-21",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2027-05-21",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2027-05-22",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-05-22",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-05-23",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.361,
+      "firstGrandPrix": 1978,
+      "lapRecord": {
+        "time": "1:13.078",
+        "credit": "Valtteri Bottas (2019)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Driver interview",
+        "duration": "1:50",
+        "url": "https://www.formula1.com/en/video/canada-chaos-review-with-alex-jacques-tom-deacon-and-calum-nicholas.1866423262495577905"
+      },
+      {
+        "label": "Driver interview",
+        "duration": "10:59",
+        "url": "https://www.formula1.com/en/video/the-mercedes-battle-of-montreal.1866278901928029355"
+      }
+    ],
+    "articles": [],
+    "status": "checked",
+    "sha256": "3237f5900e8e3fff91895d144a634f443b5e0f0fc895ca31193eaaf6f1299482",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:monaco": {
+    "season": 2027,
+    "race": "monaco",
+    "source": "https://www.formula1.com/en/racing/2027/monaco",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Monaco",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-06-04",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2027-06-04",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2027-06-05",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-06-05",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-06-06",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 3.337,
+      "firstGrandPrix": 1950,
+      "lapRecord": {
+        "time": "1:12.909",
+        "credit": "Lewis Hamilton (2021)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Post-race reactions",
+        "duration": "4:12",
+        "url": "https://www.formula1.com/en/video/the-cooldown-room-s-world-cup-f1-trivia-mash-up.1867624935552742883"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Gasly loses monaco podium as penalties…",
+        "url": "https://www.formula1.com/en/latest/article/gasly-loses-monaco-podium-as-penalties-reinstated-following-mclaren-and-red-bull-appeal.2DvZIUbpmqhnBSGJuDNjlv"
+      },
+      {
+        "label": "10 times f1 drivers have suffered…",
+        "url": "https://www.formula1.com/en/latest/article/10-times-f1-drivers-have-suffered-heartbreak-at-their-home-grand-prix.1aJMCMUW23aJrsmuOw5j1b"
+      }
+    ],
+    "status": "checked",
+    "sha256": "e822701207cb98ec88849b29ac352a85757be8d9dec7616d4e32af8ba9098722",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:portugal": {
+    "season": 2027,
+    "race": "portugal",
+    "source": "https://www.formula1.com/en/racing/2027/portugal",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Lisbon",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-06-18",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-06-18",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-06-19",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-06-19",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-06-20",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.653,
+      "firstGrandPrix": 2020,
+      "lapRecord": {
+        "time": "1:18.750",
+        "credit": "Lewis Hamilton (2020)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Driver interview",
+        "duration": "2:06",
+        "url": "https://www.formula1.com/en/video/carlos-sainz-will-race-like-grandstands-are-full-at-spanish-gp.1699127535248179939"
+      },
+      {
+        "label": "Technical analysis",
+        "duration": "12:05",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-how-verstappen-outfoxed-hamilton-at-portugal-restart.1699127500767833596"
+      },
+      {
+        "label": "Technical analysis",
+        "duration": "5:58",
+        "url": "https://www.formula1.com/en/video/free-preview-f1-tv-tech-talk-portugal-upgrades.1699127532703320799"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Williams ambassador chadwick completes maiden f1…",
+        "url": "https://www.formula1.com/en/latest/article/williams-ambassador-chadwick-completes-maiden-f1-test-at-portimao.1pE6f57MGOKMCnFoVJeUxU"
+      },
+      {
+        "label": "Why im delighted the portuguese grand…",
+        "url": "https://www.formula1.com/en/latest/article/why-im-delighted-the-portuguese-grand-prix-is-back-on-the-calendar.6SJAb71ghhAlCGcKRx5clZ"
+      }
+    ],
+    "status": "checked",
+    "sha256": "21469235f80efff4ee0e24ce714f8c36585d08a59e64c1dc9a5b5c996da9511f",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:great-britain": {
+    "season": 2027,
+    "race": "great-britain",
+    "source": "https://www.formula1.com/en/racing/2027/great-britain",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/London",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-07-02",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2027-07-02",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2027-07-03",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-07-03",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-07-04",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.891,
+      "firstGrandPrix": 1950,
+      "lapRecord": {
+        "time": "1:27.097",
+        "credit": "Max Verstappen (2020)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Driver interview",
+        "duration": "1:34",
+        "url": "https://www.formula1.com/en/video/sir-jackie-stewart-s-favourite-silverstone-moments.1870161414398132067"
+      },
+      {
+        "label": "Post-race reactions",
+        "duration": "1:53",
+        "url": "https://www.formula1.com/en/video/zhou-guanyu-joins-the-cooldown-room-to-discuss-cadillac-s-journey-so-far.1870160511577000081"
+      },
+      {
+        "label": "Technical analysis",
+        "duration": "16:19",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-max-and-kimi-s-silverstone-setbacks.1870072459184988005"
+      }
+    ],
+    "articles": [
+      {
+        "label": "10 times f1 drivers have suffered…",
+        "url": "https://www.formula1.com/en/latest/article/10-times-f1-drivers-have-suffered-heartbreak-at-their-home-grand-prix.1aJMCMUW23aJrsmuOw5j1b"
+      }
+    ],
+    "status": "checked",
+    "sha256": "bd023786da755233c00e7367dac65e4ccba30bb2494f01b26dbeb515cf186ba6",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:austria": {
+    "season": 2027,
+    "race": "austria",
+    "source": "https://www.formula1.com/en/racing/2027/austria",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Vienna",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-07-09",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-07-09",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-07-10",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-07-10",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-07-11",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.326,
+      "firstGrandPrix": 1970,
+      "lapRecord": {
+        "time": "1:07.924",
+        "credit": "Oscar Piastri (2025)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Post-race reactions",
+        "duration": "2:10",
+        "url": "https://www.formula1.com/en/video/how-russell-secured-that-pole-lap-austria-in-review-on-the-cooldown-room.1869523830928175808"
+      },
+      {
+        "label": "Technical analysis",
+        "duration": "15:51",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-battle-of-the-world-champions-in-spielberg.1869432969215884448"
+      }
+    ],
+    "articles": [],
+    "status": "checked",
+    "sha256": "749e793962484f7606a48bcd9767436a1b1004468d0cc5860ac1ee62aa808a4c",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:belgium": {
+    "season": 2027,
+    "race": "belgium",
+    "source": "https://www.formula1.com/en/racing/2027/belgium",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Brussels",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-07-23",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-07-23",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-07-24",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-07-24",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-07-25",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 7.004,
+      "firstGrandPrix": 1950,
+      "lapRecord": {
+        "time": "1:44.701",
+        "credit": "Sergio Perez (2024)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Technical analysis",
+        "duration": "14:40",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-russell-s-spa-weekend-to-forget.1871338744110666786"
+      },
+      {
+        "label": "Driver interview",
+        "duration": "18:33",
+        "url": "https://www.formula1.com/en/video/fan-forum-mclaren-audi-vcarb-aston-martin-and-cadillac-hit-the-fan-stage-at-spa-francorchamps.1871056474799198878"
+      }
+    ],
+    "articles": [],
+    "status": "checked",
+    "sha256": "102963f33a805f3930737ac72d91d2c958c129019694d828ad626719b377dc8d",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:hungary": {
+    "season": 2027,
+    "race": "hungary",
+    "source": "https://www.formula1.com/en/racing/2027/hungary",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Budapest",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-07-30",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-07-30",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-07-31",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-07-31",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-08-01",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.381,
+      "firstGrandPrix": 1986,
+      "lapRecord": {
+        "time": "1:16.627",
+        "credit": "Lewis Hamilton (2020)"
+      }
+    },
+    "videos": [],
+    "articles": [],
+    "status": "checked",
+    "sha256": "efeed50db506a5963add905b27a475c3410d5d763225b3a7ed03c340716e8ec9",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:italy": {
+    "season": 2027,
+    "race": "italy",
+    "source": "https://www.formula1.com/en/racing/2027/italy",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Rome",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-09-03",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2027-09-03",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2027-09-04",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-09-04",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-09-05",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.793,
+      "firstGrandPrix": 1950,
+      "lapRecord": {
+        "time": "1:20.901",
+        "credit": "Lando Norris (2025)"
+      }
+    },
+    "videos": [],
+    "articles": [
+      {
+        "label": "La tavolata when barilla hosted an…",
+        "url": "https://www.formula1.com/en/latest/article/la-tavolata-when-barilla-hosted-an-italian-dinner-party-on-the-monza-starting-grid.7EXnyQM7FhQiro3h9xDSrP"
+      },
+      {
+        "label": "Best day of my life antonelli…",
+        "url": "https://www.formula1.com/en/latest/article/best-day-of-my-life-antonelli-reflects-on-unforgettable-monza-triumph.5KbcyQLTOgTpKe3pQFgf9q"
+      }
+    ],
+    "status": "checked",
+    "sha256": "0aa971498f52965c5896e09de613dce3e1cad0e8f93f7e1ef369b55c43101924",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:spain": {
+    "season": 2027,
+    "race": "spain",
+    "source": "https://www.formula1.com/en/racing/2027/spain",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Madrid",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-09-10",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-09-10",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-09-11",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-09-11",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-09-12",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.414,
+      "firstGrandPrix": 2026,
+      "lapRecord": {
+        "time": "1:35.587",
+        "credit": "George Russell (2026)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Post-race reactions",
+        "duration": "1:41",
+        "url": "https://www.formula1.com/en/video/the-cooldown-room-apex-arguments-and-a-look-back-at-madrid.1876504259694505335"
+      },
+      {
+        "label": "Technical analysis",
+        "duration": "13:57",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-lando-s-lament.1876410541289072477"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Ferraris aerodynamic advantage that mercedes tried…",
+        "url": "https://www.formula1.com/en/latest/article/ferraris-aerodynamic-advantage-that-mercedes-tried-to-emulate-in-madrid.1XU3fx0wRfhZq0MB7oSr8v"
+      },
+      {
+        "label": "Exclusive jose mourinho on his love…",
+        "url": "https://www.formula1.com/en/latest/article/exclusive-jose-mourinho-on-his-love-for-f1-how-racing-compares-to-football-and-the-madrings-first-grand-prix.Wl3Y66ubo4tiVmrkmkLQZ"
+      }
+    ],
+    "status": "checked",
+    "sha256": "7b13c0851ff757a255c37ba04f11c869ba50f27521b1b82af0210c5c0d498844",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:azerbaijan": {
+    "season": 2027,
+    "race": "azerbaijan",
+    "source": "https://www.formula1.com/en/racing/2027/azerbaijan",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Baku",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-09-24",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-09-24",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-09-25",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-09-25",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-09-26",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 6.003,
+      "firstGrandPrix": 2016,
+      "lapRecord": {
+        "time": "1:43.009",
+        "credit": "Charles Leclerc (2019)"
+      }
+    },
+    "videos": [],
+    "articles": [
+      {
+        "label": "Where does russells baku win rank…",
+        "url": "https://www.formula1.com/en/latest/article/where-does-russells-baku-win-rank-in-the-closest-ever-f1-finishes.4bMRcAuAIS4dJY4flIHkUw"
+      },
+      {
+        "label": "The encouraging signs hidden within mclarens…",
+        "url": "https://www.formula1.com/en/latest/article/the-encouraging-signs-hidden-within-mclarens-baku-upgrade.2MeiTiEWq6Dvt2GkRG4UJh"
+      }
+    ],
+    "status": "checked",
+    "sha256": "147dcb8712c7c25bfd7357fe737336689af0b70029767606b89e2ab12ca66d41",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:turkey": {
+    "season": 2027,
+    "race": "turkey",
+    "source": "https://www.formula1.com/en/racing/2027/turkey",
+    "checked": "2026-11-27",
+    "timeZone": "Europe/Istanbul",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-10-01",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-10-01",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-10-02",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-10-02",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-10-03",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.338,
+      "firstGrandPrix": 2005,
+      "lapRecord": {
+        "time": "1:24.770",
+        "credit": "Juan Pablo Montoya (2005)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Team radio",
+        "duration": "7:13",
+        "url": "https://www.formula1.com/en/video/radio-rewind-the-story-of-turkey-2006.1756014695180877654"
+      },
+      {
+        "label": "Technical analysis",
+        "duration": "11:28",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-hamilton-s-turkey-tyre-trouble.1713432606741019999"
+      }
+    ],
+    "articles": [
+      {
+        "label": "5 famous turkish grand prix moments…",
+        "url": "https://www.formula1.com/en/latest/article/5-famous-turkish-grand-prix-moments-in-f1-history.6mpCz7IvB2RvLHhfieEI2W"
+      },
+      {
+        "label": "Explained why turkey is back on…",
+        "url": "https://www.formula1.com/en/latest/article/explained-why-turkey-is-back-on-the-calendar-from-2027.1BJjW3kYEnR97HxlV7AFuy"
+      }
+    ],
+    "status": "checked",
+    "sha256": "8a2de51c79cfdbe4ca103092bb6a58b13cd5b4136d352f96d42a308155727cc2",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:singapore": {
+    "season": 2027,
+    "race": "singapore",
+    "source": "https://www.formula1.com/en/racing/2027/singapore",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Singapore",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-10-08",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-10-08",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-10-09",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-10-09",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-10-10",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.927,
+      "firstGrandPrix": 2008,
+      "lapRecord": {
+        "time": "1:33.808",
+        "credit": "Lewis Hamilton (2025)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Onboard action",
+        "duration": "9:23",
+        "url": "https://www.formula1.com/en/video/top-10-onboard-moments-singapore-grand-prix.1878937660569210762"
+      },
+      {
+        "label": "Technical analysis",
+        "duration": "15:49",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-max-s-crucial-move-at-turn-1.1878945882006933391"
+      }
+    ],
+    "articles": [
+      {
+        "label": "The 27 circuits verstappen has won…",
+        "url": "https://www.formula1.com/en/latest/article/the-27-circuits-verstappen-has-won-at-after-he-finally-triumphs-in-singapore.4BEyXdB3iqKR3unfWTWgAj"
+      },
+      {
+        "label": "Mekies admits we owe him one…",
+        "url": "https://www.formula1.com/en/latest/article/mekies-admits-we-owe-him-one-after-red-bull-issues-ruin-hadjars-singapore-weekend.3SefuqCazWON4v6nv9gz6h"
+      }
+    ],
+    "status": "checked",
+    "sha256": "b5cbea3f82c5b425a2c017cf0d8bcd88242c08fda5c3eab2012098e1ec1924d8",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:united-states": {
+    "season": 2027,
+    "race": "united-states",
+    "source": "https://www.formula1.com/en/racing/2027/united-states",
+    "checked": "2026-11-27",
+    "timeZone": "America/Chicago",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-10-22",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-10-22",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-10-23",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-10-23",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-10-24",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.513,
+      "firstGrandPrix": 2012,
+      "lapRecord": {
+        "time": "1:36.169",
+        "credit": "Charles Leclerc (2019)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Onboard action",
+        "duration": "8:08",
+        "url": "https://www.formula1.com/en/video/top-10-onboard-moments-united-states-grand-prix.1880210353357965396"
+      },
+      {
+        "label": "Technical analysis",
+        "duration": "15:09",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-ferraris-fight-max-for-austin-podium-places.1880223692599989920"
+      }
+    ],
+    "articles": [
+      {
+        "label": "What went into ferraris latest upgrade…",
+        "url": "https://www.formula1.com/en/latest/article/what-went-into-ferraris-latest-upgrade-package-in-the-united-states.3I72X1Dos3Nty2sNxMfDD4"
+      },
+      {
+        "label": "Was antonellis us grand prix victory…",
+        "url": "https://www.formula1.com/en/latest/article/was-antonellis-us-grand-prix-victory-his-most-dominant-win-yet.6jLJgm7H1yfJHHC3moJ4k4"
+      }
+    ],
+    "status": "checked",
+    "sha256": "10c6d529a857c0945baa2878a7efe9d2c685ac0014f487a4521ceb2efd3a5d38",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:mexico": {
+    "season": 2027,
+    "race": "mexico",
+    "source": "https://www.formula1.com/en/racing/2027/mexico",
+    "checked": "2026-11-27",
+    "timeZone": "America/Mexico_City",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-10-29",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-10-29",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-10-30",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-10-30",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-10-31",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.304,
+      "firstGrandPrix": 1963,
+      "lapRecord": {
+        "time": "1:17.774",
+        "credit": "Valtteri Bottas (2021)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Driver interview",
+        "duration": "3:56",
+        "url": "https://www.formula1.com/en/video/my-foot-was-shaking-nico-rosberg-s-title-winning-move-on-max-f1-beyond-the-grid-podcast.1880945739873884332"
+      },
+      {
+        "label": "Driver interview",
+        "duration": "24:16",
+        "url": "https://www.formula1.com/en/video/how-kimi-compares-to-f1-s-youngest-champions.1880930915300382881"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Right on the edge of retirement…",
+        "url": "https://www.formula1.com/en/latest/article/right-on-the-edge-of-retirement-mercedes-reveal-how-close-antonelli-came-to-mexico-dnf.7iIZJXxnzN5HEz7WbDb3tl"
+      },
+      {
+        "label": "Thankfully im okay bottas reacts to…",
+        "url": "https://www.formula1.com/en/latest/article/thankfully-im-okay-bottas-reacts-to-mexico-city-grand-prix-crash.z2CM4Jz6qwFerJGjQlaPB"
+      }
+    ],
+    "status": "checked",
+    "sha256": "d509be7574af3f821f10dcbe1f9615398eea338aaa7ee59ffcb523ce8603428f",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:brazil": {
+    "season": 2027,
+    "race": "brazil",
+    "source": "https://www.formula1.com/en/racing/2027/brazil",
+    "checked": "2026-11-27",
+    "timeZone": "America/Sao_Paulo",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-11-05",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2027-11-05",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2027-11-06",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-11-06",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-11-07",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 4.309,
+      "firstGrandPrix": 1973,
+      "lapRecord": {
+        "time": "1:10.540",
+        "credit": "Valtteri Bottas (2018)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Post-race reactions",
+        "duration": "3:27",
+        "url": "https://www.formula1.com/en/video/the-cooldown-room-emerson-fittipaldi-jr-on-his-racing-heritage.1881582582427403866"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Bearman relieved horrible three weeks for…",
+        "url": "https://www.formula1.com/en/latest/article/bearman-relieved-horrible-three-weeks-for-haas-are-over.2DZIcOEVILLVUfQT00bStA"
+      },
+      {
+        "label": "3 drivers to watch closely in…",
+        "url": "https://www.formula1.com/en/latest/article/3-drivers-to-watch-closely-in-the-early-las-vegas-grand-prix-betting-markets.7jgVWNjbZFmirJ9nK704a"
+      }
+    ],
+    "status": "checked",
+    "sha256": "5873a28141996d50cf74ec4837684974052225b064aa0347f7bddf1c61de1515",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:las-vegas": {
+    "season": 2027,
+    "race": "las-vegas",
+    "source": "https://www.formula1.com/en/racing/2027/las-vegas",
+    "checked": "2026-11-27",
+    "timeZone": "America/Los_Angeles",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-11-18",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p2",
+        "name": "Practice 2",
+        "date": "2027-11-18",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "p3",
+        "name": "Practice 3",
+        "date": "2027-11-19",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-11-19",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-11-20",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 6.201,
+      "firstGrandPrix": 2023,
+      "lapRecord": {
+        "time": "1:33.365",
+        "credit": "Max Verstappen (2025)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Post-race reactions",
+        "duration": "1:28",
+        "url": "https://www.formula1.com/en/video/the-cooldown-room-abbi-pulling-takes-on-cooldown-laps-challenge.1882874793919993685"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Was russell playing mind games with…",
+        "url": "https://www.formula1.com/en/latest/article/was-russell-playing-mind-games-with-himself-before-verstappens-victory-in-las-vegas.3ZYU5SCNPd2f2JQIKr7LlM"
+      },
+      {
+        "label": "The rb22 tweaks that helped verstappen…",
+        "url": "https://www.formula1.com/en/latest/article/the-rb22-tweaks-that-helped-verstappen-take-victory-in-las-vegas.67NV2uD7vnuxKuW9SHi685"
+      }
+    ],
+    "status": "checked",
+    "sha256": "d9d12b050b2ddcf2cd440f898890ad36a1954cfae90c8cabc142e763dea03c2a",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:qatar": {
+    "season": 2027,
+    "race": "qatar",
+    "source": "https://www.formula1.com/en/racing/2027/qatar",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Qatar",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-12-03",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2027-12-03",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2027-12-04",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-12-04",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-12-05",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.419,
+      "firstGrandPrix": 2021,
+      "lapRecord": {
+        "time": "1:22.384",
+        "credit": "Lando Norris (2024)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Driver interview",
+        "duration": "2:08",
+        "url": "https://www.formula1.com/en/video/verstappen-being-competitive-from-start-of-2027-will-be-crucial-for-red-bull.1882946205478626228"
+      },
+      {
+        "label": "Driver interview",
+        "duration": "2:43",
+        "url": "https://www.formula1.com/en/video/hamilton-focused-on-maximising-points-in-the-final-two-races.1882941365527163027"
+      }
+    ],
+    "articles": [
+      {
+        "label": "All the stories that got the…",
+        "url": "https://www.formula1.com/en/latest/article/all-the-stories-that-got-the-qatar-paddock-talking.7oePpDkNxzG1j0359UuyOo"
+      },
+      {
+        "label": "It was quite amusing russell shares…",
+        "url": "https://www.formula1.com/en/latest/article/it-was-quite-amusing-russell-shares-his-reaction-to-verstappens-las-vegas-comments.6sv6Xkop4lBcCxge8ZgxXv"
+      }
+    ],
+    "status": "checked",
+    "sha256": "96ac1a0b47ec5914cb8cc1992530f28cfb8e59a0a921bb726edab05283953775",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  },
+  "2027:united-arab-emirates": {
+    "season": 2027,
+    "race": "united-arab-emirates",
+    "source": "https://www.formula1.com/en/racing/2027/united-arab-emirates",
+    "checked": "2026-11-27",
+    "timeZone": "Asia/Dubai",
+    "sessions": [
+      {
+        "id": "p1",
+        "name": "Practice 1",
+        "date": "2027-12-10",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "ss",
+        "name": "Sprint Qualifying",
+        "date": "2027-12-10",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "s",
+        "name": "Sprint",
+        "date": "2027-12-11",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "q",
+        "name": "Qualifying",
+        "date": "2027-12-11",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      },
+      {
+        "id": "r",
+        "name": "Race",
+        "date": "2027-12-12",
+        "start": null,
+        "end": null,
+        "status": "tbc"
+      }
+    ],
+    "facts": {
+      "lengthKm": 5.281,
+      "firstGrandPrix": 2009,
+      "lapRecord": {
+        "time": "1:25.637",
+        "credit": "Kevin Magnussen (2024)"
+      }
+    },
+    "videos": [
+      {
+        "label": "Technical analysis",
+        "duration": "15:01",
+        "url": "https://www.formula1.com/en/video/jolyon-palmer-s-analysis-season-showdown-in-abu-dhabi.1851049259971077628"
+      }
+    ],
+    "articles": [
+      {
+        "label": "Destination abu dhabi an f1 fans…",
+        "url": "https://www.formula1.com/en/latest/article/destination-abu-dhabi-an-f1-fans-guide.3C2Yl1m2gOdoZor5c5pQs5"
+      }
+    ],
+    "status": "checked",
+    "sha256": "7ae96702d4ff21f124200773210edebf57c9316cf1ef5cee426e50af7351797d",
+    "scheduleMethod": "Visible timetable, checked against public meeting offsets; schema.org placeholder hours rejected"
+  }
+}
