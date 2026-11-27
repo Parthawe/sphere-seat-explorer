@@ -89,3 +89,19 @@
 .study-area-detail h3 {font:500 30px/1.2 'Barlow Condensed',sans-serif;margin-block:12px;}
 @media(max-width:900px) {.study-stage {min-height:480px;}}
 @media(max-width:640px) {.study-stage {position:relative;min-height:360px;} .study-area-reference {grid-template-columns:minmax(0,1fr);gap:16px;} .study-area-detail {padding-top:0;}}
+
+/* Keep the camera controls next to the scene on phones and larger displays. */
+.study-stage>div:has(canvas) {bottom:112px!important;}
+.study-scene-tools {position:absolute;bottom:52px;left:20px;right:20px;display:flex;justify-content:space-between;gap:12px;}
+.study-scene-tools>div {display:flex;gap:6px;}
+.study-scene-tools button {display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;}
+.study-share {display:flex;align-items:center;gap:10px;width:100%;}
+.study-stage-label strong {font-weight:400;}
+@media(max-width:760px) {
+ .study-stage {height:60svh;min-height:420px;}
+ .study-scene-tools {left:12px;right:12px;gap:8px;}
+ .study-scene-tools button {width:44px;padding:10px;}
+ .study-scene-tools button span {display:none;}
+ .study-play-overlay span {display:none;}
+ .study-stage-label {max-width:calc(100% - 78px);}
+}

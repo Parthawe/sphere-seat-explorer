@@ -1,3 +1,4 @@
+import {useThree} from '@react-three/fiber';
 import {WaterSurface} from './WorldShaders';
 import {groundHeight} from './circuitTerrain';
 import CircuitTerrainMesh from './CircuitTerrainMesh';
@@ -5,7 +6,7 @@ import {useEffect,useMemo,useRef} from 'react';
 import * as T from 'three';
 import {bankFrame,closestTrack,type CircuitModel} from './circuitSeating';
 
-export function createGrassTexture(repeatX=420,repeatY=420,base:[number,number,number]=[78,100,53]){
+export function createGrassTexture(repeatX=420,repeatY=420,base:[number,number,number]=[67,86,53]){
   const size=128,pixels=new Uint8Array(size*size*4);let seed=31871;
   for(let y=0;y<size;y++)for(let x=0;x<size;x++){
    seed=(Math.imul(seed,1664525)+1013904223)>>>0;
@@ -18,6 +19,7 @@ export function createGrassTexture(repeatX=420,repeatY=420,base:[number,number,n
 
 /** Geographic park context. Tree crowns, heights and event clearing are authored. */
 export default function CircuitPark({model,motion=false}:{model:CircuitModel;motion?:boolean}){
+ const {gl}=useThree();
  const water=useMemo(()=>model.features.filter(f=>f.kind==='water').map(f=>{
   const shape=new T.Shape(f.points.map(p=>new T.Vector2(p[0],-p[1])));
   shape.holes=(f.holes??[]).map(h=>new T.Path(h.map(p=>new T.Vector2(p[0],-p[1]))));
@@ -31,7 +33,7 @@ export default function CircuitPark({model,motion=false}:{model:CircuitModel;mot
   const texture=new T.DataTexture(pixels,size,size);texture.wrapS=texture.wrapT=T.RepeatWrapping;texture.repeat.set(.14,.14);texture.needsUpdate=true;return texture;
  },[]);
  const grass=useMemo(()=>createGrassTexture(420,420,model.groundStyle==='campus'?[103,110,113]:undefined),[model.groundStyle]);
- useEffect(()=>()=>grass.dispose(),[grass]);
+ useEffect(()=>{grass.anisotropy=Math.min(8,gl.capabilities.getMaxAnisotropy());grass.needsUpdate=true;return()=>grass.dispose();},[grass,gl]);
  const palmGeometry=useMemo(()=>{
   if(model.vegetationStyle!=='palms')return null;
   const vertices:number[]=[];
