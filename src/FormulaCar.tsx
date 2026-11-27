@@ -1,3 +1,4 @@
+import {VehicleSurface} from './WorldShaders';
 import {useEffect,useMemo,type Ref} from 'react';
 import * as T from 'three';
 // Authored illustrative open-wheel body, shared across geographic scenes.
@@ -89,7 +90,7 @@ export default function FormulaCar({color,wheels,compact=false}:{color:string;wh
     <mesh position={[0,.14,2.25]} castShadow><boxGeometry args={[1.95,.1,.5]}/><meshStandardMaterial color="#26262b" metalness={.45} roughness={.3}/></mesh>
     <mesh position={[0,.85,-2.12]} castShadow><boxGeometry args={[1.9,.12,.5]}/><meshStandardMaterial color={color} metalness={.45} roughness={.3}/></mesh>
     <mesh position={[0,.6,-.2]}><sphereGeometry args={[.3,8,6]}/><meshStandardMaterial color="#15151e" roughness={.3}/></mesh>
-    <group ref={wheels}>{[-1,1].flatMap(x=>[-1.5,1.5].map(z=><group key={`${x}:${z}`} position={[x*1.02,0,z]}><mesh rotation={[0,0,Math.PI/2]} castShadow><cylinderGeometry args={[.36,.36,.42,12]}/><meshStandardMaterial color="#101014" roughness={.9}/></mesh></group>))}</group>
+    <group ref={wheels}>{[-1,1].flatMap(x=>[-1.5,1.5].map(z=><group key={`${x}:${z}`} position={[x*1.02,0,z]}><mesh rotation={[0,0,Math.PI/2]} castShadow><cylinderGeometry args={[.36,.36,.42,12]}/><VehicleSurface kind="rubber"/></mesh></group>))}</group>
     <CarContactShadow/>
   </group>;
   return <group name="formula-car-body">
@@ -104,7 +105,7 @@ export default function FormulaCar({color,wheels,compact=false}:{color:string;wh
       </mesh>
       <mesh position={[0, 0.06, 0]} castShadow>
         <boxGeometry args={[1.9, 0.09, 4.8]} />
-        <meshStandardMaterial color="#14161c" roughness={0.62} />
+        <VehicleSurface kind="carbon"/>
       </mesh>
       <mesh position={[0, 0.5, -0.2]} castShadow>
         <sphereGeometry args={[0.33, 16, 10]} />
@@ -143,13 +144,13 @@ export default function FormulaCar({color,wheels,compact=false}:{color:string;wh
       {[-0.95, 0.95].map((x) => (
         <mesh key={"end-" + x} position={[x, 0.72, -2.12]} castShadow>
           <boxGeometry args={[0.055, 0.44, 0.65]} />
-          <meshStandardMaterial color="#10131a" />
+          <VehicleSurface kind="carbon"/>
         </mesh>
       ))}
       {[-0.45, 0.45].map((x) => (
         <mesh key={"wingpost" + x} position={[x, 0.47, -2.06]} castShadow>
           <boxGeometry args={[0.06, 0.8, 0.1]} />
-          <meshStandardMaterial color="#242830" metalness={0.6} />
+          <VehicleSurface kind="carbon"/>
         </mesh>
       ))}
       {[-1, 1].flatMap((x) =>
@@ -176,7 +177,7 @@ export default function FormulaCar({color,wheels,compact=false}:{color:string;wh
             <group key={x + ":" + z} position={[x * 1.02, 0, z]}>
               <mesh rotation={[0, 0, Math.PI / 2]} castShadow>
                 <cylinderGeometry args={[0.36, 0.36, 0.4, 24]} />
-                <meshStandardMaterial color="#101115" roughness={0.9} />
+                <VehicleSurface kind="rubber"/>
               </mesh>
               <mesh rotation={[0, Math.PI / 2, 0]} position={[x * 0.205, 0, 0]}>
                 <torusGeometry args={[0.27, 0.012, 4, 24]} />

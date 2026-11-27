@@ -5,7 +5,7 @@ import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.j
 
 type StandardProps=Omit<ThreeElements['meshStandardMaterial'],'onBeforeCompile'|'customProgramCacheKey'>;
 type Shader=Parameters<T.MeshStandardMaterial['onBeforeCompile']>[0];
-type Surface='asphalt'|'concrete'|'coated';
+type Surface='asphalt'|'concrete'|'coated'|'metal';
 export function StudioReflections({intensity=.6}:{intensity?:number}) {
   const {gl,scene,invalidate}=useThree();
   useEffect(()=>{
@@ -32,7 +32,7 @@ export function ShaderGuard({onUnavailable}:{onUnavailable:()=>void}) {
   },[gl,onUnavailable]);
   return null;
 }
-const surfaceIds:Record<Surface,number>={asphalt:0,concrete:1,coated:2};
+const surfaceIds:Record<Surface,number>={asphalt:0,concrete:1,coated:2,metal:3};
 const noiseGLSL=`
 float atlasHash(vec2 p) {
   vec3 p3=fract(vec3(p.xyx)*.1031);
@@ -64,22 +64,30 @@ export function SurfaceMaterial({surface,grainScale=1,strength=.65,...props}:Sta
     shader.uniforms.uAtlasScale={value:grainScale};
     shader.uniforms.uAtlasStrength={value:strength};
     shader.uniforms.uAtlasKind={value:surfaceIds[surface]};
-    shader.vertexShader=`varying vec3 vAtlasWorld;\n${shader.vertexShader}`.replace(
+    shader.vertexShader=`varying vec3 vAtlasWorld,vAtlasLocal;varying vec2 vAtlasUv;\n${shader.vertexShader}`.replace(
       '#include <begin_vertex>',`#include <begin_vertex>
+      vAtlasLocal=position;vAtlasUv=uv;
       vec4 atlasPosition=vec4(transformed,1.);
       #ifdef USE_INSTANCING
         atlasPosition=instanceMatrix*atlasPosition;
       #endif
       vAtlasWorld=(modelMatrix*atlasPosition).xyz;`);
     shader.fragmentShader=`uniform float uAtlasScale,uAtlasStrength,uAtlasKind;
-      varying vec3 vAtlasWorld;\n${noiseGLSL}\n${shader.fragmentShader}`
+      varying vec3 vAtlasWorld,vAtlasLocal;varying vec2 vAtlasUv;\n${noiseGLSL}\n${shader.fragmentShader}`
       .replace('#include <color_fragment>',`#include <color_fragment>
         vec2 atlasDetail=atlasGrain(vAtlasWorld);
         float atlasVariation=mix(.94,1.06,atlasDetail.x)*mix(.88,1.10,atlasDetail.y);
         float atlasDose=uAtlasStrength*(uAtlasKind>1.5?.22:1.);
-        diffuseColor.rgb*=mix(1.,atlasVariation,atlasDose);`)
+        diffuseColor.rgb*=mix(1.,atlasVariation,atlasDose);
+        float atlasRubber=0.;
+        if(uAtlasKind<.5){float lane=clamp(vAtlasUv.x,0.,1.);atlasRubber=exp(-pow((lane-.32)*12.,2.))+exp(-pow((lane-.68)*12.,2.));
+         atlasRubber*=mix(.4,1.,atlasNoise(vAtlasWorld.xz*.025));
+         diffuseColor.rgb*=1.-atlasRubber*.095*uAtlasStrength;
+        }
+        if(uAtlasKind>.5&&uAtlasKind<1.5)diffuseColor.rgb*=mix(.97,1.03,atlasNoise(vAtlasWorld.xz*.08));`)
       .replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
-        roughnessFactor=clamp(roughnessFactor+(atlasDetail.y-.5)*.22*uAtlasStrength,.08,1.);`)
+        roughnessFactor=clamp(roughnessFactor+(atlasDetail.y-.5)*.22*uAtlasStrength-atlasRubber*.06*uAtlasStrength,.08,1.);
+        if(uAtlasKind>2.5){float stripe=(vAtlasLocal.x+vAtlasLocal.y*.23)*210.;float filtered=1.-smoothstep(.5,2.,fwidth(stripe));roughnessFactor=clamp(roughnessFactor+sin(stripe)*.055*filtered,.12,.95);}`)
       .replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
         vec3 atlasDX=dFdx(-vViewPosition),atlasDY=dFdy(-vViewPosition);
         vec3 atlasRX=cross(atlasDY,normal),atlasRY=cross(normal,atlasDX);
@@ -89,7 +97,7 @@ export function SurfaceMaterial({surface,grainScale=1,strength=.65,...props}:Sta
         normal=normalize(max(abs(atlasDet),.000001)*normal-atlasGradient);`);
     gl.domElement.dataset.surfaceShaders='ready';
   },[surface,grainScale,strength,gl]);
-  return <meshStandardMaterial {...props} onBeforeCompile={compile} customProgramCacheKey={()=>'atlas-surface-v1'}/>;
+  return <meshStandardMaterial {...props} onBeforeCompile={compile} customProgramCacheKey={()=>'atlas-surface-v2'}/>;
 }
 
 /** Circuit accent follows normalized path length, driven only by Play marker. */

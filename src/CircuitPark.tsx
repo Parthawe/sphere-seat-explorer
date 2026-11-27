@@ -1,3 +1,4 @@
+import {WaterSurface} from './WorldShaders';
 import {groundHeight} from './circuitTerrain';
 import CircuitTerrainMesh from './CircuitTerrainMesh';
 import {useEffect,useMemo,useRef} from 'react';
@@ -16,7 +17,7 @@ export function createGrassTexture(repeatX=420,repeatY=420,base:[number,number,n
 
 
 /** Geographic park context. Tree crowns, heights and event clearing are authored. */
-export default function CircuitPark({model}:{model:CircuitModel}){
+export default function CircuitPark({model,motion=false}:{model:CircuitModel;motion?:boolean}){
  const water=useMemo(()=>model.features.filter(f=>f.kind==='water').map(f=>{
   const shape=new T.Shape(f.points.map(p=>new T.Vector2(p[0],-p[1])));
   shape.holes=(f.holes??[]).map(h=>new T.Path(h.map(p=>new T.Vector2(p[0],-p[1]))));
@@ -63,7 +64,7 @@ export default function CircuitPark({model}:{model:CircuitModel}){
  useEffect(()=>()=>{water.forEach(w=>w.geometry.dispose());normal.dispose();},[water,normal]);
  return <>
   {model.terrain?<CircuitTerrainMesh model={model} texture={grass}/>:<mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><meshStandardMaterial map={grass} roughness={1}/></mesh>}
-  {water.map(w=><mesh key={w.id} geometry={w.geometry} rotation={[-Math.PI/2,0,0]} position={[0,.035,0]} receiveShadow><meshPhysicalMaterial color="#3f8b9e" roughness={.28} metalness={.08} clearcoat={.75} normalMap={normal} normalScale={new T.Vector2(.2,.2)}/></mesh>)}
+  {water.map(w=><mesh key={w.id} geometry={w.geometry} rotation={[-Math.PI/2,0,0]} position={[0,.035,0]} receiveShadow><WaterSurface normalMap={normal} playing={motion}/></mesh>)}
   {trees.length>0&&<>
    <instancedMesh ref={m=>{if(m)treeRefs.current[0]=m;}} args={[undefined,undefined,trees.length]} castShadow receiveShadow><cylinderGeometry args={[1,1,1,6]}/><meshStandardMaterial color="#66563d" roughness={1}/></instancedMesh>
    <instancedMesh ref={m=>{if(m)treeRefs.current[1]=m;}} args={[palmGeometry??undefined,undefined,trees.length]} castShadow receiveShadow>{!palmGeometry&&<icosahedronGeometry args={[1,1]}/>}<meshStandardMaterial color={model.terrain?'#315439':model.vegetationStyle==='palms'?'#426844':'#4b743b'} roughness={1} side={palmGeometry?T.DoubleSide:T.FrontSide}/></instancedMesh>

@@ -41,7 +41,7 @@ export function LightShaft({
         blending={T.AdditiveBlending}
         uniforms={{ tint: { value: new T.Color("#b8ceff") }, strength:{value:strength} }}
         vertexShader={`varying vec2 vUv;varying vec3 vWorld;varying vec3 vNormal;void main(){vUv=uv;vWorld=(modelMatrix*vec4(position,1.)).xyz;vNormal=normalize(mat3(modelMatrix)*normal);gl_Position=projectionMatrix*viewMatrix*vec4(vWorld,1.);}`}
-        fragmentShader={`uniform vec3 tint;uniform float strength;varying vec2 vUv;varying vec3 vWorld;varying vec3 vNormal;void main(){float facing=pow(abs(dot(normalize(vNormal),normalize(cameraPosition-vWorld))),1.6);float falloff=pow(vUv.y,.7);float edge=smoothstep(0.,.13,vUv.y)*(1.-smoothstep(.8,1.,vUv.y));float alpha=facing*mix(.018,.085,falloff)*edge*strength;gl_FragColor=vec4(tint,alpha);}`}
+        fragmentShader={`uniform vec3 tint;uniform float strength;varying vec2 vUv;varying vec3 vWorld;varying vec3 vNormal;void main(){float facing=pow(abs(dot(normalize(vNormal),normalize(cameraPosition-vWorld))),1.6);float falloff=pow(vUv.y,.7);float edge=smoothstep(0.,.13,vUv.y)*(1.-smoothstep(.8,1.,vUv.y));float haze=.88+.12*sin(vWorld.y*.63+sin(vWorld.x*.15+vWorld.z*.13));float softRange=smoothstep(0.,3.,distance(cameraPosition,vWorld));float alpha=facing*mix(.018,.075,falloff)*edge*strength*haze*softRange;gl_FragColor=vec4(tint,alpha);}`}
       />
     </mesh>
   );

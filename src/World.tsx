@@ -1,3 +1,4 @@
+import {WorldSky} from './WorldShaders';
 import {SurfaceMaterial,StudioReflections} from './SceneMaterials';
 import FormulaCar from "./FormulaCar";
 import { curve, points } from "./racingLine";
@@ -85,7 +86,7 @@ function Instances({
       args={[undefined, undefined, pieces.length]}
     >
       <boxGeometry args={[1, 1, 1]} />
-      <SurfaceMaterial surface="concrete" strength={.4} metalness={metal} roughness={roughness} />
+      <SurfaceMaterial surface={metal>=.6?'metal':'concrete'} strength={.4} metalness={metal} roughness={roughness} />
     </instancedMesh>
   );
 }
@@ -1444,6 +1445,7 @@ export function World({
   return (
     <>
       <color attach="background" args={["#080911"]} />
+      <WorldSky/>
       <fogExp2
         attach="fog"
         args={["#111421", mode === "circuit" ? 0.0003 : 0.0012]}
