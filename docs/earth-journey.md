@@ -29,3 +29,7 @@ The implementation was reviewed through supplied desktop, mobile and regional sc
 This document records the implemented extension; publication and release identifiers are tracked separately.
 
 The final browser audit also exercises grouped-pin focus/Escape return, direct Las Vegas full-circuit handoff, a failed Earth image request followed by a fresh Retry, and preserved destination after context loss. Retry clears the failed texture-loader entry before remounting. The destination modules preload during explicit flights; no measured timing improvement is claimed. The bounded layout review passed without material findings; subsequent route and recovery refinements preserved that verdict. Mechanical design detection over the new UI files returned no findings.
+
+## Release
+
+Published v127 from source 8dc1877baa873e3aa560036dd4ccb9321b3ff819, pushed to GitHub main. Saved version appgprj_6b03a10b6c388191a92912a1c2dfe070~appgver_44c7687b42b88191915b7b93fa66eec5; deployment appgdep_6b0a069de4988191a06e7fab28231cc1 succeeded at 2026-11-27T22:39:30.367311+00:00. Final source checks passed 233 tests and production build. Existing optional shader chunk-size warning remains. No dependencies or external map account were added. Archive f1tickets-earth-journey-deployment.tar.gz is outside the repository. Native publication is confirmed; custom-domain freshness was not independently verified. Owned local preview stopped after checks.
