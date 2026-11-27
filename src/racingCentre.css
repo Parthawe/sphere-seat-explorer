@@ -63,3 +63,27 @@
 }
 .racing-attribution {font-size:12px;line-height:1.7;color:var(--color-text-muted);margin-top:28px;}
 .racing-attribution a {color:var(--color-action-strong);text-underline-offset:3px;}
+
+/* Small identity images support the existing rank/name/points reading order. */
+.standing-list li {grid-template-columns:24px 44px minmax(0,1fr) auto;gap:14px;}
+.standing-identity {min-width:0;}
+.standing-identity>strong {overflow-wrap:anywhere;line-height:1.5;}
+.standing-portrait {position:relative;display:grid;place-items:center;width:44px;height:44px;overflow:hidden;border-radius:50%;background:var(--color-divider);color:var(--color-panel);font-size:13px;}
+.standing-portrait>img {position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%;}
+.standing-list .standing-team-line {display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:4px;line-height:1.6;}
+.standing-team-marks {display:inline-flex;align-items:center;gap:4px;flex-shrink:0;}
+.standing-team-mark {display:inline-grid;place-items:center;width:26px;height:22px;flex-shrink:0;color:var(--color-panel);}
+.standing-team-mark>img {display:block;width:100%;height:100%;object-fit:contain;}
+.standing-list .standing-team-mark>span {font:500 9px/1 'IBM Plex Sans',sans-serif;color:var(--color-text-muted);}
+.standing-team-emblem {display:grid;place-items:center;width:44px;min-height:44px;}
+.standing-team-emblem .standing-team-mark {width:38px;height:32px;}
+.standing-list .standing-team-emblem .standing-team-mark>span {font-size:13px;}
+@media(max-width:600px) {
+ .standing-list li {grid-template-columns:20px 36px minmax(0,1fr) auto;gap:10px;}
+ .standing-portrait {width:36px;height:36px;}
+ .standing-team-emblem {width:36px;}
+ .standing-team-emblem .standing-team-mark {width:32px;height:28px;}
+ .standing-points>strong {font-size:25px;}
+ .standing-team-marks {gap:2px;}
+ .standing-team-mark {width:22px;height:18px;}
+}

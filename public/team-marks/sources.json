@@ -1,0 +1,58 @@
+[
+  {
+    "id": "astonmartin",
+    "src": "/team-marks/astonmartin.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/801eaab5b70f4933137069397ebbd2ce5f9ad56e/icons/astonmartin.svg",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "commit": "801eaab5b70f4933137069397ebbd2ce5f9ad56e"
+  },
+  {
+    "id": "audi",
+    "src": "/team-marks/audi.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/801eaab5b70f4933137069397ebbd2ce5f9ad56e/icons/audi.svg",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "commit": "801eaab5b70f4933137069397ebbd2ce5f9ad56e"
+  },
+  {
+    "id": "cadillac",
+    "src": "/team-marks/cadillac.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/801eaab5b70f4933137069397ebbd2ce5f9ad56e/icons/cadillac.svg",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "commit": "801eaab5b70f4933137069397ebbd2ce5f9ad56e"
+  },
+  {
+    "id": "ferrari",
+    "src": "/team-marks/ferrari.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/801eaab5b70f4933137069397ebbd2ce5f9ad56e/icons/ferrari.svg",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "commit": "801eaab5b70f4933137069397ebbd2ce5f9ad56e"
+  },
+  {
+    "id": "mclaren",
+    "src": "/team-marks/mclaren.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/801eaab5b70f4933137069397ebbd2ce5f9ad56e/icons/mclaren.svg",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "commit": "801eaab5b70f4933137069397ebbd2ce5f9ad56e"
+  },
+  {
+    "id": "redbull",
+    "src": "/team-marks/redbull.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/801eaab5b70f4933137069397ebbd2ce5f9ad56e/icons/redbull.svg",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "commit": "801eaab5b70f4933137069397ebbd2ce5f9ad56e"
+  },
+  {
+    "id": "mercedes",
+    "src": "/team-marks/mercedes.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/11.0.0/icons/mercedes.svg",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "version": "11.0.0"
+  }
+]
