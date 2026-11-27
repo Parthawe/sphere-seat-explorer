@@ -10,7 +10,7 @@ export default function PriceNotebook({race}:{race:Race}) {
  const dialog=useRef<HTMLDialogElement>(null),addButton=useRef<HTMLButtonElement>(null),quotes=useRef<HTMLDetailsElement>(null),wasOpen=useRef(false),opener=useRef<HTMLElement|null>(null);
  const selected=watches.find(w=>w.id===active)??watches[0],summary=selected?priceSummary(selected):null;
  useEffect(()=>setTargetDraft(selected?.target===null||selected?.target===undefined?'':String(selected.target)),[selected?.id,selected?.target]);
- useEffect(()=>{if(editing!==null){dialog.current?.showModal();wasOpen.current=true;}else{dialog.current?.close();if(wasOpen.current){wasOpen.current=false;(opener.current?.isConnected?opener.current:addButton.current)?.focus({preventScroll:true});}}},[editing]);
+ useEffect(()=>{if(editing!==null){dialog.current?.showModal();wasOpen.current=true;dialog.current?.querySelector<HTMLInputElement>(editing?'input[name=amount]':'input[name=product]')?.focus({preventScroll:true});}else{dialog.current?.close();if(wasOpen.current){wasOpen.current=false;(opener.current?.isConnected?opener.current:addButton.current)?.focus({preventScroll:true});}}},[editing]);
  useEffect(()=>{const update=(event:StorageEvent)=>{if(event.key!==notebookKey(race)&&event.key!==null)return;if(storageFailed){setMessage('Another tab changed saved notes. Export your unsaved notes before reloading.');return;}try{setWatches(readWatches(JSON.parse(localStorage.getItem(notebookKey(race))??'[]'),race));setUndo(null);setMessage('Price notes updated in another tab.');}catch{setMessage('Saved notes could not be read. Your current view was kept.');}};window.addEventListener('storage',update);return()=>window.removeEventListener('storage',update);},[race,storageFailed]);
  async function persist(next:PriceWatch[]){
   if(saving)return false;setSaving(true);
@@ -70,14 +70,14 @@ export default function PriceNotebook({race}:{race:Race}) {
    <header><div><span className="context-note">{race.name} / {race.season}</span><h2 id="price-dialog-title">{editing?'Log latest price':'Add a ticket option'}</h2></div><button aria-label="Close price form" onClick={()=>setEditing(null)}><UiIcon name="close"/></button></header>
    {editing!==null&&<form key={editing} onSubmit={save}>
     {editing?<p>{watches.find(w=>w.id===editing)?.product} · {watches.find(w=>w.id===editing)?.seller}<br/>Keep dates, currency and inclusions unchanged.</p>:<>
-     <label>Exact ticket category<input name="product" required maxLength={100} autoFocus placeholder="Grandstand, package and access"/></label>
+     <label>Exact ticket category<input name="product" required maxLength={100} placeholder="Grandstand, package and access"/></label>
      <label>Seller<input name="seller" required maxLength={80} autoComplete="off"/></label>
      <label>Public product page<input name="url" type="url" required placeholder="https://…" autoComplete="off"/></label>
      <div className="price-form-pair"><label>Admission from<input name="start" type="date" required min={admission.start} max={admission.end} defaultValue={race.start}/></label><label>Admission through<input name="end" type="date" required min={admission.start} max={admission.end} defaultValue={race.end}/></label></div>
      {admission.source&&<p className="price-date-guidance">Some products include Thursday, 3 Dec. Use your quote’s dates; daily access varies. <a href={admission.source} target="_blank" rel="noreferrer">Organizer dates</a></p>}
      <label>Currency<select name="currency" aria-label="Currency" defaultValue="USD">{PRICE_CURRENCIES.map(c=><option key={c}>{c}</option>)}</select></label>
     </>}
-    <label>Price per adult, including fees {editing&&`· ${watches.find(w=>w.id===editing)?.currency}`}<input name="amount" type="number" min="0.01" max="100000000" step="0.01" required autoFocus={Boolean(editing)}/></label>
+    <label>Price per adult, including fees {editing&&`· ${watches.find(w=>w.id===editing)?.currency}`}<input name="amount" type="number" min="0.01" max="100000000" step="0.01" required/></label>
     <label className="price-confirm"><input type="checkbox" required/>I checked the adult total, fees, dates and ticket inclusions. No travel or hotel bundle.</label>
     <p className="price-message" role="status">{message}</p><button disabled={saving} aria-busy={saving} className="price-primary" type="submit">{saving?'Saving…':'Save quote'}<UiIcon name="check"/></button>
    </form>}
