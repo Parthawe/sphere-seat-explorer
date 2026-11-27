@@ -7,6 +7,7 @@ import {jeddahReference} from './jeddahReference';
 import {raceCoverage} from './raceCoverage';
 import PriceNotebook from './PriceNotebook';
 import UiIcon from './UiIcon';
+import CircuitThumbnail from './CircuitThumbnail';
 import CircuitGuidePanel from './CircuitGuidePanel';
 const VenueStands=lazy(()=>import('./VenueStands'));
 const AustriaDesk=lazy(()=>import('./AustriaDesk'));
@@ -75,7 +76,10 @@ export default function RaceGuide({race:selected,route,go,jumpTo}:{race:Race;rou
             <nav className="race-guide-nav" aria-label="Plan this race">
               {([{id:'venue-stands',label:'Stands',icon:'seat'},{id:'venue-references',label:'Photos',icon:'camera'},{id:'circuit-guide',label:'Compare',icon:'layers'},{id:'booking-checks',label:'Booking',icon:'ticket'}] as const).map(item=><a key={item.id} href={`#${item.id}`} onClick={event=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();jumpTo(item.id);}}><UiIcon name={item.icon}/>{item.label}</a>)}
             </nav>
-            <section className="circuit-model-entry"><div><h2>Explore in 3D.</h2><p>{circuitModel?`Estimated seats and sightlines · ${circuitModel.season}`:"Circuit diagram · no seat preview"}</p></div><div className="circuit-model-entry-actions">{circuitModel&&<button onClick={()=>go({season:route.season,race:route.race,seats:false,circuit:true})}>Open 3D seating</button>}<button onClick={()=>go({season:route.season,race:route.race,seats:false,layout:true})}>3D circuit diagram</button></div></section>
+            <section className="circuit-model-entry" aria-label={`${selected.name} 3D views`}>
+              <div className="circuit-entry-preview"><div><h2>Explore in 3D.</h2><p>{circuitModel?`Estimated seats and sightlines · ${circuitModel.season}`:"Circuit diagram · no seat preview"}</p></div><CircuitThumbnail season={selected.season} race={selected.slug}/></div>
+              <div className="circuit-model-entry-actions">{circuitModel&&<button onClick={()=>go({season:route.season,race:route.race,seats:false,circuit:true})}><UiIcon name="seat"/>Open 3D seating</button>}<button onClick={()=>go({season:route.season,race:route.race,seats:false,layout:true})}><UiIcon name="map"/>3D circuit diagram</button></div>
+            </section>
             {route.circuit && !circuitModel && <p className="singapore-reference-note">No 3D seating model is available for this venue and season. Choose a supported race; layouts are not carried across seasons.</p>}
             <Suspense fallback={<div className="hub-loading">Loading viewing options…</div>}><VenueStands key={`${selected.season}-${selected.slug}`} race={selected}/></Suspense>
             <CircuitGuidePanel race={selected} coverage={raceCoverage(route.season,selected.slug).detail} />
