@@ -12,6 +12,7 @@ export type CircuitGuide = {
   overview: string;
   viewing: readonly { name: string; detail: string }[];
   ticketCheck: string;
+  ticketChecks?: Partial<Record<Season,string>>;
   arrivalCheck: string;
   ticketPath?: string;
 };
@@ -226,6 +227,7 @@ export const circuitGuides: readonly CircuitGuide[] = [
       { name: "Pit straight and other banks", detail: "Compare estimated start-finish and other outdoor banks." },
     ],
     ticketCheck: "Confirm zone, days and inclusions. A 2027 deposit does not allocate a model seat.",
+    ticketChecks: {2026: "Confirm the named zone, grandstand and admission days. Illustrative positions are not ticket seat numbers."},
     arrivalCheck: "Check the official pedestrian access plan for the ticket zone. Hotel or landmark proximity does not establish a permitted circuit crossing.",
   },
   {
@@ -236,6 +238,7 @@ export const circuitGuides: readonly CircuitGuide[] = [
       { name: "T2 / opening-corner reference", detail: "A different angle on the opening corners." },
     ],
     ticketCheck: "Our 2026 seating terms and reference prices do not establish a 2027 offer.",
+    ticketChecks: {2026: "Check assigned versus free seating and the days included. Reference prices are dated snapshots; confirm the final quote with the seller."},
     arrivalCheck: "Use the event-year transport and entrance plan for the selected stand. Confirm the final transfer or walk, not just arrival in Doha.",
   },
   {
@@ -246,6 +249,7 @@ export const circuitGuides: readonly CircuitGuide[] = [
       { name: "Main grandstand", detail: "A pit-straight viewpoint; check the block and cover." },
     ],
     ticketCheck: "Keep grandstands, straight products and clubs distinct. Our 2026 desk does not verify 2027 seating.",
+    ticketChecks: {2026: "Confirm the exact grandstand or straight product and your admission days. Clubs and hospitality have separate terms."},
     arrivalCheck: "Match the gate and transport instructions to the actual product. A hotel, marina berth or nearby attraction does not establish race admission.",
   },
   {
@@ -305,3 +309,5 @@ export const circuitPublishedLength = (guide: CircuitGuide) =>
 export function circuitTicketSource(guide: CircuitGuide, season: number) {
   return season === 2027 && guide.ticketPath ? `https://ticketing.formula1.com/${guide.ticketPath}/` : undefined;
 }
+
+export function circuitBookingCheck(guide:CircuitGuide,season:Season){return guide.ticketChecks?.[season]??guide.ticketCheck;}

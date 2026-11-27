@@ -4,7 +4,7 @@ import { findVenue } from "./venueRegistry";
 import {findCircuitModel} from './circuitSeating';
 import ViewingShortlist from "./ViewingShortlist";
 import TicketPartners from "./TicketSellerLinks";
-import { circuitGuideFor, circuitGuideSource, circuitTicketSource, circuitPublishedLength, CIRCUIT_GUIDES_CHECKED } from "./circuitGuides";
+import { circuitBookingCheck, circuitGuideFor, circuitGuideSource, circuitTicketSource, circuitPublishedLength, CIRCUIT_GUIDES_CHECKED } from "./circuitGuides";
 import { raceStatus, type Race } from "./races";
 
 export default function CircuitGuidePanel({ race, coverage }: { race: Race; coverage: string }) {
@@ -37,7 +37,7 @@ export default function CircuitGuidePanel({ race, coverage }: { race: Race; cove
             <div><dt>Our maps & 3D views</dt><dd>Estimated viewing studies. Generated positions do not identify a purchased seat.</dd></div>
             <div><dt>Check with the seller</dt><dd>Actual seat, availability, final fees, cover, access and delivery.</dd></div>
           </dl></details>
-          <p>{guide.ticketCheck}</p>
+          <p>{circuitBookingCheck(guide,race.season)}</p>
           {ticketUrl ? <a className="circuit-ticket-source" href={ticketUrl} target="_blank" rel="noreferrer"><UiIcon name="ticket"/>{catalogueUrl?`${race.season} ticket catalogue`:'Organizer ticket page'}</a> : raceStatus(race) === "Past" && <p className="circuit-edition-note">Past race reference · {race.season}</p>}
         </div>
       </div>

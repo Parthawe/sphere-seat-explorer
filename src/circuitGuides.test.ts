@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { calendars } from "./races";
-import { circuitGuides, circuitGuideFor, circuitGuideSource, circuitTicketSource, matchesCircuitSearch, circuitPublishedLength } from "./circuitGuides";
+import { circuitBookingCheck, circuitGuides, circuitGuideFor, circuitGuideSource, circuitTicketSource, matchesCircuitSearch, circuitPublishedLength } from "./circuitGuides";
 
 test("every published race has exactly one guide bound to its season and venue", () => {
   for (const race of Object.values(calendars).flat()) {
@@ -45,4 +45,12 @@ test("search finds circuit identities and cities without requiring accents", () 
     assert.ok(calendars[2027].filter(race => matchesCircuitSearch(race, query)).some(race => race.slug === slug));
   }
   assert.equal(calendars[2027].filter(race => matchesCircuitSearch(race, "no-such-circuit")).length, 0);
+});
+
+test('2026 booking guidance does not inherit future-year warnings, while 2027 keeps its evidence limits',()=>{
+ for(const race of ['qatar','united-arab-emirates','las-vegas']){
+  const guide=circuitGuideFor(2026,race)!;
+  assert(!circuitBookingCheck(guide,2026).includes('2027'));
+  assert.equal(circuitBookingCheck(guide,2027),guide.ticketCheck);
+ }
 });

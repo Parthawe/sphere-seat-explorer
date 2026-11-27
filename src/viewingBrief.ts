@@ -1,6 +1,6 @@
 import {SITE_ORIGIN} from './brand';
 import type { Race } from './races';
-import { circuitGuideFor, circuitGuideSource, circuitTicketSource } from './circuitGuides';
+import { circuitBookingCheck, circuitGuideFor, circuitGuideSource, circuitTicketSource } from './circuitGuides';
 
 export const bookingChecks = [
   'Correct event, venue and year',
@@ -22,7 +22,7 @@ export function buildViewingBrief(race: Race, selected: readonly string[], confi
     ...guide.viewing.filter(view => selected.includes(view.name)).map(view => `${view.name}: ${view.detail}`),
     '', 'Booking checks (marked by you, not independently verified):',
     ...bookingChecks.map((check, index) => `${confirmed.includes(index) ? '[Marked checked by you]' : '[To confirm]'} ${check}`),
-    guide.ticketCheck,
+    circuitBookingCheck(guide,race.season),
     `Circuit reference (${guide.referenceSeason}): ${circuitGuideSource(guide)}`,
     ...(guide.referenceSeason !== race.season ? [`The circuit reference is from ${guide.referenceSeason}; confirm ${race.season} event details separately.`] : []),
     ticketUrl ? `Ticket source (${race.season}): ${ticketUrl}` : `No event-year ticket source supplied for ${race.season}.`,
