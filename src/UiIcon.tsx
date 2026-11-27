@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react';
 const shapes = {
+ list:<><path d="M8 5h13M8 12h13M8 19h13"/><path d="M3 5h.01M3 12h.01M3 19h.01"/></>,
  heightLow:<><path d="M2 20h6v-5h6v-5h7"/><circle cx="5" cy="15" r="2" fill="currentColor"/></>,
  heightMid:<><path d="M2 20h6v-5h6v-5h7"/><circle cx="11" cy="10" r="2" fill="currentColor"/></>,
  heightHigh:<><path d="M2 20h6v-5h6v-5h7"/><circle cx="18" cy="5" r="2" fill="currentColor"/></>,

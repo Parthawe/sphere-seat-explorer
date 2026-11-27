@@ -2,6 +2,7 @@ import {standAnchor} from './venueLinks';
 import {circuitLayoutId} from "./circuitLayouts";
 import UiIcon from "./UiIcon";
 import CircuitThumbnail from "./CircuitThumbnail";
+import RaceCard from "./RaceCard";
 import SeasonLanding from "./SeasonLanding";
 import { raceCoverage } from "./raceCoverage";
 import { useNavigationFocus } from "./useNavigationFocus";
@@ -33,7 +34,8 @@ const Explorer = lazy(() => import("./App"));
 export default function RaceHub() {
   const [route, setRoute] = useState(() => readRoute(location.search)),
     [search, setSearch] = useState(""),
-    [filter, setFilter] = useState("all");
+    [filter, setFilter] = useState("all"),
+    [calendarView,setCalendarView]=useState<'cards'|'list'>('cards');
   const raceSearch = useRef<HTMLInputElement>(null);
   useEffect(() => {
     const pop = () => {requestNavigationFocus();setRoute(readRoute(location.search));};
@@ -154,7 +156,7 @@ export default function RaceHub() {
     go({ season: r.season, race: r.slug, seats: false });
   }
   return (
-    <div className="race-hub">
+    <div className={`race-hub${!route.race?' calendar-page':''}`}>
       <a className="skip-link" href="#race-content">
         Skip to races
       </a>
@@ -226,6 +228,7 @@ export default function RaceHub() {
                     onChange={(e) => setSearch(e.target.value)}
                   />
                 </label>
+              <div className="calendar-view-switch" role="group" aria-label="Calendar display"><button aria-label="Card view" title="Card view" aria-pressed={calendarView==='cards'} onClick={()=>setCalendarView('cards')}><UiIcon name="grid"/></button><button aria-label="List view" title="List view" aria-pressed={calendarView==='list'} onClick={()=>setCalendarView('list')}><UiIcon name="list"/></button></div>
               </div>
               <div className="calendar-filter-row">
                 <div
@@ -248,17 +251,17 @@ export default function RaceHub() {
                     </button>
                   ))}
                 </div>
-                <span>{filtered.length} shown · dates local to venue</span>
+                <span role="status">{filtered.length} shown · dates local to venue</span>
               </div>
-              <div className="race-list-head" aria-hidden="true">
+              <div className="race-list-head" aria-hidden="true" hidden={calendarView!=='list'}>
                 <span>Round</span>
                 <span>Grand Prix</span>
                 <span>Weekend</span>
                 <span>Coverage</span>
                 <span>Status</span>
               </div>
-              <div className="race-list">
-                {filtered.map((r) => (
+              <div className={calendarView==='cards'?'race-card-grid':'race-list'}>
+                {filtered.map((r) => calendarView==='cards'?<RaceCard key={r.slug} race={r} onSelect={select}/>: (
                   <button
                     className="race-row"
                     key={r.slug}
@@ -304,12 +307,13 @@ export default function RaceHub() {
         <details className="calendar-source">
           <summary>Calendar source</summary>
           <p>
-            F1’s {route.season} calendar · checked 23 November 2026. Dates may change.
+            F1’s {route.season} calendar · checked 26 November 2026. Dates may change.
           </p>
           <a href={calendarUrl(route.season)} target="_blank" rel="noreferrer">
             Check the official {route.season} calendar
           </a>
           <p>Circuit outlines use retained source geography where available. <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL</a>. A map icon indicates no outline is supplied for that event and season.</p>
+          <p>Venue and destination photos retain source dates and individual credits under each image’s info control. Flag artwork: <a href="/flags/LICENSE.txt">flag-icons · MIT</a>.</p>
         </details>
       </main>
       <FundingDisclosure />

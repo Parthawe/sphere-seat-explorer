@@ -7,8 +7,8 @@ export type Race = {
   round: number;
   season: Season;
 };
-export const CALENDAR_CHECKED = "2026-11-23";
-// Snapshot of the current Formula 1 calendars, inspected 23 November 2026.
+export const CALENDAR_CHECKED = "2026-11-26";
+// Snapshot of the current Formula 1 calendars, inspected 26 November 2026.
 // Weekend dates are local calendar dates, not UTC session timestamps.
 const rows: Record<Season, [string, string, string, string][]> = {
   2026: [

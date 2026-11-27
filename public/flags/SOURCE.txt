@@ -1,0 +1,4 @@
+flag-icons by Panayiotis Lipiridis, MIT.
+https://github.com/lipis/flag-icons
+Source commit 4612960fd030e9e37648ec0f0cd19a663e27831e
+Unmodified 4:3 SVG files.
