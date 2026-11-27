@@ -1,3 +1,4 @@
+import {flightDuration,flightProgress,sampleFlight} from './cameraFlight';
 import {ShaderGuard} from './SceneMaterials';
 import { vegasCircuitCamera } from "./vegasCamera";
 import { seatedLookTarget } from "./seatLook";
@@ -51,12 +52,15 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
     target: T.Vector3;
     startPosition: T.Vector3;
     startTarget: T.Vector3;
-    elapsed: number;
+    started: number;
     duration: number;
+    fromFov:number;
+    toFov:number;
   } | null>(null);
   const target = useRef(
     mode === "seat" ? new T.Vector3(...seatTarget(selection)) : new T.Vector3(),
   );
+  const lookGoal=useRef<T.Vector3|null>(null);
   const seatAngles = useRef({ yaw: 0, pitch: 0 });
   useEffect(() => {
     onReady?.();
@@ -64,7 +68,8 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
   useEffect(() => {
     const c = new OrbitControls(camera, gl.domElement);
     controls.current = c;
-    c.enableDamping = false;
+    c.enableDamping = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    c.dampingFactor = .09;
     c.maxPolarAngle = Math.PI * 0.48;
     c.minDistance = 30;
     c.maxDistance = 2000;
@@ -80,6 +85,8 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
     };
   }, [camera, gl, invalidate]);
   useEffect(() => {
+    lookGoal.current=null;
+    const fromFov=(camera as T.PerspectiveCamera).fov;
     const stand = getStand(selection.stand);
     let p: T.Vector3, t: T.Vector3, far = 1800;
     if (mode === "seat" || preview) {
@@ -138,8 +145,10 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
         target: t,
         startPosition: camera.position.clone(),
         startTarget: target.current.clone(),
-        elapsed: 0,
-        duration: camera.position.distanceTo(p) < 8 ? 0.38 : 1.15,
+        started: performance.now(),
+        duration: flightDuration(camera.position.distanceTo(p)),
+        fromFov,
+        toFov:fromFov,
       };
     const aspect = (camera as T.PerspectiveCamera).aspect;
     (camera as T.PerspectiveCamera).far = far;
@@ -155,6 +164,7 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
           : 72
         : 46;
     (camera as T.PerspectiveCamera).updateProjectionMatrix();
+    if(transition.current){transition.current.toFov=(camera as T.PerspectiveCamera).fov;(camera as T.PerspectiveCamera).fov=fromFov;(camera as T.PerspectiveCamera).updateProjectionMatrix();}
     seatAngles.current = {
       yaw: Math.atan2(t.x - p.x, t.z - p.z),
       pitch: Math.atan2(t.y - p.y, Math.hypot(t.x - p.x, t.z - p.z)),
@@ -225,8 +235,8 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
       lastX = e.clientX;
       lastY = e.clientY;
       const { yaw, pitch } = seatAngles.current;
-      target.current.set(...seatedLookTarget(camera.position, yaw, pitch));
-      camera.lookAt(target.current);
+      const desired=new T.Vector3(...seatedLookTarget(camera.position,yaw,pitch));
+      if(matchMedia('(prefers-reduced-motion: reduce)').matches){target.current.copy(desired);camera.lookAt(target.current);}else lookGoal.current=desired;
       invalidate();
     };
     const end = () => (down = false);
@@ -282,7 +292,10 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const reduce = () => {
       const tr = transition.current;
+      if(controls.current)controls.current.enableDamping=!preference.matches;
+      if(preference.matches&&lookGoal.current){target.current.copy(lookGoal.current);camera.lookAt(target.current);lookGoal.current=null;invalidate();}
       if (!preference.matches || !tr) return;
+      (camera as T.PerspectiveCamera).fov=tr.toFov;(camera as T.PerspectiveCamera).updateProjectionMatrix();
       camera.position.copy(tr.position);
       target.current.copy(tr.target);
       camera.lookAt(target.current);
@@ -296,16 +309,13 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
   }, [camera, gl, invalidate]);
   useFrame((_, delta) => {
     const tr = transition.current;
-    if (!tr) return;
-    tr.elapsed += Math.min(delta, 0.05);
-    const progress = Math.min(1, tr.elapsed / tr.duration),
-      eased = 1 - Math.pow(1 - progress, 3);
-    camera.position.lerpVectors(tr.startPosition, tr.position, eased);
-    const distance = tr.startPosition.distanceTo(tr.position);
-    if (distance > 20)
-      camera.position.y +=
-        Math.sin(Math.PI * progress) * Math.min(distance * 0.12, 28);
-    target.current.lerpVectors(tr.startTarget, tr.target, eased);
+    if(!tr){
+      if(mode!=="seat"&&!preview)controls.current?.update();
+      if(lookGoal.current){target.current.lerp(lookGoal.current,1-Math.exp(-Math.min(delta,.05)*18));if(target.current.distanceTo(lookGoal.current)<.01){target.current.copy(lookGoal.current);lookGoal.current=null;}camera.lookAt(target.current);invalidate();}
+      return;
+    }
+    const progress=flightProgress(tr.started,performance.now(),tr.duration),eased=sampleFlight(tr.startPosition,tr.position,tr.startTarget,tr.target,progress,camera.position,target.current);
+    const lens=camera as T.PerspectiveCamera;lens.fov=T.MathUtils.lerp(tr.fromFov,tr.toFov,eased);lens.updateProjectionMatrix();
     camera.lookAt(target.current);
     controls.current?.target.copy(target.current);
     if (progress === 1) {
