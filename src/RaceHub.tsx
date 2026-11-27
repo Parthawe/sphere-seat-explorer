@@ -208,7 +208,7 @@ export default function RaceHub() {
           <Suspense fallback={<div className="hub-loading" role="status">Loading race guide…</div>}><RaceGuide key={`${selected.season}-${selected.slug}`} race={selected} route={route} go={go} jumpTo={jumpTo}/></Suspense>
         ) : (
           <>
-            <SeasonLanding season={route.season} onRace={select} onBrowse={()=>go({season:route.season,race:"",seats:false},"#race-calendar")} onVegas={mode=>go({season:route.season,race:"las-vegas",seats:true,mode,position:"C"})} />
+            <SeasonLanding season={route.season} onRace={select} onBrowse={()=>go({season:route.season,race:"",seats:false},"#race-calendar")} />
             <section
               className="race-calendar"
               id="race-calendar"

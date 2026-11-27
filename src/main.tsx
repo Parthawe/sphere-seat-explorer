@@ -25,6 +25,7 @@ import "./racingCentre.css";
 import "./venueStands.css";
 import "./venueReferences.css";
 import "./standConcept.css";
+import "./heroLanding.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppBoundary><App /></AppBoundary>
