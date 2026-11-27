@@ -8,7 +8,7 @@ import type {ModelCameraControls} from './CircuitSeatingScene';
 import HeroSceneBoundary from './HeroSceneBoundary';
 import UiIcon from './UiIcon';
 const noAction=()=>{};
-export default function Race3DPreview({race,onOpen}:{race:Race;onOpen:()=>void}){
+export default function Race3DPreview({race,onOpen}:{race:Race;onOpen?:()=>void}){
  const spec=racePreview(race),stage=useRef<HTMLDivElement>(null),cameraControls=useRef<ModelCameraControls|null>(null);
  const [visible,setVisible]=useState(false),[requested,setRequested]=useState(false),[ready,setReady]=useState(false),[failed,setFailed]=useState(false),[retry,setRetry]=useState(0),[posterFailed,setPosterFailed]=useState(false),[layout,setLayout]=useState<CircuitLayout|null>(null);
  const [reduced,setReduced]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),[motion,setMotion]=useState(false);
@@ -23,7 +23,7 @@ export default function Race3DPreview({race,onOpen}:{race:Race;onOpen:()=>void})
  function load(){setFailed(false);setReady(false);setRetry(n=>n+1);setRequested(true);}
  const playing=motion&&visible&&!reduced;
  return <div className="race-3d-preview" data-preview-key={spec.key} data-preview-ready={ready&&!failed} data-preview-visible={visible}>
-  <a className="race-3d-preview-link" href={spec.href} aria-label={`Explore ${race.name} ${race.season} in 3D`} onClick={event=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();onOpen();}}>
+  <a className="race-3d-preview-link" href={spec.href} aria-label={`Explore ${race.name} ${race.season} in 3D`} onClick={event=>{if(!onOpen||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();onOpen();}}>
    <div ref={stage} className="race-3d-preview-stage">
     <img className="race-3d-poster" src={posterFailed?`/circuit-plans/${circuitLayoutId(race.season,race.slug)}.svg`:spec.poster} width="960" height="540" fetchPriority="high" alt={posterFailed?`${race.name} source circuit outline fallback`:spec.kind==='outline'?`${race.name} circuit outline study`:`Illustrative ${race.name} venue study`} onError={()=>setPosterFailed(true)}/>
     {requested&&!failed&&<div className="race-3d-renderer" data-ready={ready} aria-hidden="true"><HeroSceneBoundary key={retry} onUnavailable={unavailable}><Suspense fallback={null}>

@@ -1,0 +1,154 @@
+/* Race discovery: quiet paper surfaces, real circuit studies and one action color. */
+.race-hub {background:#f6f5f2;color:var(--color-ink);--discovery-line:#d7d7d5;--discovery-muted:#626269;}
+.race-hub.calendar-page {background:#f6f5f2;color:var(--color-ink);color-scheme:light;}
+.race-hub .hub-header {height:auto;min-height:88px;gap:32px;background:#f6f5f2;color:var(--color-ink);border-top:0;border-bottom:1px solid var(--discovery-line);padding-block:12px;}
+.race-hub .hub-header .wordmark {color:var(--color-ink);gap:10px;}
+.race-hub .hub-header .brand-icon {width:30px;height:25px;color:var(--color-action);}
+.race-hub .hub-header .brand-name {font:500 19px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.04em;text-transform:lowercase;}
+.race-hub .hub-header>.calendar-primary-nav {display:flex;align-items:center;gap:28px;margin-left:auto;}
+.race-hub .calendar-primary-nav a {font-size:13px;color:var(--discovery-muted);}
+.race-hub .calendar-primary-nav a:hover {color:var(--color-ink);text-decoration:underline;}
+.race-hub .hub-header>nav[aria-label=Seasons] {display:flex;gap:2px;margin-left:0;border:1px solid var(--discovery-line);padding:3px;border-radius:5px;}
+.race-hub .hub-header nav[aria-label=Seasons] button {min-height:38px;min-width:64px;padding:8px 12px;border:0;background:transparent;color:var(--discovery-muted);font:400 12px/1.4 'IBM Plex Sans',sans-serif;border-radius:3px;}
+.race-hub .hub-header nav[aria-label=Seasons] button[aria-pressed=true] {background:var(--color-ink);color:var(--color-white);}
+.race-hub .hub-header nav[aria-label=Seasons] button:hover {background:var(--color-divider);color:var(--color-ink);}
+.race-hub .hub-header nav[aria-label=Seasons] button[aria-pressed=true]:hover {background:var(--color-raised);color:var(--color-white);}
+.race-hub .season-label {display:none;}
+.race-hub main#race-content {padding-top:0;}
+.calendar-page .season-landing {display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:56px;align-items:center;padding:64px 0 56px;margin:0 0 16px;color:var(--color-ink);background:transparent;min-height:0;overflow:visible;}
+.calendar-page .hero-introduction {display:flex;flex-direction:column;align-items:stretch;gap:36px;padding:0;}
+.calendar-page .season-landing-copy h1 {font:400 clamp(42px,4.2vw,62px)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.04em;color:var(--color-ink);margin:0 0 24px;}
+.calendar-page .season-landing-copy h1 em {font:inherit;letter-spacing:inherit;color:var(--discovery-muted);display:inline;}
+.calendar-page .season-landing-copy>p {max-width:35ch;font-size:14px;line-height:1.8;color:var(--discovery-muted);}
+.hero-race-picker {max-width:450px;}
+.hero-race-picker>label {font-size:12px;color:var(--discovery-muted);margin-bottom:10px;}
+.hero-race-picker select {color-scheme:light;background:transparent;color:var(--color-ink);border:1px solid #b7b7b9;min-height:50px;border-radius:4px;font-size:14px;}
+.hero-race-picker .landing-primary {border-radius:4px;font-weight:400;min-height:50px;gap:14px;}
+.hero-race-picker>p {color:var(--discovery-muted);font-size:12px;}
+.hero-circuit {position:relative;min-width:0;}
+.hero-circuit .race-3d-preview {overflow:hidden;border-radius:8px;}
+.hero-circuit .race-3d-preview-stage {height:394px;}
+.hero-circuit-name {position:absolute;left:20px;bottom:102px;color:var(--color-white);display:flex;gap:10px;align-items:baseline;pointer-events:none;font-size:18px;}
+.hero-circuit-name>span {font-size:12px;color:var(--color-line);}
+.race-hub .race-3d-preview-footer {min-height:76px;padding:16px 20px;gap:12px;border-top:1px solid #3a3a44;}
+.race-hub .race-3d-preview-footer>strong {background:transparent;padding:6px 0;gap:8px;font-size:13px;color:var(--color-white);}
+.race-hub .race-3d-preview-link:hover .race-3d-preview-footer>strong {background:transparent;text-decoration:underline;text-underline-offset:5px;}
+.race-hub .race-3d-preview-tools>button,.race-hub .race-3d-preview-credit {border-color:#62626c;border-radius:4px;}
+.calendar-page .race-highlights {margin:0 0 64px;padding-top:36px;border-top:1px solid var(--discovery-line);}
+.race-hub .race-highlights h2,.race-hub .calendar-toolbar h2 {font:400 28px/1.25 'IBM Plex Sans',sans-serif;letter-spacing:-.025em;color:var(--color-ink);}
+.race-hub .race-highlights-heading {align-items:center;margin-bottom:28px;}
+.race-hub .race-highlight-label {font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:var(--discovery-muted);margin-bottom:12px;}
+.race-hub .race-highlight-card {border:0;border-radius:6px;}
+.race-hub .race-highlight-card>button {background:transparent;color:var(--color-ink);}
+.race-hub .race-highlight .race-card-image {aspect-ratio:16/10;border-radius:6px;}
+.race-hub .race-highlight .race-card-image::after {display:none;}
+.race-hub .race-highlight-copy {position:static;padding:18px 0 0;gap:10px;color:var(--color-ink);}
+.race-hub .race-highlight-copy strong {font:400 26px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.025em;}
+.race-hub .race-highlight-copy>span:first-child {display:none;}
+.race-hub .race-highlight-copy>span {font-size:12px;color:var(--discovery-muted);}
+.race-hub .race-highlight-copy .race-highlight-action {color:var(--color-action-strong);margin:0;}
+.race-hub .weekend-note {color:var(--discovery-muted);margin-top:24px;}
+.calendar-page .calendar-download,.calendar-page .calendar-view-switch button {background:transparent;border:1px solid var(--discovery-line);color:var(--color-ink);border-radius:4px;}
+.calendar-page .calendar-view-switch button[aria-pressed=true] {background:var(--color-ink);border-color:var(--color-ink);color:var(--color-white);}
+.calendar-page .calendar-toolbar {padding-top:32px;border-top:1px solid var(--discovery-line);}
+.calendar-page .calendar-toolbar h2 span {color:var(--discovery-muted);font-size:12px;}
+.calendar-page .race-search {color:var(--discovery-muted);font-size:12px;}
+.calendar-page .race-search input {background:transparent;color:var(--color-ink);border-color:#b7b7b9;border-radius:4px;}
+.calendar-page .race-search input::placeholder {color:var(--discovery-muted);}
+.calendar-page .calendar-filters {gap:8px;}
+.calendar-page .calendar-filters button {background:transparent;color:var(--discovery-muted);border:0;border-radius:4px;font-size:12px;}
+.calendar-page .calendar-filters button[aria-pressed=true] {background:var(--color-ink);color:var(--color-white);border-color:var(--color-ink);}
+.calendar-page .calendar-filter-row>span {color:var(--discovery-muted);}
+.race-hub .race-card {background:transparent;border:0;border-bottom:1px solid var(--discovery-line);padding-bottom:8px;}
+.race-hub .race-card .race-card-image {border-radius:6px;}
+.race-hub .race-card>.race-row,.race-hub .race-card>.race-row:hover {color:var(--color-ink);background:transparent;}
+.race-hub .race-card-meta {color:var(--discovery-muted);padding:16px 0 0;text-transform:none;letter-spacing:0;font-size:11px;}
+.race-hub .race-card-body {padding:10px 0 0;}
+.race-hub .race-card .race-row strong {font:400 25px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.025em;color:var(--color-ink);}
+.race-hub .race-card-venue,.race-hub .race-card-bottom .circuit-thumbnail {color:var(--discovery-muted);}
+.race-hub .race-card .race-dates {color:var(--color-ink);font-size:12px;}
+.race-hub .race-card-action {color:var(--color-ink);border-color:var(--discovery-line);margin:0;padding:10px 0;}
+.race-hub .race-flag {width:22px;height:22px;flex-basis:22px;border:0;}
+.race-hub .calendar-source,.calendar-page .funding-disclosure,.calendar-page .hub-footer {color:var(--discovery-muted);}
+.calendar-page .calendar-source a,.calendar-page .funding-disclosure a {color:var(--color-ink);}
+.calendar-page .race-list>.race-row,.calendar-page .race-list strong,.calendar-page .race-list .race-dates {color:var(--color-ink);border-color:var(--discovery-line);}
+.calendar-page .race-list>.race-row:hover {background:var(--color-divider);}
+.calendar-page .race-list .race-card-venue,.calendar-page .race-list .race-round,.calendar-page .race-list .circuit-thumbnail,.calendar-page .race-list .race-coverage,.calendar-page .race-list .race-dates small {color:var(--discovery-muted);}
+.calendar-page .race-empty {color:var(--color-ink);background:transparent;}
+/* Race guide uses the same masthead, type and open section rhythm. */
+.race-hub .race-breadcrumb {margin:28px 0;color:var(--discovery-muted);font-size:12px;}
+.race-hub .race-breadcrumb button {color:var(--discovery-muted);}
+.race-hub .race-3d-hero {gap:48px;grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr);margin:0 0 36px;align-items:center;}
+.race-hub .race-3d-heading h1 {font:400 clamp(40px,4vw,58px)/1.15 'IBM Plex Sans',sans-serif;letter-spacing:-.035em;}
+.race-hub .race-3d-heading h1>span {font:400 14px/1.6 'IBM Plex Sans',sans-serif;letter-spacing:0;color:var(--discovery-muted);}
+.race-hub .race-3d-heading>p {color:var(--discovery-muted);}
+.race-hub .race-3d-hero .race-3d-preview {border-radius:8px;}
+.race-hub .race-guide-nav {display:flex;gap:28px;border-block:1px solid var(--discovery-line);padding:6px 0;margin:0 0 48px;}
+.race-hub .race-guide-nav a {justify-content:flex-start;min-height:48px;border:0;background:transparent;color:var(--discovery-muted);padding:10px 0;font-size:13px;}
+.race-hub .race-guide-nav a:hover {background:transparent;color:var(--color-ink);text-decoration:underline;text-underline-offset:7px;}
+.race-hub :is(.event-circuit,.event-schedule,.event-resources) {background:transparent;color:var(--color-ink);padding:0 0 40px;margin:0 0 40px;border-bottom:1px solid var(--discovery-line);color-scheme:light;--color-paper:#15151e;--color-line:#626269;--color-control-border:#d7d7d5;--color-panel:#efeeec;}
+.race-hub .event-circuit figure img {background:var(--color-ink);border-radius:6px;padding:24px;}
+.race-hub :is(.event-section-heading h2,.venue-stands h2,.circuit-brief h2,.price-notebook h2,.venue-references h2) {font:400 28px/1.25 'IBM Plex Sans',sans-serif;letter-spacing:-.025em;}
+.race-hub .event-facts dd {font:400 25px/1.25 'IBM Plex Sans',sans-serif;letter-spacing:-.03em;}
+.race-hub .event-facts .event-length dd {font-size:46px;}
+.race-hub .event-session-name {font:400 18px/1.4 'IBM Plex Sans',sans-serif;}
+.race-hub :is(.venue-stands,.circuit-brief,.price-notebook) {padding:0 0 40px;margin:0 0 40px;border:0;border-bottom:1px solid var(--discovery-line);background:transparent;}
+.race-hub .venue-references {border-top:1px solid var(--discovery-line);padding-top:32px;background:transparent;}
+.race-hub .venue-stands-overview,.race-hub .venue-stands button {border-radius:4px;border-color:var(--discovery-line);}
+.race-hub .venue-stands input {background:transparent;border-radius:4px;border-color:#b7b7b9;}
+.race-hub .venue-stand-options {gap:0 40px;}
+.race-hub .venue-stand-count {font-size:12px;}
+@media(max-width:1000px) {
+ .race-hub .hub-header {gap:20px;}
+ .race-hub .hub-header>.calendar-primary-nav {gap:18px;}
+ .calendar-page .season-landing {gap:28px;padding-block:44px;}
+ .calendar-page .season-landing-copy h1 {font-size:44px;}
+ .hero-race-picker>div {flex-direction:column;}
+ .hero-race-picker .landing-primary {justify-content:center;}
+}
+@media(max-width:760px) {
+ .race-hub .hub-header {flex-wrap:wrap;min-height:0;padding-top:16px;gap:0 12px;}
+ .race-hub .hub-header .brand-name {font-size:17px;}
+ .race-hub .hub-header .brand-icon {width:24px;}
+ .race-hub .hub-header>nav[aria-label=Seasons] {margin-left:auto;}
+ .race-hub .hub-header nav[aria-label=Seasons] button {min-width:48px;min-height:38px;padding-inline:8px;}
+ .race-hub .hub-header>.calendar-primary-nav {order:3;flex-basis:100%;margin:12px 0 0;gap:24px;padding-bottom:6px;}
+ .race-hub .calendar-primary-nav a {font-size:12px;}
+ .calendar-page .season-landing {grid-template-columns:minmax(0,1fr);gap:28px;padding:36px 0 40px;margin:0;}
+ .calendar-page .hero-introduction {gap:24px;}
+ .calendar-page .season-landing-copy h1 {font-size:clamp(36px,8vw,48px);margin-bottom:16px;}
+ .calendar-page .season-landing-copy h1 br {display:initial;}
+ .calendar-page .season-landing-copy h1 em {display:inline;margin:0;}
+ .calendar-page .season-landing-copy>p {max-width:34ch;font-size:13px;}
+ .hero-race-picker {max-width:none;}
+ .hero-race-picker>div {flex-direction:row;}
+ .hero-race-picker select {font-size:16px;}
+ .hero-circuit .race-3d-preview-stage {height:280px;}
+ .hero-circuit-name {bottom:98px;font-size:16px;}
+ .race-hub .race-3d-preview-footer {padding:14px 16px;}
+ .race-hub .race-3d-preview-footer>span {font-size:10px;}
+ .calendar-page .race-highlights {margin-bottom:40px;padding-top:28px;}
+ .race-hub .race-highlights h2,.race-hub .calendar-toolbar h2 {font-size:24px;}
+ .race-hub .race-highlight-copy strong {font-size:23px;}
+ .race-hub .race-highlights-grid {gap:28px;}
+ .race-hub .race-3d-hero {grid-template-columns:minmax(0,1fr);gap:20px;margin-bottom:28px;}
+ .race-hub .race-3d-heading {padding:0;}
+ .race-hub .race-3d-heading h1 {font-size:40px;margin-bottom:14px;}
+ .race-hub .race-guide-nav {gap:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:4px 0;margin-bottom:32px;}
+ .race-hub .race-guide-nav a {justify-content:center;font-size:12px;}
+ .race-hub :is(.event-section-heading h2,.venue-stands h2,.circuit-brief h2,.price-notebook h2,.venue-references h2) {font-size:24px;}
+ .race-hub .event-facts .event-length dd {font-size:38px;}
+}
+@media(prefers-reduced-motion:no-preference) {
+ .race-hub :is(a,button,select,input) {transition:background-color .16s ease,color .16s ease,border-color .16s ease;}
+}
+.race-hub .hub-header .brand-name {color:var(--color-ink);}
+.calendar-page .race-list-head {background:transparent;color:var(--discovery-muted);border-color:var(--discovery-line);}
+.calendar-page .race-list :is(.race-status,.race-round,.race-circuit-name,.coverage-3d,.coverage-guide) {color:var(--discovery-muted);}
+@media(min-width:761px) {.calendar-page .season-landing-copy h1 br {display:initial;}}
+@media(max-width:360px) {
+ .race-hub .hub-header .brand-name {font-size:14px;}
+ .race-hub .hub-header .wordmark {gap:6px;}
+ .race-hub .hub-header nav[aria-label=Seasons] button {min-width:42px;}
+ .hero-race-picker .landing-primary {gap:8px;padding-inline:10px;}
+}

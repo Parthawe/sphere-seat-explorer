@@ -171,7 +171,7 @@ export default function RaceHub() {
         >
           <BrandIdentity subtitle="TICKETS & SEAT VIEWS" />
         </a>
-        {!route.race&&<nav className="calendar-primary-nav" aria-label="Main navigation"><a href={`?season=${route.season}#race-calendar`} onClick={event=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();go({season:route.season,race:"",seats:false},"#race-calendar");}}>All races</a><a href={`?season=${route.season}&screen=racing`} onClick={event=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();go({season:route.season,race:"",seats:false,racing:true});}}>Race Centre</a><a href={`?season=${route.season}&race=las-vegas&screen=vegas`}>Las Vegas 3D</a></nav>}
+        {<nav className="calendar-primary-nav" aria-label="Main navigation"><a href={`?season=${route.season}#race-calendar`} onClick={event=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();go({season:route.season,race:"",seats:false},"#race-calendar");}}>All races</a><a href={`?season=${route.season}&screen=racing`} onClick={event=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();go({season:route.season,race:"",seats:false,racing:true});}}>Race Centre</a><a href={`?season=${route.season}&race=las-vegas&screen=vegas`}>Las Vegas 3D</a></nav>}
         <nav aria-label="Seasons">
           {([2026, 2027] as Season[]).map((y) => (
             <button
@@ -191,13 +191,6 @@ export default function RaceHub() {
         </nav>
       </header>
       <main id="race-content">
-        {route.race&&<nav className="product-jump-nav" aria-label="Explore F1 Tickets Online">
-          <a href={`?season=${route.season}&screen=racing`} onClick={e=>{e.preventDefault();go({season:route.season,race:"",seats:false,racing:true});}}><UiIcon name="grid"/>Race Centre</a>
-          <a href={`?season=${route.season}#race-calendar`} onClick={e => { e.preventDefault(); go({ season: route.season, race: "", seats: false }, "#race-calendar"); }}><UiIcon name="calendar"/>All races</a>
-          <a href={`?season=${route.season}&race=las-vegas&screen=vegas`}>
-            <UiIcon name="cube"/>Las Vegas 3D
-          </a>
-        </nav>}
         {route.issue && <p className="route-notice" role="alert">{route.issue}</p>}
         {route.race && !selected ? (
           <section className="route-not-found">

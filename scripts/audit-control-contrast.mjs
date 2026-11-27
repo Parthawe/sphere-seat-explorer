@@ -53,9 +53,9 @@ try{
    }
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Horizontal overflow');
    if(route.includes('#race-calendar')){
-    for(const node of await page.locator('.race-list-head,.race-list :is(.race-status,.race-round,.race-circuit-name,.coverage-3d,.coverage-guide,.circuit-thumbnail)').all()){
+    for(const node of await page.locator('.hub-header .brand-name,.calendar-primary-nav a,.race-list-head,.race-list :is(.race-status,.race-round,.race-circuit-name,.coverage-3d,.coverage-guide,.circuit-thumbnail)').all()){
      if(!await node.isVisible())continue;
-     const result=await node.evaluate(contrast);assert(result.ratio>=4.5,'Dark calendar list metadata contrast');minimum=Math.min(minimum,result.ratio);checked++;
+     const result=await node.evaluate(contrast);assert(result.ratio>=4.5,'Calendar navigation and list metadata contrast');minimum=Math.min(minimum,result.ratio);checked++;
     }
    }
    if(route.includes('#race-calendar'))await page.screenshot({path:`/tmp/f1-contrast-${width}.png`});
@@ -63,7 +63,7 @@ try{
   await page.goto(new URL('?season=2027&race=japan',origin).href);
   const disabled=page.getByRole('button',{name:'My time',exact:true});await disabled.waitFor();
   assert(await disabled.isDisabled(),'Unconfirmed future times remain disabled');
-  assert.equal(await page.locator('.event-schedule').evaluate(e=>getComputedStyle(e).colorScheme),'dark');
+  assert.equal(await page.locator('.event-schedule').evaluate(e=>getComputedStyle(e).colorScheme),'light');
   assert.deepEqual(errors,[]);await page.close();
  }
  console.log(JSON.stringify({checks:checked,minimumContrast:minimum.toFixed(2)+':1',widths:[390,1440],states:['default','hover','keyboard focus','active','selected + hover','selected'],futureTimeGate:'preserved'}));

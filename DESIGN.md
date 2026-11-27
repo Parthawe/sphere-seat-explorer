@@ -1,5 +1,12 @@
 # F1 Tickets Online design direction
 
+## Race discovery refinement · 27 November 2026
+
+The user rejected the crowded, box-heavy appearance. Discovery and race guides now use a shared warm paper surface, regular IBM Plex Sans headings, quieter dividers and a compact masthead. Keep F1 red for the primary action and focus; keep scene backgrounds dark. The homepage's selected race owns its preview, reference year and 3D destination. Do not show a Vegas scene as the visual for another selected race. Calendar photographs retain their own credits and capture years; reference outlines do not imply surveyed seats.
+
+Use open sections rather than alternating inverted panels. Navigation is a line of links rather than six equal buttons. Medium weight marks actions; condensed type remains available within existing specialized explorers. Preserve the existing 3D study controls, motion preferences, data-saver actions, source limits, local privacy and commercial gates. This refinement supersedes older bold/italic typography guidance for discovery and race-guide surfaces only.
+
+
 The user explicitly requested the F1 visual language and Las Vegas Grand Prix theme after rejecting the olive/gold release. Preserve the working selection, comparison, sharing and estimated-data boundaries. Replace the weak scene and visual treatment.
 
 Use F1 red (#e10600), ink black (#15151e), white and neutral greys. Use the existing licensed Barlow Condensed in bold/italic for motorsport display and IBM Plex Sans for operational text. Use structured dividers, precise controls and limited cut corners. No imitation official F1 logo, unsupported affiliation or proprietary font distribution.
