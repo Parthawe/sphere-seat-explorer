@@ -29,7 +29,7 @@ export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Rac
      {layout&&!failed&&<StudyBoundary key={retry} onUnavailable={onUnavailable}><Suspense fallback={null}><Scene {...{layout,playing,visible,reset,zoom,onReady,onUnavailable}}/></Suspense></StudyBoundary>}
      {!ready&&!failed&&<div className="layout-loading" role="status">Loading circuit study…</div>}
      {failed&&<div className="layout-fallback" role="alert"><h2>3D study unavailable</h2><p>Try again, or use the race guide’s viewing information.</p><button onClick={()=>{setReady(false);setFailed(false);setRetry(r=>r+1);}}>Retry study</button><button onClick={onBack}>Open race guide</button></div>}
-     <div className="study-stage-label"><span>ILLUSTRATIVE STUDY</span><strong>Circuit overview</strong></div><button className="study-play-overlay" disabled={!ready} aria-label={playing?'Pause cars':'Show passing cars'} aria-pressed={playing} title={playing?'Pause simulated cars':'Play simulated cars'} onClick={()=>setPlaying(p=>!p)}><UiIcon name={playing?'pause':'play'}/><span>{playing?'Pause':'Simulated cars'}</span></button>
+     <div className="study-stage-label"><strong>Circuit overview</strong></div><button className="study-play-overlay" disabled={!ready} aria-label={playing?'Pause cars':'Show passing cars'} aria-pressed={playing} title={playing?'Pause simulated cars':'Play simulated cars'} onClick={()=>setPlaying(p=>!p)}><UiIcon name={playing?'pause':'play'}/><span>{playing?'Pause':'Simulated cars'}</span></button>
      <div className="study-stage-foot"><span><UiIcon name="info"/>Flat track outline · no seating geometry</span></div>
     </div>
     <aside className="study-controls" aria-label="Circuit study controls">

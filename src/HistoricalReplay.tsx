@@ -28,7 +28,7 @@ export function HistoricalReplay({standId,onChange,onClose,onReferences}:{standI
  const driver=data?.drivers.find(d=>d.number===focus),sample=driver?replaySample(driver,time):null;
  const next=passes.filter(p=>p.time>=time-.3).slice(0,3);
  return <section className={"historical-replay"+(compact?" replay-compact":"")} aria-label="Historical race replay">
-  <header><div><span className="eyebrow">RACE ARCHIVE / 2024</span><h2>Watch the field pass.</h2></div><button className="replay-size" onClick={()=>setCompact(c=>!c)}>{compact?"Details":"Watch from seat"}</button><button className="replay-close" onClick={onClose} aria-label="Close historical replay">×</button></header>
+  <header><div><span className="context-note">RACE ARCHIVE / 2024</span><h2>Watch the field pass.</h2></div><button className="replay-size" onClick={()=>setCompact(c=>!c)}>{compact?"Details":"Watch from seat"}</button><button className="replay-close" onClick={onClose} aria-label="Close historical replay">×</button></header>
   {error?<div className="replay-status" role="alert"><p>The race archive could not load.</p><button onClick={()=>setAttempt(a=>a+1)}>Retry archive</button></div>:!data?<div className="replay-status" role="status">Loading 20 drivers and recorded positions…</div>:<>
   <div className="replay-context"><strong>LAS VEGAS · OPENING FIELD</strong><span>{data.date} · first 2:09 of race</span></div>
   <div className="replay-track-row"><svg className="replay-track" viewBox="-30 -30 660 1060" role="img" aria-label="Full circuit tracker using recorded car positions">

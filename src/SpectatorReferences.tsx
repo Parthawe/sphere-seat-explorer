@@ -222,7 +222,7 @@ export default function SpectatorReferences({
     >
       <header>
         <div>
-          <span className="eyebrow">PHOTO REFERENCES / FAN REPORTS</span>
+
           <h2 id="spectator-references-title">From the grandstands.</h2>
           <p>
             {areaName} ·{" "}

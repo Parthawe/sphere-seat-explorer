@@ -8,12 +8,11 @@ export function BrandMark() {
   );
 }
 
-export function BrandIdentity({ subtitle }: { subtitle: string }) {
+export function BrandIdentity(_props: { subtitle: string }) {
   return <>
     <BrandMark />
     <span className="brand-copy">
       <span className="brand-name">F1TICKETS.ONLINE</span>
-      <span className="wordmark-sub">{subtitle}</span>
     </span>
   </>;
 }

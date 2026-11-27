@@ -692,7 +692,6 @@ export default function App({
             <div className="circuit-inset">
               <MiniMap standId={selection.stand} />
               <div>
-                <span className="eyebrow">YOU ARE HERE</span>
                 <strong>{stand.zone || "Sphere zone"}</strong>
                 <small>{stand.corner}</small>
               </div>
@@ -1129,11 +1128,6 @@ export default function App({
       >
         <div className="dialog-header">
           <div>
-            <span className="eyebrow">
-              {dialog === "compare"
-                ? "YOUR SHORTLIST"
-                : "2026 REFERENCE EDITION"}
-            </span>
             <h2 id="seat-dialog-title">
               {dialog === "compare"
                 ? "Find the view that feels right."
@@ -1288,9 +1282,6 @@ export default function App({
                           </Suspense>
                         </div>
                         <div className="comparison-detail">
-                          <span className="eyebrow">
-                            POSITION {s.stand} · {st.corner}
-                          </span>
                           <h3>{st.name}</h3>
                           <p>
                             Modeled row {s.row} ·{" "}

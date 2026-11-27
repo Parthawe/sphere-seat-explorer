@@ -12,7 +12,7 @@ export default function CircuitOverview({model,selection,open,onClose,onSelect}:
  const tip=(angle:number)=>`${eye[0]+Math.sin(angle)*ray},${eye[2]+Math.cos(angle)*ray}`;
  const polygon=(b:typeof bank)=>{const f=bankFrame(model,b),c=Math.cos(f.yaw),s=Math.sin(f.yaw),depth=b.kind==='lawn'?27:b.rows*.44+2;return [[-b.width/2,-depth],[b.width/2,-depth],[b.width/2,depth],[-b.width/2,depth]].map(([x,z])=>`${b.center[0]+x*c+z*s},${b.center[1]-x*s+z*c}`).join(' ');};
  return <dialog ref={dialog} className="circuit-overview-dialog" aria-labelledby="circuit-overview-title" onCancel={onClose} onClose={onClose}>
-  <header><div><span className="eyebrow">CIRCUIT / VIEWING BANKS</span><h2 id="circuit-overview-title">{model.name}</h2><p>{model.country} · {model.season} · {model.banks.length} modeled banks</p></div><button type="button" onClick={onClose} aria-label="Close circuit map">×</button></header>
+  <header><div><h2 id="circuit-overview-title">{model.name}</h2><p>{model.country} · {model.season} · {model.banks.length} modeled banks</p></div><button type="button" onClick={onClose} aria-label="Close circuit map">×</button></header>
   <div className="circuit-overview-layout">
    <div className="circuit-overview-drawing"><span className="circuit-overview-north" aria-label="North is up">N ↑</span>
     <svg viewBox={`${minX} ${minZ} ${width} ${height}`} role="img" aria-label={`Full ${model.country} circuit map. Selected ${bank.name}. Numbered markers correspond to viewing bank buttons. Shaded fan shows an illustrative 70 degree horizontal view direction.`}>
@@ -22,7 +22,7 @@ export default function CircuitOverview({model,selection,open,onClose,onSelect}:
      {model.banks.map(b=><polygon key={b.id} points={polygon(b)} fill={b.id===bank.id?'#e10600':'#546377'} fillOpacity={.65} stroke={b.footprint?'#1b2739':'#546377'} strokeWidth={4} strokeDasharray={b.footprint?undefined:'10 7'}/>)}
      <polygon points={`${eye[0]},${eye[2]} ${tip(frame.yaw-half)} ${tip(frame.yaw+half)}`} fill="#e10600" fillOpacity={.15} stroke="#e10600" strokeWidth={3} strokeDasharray="9 7"/>
      <circle cx={eye[0]} cy={eye[2]} r={marker*.23} fill="#e10600" stroke="white" strokeWidth={3}/>
-     {model.banks.map((b,i)=>{const x=b.center[0]+(b.mapLabelOffset?.[0]??0),z=b.center[1]+(b.mapLabelOffset?.[1]??0);return <g key={b.id}>{b.mapLabelOffset&&<><line x1={b.center[0]} y1={b.center[1]} x2={x} y2={z} stroke="#546377" strokeWidth={4}/><circle cx={b.center[0]} cy={b.center[1]} r={marker*.16} fill="#546377"/></>}<circle cx={x} cy={z} r={marker} fill={b.id===bank.id?'#e10600':'#172232'} stroke="#fff" strokeWidth={4}/><text x={x} y={z} textAnchor="middle" dominantBaseline="central" fill="white" fontSize={marker*1.15} fontFamily="sans-serif" fontWeight={700}>{i+1}</text></g>;})}
+     {model.banks.map((b,i)=>{const x=b.center[0]+(b.mapLabelOffset?.[0]??0),z=b.center[1]+(b.mapLabelOffset?.[1]??0);return <g key={b.id}>{b.mapLabelOffset&&<><line x1={b.center[0]} y1={b.center[1]} x2={x} y2={z} stroke="#546377" strokeWidth={4}/><circle cx={b.center[0]} cy={b.center[1]} r={marker*.16} fill="#546377"/></>}<circle cx={x} cy={z} r={marker} fill={b.id===bank.id?'#e10600':'#172232'} stroke="#fff" strokeWidth={4}/><text x={x} y={z} textAnchor="middle" dominantBaseline="central" fill="white" fontSize={marker*1.15} fontFamily="sans-serif" fontWeight={500}>{i+1}</text></g>;})}
     </svg>
     <div className="circuit-overview-legend"><span>Solid: footprint-aligned bank</span><span>Dashed: estimated region</span></div>
    </div>

@@ -101,7 +101,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
       {!compact && (
         <div className="ticket-intro">
           <div>
-            <p className="eyebrow">{raceStatus(calendars[2026].find(r => r.slug === "qatar")!) === "Past" ? "PAST RACE REFERENCE" : "QATAR RACE WEEKEND"} · 27–29 NOVEMBER 2026</p>
+            <p className="context-note">27–29 November 2026</p>
             <h1>
               Find your place
               <br />
@@ -131,7 +131,6 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
       )}
       <div className="desk-topline">
         <div>
-          <span className="eyebrow">QATAR 2026</span>
           <h2>Explore the viewing areas.</h2>
         </div>
         <span className="desk-coverage">
@@ -291,7 +290,6 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
             </div>
           ) : (
             <div className="area-introduction">
-              <p className="eyebrow">CHOOSE YOUR VIEW</p>
               <h3>
                 Choose where
                 <br />
@@ -385,7 +383,6 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
       <section id="ticket-sellers" className="ticket-sellers">
         <div className="section-line">
           <div>
-            <p className="eyebrow">CONTINUE WITH A TICKET PROVIDER</p>
             <h2>From the map to the real ticket.</h2>
           </div>
           <label>

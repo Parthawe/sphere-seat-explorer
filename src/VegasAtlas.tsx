@@ -269,7 +269,7 @@ export default function VegasAtlas({
                         y={a.point[1] + 5}
                         textAnchor="middle"
                         fontSize="13"
-                        fontWeight="700"
+                        fontWeight="500"
                         fill={
                           a.kind === "Grandstand" && area.id !== a.id
                             ? "#15151e"

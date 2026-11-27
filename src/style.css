@@ -80,7 +80,7 @@ p {
 h1,
 h2,
 h3 {
-  font-weight: 600;
+  font-weight: 500;
 }
 button:hover:not(:disabled) {
   color: var(--color-white);
@@ -110,7 +110,7 @@ button:hover:not(:disabled) {
   align-items: center;
   font-size: 21px;
   letter-spacing: 0.08em;
-  font-weight: 600;
+  font-weight: 500;
 }
 .wordmark:hover {
   text-decoration: none;
@@ -132,7 +132,7 @@ button:hover:not(:disabled) {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 13px;
   letter-spacing: 0.08em;
 }
@@ -176,7 +176,7 @@ button:hover:not(:disabled) {
   background: var(--red);
   color: var(--color-white);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
   border-radius: 2px;
 }
 .workspace {
@@ -212,7 +212,7 @@ button:hover:not(:disabled) {
 .scene-heading h1 {
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(50px, 5.3vw, 80px);
-  font-weight: 700;
+  font-weight: 500;
   font-style: italic;
   line-height: 0.92;
   letter-spacing: -0.02em;
@@ -243,7 +243,7 @@ button:hover:not(:disabled) {
   font-style: normal;
   font-size: 15px;
   letter-spacing: 0.03em;
-  font-weight: 500;
+  font-weight: 400;
   margin-top: 10px;
 }
 .mode-seat .scene-heading p {
@@ -332,15 +332,9 @@ button:hover:not(:disabled) {
   gap: 5px;
   margin-top: 6px;
 }
-.circuit-inset .eyebrow {
-  font-size: 9px;
-  color: var(--color-signal);
-  letter-spacing: 0.06em;
-  grid-column: 1/3;
-}
 .circuit-inset strong {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .circuit-inset small {
   font-size: 11px;
@@ -451,7 +445,7 @@ button:hover:not(:disabled) {
 .panel-intro h2 {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 34px;
-  font-weight: 700;
+  font-weight: 500;
   font-style: italic;
   letter-spacing: -0.01em;
   display: flex;
@@ -462,7 +456,7 @@ button:hover:not(:disabled) {
 .panel-edition {
   font-family: "IBM Plex Sans", sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 11px;
   color: var(--color-text-muted);
   border: 1px solid var(--color-line);
@@ -487,7 +481,7 @@ button:hover:not(:disabled) {
 }
 .section-label h3 {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .section-label > span {
   font-size: 9px;
@@ -506,7 +500,7 @@ button:hover:not(:disabled) {
   border: 1px solid var(--color-line);
   border-radius: 2px 2px 7px 2px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-text-muted);
 }
 .stand-tabs button.active {
@@ -532,7 +526,7 @@ button:hover:not(:disabled) {
 }
 .stand-name > span {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   background: var(--color-divider);
   color: var(--color-text-strong);
   padding: 4px 6px;
@@ -584,7 +578,7 @@ button:hover:not(:disabled) {
   border: 0;
   color: var(--color-ink);
   font-size: 19px;
-  font-weight: 500;
+  font-weight: 400;
   font-variant-numeric: tabular-nums;
   -moz-appearance: textfield;
 }
@@ -687,7 +681,7 @@ button:hover:not(:disabled) {
 }
 .selection-summary strong {
   font-size: 19px;
-  font-weight: 600;
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
 .selection-summary small {
@@ -725,7 +719,7 @@ button:hover:not(:disabled) {
   background: var(--red);
   color: white;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .primary-button:hover {
   background: var(--color-action-hover);
@@ -856,12 +850,6 @@ button:hover:not(:disabled) {
 .mobile-panel-toggle {
   display: none;
 }
-.eyebrow {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  color: var(--color-control-border);
-}
 dialog {
   width: min(1110px, 94vw);
   max-height: 90dvh;
@@ -883,14 +871,11 @@ dialog::backdrop {
   align-items: flex-start;
   gap: 20px;
 }
-.dialog-header .eyebrow {
-  color: var(--color-text-muted);
-}
 .dialog-header h2 {
   font-family: "Barlow Condensed", sans-serif;
   font-style: italic;
   font-size: 36px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.1;
   margin-top: 7px;
 }
@@ -934,14 +919,10 @@ dialog::backdrop {
 .comparison-detail {
   padding: 19px;
 }
-.comparison-detail .eyebrow {
-  font-size: 10px;
-  color: var(--color-action-hover);
-}
 .comparison-detail h3 {
   font-family: "Barlow Condensed";
   font-size: 27px;
-  font-weight: 600;
+  font-weight: 500;
   margin: 8px 0;
 }
 .comparison-detail p {
@@ -1413,9 +1394,6 @@ dialog::backdrop {
   .circuit-inset small {
     font-size: 9px;
   }
-  .circuit-inset .eyebrow {
-    font-size: 8px;
-  }
   .scene-instruction {
     display: none;
   }
@@ -1485,7 +1463,7 @@ dialog::backdrop {
   .mobile-summary {
     font-size: 15px;
     color: var(--color-ink);
-    font-weight: 600;
+    font-weight: 500;
   }
   .mobile-summary strong {
     display: block;
@@ -1619,9 +1597,6 @@ dialog::backdrop {
   .dialog-header h2 {
     font-size: 30px;
   }
-  .dialog-header .eyebrow {
-    font-size: 9px;
-  }
   .dialog-description {
     font-size: 13px;
   }
@@ -1750,7 +1725,7 @@ dialog::backdrop {
 }
 .map-confirm > span {
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .map-confirm .primary-button {
   max-width: 260px;
@@ -1863,7 +1838,7 @@ dialog::backdrop {
 .action-selection strong {
   font-size: 13px;
   color: var(--color-ink);
-  font-weight: 500;
+  font-weight: 400;
   font-variant-numeric: tabular-nums;
 }
 .selection-panel > .panel-actions .ticket-info {
@@ -1883,7 +1858,7 @@ dialog::backdrop {
   border: 1px solid var(--color-line);
   background: white;
   color: var(--color-text-muted);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   border-radius: 2px;
 }
@@ -1916,7 +1891,7 @@ dialog::backdrop {
 }
 .stand-tabs button > strong {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .stand-tabs button > span {
   font-size: 9px;
@@ -1937,7 +1912,7 @@ dialog::backdrop {
 }
 .view-evidence strong {
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-text-strong);
 }
 .view-evidence span {
@@ -2001,7 +1976,7 @@ dialog::backdrop {
 }
 .dock-preview strong {
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-surface);
 }
 .dock-preview span {
@@ -2034,7 +2009,7 @@ dialog::backdrop {
   background: var(--color-action);
   color: white;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
   border-radius: 2px;
 }
 .dock-compare:hover {
@@ -2057,7 +2032,7 @@ dialog::backdrop {
 }
 .comparison-camera-heading > strong {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .comparison-camera-heading > button {
   font-size: 12px;
@@ -2312,7 +2287,7 @@ dialog::backdrop {
 .race-detail-heading h1 {
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(48px, 5.7vw, 82px);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 0.96;
   margin: 0;
   text-transform: uppercase;
@@ -2330,7 +2305,7 @@ dialog::backdrop {
 }
 .season-year {
   font-family: "Barlow Condensed", sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   font-style: italic;
   font-size: clamp(110px, 15vw, 220px);
   line-height: 1;
@@ -2373,7 +2348,7 @@ dialog::backdrop {
 .race-feature-strip button {
   background: var(--color-action);
   padding: 12px 20px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .race-calendar {
   padding-top: 54px;
@@ -2472,21 +2447,21 @@ dialog::backdrop {
 .race-round {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 26px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-text-muted);
   font-variant-numeric: tabular-nums;
 }
 .race-row strong {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 26px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .race-dates {
   font-variant-numeric: tabular-nums;
 }
 .coverage-3d {
   color: var(--color-action-hover);
-  font-weight: 600;
+  font-weight: 500;
 }
 .coverage-guide,
 .race-status {
@@ -2649,7 +2624,7 @@ dialog::backdrop {
 .ticket-category-tabs button[aria-pressed="true"] {
   color: var(--color-action-hover);
   border-bottom: 3px solid var(--color-action);
-  font-weight: 600;
+  font-weight: 500;
 }
 .ticket-category-detail {
   display: flex;
@@ -3233,7 +3208,7 @@ dialog::backdrop {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 56px;
   line-height: 1;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   margin: 0;
   letter-spacing: -0.02em;
@@ -3255,7 +3230,7 @@ dialog::backdrop {
 .atlas-edition strong {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 54px;
-  font-weight: 700;
+  font-weight: 500;
   font-style: italic;
   display: block;
 }
@@ -3278,7 +3253,7 @@ dialog::backdrop {
 .atlas-tabs button[aria-pressed="true"] {
   color: var(--color-action-hover);
   border-bottom: 3px solid var(--color-action);
-  font-weight: 600;
+  font-weight: 500;
 }
 .vegas-atlas button:hover:not(:disabled) {
   color: var(--color-action-hover);
@@ -3362,7 +3337,7 @@ dialog::backdrop {
   border: 1px solid var(--color-text-muted);
   margin-top: 20px;
   padding: 11px 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .vegas-atlas .atlas-circuit-open:hover:not(:disabled) {
   color: var(--color-white);
@@ -3550,7 +3525,7 @@ dialog::backdrop {
 }
 .all-bank-directory button > span:first-child {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 500;
   grid-row: 1/3;
   color: var(--color-action-hover);
 }
@@ -4234,17 +4209,9 @@ dialog::backdrop {
   gap: 48px;
   margin: 8px 0 64px;
 }
-.ticket-desk .eyebrow {
-  font:
-    600 13px/1.3 "IBM Plex Sans",
-    sans-serif;
-  letter-spacing: 0.11em;
-  color: var(--color-action-hover);
-  margin: 0 0 15px;
-}
 .ticket-intro h1 {
   font:
-    700 clamp(64px, 7.6vw, 110px) / 0.91 "Barlow Condensed",
+    500 clamp(64px, 7.6vw, 110px) / 0.91 "Barlow Condensed",
     sans-serif;
   letter-spacing: -0.018em;
   text-transform: uppercase;
@@ -4269,12 +4236,12 @@ dialog::backdrop {
 }
 .next-race-stamp > span:first-child {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.12em;
 }
 .next-race-stamp strong {
   font:
-    700 72px/0.95 "Barlow Condensed",
+    500 72px/0.95 "Barlow Condensed",
     sans-serif;
   letter-spacing: 0.02em;
 }
@@ -4294,13 +4261,9 @@ dialog::backdrop {
 }
 .ticket-desk h2 {
   font:
-    600 34px/1.1 "Barlow Condensed",
+    500 34px/1.1 "Barlow Condensed",
     sans-serif;
   margin: 0;
-}
-.desk-topline .eyebrow {
-  font-size: 12px;
-  margin-bottom: 6px;
 }
 .desk-coverage {
   font-size: 14px;
@@ -4328,7 +4291,7 @@ dialog::backdrop {
   gap: 16px;
   padding: 24px 27px 0;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.08em;
   color: var(--color-line);
 }
@@ -4348,14 +4311,14 @@ dialog::backdrop {
 }
 .map-watermark {
   font:
-    600 47px "Barlow Condensed",
+    500 47px "Barlow Condensed",
     sans-serif;
   letter-spacing: 7px;
   fill: var(--color-text-muted);
 }
 .map-label {
   font:
-    600 15px "IBM Plex Sans",
+    500 15px "IBM Plex Sans",
     sans-serif;
   fill: var(--color-line);
   paint-order: stroke;
@@ -4407,7 +4370,7 @@ dialog::backdrop {
   color: var(--color-divider);
   padding: 10px 15px;
   font:
-    500 14px "IBM Plex Sans",
+    400 14px "IBM Plex Sans",
     sans-serif;
   cursor: pointer;
 }
@@ -4448,7 +4411,7 @@ dialog::backdrop {
   background: white;
   padding: 13px 5px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-text-muted);
   cursor: pointer;
 }
@@ -4458,7 +4421,7 @@ dialog::backdrop {
 }
 .ticket-panel h3 {
   font:
-    600 33px/1.05 "Barlow Condensed",
+    500 33px/1.05 "Barlow Condensed",
     sans-serif;
   margin: 0 0 14px;
 }
@@ -4470,7 +4433,7 @@ dialog::backdrop {
 .ticket-panel label {
   display: block;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 8px;
 }
 .ticket-desk select {
@@ -4494,9 +4457,6 @@ dialog::backdrop {
 }
 .area-introduction {
   padding-bottom: 27px;
-}
-.area-introduction .eyebrow {
-  font-size: 12px;
 }
 .area-introduction h3 {
   font-size: 39px;
@@ -4523,7 +4483,7 @@ dialog::backdrop {
 }
 .seating-tag {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
   border: 1px solid var(--color-line);
   padding: 4px 7px;
   white-space: nowrap;
@@ -4546,7 +4506,7 @@ dialog::backdrop {
 }
 .reference-price strong {
   font:
-    600 34px/1.2 "Barlow Condensed",
+    500 34px/1.2 "Barlow Condensed",
     sans-serif;
   margin-top: 4px;
 }
@@ -4639,7 +4599,7 @@ dialog::backdrop {
 }
 .locator-match span {
   margin: 4px 0 9px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .ticket-panel .locator-match p {
   font-size: 13px;
@@ -4710,10 +4670,6 @@ dialog::backdrop {
 .ticket-sellers select {
   font-size: 14px;
 }
-.ticket-sellers .eyebrow {
-  font-size: 12px;
-  margin-bottom: 9px;
-}
 .ticket-sellers h2 {
   font-size: 39px;
 }
@@ -4741,7 +4697,7 @@ dialog::backdrop {
   display: grid;
   place-items: center;
   font:
-    600 19px "Barlow Condensed",
+    500 19px "Barlow Condensed",
     sans-serif;
 }
 .seller-type {
@@ -4750,7 +4706,7 @@ dialog::backdrop {
 }
 .seller-row h3 {
   font:
-    600 26px "Barlow Condensed",
+    500 26px "Barlow Condensed",
     sans-serif;
   line-height: 1.1;
   margin: 4px 0 6px;
@@ -4768,7 +4724,7 @@ dialog::backdrop {
 }
 .seller-status strong {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .seller-status span {
   font-size: 12px;
@@ -4809,7 +4765,7 @@ dialog::backdrop {
 .ticket-methodology summary {
   padding: 20px 0;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 400;
 }
 .ticket-methodology > div {
   max-width: 850px;
@@ -5065,9 +5021,6 @@ dialog::backdrop {
   .area-comparison h2 {
     font-size: 28px;
   }
-  .ticket-desk .eyebrow {
-    font-size: 11px;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .circuit-racing-line {
@@ -5095,7 +5048,7 @@ dialog::backdrop {
 }
 .product-jump-nav a[aria-current="page"] {
   color: var(--color-action-hover);
-  font-weight: 500;
+  font-weight: 400;
 }
 .product-jump-nav a:hover {
   text-decoration: underline;
@@ -5106,7 +5059,7 @@ dialog::backdrop {
 }
 .remaining-races h2 {
   font:
-    600 32px "Barlow Condensed",
+    500 32px "Barlow Condensed",
     sans-serif;
   margin: 0;
 }
@@ -5147,13 +5100,8 @@ dialog::backdrop {
 }
 .remaining-races strong {
   font:
-    600 30px "Barlow Condensed",
+    500 30px "Barlow Condensed",
     sans-serif;
-}
-.abu-dhabi-guide .eyebrow {
-  font-size: 12px;
-  color: var(--color-action-strong);
-  letter-spacing: 0.06em;
 }
 .verified-event-links {
   display: flex;
@@ -5216,7 +5164,7 @@ dialog::backdrop {
   background: var(--color-ink);
   color: white;
   font:
-    500 14px "IBM Plex Sans",
+    400 14px "IBM Plex Sans",
     sans-serif;
   min-height: 46px;
   cursor: pointer;
@@ -5386,7 +5334,7 @@ dialog::backdrop {
   font-size: 13px;
 }
 .abu-location-confidence strong {
-  font-weight: 500;
+  font-weight: 400;
 }
 .abu-location-confidence span {
   margin: 5px 0 8px;
@@ -5538,7 +5486,7 @@ dialog::backdrop {
 .singapore-zone-access strong {
   display: block;
   font:
-    600 25px "Barlow Condensed",
+    500 25px "Barlow Condensed",
     sans-serif;
   margin: 5px 0;
 }
@@ -5561,7 +5509,7 @@ dialog::backdrop {
 }
 .singapore-pilot-link h2 {
   font:
-    600 32px "Barlow Condensed",
+    500 32px "Barlow Condensed",
     sans-serif;
   margin: 0 0 10px;
 }
@@ -5602,8 +5550,7 @@ dialog::backdrop {
 /* Historical archive controls share the seat explorer's race timing language. */
 .historical-replay { position:absolute; z-index:12; left:24px; top:155px; width:370px; max-height:calc(100% - 180px); overflow:auto; background:var(--color-ink); color:var(--color-surface); border:1px solid var(--color-text-muted); border-top:3px solid var(--color-action); padding:18px; box-shadow:0 12px 40px #0006; }
 .historical-replay header { display:flex; justify-content:space-between; align-items:start; gap:12px; }
-.historical-replay .eyebrow { font-size:12px; color:var(--color-line); letter-spacing:.1em; }
-.historical-replay h2 { font:600 32px/1.1 'Barlow Condensed',sans-serif; margin:5px 0 16px; }
+.historical-replay h2 { font:500 32px/1.1 'Barlow Condensed',sans-serif; margin:5px 0 16px; }
 .historical-replay button,.historical-replay select { font:inherit; font-size:14px; color:inherit; border:1px solid var(--color-text-muted); background:var(--color-raised); padding:8px; border-radius:2px; cursor:pointer; }
 .historical-replay button:hover { background:var(--color-hover-surface); }
 .historical-replay .replay-close { font-size:26px; line-height:1; border:0; background:none; padding:0 5px; }
@@ -5614,7 +5561,7 @@ dialog::backdrop {
 .replay-track { width:100px; height:150px; overflow:visible; }
 .replay-driver label { display:block; margin-bottom:5px; font-size:13px; }
 .replay-driver select { width:100%; }
-.replay-driver>strong { display:block; font:600 28px 'Barlow Condensed',sans-serif; margin-top:9px; }
+.replay-driver>strong { display:block; font:500 28px 'Barlow Condensed',sans-serif; margin-top:9px; }
 .replay-driver strong span { color:var(--color-paper); margin-left:9px; }
 .replay-driver strong small { font:400 13px 'IBM Plex Sans',sans-serif; }
 .replay-driver p { font-size:12px; line-height:1.6; margin:5px 0 0; }
@@ -5652,16 +5599,16 @@ dialog::backdrop {
 
 /* Circuit seating studies: geographic models, explicit modeled-position controls. */
 .circuit-model-entry { display:flex; align-items:center; justify-content:space-between; gap:32px; background:var(--color-panel); color:var(--color-paper); padding:28px 32px; margin:24px 0; border-top:3px solid var(--color-action); }
-.circuit-model-entry h2 { font:600 34px/1.15 'Barlow Condensed',sans-serif; margin:8px 0; }
+.circuit-model-entry h2 { font:500 34px/1.15 'Barlow Condensed',sans-serif; margin:8px 0; }
 .circuit-model-entry p { max-width:690px; font-size:15px; line-height:1.7; color:var(--color-line); }
-.circuit-model-entry button,.qatar-model-link { background:var(--color-action); color:var(--color-white); border:0; padding:14px 22px; font-weight:600; white-space:nowrap; }
+.circuit-model-entry button,.qatar-model-link { background:var(--color-action); color:var(--color-white); border:0; padding:14px 22px; font-weight:500; white-space:nowrap; }
 .qatar-model-link { display:block; margin:18px 0; white-space:normal; text-decoration:none; }
 .qatar-model-link span { display:block; font-size:12px; font-weight:400; margin-top:5px; }
 .circuit-explorer { min-height:100dvh; background:var(--color-surface); color:var(--color-panel); }
 .circuit-explorer-header { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:18px 28px; background:var(--color-ink); color:var(--color-white); border-top:3px solid var(--color-action); }
 .circuit-explorer-header .wordmark { display:flex; align-items:center; gap:14px; color:inherit; text-decoration:none; }
 .circuit-explorer-header .wordmark svg { width:42px; height:38px; }
-.circuit-explorer-header .wordmark>span { font-weight:600; font-size:22px; letter-spacing:.12em; }
+.circuit-explorer-header .wordmark>span { font-weight:500; font-size:22px; letter-spacing:.12em; }
 .circuit-explorer-header .wordmark small { display:block; font-size:10px; letter-spacing:.16em; font-weight:400; margin-top:4px; }
 .circuit-explorer-header>div { display:flex; align-items:center; gap:24px; font-size:13px; }
 .circuit-explorer-header button { border:1px solid var(--color-text-muted); color:inherit; padding:10px 14px; background:none; font-size:14px; }
@@ -5671,7 +5618,7 @@ dialog::backdrop {
 .circuit-model-canvas:focus-visible { outline:2px solid #f1c976; outline-offset:-4px; }
 .circuit-model-heading { position:absolute; top:28px; left:28px; right:28px; pointer-events:none; text-shadow:0 2px 10px #0007; }
 .circuit-model-heading>span { text-transform:uppercase; font-size:13px; letter-spacing:.13em; color:var(--color-divider); }
-.circuit-model-heading h1 { font:700 italic clamp(32px,3.6vw,58px)/1 'Barlow Condensed',sans-serif; text-transform:uppercase; margin:8px 0; max-width:75%; }
+.circuit-model-heading h1 { font:500 italic clamp(32px,3.6vw,58px)/1 'Barlow Condensed',sans-serif; text-transform:uppercase; margin:8px 0; max-width:75%; }
 .circuit-model-heading p { font-size:12px; letter-spacing:.07em; }
 .circuit-camera-modes { position:absolute; top:150px; left:28px; display:flex; padding:4px; border:1px solid var(--color-text-muted); background:#111723e8; gap:2px; }
 .circuit-camera-modes button { color:var(--color-divider); font-size:14px; padding:9px 13px; background:none; border:0; }
@@ -5682,41 +5629,41 @@ dialog::backdrop {
 .circuit-scene-note { position:absolute; bottom:0; left:0; right:0; background:#121824e8; border-top:1px solid var(--color-text-muted); padding:15px 26px; display:flex; gap:15px; justify-content:space-between; color:var(--color-line); font-size:11px; }
 .circuit-model-loading,.circuit-model-fallback { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; font-size:15px; width:min(380px,90%); }
 .circuit-model-loading { background:#151d2be8; border:1px solid var(--color-text-muted); padding:20px; pointer-events:none; }
-.circuit-model-fallback h2 { font:600 34px 'Barlow Condensed',sans-serif; }
+.circuit-model-fallback h2 { font:500 34px 'Barlow Condensed',sans-serif; }
 .circuit-model-fallback p { line-height:1.7; }
 .circuit-model-fallback button { padding:12px; margin:5px; border:1px solid var(--color-control-border); background:var(--color-hover-surface); color:white; }
 .circuit-position-panel { padding:25px 24px 36px; border-left:1px solid var(--color-line); }
-.circuit-panel-heading h2 { font:700 italic 35px/1.1 'Barlow Condensed',sans-serif; margin:7px 0; text-transform:uppercase; }
+.circuit-panel-heading h2 { font:500 italic 35px/1.1 'Barlow Condensed',sans-serif; margin:7px 0; text-transform:uppercase; }
 .circuit-panel-heading>p { font-size:13px; color:var(--color-text-muted); margin:7px 0 20px; }
 .circuit-accuracy { padding:14px 0; border-block:1px solid var(--color-line); margin-bottom:20px; }
 .circuit-accuracy strong { font-size:14px; }
 .circuit-accuracy p,.circuit-bank-facts p { font-size:13px; line-height:1.65; margin:6px 0 0; color:var(--color-text-muted); }
-.circuit-position-panel>label { display:block; font-size:14px; font-weight:600; margin-bottom:7px; }
+.circuit-position-panel>label { display:block; font-size:14px; font-weight:500; margin-bottom:7px; }
 .circuit-position-panel select,.circuit-grid-dialog select { width:100%; background:var(--color-white); border:1px solid var(--color-line); font:inherit; font-size:14px; padding:12px; color:var(--color-raised); }
 .circuit-bank-facts { padding:15px 0 18px; }
 .circuit-bank-facts strong { font-size:13px; }
-.circuit-bank-facts .circuit-eligibility-note { margin:0 0 12px; color:var(--color-action-strong); font-weight:600; }
+.circuit-bank-facts .circuit-eligibility-note { margin:0 0 12px; color:var(--color-action-strong); font-weight:500; }
 .circuit-unmapped-products { margin-top:12px; border-block:1px solid var(--color-line); padding:12px 0; font-size:12px; line-height:1.65; color:var(--color-text-muted); }
-.circuit-unmapped-products summary { min-height:44px; cursor:pointer; color:var(--color-raised); font-weight:600; align-content:center; }
+.circuit-unmapped-products summary { min-height:44px; cursor:pointer; color:var(--color-raised); font-weight:500; align-content:center; }
 .circuit-unmapped-products summary span { margin-left:8px; font-variant-numeric:tabular-nums; }
 .circuit-unmapped-products article { padding:10px 0 18px; }
 .circuit-unmapped-products h4 { margin:0; color:var(--color-raised); font-size:15px; }
-.circuit-source-group h3 { margin:10px 0 16px; padding-top:14px; border-top:1px solid var(--color-line); color:var(--color-text-muted); font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:.09em; }
+.circuit-source-group h3 { margin:10px 0 16px; padding-top:14px; border-top:1px solid var(--color-line); color:var(--color-text-muted); font-size:11px; font-weight:400; text-transform:uppercase; letter-spacing:.09em; }
 .circuit-unmapped-products p { margin:8px 0; }
 .circuit-unmapped-products a { display:inline-block; padding:10px 0; color:var(--color-action-hover); text-underline-offset:4px; }
 .circuit-model-inputs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
 .circuit-model-inputs label { font-size:12px; color:var(--color-text-muted); }
-.circuit-model-inputs input { width:100%; margin:7px 0 4px; padding:10px 7px; color:var(--color-panel); font:600 22px 'Barlow Condensed',sans-serif; border:1px solid var(--color-line); background:white; }
+.circuit-model-inputs input { width:100%; margin:7px 0 4px; padding:10px 7px; color:var(--color-panel); font:500 22px 'Barlow Condensed',sans-serif; border:1px solid var(--color-line); background:white; }
 .circuit-model-inputs small { font-size:11px; }
 .circuit-row-shortcuts { display:flex; gap:6px; margin:16px 0; }
 .circuit-row-shortcuts button { flex:1; border:1px solid var(--color-line); background:var(--color-surface); padding:8px; font-size:13px; }
 .circuit-row-shortcuts button[aria-pressed=true] { border-color:var(--color-action); color:var(--color-action-hover); }
-.circuit-grid-trigger { width:100%; text-align:left; padding:13px; border:1px solid var(--color-control-border); background:var(--color-white); font-size:14px; font-weight:600; }
+.circuit-grid-trigger { width:100%; text-align:left; padding:13px; border:1px solid var(--color-control-border); background:var(--color-white); font-size:14px; font-weight:500; }
 .circuit-grid-trigger span { display:block; font-size:12px; color:var(--color-text-muted); margin-top:4px; font-weight:400; }
 .circuit-view-metrics { display:flex; gap:12px; padding:18px 0; margin:0; border-bottom:1px solid var(--color-line); }
 .circuit-view-metrics>div { flex:1; }
 .circuit-view-metrics dt { font-size:11px; color:var(--color-text-muted); }
-.circuit-view-metrics dd { font:600 28px 'Barlow Condensed',sans-serif; margin:4px 0 0; }
+.circuit-view-metrics dd { font:500 28px 'Barlow Condensed',sans-serif; margin:4px 0 0; }
 .circuit-position-actions { display:flex; gap:8px; margin-top:18px; }
 .circuit-position-actions button { padding:11px 12px; font-size:13px; border:1px solid var(--color-control-border); background:var(--color-white); }
 .circuit-position-actions button:first-child { background:var(--color-raised); color:var(--color-white); flex:1; }
@@ -5730,10 +5677,10 @@ dialog::backdrop {
 .circuit-ticket-options a { display:flex; flex-wrap:wrap; gap:6px 16px; align-items:center; min-height:44px; color:var(--color-action-hover); text-underline-offset:4px; font-size:14px; }
 .circuit-ticket-options a span { color:var(--color-text-muted); font-size:11px; text-decoration:none; }
 .circuit-model-sources { padding:16px 0; border-block:1px solid var(--color-line); font-size:13px; line-height:1.7; }
-.circuit-model-sources summary { font-weight:600; cursor:pointer; }
+.circuit-model-sources summary { font-weight:500; cursor:pointer; }
 .circuit-model-sources a { display:block; color:inherit; margin:9px 0; }
 .circuit-model-count { font-size:12px; line-height:1.7; color:var(--color-text-muted); }
-.circuit-saved h3 { font:600 24px 'Barlow Condensed',sans-serif; margin:18px 0 5px; }
+.circuit-saved h3 { font:500 24px 'Barlow Condensed',sans-serif; margin:18px 0 5px; }
 .circuit-saved p { font-size:12px; color:var(--color-text-muted); }
 .circuit-saved>div { display:flex; border-bottom:1px solid var(--color-line); }
 .circuit-saved button { background:none; border:0; text-align:left; padding:10px 0; font-size:13px; }
@@ -5743,7 +5690,7 @@ dialog::backdrop {
 .circuit-grid-dialog { width:min(1050px,94vw); max-height:90dvh; padding:24px; border:1px solid var(--color-control-border); color:var(--color-panel); background:var(--color-surface); }
 .circuit-grid-dialog::backdrop { background:rgb(var(--color-night-rgb) / 0.788); }
 .circuit-grid-dialog header { display:flex; align-items:start; justify-content:space-between; gap:20px; }
-.circuit-grid-dialog h2 { font:600 32px 'Barlow Condensed',sans-serif; margin:5px 0; }
+.circuit-grid-dialog h2 { font:500 32px 'Barlow Condensed',sans-serif; margin:5px 0; }
 .circuit-grid-dialog p { font-size:13px; line-height:1.6; }
 .circuit-grid-dialog header>button { background:none; border:0; font-size:28px; }
 .circuit-grid-dialog>label { display:block; font-size:13px; margin:10px 0; }
@@ -5798,20 +5745,20 @@ dialog::backdrop {
 .spectator-dialog { width:min(970px,94vw); max-height:92dvh; padding:28px; color:var(--color-panel); background:var(--color-surface); border:1px solid var(--color-control-border); border-top:3px solid var(--color-action); }
 .spectator-dialog::backdrop { background:#070d18d6; }
 .spectator-dialog>header { display:flex; justify-content:space-between; align-items:start; gap:20px; }
-.spectator-dialog h2 { font:600 42px/1.1 'Barlow Condensed',sans-serif; margin:7px 0; }
+.spectator-dialog h2 { font:500 42px/1.1 'Barlow Condensed',sans-serif; margin:7px 0; }
 .spectator-dialog>header p { font-size:14px; color:var(--color-text-muted); margin:8px 0 20px; }
 .spectator-dialog>header>button { border:0; background:none; font-size:30px; padding:0 4px; }
 .spectator-boundary { padding:16px 0; border-block:1px solid var(--color-line); font-size:14px; line-height:1.7; }
 .spectator-boundary p { margin:6px 0 0; color:var(--color-text-muted); }
 .spectator-filters { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:12px; margin:22px 0 16px; }
-.spectator-filters label { font-size:13px; font-weight:600; }
+.spectator-filters label { font-size:13px; font-weight:500; }
 .spectator-filters select { display:block; width:100%; margin-top:7px; padding:11px; border:1px solid var(--color-control-border); background:white; color:var(--color-raised); font:inherit; font-size:14px; }
 .spectator-year-note { font-size:14px; line-height:1.7; padding:12px 15px; background:var(--color-divider); }
 .spectator-result-count { font-size:12px; color:var(--color-text-muted); }
 .spectator-reference { padding:26px 0; border-bottom:1px solid var(--color-line); }
 .spectator-ref-meta { display:flex; gap:7px 16px; flex-wrap:wrap; color:var(--color-text-muted); font-size:11px; letter-spacing:.035em; }
-.spectator-ref-meta span:first-child { color:var(--color-action-hover); font-weight:600; }
-.spectator-reference h3 { font:600 29px/1.2 'Barlow Condensed',sans-serif; margin:9px 0 6px; }
+.spectator-ref-meta span:first-child { color:var(--color-action-hover); font-weight:500; }
+.spectator-reference h3 { font:500 29px/1.2 'Barlow Condensed',sans-serif; margin:9px 0 6px; }
 .spectator-byline { font-size:13px; color:var(--color-text-muted); margin:0 0 17px; }
 .spectator-reference>p:not(.spectator-byline) { font-size:15px; line-height:1.8; max-width:760px; }
 .spectator-ref-location { padding:12px 15px; background:var(--color-divider); font-size:13px; line-height:1.6; }
@@ -5829,9 +5776,9 @@ dialog::backdrop {
 .spectator-embed-host iframe { max-width:100% !important; }
 .spectator-original .spectator-unload { margin-top:10px; background:none; color:var(--color-text-strong); border:1px solid var(--color-line); font-size:12px; padding:7px 10px; }
 .spectator-video { display:block; width:100%; aspect-ratio:16/9; border:0; background:var(--color-panel); }
-.spectator-source-link { display:inline-block; color:var(--color-action-hover); font-size:14px; font-weight:600; text-underline-offset:4px; padding:4px 0; }
+.spectator-source-link { display:inline-block; color:var(--color-action-hover); font-size:14px; font-weight:500; text-underline-offset:4px; padding:4px 0; }
 .spectator-empty { padding:28px 0; }
-.spectator-empty h3 { font:600 28px 'Barlow Condensed',sans-serif; }
+.spectator-empty h3 { font:500 28px 'Barlow Condensed',sans-serif; }
 .spectator-empty p { font-size:14px; line-height:1.7; color:var(--color-text-muted); }
 .spectator-dialog>footer { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-top:22px; }
 .spectator-dialog>footer p { max-width:620px; font-size:12px; line-height:1.7; color:var(--color-text-muted); }
@@ -5850,21 +5797,21 @@ dialog::backdrop {
 .historical-replay .replay-photo-link { margin-top:10px; padding:7px 10px; font-size:12px; }
 .historical-replay.replay-compact { max-height:255px; }
 
-.circuit-overview-trigger { width:100%; text-align:left; padding:14px; margin:0 0 22px; border:1px solid var(--color-line); background:var(--color-divider); color:var(--color-raised); font:600 14px 'IBM Plex Sans',sans-serif; }
+.circuit-overview-trigger { width:100%; text-align:left; padding:14px; margin:0 0 22px; border:1px solid var(--color-line); background:var(--color-divider); color:var(--color-raised); font:500 14px 'IBM Plex Sans',sans-serif; }
 .circuit-overview-trigger span { display:block; margin-top:5px; font-weight:400; line-height:1.5; }
 .circuit-overview-dialog { width:min(1100px,94vw); max-height:92dvh; padding:24px; border:1px solid var(--color-control-border); color:var(--color-panel); background:var(--color-surface); }
 .circuit-overview-dialog::backdrop { background:rgb(var(--color-night-rgb) / 0.788); }
 .circuit-overview-dialog header { display:flex; justify-content:space-between; gap:18px; }
-.circuit-overview-dialog h2 { font:600 36px 'Barlow Condensed',sans-serif; margin:5px 0; }
+.circuit-overview-dialog h2 { font:500 36px 'Barlow Condensed',sans-serif; margin:5px 0; }
 .circuit-overview-dialog p { font-size:14px; line-height:1.6; margin:5px 0 14px; }
 .circuit-overview-dialog header>button { border:0; background:none; color:inherit; font-size:28px; min-width:44px; height:44px; }
 .circuit-overview-layout { display:grid; grid-template-columns:minmax(0,1fr) 285px; border-block:1px solid var(--color-line); }
 .circuit-overview-drawing { position:relative; min-width:0; padding:18px 18px 12px 0; }
 .circuit-overview-drawing svg { display:block; width:100%; height:480px; background:var(--color-surface); }
-.circuit-overview-north { position:absolute; top:32px; left:14px; font:600 14px 'IBM Plex Sans',sans-serif; }
+.circuit-overview-north { position:absolute; top:32px; left:14px; font:500 14px 'IBM Plex Sans',sans-serif; }
 .circuit-overview-legend { display:flex; flex-wrap:wrap; gap:6px 18px; padding-top:12px; font-size:13px; color:var(--color-text-muted); }
 .circuit-overview-banks { padding:18px 0 18px 18px; border-left:1px solid var(--color-line); }
-.circuit-overview-banks h3 { margin:0; font:600 24px 'Barlow Condensed',sans-serif; }
+.circuit-overview-banks h3 { margin:0; font:500 24px 'Barlow Condensed',sans-serif; }
 .circuit-overview-banks button { display:flex; align-items:center; gap:12px; width:100%; padding:10px 6px; border:0; border-bottom:1px solid var(--color-line); background:transparent; color:var(--color-raised); text-align:left; min-height:54px; }
 .circuit-overview-banks button>span { display:grid; place-items:center; flex:0 0 25px; height:25px; background:var(--color-raised); color:white; font-size:14px; }
 .circuit-overview-banks button[aria-pressed=true] { background:var(--color-white); }
@@ -5894,14 +5841,14 @@ dialog::backdrop {
 @media(max-width:760px) { .circuit-model-stage.mode-circuit { height:88dvh; min-height:660px; } }
 
 .circuit-seat-zoom { position:absolute; top:94px; right:24px; display:flex; flex-direction:column; gap:5px; z-index:2; }
-.circuit-seat-zoom button { display:grid; place-items:center; width:44px; height:44px; padding:0; border:1px solid var(--color-control-border); background:#111723ed; color:var(--color-white); font:500 23px 'IBM Plex Sans',sans-serif; }
+.circuit-seat-zoom button { display:grid; place-items:center; width:44px; height:44px; padding:0; border:1px solid var(--color-control-border); background:#111723ed; color:var(--color-white); font:400 23px 'IBM Plex Sans',sans-serif; }
 .circuit-seat-zoom button:nth-child(2) { font-size:14px; }
 .circuit-seat-zoom button:disabled { opacity:.4; cursor:not-allowed; }
 .circuit-seat-zoom button:hover:not(:disabled) { background:var(--color-hover-surface); color:var(--color-white); }
 @media(max-width:760px) { .circuit-seat-zoom { top:202px; right:18px; } }
 
 .jeddah-source-reference { margin-top:24px; padding-top:20px; border-top:1px solid var(--color-line); }
-.jeddah-source-reference h3 { font:600 27px 'Barlow Condensed',sans-serif; margin:0 0 10px; }
+.jeddah-source-reference h3 { font:500 27px 'Barlow Condensed',sans-serif; margin:0 0 10px; }
 .jeddah-source-reference ul { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 28px; padding-left:20px; margin:20px 0; font-size:14px; line-height:1.5; }
 .jeddah-source-reference small { display:block; margin-top:14px; font-size:12px; line-height:1.6; color:var(--color-text-muted); }
 @media(max-width:600px) { .jeddah-source-reference ul { grid-template-columns:1fr; } }
@@ -5911,7 +5858,7 @@ dialog::backdrop {
 .circuit-model-stage.day-scene .circuit-model-heading>span { color:var(--color-text-strong); }
 
 .spectator-official-view { padding:20px 0; border-bottom:1px solid var(--color-line); }
-.spectator-official-view h3 { font:600 26px 'Barlow Condensed',sans-serif; margin:0 0 8px; }
+.spectator-official-view h3 { font:500 26px 'Barlow Condensed',sans-serif; margin:0 0 8px; }
 .spectator-official-view p { color:var(--color-text-muted); font-size:14px; line-height:1.65; margin:0 0 14px; }
 .spectator-official-view .spectator-source-link { display:inline-block; }
 .suzuka-ticket-desk .suzuka-facts { display: grid; gap: 16px; margin: 24px 0; }
@@ -5931,7 +5878,7 @@ dialog::backdrop {
 
 .suzuka-seat-reference { padding: 20px 0; margin-bottom: 20px; border-top: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); }
 .suzuka-seat-reference h4 { margin: 0 0 10px; font-size: 16px; }
-.suzuka-seat-reference a { display: inline-flex; align-items: center; min-height: 44px; margin: 8px 0; color: var(--color-action-hover); font-weight: 600; }
+.suzuka-seat-reference a { display: inline-flex; align-items: center; min-height: 44px; margin: 8px 0; color: var(--color-action-hover); font-weight: 500; }
 .suzuka-seat-reference small { display: block; font-size: 12px; line-height: 1.6; color: var(--color-text-muted); }
 
 .monaco-ticket-desk .map-label { text-anchor: middle; }
@@ -5948,7 +5895,7 @@ dialog::backdrop {
 .austria-hopping table { width: 100%; min-width: 660px; border-collapse: collapse; margin: 16px 0; color: var(--color-raised); }
 .austria-hopping th, .austria-hopping td { padding: 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--color-line); line-height: 1.5; }
 .austria-hopping thead th { color: var(--color-text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
-.austria-hopping tbody th { width: 30%; font-weight: 600; }
+.austria-hopping tbody th { width: 30%; font-weight: 500; }
 .austria-hopping > a { display: inline-flex; align-items: center; min-height: 44px; }
 .austria-hopping .comparison-scroll-hint { display: none; }
 @media (max-width: 700px) { .austria-hopping .comparison-scroll-hint { display: block; font-size: 12px; color: var(--color-text-muted); } }
@@ -5988,7 +5935,7 @@ dialog::backdrop {
 .route-notice { margin: 24px 0; }
 .route-not-found { margin: 32px 0; }
 .route-not-found h1,
-.app-recovery h1 { font: 600 40px/1.1 "Barlow Condensed", sans-serif; margin: 0 0 16px; }
+.app-recovery h1 { font: 500 40px/1.1 "Barlow Condensed", sans-serif; margin: 0 0 16px; }
 .app-recovery { margin: 10vh auto; max-width: 720px; width: calc(100% - 32px); }
 .app-recovery div { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 .route-not-found button,
@@ -6042,7 +5989,7 @@ dialog::backdrop {
   justify-content: space-between;
   gap: 20px;
 }
-.circuit-brief h2 { font: 600 34px/1.1 "Barlow Condensed", sans-serif; margin: 0; }
+.circuit-brief h2 { font: 500 34px/1.1 "Barlow Condensed", sans-serif; margin: 0; }
 .circuit-brief-location { color: var(--color-text-muted); font-size: 14px; margin: 8px 0 0; }
 .circuit-brief-coverage { color: var(--color-text-strong); border: 1px solid var(--color-line); padding: 8px 10px; font-size: 12px; flex-shrink: 0; }
 .circuit-brief-overview { max-width: 76ch; font-size: 16px; line-height: 1.65; margin: 22px 0 28px; color: var(--color-text-strong); }
@@ -6050,7 +5997,7 @@ dialog::backdrop {
 .circuit-brief h3 { font-size: 16px; line-height: 1.4; margin: 0 0 16px; }
 .circuit-viewing-choices { margin: 0; }
 .circuit-viewing-choices > div { display: grid; grid-template-columns: minmax(110px, .7fr) minmax(0, 1.5fr); gap: 20px; padding: 17px 0; border-top: 1px solid var(--color-divider); }
-.circuit-viewing-choices dt { font-size: 14px; font-weight: 600; line-height: 1.5; }
+.circuit-viewing-choices dt { font-size: 14px; font-weight: 500; line-height: 1.5; }
 .circuit-viewing-choices dd { font-size: 14px; line-height: 1.65; color: var(--color-text-strong); margin: 0; }
 .circuit-brief-checks { padding-left: 28px; border-left: 1px solid var(--color-divider); }
 .circuit-brief-checks > p { font-size: 14px; line-height: 1.65; color: var(--color-text-strong); margin: 0 0 18px; }
@@ -6082,7 +6029,7 @@ dialog::backdrop {
   padding: 12px 0;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .ticket-options[open] > summary { margin-bottom: 16px; }
 .calendar-source > summary { color: var(--color-text-strong); }

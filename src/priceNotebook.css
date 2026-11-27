@@ -8,7 +8,7 @@
 .price-notebook button:hover {background:var(--color-divider); color:var(--color-panel);}
 .price-notebook .price-primary {background:var(--color-action); border-color:var(--color-action); color:var(--color-white);}
 .price-notebook .price-primary:hover {background:var(--color-action-hover); color:var(--color-white);}
-.price-notebook label {display:block; font-size:12px; font-weight:600; margin:0 0 10px;}
+.price-notebook label {display:block; font-size:12px; font-weight:500; margin:0 0 10px;}
 .price-notebook label>input:not([type=checkbox]),.price-notebook label>select,.price-history>select {display:block; width:100%; margin-top:7px; min-width:0;}
 .price-local-note {display:flex; gap:8px; align-items:center; padding-bottom:20px; border-bottom:1px solid var(--color-line); color:var(--color-text-muted);}
 .price-local-note .ui-icon {flex-shrink:0;}
@@ -32,7 +32,7 @@
 .price-decision>.price-primary,.price-decision>a {width:100%; min-height:44px; margin:6px 0;}
 .price-decision>a {font-size:13px; border:1px solid var(--color-control-border); padding:10px; color:var(--color-panel); text-decoration:none;}
 .price-decision>a:hover {background:var(--color-divider);}
-.price-notebook .price-target-state {font-weight:600;}
+.price-notebook .price-target-state {font-weight:500;}
 .price-quotes {border-block:1px solid var(--color-line); padding:14px 0;}
 .price-quotes summary {display:flex; gap:12px; justify-content:space-between; font-size:13px; cursor:pointer;}
 .price-quotes ul {list-style:none; padding:0; max-height:340px; overflow:auto;}
@@ -63,7 +63,5 @@
  .price-quotes li {gap:8px;}
 }
 @media(max-width:380px) {.price-form-pair {grid-template-columns:1fr; gap:0;} .price-empty {align-items:start; gap:12px;} .price-empty>.ui-icon {width:28px;height:28px;flex-basis:28px;}}
-
-.price-notebook .eyebrow {color:var(--color-text-muted);}
 .price-date-guidance {font-size:12px;line-height:1.65;color:var(--color-text-muted);}
 .price-date-guidance a {color:var(--color-action-strong);text-underline-offset:3px;}

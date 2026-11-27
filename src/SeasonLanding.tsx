@@ -23,7 +23,6 @@ export default function SeasonLanding({season,onRace,onBrowse}:{season:Season;on
   return <>
     <section ref={hero} className="season-landing" aria-labelledby="season-landing-title" data-preview="circuit" data-live={liveReady&&!liveFailed}>
       <div className="season-landing-copy">
-        <span className="hero-eyebrow">BEFORE THE GRAND PRIX</span>
         <h1 id="season-landing-title">Know the track.<br/><em>Choose your view.</em></h1>
         <p>Explore circuits and grandstands before you choose your ticket.</p>
         <div className="hero-actions"><button className="landing-primary" onClick={onBrowse}>Explore races<UiIcon name="arrow"/></button></div>
