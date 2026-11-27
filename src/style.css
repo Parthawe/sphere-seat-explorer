@@ -1,5 +1,5 @@
 :root {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-ui);
   color: var(--color-paper);
   background: var(--color-ink);
   font-size: 14px;
@@ -207,7 +207,7 @@ h3 {
   color: white;
 }
 .scene-heading h1 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-size: clamp(50px, 5.3vw, 80px);
   font-weight: 500;
   font-style: italic;
@@ -236,7 +236,7 @@ h3 {
   font-size: 32px;
 }
 .mode-seat .scene-heading h1 > span {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-ui);
   font-style: normal;
   font-size: 15px;
   letter-spacing: 0.03em;
@@ -440,7 +440,7 @@ h3 {
   border-bottom: 1px solid var(--color-divider);
 }
 .panel-intro h2 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-size: 34px;
   font-weight: 500;
   font-style: italic;
@@ -451,7 +451,7 @@ h3 {
   gap: 12px;
 }
 .panel-edition {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-ui);
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
@@ -869,7 +869,7 @@ dialog::backdrop {
   gap: 20px;
 }
 .dialog-header h2 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-style: italic;
   font-size: 36px;
   font-weight: 500;
@@ -917,7 +917,7 @@ dialog::backdrop {
   padding: 19px;
 }
 .comparison-detail h3 {
-  font-family: "Barlow Condensed";
+  font-family: var(--font-ui);
   font-size: 27px;
   font-weight: 500;
   margin: 8px 0;
@@ -2282,7 +2282,7 @@ dialog::backdrop {
 }
 .season-heading h1,
 .race-detail-heading h1 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-size: clamp(48px, 5.7vw, 82px);
   font-weight: 500;
   line-height: 0.96;
@@ -2301,7 +2301,7 @@ dialog::backdrop {
   margin: 24px 0 0;
 }
 .season-year {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 500;
   font-style: italic;
   font-size: clamp(110px, 15vw, 220px);
@@ -2331,7 +2331,7 @@ dialog::backdrop {
 }
 .race-feature-strip h2,
 .vegas-feature h2 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-style: italic;
   text-transform: uppercase;
   font-size: 38px;
@@ -2360,13 +2360,13 @@ dialog::backdrop {
 .calendar-toolbar h2,
 .ticket-options > h2,
 .other-races > h2 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   text-transform: uppercase;
   font-size: 32px;
   margin: 0;
 }
 .calendar-toolbar h2 span {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-ui);
   text-transform: none;
   font-weight: 400;
   font-size: 14px;
@@ -2442,14 +2442,14 @@ dialog::backdrop {
   background: var(--color-surface);
 }
 .race-round {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-size: 26px;
   font-weight: 500;
   color: var(--color-text-muted);
   font-variant-numeric: tabular-nums;
 }
 .race-row strong {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-size: 26px;
   font-weight: 500;
 }
@@ -2533,7 +2533,7 @@ dialog::backdrop {
 }
 .race-detail-heading h1 > span {
   display: block;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-ui);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -2672,7 +2672,7 @@ dialog::backdrop {
 }
 .other-races button strong {
   display: block;
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-size: 26px;
   margin-top: 10px;
 }
@@ -3199,7 +3199,7 @@ dialog::backdrop {
   gap: 30px;
 }
 .atlas-intro h1 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-size: 56px;
   line-height: 1;
   font-weight: 500;
@@ -3222,7 +3222,7 @@ dialog::backdrop {
   flex: none;
 }
 .atlas-edition strong {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-size: 54px;
   font-weight: 500;
   font-style: italic;
@@ -3274,7 +3274,7 @@ dialog::backdrop {
   gap: 20px;
 }
 .atlas-map-title h2 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-size: 26px;
   text-transform: uppercase;
 }
@@ -3343,7 +3343,7 @@ dialog::backdrop {
   font-size: 12px;
 }
 .atlas-area-detail h2 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-size: 32px;
   line-height: 1.06;
   margin-top: 12px;
@@ -3423,7 +3423,7 @@ dialog::backdrop {
 .atlas-planning h2,
 .sphere-official-levels h2,
 .sphere-interior-intro h2 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   text-transform: uppercase;
   font-size: 32px;
 }
@@ -3990,7 +3990,7 @@ dialog::backdrop {
   align-items: center;
 }
 .bowl-section-plan h2 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   font-size: 30px;
   text-transform: uppercase;
 }
@@ -4202,8 +4202,7 @@ dialog::backdrop {
 }
 .ticket-intro h1 {
   font:
-    500 clamp(64px, 7.6vw, 110px) / 0.91 "Barlow Condensed",
-    sans-serif;
+    500 clamp(64px, 7.6vw, 110px) / 0.91 var(--font-ui);
   letter-spacing: -0.018em;
   text-transform: uppercase;
   margin: 0 0 24px;
@@ -4232,8 +4231,7 @@ dialog::backdrop {
 }
 .next-race-stamp strong {
   font:
-    500 72px/0.95 "Barlow Condensed",
-    sans-serif;
+    500 72px/0.95 var(--font-ui);
   letter-spacing: 0.02em;
 }
 .next-race-stamp a {
@@ -4252,8 +4250,7 @@ dialog::backdrop {
 }
 .ticket-desk h2 {
   font:
-    500 34px/1.1 "Barlow Condensed",
-    sans-serif;
+    500 34px/1.1 var(--font-ui);
   margin: 0;
 }
 .desk-coverage {
@@ -4295,22 +4292,19 @@ dialog::backdrop {
 }
 .map-micro {
   font:
-    10px "IBM Plex Sans",
-    sans-serif;
+    10px var(--font-ui);
   letter-spacing: 1px;
   fill: var(--color-line);
 }
 .map-watermark {
   font:
-    500 47px "Barlow Condensed",
-    sans-serif;
+    500 47px var(--font-ui);
   letter-spacing: 7px;
   fill: var(--color-text-muted);
 }
 .map-label {
   font:
-    500 15px "IBM Plex Sans",
-    sans-serif;
+    500 15px var(--font-ui);
   fill: var(--color-line);
   paint-order: stroke;
   stroke: var(--color-ink);
@@ -4361,8 +4355,7 @@ dialog::backdrop {
   color: var(--color-divider);
   padding: 10px 15px;
   font:
-    400 14px "IBM Plex Sans",
-    sans-serif;
+    400 14px var(--font-ui);
   cursor: pointer;
 }
 .map-area-controls button:hover {
@@ -4412,8 +4405,7 @@ dialog::backdrop {
 }
 .ticket-panel h3 {
   font:
-    500 33px/1.05 "Barlow Condensed",
-    sans-serif;
+    500 33px/1.05 var(--font-ui);
   margin: 0 0 14px;
 }
 .ticket-panel p {
@@ -4429,8 +4421,7 @@ dialog::backdrop {
 }
 .ticket-desk select {
   font:
-    400 15px "IBM Plex Sans",
-    sans-serif;
+    400 15px var(--font-ui);
   border: 1px solid var(--color-line);
   background-color: white;
   color: var(--color-ink);
@@ -4497,8 +4488,7 @@ dialog::backdrop {
 }
 .reference-price strong {
   font:
-    500 34px/1.2 "Barlow Condensed",
-    sans-serif;
+    500 34px/1.2 var(--font-ui);
   margin-top: 4px;
 }
 .reference-price a {
@@ -4545,8 +4535,7 @@ dialog::backdrop {
   min-height: 105px;
   resize: vertical;
   font:
-    400 15px/1.5 "IBM Plex Sans",
-    sans-serif;
+    400 15px/1.5 var(--font-ui);
   border: 1px solid var(--color-control-border);
   border-radius: 0;
   padding: 12px;
@@ -4614,8 +4603,7 @@ dialog::backdrop {
 }
 .area-comparison h2 span {
   font:
-    400 16px "IBM Plex Sans",
-    sans-serif;
+    400 16px var(--font-ui);
   color: var(--color-text-muted);
   margin-left: 8px;
 }
@@ -4688,8 +4676,7 @@ dialog::backdrop {
   display: grid;
   place-items: center;
   font:
-    500 19px "Barlow Condensed",
-    sans-serif;
+    500 19px var(--font-ui);
 }
 .seller-type {
   font-size: 12px;
@@ -4697,8 +4684,7 @@ dialog::backdrop {
 }
 .seller-row h3 {
   font:
-    500 26px "Barlow Condensed",
-    sans-serif;
+    500 26px var(--font-ui);
   line-height: 1.1;
   margin: 4px 0 6px;
 }
@@ -5050,8 +5036,7 @@ dialog::backdrop {
 }
 .remaining-races h2 {
   font:
-    500 32px "Barlow Condensed",
-    sans-serif;
+    500 32px var(--font-ui);
   margin: 0;
 }
 .remaining-races .section-line > span {
@@ -5091,8 +5076,7 @@ dialog::backdrop {
 }
 .remaining-races strong {
   font:
-    500 30px "Barlow Condensed",
-    sans-serif;
+    500 30px var(--font-ui);
 }
 .verified-event-links {
   display: flex;
@@ -5155,8 +5139,7 @@ dialog::backdrop {
   background: var(--color-ink);
   color: white;
   font:
-    400 14px "IBM Plex Sans",
-    sans-serif;
+    400 14px var(--font-ui);
   min-height: 46px;
   cursor: pointer;
 }
@@ -5477,8 +5460,7 @@ dialog::backdrop {
 .singapore-zone-access strong {
   display: block;
   font:
-    500 25px "Barlow Condensed",
-    sans-serif;
+    500 25px var(--font-ui);
   margin: 5px 0;
 }
 .ticket-panel .singapore-zone-access p {
@@ -5500,8 +5482,7 @@ dialog::backdrop {
 }
 .singapore-pilot-link h2 {
   font:
-    500 32px "Barlow Condensed",
-    sans-serif;
+    500 32px var(--font-ui);
   margin: 0 0 10px;
 }
 .singapore-pilot-link p {
@@ -5541,7 +5522,7 @@ dialog::backdrop {
 /* Historical archive controls share the seat explorer's race timing language. */
 .historical-replay { position:absolute; z-index:12; left:24px; top:155px; width:370px; max-height:calc(100% - 180px); overflow:auto; background:var(--color-ink); color:var(--color-surface); border:1px solid var(--color-text-muted); border-top:3px solid var(--color-action); padding:18px; box-shadow:0 12px 40px #0006; }
 .historical-replay header { display:flex; justify-content:space-between; align-items:start; gap:12px; }
-.historical-replay h2 { font:500 32px/1.1 'Barlow Condensed',sans-serif; margin:5px 0 16px; }
+.historical-replay h2 { font:500 32px/1.1 var(--font-ui); margin:5px 0 16px; }
 .historical-replay button,.historical-replay select { font:inherit; font-size:14px; color:inherit; border:1px solid var(--color-text-muted); background:var(--color-raised); padding:8px; border-radius:2px; cursor:pointer; }
 .historical-replay button:hover { background:var(--color-hover-surface); }
 .historical-replay .replay-close { font-size:26px; line-height:1; border:0; background:none; padding:0 5px; }
@@ -5552,9 +5533,9 @@ dialog::backdrop {
 .replay-track { width:100px; height:150px; overflow:visible; }
 .replay-driver label { display:block; margin-bottom:5px; font-size:13px; }
 .replay-driver select { width:100%; }
-.replay-driver>strong { display:block; font:500 28px 'Barlow Condensed',sans-serif; margin-top:9px; }
+.replay-driver>strong { display:block; font:500 28px var(--font-ui); margin-top:9px; }
 .replay-driver strong span { color:var(--color-paper); margin-left:9px; }
-.replay-driver strong small { font:400 13px 'IBM Plex Sans',sans-serif; }
+.replay-driver strong small { font:400 13px var(--font-ui); }
 .replay-driver p { font-size:12px; line-height:1.6; margin:5px 0 0; }
 .replay-timeline label { display:flex; justify-content:space-between; font-size:13px; }
 .replay-timeline output { font-variant-numeric:tabular-nums; }
@@ -5590,7 +5571,7 @@ dialog::backdrop {
 
 /* Circuit seating studies: geographic models, explicit modeled-position controls. */
 .circuit-model-entry { display:flex; align-items:center; justify-content:space-between; gap:32px; background:var(--color-panel); color:var(--color-paper); padding:28px 32px; margin:24px 0; border-top:3px solid var(--color-action); }
-.circuit-model-entry h2 { font:500 34px/1.15 'Barlow Condensed',sans-serif; margin:8px 0; }
+.circuit-model-entry h2 { font:500 34px/1.15 var(--font-ui); margin:8px 0; }
 .circuit-model-entry p { max-width:690px; font-size:15px; line-height:1.7; color:var(--color-line); }
 .circuit-model-entry button,.qatar-model-link { background:var(--color-action); color:var(--color-white); border:0; padding:14px 22px; font-weight:500; white-space:nowrap; }
 .qatar-model-link { display:block; margin:18px 0; white-space:normal; text-decoration:none; }
@@ -5609,7 +5590,7 @@ dialog::backdrop {
 .circuit-model-canvas:focus-visible { outline:2px solid #f1c976; outline-offset:-4px; }
 .circuit-model-heading { position:absolute; top:28px; left:28px; right:28px; pointer-events:none; text-shadow:0 2px 10px #0007; }
 .circuit-model-heading>span { text-transform:uppercase; font-size:13px; letter-spacing:.13em; color:var(--color-divider); }
-.circuit-model-heading h1 { font:500 italic clamp(32px,3.6vw,58px)/1 'Barlow Condensed',sans-serif; text-transform:uppercase; margin:8px 0; max-width:75%; }
+.circuit-model-heading h1 { font:500 clamp(32px,3.6vw,58px)/1 var(--font-ui); text-transform:uppercase; margin:8px 0; max-width:75%; }
 .circuit-model-heading p { font-size:12px; letter-spacing:.07em; }
 .circuit-camera-modes { position:absolute; top:150px; left:28px; display:flex; padding:4px; border:1px solid var(--color-text-muted); background:#111723e8; gap:2px; }
 .circuit-camera-modes button { color:var(--color-divider); font-size:14px; padding:9px 13px; background:none; border:0; }
@@ -5620,11 +5601,11 @@ dialog::backdrop {
 .circuit-scene-note { position:absolute; bottom:0; left:0; right:0; background:#121824e8; border-top:1px solid var(--color-text-muted); padding:15px 26px; display:flex; gap:15px; justify-content:space-between; color:var(--color-line); font-size:11px; }
 .circuit-model-loading,.circuit-model-fallback { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; font-size:15px; width:min(380px,90%); }
 .circuit-model-loading { background:#151d2be8; border:1px solid var(--color-text-muted); padding:20px; pointer-events:none; }
-.circuit-model-fallback h2 { font:500 34px 'Barlow Condensed',sans-serif; }
+.circuit-model-fallback h2 { font:500 34px var(--font-ui); }
 .circuit-model-fallback p { line-height:1.7; }
 .circuit-model-fallback button { padding:12px; margin:5px; border:1px solid var(--color-control-border); background:var(--color-hover-surface); color:white; }
 .circuit-position-panel { padding:25px 24px 36px; border-left:1px solid var(--color-line); }
-.circuit-panel-heading h2 { font:500 italic 35px/1.1 'Barlow Condensed',sans-serif; margin:7px 0; text-transform:uppercase; }
+.circuit-panel-heading h2 { font:500 35px/1.1 var(--font-ui); margin:7px 0; text-transform:uppercase; }
 .circuit-panel-heading>p { font-size:13px; color:var(--color-text-muted); margin:7px 0 20px; }
 .circuit-accuracy { padding:14px 0; border-block:1px solid var(--color-line); margin-bottom:20px; }
 .circuit-accuracy strong { font-size:14px; }
@@ -5644,7 +5625,7 @@ dialog::backdrop {
 .circuit-unmapped-products a { display:inline-block; padding:10px 0; color:var(--color-action-hover); text-underline-offset:4px; }
 .circuit-model-inputs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
 .circuit-model-inputs label { font-size:12px; color:var(--color-text-muted); }
-.circuit-model-inputs input { width:100%; margin:7px 0 4px; padding:10px 7px; color:var(--color-panel); font:500 22px 'Barlow Condensed',sans-serif; border:1px solid var(--color-line); background:white; }
+.circuit-model-inputs input { width:100%; margin:7px 0 4px; padding:10px 7px; color:var(--color-panel); font:500 22px var(--font-ui); border:1px solid var(--color-line); background:white; }
 .circuit-model-inputs small { font-size:11px; }
 .circuit-row-shortcuts { display:flex; gap:6px; margin:16px 0; }
 .circuit-row-shortcuts button { flex:1; border:1px solid var(--color-line); background:var(--color-surface); padding:8px; font-size:13px; }
@@ -5654,7 +5635,7 @@ dialog::backdrop {
 .circuit-view-metrics { display:flex; gap:12px; padding:18px 0; margin:0; border-bottom:1px solid var(--color-line); }
 .circuit-view-metrics>div { flex:1; }
 .circuit-view-metrics dt { font-size:11px; color:var(--color-text-muted); }
-.circuit-view-metrics dd { font:500 28px 'Barlow Condensed',sans-serif; margin:4px 0 0; }
+.circuit-view-metrics dd { font:500 28px var(--font-ui); margin:4px 0 0; }
 .circuit-position-actions { display:flex; gap:8px; margin-top:18px; }
 .circuit-position-actions button { padding:11px 12px; font-size:13px; border:1px solid var(--color-control-border); background:var(--color-white); }
 .circuit-position-actions button:first-child { background:var(--color-raised); color:var(--color-white); flex:1; }
@@ -5671,7 +5652,7 @@ dialog::backdrop {
 .circuit-model-sources summary { font-weight:500; cursor:pointer; }
 .circuit-model-sources a { display:block; color:inherit; margin:9px 0; }
 .circuit-model-count { font-size:12px; line-height:1.7; color:var(--color-text-muted); }
-.circuit-saved h3 { font:500 24px 'Barlow Condensed',sans-serif; margin:18px 0 5px; }
+.circuit-saved h3 { font:500 24px var(--font-ui); margin:18px 0 5px; }
 .circuit-saved p { font-size:12px; color:var(--color-text-muted); }
 .circuit-saved>div { display:flex; border-bottom:1px solid var(--color-line); }
 .circuit-saved button { background:none; border:0; text-align:left; padding:10px 0; font-size:13px; }
@@ -5681,7 +5662,7 @@ dialog::backdrop {
 .circuit-grid-dialog { width:min(1050px,94vw); max-height:90dvh; padding:24px; border:1px solid var(--color-control-border); color:var(--color-panel); background:var(--color-surface); }
 .circuit-grid-dialog::backdrop { background:rgb(var(--color-night-rgb) / 0.788); }
 .circuit-grid-dialog header { display:flex; align-items:start; justify-content:space-between; gap:20px; }
-.circuit-grid-dialog h2 { font:500 32px 'Barlow Condensed',sans-serif; margin:5px 0; }
+.circuit-grid-dialog h2 { font:500 32px var(--font-ui); margin:5px 0; }
 .circuit-grid-dialog p { font-size:13px; line-height:1.6; }
 .circuit-grid-dialog header>button { background:none; border:0; font-size:28px; }
 .circuit-grid-dialog>label { display:block; font-size:13px; margin:10px 0; }
@@ -5736,7 +5717,7 @@ dialog::backdrop {
 .spectator-dialog { width:min(970px,94vw); max-height:92dvh; padding:28px; color:var(--color-panel); background:var(--color-surface); border:1px solid var(--color-control-border); border-top:3px solid var(--color-action); }
 .spectator-dialog::backdrop { background:#070d18d6; }
 .spectator-dialog>header { display:flex; justify-content:space-between; align-items:start; gap:20px; }
-.spectator-dialog h2 { font:500 42px/1.1 'Barlow Condensed',sans-serif; margin:7px 0; }
+.spectator-dialog h2 { font:500 42px/1.1 var(--font-ui); margin:7px 0; }
 .spectator-dialog>header p { font-size:14px; color:var(--color-text-muted); margin:8px 0 20px; }
 .spectator-dialog>header>button { border:0; background:none; font-size:30px; padding:0 4px; }
 .spectator-boundary { padding:16px 0; border-block:1px solid var(--color-line); font-size:14px; line-height:1.7; }
@@ -5749,7 +5730,7 @@ dialog::backdrop {
 .spectator-reference { padding:26px 0; border-bottom:1px solid var(--color-line); }
 .spectator-ref-meta { display:flex; gap:7px 16px; flex-wrap:wrap; color:var(--color-text-muted); font-size:11px; letter-spacing:.035em; }
 .spectator-ref-meta span:first-child { color:var(--color-action-hover); font-weight:500; }
-.spectator-reference h3 { font:500 29px/1.2 'Barlow Condensed',sans-serif; margin:9px 0 6px; }
+.spectator-reference h3 { font:500 29px/1.2 var(--font-ui); margin:9px 0 6px; }
 .spectator-byline { font-size:13px; color:var(--color-text-muted); margin:0 0 17px; }
 .spectator-reference>p:not(.spectator-byline) { font-size:15px; line-height:1.8; max-width:760px; }
 .spectator-ref-location { padding:12px 15px; background:var(--color-divider); font-size:13px; line-height:1.6; }
@@ -5769,7 +5750,7 @@ dialog::backdrop {
 .spectator-video { display:block; width:100%; aspect-ratio:16/9; border:0; background:var(--color-panel); }
 .spectator-source-link { display:inline-block; color:var(--color-action-hover); font-size:14px; font-weight:500; text-underline-offset:4px; padding:4px 0; }
 .spectator-empty { padding:28px 0; }
-.spectator-empty h3 { font:500 28px 'Barlow Condensed',sans-serif; }
+.spectator-empty h3 { font:500 28px var(--font-ui); }
 .spectator-empty p { font-size:14px; line-height:1.7; color:var(--color-text-muted); }
 .spectator-dialog>footer { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-top:22px; }
 .spectator-dialog>footer p { max-width:620px; font-size:12px; line-height:1.7; color:var(--color-text-muted); }
@@ -5788,21 +5769,21 @@ dialog::backdrop {
 .historical-replay .replay-photo-link { margin-top:10px; padding:7px 10px; font-size:12px; }
 .historical-replay.replay-compact { max-height:255px; }
 
-.circuit-overview-trigger { width:100%; text-align:left; padding:14px; margin:0 0 22px; border:1px solid var(--color-line); background:var(--color-divider); color:var(--color-raised); font:500 14px 'IBM Plex Sans',sans-serif; }
+.circuit-overview-trigger { width:100%; text-align:left; padding:14px; margin:0 0 22px; border:1px solid var(--color-line); background:var(--color-divider); color:var(--color-raised); font:500 14px var(--font-ui); }
 .circuit-overview-trigger span { display:block; margin-top:5px; font-weight:400; line-height:1.5; }
 .circuit-overview-dialog { width:min(1100px,94vw); max-height:92dvh; padding:24px; border:1px solid var(--color-control-border); color:var(--color-panel); background:var(--color-surface); }
 .circuit-overview-dialog::backdrop { background:rgb(var(--color-night-rgb) / 0.788); }
 .circuit-overview-dialog header { display:flex; justify-content:space-between; gap:18px; }
-.circuit-overview-dialog h2 { font:500 36px 'Barlow Condensed',sans-serif; margin:5px 0; }
+.circuit-overview-dialog h2 { font:500 36px var(--font-ui); margin:5px 0; }
 .circuit-overview-dialog p { font-size:14px; line-height:1.6; margin:5px 0 14px; }
 .circuit-overview-dialog header>button { border:0; background:none; color:inherit; font-size:28px; min-width:44px; height:44px; }
 .circuit-overview-layout { display:grid; grid-template-columns:minmax(0,1fr) 285px; border-block:1px solid var(--color-line); }
 .circuit-overview-drawing { position:relative; min-width:0; padding:18px 18px 12px 0; }
 .circuit-overview-drawing svg { display:block; width:100%; height:480px; background:var(--color-surface); }
-.circuit-overview-north { position:absolute; top:32px; left:14px; font:500 14px 'IBM Plex Sans',sans-serif; }
+.circuit-overview-north { position:absolute; top:32px; left:14px; font:500 14px var(--font-ui); }
 .circuit-overview-legend { display:flex; flex-wrap:wrap; gap:6px 18px; padding-top:12px; font-size:13px; color:var(--color-text-muted); }
 .circuit-overview-banks { padding:18px 0 18px 18px; border-left:1px solid var(--color-line); }
-.circuit-overview-banks h3 { margin:0; font:500 24px 'Barlow Condensed',sans-serif; }
+.circuit-overview-banks h3 { margin:0; font:500 24px var(--font-ui); }
 .circuit-overview-banks button { display:flex; align-items:center; gap:12px; width:100%; padding:10px 6px; border:0; border-bottom:1px solid var(--color-line); background:transparent; color:var(--color-raised); text-align:left; min-height:54px; }
 .circuit-overview-banks button>span { display:grid; place-items:center; flex:0 0 25px; height:25px; background:var(--color-raised); color:white; font-size:14px; }
 .circuit-overview-banks button[aria-pressed=true] { background:var(--color-white); }
@@ -5832,14 +5813,14 @@ dialog::backdrop {
 @media(max-width:760px) { .circuit-model-stage.mode-circuit { height:88dvh; min-height:660px; } }
 
 .circuit-seat-zoom { position:absolute; top:94px; right:24px; display:flex; flex-direction:column; gap:5px; z-index:2; }
-.circuit-seat-zoom button { display:grid; place-items:center; width:44px; height:44px; padding:0; border:1px solid var(--color-control-border); background:#111723ed; color:var(--color-white); font:400 23px 'IBM Plex Sans',sans-serif; }
+.circuit-seat-zoom button { display:grid; place-items:center; width:44px; height:44px; padding:0; border:1px solid var(--color-control-border); background:#111723ed; color:var(--color-white); font:400 23px var(--font-ui); }
 .circuit-seat-zoom button:nth-child(2) { font-size:14px; }
 .circuit-seat-zoom button:disabled { opacity:.4; cursor:not-allowed; }
 .circuit-seat-zoom button:hover:not(:disabled) { background:var(--color-hover-surface); color:var(--color-white); }
 @media(max-width:760px) { .circuit-seat-zoom { top:202px; right:18px; } }
 
 .jeddah-source-reference { margin-top:24px; padding-top:20px; border-top:1px solid var(--color-line); }
-.jeddah-source-reference h3 { font:500 27px 'Barlow Condensed',sans-serif; margin:0 0 10px; }
+.jeddah-source-reference h3 { font:500 27px var(--font-ui); margin:0 0 10px; }
 .jeddah-source-reference ul { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 28px; padding-left:20px; margin:20px 0; font-size:14px; line-height:1.5; }
 .jeddah-source-reference small { display:block; margin-top:14px; font-size:12px; line-height:1.6; color:var(--color-text-muted); }
 @media(max-width:600px) { .jeddah-source-reference ul { grid-template-columns:1fr; } }
@@ -5849,7 +5830,7 @@ dialog::backdrop {
 .circuit-model-stage.day-scene .circuit-model-heading>span { color:var(--color-text-strong); }
 
 .spectator-official-view { padding:20px 0; border-bottom:1px solid var(--color-line); }
-.spectator-official-view h3 { font:500 26px 'Barlow Condensed',sans-serif; margin:0 0 8px; }
+.spectator-official-view h3 { font:500 26px var(--font-ui); margin:0 0 8px; }
 .spectator-official-view p { color:var(--color-text-muted); font-size:14px; line-height:1.65; margin:0 0 14px; }
 .spectator-official-view .spectator-source-link { display:inline-block; }
 .suzuka-ticket-desk .suzuka-facts { display: grid; gap: 16px; margin: 24px 0; }
@@ -5898,12 +5879,12 @@ dialog::backdrop {
 /* The domain wordmark uses the existing condensed display family. */
 .wordmark > span,
 .circuit-explorer-header .wordmark > span {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--font-ui);
   letter-spacing: .035em;
 }
 .wordmark-sub,
 .circuit-explorer-header .wordmark small {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-ui);
 }
 @media (max-width: 400px) {
   .race-hub .hub-header .wordmark-sub { max-width: 148px; }
@@ -5926,7 +5907,7 @@ dialog::backdrop {
 .route-notice { margin: 24px 0; }
 .route-not-found { margin: 32px 0; }
 .route-not-found h1,
-.app-recovery h1 { font: 500 40px/1.1 "Barlow Condensed", sans-serif; margin: 0 0 16px; }
+.app-recovery h1 { font: 500 40px/1.1 var(--font-ui); margin: 0 0 16px; }
 .app-recovery { margin: 10vh auto; max-width: 720px; width: calc(100% - 32px); }
 .app-recovery div { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 .route-not-found button,
@@ -5980,7 +5961,7 @@ dialog::backdrop {
   justify-content: space-between;
   gap: 20px;
 }
-.circuit-brief h2 { font: 500 34px/1.1 "Barlow Condensed", sans-serif; margin: 0; }
+.circuit-brief h2 { font: 500 34px/1.1 var(--font-ui); margin: 0; }
 .circuit-brief-location { color: var(--color-text-muted); font-size: 14px; margin: 8px 0 0; }
 .circuit-brief-coverage { color: var(--color-text-strong); border: 1px solid var(--color-line); padding: 8px 10px; font-size: 12px; flex-shrink: 0; }
 .circuit-brief-overview { max-width: 76ch; font-size: 16px; line-height: 1.65; margin: 22px 0 28px; color: var(--color-text-strong); }
@@ -6001,7 +5982,7 @@ dialog::backdrop {
 .circuit-arrival-checks > p { font-size: 14px; line-height: 1.65; color: var(--color-text-strong); max-width: 80ch; }
 .circuit-brief-sources { display: flex; flex-wrap: wrap; gap: 8px 28px; }
 .circuit-brief-sources a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; color: var(--color-action-strong); }
-.race-row .race-circuit-name { display: block; margin-top: 5px; font: 400 12px/1.4 "IBM Plex Sans", sans-serif; text-transform: none; color: var(--color-text-muted); }
+.race-row .race-circuit-name { display: block; margin-top: 5px; font: 400 12px/1.4 var(--font-ui); text-transform: none; color: var(--color-text-muted); }
 @media (max-width: 760px) {
   .circuit-brief > header { flex-direction: column; gap: 14px; }
   .circuit-brief h2 { font-size: 30px; }

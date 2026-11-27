@@ -27,7 +27,7 @@
 }
 @media(max-width:360px) {.circuit-entry-preview .circuit-thumbnail {width:76px; height:60px;}}
 .race-list-head,.race-row {grid-template-columns:100px minmax(180px,1.7fr) 1.05fr 1.15fr .7fr;}
-.race-round {display:flex; flex-direction:column; align-items:center; gap:5px; font:400 11px 'IBM Plex Sans',sans-serif;}
+.race-round {display:flex; flex-direction:column; align-items:center; gap:5px; font:400 11px var(--font-ui);}
 .race-row {padding-block:18px;}
 .race-row .coverage-3d,.race-row .coverage-guide {display:flex; align-items:center; gap:8px; font-size:12px; line-height:1.6;}
 .race-row .coverage-guide .ui-icon,.race-row .coverage-3d .ui-icon {width:17px; height:17px; flex-basis:17px;}

@@ -1,0 +1,15 @@
+/* One family throughout the product. Size and spacing carry the hierarchy. */
+body,button,input,select,textarea,svg text {font-family:var(--font-ui);}
+h1,h2,h3,h4,h5,h6 {font-family:var(--font-ui);font-style:normal;font-weight:400;text-transform:none;letter-spacing:-.025em;overflow-wrap:anywhere;}
+:is(.circuit-model-heading h1,.circuit-panel-heading h2,.atlas-heading h1,.layout-title h1,.racing-title h1) {font-style:normal;text-transform:none;font-weight:400;line-height:1.15;}
+.circuit-model-heading h1 {font-size:clamp(26px,2.5vw,40px);letter-spacing:-.025em;}
+.circuit-panel-heading h2 {font-size:26px;}
+.layout-title h1,.racing-title h1 {font-size:clamp(30px,3.2vw,46px);}
+:is(.study-control-heading h2,.study-area-detail h3,.racing-centre h2) {font-size:24px;line-height:1.25;font-weight:400;}
+.earth-destination h2 {font-size:clamp(28px,2.5vw,38px);font-weight:400;line-height:1.2;letter-spacing:-.03em;}
+:is(.study-stage-label strong,.race-highlight-copy strong) {font-weight:400;}
+@media(max-width:760px) {
+ .circuit-model-heading h1 {font-size:26px;}
+ .earth-destination h2 {font-size:28px;}
+ .calendar-page .season-landing-copy h1 {font-size:clamp(32px,8vw,44px);line-height:1.15;letter-spacing:-.03em;}
+}

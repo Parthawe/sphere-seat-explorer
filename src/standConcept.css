@@ -7,7 +7,7 @@
 .concept-viewer button:disabled {opacity:.5;cursor:default;}
 .concept-viewer main {max-width:1700px; padding:28px 24px; margin:auto;}
 .concept-title {display:flex; justify-content:space-between; align-items:end; gap:24px; margin-bottom:24px;}
-.concept-title h1 {font:500 clamp(32px,4vw,48px)/1.1 'Barlow Condensed',sans-serif; margin:8px 0 16px; max-width:30ch;}
+.concept-title h1 {font:500 clamp(32px,4vw,48px)/1.1 var(--font-ui); margin:8px 0 16px; max-width:30ch;}
 .concept-title p {font-size:13px; line-height:1.6; margin:8px 0; color:var(--color-line);}
 .concept-status {display:inline-block; border:1px solid #de938e; color:var(--color-divider); padding:6px 10px; font-size:12px;}
 .concept-title>label {display:block; flex:0 1 340px; min-width:0; font-size:12px;}
@@ -30,10 +30,10 @@
 .concept-scene-actions {position:absolute;right:16px;bottom:62px;z-index:1;}
 .concept-scene-actions button {display:inline-flex;align-items:center;gap:8px;background:var(--color-ink);color:var(--color-white);}
 .concept-loading {position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:24px;background:var(--color-ink);z-index:2;text-align:center;}
-.concept-loading h2 {font:500 30px 'Barlow Condensed',sans-serif;}
+.concept-loading h2 {font:500 30px var(--font-ui);}
 .concept-scene-caption {position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--color-ink);font-size:11px;color:var(--color-line);pointer-events:none;}
 .concept-controls {padding:24px; border-left:1px solid var(--color-text-muted); background:var(--color-raised);}
-.concept-controls h2 {font:500 28px 'Barlow Condensed',sans-serif;margin:0 0 22px;}
+.concept-controls h2 {font:500 28px var(--font-ui);margin:0 0 22px;}
 .concept-camera {display:flex;flex-wrap:wrap;gap:8px;}
 .concept-camera button {display:inline-flex;align-items:center;gap:7px;}
 .concept-row-choices {display:flex; gap:6px; margin:24px 0 16px;}

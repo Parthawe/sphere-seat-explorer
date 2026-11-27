@@ -1,6 +1,7 @@
 /* Shared UI palette, referenced against formula1.com on 26 November 2026.
    Geometry, team identifiers, photographs and semantic status colors are separate. */
 :root {
+  --font-ui:"IBM Plex Sans",sans-serif;
   --color-action: #e10600;
   --color-action-hover: #ca0500;
   --color-action-strong: #9d0400;

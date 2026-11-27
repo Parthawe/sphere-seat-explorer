@@ -43,13 +43,13 @@
 .wordmark .brand-name {
   display: block;
   color: var(--color-paper);
-  font: 500 var(--brand-size)/1 "Barlow Condensed", sans-serif;
+  font: 500 var(--brand-size)/1 var(--font-ui);
   letter-spacing: .035em;
   white-space: nowrap;
 }
 :is(.race-hub, .vegas-atlas, .app-shell, .circuit-explorer) .wordmark .wordmark-sub {
   display: block;
-  font: 400 9px/1.35 "IBM Plex Sans", sans-serif;
+  font: 400 9px/1.35 var(--font-ui);
   letter-spacing: .1em;
   color: var(--color-line);
   margin-top: var(--space-1);
@@ -143,7 +143,7 @@
 /* Race controls belong to the scene, with motion reserved for playback state. */
 .race-experience {padding:var(--panel-inset); margin:24px 0; background:var(--color-panel); border:1px solid var(--color-hover-surface); border-radius:8px; color:var(--color-surface);}
 .race-experience-title {display:flex; align-items:center; justify-content:space-between; gap:12px;}
-.race-experience h3 {margin:0; font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:500;}
+.race-experience h3 {margin:0; font-family:var(--font-ui); font-size:28px; font-weight:500;}
 .race-experience-title span {font-size:10px; font-weight:500; letter-spacing:.08em; color:var(--color-line);}
 .race-experience-title span[data-playing=true] {color:#ffb6ae;}
 .race-experience p {font-size:13px; line-height:1.6; color:var(--color-line); margin:12px 0 16px;}
@@ -182,7 +182,7 @@
 .viewing-choice-list>button[aria-pressed=true] .shortlist-choice-state {background:var(--color-action-strong); border-color:var(--color-action-strong); color:var(--color-white);}
 .shortlist-notebook {margin-top:24px; padding:24px; background:var(--color-divider); border-radius:6px;}
 .shortlist-notebook-heading {display:flex; justify-content:space-between; align-items:center; gap:16px;}
-.shortlist-notebook h4 {font:500 24px/1.2 'Barlow Condensed',sans-serif; margin:0;}
+.shortlist-notebook h4 {font:500 24px/1.2 var(--font-ui); margin:0;}
 .shortlist-notebook p {font-size:13px; line-height:1.65; color:var(--color-text-strong);}
 .shortlist-notebook fieldset {padding:0; margin:20px 0 0; border:0;}
 .shortlist-notebook legend {font-size:13px; font-weight:500; margin-bottom:8px;}
@@ -199,7 +199,7 @@
 .funding-disclosure {max-width:1280px; margin:24px auto; padding-inline:32px; color:var(--color-text-strong);}
 .funding-disclosure summary {font-size:13px; min-height:44px; padding-block:12px; cursor:pointer;}
 .funding-disclosure>div {max-width:70ch; padding-block:16px 24px;}
-.funding-disclosure h2 {font:500 28px/1.2 'Barlow Condensed',sans-serif; margin:0 0 16px;}
+.funding-disclosure h2 {font:500 28px/1.2 var(--font-ui); margin:0 0 16px;}
 .funding-disclosure p {font-size:13px; line-height:1.7;}
 @media (max-width:760px) {.funding-disclosure {padding-inline:20px;} .shortlist-notebook {padding:20px;} .viewing-choice-list>button {gap:12px;} .shortlist-choice-state {min-width:64px; font-size:11px; padding:8px 6px;}}
 @media (max-width:360px) {.funding-disclosure {padding-inline:16px;} .shortlist-notebook {padding:16px;} .planning-intent button {padding-inline:10px; font-size:12px;} .viewing-choice-list>button {align-items:flex-start;}}

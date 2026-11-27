@@ -4,12 +4,12 @@
 .race-hub .hub-header {height:auto;min-height:88px;gap:32px;background:#f6f5f2;color:var(--color-ink);border-top:0;border-bottom:1px solid var(--discovery-line);padding-block:12px;}
 .race-hub .hub-header .wordmark {color:var(--color-ink);gap:10px;}
 .race-hub .hub-header .brand-icon {width:30px;height:25px;color:var(--color-action);}
-.race-hub .hub-header .brand-name {font:500 19px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.04em;text-transform:lowercase;}
+.race-hub .hub-header .brand-name {font:500 19px/1.2 var(--font-ui);letter-spacing:-.04em;text-transform:lowercase;}
 .race-hub .hub-header>.calendar-primary-nav {display:flex;align-items:center;gap:28px;margin-left:auto;}
 .race-hub .calendar-primary-nav a {font-size:13px;color:var(--discovery-muted);}
 .race-hub .calendar-primary-nav a:hover {color:var(--color-ink);text-decoration:underline;}
 .race-hub .hub-header>nav[aria-label=Seasons] {display:flex;gap:2px;margin-left:0;border:1px solid var(--discovery-line);padding:3px;border-radius:5px;}
-.race-hub .hub-header nav[aria-label=Seasons] button {min-height:38px;min-width:64px;padding:8px 12px;border:0;background:transparent;color:var(--discovery-muted);font:400 12px/1.4 'IBM Plex Sans',sans-serif;border-radius:3px;}
+.race-hub .hub-header nav[aria-label=Seasons] button {min-height:38px;min-width:64px;padding:8px 12px;border:0;background:transparent;color:var(--discovery-muted);font:400 12px/1.4 var(--font-ui);border-radius:3px;}
 .race-hub .hub-header nav[aria-label=Seasons] button[aria-pressed=true] {background:var(--color-ink);color:var(--color-white);}
 .race-hub .hub-header nav[aria-label=Seasons] button:hover {background:var(--color-divider);color:var(--color-ink);}
 .race-hub .hub-header nav[aria-label=Seasons] button[aria-pressed=true]:hover {background:var(--color-raised);color:var(--color-white);}
@@ -17,7 +17,7 @@
 .race-hub main#race-content {padding-top:0;}
 .calendar-page .season-landing {display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:56px;align-items:center;padding:64px 0 56px;margin:0 0 16px;color:var(--color-ink);background:transparent;min-height:0;overflow:visible;}
 .calendar-page .hero-introduction {display:flex;flex-direction:column;align-items:stretch;gap:36px;padding:0;}
-.calendar-page .season-landing-copy h1 {font:400 clamp(42px,4.2vw,62px)/1.08 'IBM Plex Sans',sans-serif;letter-spacing:-.04em;color:var(--color-ink);margin:0 0 24px;}
+.calendar-page .season-landing-copy h1 {font:400 clamp(42px,4.2vw,62px)/1.08 var(--font-ui);letter-spacing:-.04em;color:var(--color-ink);margin:0 0 24px;}
 .calendar-page .season-landing-copy h1 em {font:inherit;letter-spacing:inherit;color:var(--discovery-muted);display:inline;}
 .calendar-page .season-landing-copy>p {max-width:35ch;font-size:14px;line-height:1.8;color:var(--discovery-muted);}
 .hero-race-picker {max-width:450px;}
@@ -35,15 +35,15 @@
 .race-hub .race-3d-preview-link:hover .race-3d-preview-footer>strong {background:transparent;text-decoration:underline;text-underline-offset:5px;}
 .race-hub .race-3d-preview-tools>button,.race-hub .race-3d-preview-credit {border-color:#62626c;border-radius:4px;}
 .calendar-page .race-highlights {margin:0 0 64px;padding-top:36px;border-top:1px solid var(--discovery-line);}
-.race-hub .race-highlights h2,.race-hub .calendar-toolbar h2 {font:400 28px/1.25 'IBM Plex Sans',sans-serif;letter-spacing:-.025em;color:var(--color-ink);}
+.race-hub .race-highlights h2,.race-hub .calendar-toolbar h2 {font:400 28px/1.25 var(--font-ui);letter-spacing:-.025em;color:var(--color-ink);}
 .race-hub .race-highlights-heading {align-items:center;margin-bottom:28px;}
-.race-hub .race-highlight-label {font:400 13px/1.5 'IBM Plex Sans',sans-serif;color:var(--discovery-muted);margin-bottom:12px;}
+.race-hub .race-highlight-label {font:400 13px/1.5 var(--font-ui);color:var(--discovery-muted);margin-bottom:12px;}
 .race-hub .race-highlight-card {border:0;border-radius:6px;}
 .race-hub .race-highlight-card>button {background:transparent;color:var(--color-ink);}
 .race-hub .race-highlight .race-card-image {aspect-ratio:16/10;border-radius:6px;}
 .race-hub .race-highlight .race-card-image::after {display:none;}
 .race-hub .race-highlight-copy {position:static;padding:18px 0 0;gap:10px;color:var(--color-ink);}
-.race-hub .race-highlight-copy strong {font:400 26px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.025em;}
+.race-hub .race-highlight-copy strong {font:400 26px/1.2 var(--font-ui);letter-spacing:-.025em;}
 .race-hub .race-highlight-copy>span:first-child {display:none;}
 .race-hub .race-highlight-copy>span {font-size:12px;color:var(--discovery-muted);}
 .race-hub .race-highlight-copy .race-highlight-action {color:var(--color-action-strong);margin:0;}
@@ -64,7 +64,7 @@
 .race-hub .race-card>.race-row,.race-hub .race-card>.race-row:hover {color:var(--color-ink);background:transparent;}
 .race-hub .race-card-meta {color:var(--discovery-muted);padding:16px 0 0;text-transform:none;letter-spacing:0;font-size:11px;}
 .race-hub .race-card-body {padding:10px 0 0;}
-.race-hub .race-card .race-row strong {font:400 25px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.025em;color:var(--color-ink);}
+.race-hub .race-card .race-row strong {font:400 25px/1.2 var(--font-ui);letter-spacing:-.025em;color:var(--color-ink);}
 .race-hub .race-card-venue,.race-hub .race-card-bottom .circuit-thumbnail {color:var(--discovery-muted);}
 .race-hub .race-card .race-dates {color:var(--color-ink);font-size:12px;}
 .race-hub .race-card-action {color:var(--color-ink);border-color:var(--discovery-line);margin:0;padding:10px 0;}
@@ -79,8 +79,8 @@
 .race-hub .race-breadcrumb {margin:28px 0;color:var(--discovery-muted);font-size:12px;}
 .race-hub .race-breadcrumb button {color:var(--discovery-muted);}
 .race-hub .race-3d-hero {gap:48px;grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr);margin:0 0 36px;align-items:center;}
-.race-hub .race-3d-heading h1 {font:400 clamp(40px,4vw,58px)/1.15 'IBM Plex Sans',sans-serif;letter-spacing:-.035em;}
-.race-hub .race-3d-heading h1>span {font:400 14px/1.6 'IBM Plex Sans',sans-serif;letter-spacing:0;color:var(--discovery-muted);}
+.race-hub .race-3d-heading h1 {font:400 clamp(40px,4vw,58px)/1.15 var(--font-ui);letter-spacing:-.035em;}
+.race-hub .race-3d-heading h1>span {font:400 14px/1.6 var(--font-ui);letter-spacing:0;color:var(--discovery-muted);}
 .race-hub .race-3d-heading>p {color:var(--discovery-muted);}
 .race-hub .race-3d-hero .race-3d-preview {border-radius:8px;}
 .race-hub .race-guide-nav {display:flex;gap:28px;border-block:1px solid var(--discovery-line);padding:6px 0;margin:0 0 48px;}
@@ -88,10 +88,10 @@
 .race-hub .race-guide-nav a:hover {background:transparent;color:var(--color-ink);text-decoration:underline;text-underline-offset:7px;}
 .race-hub :is(.event-circuit,.event-schedule,.event-resources) {background:transparent;color:var(--color-ink);padding:0 0 40px;margin:0 0 40px;border-bottom:1px solid var(--discovery-line);color-scheme:light;--color-paper:#15151e;--color-line:#626269;--color-control-border:#d7d7d5;--color-panel:#efeeec;}
 .race-hub .event-circuit figure img {background:var(--color-ink);border-radius:6px;padding:24px;}
-.race-hub :is(.event-section-heading h2,.venue-stands h2,.circuit-brief h2,.price-notebook h2,.venue-references h2) {font:400 28px/1.25 'IBM Plex Sans',sans-serif;letter-spacing:-.025em;}
-.race-hub .event-facts dd {font:400 25px/1.25 'IBM Plex Sans',sans-serif;letter-spacing:-.03em;}
+.race-hub :is(.event-section-heading h2,.venue-stands h2,.circuit-brief h2,.price-notebook h2,.venue-references h2) {font:400 28px/1.25 var(--font-ui);letter-spacing:-.025em;}
+.race-hub .event-facts dd {font:400 25px/1.25 var(--font-ui);letter-spacing:-.03em;}
 .race-hub .event-facts .event-length dd {font-size:46px;}
-.race-hub .event-session-name {font:400 18px/1.4 'IBM Plex Sans',sans-serif;}
+.race-hub .event-session-name {font:400 18px/1.4 var(--font-ui);}
 .race-hub :is(.venue-stands,.circuit-brief,.price-notebook) {padding:0 0 40px;margin:0 0 40px;border:0;border-bottom:1px solid var(--discovery-line);background:transparent;}
 .race-hub .venue-references {border-top:1px solid var(--discovery-line);padding-top:32px;background:transparent;}
 .race-hub .venue-stands-overview,.race-hub .venue-stands button {border-radius:4px;border-color:var(--discovery-line);}
@@ -156,7 +156,7 @@
 .hero-race-picker .hero-race-select {color:var(--color-ink);}
 
 /* Shared identity and direct position controls across the exploration journey. */
-.wordmark .brand-name {font:500 19px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:-.04em;text-transform:lowercase;}
+.wordmark .brand-name {font:500 19px/1.2 var(--font-ui);letter-spacing:-.04em;text-transform:lowercase;}
 .circuit-position-panel .circuit-bank-facts {margin-block:16px;padding-block:12px;}
 .circuit-position-panel .circuit-view-position {display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:48px;margin:16px 0 8px;padding:12px 16px;background:var(--color-action);color:var(--color-white);border:0;font-size:14px;}
 .circuit-position-panel .circuit-view-position:hover {background:var(--color-action-hover);}
@@ -176,7 +176,7 @@
 .race-context-switch {display:flex;align-items:end;justify-content:space-between;gap:20px;padding-block:24px;}
 .race-context-switch label {display:flex;align-items:center;gap:12px;min-width:0;}
 .race-context-switch label>span {font-size:12px;color:var(--discovery-muted);}
-.race-context-switch select {min-height:44px;max-width:320px;padding:10px 14px;background:transparent;color:var(--color-ink);border:1px solid #b7b7b9;border-radius:4px;font:400 14px 'IBM Plex Sans',sans-serif;color-scheme:light;}
+.race-context-switch select {min-height:44px;max-width:320px;padding:10px 14px;background:transparent;color:var(--color-ink);border:1px solid #b7b7b9;border-radius:4px;font:400 14px var(--font-ui);color-scheme:light;}
 .race-context-switch>a {display:inline-flex;align-items:center;gap:10px;min-height:44px;white-space:nowrap;font-size:13px;color:var(--discovery-muted);}
 .race-context-switch>a .ui-icon {transform:rotate(180deg);}
 .race-hub .race-guide-nav {position:sticky;top:0;z-index:20;background:#f6f5f2;}
@@ -210,13 +210,13 @@
 /* Real model anchors projected into the overview; groups are UI clusters, not new banks. */
 .circuit-bank-markers {position:absolute;inset:0;z-index:2;pointer-events:none;}
 .circuit-bank-markers[hidden],.circuit-bank-markers button[hidden] {display:none!important;}
-.circuit-bank-markers button {position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:44px;height:44px;padding:4px;border:1px solid #aeb8ca;border-radius:4px;background:#15151ef2;color:#fff;pointer-events:auto;font:500 12px/1 'IBM Plex Sans',sans-serif;}
+.circuit-bank-markers button {position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:44px;height:44px;padding:4px;border:1px solid #aeb8ca;border-radius:4px;background:#15151ef2;color:#fff;pointer-events:auto;font:500 12px/1 var(--font-ui);}
 .circuit-bank-markers button .ui-icon {width:15px;height:15px;}
 .circuit-bank-markers .bank-marker-group {display:none;}
 .circuit-bank-markers button[data-cluster=true] .bank-marker-single {display:none;}
 .circuit-bank-markers button[data-cluster=true] .bank-marker-group {display:block;}
 .circuit-bank-markers button[data-selected=true],.circuit-bank-markers button:hover {background:var(--color-action);border-color:var(--color-white);}
-.bank-marker-name {display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:max-content;max-width:180px;padding:8px 10px;border:1px solid #aeb8ca;background:var(--color-ink);color:var(--color-white);font:400 12px/1.5 'IBM Plex Sans',sans-serif;pointer-events:none;}
+.bank-marker-name {display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:max-content;max-width:180px;padding:8px 10px;border:1px solid #aeb8ca;background:var(--color-ink);color:var(--color-white);font:400 12px/1.5 var(--font-ui);pointer-events:none;}
 .circuit-bank-markers button:is(:hover,:focus-visible) .bank-marker-name {display:block;}
 .circuit-model-stage :is(.circuit-model-heading,.circuit-camera-modes,.circuit-photo-trigger,.circuit-seat-zoom,.circuit-scene-actions,.circuit-scene-note) {z-index:3;}
 .circuit-loading-poster {position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.35;pointer-events:none;z-index:1;}

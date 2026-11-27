@@ -3,11 +3,11 @@
 .study-stage>div:has(canvas) {position:absolute!important;inset:64px 0 44px!important;height:auto!important;}
 .study-stage-label {position:absolute;left:24px;top:20px;pointer-events:none;}
 .study-stage-label span {display:block;font-size:10px;letter-spacing:.12em;color:var(--color-line);}
-.study-stage-label strong {display:block;font:500 25px/1.2 'Barlow Condensed',sans-serif;margin-top:5px;}
+.study-stage-label strong {display:block;font:500 25px/1.2 var(--font-ui);margin-top:5px;}
 .study-stage-foot {position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:14px 20px;background:var(--color-ink);color:var(--color-line);font-size:10px;}
 .study-controls {padding:20px;border-left:1px solid var(--color-control-border);background:var(--color-panel);}
 .study-control-heading {display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;}
-.study-control-heading h2 {font:500 30px/1.1 'Barlow Condensed',sans-serif;margin:0;}
+.study-control-heading h2 {font:500 30px/1.1 var(--font-ui);margin:0;}
 
 .study-camera-buttons,.study-height-buttons {display:flex;gap:6px;}
 .study-zoom {display:flex;gap:6px;margin-bottom:12px;}
@@ -81,12 +81,12 @@
 .study-area-link,.study-area-detail>a {display:flex;align-items:center;gap:8px;min-height:44px;padding-block:8px;color:var(--color-paper);font-size:13px;text-underline-offset:4px;}
 .study-area-link>.ui-icon:last-child {margin-left:auto;}
 .study-area-reference {display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;padding-block:40px;scroll-margin-top:24px;}
-.study-area-reference h2 {font:500 36px/1.1 'Barlow Condensed',sans-serif;margin:0 0 8px;}
+.study-area-reference h2 {font:500 36px/1.1 var(--font-ui);margin:0 0 8px;}
 .study-area-reference p {font-size:13px;line-height:1.7;color:var(--color-line);}
 .study-area-reference .venue-area-map {width:100%;max-width:none;}
 .study-area-detail {padding-top:64px;}
 .study-area-detail>span {font-size:11px;color:var(--color-line);}
-.study-area-detail h3 {font:500 30px/1.2 'Barlow Condensed',sans-serif;margin-block:12px;}
+.study-area-detail h3 {font:500 30px/1.2 var(--font-ui);margin-block:12px;}
 @media(max-width:900px) {.study-stage {min-height:480px;}}
 @media(max-width:640px) {.study-stage {position:relative;min-height:360px;} .study-area-reference {grid-template-columns:minmax(0,1fr);gap:16px;} .study-area-detail {padding-top:0;}}
 

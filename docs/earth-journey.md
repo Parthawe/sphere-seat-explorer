@@ -33,3 +33,11 @@ The final browser audit also exercises grouped-pin focus/Escape return, direct L
 ## Release
 
 Published v127 from source 8dc1877baa873e3aa560036dd4ccb9321b3ff819, pushed to GitHub main. Saved version appgprj_6b03a10b6c388191a92912a1c2dfe070~appgver_44c7687b42b88191915b7b93fa66eec5; deployment appgdep_6b0a069de4988191a06e7fab28231cc1 succeeded at 2026-11-27T22:39:30.367311+00:00. Final source checks passed 233 tests and production build. Existing optional shader chunk-size warning remains. No dependencies or external map account were added. Archive f1tickets-earth-journey-deployment.tar.gz is outside the repository. Native publication is confirmed; custom-domain freshness was not independently verified. Owned local preview stopped after checks.
+
+## Typography and controls refinement · 27 November 2026
+
+Unified the interface on IBM Plex Sans 400/500, including the discovery pages, standings, diagram labels and seating studies. Removed the three condensed-font stylesheet imports, replaced existing font declarations with the shared font token and reduced heading sizes where the wider family needed room. No new font or dependency was added.
+
+The globe now groups recenter, zoom, map-grid and rotation controls in one rail. Latitude/longitude lines are a geographic overlay, initially off. The selected venue shows sourced outline-center coordinates, its date range and whether the destination is a seating study, dated Vegas reference or circuit outline. Markers are culled above the measured information block so the added detail stays readable.
+
+Browser verification passed the 47 edition routes at 390px, the existing position-control audit at 1440/390/320 and the Earth journey audit at 1440/820/390/320, including full flight, cancellation/focus, reduced motion, graphics recovery, image-failure retry, grouped pin focus and direct Vegas handoff. A separate rendered check confirmed the same computed font family on visible headings/buttons/selects in discovery, Bahrain seating, Suzuka outline, Race Centre and Vegas. Grid toggle/pressed state and page overflow checks passed. Desktop/phone screenshots were inspected. Mechanical design detection returned no findings. This is browser-viewport verification, not physical-device performance measurement.

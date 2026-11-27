@@ -9,13 +9,13 @@
 .calendar-page .season-landing::before {display:none;}
 .hero-introduction {display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.7fr);align-items:center;gap:64px;padding:40px 0 32px;}
 .calendar-page .season-landing-copy {position:relative;width:auto;padding:0;}
-.calendar-page .season-landing-copy h1 {margin:0 0 20px;font:500 clamp(48px,4.5vw,68px)/1.02 'Barlow Condensed',sans-serif;letter-spacing:-.02em;text-transform:none;color:var(--color-paper);}
-.calendar-page .season-landing-copy h1 em {display:inline-block;font:400 .75em/1.15 'Barlow Condensed',sans-serif;font-style:normal;letter-spacing:-.01em;color:var(--color-line);}
+.calendar-page .season-landing-copy h1 {margin:0 0 20px;font:500 clamp(48px,4.5vw,68px)/1.02 var(--font-ui);letter-spacing:-.02em;text-transform:none;color:var(--color-paper);}
+.calendar-page .season-landing-copy h1 em {display:inline-block;font:400 .75em/1.15 var(--font-ui);font-style:normal;letter-spacing:-.01em;color:var(--color-line);}
 .calendar-page .season-landing-copy>p {margin:0;max-width:48ch;font-size:14px;line-height:1.7;color:var(--color-line);}
 .hero-race-picker {min-width:0;}
 .hero-race-picker>label {display:block;font-size:13px;margin-bottom:10px;}
 .hero-race-picker>div {display:flex;gap:8px;}
-.hero-race-picker select {width:100%;min-width:0;flex:1;min-height:52px;padding:12px 14px;background:var(--color-panel);border:1px solid var(--color-control-border);border-radius:0;color:var(--color-paper);font:400 15px/1.4 'IBM Plex Sans',sans-serif;}
+.hero-race-picker select {width:100%;min-width:0;flex:1;min-height:52px;padding:12px 14px;background:var(--color-panel);border:1px solid var(--color-control-border);border-radius:0;color:var(--color-paper);font:400 15px/1.4 var(--font-ui);}
 .hero-race-picker .landing-primary {min-height:52px;gap:20px;padding:14px 18px;flex-shrink:0;white-space:nowrap;font-size:13px;font-weight:500;}
 .hero-race-picker>p {margin:10px 0 0;color:var(--color-line);font-size:11px;line-height:1.6;}
 .calendar-page .hero-world {position:relative;z-index:0;inset:auto;min-width:0;min-height:0;height:clamp(320px,30vw,440px);background:var(--color-night);overflow:hidden;transform:none;transition:none;}
@@ -23,14 +23,14 @@
 .calendar-page .hero-renderer {z-index:1;}
 .calendar-page .hero-motion-control,.calendar-page .hero-world>.hero-live-retry {position:absolute;left:auto;right:16px;top:16px;z-index:3;margin:0;background:var(--color-ink);}
 .calendar-page .hero-scene-caption {position:relative;left:auto;right:auto;bottom:auto;z-index:1;display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px;max-width:none;margin:0;padding:12px 0;border:0;border-bottom:1px solid var(--color-control-border);text-align:left;background:transparent;}
-.calendar-page .hero-scene-caption strong {font:400 16px/1.5 'IBM Plex Sans',sans-serif;color:var(--color-paper);}
+.calendar-page .hero-scene-caption strong {font:400 16px/1.5 var(--font-ui);color:var(--color-paper);}
 .calendar-page .hero-scene-caption p {margin:0;font-size:11px;line-height:1.6;}
 .hero-credits {margin-left:auto;font-size:11px;color:var(--color-line);max-width:50ch;}
 .hero-credits summary {display:inline-flex;align-items:center;min-height:44px;cursor:pointer;text-decoration:underline;text-underline-offset:4px;}
 .hero-credits>span {display:block;padding:4px 0 8px;line-height:1.7;}
 .hero-credits a {display:inline-block;min-height:44px;padding-block:12px;}
 .calendar-page .race-highlights {margin:0 0 48px;}
-.calendar-page .race-highlights h2 {font:500 36px/1.15 'Barlow Condensed',sans-serif;margin:0;}
+.calendar-page .race-highlights h2 {font:500 36px/1.15 var(--font-ui);margin:0;}
 .calendar-page .race-highlights-heading {margin-bottom:24px;}
 .calendar-page .race-highlight-label {font-size:20px;margin-bottom:12px;}
 .calendar-page .race-highlight-copy strong {font-size:36px;}

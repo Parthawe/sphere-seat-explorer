@@ -1,5 +1,5 @@
 .hero-view-switch {display:flex;gap:6px;margin-bottom:14px;}
-.calendar-page .hero-view-switch button {display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border:1px solid var(--discovery-line);border-radius:4px;background:transparent;color:var(--color-ink);font:400 13px 'IBM Plex Sans',sans-serif;cursor:pointer;}
+.calendar-page .hero-view-switch button {display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border:1px solid var(--discovery-line);border-radius:4px;background:transparent;color:var(--color-ink);font:400 13px var(--font-ui);cursor:pointer;}
 .calendar-page .hero-view-switch button[aria-pressed=true] {color:#fff;background:#20242d;border-color:#20242d;}
 .earth-journey,.earth-shell {position:relative;isolation:isolate;height:clamp(520px,43vw,680px);overflow:hidden;background:#080d16;color:#f4f5f7;border-radius:4px;--earth-arrival:0;}
 .earth-shell {display:grid;place-items:center;}
@@ -10,7 +10,7 @@
 .earth-topline {position:absolute;top:20px;left:24px;right:24px;display:flex;align-items:center;justify-content:space-between;pointer-events:none;}
 .earth-topline>span {display:flex;align-items:center;gap:10px;font-size:13px;}
 .earth-topline>span>span {color:#aab6c6;}
-.earth-journey button {min-height:44px;min-width:44px;border:1px solid #6d798b;border-radius:4px;background:#101722;color:#fff;cursor:pointer;font:400 13px 'IBM Plex Sans',sans-serif;}
+.earth-journey button {min-height:44px;min-width:44px;border:1px solid #6d798b;border-radius:4px;background:#101722;color:#fff;cursor:pointer;font:400 13px var(--font-ui);}
 .earth-journey button:disabled {opacity:.5;cursor:default;}
 .earth-journey button:hover:not(:disabled) {background:#293444;}
 .earth-topline button {display:grid;place-items:center;pointer-events:auto;}
@@ -20,7 +20,7 @@
 .earth-pins button[data-selected=true] {background:#e10600;border-color:#fff;}
 .earth-destination {position:absolute;bottom:65px;left:24px;right:24px;z-index:4;display:flex;align-items:end;justify-content:space-between;gap:24px;pointer-events:none;}
 .earth-destination>div {pointer-events:auto;}
-.earth-destination h2 {font:400 clamp(30px,3vw,44px)/1.1 'Barlow Condensed',sans-serif;margin:0 0 5px;color:#fff;}
+.earth-destination h2 {font:400 clamp(30px,3vw,44px)/1.1 var(--font-ui);margin:0 0 5px;color:#fff;}
 .earth-destination p {font-size:13px;margin:0 0 6px;color:#d3dbe6;}
 .earth-destination>div>span {font-size:11px;color:#c2ccda;}
 .earth-destination .earth-fly {display:flex;align-items:center;gap:14px;pointer-events:auto;padding:14px 20px;min-height:52px;background:#e10600;border-color:#e10600;color:#fff;white-space:nowrap;}
@@ -73,3 +73,29 @@
 .earth-nearby {right:82px;}
 .earth-journey:focus-visible {outline:3px solid var(--color-action);outline-offset:4px;}
 @media(max-width:760px) {.earth-zoom {right:16px;top:74px;}.earth-nearby {right:68px;max-width:calc(100% - 84px);}}
+
+/* A single map-control rail, with paired zoom and an explicit venue recenter. */
+.earth-zoom {top:24px;right:24px;gap:0;background:#101722;border:1px solid #607086;border-radius:5px;overflow:hidden;}
+.earth-zoom button {width:48px;min-height:46px;border:0;border-radius:0;background:transparent;}
+.earth-zoom>button+button,.earth-zoom>div+button {border-top:1px solid #405066;}
+.earth-zoom .earth-recenter {display:flex;flex-direction:column;gap:3px;min-height:62px;padding:8px 0;}
+.earth-recenter>span {font-size:9px;line-height:1.2;}
+.earth-zoom-pair {border-block:1px solid #405066;}
+.earth-zoom-pair button+button {border-top:1px solid #405066;}
+.earth-zoom button[aria-pressed=true] {background:#334454;}
+.earth-venue-facts {display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px;margin-top:12px;font-size:12px;color:#d3dbe6;}
+.earth-venue-facts>span {display:inline-flex;align-items:center;gap:7px;}
+.earth-venue-facts .ui-icon {width:15px;height:15px;flex-basis:15px;}
+.earth-destination .earth-coordinates {display:block;margin-top:12px;font-size:11px;font-variant-numeric:tabular-nums;color:#aab8c9;}
+.earth-coordinates>span {margin-inline:7px;color:#718399;}
+.earth-destination {max-width:calc(100% - 48px);}
+.earth-journey .earth-topline {right:100px;}
+.earth-topline>span {flex-wrap:wrap;gap:6px 10px;line-height:1.6;}
+@media(max-width:760px) {
+ .earth-zoom {top:16px;right:16px;}
+ .earth-zoom button {width:44px;min-height:44px;}
+ .earth-zoom .earth-recenter {min-height:58px;}
+ .earth-venue-facts {gap:8px 14px;margin-top:10px;font-size:11px;}
+ .earth-destination {max-width:calc(100% - 32px);}
+ .earth-destination .earth-coordinates {margin-top:9px;font-size:10px;}
+}

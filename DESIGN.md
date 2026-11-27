@@ -1,5 +1,9 @@
 # F1 Tickets Online design direction
 
+## Current typography and map controls · 27 November 2026
+
+Use IBM Plex Sans throughout the interface, including headings, forms, globe labels, standings and circuit studies. Only 400 and 500 are loaded; hierarchy uses size, line height and spacing. Condensed display lettering and italic heading treatments have been retired. The globe uses a single matte control rail with venue recentering, paired zoom, an optional latitude/longitude grid and rotation pause. Its selected-venue block keeps the name first, then venue, dates/coverage and source-outline-center coordinates. Small-screen markers clear the measured information block. Preserve the established paper, ink and race-red palette.
+
 ## Race discovery refinement · 27 November 2026
 
 The user rejected the crowded, box-heavy appearance. Discovery and race guides now use a shared warm paper surface, regular IBM Plex Sans headings, quieter dividers and a compact masthead. Keep F1 red for the primary action and focus; keep scene backgrounds dark. The homepage's selected race owns its preview, reference year and 3D destination. Do not show a Vegas scene as the visual for another selected race. Calendar photographs retain their own credits and capture years; reference outlines do not imply surveyed seats.
@@ -9,7 +13,7 @@ Use open sections rather than alternating inverted panels. Navigation is a line 
 
 The user explicitly requested the F1 visual language and Las Vegas Grand Prix theme after rejecting the olive/gold release. Preserve the working selection, comparison, sharing and estimated-data boundaries. Replace the weak scene and visual treatment.
 
-Use F1 red (#e10600), ink black (#15151e), white and neutral greys. Use the existing licensed Barlow Condensed in bold/italic for motorsport display and IBM Plex Sans for operational text. Use structured dividers, precise controls and limited cut corners. No imitation official F1 logo, unsupported affiliation or proprietary font distribution.
+Use F1 red (#e10600), ink black (#15151e), white and neutral greys. Use the existing licensed IBM Plex Sans in bold/italic for motorsport display and IBM Plex Sans for operational text. Use structured dividers, precise controls and limited cut corners. No imitation official F1 logo, unsupported affiliation or proprietary font distribution.
 
 The interactive scene leads. Las Vegas at night requires a dark sky, bright track floodlights, visible metal grandstands, mesh fencing and a luminous Sphere. Original LED art uses red and white. Detailed procedural geometry remains illustrative, not a verified digital twin.
 
@@ -34,7 +38,7 @@ Keep the established condensed display type, operational sans, race red, ink and
 
 ## Abu Dhabi ticket desk
 
-Extend the approved ticket desk with Barlow Condensed, IBM Plex Sans, F1 red, ink and paper. Keep sourced circuit geometry on the left and ticket and area decisions on the right. On mobile, place the locator shortcut before the map. Use selectable map callouts and matching area controls; keep location evidence beside the selected product and its organizer link.
+Extend the approved ticket desk with IBM Plex Sans, F1 red, ink and paper. Keep sourced circuit geometry on the left and ticket and area decisions on the right. On mobile, place the locator shortcut before the map. Use selectable map callouts and matching area controls; keep location evidence beside the selected product and its organizer link.
 
 Support seven standard grandstands: Main, North, North Straight, West, West Straight, Marina and South. Four markers use OpenStreetMap building anchors; three mark estimated track regions. Preserve these confidence labels and broad-area limits through selection and locator results. Ticket text stays in local tab state; shared links contain only the public race, year and area. Exact seat locations, seat-level 3D, prices and live stock are unavailable. Keep source attribution, checked dates, ticket-app guidance and provider handoffs accessible.
 

@@ -6,8 +6,8 @@
 .layout-viewer button:disabled {opacity:.5; cursor:default;}
 .layout-viewer main {max-width:1700px; margin:auto; padding:24px;}
 .layout-title {display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:22px;}
-.layout-title h1 {font-family:'Barlow Condensed',sans-serif; font-size:48px; line-height:1.05; margin:0;}
-.layout-title h1 span {display:block; font-family:'IBM Plex Sans',sans-serif; font-size:13px; font-weight:400; margin-top:10px;}
+.layout-title h1 {font-family:var(--font-ui); font-size:48px; line-height:1.05; margin:0;}
+.layout-title h1 span {display:block; font-family:var(--font-ui); font-size:13px; font-weight:400; margin-top:10px;}
 .layout-title p {font-size:12px; line-height:1.6; margin:12px 0 0; color:var(--color-line);}
 .layout-race-picker {display:flex; gap:12px;}
 .layout-race-picker label {display:block; font-size:12px;}
@@ -17,10 +17,10 @@
 .layout-tools {position:absolute; left:20px; bottom:52px; display:flex; flex-wrap:wrap; gap:12px; max-width:calc(100% - 40px);}
 .layout-tools>div {display:flex; gap:6px;}
 .layout-tools button {display:inline-flex; align-items:center; justify-content:center; gap:7px; min-width:44px;}
-.layout-scene-label {position:absolute; left:20px; top:18px; pointer-events:none; font:500 22px 'Barlow Condensed',sans-serif; max-width:calc(100% - 40px); text-shadow:0 2px 6px var(--color-ink);}
+.layout-scene-label {position:absolute; left:20px; top:18px; pointer-events:none; font:500 22px var(--font-ui); max-width:calc(100% - 40px); text-shadow:0 2px 6px var(--color-ink);}
 .layout-scene-foot {position:absolute; bottom:0; left:0; right:0; display:flex; justify-content:space-between; gap:16px; padding:12px 20px; background:var(--color-ink); font-size:11px; color:var(--color-line);}
 .layout-loading,.layout-fallback {position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; background:var(--color-ink); z-index:2; gap:12px; padding:24px; text-align:center;}
-.layout-fallback h2 {font:500 32px 'Barlow Condensed',sans-serif; margin:0;}
+.layout-fallback h2 {font:500 32px var(--font-ui); margin:0;}
 .layout-fallback p {font-size:13px; max-width:360px; line-height:1.6;}
 .layout-caption {display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 24px; color:var(--color-line); font-size:12px; padding-top:18px;}
 .layout-caption>p {margin:0; line-height:1.6;}

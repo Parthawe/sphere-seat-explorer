@@ -2,9 +2,6 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "@fontsource/ibm-plex-sans/400.css";
 import "@fontsource/ibm-plex-sans/500.css";
-import "@fontsource/barlow-condensed/400.css";
-import "@fontsource/barlow-condensed/500.css";
-import "@fontsource/barlow-condensed/500-italic.css";
 import App from "./RaceHub";
 import AppBoundary from "./AppBoundary";
 import "./theme.css";
@@ -26,6 +23,7 @@ import "./heroLanding.css";
 import "./race3DPreview.css";
 import "./editorial.css";
 import "./earthJourney.css";
+import "./typography.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppBoundary><App /></AppBoundary>
