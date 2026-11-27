@@ -665,3 +665,11 @@ Human request: remove stands and seats displayed where none are supported. Remov
 Validation: TypeScript and 206/206 tests passed. Browser checks at 390/768/1440px confirmed Japan legacy URL recovery, 19-area selection, no overflow or browser exceptions; Jeddah shows no invented area map; old Japan concept URL has no canvas. Phone screenshot visually inspected. Build passed.
 
 Published source `96f5465efecac81f556ae4c04fe4a98b8f12591b`, pushed to GitHub main. Saved version `appgprj_6b03a10b6c388191a92912a1c2dfe070~appgver_3604ce6a457c81918eac01659f520c10` (v104), deployment `appgdep_6b08f8252fd88191a2da068871c56e00`, native succeeded `2026-11-27T03:25:30.931029+00:00`. Archive: `f1tickets-location-integrity-deployment.tar.gz` outside the repo. Exact ticket coordinates, calibrated venue geometry and live telemetry remain unverified/unconnected; no such coverage claimed by this correction.
+
+### v105 · Simple opening hero
+
+Human request: make the first hero attractive and explain that the product helps people understand a circuit. Moved the hero above race highlights, made it the page's single H1, and used “Know the track. Choose your view.” with one “Explore races” action to the calendar. Retained the illustrative Las Vegas scene with an image fallback, deferred 3D, pause/reduced-motion support, explicit unverified-seat caption and expandable source credits. Removed opening seat/circuit switches and competing Las Vegas CTA. The calendar is now an H2; season navigation and all existing race content remain available.
+
+Validation: TypeScript and production build passed. Rendered browser checks at 320/390/768/1440px verified one H1, hero-first order, no horizontal overflow, calendar CTA and 2027 season navigation. The animated renderer loaded and paused correctly. Final desktop and phone screenshots visually inspected. Existing business/data logic was unchanged; the full source suite was not rerun for this presentation change.
+
+Published source `dbf72c7fea9c476d47de501892025820b2c12648`, pushed to GitHub main. Saved version `appgprj_6b03a10b6c388191a92912a1c2dfe070~appgver_551a59e0e610819193bfe9ffab24e26f` (v105). Deployment `appgdep_6b08f936c11081919e2ccea909b55065` succeeded at `2026-11-27T03:30:05.198433+00:00`. Archive `f1tickets-simple-hero-deployment.tar.gz` is outside the repo.
