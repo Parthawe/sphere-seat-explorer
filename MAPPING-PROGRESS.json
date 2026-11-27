@@ -1281,6 +1281,8 @@
     "route": "screen=track-study",
     "geometry": "Unitless flat source outline with an authored movable sample stand; no measured elevations, bridges or actual ticket positions.",
     "seat_mapping_complete": false,
-    "validated_editions": 47
+    "validated_editions": 47,
+    "published_version": 100,
+    "published_source": "83aec5e774b0644dc91c0d4972567ab2967e39fe"
   }
 }
