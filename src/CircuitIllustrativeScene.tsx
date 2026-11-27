@@ -8,15 +8,16 @@ import {buildStudyGeometry} from './circuitStudy';
 import type {CircuitLayout} from './circuitLayouts';
 import {circuitRibbon} from './circuitRibbon';
 
-type Props={layout:CircuitLayout;playing:boolean;visible:boolean;reset:number;zoom:number;onReady:()=>void;onUnavailable:()=>void};
+type Props={preview?:boolean;layout:CircuitLayout;playing:boolean;visible:boolean;reset:number;zoom:number;onReady:()=>void;onUnavailable:()=>void};
 export default function CircuitIllustrativeScene(props:Props){
  return <Canvas shadows dpr={[1,1.5]} frameloop={!props.visible?'never':props.playing?'always':'demand'} camera={{fov:44,near:.015,far:120,position:[12,15,15]}} gl={{antialias:true}} fallback={<span>3D requires WebGL.</span>}><ShaderGuard onUnavailable={props.onUnavailable}/><World {...props} playing={props.playing&&props.visible}/></Canvas>;
 }
-function World({layout,playing,reset,zoom,onReady,onUnavailable}:Props){
+function World({layout,preview,playing,reset,zoom,onReady,onUnavailable}:Props){
  const {camera,gl,invalidate,size}=useThree(),controls=useRef<OrbitControls|null>(null),goal=useRef<{eye:T.Vector3;target:T.Vector3}|null>(null),phase=useRef(.1),reported=useRef(false);
  const geometry=useMemo(()=>buildStudyGeometry(layout),[layout]);
  const points=useMemo(()=>geometry.points.map(p=>new T.Vector3(p[0],.11,p[1])),[geometry]);
  const road=useMemo(()=>circuitRibbon(points,.09),[points]);
+ const edges=useMemo(()=>preview?circuitRibbon(points,.15):null,[points,preview]);
  const path=useMemo(()=>{const p=new T.CurvePath<T.Vector3>();for(let i=1;i<points.length;i++)p.add(new T.LineCurve3(points[i-1],points[i]));p.updateArcLengths();return p;},[points]);
  const previousZoom=useRef(zoom);
  const cameraGoal=useMemo(()=>{
@@ -33,7 +34,7 @@ function World({layout,playing,reset,zoom,onReady,onUnavailable}:Props){
  },[cameraGoal,reset,camera,invalidate]);
  useEffect(()=>{const delta=zoom-previousZoom.current;previousZoom.current=zoom;if(!delta)return;goal.current=null;const target=controls.current?.target??new T.Vector3();camera.position.sub(target).multiplyScalar(delta>0?.85:1.18).add(target);controls.current?.update();invalidate();},[zoom,camera,invalidate]);
  useEffect(()=>{gl.domElement.dataset.studyCamera='overview';gl.domElement.dataset.studySeats='none';invalidate();},[gl,invalidate]);
- useEffect(()=>()=>road.dispose(),[road]);
+ useEffect(()=>()=>{road.dispose();edges?.dispose();},[road,edges]);
  useFrame((_,delta)=>{
   if(goal.current){const t=1-Math.exp(-Math.min(delta,.05)*8);camera.position.lerp(goal.current.eye,t);controls.current?.target.lerp(goal.current.target,t);camera.lookAt(controls.current?.target??goal.current.target);if(camera.position.distanceTo(goal.current.eye)<.002){camera.position.copy(goal.current.eye);goal.current=null;}else invalidate();}
   controls.current?.update();
@@ -41,7 +42,8 @@ function World({layout,playing,reset,zoom,onReady,onUnavailable}:Props){
   if(!reported.current){reported.current=true;onReady();}
  });
  return <><StudioReflections intensity={.55}/><ambientLight intensity={.25}/><hemisphereLight args={['#f7f4f1','#24242b',.65]}/><directionalLight position={[-7,13,7]} intensity={2.7} color="#fff2e3" castShadow shadow-mapSize={[1024,1024]} shadow-bias={-.0001} shadow-normalBias={.003} shadow-camera-left={-8} shadow-camera-right={8} shadow-camera-top={8} shadow-camera-bottom={-8}/><directionalLight position={[8,4,-8]} intensity={.6}/>
-  <mesh position={[0,-.13,0]} receiveShadow><boxGeometry args={[15,.3,15]}/><SurfaceMaterial surface="concrete" color="#49494f" roughness={.9} grainScale={3} strength={.18}/></mesh>
+  <mesh position={[0,-.13,0]} receiveShadow><boxGeometry args={[15,.3,15]}/><SurfaceMaterial surface="concrete" color={preview?'#292c36':'#49494f'} roughness={.9} grainScale={3} strength={.18}/></mesh>
+  {edges&&<mesh geometry={edges} position={[0,-.001,0]} receiveShadow><meshStandardMaterial color="#d4d8e0" roughness={1}/></mesh>}
   <mesh geometry={road} receiveShadow><SurfaceMaterial surface="asphalt" color="#202025" roughness={.92} grainScale={14} strength={.2}/></mesh>
   <CircuitCars path={path} phase={phase} playing={playing}/>
  </>;

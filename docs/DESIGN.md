@@ -10,3 +10,9 @@ The calendar entrance uses one task row: a medium-weight primary headline with a
 ### Standings identity images · 26 November 2026
 
 Championship rows retain rank, name and points as the reading order. Drivers add a 36–44px portrait and small company marks beside the feed's team labels; team standings use the same marks as row emblems. Full-name matching and explicit spelling aliases keep identities separate. Unknown portraits and unavailable marks use initials, never another driver/team image. Multi-constructor season labels retain all source names. Portrait source years and licenses remain in the gallery/credit links; manufacturer marks are identifiers, not current racing-livery or endorsement claims.
+
+### Race guides lead with 3D · 26 November 2026
+
+Every race guide now opens with its title/date beside a rendered 3D preview, before stand/schedule navigation. The preview and its single Explore 3D action enter the correct edition's detailed model, Vegas reference atlas or circuit-outline study. The previous photo cover is an optional Venue photo disclosure with existing credits. No new generic stands are placed in outline-only previews.
+
+Inline detailed cameras fit the preview's full height and align the circuit's long axis with wide panels; the full explorer keeps its existing camera framing. Immediate PNG posters come from the same renderer. They contain no UI overlays, use contain fitting to preserve the circuit on narrow screens, and retain a source/hash manifest. Live previews load only near the viewport, pause offscreen/hidden, default to paused cars and respect reduced motion; data saver waits for explicit load. Failure retains the poster and explorer handoff. Keep the explicit model-year/flat-outline limits and source-info link.

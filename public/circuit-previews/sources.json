@@ -1,0 +1,546 @@
+{
+  "captured": "2026-11-27 UTC",
+  "method": "Original browser WebGL renderer captures from the corresponding inline preview, with reduced motion and simulated cars paused.",
+  "records": [
+    {
+      "kind": "outline",
+      "key": "outline-au-1953",
+      "poster": "/circuit-previews/outline-au-1953.png",
+      "href": "?season=2026&race=australia&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "australia"
+      },
+      "sha256": "ea4966d959ddd432ad970984cea6f05d10304d23b8b98c2d57b6106885b07ed7",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/au-1953.geojson",
+      "geometry": "au-1953",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "model",
+      "key": "model-2026-china",
+      "poster": "/circuit-previews/model-2026-china.png",
+      "href": "?season=2026&race=china&screen=circuit",
+      "note": "Illustrative 2026 venue · seats unverified",
+      "race": {
+        "season": 2026,
+        "slug": "china"
+      },
+      "sha256": "78e3c84cbfb60391942432ddafcc7f132e1ace127ab50d14a7660c11828c854a",
+      "source": "https://www.formula1.com/en/racing/2026/china",
+      "geometry": "/data/shanghai-geometry.json",
+      "limits": "Illustrative 2026 venue · seats unverified"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-jp-1962",
+      "poster": "/circuit-previews/outline-jp-1962.png",
+      "href": "?season=2026&race=japan&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "japan"
+      },
+      "sha256": "576f62a25c57b9663188d7e3c4b39b1695006e85f445aceb106e3a910e03efcb",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/jp-1962.geojson",
+      "geometry": "jp-1962",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-us-2022",
+      "poster": "/circuit-previews/outline-us-2022.png",
+      "href": "?season=2026&race=miami&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "miami"
+      },
+      "sha256": "2a106d4e9730e9f328bd8003d618cda97d25bcad5c2d0d6c53db25a44788687d",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/us-2022.geojson",
+      "geometry": "us-2022",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-ca-1978",
+      "poster": "/circuit-previews/outline-ca-1978.png",
+      "href": "?season=2026&race=canada&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "canada"
+      },
+      "sha256": "360c147943d2ad0a82090db24e581b88591129efd9d3563e4dc760193684bbe0",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/ca-1978.geojson",
+      "geometry": "ca-1978",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-mc-1929",
+      "poster": "/circuit-previews/outline-mc-1929.png",
+      "href": "?season=2026&race=monaco&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "monaco"
+      },
+      "sha256": "88d69bbc325a95bf9aff8f5a38e393be6a72aa26bd36a22281a0ddeb46177f74",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/mc-1929.geojson",
+      "geometry": "mc-1929",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-es-1991",
+      "poster": "/circuit-previews/outline-es-1991.png",
+      "href": "?season=2026&race=barcelona-catalunya&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "barcelona-catalunya"
+      },
+      "sha256": "fa781cf1df569f3dc1d7d9ca4cd7bf3756e9e4cf0512bcf7ba0abf18fe02f65f",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/es-1991.geojson",
+      "geometry": "es-1991",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-at-1969",
+      "poster": "/circuit-previews/outline-at-1969.png",
+      "href": "?season=2026&race=austria&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "austria"
+      },
+      "sha256": "a0cf2d8afad39b4d90ce715b0b65f1b4e202410d72a7125dde6dfbe50e635789",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/at-1969.geojson",
+      "geometry": "at-1969",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-gb-1948",
+      "poster": "/circuit-previews/outline-gb-1948.png",
+      "href": "?season=2026&race=great-britain&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "great-britain"
+      },
+      "sha256": "b7b3bd03b9985ffa90580d7fc067e1c8b0189aab9d4cf374272d2454efbb180a",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/gb-1948.geojson",
+      "geometry": "gb-1948",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-be-1925",
+      "poster": "/circuit-previews/outline-be-1925.png",
+      "href": "?season=2026&race=belgium&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "belgium"
+      },
+      "sha256": "ac7db511df821184a0db6c8fcf1cb15722c6025d7e8caa4aa41c0d7103874d01",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/be-1925.geojson",
+      "geometry": "be-1925",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-hu-1986",
+      "poster": "/circuit-previews/outline-hu-1986.png",
+      "href": "?season=2026&race=hungary&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "hungary"
+      },
+      "sha256": "cba01c190c175c8fa073a144067686e5ced6ea4c4da91b229c90d0cf4332bcd2",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/hu-1986.geojson",
+      "geometry": "hu-1986",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-nl-1948",
+      "poster": "/circuit-previews/outline-nl-1948.png",
+      "href": "?season=2026&race=netherlands&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "netherlands"
+      },
+      "sha256": "35a599b992c1c07117563bbe062872411fafe9e589aafa03087986f78511c5fc",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/nl-1948.geojson",
+      "geometry": "nl-1948",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-it-1922",
+      "poster": "/circuit-previews/outline-it-1922.png",
+      "href": "?season=2026&race=italy&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "italy"
+      },
+      "sha256": "44913fed70191a06c6168a1a85ad9eb2206fcfbffe12e8da9d12bc08646a9e92",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/it-1922.geojson",
+      "geometry": "it-1922",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-es-2026",
+      "poster": "/circuit-previews/outline-es-2026.png",
+      "href": "?season=2026&race=spain&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "spain"
+      },
+      "sha256": "5215795d3c48d942f405776e72c88d57ac6b39ac3c0a8c825f21673ab615cf5d",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/es-2026.geojson",
+      "geometry": "es-2026",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-az-2016",
+      "poster": "/circuit-previews/outline-az-2016.png",
+      "href": "?season=2026&race=azerbaijan&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "azerbaijan"
+      },
+      "sha256": "76f563ad87397c25ac3038e193ab4969181aafd0fee6a1529116f773f8733f99",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/az-2016.geojson",
+      "geometry": "az-2016",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-my-1999",
+      "poster": "/circuit-previews/outline-my-1999.png",
+      "href": "?season=2026&race=bahrain&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "bahrain"
+      },
+      "sha256": "74607137ac686560d5c9d2c0699969cf3608824c852064c9c57a16f9c7b7cc3a",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/my-1999.geojson",
+      "geometry": "my-1999",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-sg-2008",
+      "poster": "/circuit-previews/outline-sg-2008.png",
+      "href": "?season=2026&race=singapore&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "singapore"
+      },
+      "sha256": "7991cdd83b44b71e03e0e6b571f37585bebef4427363c9234e8eeb7ae3a7cb94",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/sg-2008.geojson",
+      "geometry": "sg-2008",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-us-2012",
+      "poster": "/circuit-previews/outline-us-2012.png",
+      "href": "?season=2026&race=united-states&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "united-states"
+      },
+      "sha256": "11e2b5448d9ba9f2ca92de32490aa987be9bf4adc80ab47b4f94282685c41598",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/us-2012.geojson",
+      "geometry": "us-2012",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-mx-1962",
+      "poster": "/circuit-previews/outline-mx-1962.png",
+      "href": "?season=2026&race=mexico&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "mexico"
+      },
+      "sha256": "7757b9f9435717876c0e40ef1318517231ca343ba9a6fc0aeaaabdf3699aa71b",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/mx-1962.geojson",
+      "geometry": "mx-1962",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-br-1940",
+      "poster": "/circuit-previews/outline-br-1940.png",
+      "href": "?season=2026&race=brazil&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2026,
+        "slug": "brazil"
+      },
+      "sha256": "a4622686f911a12f7f51da74fd4272227ea79490843d73ab2bada7a883207cca",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/br-1940.geojson",
+      "geometry": "br-1940",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "vegas",
+      "key": "vegas-2026",
+      "poster": "/circuit-previews/vegas-2026.png",
+      "href": "?season=2026&race=las-vegas&screen=vegas",
+      "note": "Illustrative 2026 reference · seats unverified",
+      "race": {
+        "season": 2026,
+        "slug": "las-vegas"
+      },
+      "sha256": "0694e87a66db5897427fab2de6a6b18f4f9742c01075f6e99c2c5cf9556c700b",
+      "source": "https://www.openstreetmap.org/copyright",
+      "geometry": "/geo/CREDITS.txt",
+      "limits": "Illustrative 2026 reference · seats unverified"
+    },
+    {
+      "kind": "model",
+      "key": "model-2026-qatar",
+      "poster": "/circuit-previews/model-2026-qatar.png",
+      "href": "?season=2026&race=qatar&screen=circuit",
+      "note": "Illustrative 2026 venue · seats unverified",
+      "race": {
+        "season": 2026,
+        "slug": "qatar"
+      },
+      "sha256": "58880af02b4e8071b604ea1325706fda66b604b3aef34ac3fc681fdfffa6de2d",
+      "source": "https://www.lcsc.qa/formula12026",
+      "geometry": "/data/qatar-geometry.json",
+      "limits": "Illustrative 2026 venue · seats unverified"
+    },
+    {
+      "kind": "model",
+      "key": "model-2026-united-arab-emirates",
+      "poster": "/circuit-previews/model-2026-united-arab-emirates.png",
+      "href": "?season=2026&race=united-arab-emirates&screen=circuit",
+      "note": "Illustrative 2026 venue · seats unverified",
+      "race": {
+        "season": 2026,
+        "slug": "united-arab-emirates"
+      },
+      "sha256": "30b907ff5570d37b9b586ba0459e8cb54cbb0422cda9e1132190d180e6f7491a",
+      "source": "https://www.abudhabigp.com/en/formula1/tickets-2026/",
+      "geometry": "/data/yas-geometry.json",
+      "limits": "Illustrative 2026 venue · seats unverified"
+    },
+    {
+      "kind": "model",
+      "key": "model-2027-bahrain",
+      "poster": "/circuit-previews/model-2027-bahrain.png",
+      "href": "?season=2027&race=bahrain&screen=circuit",
+      "note": "Illustrative 2027 venue · seats unverified",
+      "race": {
+        "season": 2027,
+        "slug": "bahrain"
+      },
+      "sha256": "4cedf1e31c6ed93010c1d0c629bda8bc580b9cda24bd3d45cb4ef01f5c035345",
+      "source": "https://www.bahraingp.com/blog/events/f1-2027/",
+      "geometry": "/data/bahrain-geometry.json",
+      "limits": "Illustrative 2027 venue · seats unverified"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-sa-2021",
+      "poster": "/circuit-previews/outline-sa-2021.png",
+      "href": "?season=2027&race=saudi-arabia&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2027,
+        "slug": "saudi-arabia"
+      },
+      "sha256": "291eca15aaaa6b19eaf7ca42a4b81763c89df390afca451302768e20cce6c997",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/sa-2021.geojson",
+      "geometry": "sa-2021",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "model",
+      "key": "model-2027-australia",
+      "poster": "/circuit-previews/model-2027-australia.png",
+      "href": "?season=2027&race=australia&screen=circuit",
+      "note": "Illustrative 2027 venue · seats unverified",
+      "race": {
+        "season": 2027,
+        "slug": "australia"
+      },
+      "sha256": "fe5e0be61fbbfcd05497985c282a639cb6061f994e45381c268e313728e51b87",
+      "source": "https://travel.grandprix.com.au/blog/grandstand-guide-2027",
+      "geometry": "/data/albert-park-geometry.json",
+      "limits": "Illustrative 2027 venue · seats unverified"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-cn-2004",
+      "poster": "/circuit-previews/outline-cn-2004.png",
+      "href": "?season=2027&race=china&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2027,
+        "slug": "china"
+      },
+      "sha256": "de7aefa38eefc4d385a4070a094f63eaf2f109c5ef0da1ff10bbb1357d94f69a",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/cn-2004.geojson",
+      "geometry": "cn-2004",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "model",
+      "key": "model-2027-miami",
+      "poster": "/circuit-previews/model-2027-miami.png",
+      "href": "?season=2027&race=miami&screen=circuit",
+      "note": "Illustrative 2027 venue · seats unverified",
+      "race": {
+        "season": 2027,
+        "slug": "miami"
+      },
+      "sha256": "5852801adcffb9e634b6266ef34e5309b2ffd12d615914fecce439b14a6c76e3",
+      "source": "https://f1miamigp.com/news/press-release/tickets-on-sale-2027/",
+      "geometry": "/data/miami-geometry.json",
+      "limits": "Illustrative 2027 venue · seats unverified"
+    },
+    {
+      "kind": "model",
+      "key": "model-2027-canada",
+      "poster": "/circuit-previews/model-2027-canada.png",
+      "href": "?season=2027&race=canada&screen=circuit",
+      "note": "Illustrative 2027 venue · seats unverified",
+      "race": {
+        "season": 2027,
+        "slug": "canada"
+      },
+      "sha256": "cd579d50261aeb745a35574e088d71623d0c53d5ac17e66cf6e26bc6bd9495ff",
+      "source": "https://gpcanada.ca/en/discover-our-offer/",
+      "geometry": "/data/canada-geometry.json",
+      "limits": "Illustrative 2027 venue · seats unverified"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-pt-2008",
+      "poster": "/circuit-previews/outline-pt-2008.png",
+      "href": "?season=2027&race=portugal&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2027,
+        "slug": "portugal"
+      },
+      "sha256": "78465a06c58005d2467a37d458ac14bccbaca1af5859f4c758d8f56429d26b83",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/pt-2008.geojson",
+      "geometry": "pt-2008",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "model",
+      "key": "model-2027-great-britain",
+      "poster": "/circuit-previews/model-2027-great-britain.png",
+      "href": "?season=2027&race=great-britain&screen=circuit",
+      "note": "Illustrative 2027 venue · seats unverified",
+      "race": {
+        "season": 2027,
+        "slug": "great-britain"
+      },
+      "sha256": "4d989741f2b839e368a71d181c25d7bc43f795648c0742eefee380759cd86eb1",
+      "source": "https://www.silverstone.co.uk/events/formula-1-british-grand-prix/tickets/grandstands",
+      "geometry": "/data/silverstone-geometry.json",
+      "limits": "Illustrative 2027 venue · seats unverified"
+    },
+    {
+      "kind": "model",
+      "key": "model-2027-belgium",
+      "poster": "/circuit-previews/model-2027-belgium.png",
+      "href": "?season=2027&race=belgium&screen=circuit",
+      "note": "Illustrative 2027 venue · seats unverified",
+      "race": {
+        "season": 2027,
+        "slug": "belgium"
+      },
+      "sha256": "a9949be092331b6deba75f53000d715986b5107cb4c9eaaf7a3a4e97690a065c",
+      "source": "https://www.spagrandprix.com/en/ticketing/ticket/map",
+      "geometry": "/data/spa-geometry.json",
+      "limits": "Illustrative 2027 venue · seats unverified"
+    },
+    {
+      "kind": "model",
+      "key": "model-2027-italy",
+      "poster": "/circuit-previews/model-2027-italy.png",
+      "href": "?season=2027&race=italy&screen=circuit",
+      "note": "Illustrative 2027 venue · seats unverified",
+      "race": {
+        "season": 2027,
+        "slug": "italy"
+      },
+      "sha256": "2854b1dea84079472dcf4edbdba5590de52c8481c48339ad6113793fa2e65e0f",
+      "source": "https://www.monzanet.it/en/f1-grand-prix/",
+      "geometry": "/data/monza-geometry.json",
+      "limits": "Illustrative 2027 venue · seats unverified"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-tr-2005",
+      "poster": "/circuit-previews/outline-tr-2005.png",
+      "href": "?season=2027&race=turkey&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2027,
+        "slug": "turkey"
+      },
+      "sha256": "adfd97f9a6035bf2c27fc43fc68754aad7c8d0eb54a3d4f5d306ba6617bc476e",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/tr-2005.geojson",
+      "geometry": "tr-2005",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-qa-2004",
+      "poster": "/circuit-previews/outline-qa-2004.png",
+      "href": "?season=2027&race=qatar&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2027,
+        "slug": "qatar"
+      },
+      "sha256": "4ed753c21fc7580e38348463c2a1f837167aa9ff8c863beffc2e702accb6fb86",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/qa-2004.geojson",
+      "geometry": "qa-2004",
+      "limits": "Flat circuit study · no seating or elevation"
+    },
+    {
+      "kind": "outline",
+      "key": "outline-ae-2009",
+      "poster": "/circuit-previews/outline-ae-2009.png",
+      "href": "?season=2027&race=united-arab-emirates&screen=track-study",
+      "note": "Flat circuit study · no seating or elevation",
+      "race": {
+        "season": 2027,
+        "slug": "united-arab-emirates"
+      },
+      "sha256": "8f10ff51f208921b71481ebf9ad65eae95293679567862c400c6dcd5c9c5be86",
+      "source": "https://github.com/bacinger/f1-circuits/blob/fda4a2f74728fa033c81ba8d3b628966a4a095d2/circuits/ae-2009.geojson",
+      "geometry": "ae-2009",
+      "limits": "Flat circuit study · no seating or elevation"
+    }
+  ]
+}

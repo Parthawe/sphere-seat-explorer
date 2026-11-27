@@ -23,6 +23,7 @@ import "./venueStands.css";
 import "./venueReferences.css";
 import "./standConcept.css";
 import "./heroLanding.css";
+import "./race3DPreview.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppBoundary><App /></AppBoundary>

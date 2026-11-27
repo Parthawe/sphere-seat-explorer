@@ -235,13 +235,21 @@ export function bankOverviewCamera(model:CircuitModel,bank:ModelBank,aspect:numb
 }
 
 /** Fit overview framing to each physical venue and viewport, with room for scene controls. */
-export function circuitOverviewCamera(model:CircuitModel,aspect:number,verticalFraction=.7){
+export function circuitOverviewCamera(model:CircuitModel,aspect:number,verticalFraction=.7,directionOverride?:readonly[number,number,number]){
  const points:number[][]=model.track.map((p,i)=>[p[0],model.trackHeights?.[i]??0,p[1]]);
  for(const b of model.banks){const {yaw}=bankFrame(model,b),c=Math.cos(yaw),s=Math.sin(yaw);for(const x of [-b.width/2,b.width/2])for(const z of [-b.rows*.44-3,b.rows*.44+3])for(const y of [0,b.rows*.43+6])points.push([b.center[0]+x*c+z*s,y+bankGroundHeight(model,b),b.center[1]-x*s+z*c]);}
  if(model.terrain){const t=model.terrain;for(let row=0;row<t.rows;row++)for(let col=0;col<t.columns;col++)points.push([t.bounds[0]+col/(t.columns-1)*(t.bounds[2]-t.bounds[0]),t.heights[row*t.columns+col],t.bounds[1]+row/(t.rows-1)*(t.bounds[3]-t.bounds[1])]);}
  const target:[number,number,number]=[(Math.min(...points.map(p=>p[0]))+Math.max(...points.map(p=>p[0])))/2,model.terrain?(Math.min(...points.map(p=>p[1]))+Math.max(...points.map(p=>p[1])))/2:0,(Math.min(...points.map(p=>p[2]))+Math.max(...points.map(p=>p[2])))/2];
- const direction=model.terrain&&aspect<.8?[0,1,.25]:[.6,1,.9],length=Math.hypot(...direction),normal=direction.map(n=>n/length),rLength=Math.hypot(normal[0],normal[2]),right=[normal[2]/rLength,0,-normal[0]/rLength],up=[-normal[1]*normal[0]/rLength,rLength,-normal[1]*normal[2]/rLength];
+ const direction=directionOverride??(model.terrain&&aspect<.8?[0,1,.25]:[.6,1,.9]),length=Math.hypot(...direction),normal=direction.map(n=>n/length),rLength=Math.hypot(normal[0],normal[2]),right=[normal[2]/rLength,0,-normal[0]/rLength],up=[-normal[1]*normal[0]/rLength,rLength,-normal[1]*normal[2]/rLength];
  const tan=Math.tan(Math.PI/8),ratio=Number.isFinite(aspect)&&aspect>0?aspect:1;let distance=500;
  for(const p of points){const v=p.map((n,i)=>n-target[i]),depth=v.reduce((n,a,i)=>n+a*normal[i],0),x=v.reduce((n,a,i)=>n+a*right[i],0),y=v.reduce((n,a,i)=>n+a*up[i],0);distance=Math.max(distance,depth+Math.abs(x)/(tan*ratio*.82),depth+Math.abs(y)/(tan*verticalFraction));}
  return {eye:target.map((n,i)=>n+normal[i]*distance) as [number,number,number],target};
+}
+
+/** Fit the long circuit axis across a wide preview; full explorer framing stays unchanged. */
+export function circuitPreviewCamera(model:CircuitModel,aspect:number){
+ const points=model.track,n=points.length,mx=points.reduce((sum,p)=>sum+p[0],0)/n,mz=points.reduce((sum,p)=>sum+p[1],0)/n;
+ let xx=0,xz=0,zz=0;for(const p of points){const x=p[0]-mx,z=p[1]-mz;xx+=x*x;xz+=x*z;zz+=z*z;}
+ const angle=.5*Math.atan2(2*xz,xx-zz);
+ return circuitOverviewCamera(model,aspect,.84,aspect>1.15?[-Math.sin(angle),1.1,Math.cos(angle)]:undefined);
 }
