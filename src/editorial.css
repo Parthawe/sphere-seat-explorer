@@ -206,3 +206,32 @@
 .guide-map-tools>summary>span {flex:1;}
 .guide-map-tools[open]>summary>.ui-icon:last-child {transform:rotate(45deg);}
 .guide-map-tools>summary>.ui-icon {flex-shrink:0;}
+
+/* Real model anchors projected into the overview; groups are UI clusters, not new banks. */
+.circuit-bank-markers {position:absolute;inset:0;z-index:2;pointer-events:none;}
+.circuit-bank-markers[hidden],.circuit-bank-markers button[hidden] {display:none!important;}
+.circuit-bank-markers button {position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:44px;height:44px;padding:4px;border:1px solid #aeb8ca;border-radius:4px;background:#15151ef2;color:#fff;pointer-events:auto;font:500 12px/1 'IBM Plex Sans',sans-serif;}
+.circuit-bank-markers button .ui-icon {width:15px;height:15px;}
+.circuit-bank-markers .bank-marker-group {display:none;}
+.circuit-bank-markers button[data-cluster=true] .bank-marker-single {display:none;}
+.circuit-bank-markers button[data-cluster=true] .bank-marker-group {display:block;}
+.circuit-bank-markers button[data-selected=true],.circuit-bank-markers button:hover {background:var(--color-action);border-color:var(--color-white);}
+.bank-marker-name {display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:max-content;max-width:180px;padding:8px 10px;border:1px solid #aeb8ca;background:var(--color-ink);color:var(--color-white);font:400 12px/1.5 'IBM Plex Sans',sans-serif;pointer-events:none;}
+.circuit-bank-markers button:is(:hover,:focus-visible) .bank-marker-name {display:block;}
+.circuit-model-stage :is(.circuit-model-heading,.circuit-camera-modes,.circuit-photo-trigger,.circuit-seat-zoom,.circuit-scene-actions,.circuit-scene-note) {z-index:3;}
+.circuit-loading-poster {position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.35;pointer-events:none;z-index:1;}
+.circuit-model-loading {z-index:3;}
+.circuit-model-loading small {display:block;margin-top:8px;font-size:12px;color:var(--color-line);}
+@media(max-width:1100px) {
+ .circuit-scene-actions :is(.circuit-action-label,.circuit-quick-position-label,.circuit-focus-label) {display:none;}
+ .circuit-scene-actions {gap:4px;right:18px;}
+ .circuit-scene-actions button {width:44px;min-width:44px;min-height:44px;padding:9px;}
+}
+
+.circuit-model-fallback {z-index:4;padding:20px;background:#151d2bf2;border:1px solid var(--color-control-border);}
+
+.circuit-model-stage.is-unavailable .circuit-loading-poster {top:20%;height:45%;opacity:.65;}
+.circuit-model-stage.is-unavailable .circuit-model-fallback {top:auto;bottom:130px;transform:translateX(-50%);padding:14px;}
+.circuit-model-fallback h2 {font-size:28px;margin:0 0 8px;}
+.circuit-model-fallback p {font-size:13px;margin:8px 0;}
+@media(max-width:760px) {.circuit-model-stage.is-unavailable .circuit-loading-poster {top:22%;height:35%;}}

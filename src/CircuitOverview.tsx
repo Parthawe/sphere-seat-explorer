@@ -1,9 +1,10 @@
 import {useEffect,useRef} from 'react';
 import {bankFrame,modelPosition,type CircuitModel,type ModelPosition} from './circuitSeating';
 
-export default function CircuitOverview({model,selection,open,onClose,onSelect}:{model:CircuitModel;selection:ModelPosition;open:boolean;onClose:()=>void;onSelect:(bank:string)=>void}){
+export default function CircuitOverview({model,selection,open,onClose,onSelect,bankIds=null,onShowAll}:{model:CircuitModel;selection:ModelPosition;open:boolean;onClose:()=>void;onSelect:(bank:string)=>void;bankIds?:string[]|null;onShowAll?:()=>void}){
  const dialog=useRef<HTMLDialogElement>(null);
  useEffect(()=>{if(open&&!dialog.current?.open)dialog.current?.showModal();else if(!open)dialog.current?.close();},[open]);
+ const listed=model.banks.filter(bank=>!bankIds||bankIds.includes(bank.id));
  const bank=model.banks.find(b=>b.id===selection.bank)!,eye=modelPosition(model,selection),frame=bankFrame(model,bank);
  const points=[...model.track,...model.banks.map(b=>b.center),...model.features.flatMap(f=>f.points)];
  const minX=Math.min(...points.map(p=>p[0]))-180,minZ=Math.min(...points.map(p=>p[1]))-180;
@@ -12,7 +13,7 @@ export default function CircuitOverview({model,selection,open,onClose,onSelect}:
  const tip=(angle:number)=>`${eye[0]+Math.sin(angle)*ray},${eye[2]+Math.cos(angle)*ray}`;
  const polygon=(b:typeof bank)=>{const f=bankFrame(model,b),c=Math.cos(f.yaw),s=Math.sin(f.yaw),depth=b.kind==='lawn'?27:b.rows*.44+2;return [[-b.width/2,-depth],[b.width/2,-depth],[b.width/2,depth],[-b.width/2,depth]].map(([x,z])=>`${b.center[0]+x*c+z*s},${b.center[1]-x*s+z*c}`).join(' ');};
  return <dialog ref={dialog} className="circuit-overview-dialog" aria-labelledby="circuit-overview-title" onCancel={onClose} onClose={onClose}>
-  <header><div><h2 id="circuit-overview-title">{model.name}</h2><p>{model.country} · {model.season} · {model.banks.length} modeled banks</p></div><button type="button" onClick={onClose} aria-label="Close circuit map">×</button></header>
+  <header><div><h2 id="circuit-overview-title">{model.name}</h2><p>{model.country} · {model.season} · {bankIds?`${listed.length} nearby on screen · ${model.banks.length} total`:`${model.banks.length} modeled banks`}</p></div><button type="button" onClick={onClose} aria-label="Close circuit map">×</button></header>
   <div className="circuit-overview-layout">
    <div className="circuit-overview-drawing"><span className="circuit-overview-north" aria-label="North is up">N ↑</span>
     <svg viewBox={`${minX} ${minZ} ${width} ${height}`} role="img" aria-label={`Full ${model.country} circuit map. Selected ${bank.name}. Numbered markers correspond to viewing bank buttons. Shaded fan shows an illustrative 70 degree horizontal view direction.`}>
@@ -26,7 +27,7 @@ export default function CircuitOverview({model,selection,open,onClose,onSelect}:
     </svg>
     <div className="circuit-overview-legend"><span>Solid: footprint-aligned bank</span><span>Dashed: estimated region</span></div>
    </div>
-   <section className="circuit-overview-banks" aria-label="Choose a viewing bank"><h3>Choose your bank</h3><p>The selection updates your 3D view.</p>{model.banks.map((b,i)=><button type="button" key={b.id} aria-pressed={selection.bank===b.id} onClick={()=>onSelect(b.id)}><span>{i+1}</span><div><strong>{b.name}</strong><small>{b.footprint?'OSM footprint · facing inferred':'Estimated viewing region'}</small></div></button>)}</section>
+   <section className="circuit-overview-banks" aria-label="Choose a viewing bank"><h3>Choose your bank</h3><p>Choose a bank, then return to its modeled view.</p>{bankIds&&<button type="button" onClick={()=>{onShowAll?.();requestAnimationFrame(()=>dialog.current?.querySelector<HTMLButtonElement>('.circuit-overview-banks button[aria-pressed=true]')?.focus());}}>Show all {model.banks.length} banks</button>}{listed.map(b=><button type="button" key={b.id} aria-pressed={selection.bank===b.id} onClick={()=>onSelect(b.id)}><span>{model.banks.findIndex(item=>item.id===b.id)+1}</span><div><strong>{b.name}</strong><small>{b.footprint?'OSM footprint · facing inferred':'Estimated viewing region'}</small></div></button>)}</section>
   </div>
   <footer><div><strong>{bank.name}</strong><p>The shaded fan illustrates a 70° horizontal view. It does not measure visibility, obstructions or the camera’s current zoom. North is up; distances use adapted OSM geography.{model.banks.some(b=>b.mapLabelOffset)&&' Leader lines connect labels to their estimated regions.'}</p><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL</a></div><button type="button" onClick={onClose}>Return to selected view</button></footer>
  </dialog>;
