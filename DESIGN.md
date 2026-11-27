@@ -249,3 +249,7 @@ For upcoming 2026 races with a supported model, retain a direct organizer ticket
 ## Manual quote admission dates · 27 November 2026 UTC
 
 Price-note windows normally follow the dated session calendar. Extend them only through an explicit event/year source rule, never by subtracting a day from every race. Abu Dhabi 2026 permits a 3–6 December span from the organizer's published products while keeping 4 December as the default. Show the source and remind the user that daily access depends on the quoted product. Apply identical bounds when saving and restoring; reject impossible calendar dates and stale rules after a session-calendar change.
+
+## Shared illustrative circuit study
+
+Use the existing F1 red, ink and paper system for a single scene with a compact control rail. A small plan mirrors the selected point; numbered points indicate samples, never official corners. Keep the generic-stand and flat-outline labels visible on the scene. Show low/middle/high camera choices without invented row numbers or measured heights. Allow explicit car playback, stop on reduced-motion changes and suspend rendering offscreen. Preserve race/season navigation and direct handoffs to real viewing options and source references. This layer adds no third-party media or renderer download to the calendar entry.

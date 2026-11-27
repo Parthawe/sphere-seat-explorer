@@ -5,7 +5,7 @@ export function publicPageUrl(search: string) {
   const url = new URL(SITE_ORIGIN + "/");
   const params = new URLSearchParams(search);
   for (const key of ["season", "race", "screen", "area", "venue", "bank", "section", "modelRow", "position", "seat", "view", "camera", "compare",
-    "sphereLevel", "sphereSection", "sphereRow", "sphereSeat", "sphereView", "sphereLevels"]) {
+    "sample", "height", "side", "sphereLevel", "sphereSection", "sphereRow", "sphereSeat", "sphereView", "sphereLevels"]) {
     const value = params.get(key);
     if (value) url.searchParams.set(key, value);
   }

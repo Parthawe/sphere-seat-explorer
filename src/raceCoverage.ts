@@ -15,7 +15,7 @@ export function raceCoverage(season: number, race: string): RaceCoverage {
   if (model) return { kind: 'model', has3d: true, sourceSeason: model.season, label: 'Illustrative 3D study', detail: `Illustrative 3D · ${model.banks} modeled banks` };
   if (race === 'las-vegas') return { kind: 'reference3d', has3d: true, sourceSeason: 2026, label: '3D · 2026 reference', detail: 'Illustrative 3D · 2026 reference' };
   const venue=entry?.areaMap;
-  if(circuitLayoutId(season,race))return {kind:"layout3d",has3d:true,label:"3D circuit diagram",detail:venue?"3D layout diagram & area map · no seat preview":"3D layout diagram · no seat preview"};
+  if(circuitLayoutId(season,race))return {kind:"layout3d",has3d:true,label:"Plan-based 3D study",detail:venue?"Plan-based 3D study & area map · no seat preview":"Plan-based 3D study · no seat preview"};
   if (venue) return { kind: 'area', has3d: false, sourceSeason: season, label: 'Ticket desk & area map', detail: 'Approximate area map available' };
   return { kind: 'guide', has3d: false, label: 'Race & ticket guide', detail: 'Circuit guide · no 3D model' };
 }

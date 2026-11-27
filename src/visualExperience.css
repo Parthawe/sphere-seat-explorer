@@ -18,6 +18,8 @@
 .circuit-entry-preview .circuit-thumbnail {width:160px; height:104px; color:var(--color-line);}
 .circuit-entry-preview .circuit-outline-active {stroke:var(--color-signal);}
 .circuit-model-entry-actions button {display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:48px;}
+.circuit-model-entry-actions button.circuit-entry-secondary {background:transparent; border:1px solid var(--color-control-border); color:var(--color-paper);}
+.circuit-model-entry-actions button.circuit-entry-secondary:hover {background:var(--color-raised);}
 @media(max-width:760px) {
  .circuit-entry-preview {width:100%; gap:12px;}
  .circuit-entry-preview .circuit-thumbnail {width:104px; height:76px;}

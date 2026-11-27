@@ -141,3 +141,7 @@ The programme is complete when every verified target venue meets these criteria 
 ## Progress and scheduling
 
 MAPPING-PROGRESS.json is the persistent work queue and run log. MAPPING-AUTOMATION.json stores the scheduler's returned identity and cadence without credentials. A scheduler run should skip active overlapping work, preserve unrelated changes, and avoid repeating a known failed operation without new evidence. If all remaining items are externally blocked, report the concrete missing inputs and leave the work accurately marked as blocked.
+
+## Shared plan-based illustrative layer
+
+Every listed 2026/2027 circuit edition now has a shared illustrative-study route in addition to its existing diagram. The retained source outline is normalized to a unitless tabletop with an authored movable stand and sample camera. This increases interactive illustrative coverage without advancing any venue's precision, verified chair, height-field, media or historical replay gates. Preserve the venue-specific evidence queue and its unresolved assets; never mark the complete mapping programme done on the strength of generic sample coverage.

@@ -26,6 +26,7 @@ const CircuitStudyRoute=lazy(()=>import("./CircuitStudyRoute"));
 const StandConceptViewer=lazy(()=>import("./StandConceptViewer"));
 const RacingCentre=lazy(()=>import("./RacingCentre"));
 const CircuitLayoutViewer=lazy(()=>import("./CircuitLayoutViewer"));
+const CircuitIllustrativeViewer=lazy(()=>import("./CircuitIllustrativeViewer"));
 const VegasAtlas = lazy(() => import("./VegasAtlas"));
 const Explorer = lazy(() => import("./App"));
 
@@ -47,6 +48,7 @@ export default function RaceHub() {
     if (next.race) p.set("race", next.race);
     if (next.study!==undefined) {p.set("screen","stand-study");p.set("option",next.study);}
     else if (next.racing) p.set("screen", "racing");
+    else if (next.trackStudy) p.set("screen", "track-study");
     else if (next.layout) p.set("screen", "layout");
     else if (next.circuit) p.set("screen", "circuit");
     else if (next.atlas) p.set("screen", "vegas");
@@ -77,7 +79,7 @@ export default function RaceHub() {
   );
   const circuitModel = calendarEntryFor(route.season,route.race)?.model;
   useEffect(() => {
-    const pageTitle = route.study!==undefined ? `${selected?.name??"Race"} · Stand concept` : route.racing ? `${route.season} Race Centre` : route.layout && selected
+    const pageTitle = route.trackStudy && selected ? `${selected.name} ${selected.season} · Illustrative circuit study` : route.study!==undefined ? `${selected?.name??"Race"} · Stand concept` : route.racing ? `${route.season} Race Centre` : route.layout && selected
       ? `${selected.name} ${selected.season} · 3D circuit diagram`
       : route.circuit && circuitModel
       ? `${circuitModel.country} ${circuitModel.season} · 3D seating study`
@@ -93,6 +95,7 @@ export default function RaceHub() {
     document.querySelector('meta[property="og:title"]')?.setAttribute("content", document.title);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", document.title);
   }, [route, selected]);
+  if(route.trackStudy&&selected&&circuitLayoutId(selected.season,selected.slug))return <Suspense fallback={<div className="hub-loading" role="status">Opening circuit study…</div>}><CircuitIllustrativeViewer key={`${selected.season}-${selected.slug}`} race={selected} onBack={()=>go({season:route.season,race:route.race,seats:false})} onRace={race=>go({season:race.season,race:race.slug,seats:false,trackStudy:true})}/></Suspense>;
   if(route.study!==undefined&&selected)return <Suspense fallback={<div className="hub-loading">Opening stand concept…</div>}><StandConceptViewer key={`${selected.season}-${selected.slug}-${route.study}`} race={selected} optionId={route.study} onBack={id=>go({season:route.season,race:route.race,seats:false},id?`#${standAnchor(id)}`:"#venue-stands")} onOption={id=>go({season:route.season,race:route.race,seats:false,study:id})}/></Suspense>;
   if(route.racing)return <Suspense fallback={<div className="hub-loading">Opening Race Centre…</div>}><RacingCentre key={route.season} season={route.season} onSeason={season=>go({season,race:"",seats:false,racing:true})} onBack={()=>go({season:route.season,race:"",seats:false})} onRace={race=>go({season:race.season,race:race.slug,seats:false,layout:true})}/></Suspense>;
   if(route.layout&&selected&&circuitLayoutId(selected.season,selected.slug))return <Suspense fallback={<div className="hub-loading">Opening 3D circuit diagram…</div>}><CircuitLayoutViewer key={`${selected.season}-${selected.slug}`} race={selected} onBack={()=>go({season:route.season,race:route.race,seats:false})} onRace={race=>go({season:race.season,race:race.slug,seats:false,layout:true})}/></Suspense>;

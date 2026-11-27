@@ -18,6 +18,7 @@ import "./visualExperience.css";
 import "./explorerVisual.css";
 import "./priceNotebook.css";
 import "./circuitLayout.css";
+import "./circuitStudy.css";
 import "./racingCentre.css";
 import "./venueStands.css";
 import "./venueReferences.css";

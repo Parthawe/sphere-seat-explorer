@@ -1,0 +1,52 @@
+.study-workspace {display:grid;grid-template-columns:minmax(0,1fr) 300px;border:1px solid var(--color-control-border);}
+.study-stage {position:relative;min-width:0;min-height:560px;height:70svh;max-height:850px;overflow:hidden;background:var(--color-ink);}
+.study-stage>div:has(canvas) {position:absolute!important;inset:64px 0 44px!important;height:auto!important;}
+.study-stage-label {position:absolute;left:24px;top:20px;pointer-events:none;}
+.study-stage-label span {display:block;font-size:10px;letter-spacing:.12em;color:var(--color-line);}
+.study-stage-label strong {display:block;font:600 25px/1.2 'Barlow Condensed',sans-serif;margin-top:5px;}
+.study-stage-foot {position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:14px 20px;background:var(--color-ink);color:var(--color-line);font-size:10px;}
+.study-controls {padding:20px;border-left:1px solid var(--color-control-border);background:var(--color-panel);}
+.study-control-heading {display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;}
+.study-control-heading h2 {font:600 30px/1.1 'Barlow Condensed',sans-serif;margin:0;}
+.study-control-heading button {padding:10px;display:flex;}
+.study-camera-buttons,.study-height-buttons {display:flex;gap:6px;}
+.study-zoom {display:flex;gap:6px;margin-bottom:10px;}
+.study-zoom button {display:flex;justify-content:center;align-items:center;min-width:44px;padding:10px;font-size:19px;}
+.study-camera-buttons button,.study-height-buttons button {flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding-inline:10px;}
+.study-map {display:block;width:100%;height:140px;margin:14px 0;color:var(--color-line);}
+.study-position {display:block;font-size:12px;line-height:1.5;}
+.study-position output {float:right;color:var(--color-signal);font-variant-numeric:tabular-nums;}
+.study-position input {display:block;width:100%;height:44px;margin:4px 0;accent-color:var(--color-action);}
+.study-point-buttons {display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.study-point-buttons button {padding-inline:8px;font-variant-numeric:tabular-nums;}
+.study-control-note {font-size:10px;line-height:1.6;color:var(--color-line);margin:8px 0 18px;}
+.study-controls fieldset {border:0;padding:0;margin:0 0 16px;min-width:0;}
+.study-controls legend {font-size:12px;margin-bottom:8px;}
+.study-cars,.study-share {width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;}
+.study-message {font-size:11px;line-height:1.6;margin-bottom:0;}
+.study-message:empty {display:none;}
+.study-evidence {display:grid;grid-template-columns:1.5fr 1fr;gap:32px;padding:24px 0;color:var(--color-line);font-size:12px;line-height:1.7;}
+.study-evidence h2 {font:600 28px/1.2 'Barlow Condensed',sans-serif;color:var(--color-paper);margin:0 0 10px;}
+.study-evidence p {max-width:76ch;}
+.study-evidence a {display:inline-flex;gap:8px;align-items:center;min-height:44px;margin-right:20px;color:var(--color-paper);text-underline-offset:4px;}
+.study-evidence summary {cursor:pointer;min-height:44px;}
+@media(max-width:900px) {
+ .study-workspace {grid-template-columns:minmax(0,1fr) 270px;}
+ .study-controls {padding:16px;}
+ .study-stage {min-height:680px;}
+}
+@media(max-width:640px) {
+ .study-workspace {display:flex;flex-direction:column;}
+ .study-stage {position:sticky;top:0;z-index:1;flex-shrink:0;min-height:360px;height:53svh;max-height:550px;}
+ .study-stage-label {left:16px;top:16px;}
+ .study-stage-label strong {font-size:23px;}
+ .study-stage-foot {padding:12px 16px;flex-direction:column;gap:4px;}
+ .study-stage>div:has(canvas) {bottom:60px!important;}
+ .study-controls {border-left:0;border-top:1px solid var(--color-control-border);padding:18px;}
+ .study-map {height:125px;}
+ .study-point-buttons {grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;}
+ .study-point-buttons button {min-width:0;padding-inline:0;font-size:11px;}
+ .study-evidence {display:block;padding-top:20px;}
+ .study-evidence details {margin-top:16px;}
+}
+@media(max-width:640px) and (max-height:600px) {.study-stage {min-height:220px;height:46svh;}}
