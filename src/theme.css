@@ -34,3 +34,6 @@ input[type=checkbox], input[type=radio], input[type=range] { accent-color: var(-
 :root {--font-weight-regular:400;--font-weight-emphasis:500;}
 h1,h2,h3,h4,h5,h6,strong,b {font-weight:var(--font-weight-emphasis);}
 .context-note {font-size:12px;line-height:1.6;letter-spacing:normal;text-transform:none;}
+
+/* Native menus and form surfaces follow the actual containing surface. */
+.calendar-page,.layout-viewer,.concept-viewer,.driver-gallery,.event-schedule {color-scheme:dark;}

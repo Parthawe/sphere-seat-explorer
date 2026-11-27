@@ -82,9 +82,6 @@ h2,
 h3 {
   font-weight: 500;
 }
-button:hover:not(:disabled) {
-  color: var(--color-white);
-}
 .app-shell {
   height: 100dvh;
   min-height: 700px;
@@ -3039,9 +3036,6 @@ dialog::backdrop {
     width: 100%;
   }
 }
-.race-hub button:hover:not(:disabled) {
-  color: var(--color-ink);
-}
 .race-hub .hub-header button:hover:not(:disabled),
 .race-hub .calendar-filters button[aria-pressed="true"]:hover,
 .race-hub .race-feature-strip button:hover,
@@ -3254,9 +3248,6 @@ dialog::backdrop {
   color: var(--color-action-hover);
   border-bottom: 3px solid var(--color-action);
   font-weight: 500;
-}
-.vegas-atlas button:hover:not(:disabled) {
-  color: var(--color-action-hover);
 }
 .vegas-atlas .primary-button:hover:not(:disabled),
 .vegas-atlas .site-header button:hover:not(:disabled) {
@@ -5834,7 +5825,7 @@ dialog::backdrop {
  .circuit-overview-dialog footer { align-items:stretch; flex-direction:column; gap:14px; }
 }
 
-/* Keep light-surface controls readable under the app's white hover text rule. */
+/* Preserve light-surface control foregrounds. */
 :is(.circuit-overview-trigger,.circuit-grid-trigger,.circuit-row-shortcuts button,.circuit-saved button,.circuit-position-actions button:last-child,.circuit-grid-sections button:not([aria-pressed=true]),.circuit-grid-dialog header>button,.circuit-overview-dialog header>button,.spectator-dialog>header>button,.circuit-overview-banks button):hover:not(:disabled) { color:var(--color-raised); }
 .circuit-row-shortcuts button[aria-pressed=true]:hover:not(:disabled) { color:var(--color-action-hover); }
 
@@ -6033,3 +6024,8 @@ dialog::backdrop {
 }
 .ticket-options[open] > summary { margin-bottom: 16px; }
 .calendar-source > summary { color: var(--color-text-strong); }
+
+/* The atlas mixes paper panels and dark selected controls. */
+.vegas-atlas :is(.atlas-filters button,.atlas-compare-button):hover:not(:disabled) {background:var(--color-divider);color:var(--color-ink);}
+.vegas-atlas :is(.atlas-filters button,.atlas-compare-button)[aria-pressed=true]:hover:not(:disabled) {background:var(--color-raised);color:var(--color-white);}
+.vegas-atlas .atlas-tabs button:hover:not(:disabled) {color:var(--color-action-strong);}

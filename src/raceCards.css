@@ -93,3 +93,19 @@
 @media(min-width:761px) {.calendar-page .season-landing {min-height:480px;} .race-highlights h2 {font-size:64px;}}
 
 @media(max-width:600px) {.race-highlights-heading h2 {font-size:40px;} .calendar-download {width:44px;height:44px;min-width:44px;padding:0;gap:0;flex-shrink:0;} .calendar-download span,.calendar-download>.ui-icon:last-child {display:none;}}
+
+/* Hover never changes foreground independently of its control surface. */
+.calendar-page :is(.calendar-filters button,.calendar-view-switch button,.calendar-download):hover:not(:disabled) {
+ background:var(--color-raised);color:var(--color-paper);
+}
+.calendar-page :is(.calendar-filters button,.calendar-view-switch button)[aria-pressed=true]:hover:not(:disabled) {
+ background:var(--color-action-hover);border-color:var(--color-action-hover);color:var(--color-white);
+}
+.calendar-page :is(.calendar-filters button,.calendar-view-switch button,.calendar-download):active:not(:disabled) {
+ color:var(--color-white);
+}
+/* List metadata and circuit icons need dark-surface colors, too. */
+.calendar-page .race-list-head,
+.calendar-page .race-list :is(.race-status,.race-round,.race-circuit-name,.coverage-guide) {color:var(--color-line);}
+.calendar-page .race-list .coverage-3d {color:var(--color-signal);}
+.calendar-page .race-list .circuit-thumbnail {color:var(--color-control-border);}
