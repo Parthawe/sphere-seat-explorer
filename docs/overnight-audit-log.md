@@ -673,3 +673,11 @@ Human request: make the first hero attractive and explain that the product helps
 Validation: TypeScript and production build passed. Rendered browser checks at 320/390/768/1440px verified one H1, hero-first order, no horizontal overflow, calendar CTA and 2027 season navigation. The animated renderer loaded and paused correctly. Final desktop and phone screenshots visually inspected. Existing business/data logic was unchanged; the full source suite was not rerun for this presentation change.
 
 Published source `dbf72c7fea9c476d47de501892025820b2c12648`, pushed to GitHub main. Saved version `appgprj_6b03a10b6c388191a92912a1c2dfe070~appgver_551a59e0e610819193bfe9ffab24e26f` (v105). Deployment `appgdep_6b08f936c11081919e2ccea909b55065` succeeded at `2026-11-27T03:30:05.198433+00:00`. Archive `f1tickets-simple-hero-deployment.tar.gz` is outside the repo.
+
+### v106 · Lighter type and eyebrow removal
+
+Human request: lower font weights throughout and remove eyebrow text. Shared interface declarations now use regular 400 for routine text/controls and medium 500 for headings and emphasis. SVG map numerals use medium weight. Removed decorative eyebrow elements, repeated calendar/grid prefixes and brand subtitles. Unique price-dialog race context, archive year and Qatar dates remain ordinary context text. Removed obsolete eyebrow rules and unused 600/700 font files; loaded medium italic for existing explorer headings. In-scene physical signage artwork is unchanged.
+
+Validation: TypeScript, production build and all 206 source tests passed. Browser checks at 320/390/768/1440px confirmed medium hero/brand/action weights, no eyebrow nodes or horizontal overflow, and working calendar action. Qatar guide checks at 390/1440px confirmed no eyebrow nodes, no overflow and no visible heading/emphasis weights above 500. Final desktop and phone hero screenshots visually inspected.
+
+Published source `576dd66cc41c50b4dd05991c11b73d155e053a7d`, pushed to GitHub main. Saved version `appgprj_6b03a10b6c388191a92912a1c2dfe070~appgver_18c4856460488191b6ac05036e1abe8b` (v106); deployment `appgdep_6b08fa7218e48191accf602c42385202` succeeded at `2026-11-27T03:35:18.692080+00:00`. Archive `f1tickets-lighter-type-deployment.tar.gz` is outside the repo.
