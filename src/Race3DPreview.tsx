@@ -20,7 +20,11 @@ export default function Race3DPreview({race,onOpen,animated=false}:{race:Race;on
  useEffect(()=>{const q=matchMedia('(prefers-reduced-motion: reduce)'),change=()=>{setReduced(q.matches);if(q.matches)setMotion(false);};q.addEventListener('change',change);return()=>q.removeEventListener('change',change);},[]);
  useEffect(()=>{if(visible&&!saver)setRequested(true);},[visible,saver]);
  useEffect(()=>{if(!requested||spec.kind!=='outline')return;const controller=new AbortController();loadCircuitLayout(race,controller.signal).then(setLayout).catch(()=>{if(!controller.signal.aborted)unavailable();});return()=>controller.abort();},[race.season,race.slug,requested,retry,spec.kind,unavailable]);
- function load(){setFailed(false);setReady(false);setRetry(n=>n+1);setRequested(true);}
+ function load(){
+  // The load/retry button disappears while preparing; keep keyboard focus in this preview.
+  stage.current?.closest<HTMLAnchorElement>('.race-3d-preview-link')?.focus({preventScroll:true});
+  setFailed(false);setReady(false);setRetry(n=>n+1);setRequested(true);
+ }
  const playing=motion&&visible&&!reduced;
  return <div className="race-3d-preview" data-preview-key={spec.key} data-preview-ready={ready&&!failed} data-preview-visible={visible}>
   <a className="race-3d-preview-link" href={spec.href} aria-label={`Explore ${race.name} ${race.season} in 3D`} onClick={event=>{if(!onOpen||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();onOpen();}}>
