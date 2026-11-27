@@ -1288,6 +1288,6 @@
   "current_audit": {
     "deadline_utc": "2026-11-27T14:00:00Z",
     "focus": "Existing product journeys and demonstrated failures; precision queue below remains conditional on suitable new assets.",
-    "next_check": "Confirm stalled circuit-data recovery, then check manual shortlist and brief export recovery. Avoid repeating unchanged all-circuit GPU and asset research."
+    "next_check": "Stalled circuit-data recovery confirmed in v112. Next check manual shortlist and brief export recovery. Avoid repeating unchanged all-circuit GPU and asset research."
   }
 }
