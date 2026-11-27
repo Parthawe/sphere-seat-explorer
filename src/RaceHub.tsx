@@ -1,3 +1,4 @@
+import NewsletterSignup from './NewsletterSignup';
 import {raceStudyLink} from './raceCards';
 import {standAnchor} from './venueLinks';
 import {circuitLayoutId} from "./circuitLayouts";
@@ -311,6 +312,7 @@ export default function RaceHub() {
           <p>Venue and destination photos retain source dates and individual credits under each image’s info control. Flag artwork: <a href="/flags/LICENSE.txt">flag-icons · MIT</a>.</p>
         </details>
       </main>
+      <div className="signup-container"><NewsletterSignup/></div>
       <FundingDisclosure />
       <footer className="hub-footer">
         <span>Independent race planning · no Formula 1 affiliation</span>

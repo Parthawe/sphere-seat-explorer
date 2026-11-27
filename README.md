@@ -77,7 +77,7 @@ See [platform research](PLATFORM-RESEARCH.md) for the current ticketing and venu
 
 React 19, TypeScript, Vite, Three.js, and React Three Fiber. Venue and selection data live in `src/model.ts`; scene construction in `src/World.tsx` and camera controls in `src/Scene.tsx`; UI and URL/history state in `src/App.tsx`. The 3D bundle loads separately from the controls and 2D map. Original scene geometry is generated locally. Scanned CC0 asphalt maps by Dimitrios Savva / Poly Haven are bundled under public/materials with credits, so the app has no runtime asset-service dependency.
 
-The URL carries the season, race, seat, view mode, and optional three-position comparison. `localStorage` holds only the shortlist. No account, analytics, or payment integrations are included. Hosting services process requests under their own policies.
+The URL carries the season, race, seat, view mode, and optional three-position comparison. `localStorage` holds only the shortlist. Optional first-party usage analytics and consented email-request storage are now available. The private /insights dashboard uses the site owner’s existing Sites sign-in. No payment or email-delivery integration is enabled. See docs/measurement-and-email.md. Hosting services process requests under their own policies.
 
 Fonts are bundled from the `@fontsource` Barlow Condensed and IBM Plex Sans packages, which include their license files. The standalone app code is MIT-licensed; see LICENSE. Do not assume upstream trademarks or third-party materials inherit that license.
 

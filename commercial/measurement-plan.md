@@ -1,6 +1,6 @@
 # Referral pilot measurement specification
 
-Status: proposed, not approved or collecting. No analytics script or endpoint is enabled.
+Referral-attribution status: proposed; partner order and commission measurement is not active. Separately, the owner authorized opt-in first-party product usage measurement and email-request storage on 27 November 2026. That implementation is described in docs/measurement-and-email.md and does not establish purchases or approved commission.
 
 Use one event and one approved affiliate agreement first. Qatar 2026 is the reviewed category reference, not a promise that approval can arrive before its 27–29 November event. If prerequisites are not complete before it ends, stop; independently review the next event before changing the configured pilot.
 

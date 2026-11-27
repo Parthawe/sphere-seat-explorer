@@ -270,7 +270,7 @@ export default function AbuDhabiDesk() {
               </p>
             </div>
             <a
-              className="abu-provider-primary"
+              className="abu-provider-primary" data-ticket-source
               href={chosen.source}
               target="_blank"
               rel="noreferrer"

@@ -1,3 +1,4 @@
+import {useSceneMeasurement,trackUsage} from './usageAnalytics';
 import {racePreview} from './racePreview';
 import BoundedNumberInput from './BoundedNumberInput';
 import {calendars} from './races';
@@ -22,6 +23,7 @@ class SceneBoundary extends Component<{children:ReactNode;onUnavailable:()=>void
 export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitModel;onBack:(bank?:string)=>void}){
  const [selection,setSelection]=useState(()=>{const q=new URLSearchParams(location.search);return normalizeModelPosition(model,{bank:q.get('bank')??undefined,section:Number(q.get('section'))||undefined,row:Number(q.get('modelRow'))||undefined,seat:Number(q.get('position'))||undefined});});
  const [mode,setMode]=useState<'circuit'|'stand'|'seat'>(()=>{const mode=new URLSearchParams(location.search).get('camera');return mode==='seat'||mode==='stand'?mode:'circuit';}),[playing,setPlaying]=useState(false),[roofs,setRoofs]=useState(true),[reset,setReset]=useState(0),[ready,setReady]=useState(false),[unavailable,setUnavailable]=useState(false),[retry,setRetry]=useState(0),[overview,setOverview]=useState(false),[grid,setGrid]=useState(false),[referencesOpen,setReferencesOpen]=useState(()=>new URLSearchParams(location.search).get("references")==="1"),[saved,setSaved]=useState<ModelPosition[]>([]),[feedback,setFeedback]=useState('');
+ useSceneMeasurement('seating',ready,unavailable,retry);
  const markerLayer=useRef<HTMLDivElement>(null),[overviewBanks,setOverviewBanks]=useState<string[]|null>(null);
  const mediaRace=calendars[model.season].find(r=>r.slug===model.id)!;
  const Scene=useMemo(()=>lazy(()=>import('./CircuitSeatingScene')),[retry]);
@@ -76,7 +78,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
   if(surface){const rect=surface.getBoundingClientRect();if(rect.bottom<=0||rect.top>=innerHeight){surface.querySelector<HTMLElement>('.circuit-model-canvas')?.focus({preventScroll:true});surface.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}}
  }
  function focusModelView(){requestAnimationFrame(()=>{stage.current?.querySelector<HTMLElement>('.circuit-model-canvas')?.focus({preventScroll:true});if(matchMedia('(max-width:760px)').matches)stage.current?.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});}
- function openBank(id:string){setFollowing(false);setSelection(normalizeModelPosition(model,{bank:id}));setMode('stand');setFeedback('');focusModelView();}
+ function openBank(id:string){trackUsage('stand_selected');setFollowing(false);setSelection(normalizeModelPosition(model,{bank:id}));setMode('stand');setFeedback('');focusModelView();}
  function openMap(ids:string[]|null=null){setPlaying(false);setOverviewBanks(ids);setOverview(true);}
  function closeMap(){setOverview(false);focusModelView();}
  function save(){if(saved.some(p=>positionKey(p)===positionKey(selection))){setSaved(saved.filter(p=>positionKey(p)!==positionKey(selection)));return;}if(saved.length===3){setFeedback('Three positions saved. Remove one to compare another.');return;}setSaved([...saved,{...selection}]);}

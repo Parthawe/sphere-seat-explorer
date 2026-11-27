@@ -1,0 +1,61 @@
+.newsletter-signup {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;padding:40px 0;margin:24px 0;border-top:1px solid var(--discovery-line,#bdbdc1);color:var(--color-ink);}
+.newsletter-signup h2 {font-size:28px;margin:0 0 12px;}
+.newsletter-signup p {font-size:13px;line-height:1.7;max-width:48ch;}
+.newsletter-signup form>label {font-size:12px;display:block;margin-bottom:8px;}
+.newsletter-field {display:flex;gap:8px;}
+.newsletter-field input {min-width:0;flex:1;padding:12px;border:1px solid #89888d;border-radius:4px;min-height:48px;font-size:16px;background:transparent;color:inherit;}
+.newsletter-field button,.data-primary {display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 16px;background:#e10600;color:#fff;border:1px solid #e10600;border-radius:4px;white-space:nowrap;}
+.newsletter-field button:disabled {opacity:.5;}
+.newsletter-signup form .newsletter-consent {display:flex;align-items:flex-start;gap:10px;margin-top:14px;font-size:12px;line-height:1.6;}
+.newsletter-consent input {width:18px;height:18px;flex-shrink:0;margin:2px 0;}
+.newsletter-signup a {text-decoration:underline;text-underline-offset:3px;}
+.newsletter-honeypot {position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;}
+.newsletter-error {color:#9d0400;}
+.newsletter-result h3 {font-size:20px;}
+.privacy-footer {display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px 28px;padding:16px 20px;background:#efeeec;color:#47464c;font-size:12px;border-top:1px solid #bdbdc1;}
+.privacy-footer a,.privacy-footer button {display:inline-flex;align-items:center;min-height:44px;color:inherit;font-size:12px;}
+.analytics-choice {position:fixed;bottom:16px;left:16px;right:16px;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:1080px;margin:auto;padding:18px 24px;border:1px solid #89888d;border-radius:4px;background:#f7f4f1;color:#15151e;}
+.analytics-choice strong {font-size:14px;}
+.analytics-choice p {margin:6px 0 0;font-size:12px;line-height:1.6;max-width:66ch;}
+.analytics-choice a {text-decoration:underline;text-underline-offset:3px;}
+.analytics-choice>div:last-child {display:flex;gap:8px;flex-shrink:0;}
+.analytics-choice button,.data-page button,.data-page select {min-height:44px;border:1px solid #89888d;border-radius:4px;background:transparent;color:inherit;padding:10px 14px;font:inherit;font-size:13px;}
+.analytics-choice button:hover:not(:disabled),.data-page button:hover {background:#e0dedc;}
+.data-page {max-width:1180px;margin:auto;padding:36px 24px 64px;color:#15151e;background:#f7f4f1;min-height:90vh;}
+body:has(.data-page) {background:#f7f4f1;}
+.data-page>a {display:inline-flex;min-height:44px;align-items:center;font-size:13px;}
+.data-page h1 {font-size:clamp(32px,4vw,48px);margin:24px 0;}
+.data-page h2 {font-size:24px;margin:32px 0 16px;}
+.data-page p {font-size:14px;line-height:1.8;max-width:75ch;}
+.data-page section>a {display:inline-flex;align-items:center;min-height:44px;margin-right:24px;text-decoration:underline;text-underline-offset:4px;}
+.data-page p a {text-decoration:underline;text-underline-offset:3px;}
+.data-page section {padding-block:12px;}
+.data-page .data-note {font-size:12px;color:#606066;}
+.insights-page>header {display:flex;justify-content:space-between;align-items:center;gap:24px;}
+.insights-page>header>div:last-child {display:flex;align-items:end;gap:12px;}
+.insights-page label {font-size:12px;}
+.insights-page select {display:block;margin-top:8px;}
+.insight-summary {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;padding:32px 0;border-block:1px solid #bdbdc1;margin-top:24px;}
+.insight-summary span {font-size:12px;color:#606066;}
+.insight-summary strong {display:block;font-size:32px;font-weight:400;margin-top:12px;font-variant-numeric:tabular-nums;}
+.insight-traffic svg {display:block;width:100%;max-height:220px;}
+.insight-chart-dates {display:flex;justify-content:space-between;font-size:11px;color:#606066;}
+.insight-table-wrap {overflow:auto;}
+.insight-table-wrap table {border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap;}
+.insight-table-wrap :is(td,th) {padding:14px 12px;text-align:left;border-bottom:1px solid #bdbdc1;}
+.insight-breakdowns {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;}
+.insight-breakdown>div {position:relative;display:flex;justify-content:space-between;gap:12px;padding:14px 0 20px;font-size:13px;margin-bottom:8px;overflow-wrap:anywhere;}
+.insight-breakdown i {position:absolute;bottom:4px;left:0;height:2px;background:#e10600;}
+.insight-issues {list-style:none;padding:0;}
+.insight-issues li {display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid #bdbdc1;font-size:13px;}
+.insight-emails ul {padding:0;list-style:none;}
+.insight-emails li {display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid #bdbdc1;overflow-wrap:anywhere;}
+.insight-emails small {display:block;font-size:11px;color:#606066;margin-top:6px;}
+.insight-email-actions {display:flex;flex-wrap:wrap;align-items:center;gap:20px;}
+.insight-email-actions>a {text-decoration:underline;min-height:44px;display:inline-flex;align-items:center;}
+.insight-loading {min-height:300px;display:grid;place-items:center;}
+@media(max-width:760px){.newsletter-signup {grid-template-columns:minmax(0,1fr);gap:16px;}.analytics-choice {left:8px;right:8px;bottom:8px;padding:16px;display:block;}.analytics-choice>div:last-child {margin-top:12px;}.analytics-choice button {flex:1;}.data-page {padding:24px 16px;}.insights-page>header {display:block;}.insight-summary {grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}.insight-breakdowns {grid-template-columns:minmax(0,1fr);gap:12px;}.insight-issues li {display:block;}.insight-issues li>span {display:block;margin-top:8px;}.insight-emails li>span {min-width:0;}.privacy-footer {gap:4px 16px;}}
+@media(prefers-reduced-motion:no-preference){.newsletter-result {animation:signup-arrive .2s ease-out;}@keyframes signup-arrive{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
+
+.signup-container {max-width:1280px;padding-inline:32px;margin:auto;}
+@media(max-width:760px){.signup-container{padding-inline:16px;}}

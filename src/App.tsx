@@ -1,3 +1,4 @@
+import {useSceneMeasurement} from './usageAnalytics';
 import {calendars} from './races';
 import { SITE_ORIGIN, syncPublicUrlMetadata } from "./brand";
 import SpectatorReferences from "./SpectatorReferences";
@@ -358,6 +359,7 @@ export default function App({
     [gridZoom, setGridZoom] = useState(false),
     [compareYaw, setCompareYaw] = useState(0),
     [comparePitch, setComparePitch] = useState(0);
+  useSceneMeasurement('vegas',ready,unavailable,0);
   useEffect(() => {
     const q = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => {

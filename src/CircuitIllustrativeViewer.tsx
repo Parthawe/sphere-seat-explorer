@@ -1,3 +1,4 @@
+import {useSceneMeasurement,trackUsage} from './usageAnalytics';
 import {raceStudyLink} from './raceCards';
 import {raceCoverage} from './raceCoverage';
 import {loadCircuitLayout} from './loadCircuitLayout';
@@ -14,6 +15,7 @@ import {syncPublicUrlMetadata} from './brand';
 class StudyBoundary extends Component<{children:ReactNode;onUnavailable:()=>void},{failed:boolean}>{state={failed:false};static getDerivedStateFromError(){return {failed:true};}componentDidCatch(){this.props.onUnavailable();}render(){return this.state.failed?null:this.props.children;}}
 export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Race;onBack:()=>void;onRace:(race:Race)=>void}){
  const [mode,setMode]=useState<'perspective'|'top'>('perspective'),[layout,setLayout]=useState<CircuitLayout|null>(null),[ready,setReady]=useState(false),[failed,setFailed]=useState(false),[retry,setRetry]=useState(0),[reset,setReset]=useState(0),[zoom,setZoom]=useState(0),[playing,setPlaying]=useState(false),[visible,setVisible]=useState(()=>!document.hidden),[message,setMessage]=useState(''),[copying,setCopying]=useState(false);
+ useSceneMeasurement('outline',ready,failed,retry);
  const stage=useRef<HTMLDivElement>(null),Scene=useMemo(()=>lazy(()=>import('./CircuitIllustrativeScene')),[retry]);
  const geometry=useMemo(()=>layout?buildStudyGeometry(layout):null,[layout]),venue=findVenue(race.season,race.slug);
  const [areaId,setAreaId]=useState(()=>venue?.areas[0]?.id??'');

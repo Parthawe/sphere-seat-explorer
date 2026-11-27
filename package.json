@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && vite build && node scripts/build-worker.mjs",
     "preview": "vite preview --host 0.0.0.0",
     "test": "tsx --test src/*.test.ts scripts/*.test.mjs",
     "collect:tickets": "node scripts/collect-ticket-sources.mjs",
@@ -13,7 +13,9 @@
     "model:revenue": "tsx scripts/revenue-report.ts",
     "sync:racing": "tsx scripts/sync-racing.ts",
     "sync:f1db": "tsx scripts/sync-f1db.ts",
-    "prebuild": "tsx scripts/build-calendar-index.ts"
+    "prebuild": "tsx scripts/build-calendar-index.ts",
+    "db:generate": "drizzle-kit generate",
+    "dev:api": "node scripts/dev-api.mjs"
   },
   "dependencies": {
     "@fontsource/barlow-condensed": "^5.2.0",
@@ -32,6 +34,9 @@
     "playwright": "^1.55.0",
     "tsx": "^4.20.0",
     "typescript": "^5.8.0",
-    "vite": "^6.3.0"
+    "vite": "^6.3.0",
+    "drizzle-kit": "0.31.10",
+    "drizzle-orm": "0.45.2",
+    "esbuild": "0.28.2"
   }
 }

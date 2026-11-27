@@ -187,6 +187,7 @@ export default function RaceGuide({race:selected,route,go,jumpTo}:{race:Race;rou
                       </div>
                       <a
                         className="primary-button"
+                        data-ticket-source
                         href={
                           c[0] === "experiences"
                             ? "https://f1experiences.com/"

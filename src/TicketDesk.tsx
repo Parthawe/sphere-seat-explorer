@@ -439,6 +439,7 @@ export default function TicketDesk({ compact = false }: { compact?: boolean }) {
                 </div>
                 <a
                   href={providerUrl(p.id, area)}
+                  data-ticket-source
                   target="_blank"
                   rel="noreferrer"
                 >
