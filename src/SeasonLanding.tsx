@@ -1,6 +1,7 @@
-import {useState} from 'react';
+import {lazy,Suspense,useState} from 'react';
 import RaceHighlights from './RaceHighlights';
-import Race3DPreview from './Race3DPreview';
+import {racePreview} from './racePreview';
+const Race3DPreview=lazy(()=>import('./Race3DPreview'));
 import UiIcon from './UiIcon';
 import {calendars,dateLabel,raceStatus,type Race,type Season} from './races';
 
@@ -8,6 +9,7 @@ export default function SeasonLanding({season,onRace}:{season:Season;onRace:(rac
  const races=calendars[season],defaultRace=races.find(r=>raceStatus(r)!=='Past')??races[0];
  const [choice,setChoice]=useState({season,slug:defaultRace.slug});
  const chosenRace=(choice.season===season?races.find(r=>r.slug===choice.slug):null)??defaultRace;
+ const preview=racePreview(chosenRace);
  return <>
   <section className="season-landing" aria-labelledby="season-landing-title">
    <div className="hero-introduction">
@@ -18,7 +20,7 @@ export default function SeasonLanding({season,onRace}:{season:Season;onRace:(rac
      <p>{dateLabel(chosenRace)} · {season}</p>
     </form>
    </div>
-   <div className="hero-circuit"><Race3DPreview key={`${season}-${chosenRace.slug}`} race={chosenRace}/><span className="hero-circuit-name">{chosenRace.name}<span>{season}</span></span></div>
+   <div className="hero-circuit"><Suspense fallback={<div className="race-3d-preview"><a className="race-3d-preview-link" href={preview.href} aria-label={`Explore ${chosenRace.name} ${season} in 3D`}><div className="race-3d-preview-stage"><img className="race-3d-poster" src={preview.poster} width="960" height="540" fetchPriority="high" alt={`${chosenRace.name} illustrative circuit study`}/></div><div className="race-3d-preview-footer"><span>{preview.note}</span><strong><UiIcon name="cube"/>Explore 3D<UiIcon name="arrow"/></strong></div></a></div>}><Race3DPreview key={`${season}-${chosenRace.slug}`} race={chosenRace}/></Suspense><span className="hero-circuit-name">{chosenRace.name}<span>{season}</span></span></div>
   </section>
   <RaceHighlights season={season} onRace={onRace}/>
  </>;
