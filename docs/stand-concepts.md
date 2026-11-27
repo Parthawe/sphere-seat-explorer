@@ -1,4 +1,8 @@
-# Generic 3D viewing concepts · 26 November 2026
+# Historical generic 3D concepts · disabled
+
+Current state, checked 27 November 2026: these generic concept scenes were removed from product navigation in v104 after the user requested actual venue positions. Legacy links now recover to stand evidence. The section below records the former implementation; it does not describe current seating coverage. Reintroducing illustrative simulations requires a clear product choice and explicit distinction from venue-based studies.
+
+## Former implementation · 26 November 2026
 
 The owner explicitly requested illustrative 3D for the catalogue options. The new stand-study layer provides authored, isolated concept scenes for 183 known viewing options that do not have an existing venue model. It does not change their source confidence or promote missing venue/terrain assets to completed reconstruction.
 

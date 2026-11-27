@@ -1,3 +1,5 @@
+import {raceStudyLink} from './raceCards';
+import {raceCoverage} from './raceCoverage';
 import {loadCircuitLayout} from './loadCircuitLayout';
 import {Component,lazy,Suspense,useCallback,useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import {BrandIdentity} from './BrandMark';
@@ -15,6 +17,7 @@ export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Rac
  const stage=useRef<HTMLDivElement>(null),Scene=useMemo(()=>lazy(()=>import('./CircuitIllustrativeScene')),[retry]);
  const geometry=useMemo(()=>layout?buildStudyGeometry(layout):null,[layout]),venue=findVenue(race.season,race.slug);
  const [areaId,setAreaId]=useState(()=>venue?.areas[0]?.id??'');
+ const coverage=raceCoverage(race.season,race.slug),hasSeatStudy=coverage.kind==='model'||coverage.kind==='reference3d';
  const area=venue?.areas.find(a=>a.id===areaId)??venue?.areas[0];
  const onReady=useCallback(()=>setReady(true),[]),onUnavailable=useCallback(()=>{setFailed(true);setReady(false);setPlaying(false);},[]);
  useEffect(()=>{const controller=new AbortController();setLayout(null);setFailed(false);setReady(false);loadCircuitLayout(race,controller.signal).then(setLayout).catch(()=>{if(!controller.signal.aborted)onUnavailable();});return()=>controller.abort();},[race.season,race.slug,retry,onUnavailable]);
@@ -37,6 +40,7 @@ export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Rac
      <div className="study-control-heading"><h2>Circuit overview</h2></div>
      <div className="study-zoom" role="group" aria-label="Study tools"><button aria-label="Zoom out study" title="Zoom out" disabled={!ready} onClick={()=>setZoom(z=>z-1)}>−</button><button aria-label="Zoom in study" title="Zoom in" disabled={!ready} onClick={()=>setZoom(z=>z+1)}><UiIcon name="plus"/></button><button aria-label="Reset study camera" title="Reset camera" disabled={!ready} onClick={()=>setReset(r=>r+1)}><UiIcon name="reset"/></button><button className="study-copy-tool" aria-label="Copy study link" title="Copy study link" disabled={copying} aria-busy={copying} onClick={copy}><UiIcon name={copying?'motion':'copy'}/></button></div>
      {geometry&&<svg className="study-map" viewBox="-7 -7 14 14" role="img" aria-label="Circuit outline only. No stands or seat positions."><polyline points={geometry.points.map(p=>p.join(',')).join(' ')} fill="none" stroke="currentColor" strokeWidth=".12" strokeLinejoin="round"/></svg>}
+     {hasSeatStudy&&<a className="study-area-link study-seat-handoff" href={raceStudyLink(race)}><UiIcon name="seat"/>Open seating study<UiIcon name="arrow"/></a>}
      <p className="study-location-note"><UiIcon name="info"/>Stand locations are not mapped in this 3D outline.</p>
      {venue?<a className="study-area-link" href="#sourced-viewing-areas"><UiIcon name="seat"/>{venue.areas.length} sourced viewing areas<UiIcon name="arrow"/></a>:<p className="study-location-note">No supported viewing-area map for this edition yet.</p>}
      <a className="study-area-link" href={`?season=${race.season}&race=${race.slug}#venue-stands`}>Stand catalogue<UiIcon name="arrow"/></a>

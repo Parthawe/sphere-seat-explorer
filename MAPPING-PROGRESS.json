@@ -1279,7 +1279,7 @@
     "editions": 47,
     "physical_outlines": 27,
     "route": "screen=track-study",
-    "geometry": "Unitless flat source outline with an authored movable sample stand; no measured elevations, bridges or actual ticket positions.",
+    "geometry": "Unitless flat source outline; no placed stands, seat camera, measured elevations, bridges or actual ticket positions.",
     "seat_mapping_complete": false,
     "validated_editions": 47,
     "published_version": 100,
@@ -1289,5 +1289,14 @@
     "deadline_utc": "2026-11-27T14:00:00Z",
     "focus": "Existing product journeys and demonstrated failures; precision queue below remains conditional on suitable new assets.",
     "next_check": "Stalled circuit-data recovery confirmed in v112. Next check manual shortlist and brief export recovery. Avoid repeating unchanged all-circuit GPU and asset research."
+  },
+  "seating_expansion": {
+    "checked": "2026-11-27",
+    "editions": 47,
+    "edition_specific_seating_studies": 10,
+    "vegas_reference_editions": 2,
+    "outline_only_editions": 35,
+    "inventory": "docs/SEATING-COVERAGE.md",
+    "decision": "Pending choice on illustrative seating for unsupported editions; preserve actual-position and season boundaries until resolved."
   }
 }
