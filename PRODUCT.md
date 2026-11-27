@@ -181,3 +181,9 @@ The calendar opens with photographic previous/current/next highlights for the se
 All 47 listed race guides now include a photographic event cover, independent source-outline drawing, published circuit facts and event-year schedule rows. Confirmed 2026 sessions switch between the user's and circuit's IANA timezone and can be exported. The 2027 pages show TBC rather than source-schema placeholder hours. Missing future lap counts and race distances are not inferred. Related media opens on the original publisher; thumbnails/footage are not copied. Existing matched stand media and 3D/booking flows remain separate.
 
 Race Centre's Drivers view contains the checked 2026 official 22-driver line-up, source-linked profiles, nationality flags, team filters and 22 independently licensed source portraits. Portrait years and credits do not assert current team apparel. No 2027 roster is supplied until verified. The existing F1DB standings feed remains separately attributed and does not populate missing roster years.
+
+## Earth journey · 27 November 2026
+
+The landing page now opens a textured 3D Earth with a World/Circuit switch, season-specific race selection, grouped venue pins and manual rotate/zoom/reset controls. A 3.8-second globe-to-venue approach opens the selected edition’s existing illustrative circuit study. Users can cancel, skip, pause rotation or open directly with reduced motion; graphics failures expose retry and a direct circuit link.
+
+Twenty-seven source-outline centers locate all 47 listed editions. NASA Blue Marble imagery and MIT-licensed circuit geography are bundled locally. Marker positions are venue references, not surveyed entrances, event boundaries or seat coordinates. The 2026 Bahrain-labeled entry retains its existing Malaysia location, 2027 Sakhir stays separate, and 2027 Vegas retains its explicit 2026 reference. Existing study coverage limits apply. See [Earth journey](docs/earth-journey.md).

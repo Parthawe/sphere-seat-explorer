@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import {chromium} from 'playwright';
+const origin=process.argv[2]??'http://localhost:5188';
+const browser=await chromium.launch({args:process.platform==='darwin'?['--use-angle=metal']:[]});
+try{
+ for(const width of [1440,820,390,320]){
+  const page=await browser.newPage({viewport:{width,height:1000},reducedMotion:'reduce'}),errors=[];page.on('pageerror',e=>errors.push(String(e)));
+  await page.goto(`${origin}/?season=2027`);await page.locator('canvas[data-earth-ready=true]').waitFor({timeout:60000});
+  assert.equal(await page.locator('.earth-journey').getAttribute('data-earth-destination'),'2027:bahrain');
+  const boxes=await page.locator('.earth-pins button:not([hidden])').evaluateAll(bs=>bs.map(b=>{const r=b.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height};}));
+  for(let i=0;i<boxes.length;i++)for(let j=i+1;j<boxes.length;j++){const a=boxes[i],b=boxes[j];assert.ok(a.x+a.w<=b.x||b.x+b.w<=a.x||a.y+a.h<=b.y||b.y+b.h<=a.y,'pins overlap');}
+  await page.getByRole('button',{name:'Zoom in on Earth',exact:true}).click();await page.getByRole('button',{name:'Zoom out from Earth',exact:true}).click();await page.getByRole('button',{name:'Reset Earth camera',exact:true}).click();
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  if(process.env.F1_EARTH_SCREENSHOTS){await page.screenshot({path:`${process.env.F1_EARTH_SCREENSHOTS}/earth-home-${width}.png`});await page.locator('.earth-journey').screenshot({path:`${process.env.F1_EARTH_SCREENSHOTS}/earth-world-${width}.png`});}
+  await page.locator('#hero-race-choice').selectOption('australia');
+  await page.getByRole('button',{name:'Circuit',exact:true}).click();await page.locator('[data-preview-key]').waitFor();assert.ok((await page.locator('[data-preview-key]').getAttribute('data-preview-key')).includes('australia'));
+  await page.getByRole('button',{name:'World',exact:true}).click();await page.locator('canvas[data-earth-ready=true]').waitFor();
+  await page.locator('#hero-race-choice').selectOption('bahrain');await page.getByRole('button',{name:'Open circuit',exact:true}).click();
+  await page.locator('canvas[data-geometry-ready=true]').waitFor({timeout:60000});assert.equal(new URL(page.url()).searchParams.get('race'),'bahrain');assert.equal(new URL(page.url()).searchParams.get('season'),'2027');
+  assert.deepEqual(errors,[]);console.log(`Reduced-motion, controls, layout and circuit handoff passed at ${width}px`);await page.close();
+ }
+ const p=await browser.newPage({viewport:{width:1440,height:1000}});await p.goto(`${origin}/?season=2026`);await p.locator('canvas[data-earth-ready=true]').waitFor();
+ await p.getByRole('button',{name:'Fly to circuit',exact:true}).click();await p.getByRole('button',{name:'Cancel flight',exact:true}).click();assert.equal(await p.locator('.earth-journey').getAttribute('data-earth-phase'),'idle');await p.waitForFunction(()=>document.activeElement?.classList.contains('earth-fly'));
+ await p.getByRole('button',{name:'Fly to circuit',exact:true}).click();await p.waitForFunction(()=>document.querySelector('.earth-journey')?.dataset.earthPhase==='region');
+ if(process.env.F1_EARTH_SCREENSHOTS)await p.locator('.earth-journey').screenshot({path:`${process.env.F1_EARTH_SCREENSHOTS}/earth-flight-region.png`});
+ await p.locator('canvas[data-geometry-ready=true]').waitFor({timeout:60000});assert.equal(new URL(p.url()).searchParams.get('race'),'qatar');console.log('Full Earth-to-Qatar flight and cancel focus passed');
+ await p.goto(`${origin}/?season=2026`);await p.locator('canvas[data-earth-ready=true]').waitFor();await p.locator('#hero-race-choice').selectOption('bahrain');await p.getByRole('button',{name:'Fly to circuit',exact:true}).click();await p.getByRole('button',{name:'Skip animation',exact:true}).click();await p.locator('[data-study-ready=true]').waitFor();assert.equal(await p.locator('.study-stage').getAttribute('data-study-id'),'my-1999');console.log('2026 Malaysia identity preserved through skip');
+ await p.goto(`${origin}/?season=2027`);await p.locator('canvas[data-earth-ready=true]').waitFor();await p.locator('canvas').evaluate(c=>c.getContext('webgl2').getExtension('WEBGL_lose_context').loseContext());await p.getByRole('button',{name:'Retry globe',exact:true}).click();await p.locator('canvas[data-earth-ready=true]').waitFor();assert.equal(await p.locator('.earth-journey').getAttribute('data-earth-destination'),'2027:bahrain');console.log('Earth graphics recovery preserved destination');await p.close();
+ const failure=await browser.newPage({viewport:{width:320,height:900}});await failure.route('**/earth/blue-marble.jpg',r=>r.abort());await failure.goto(`${origin}/?season=2027`);await failure.getByRole('button',{name:'Retry globe',exact:true}).waitFor();assert.ok(await failure.getByRole('link',{name:'Open circuit directly',exact:true}).isVisible());await failure.unroute('**/earth/blue-marble.jpg');await failure.getByRole('button',{name:'Retry globe',exact:true}).click();await failure.locator('canvas[data-earth-ready=true]').waitFor({timeout:60000});console.log('Earth image-load failure and fresh retry passed');await failure.close();
+ const vegas=await browser.newPage({viewport:{width:390,height:1000},reducedMotion:'reduce'});await vegas.goto(`${origin}/?season=2027`);await vegas.locator('canvas[data-earth-ready=true]').waitFor();const group=vegas.locator('.earth-pins button[data-cluster=true]:not([hidden])').first();await group.click();await vegas.waitForFunction(()=>Boolean(document.activeElement.closest('.earth-nearby')));await vegas.keyboard.press('Escape');assert.ok(await vegas.evaluate(()=>Boolean(document.activeElement.closest('.earth-pins'))));await vegas.locator('#hero-race-choice').selectOption('las-vegas');await vegas.getByRole('button',{name:'Open circuit',exact:true}).click();await vegas.locator('canvas').first().waitFor({timeout:60000});await vegas.waitForFunction(()=>new URL(location.href).searchParams.get('view')==='circuit');assert.equal(new URL(vegas.url()).searchParams.get('screen'),'seats');console.log('Grouped pin focus and direct Vegas circuit passed');await vegas.close();
+}finally{await browser.close();}

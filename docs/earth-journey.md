@@ -1,0 +1,31 @@
+# Earth journey
+
+The landing page’s World view connects the selected season’s races to their physical locations, then opens the existing circuit study. Circuit view retains the prior live circuit preview. This extension preserves F1 Tickets Online’s paper, ink, red and typography; the dark space scene belongs to the globe viewport.
+
+## Journey and controls
+
+Choose a race with the native selector or a visible globe pin. Nearby screen-space pins group into a race list. The destination retains its race, venue, season and dates. Drag to rotate; use the camera buttons to zoom or reset. The focused globe also accepts plus/minus and Home. Rotation has a pause/resume control.
+
+“Fly to circuit” aligns the camera with the venue and approaches Earth radially over 3.8 seconds. A labeled destination preview appears near arrival before the selected edition’s existing renderer opens. Cancel returns to the globe and restores focus to the flight button; Escape also cancels. Skip opens the destination immediately. Reduced motion uses direct entry and stops automatic rotation. Nearby-list dismissal restores focus to its marker.
+
+The renderer is lazy-loaded and suspends offscreen or in a hidden tab. Loading exposes a direct circuit link. Module, shader or graphics-context failure exposes retry and direct entry. The existing circuit destination owns its own loading and recovery behavior.
+
+## Imagery and location evidence
+
+The globe uses a local 2048-pixel-wide JPEG, approximately 369 KB, resized from NASA Earth Observatory’s **Blue Marble: Next Generation, July 2004**, credited to Reto Stöckli / NASA Goddard Space Flight Center. This is a dated global image, not current satellite coverage. Sources and attribution are available in the viewport’s Map sources disclosure and [asset credits](../public/earth/CREDITS.txt).
+
+Twenty-seven venue references cover the 47 listed 2026/2027 editions. Coordinates are bounding-box centers from Tomislav Bacinger’s MIT-licensed [f1-circuits source](https://github.com/bacinger/f1-circuits/tree/fda4a2f74728fa033c81ba8d3b628966a4a095d2), pinned to commit `fda4a2f74728fa033c81ba8d3b628966a4a095d2`. Each location retains its source URL in `src/circuitLocations.json`. These points locate source outlines; they do not establish entrances, parking, official event boundaries or ticket seats.
+
+Edition identity follows the existing circuit mapping. The 2026 Bahrain-labeled entry points to Sepang in Malaysia; 2027 Sakhir is separate. The 2027 Las Vegas destination still opens the explicitly dated 2026 reference model. Geography does not silently correct or merge those source identities.
+
+## Coverage boundary
+
+The camera journey uses a textured sphere and then hands off to an illustrative circuit renderer. It adds no Google tiles, street-level terrain, paid map service, API key or seat coordinates. Detailed models, generic circuit studies and reference editions keep their existing coverage and uncertainty labels. The transition does not certify a physical sightline or create continuous globe-to-seat terrain.
+
+## Verification record
+
+The implementation was reviewed through supplied desktop, mobile and regional screenshots. Browser checks covered 1440, 820, 390 and 320-pixel widths, reduced motion, camera controls, cancel/focus recovery, a complete Qatar flight, a skipped Malaysia entry with its preserved identity and graphics-context recovery. These checks establish the exercised flows and layouts. They do not measure physical-device frame rate or prove animation smoothness from still images.
+
+This document records the implemented extension; publication and release identifiers are tracked separately.
+
+The final browser audit also exercises grouped-pin focus/Escape return, direct Las Vegas full-circuit handoff, a failed Earth image request followed by a fresh Retry, and preserved destination after context loss. Retry clears the failed texture-loader entry before remounting. The destination modules preload during explicit flights; no measured timing improvement is claimed. The bounded layout review passed without material findings; subsequent route and recovery refinements preserved that verdict. Mechanical design detection over the new UI files returned no findings.

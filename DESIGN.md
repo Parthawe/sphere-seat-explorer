@@ -282,3 +282,9 @@ Use Las Vegas as the visual benchmark for the ten existing venue seating models,
 ## Shader world layer · 27 November 2026
 
 Use physically based shaders to make existing geometry legible: filtered asphalt aggregate and authored rubber wear, concrete pores, brushed metal, object-space carbon/rubber on illustrative cars, a static day/night horizon and softer density-modulated floodlight beams. Keep the track and seating contrast readable. Water ripples affect surface normals on already sourced polygons; never alter geography or invent water. Ripple time follows existing scene motion, freezes when paused/offscreen and honors reduced motion. Other new layers have no time uniform. Maintain demand rendering and graphics recovery; avoid adding blur, continuous background loops or copied venue assets. Shader appearance does not improve seat calibration or verify weather.
+
+## Earth journey · 27 November 2026
+
+Earth is the landing page’s main geographic navigation surface, with a World/Circuit switch retaining the existing circuit preview. Keep the established paper, ink, red and motorsport typography around a dark physical space scene. Use the local NASA globe texture and sourced venue centers to explain location; the atmosphere and stars support the object rather than add another page-wide theme. Selected pins and the flight action use the existing red.
+
+Keep the race selector, destination identity, camera controls and source disclosure legible across desktop and phone layouts. Group nearby projected pins into a selectable race list. The single 3.8-second camera approach ends in the existing illustrative circuit renderer through a labeled preview handoff; it does not imply continuous satellite detail, street terrain or measured seats. Preserve cancel, skip, pause, reduced-motion direct entry, loading, retry and direct-link states. See [Earth journey](docs/earth-journey.md) for source and behavior limits.

@@ -203,7 +203,7 @@ export default function RaceHub() {
           <Suspense fallback={<div className="hub-loading" role="status">Loading race guide…</div>}><RaceGuide key={`${selected.season}-${selected.slug}`} race={selected} route={route} go={go} jumpTo={jumpTo}/></Suspense>
         ) : (
           <>
-            <SeasonLanding season={route.season} onRace={select} />
+            <SeasonLanding season={route.season} onRace={select} onStudy={race=>race.slug==='las-vegas'?go({season:race.season,race:race.slug,seats:true,position:'C',mode:'circuit'}):go(readRoute(raceStudyLink(race)))} />
             <section
               className="race-calendar"
               id="race-calendar"

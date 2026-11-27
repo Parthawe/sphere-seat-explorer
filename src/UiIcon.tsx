@@ -1,5 +1,7 @@
 import type {ReactNode} from 'react';
 const shapes = {
+ globe:<><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 7h14M5 17h14"/></>,
+ location:<><path d="m21 3-6 18-4-8-8-4 18-6Z"/></>,
  list:<><path d="M8 5h13M8 12h13M8 19h13"/><path d="M3 5h.01M3 12h.01M3 19h.01"/></>,
  heightLow:<><path d="M2 20h6v-5h6v-5h7"/><circle cx="5" cy="15" r="2" fill="currentColor"/></>,
  heightMid:<><path d="M2 20h6v-5h6v-5h7"/><circle cx="11" cy="10" r="2" fill="currentColor"/></>,

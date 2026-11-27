@@ -25,6 +25,7 @@ import "./standConcept.css";
 import "./heroLanding.css";
 import "./race3DPreview.css";
 import "./editorial.css";
+import "./earthJourney.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppBoundary><App /></AppBoundary>
