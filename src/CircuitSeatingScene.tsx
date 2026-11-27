@@ -1,3 +1,4 @@
+import {stadiumSeatPanel,modelSeatAccent} from './stadiumSeat';
 import {flightDuration,flightProgress,sampleFlight} from './cameraFlight';
 import {SurfaceMaterial,ShaderGuard,StudioReflections} from './SceneMaterials';
 import {LightShaft} from './Atmosphere';
@@ -12,7 +13,6 @@ import {Canvas,useFrame,useThree,useLoader} from '@react-three/fiber';
 import {Component,Suspense,useEffect,useLayoutEffect,useMemo,useRef,useState,type ReactNode,type RefObject} from 'react';
 import * as T from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
-import {RoundedBoxGeometry} from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import {EffectComposer} from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
@@ -21,23 +21,28 @@ import {bankGroundHeight,bankFrame,bankOverviewCamera,circuitOverviewCamera,circ
 export type ModelCameraControls={zoomIn:()=>void;zoomOut:()=>void;resetZoom:()=>void};
 type Mode='circuit'|'stand'|'seat';
 type Props={preview?:boolean;visible?:boolean;onZoomLimitsChange:(inward:boolean,outward:boolean)=>void;cameraControls:RefObject<ModelCameraControls|null>;model:CircuitModel;selection:ModelPosition;mode:Mode;playing:boolean;speed:number;pass:number;following:boolean;onManualLook:()=>void;roofs:boolean;reset:number;onSelect:(p:ModelPosition)=>void;onUnavailable:()=>void;onReady:()=>void};
-function Instances({items,color,geometry,onClick,surface='coated'}:{surface?:'concrete'|'coated';items:{p:number[];s:number[];r?:number[]}[];color:string;geometry?:T.BufferGeometry;onClick?:(index:number)=>void}){
+function Instances({items,color,geometry,onClick,surface='coated',colors,metalness=.32,roughness=.46}:{colors?:string[];metalness?:number;roughness?:number;surface?:'concrete'|'coated';items:{p:number[];s:number[];r?:number[]}[];color:string;geometry?:T.BufferGeometry;onClick?:(index:number)=>void}){
  const ref=useRef<T.InstancedMesh>(null),{invalidate}=useThree();
  // Switching the active bank replaces its mesh geometry. Restore instance transforms
  // on that replacement before rendering, even when the positions have not changed.
  useLayoutEffect(()=>{const o=new T.Object3D();items.forEach((v,i)=>{o.position.set(v.p[0],v.p[1],v.p[2]);o.scale.set(v.s[0],v.s[1],v.s[2]);o.rotation.set(...((v.r??[0,0,0]) as [number,number,number]));o.updateMatrix();ref.current?.setMatrixAt(i,o.matrix);});if(ref.current){ref.current.instanceMatrix.needsUpdate=true;ref.current.computeBoundingSphere();}invalidate();},[items,geometry,invalidate]);
- return <instancedMesh ref={ref} args={[geometry,undefined,items.length]} castShadow receiveShadow onClick={e=>{if(onClick&&e.instanceId!==undefined){e.stopPropagation();onClick(e.instanceId);}}}>{!geometry&&<boxGeometry/>}<SurfaceMaterial surface={surface} color={color} metalness={.32} roughness={.46} strength={.45}/></instancedMesh>;
+ useLayoutEffect(()=>{if(!ref.current||!colors)return;const tint=new T.Color();colors.forEach((value,i)=>ref.current?.setColorAt(i,tint.set(value)));if(ref.current.instanceColor)ref.current.instanceColor.needsUpdate=true;invalidate();},[colors,geometry,items.length,invalidate]);
+ return <instancedMesh ref={ref} args={[geometry,undefined,items.length]} castShadow receiveShadow onClick={e=>{if(onClick&&e.instanceId!==undefined){e.stopPropagation();onClick(e.instanceId);}}}>{!geometry&&<boxGeometry/>}<SurfaceMaterial surface={surface} color={colors?'#ffffff':color} metalness={surface==='concrete'?0:metalness} roughness={surface==='concrete'?.9:roughness} strength={surface==='concrete'?.7:.25}/></instancedMesh>;
 }
 function Bank({bank,model,selection,onSelect,roofs,detail}:{detail:boolean;bank:ModelBank;model:CircuitModel;selection:ModelPosition;onSelect:Props['onSelect'];roofs:boolean}){
- const rounded=useMemo(()=>new RoundedBoxGeometry(1,1,1,2,.12),[]);
- useEffect(()=>()=>rounded.dispose(),[rounded]);
+ const shells=useMemo(()=>({pan:stadiumSeatPanel(),back:stadiumSeatPanel(true)}),[]);
+ useEffect(()=>()=>{shells.pan.dispose();shells.back.dispose();},[shells]);
  const active=selection.bank===bank.id,frame=useMemo(()=>bankFrame(model,bank),[model,bank]);
  const positions=useMemo(()=>Array.from({length:bank.sections*bank.rows*bank.seats},(_,i)=>({bank:bank.id,section:Math.floor(i/(bank.rows*bank.seats))+1,row:Math.floor(i/bank.seats)%bank.rows+1,seat:i%bank.seats+1})),[bank]);
- const chairs=useMemo(()=>positions.map(p=>{const v=localModelPosition(bank,p);return {p:[v[0],v[1]+.28,v[2]],s:[.48,.13,.48]};}),[positions,bank]);
- const backs=useMemo(()=>positions.map(p=>{const v=localModelPosition(bank,p);return {p:[v[0],v[1]+.55,v[2]-.24],s:[.48,.52,.09],r:[-.12,0,0]};}),[positions,bank]);
+ const chairs=useMemo(()=>positions.map(p=>{const v=localModelPosition(bank,p);return {p:[v[0],v[1]+.28,v[2]],s:[.48,.075,.48]};}),[positions,bank]);
+ const backs=useMemo(()=>positions.map(p=>{const v=localModelPosition(bank,p);return {p:[v[0],v[1]+.55,v[2]-.24],s:[.48,.52,.055],r:[-.12,0,0]};}),[positions,bank]);
  const tiers=useMemo(()=>Array.from({length:bank.rows},(_,i)=>({p:[0,(.55+i*.43)/2,(bank.rows/2-i-1)*.88],s:[bank.width+2,.55+i*.43,.9]})),[bank]);
  const supports=useMemo(()=>Array.from({length:Math.ceil(bank.width/14)+1},(_,i)=>({p:[-bank.width/2+i*bank.width/Math.ceil(bank.width/14),bank.rows*.43/2,-bank.rows*.44],s:[.22,bank.rows*.43,.22]})),[bank]);
  const closeDetail=active&&detail&&bank.kind!=='lawn';
+ const chairColor=model.id==='qatar'?'#783b4d':model.id==='miami'?'#356d73':'#3d647c',backColor=model.id==='qatar'?'#8a4056':model.id==='miami'?'#447f86':'#4c7895';
+ const chairColors=useMemo(()=>closeDetail?positions.map(p=>modelSeatAccent(p,selection,chairColor)):undefined,[closeDetail,positions,selection,chairColor]);
+ const backColors=useMemo(()=>closeDetail?positions.map(p=>modelSeatAccent(p,selection,backColor)):undefined,[closeDetail,positions,selection,backColor]);
+ const aisleDetail=useMemo(()=>{if(!closeDetail)return [];const out:{p:number[];s:number[];r?:number[]}[]=[],pitch=bank.width/(bank.sections*bank.seats+(bank.sections-1)*3);for(let section=1;section<bank.sections;section++){const x=-bank.width/2+section*(bank.seats+3)*pitch-1.5*pitch;for(let row=0;row<bank.rows;row++)out.push({p:[x,.58+row*.43,(bank.rows/2-row-1)*.88+.38],s:[1.3,.025,.055]});for(const side of [-1,1])out.push({p:[x+side*.7,1.58+bank.rows*.215,0],s:[.045,.045,bank.rows*.98],r:[Math.atan2(.43,.88),0,0]});}return out;},[bank,closeDetail]);
  const hardware=useMemo(()=>closeDetail?positions.flatMap(p=>{const v=localModelPosition(bank,p);return [{p:[v[0],v[1]+.12,v[2]],s:[.065,.24,.065]},{p:[v[0],v[1]+.04,v[2]],s:[.34,.06,.28]}];}):[],[positions,bank,closeDetail]);
  const rearRail=useMemo(()=>{if(!closeDetail)return [];const z=-bank.rows*.44-.7,y=bank.rows*.43,count=Math.ceil(bank.width/2.5);return [...Array.from({length:count+1},(_,i)=>({p:[-bank.width/2+i*bank.width/count,y+.55,z],s:[.045,1.1,.045]})),...[.55,1.1].map(height=>({p:[0,y+height,z],s:[bank.width,.045,.045]}))];},[bank,closeDetail]);
  const pitch=bank.width/(bank.sections*bank.seats+(bank.sections-1)*3),picked=localModelPosition(bank,selection);
@@ -45,9 +50,9 @@ function Bank({bank,model,selection,onSelect,roofs,detail}:{detail:boolean;bank:
   {bank.kind==='lawn'?<mesh position={[0,1.7,0]} scale={[bank.width/2,3.2,22]}><sphereGeometry args={[1,32,12]}/><meshStandardMaterial color="#777348" roughness={1}/></mesh>:<>
    <Instances items={tiers} color="#646a73" surface="concrete"/>
    <Instances items={supports} color="#b5bbc4"/>
-   {closeDetail&&<><Instances items={hardware} color="#adb6c1"/><Instances items={rearRail} color="#c6ced8"/></>}
-   <Instances geometry={active?rounded:undefined} items={chairs} color={model.id==='qatar'?'#783b4d':model.id==='miami'?'#356d73':'#3d647c'} onClick={i=>onSelect(positions[i])}/>
-   <Instances geometry={active?rounded:undefined} items={backs} color={model.id==='qatar'?'#8a4056':model.id==='miami'?'#447f86':'#4c7895'} onClick={i=>onSelect(positions[i])}/>
+   {closeDetail&&<><Instances items={hardware} color="#adb6c1" metalness={.7} roughness={.35}/><Instances items={rearRail} color="#c6ced8" metalness={.7} roughness={.3}/><Instances items={aisleDetail} color="#cad2dc" metalness={.55} roughness={.4}/></>}
+   <Instances geometry={closeDetail?shells.pan:undefined} items={chairs} color={chairColor} colors={chairColors} metalness={.025} roughness={.36} onClick={i=>onSelect(positions[i])}/>
+   <Instances geometry={closeDetail?shells.back:undefined} items={backs} color={backColor} colors={backColors} metalness={.025} roughness={.36} onClick={i=>onSelect(positions[i])}/>
    {Array.from({length:bank.sections-1},(_,i)=><group key={i} position={[-bank.width/2+(i+1)*(bank.seats+3)*pitch-1.5*pitch,0,0]}>
     <mesh position={[0,.58+bank.rows*.215,0]} rotation={[Math.atan2(.43,.88),0,0]}><boxGeometry args={[1.5,.15,bank.rows*.98]}/><meshStandardMaterial color="#b1b6c0"/></mesh>
    </group>)}
@@ -88,7 +93,7 @@ function Context({model,selection,roofs}:{model:CircuitModel;selection:ModelPosi
  const nearPoles=useMemo(()=>[...poles].sort((a,b)=>Math.hypot(a[0]-bank.center[0],a[1]-bank.center[1])-Math.hypot(b[0]-bank.center[0],b[1]-bank.center[1])).slice(0,3),[poles,bank]);
  const main=model.banks.find(b=>b.id===model.pitBank)??model.banks[0],mf=bankFrame(model,main),pit=[mf.target[0]+mf.forward[0]*28,mf.target[1]+mf.forward[1]*28];
  return <>
-  {model.appearance!=='day'&&<mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><meshStandardMaterial color={model.appearance==='day'?'#70905d':model.id==='qatar'?'#29282b':model.id==='united-arab-emirates'?'#25343b':'#493e36'} roughness={1}/></mesh>}
+  {model.appearance!=='day'&&<mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><SurfaceMaterial surface="concrete" color={model.id==='qatar'?'#15171d':model.id==='united-arab-emirates'?'#142126':'#302923'} roughness={.98} grainScale={.45} strength={.45}/></mesh>}
   {model.appearance!=='day'&&poles.map((p,i)=><group key={i} position={[p[0],0,p[1]]}><mesh position={[0,12,0]}><cylinderGeometry args={[.17,.33,24,6]}/><meshStandardMaterial color="#7c8796" metalness={.6}/></mesh><mesh position={[0,24,0]} rotation={[-.2,0,0]}><boxGeometry args={[4,.45,1.1]}/><meshBasicMaterial color={new T.Color(2.2,2.4,3)} toneMapped={false}/></mesh></group>)}
   {model.appearance!=='day'&&<pointLight position={[bank.center[0]+frame.forward[0]*20,30,bank.center[1]+frame.forward[1]*20]} intensity={12500} distance={220} decay={2} color="#d5e5ff"/>}
   {model.appearance!=='day'&&nearPoles.map((p,i)=><LightShaft key={i} origin={[p[0],24,p[1]]} target={[p[0]+frame.forward[0]*18,.2,p[1]+frame.forward[1]*18]} strength={.55}/>)}
@@ -160,6 +165,7 @@ function Lighting({model,selection,mode}:{model:CircuitModel;selection:ModelPosi
  target.position.set(p[0],p[1],p[2]);target.updateMatrixWorld();
  return <><StudioReflections intensity={model.appearance==='day'?.65:.5}/><primitive object={target}/>
   <ambientLight intensity={model.appearance==='day'?.25:.12}/>
+  <directionalLight target={target} position={[p[0]+40,p[1]+12,p[2]-30]} intensity={model.appearance==='day'?.3:.45} color={model.appearance==='day'?'#e2ecff':'#ffdfbe'}/>
   <hemisphereLight args={model.appearance==='day'?['#deedff','#687c4c',.85]:['#c9d9f5','#554439',.45]}/>
   <directionalLight ref={light} target={target} position={[p[0]-60,p[1]+130,p[2]+50]} intensity={model.appearance==='day'?3:2.5} color={model.appearance==='day'?'#fff4de':'#deeaff'} castShadow shadow-mapSize={[2048,2048]} shadow-camera-left={-span} shadow-camera-right={span} shadow-camera-top={span} shadow-camera-bottom={-span} shadow-camera-far={350} shadow-bias={-.00012} shadow-normalBias={.025}/>
  </>;
@@ -171,4 +177,4 @@ function TrackFence({model}:{model:CircuitModel}){
 function Finish(){const {gl,scene,camera,size}=useThree();const composer=useMemo(()=>{const c=new EffectComposer(gl);c.addPass(new RenderPass(scene,camera));c.addPass(new UnrealBloomPass(new T.Vector2(size.width,size.height),.18,.35,1.3));c.addPass(new OutputPass());return c;},[gl,scene,camera]);useEffect(()=>{composer.setSize(size.width,size.height);},[composer,size]);useEffect(()=>()=>composer.dispose(),[composer]);useFrame((_,delta)=>composer.render(delta),1);return null;}
 function Watch({onUnavailable,onReady}:{onUnavailable:Props['onUnavailable'];onReady:()=>void}){const {gl}=useThree();const done=useRef(false);useFrame(()=>{if(!done.current){done.current=true;gl.domElement.dataset.geometryReady='true';onReady();}});useEffect(()=>{const loss=(e:Event)=>{e.preventDefault();onUnavailable();};gl.domElement.addEventListener('webglcontextlost',loss);return()=>gl.domElement.removeEventListener('webglcontextlost',loss);},[gl,onUnavailable]);return null;}
 class Boundary extends Component<{children:ReactNode;onUnavailable:()=>void},{failed:boolean}>{state={failed:false};static getDerivedStateFromError(){return {failed:true};}componentDidCatch(){this.props.onUnavailable();}render(){return this.state.failed?null:this.props.children;}}
-export default function CircuitSeatingScene(props:Props){const lead=useRef(new T.Vector3());return <Boundary onUnavailable={props.onUnavailable}><Canvas frameloop={props.visible===false?'never':'demand'} shadows dpr={[1,1.5]} camera={{position:[900,1500,1350],near:.15,far:6500,fov:45}} gl={{antialias:true,powerPreference:'high-performance'}}><ShaderGuard onUnavailable={props.onUnavailable}/><color attach="background" args={[props.model.appearance==='day'?'#bfd7e7':'#111b2c']}/><fog attach="fog" args={[props.model.appearance==='day'?'#d4e2df':'#263146',1000,4500]}/><Suspense fallback={null}><Lighting {...props}/><Context {...props}/>{props.model.appearance==='day'&&<CircuitPark model={props.model}/>}<Track model={props.model}/><TrackFence model={props.model}/>{props.model.banks.map(bank=><Bank key={bank.id} bank={bank} model={props.model} selection={props.selection} onSelect={props.onSelect} roofs={props.roofs} detail={!props.preview&&props.mode!=='circuit'}/>)}<DemoCars model={props.model} playing={props.playing} selection={props.selection} speed={props.speed} pass={props.pass} lead={lead}/><Watch onUnavailable={props.onUnavailable} onReady={props.onReady}/></Suspense><Rig {...props} lead={lead}/><Finish/></Canvas></Boundary>;}
+export default function CircuitSeatingScene(props:Props){const lead=useRef(new T.Vector3());return <Boundary onUnavailable={props.onUnavailable}><Canvas frameloop={props.visible===false?'never':'demand'} shadows dpr={[1,1.5]} camera={{position:[900,1500,1350],near:.15,far:6500,fov:45}} gl={{antialias:true,powerPreference:'high-performance'}}><ShaderGuard onUnavailable={props.onUnavailable}/><color attach="background" args={[props.model.appearance==='day'?'#bfd7e7':'#111b2c']}/><fog attach="fog" args={[props.model.appearance==='day'?'#d4e2df':'#121b2a',1000,4500]}/><Suspense fallback={null}><Lighting {...props}/><Context {...props}/>{props.model.appearance==='day'&&<CircuitPark model={props.model}/>}<Track model={props.model}/><TrackFence model={props.model}/>{props.model.banks.map(bank=><Bank key={bank.id} bank={bank} model={props.model} selection={props.selection} onSelect={props.onSelect} roofs={props.roofs} detail={!props.preview&&props.mode!=='circuit'}/>)}<DemoCars model={props.model} playing={props.playing} selection={props.selection} speed={props.speed} pass={props.pass} lead={lead}/><Watch onUnavailable={props.onUnavailable} onReady={props.onReady}/></Suspense><Rig {...props} lead={lead}/><Finish/></Canvas></Boundary>;}
