@@ -4,7 +4,7 @@ import * as T from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {SurfaceMaterial,ShaderGuard,StudioReflections} from './SceneMaterials';
 import {CircuitCars} from './PassingCars';
-import {buildStudyGeometry,sampleStudy,type StudySelection} from './circuitStudy';
+import {buildStudyGeometry,sampleStudy,STUDY_CAMERA,type StudySelection} from './circuitStudy';
 import type {CircuitLayout} from './circuitLayouts';
 import {circuitRibbon} from './circuitRibbon';
 
@@ -22,7 +22,7 @@ function World({layout,selection,playing,reset,zoom,onReady,onUnavailable}:Props
  const sign=selection.side==='left'?1:-1,nx=at.normal[0]*sign,nz=at.normal[1]*sign;
  const cameraGoal=useMemo(()=>{
   if(selection.camera==='sample'){
-   const h=selection.height==='low'?.35:selection.height==='high'?.675:.545,offset=selection.height==='low'?.21:selection.height==='high'?.62:.45;
+   const {height:h,offset}=STUDY_CAMERA[selection.height];
    return {eye:new T.Vector3(at.point[0]+nx*offset,h,at.point[1]+nz*offset),target:new T.Vector3(at.point[0]+at.tangent[0]*.25,.14,at.point[1]+at.tangent[1]*.25)};
   }
   const direction=new T.Vector3(10,12,13).normalize(),right=new T.Vector3().crossVectors(new T.Vector3(0,1,0),direction).normalize(),up=new T.Vector3().crossVectors(direction,right).normalize(),tanY=Math.tan(44*Math.PI/360),tanX=tanY*size.width/size.height;

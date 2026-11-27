@@ -3,6 +3,7 @@ import type {Race} from './races';
 
 export type StudySelection={sample:number;height:'low'|'mid'|'high';side:'left'|'right';camera:'overview'|'sample'};
 export type StudyGeometry={points:[number,number][];distances:number[];length:number};
+export const STUDY_CAMERA={low:{height:.35,offset:.21},mid:{height:.545,offset:.45},high:{height:.675,offset:.62}} as const;
 export function readStudySelection(search:string):StudySelection {
  const p=new URLSearchParams(search),value=Number(p.get('sample')??12.5);
  return {sample:Number.isFinite(value)?Math.max(0,Math.min(99.5,value)):12.5,height:p.get('height')==='low'?'low':p.get('height')==='high'?'high':'mid',side:p.get('side')==='right'?'right':'left',camera:p.get('camera')==='sample'?'sample':'overview'};

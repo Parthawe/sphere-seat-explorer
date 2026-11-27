@@ -1,5 +1,8 @@
 import type {ReactNode} from 'react';
 const shapes = {
+ heightLow:<><path d="M2 20h6v-5h6v-5h7"/><circle cx="5" cy="15" r="2" fill="currentColor"/></>,
+ heightMid:<><path d="M2 20h6v-5h6v-5h7"/><circle cx="11" cy="10" r="2" fill="currentColor"/></>,
+ heightHigh:<><path d="M2 20h6v-5h6v-5h7"/><circle cx="18" cy="5" r="2" fill="currentColor"/></>,
  expand:<><path d="M3 9V3h6m6 0h6v6M3 15v6h6m6 0h6v-6"/></>,
  circuit:<path d="M7 4 3 9l3 4-1 5 6 2 4-5 5-2 1-6-6-3-3 4-5-4Z"/>,
  seat:<><path d="M6 3h10v10H6zM5 13h14v5H5zM7 18v3m10-3v3M3 10v7m18-7v7"/></>,
