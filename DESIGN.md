@@ -245,3 +245,7 @@ Keep the calendar lightweight: derive its existing outlines, search text and cov
 Each guide has four compact icon shortcuts: Stands, Photos, Compare and Booking. Stack into two columns on narrow phones. Jump within the existing route without discarding public area/query context, and focus the actual target after lazy content resolves. Put booking comparison ahead of optional manual price notes. Price notes must say manual and distinguish persistent browser storage from session-only fallback. They do not become market prices or automated alerts.
 
 For upcoming 2026 races with a supported model, retain a direct organizer ticket-page handoff when no event-year F1 catalogue URL is supplied. Past models never become current sales offers. A destination load failure returns to the selected season's calendar rather than silently changing years.
+
+## Manual quote admission dates · 27 November 2026 UTC
+
+Price-note windows normally follow the dated session calendar. Extend them only through an explicit event/year source rule, never by subtracting a day from every race. Abu Dhabi 2026 permits a 3–6 December span from the organizer's published products while keeping 4 December as the default. Show the source and remind the user that daily access depends on the quoted product. Apply identical bounds when saving and restoring; reject impossible calendar dates and stale rules after a session-calendar change.

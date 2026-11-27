@@ -9,13 +9,28 @@ export function publicProductUrl(value:unknown):string|null {
 }
 export function validAmount(value:unknown):value is number {return typeof value==='number'&&Number.isFinite(value)&&value>0&&value<=100000000;}
 const text=(value:unknown,max:number)=>typeof value==='string'&&value.trim().length>0&&value.trim().length<=max;
-export function readWatches(raw:unknown,race:Pick<Race,'start'|'end'>,now=Date.now()):PriceWatch[] {
+type PriceRace=Pick<Race,'start'|'end'>&Partial<Pick<Race,'season'|'slug'>>;
+/** Explicit organizer evidence, not a blanket extra day for every race or ticket. */
+export function priceAdmissionWindow(race:PriceRace):{start:string;end:string;source?:string;checked?:string}{
+ if(race.season===2026&&race.slug==='united-arab-emirates'&&race.start==='2026-12-04'&&race.end==='2026-12-06')return {start:'2026-12-03',end:'2026-12-06',source:'https://www.abudhabigp.com/en/formula1/tickets-2026/',checked:'2026-11-27'};
+ return {start:race.start,end:race.end};
+}
+function validDate(value:unknown):value is string {
+ if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;
+ const stamp=Date.parse(`${value}T00:00:00Z`);
+ return Number.isFinite(stamp)&&new Date(stamp).toISOString().slice(0,10)===value;
+}
+export function validPriceAdmission(start:unknown,end:unknown,race:PriceRace){
+ const bounds=priceAdmissionWindow(race);
+ return validDate(start)&&validDate(end)&&start>=bounds.start&&end<=bounds.end&&start<=end;
+}
+export function readWatches(raw:unknown,race:PriceRace,now=Date.now()):PriceWatch[] {
  if(!Array.isArray(raw))return [];
  const ids=new Set<string>();
  return raw.slice(0,30).flatMap((item:unknown)=>{
   if(!item||typeof item!=='object')return [];
   const w=item as PriceWatch;
-  if(!text(w.id,100)||ids.has(w.id)||!text(w.product,100)||!text(w.seller,80)||!PRICE_CURRENCIES.includes(w.currency)||!publicProductUrl(w.url)||typeof w.start!=='string'||typeof w.end!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(w.start)||!/^\d{4}-\d{2}-\d{2}$/.test(w.end)||w.start<race.start||w.end>race.end||w.start>w.end||!Array.isArray(w.points))return [];
+  if(!text(w.id,100)||ids.has(w.id)||!text(w.product,100)||!text(w.seller,80)||!PRICE_CURRENCIES.includes(w.currency)||!publicProductUrl(w.url)||!validPriceAdmission(w.start,w.end,race)||!Array.isArray(w.points))return [];
   const pointIds=new Set<string>();
   const points=w.points.slice(-200).filter(p=>p&&text(p.id,100)&&!pointIds.has(p.id)&&validAmount(p.amount)&&typeof p.observedAt==='string'&&Number.isFinite(Date.parse(p.observedAt))&&Date.parse(p.observedAt)<=now&&(pointIds.add(p.id),true)).sort((a,b)=>Date.parse(a.observedAt)-Date.parse(b.observedAt)).map(p=>({id:p.id,amount:p.amount,observedAt:p.observedAt}));
   if(!points.length)return [];ids.add(w.id);

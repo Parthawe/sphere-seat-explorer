@@ -65,3 +65,5 @@
 @media(max-width:380px) {.price-form-pair {grid-template-columns:1fr; gap:0;} .price-empty {align-items:start; gap:12px;} .price-empty>.ui-icon {width:28px;height:28px;flex-basis:28px;}}
 
 .price-notebook .eyebrow {color:var(--color-text-muted);}
+.price-date-guidance {font-size:12px;line-height:1.65;color:var(--color-text-muted);}
+.price-date-guidance a {color:var(--color-action-strong);text-underline-offset:3px;}

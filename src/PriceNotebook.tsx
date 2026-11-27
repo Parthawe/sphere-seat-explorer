@@ -1,9 +1,10 @@
 import {useEffect,useRef,useState,type FormEvent} from 'react';
 import type {Race} from './races';
 import UiIcon from './UiIcon';
-import {mergePriceWatches,notebookKey,PRICE_CURRENCIES,priceMoney,priceSummary,publicProductUrl,readWatches,validAmount,type PriceCurrency,type PriceWatch} from './ticketPriceHistory';
+import {mergePriceWatches,notebookKey,PRICE_CURRENCIES,priceAdmissionWindow,priceMoney,priceSummary,publicProductUrl,readWatches,validAmount,validPriceAdmission,type PriceCurrency,type PriceWatch} from './ticketPriceHistory';
 
 export default function PriceNotebook({race}:{race:Race}) {
+ const admission=priceAdmissionWindow(race);
  const [watches,setWatches]=useState<PriceWatch[]>(()=>{try{return readWatches(JSON.parse(localStorage.getItem(notebookKey(race))??'[]'),race);}catch{return [];}});
  const [active,setActive]=useState(watches[0]?.id??''),[message,setMessage]=useState(''),[storageFailed,setStorageFailed]=useState(false),[editing,setEditing]=useState<string|null>(null),[undo,setUndo]=useState<PriceWatch[]|null>(null),[saving,setSaving]=useState(false),[targetDraft,setTargetDraft]=useState('');
  const dialog=useRef<HTMLDialogElement>(null),addButton=useRef<HTMLButtonElement>(null),wasOpen=useRef(false),opener=useRef<HTMLElement|null>(null);
@@ -31,7 +32,7 @@ export default function PriceNotebook({race}:{race:Race}) {
   const url=publicProductUrl(data.get('url'));
   if(!existing&&!url){setMessage('Use an HTTPS product-page link without query parameters or a fragment.');return;}
   const start=String(data.get('start')),end=String(data.get('end'));
-  if(!existing&&(start<race.start||end>race.end||start>end)){setMessage('Choose admission dates within this race weekend.');return;}
+  if(!existing&&!validPriceAdmission(start,end,race)){setMessage('Choose admission dates within the supported event window.');return;}
   const point={id:crypto.randomUUID(),amount,observedAt:new Date().toISOString()};
   const watch:PriceWatch=existing?{...existing,points:[...existing.points,point]}:{id:crypto.randomUUID(),product:String(data.get('product')).trim(),seller:String(data.get('seller')).trim(),url:url!,currency:String(data.get('currency')) as PriceCurrency,start,end,target:null,points:[point]};
   const next=existing?watches.map(w=>w.id===watch.id?watch:w):[...watches,watch];
@@ -71,7 +72,8 @@ export default function PriceNotebook({race}:{race:Race}) {
      <label>Exact ticket category<input name="product" required maxLength={100} autoFocus placeholder="Grandstand, package and access"/></label>
      <label>Seller<input name="seller" required maxLength={80} autoComplete="off"/></label>
      <label>Public product page<input name="url" type="url" required placeholder="https://…" autoComplete="off"/></label>
-     <div className="price-form-pair"><label>Admission from<input name="start" type="date" required min={race.start} max={race.end} defaultValue={race.start}/></label><label>Admission through<input name="end" type="date" required min={race.start} max={race.end} defaultValue={race.end}/></label></div>
+     <div className="price-form-pair"><label>Admission from<input name="start" type="date" required min={admission.start} max={admission.end} defaultValue={race.start}/></label><label>Admission through<input name="end" type="date" required min={admission.start} max={admission.end} defaultValue={race.end}/></label></div>
+     {admission.source&&<p className="price-date-guidance">Some products include Thursday, 3 Dec. Use your quote’s dates; daily access varies. <a href={admission.source} target="_blank" rel="noreferrer">Organizer dates</a></p>}
      <label>Currency<select name="currency" aria-label="Currency" defaultValue="USD">{PRICE_CURRENCIES.map(c=><option key={c}>{c}</option>)}</select></label>
     </>}
     <label>Price per adult, including fees {editing&&`· ${watches.find(w=>w.id===editing)?.currency}`}<input name="amount" type="number" min="0.01" max="100000000" step="0.01" required autoFocus={Boolean(editing)}/></label>
