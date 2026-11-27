@@ -22,7 +22,7 @@ export default function CircuitGuidePanel({ race, coverage }: { race: Race; cove
           <h2 id="circuit-guide-title">{guide.venue}</h2>
           <p className="circuit-brief-location">{guide.location}</p>
         </div></div>
-        <div className="circuit-guide-actions"><span className="circuit-brief-coverage">{coverage}</span>{hasAreaMap&&<a href="#viewing-areas"><UiIcon name="map"/>Area map</a>}</div>
+        <div className="circuit-guide-actions"><span className="circuit-brief-coverage">{coverage}</span>{hasAreaMap&&<a href="#viewing-areas" onClick={()=>{const tools=document.querySelector<HTMLDetailsElement>('#viewing-areas>.guide-map-tools');if(tools)tools.open=true;}}><UiIcon name="map"/>Area map</a>}</div>
       </header>
       <div className="circuit-brief-main">
         <div>

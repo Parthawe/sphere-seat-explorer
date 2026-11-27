@@ -1,0 +1,71 @@
+import assert from 'node:assert/strict';
+import {chromium} from 'playwright';
+const origin=process.argv[2]??'http://localhost:5188';
+const browser=await chromium.launch();const errors=[];
+try {
+ for(const width of [1440,390,320]) {
+  const page=await browser.newPage({viewport:{width,height:900},reducedMotion:'reduce'});
+  page.on('pageerror',e=>errors.push(String(e)));
+  await page.addInitScript(()=>Object.defineProperty(navigator,'connection',{value:{saveData:true}}));
+  await page.goto(`${origin}/?season=2026&race=qatar`);
+  await page.locator('#venue-stands').waitFor();
+  assert.ok(await page.locator('#venue-stands').evaluate(e=>Boolean(e.compareDocumentPosition(document.getElementById('race-schedule'))&Node.DOCUMENT_POSITION_FOLLOWING)));
+  assert.equal(await page.locator('#venue-references').count(),1);
+  const nav=page.getByRole('navigation',{name:'Plan this race',exact:true});
+  assert.equal(await page.locator('.guide-map-tools').getAttribute('open'),null);
+  assert.equal(new URL(page.url()).searchParams.has('area'),false);
+  await page.locator('.circuit-guide-actions').getByRole('link',{name:'Area map',exact:true}).click();
+  await page.waitForFunction(()=>document.querySelector('.guide-map-tools')?.open===true);
+  await page.locator('.guide-map-tools').getByRole('button',{name:'I have a ticket',exact:true}).click();
+  await page.getByLabel('Ticket seating details',{exact:true}).fill('SYNTHETIC Main Grandstand');
+  await page.locator('.guide-map-tools>summary').click();
+  assert.equal(await page.locator('.guide-map-tools').getAttribute('open'),null);
+  await page.locator('.circuit-guide-actions').getByRole('link',{name:'Area map',exact:true}).click();
+  await page.waitForFunction(()=>document.querySelector('.guide-map-tools')?.open===true);
+  assert.equal(await page.getByLabel('Ticket seating details',{exact:true}).inputValue(),'SYNTHETIC Main Grandstand');
+  assert.equal(page.url().includes('SYNTHETIC'),false);
+  assert.equal(await page.evaluate(()=>JSON.stringify({...localStorage}).includes('SYNTHETIC')),false);
+  await page.locator('.guide-map-tools>summary').click();
+  for(const [label,id] of [['Photos','venue-references'],['Schedule','race-schedule'],['Circuit','race-circuit'],['Compare','circuit-guide'],['Booking','booking-checks'],['Stands','venue-stands']]) {
+   await nav.getByRole('link',{name:label,exact:true}).click();
+   await page.waitForFunction(id=>document.activeElement.id===id,id);
+   await page.waitForFunction(id=>document.querySelector('.race-guide-nav a[aria-current=location]')?.getAttribute('href')==='#'+id,id);
+   const box=await page.locator('#'+id).boundingBox(),bar=await nav.boundingBox();
+   assert.ok(Math.abs(bar.y)<2,`${label}: navigation is not sticky`);
+   assert.ok(box.y>=bar.y+bar.height-2,`${label}: target hidden by navigation`);
+  }
+  await page.getByRole('button',{name:'2027 season',exact:true}).click();
+  await page.waitForFunction(()=>document.querySelector('h1')?.textContent.includes('2027'));
+  assert.equal(new URL(page.url()).searchParams.get('race'),'qatar');
+  await page.waitForFunction(()=>document.querySelector('.race-3d-preview')?.dataset.previewKey?.startsWith('outline-'));
+  await page.getByRole('combobox',{name:'Race guide race',exact:true}).selectOption('italy');
+  await page.locator('#venue-options-list>li').first().waitFor();
+  assert.equal(new URL(page.url()).searchParams.get('season'),'2027');
+  assert.equal(await page.locator('#venue-options-list>li').count(),6);
+  await page.getByRole('button',{name:/Show all \d+ options/}).click();
+  const count=await page.locator('#venue-options-list>li').count();assert.ok(count>6);
+  const lastId=await page.locator('#venue-options-list>li').last().getAttribute('id');
+  const lastName=await page.locator('#venue-options-list>li').last().locator('strong').innerText();
+  await page.getByRole('searchbox',{name:'Find a stand or option',exact:true}).fill(lastName);
+  assert.equal(await page.locator('#'+lastId).count(),1);
+  await page.goto(`${origin}/?season=2027&race=italy#${lastId}`);
+  await page.waitForFunction(id=>document.activeElement.id===id,lastId);
+  assert.equal(await page.locator('#venue-options-list>li').count(),count);
+  assert.equal(await page.locator('#venue-options-list').evaluate(e=>getComputedStyle(e).overflowY),'visible');
+  await page.getByRole('button',{name:'Show fewer options',exact:true}).click();
+  await page.waitForFunction(()=>document.activeElement.getAttribute('aria-label')==='Find a stand or option');
+  assert.equal(await page.locator('#venue-options-list>li').count(),6);
+  await page.locator('.race-context-switch').getByRole('link',{name:'All races',exact:true}).click();
+  await page.locator('.race-card-grid .race-card').first().waitFor();
+  const all=await page.locator('.race-card-grid .race-card').count();
+  await page.getByRole('button',{name:'Circuit outlines',exact:true}).click();
+  const outlines=await page.locator('.race-card-grid .race-card').count();assert.ok(outlines>0&&outlines<all);
+  await page.getByRole('button',{name:'Seat studies',exact:true}).click();
+  const seats=await page.locator('.race-card-grid .race-card').count();assert.ok(seats>0&&seats<all);
+  assert.equal(outlines+seats,all);
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  console.log(`Guide ordering, six section links, sticky offsets, season/race switching, all options, deep links and calendar filters passed at ${width}px`);
+  await page.close();
+ }
+ assert.deepEqual(errors,[]);
+} finally {await browser.close();}

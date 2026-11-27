@@ -77,7 +77,7 @@ export default function RaceHub() {
       matchesCalendarSearch(r, search) &&
       (filter === "all" ||
         (filter === "upcoming" && raceStatus(r) !== "Past") ||
-        (filter === "3d" && raceCoverage(route.season,r.slug).has3d) ||
+        (filter === "outlines" && raceCoverage(route.season,r.slug).kind==='layout3d') ||
         (filter === "seats" && ["model","reference3d"].includes(raceCoverage(route.season,r.slug).kind))),
   );
   const circuitModel = calendarEntryFor(route.season,route.race)?.model;
@@ -180,7 +180,7 @@ export default function RaceHub() {
               aria-pressed={route.season === y}
               aria-label={`${y} season`}
               onClick={() => {
-                go({ season: y, race: "", seats: false });
+                go({ season: y, race: selected&&calendars[y].some(r=>r.slug===selected.slug)?selected.slug:"", seats: false });
                 setFilter("all");
                 setSearch("");
               }}
@@ -234,7 +234,7 @@ export default function RaceHub() {
                   {[
                     ["all", "All races"],
                     ["upcoming", "Upcoming"],
-                    ["3d", "Circuit studies"],
+                    ["outlines", "Circuit outlines"],
                     ["seats", "Seat studies"],
                   ].map(([value, label]) => (
                     <button

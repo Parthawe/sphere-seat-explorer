@@ -171,3 +171,38 @@
  .circuit-scene-actions {right:18px;}
  .circuit-grid-dialog .circuit-grid-map svg {max-height:32dvh;}
 }
+
+/* Viewing decisions lead the guide; navigation remains available as details unfold. */
+.race-context-switch {display:flex;align-items:end;justify-content:space-between;gap:20px;padding-block:24px;}
+.race-context-switch label {display:flex;align-items:center;gap:12px;min-width:0;}
+.race-context-switch label>span {font-size:12px;color:var(--discovery-muted);}
+.race-context-switch select {min-height:44px;max-width:320px;padding:10px 14px;background:transparent;color:var(--color-ink);border:1px solid #b7b7b9;border-radius:4px;font:400 14px 'IBM Plex Sans',sans-serif;color-scheme:light;}
+.race-context-switch>a {display:inline-flex;align-items:center;gap:10px;min-height:44px;white-space:nowrap;font-size:13px;color:var(--discovery-muted);}
+.race-context-switch>a .ui-icon {transform:rotate(180deg);}
+.race-hub .race-guide-nav {position:sticky;top:0;z-index:20;background:#f6f5f2;}
+.race-hub .race-guide-nav a[aria-current=location] {color:var(--color-action-strong);box-shadow:inset 0 -2px var(--color-action);}
+.race-hub:not(.calendar-page) main :is(section[id],#booking-checks,#viewing-areas,[id^=stand-option-]) {scroll-margin-top:var(--guide-nav-offset,88px);}
+.race-hub .venue-stand-options {max-height:none;overflow:visible;padding-right:0;}
+.race-hub .venue-options-toggle {display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;margin-top:16px;width:100%;}
+@media(max-width:760px) {
+ .race-context-switch {gap:12px;padding-block:20px;}
+ .race-context-switch label {gap:8px;flex:1;}
+ .race-context-switch select {width:100%;min-width:0;font-size:16px;}
+ .race-context-switch>a {font-size:12px;}
+ .race-hub .race-guide-nav {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;padding:0;margin-bottom:28px;}
+ .race-hub .race-guide-nav a {flex-direction:column;gap:5px;min-height:64px;padding:10px 0;font-size:10px;white-space:nowrap;}
+ .race-hub .race-guide-nav .ui-icon {width:18px;height:18px;}
+ .race-hub .venue-stand-options {grid-template-columns:minmax(0,1fr);}
+}
+
+@media(max-width:760px) {.race-hub input[type=search] {font-size:16px;}}
+
+.race-context-switch label {position:relative;}
+.race-context-switch select {appearance:none;-webkit-appearance:none;padding-inline-end:40px;}
+.race-context-switch label::after {content:'';position:absolute;right:16px;top:50%;width:6px;height:6px;border-right:1.65px solid currentColor;border-bottom:1.65px solid currentColor;transform:translateY(-65%) rotate(45deg);pointer-events:none;}
+.guide-map-tools {margin:0 0 40px;border-block:1px solid var(--discovery-line);}
+.guide-map-tools>summary {display:flex;align-items:center;gap:12px;min-height:64px;padding:14px 4px;cursor:pointer;font-size:15px;list-style:none;}
+.guide-map-tools>summary::-webkit-details-marker {display:none;}
+.guide-map-tools>summary>span {flex:1;}
+.guide-map-tools[open]>summary>.ui-icon:last-child {transform:rotate(45deg);}
+.guide-map-tools>summary>.ui-icon {flex-shrink:0;}
