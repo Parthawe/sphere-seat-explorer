@@ -5,14 +5,15 @@ import * as T from 'three';
 import {World} from './World';
 import {HERO_SELECTION,heroCameraEase,heroCameraPose,type HeroCameraView} from './heroCamera';
 
-type Props={view:HeroCameraView;motion:boolean;reduced:boolean;active:boolean;interactionRef:RefObject<HTMLElement|null>;onReady:()=>void;onUnavailable:()=>void};
-function HeroRig({view,motion,reduced,active,interactionRef,onReady}:Props) {
+type Props={autoRotate?:boolean;view:HeroCameraView;motion:boolean;reduced:boolean;active:boolean;interactionRef:RefObject<HTMLElement|null>;onReady:()=>void;onUnavailable:()=>void};
+function HeroRig({autoRotate,view,motion,reduced,active,interactionRef,onReady}:Props) {
  const {camera,gl,size,invalidate}=useThree();
  const pose=heroCameraPose(view,size.width/Math.max(1,size.height));
  const baseEye=useRef(new T.Vector3(...pose.eye)),baseTarget=useRef(new T.Vector3(...pose.target));
  const look=useRef(new T.Vector3(...pose.target)),initialized=useRef(false),sentReady=useRef(false),frames=useRef(0);
  const destination=useRef({eye:new T.Vector3(...pose.eye),target:new T.Vector3(...pose.target),fov:pose.fov});
  const flight=useRef<{fromEye:T.Vector3;fromTarget:T.Vector3;fromFov:number;elapsed:number}|null>(null);
+ const orbitTime=useRef(0);
  const desired=useRef({x:0,y:0,scroll:0}),smooth=useRef({x:0,y:0,scroll:0});
  const scratch=useRef({direction:new T.Vector3(),eye:new T.Vector3(),target:new T.Vector3(),euler:new T.Euler(),axis:new T.Vector3(0,1,0)});
  function snap(){(camera as T.PerspectiveCamera).fov=destination.current.fov;(camera as T.PerspectiveCamera).updateProjectionMatrix();camera.position.copy(destination.current.eye);look.current.copy(destination.current.target);baseEye.current.copy(camera.position);baseTarget.current.copy(look.current);camera.lookAt(look.current);flight.current=null;gl.domElement.dataset.heroCameraState='ready';invalidate();}
@@ -29,8 +30,8 @@ function HeroRig({view,motion,reduced,active,interactionRef,onReady}:Props) {
   gl.domElement.dataset.heroMotion=String(motion&&!reduced);
   if(reduced){snap();smooth.current={x:0,y:0,scroll:0};}
   else if(!motion){flight.current=null;gl.domElement.dataset.heroCameraState='paused';invalidate();}
-  else begin();
- },[motion,reduced]);
+  else if(!autoRotate)begin();else invalidate();
+ },[motion,reduced,autoRotate]);
  useEffect(()=>{gl.domElement.dataset.heroActive=String(active);if(active)invalidate();},[active,gl,invalidate]);
  useEffect(()=>{
   const element=interactionRef.current;if(!element)return;
@@ -56,7 +57,8 @@ function HeroRig({view,motion,reduced,active,interactionRef,onReady}:Props) {
   smooth.current.x=T.MathUtils.damp(smooth.current.x,desired.current.x,5,step);smooth.current.y=T.MathUtils.damp(smooth.current.y,desired.current.y,5,step);smooth.current.scroll=T.MathUtils.damp(smooth.current.scroll,desired.current.scroll,5,step);
   const s=scratch.current;s.eye.copy(baseEye.current);s.target.copy(baseTarget.current);
   if(view==='circuit'){
-   s.eye.sub(baseTarget.current).applyAxisAngle(s.axis,smooth.current.x*.025).add(baseTarget.current);s.eye.y+=smooth.current.scroll*4;s.target.y+=smooth.current.y*2;
+   orbitTime.current+=step;gl.domElement.dataset.previewOrbit=String(autoRotate?orbitTime.current:0);
+   s.eye.sub(baseTarget.current).applyAxisAngle(s.axis,smooth.current.x*.025+(autoRotate?Math.sin(orbitTime.current*.22)*.12:0)).add(baseTarget.current);s.eye.y+=smooth.current.scroll*4;s.target.y+=smooth.current.y*2;
   }else{
    s.direction.subVectors(baseTarget.current,baseEye.current);s.euler.set(-smooth.current.y*.018+smooth.current.scroll*.008,smooth.current.x*.025,0,'YXZ');s.direction.applyEuler(s.euler);s.target.copy(baseEye.current).add(s.direction);
   }

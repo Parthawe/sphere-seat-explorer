@@ -8,17 +8,18 @@ import {buildStudyGeometry} from './circuitStudy';
 import type {CircuitLayout} from './circuitLayouts';
 import {circuitRibbon} from './circuitRibbon';
 
-type Props={preview?:boolean;layout:CircuitLayout;playing:boolean;visible:boolean;reset:number;zoom:number;onReady:()=>void;onUnavailable:()=>void};
+type Props={autoRotate?:boolean;preview?:boolean;layout:CircuitLayout;playing:boolean;visible:boolean;reset:number;zoom:number;onReady:()=>void;onUnavailable:()=>void};
 export default function CircuitIllustrativeScene(props:Props){
  return <Canvas shadows dpr={[1,1.5]} frameloop={!props.visible?'never':props.playing?'always':'demand'} camera={{fov:44,near:.015,far:120,position:[12,15,15]}} gl={{antialias:true}} fallback={<span>3D requires WebGL.</span>}><ShaderGuard onUnavailable={props.onUnavailable}/><World {...props} playing={props.playing&&props.visible}/></Canvas>;
 }
-function World({layout,preview,playing,reset,zoom,onReady,onUnavailable}:Props){
+function World({layout,preview,autoRotate,playing,reset,zoom,onReady,onUnavailable}:Props){
  const {camera,gl,invalidate,size}=useThree(),controls=useRef<OrbitControls|null>(null),goal=useRef<{eye:T.Vector3;target:T.Vector3}|null>(null),phase=useRef(.1),reported=useRef(false);
  const geometry=useMemo(()=>buildStudyGeometry(layout),[layout]);
  const points=useMemo(()=>geometry.points.map(p=>new T.Vector3(p[0],.11,p[1])),[geometry]);
  const road=useMemo(()=>circuitRibbon(points,.09),[points]);
  const edges=useMemo(()=>preview?circuitRibbon(points,.15):null,[points,preview]);
  const path=useMemo(()=>{const p=new T.CurvePath<T.Vector3>();for(let i=1;i<points.length;i++)p.add(new T.LineCurve3(points[i-1],points[i]));p.updateArcLengths();return p;},[points]);
+ const orbitTime=useRef(0);
  const previousZoom=useRef(zoom);
  const cameraGoal=useMemo(()=>{
   const direction=new T.Vector3(10,12,13).normalize(),right=new T.Vector3().crossVectors(new T.Vector3(0,1,0),direction).normalize(),up=new T.Vector3().crossVectors(direction,right).normalize(),tanY=Math.tan(44*Math.PI/360),tanX=tanY*size.width/size.height;
@@ -37,6 +38,7 @@ function World({layout,preview,playing,reset,zoom,onReady,onUnavailable}:Props){
  useEffect(()=>()=>{road.dispose();edges?.dispose();},[road,edges]);
  useFrame((_,delta)=>{
   if(goal.current){const t=1-Math.exp(-Math.min(delta,.05)*8);camera.position.lerp(goal.current.eye,t);controls.current?.target.lerp(goal.current.target,t);camera.lookAt(controls.current?.target??goal.current.target);if(camera.position.distanceTo(goal.current.eye)<.002){camera.position.copy(goal.current.eye);goal.current=null;}else invalidate();}
+  if(!goal.current&&autoRotate&&playing){orbitTime.current+=Math.min(delta,.05);camera.position.copy(cameraGoal.eye).applyAxisAngle(T.Object3D.DEFAULT_UP,Math.sin(orbitTime.current*.22)*.12);gl.domElement.dataset.previewOrbit=String(orbitTime.current);}
   controls.current?.update();
   if(playing)phase.current=(phase.current+Math.min(delta,.05)/35)%1;
   if(!reported.current){reported.current=true;onReady();}

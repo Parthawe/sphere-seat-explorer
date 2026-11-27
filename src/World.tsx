@@ -1,3 +1,4 @@
+import {CircuitCars} from './PassingCars';
 import {WorldSky} from './WorldShaders';
 import {SurfaceMaterial,StudioReflections} from './SceneMaterials';
 import FormulaCar from "./FormulaCar";
@@ -1087,6 +1088,11 @@ function Car({
     </group>
   );
 }
+function SimulatedField({selection,playing}:{selection:Selection;playing:boolean}) {
+ const start=nearestTrackFraction(points,getStand(selection.stand).center);
+ const phase=useMemo(()=>({current:start}),[start]);
+ return <CircuitCars key={selection.stand} path={curve} phase={phase} playing={playing} scale={1} height={.54} lapSeconds={46}/>;
+}
 function VenueDetails() {
   const pieces = useMemo(() => {
     const list: Piece[] = [];
@@ -1531,40 +1537,7 @@ export function World({
           onStand={onStand}
         />
       ))}
-      {!preview && replay ? replay.data.drivers.map(driver => <Car key={driver.number} color={driver.color} offset={0} playing={false} selection={selection} driver={driver} replay={replay} />) : !preview && (
-        <>
-          <Car
-            color="#e10600"
-            offset={0}
-            playing={playing}
-            selection={selection}
-          />
-          <Car
-            color="#e8eaf2"
-            offset={0.0035}
-            playing={playing}
-            selection={selection}
-          />
-          <Car
-            color="#e6aa35"
-            offset={0.006}
-            playing={playing}
-            selection={selection}
-          />
-          <Car
-            color="#246681"
-            offset={0.009}
-            playing={playing}
-            selection={selection}
-          />
-          <Car
-            color="#bec3cc"
-            offset={0.013}
-            playing={playing}
-            selection={selection}
-          />
-        </>
-      )}
+      {!preview && replay ? replay.data.drivers.map(driver => <Car key={driver.number} color={driver.color} offset={0} playing={false} selection={selection} driver={driver} replay={replay} />) : !preview && <SimulatedField selection={selection} playing={playing}/>}
       <Finish
         playing={replay ? replay.playing : playing}
         preview={preview}

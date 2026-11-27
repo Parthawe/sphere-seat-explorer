@@ -43,3 +43,6 @@
 @media(prefers-reduced-motion:no-preference) {.race-3d-renderer {transition:opacity .25s ease-out;}}
 
 .race-3d-preview-credit {position:absolute;top:12px;left:12px;display:grid;place-items:center;width:44px;height:44px;background:var(--color-ink);color:var(--color-paper);border:1px solid var(--color-control-border);}
+
+/* A preview is a link; canvas event layers must never capture its click. */
+.race-3d-renderer,.race-3d-renderer * {pointer-events:none!important;}

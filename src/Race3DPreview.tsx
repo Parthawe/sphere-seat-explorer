@@ -8,10 +8,10 @@ import type {ModelCameraControls} from './CircuitSeatingScene';
 import HeroSceneBoundary from './HeroSceneBoundary';
 import UiIcon from './UiIcon';
 const noAction=()=>{};
-export default function Race3DPreview({race,onOpen}:{race:Race;onOpen?:()=>void}){
+export default function Race3DPreview({race,onOpen,animated=false}:{race:Race;onOpen?:()=>void;animated?:boolean}){
  const spec=racePreview(race),stage=useRef<HTMLDivElement>(null),cameraControls=useRef<ModelCameraControls|null>(null);
  const [visible,setVisible]=useState(false),[requested,setRequested]=useState(false),[ready,setReady]=useState(false),[failed,setFailed]=useState(false),[retry,setRetry]=useState(0),[posterFailed,setPosterFailed]=useState(false),[layout,setLayout]=useState<CircuitLayout|null>(null);
- const [reduced,setReduced]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),[motion,setMotion]=useState(false);
+ const [reduced,setReduced]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),[motion,setMotion]=useState(()=>animated&&!matchMedia('(prefers-reduced-motion: reduce)').matches);
  const saver=Boolean((navigator as Navigator&{connection?:{saveData?:boolean}}).connection?.saveData);
  const Scenes=useMemo(()=>({Model:lazy(()=>import('./CircuitSeatingScene')),Vegas:lazy(()=>import('./HeroScene')),Outline:lazy(()=>import('./CircuitIllustrativeScene'))}),[retry]);
  const model=spec.kind==='model'?findCircuitModel(race.season,race.slug):undefined,selection=useMemo(()=>model?normalizeModelPosition(model,{}):null,[model]);
@@ -27,16 +27,16 @@ export default function Race3DPreview({race,onOpen}:{race:Race;onOpen?:()=>void}
    <div ref={stage} className="race-3d-preview-stage">
     <img className="race-3d-poster" src={posterFailed?`/circuit-plans/${circuitLayoutId(race.season,race.slug)}.svg`:spec.poster} width="960" height="540" fetchPriority="high" alt={posterFailed?`${race.name} source circuit outline fallback`:spec.kind==='outline'?`${race.name} circuit outline study`:`Illustrative ${race.name} venue study`} onError={()=>setPosterFailed(true)}/>
     {requested&&!failed&&<div className="race-3d-renderer" data-ready={ready} aria-hidden="true"><HeroSceneBoundary key={retry} onUnavailable={unavailable}><Suspense fallback={null}>
-     {spec.kind==='model'&&model&&selection&&<Scenes.Model preview model={model} selection={selection} mode="circuit" playing={playing} visible={visible} speed={1} pass={0} following={false} onManualLook={noAction} roofs reset={0} cameraControls={cameraControls} onZoomLimitsChange={noAction} onSelect={noAction} onReady={onReady} onUnavailable={unavailable}/>}
-     {spec.kind==='vegas'&&<Scenes.Vegas view="circuit" motion={playing} reduced={reduced} active={visible} interactionRef={stage} onReady={onReady} onUnavailable={unavailable}/>}
-     {spec.kind==='outline'&&layout&&<Scenes.Outline preview layout={layout} playing={playing} visible={visible} reset={0} zoom={0} onReady={onReady} onUnavailable={unavailable}/>}
+     {spec.kind==='model'&&model&&selection&&<Scenes.Model autoRotate={animated} preview model={model} selection={selection} mode="circuit" playing={playing} visible={visible} speed={1} pass={0} following={false} onManualLook={noAction} roofs reset={0} cameraControls={cameraControls} onZoomLimitsChange={noAction} onSelect={noAction} onReady={onReady} onUnavailable={unavailable}/>}
+     {spec.kind==='vegas'&&<Scenes.Vegas autoRotate={animated} view="circuit" motion={playing} reduced={reduced} active={visible} interactionRef={stage} onReady={onReady} onUnavailable={unavailable}/>}
+     {spec.kind==='outline'&&layout&&<Scenes.Outline autoRotate={animated} preview layout={layout} playing={playing} visible={visible} reset={0} zoom={0} onReady={onReady} onUnavailable={unavailable}/>}
     </Suspense></HeroSceneBoundary></div>}
    </div>
    <div className="race-3d-preview-footer"><span>{spec.note}</span><strong><UiIcon name="cube"/>Explore 3D<UiIcon name="arrow"/></strong></div>
   </a>
   <a className="race-3d-preview-credit" href="/circuit-previews/CREDITS.md" target="_blank" rel="noreferrer" aria-label="3D preview credits" title="3D preview credits"><UiIcon name="info"/></a>
   <div className="race-3d-preview-tools">
-   {failed||(!requested&&saver)?<button onClick={load}>{failed?'Retry preview':'Load 3D'}<UiIcon name="cube"/></button>:ready&&!reduced?<button aria-label={motion?'Pause preview cars':'Play preview cars'} aria-pressed={motion} onClick={()=>setMotion(v=>!v)}><UiIcon name={motion?'pause':'play'}/>{motion?'Pause':'Simulated cars'}</button>:null}
+   {failed||(!requested&&saver)?<button onClick={load}>{failed?'Retry preview':'Load 3D'}<UiIcon name="cube"/></button>:ready&&!reduced?<button aria-label={animated?(motion?'Pause 3D preview':'Play 3D preview'):(motion?'Pause preview cars':'Play preview cars')} aria-pressed={motion} onClick={()=>setMotion(v=>!v)}><UiIcon name={motion?'pause':'play'}/>{motion?'Pause':animated?'Play 3D':'Simulated cars'}</button>:null}
   </div>
   <span className="race-3d-preview-status" role="status">{failed?'3D preview unavailable. Open the explorer to retry.':requested&&!ready?'Preparing 3D preview…':''}</span>
  </div>;
