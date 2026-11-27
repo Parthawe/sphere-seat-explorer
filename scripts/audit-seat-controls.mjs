@@ -20,6 +20,7 @@ try {
   await row.fill('');assert.equal(await row.inputValue(),'');
   await row.fill('12');await position.fill('30');await position.press('Enter');
   assert.equal(new URL(page.url()).searchParams.get('position'),'30');
+  assert.equal(await page.evaluate(()=>document.activeElement.getAttribute('aria-label')),'Grid position');
   await position.fill('9999');await position.press('Tab');
   assert.equal(await position.inputValue(),await position.getAttribute('max'));
   await position.fill('30');await position.press('Tab');

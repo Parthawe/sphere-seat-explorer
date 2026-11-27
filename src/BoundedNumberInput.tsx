@@ -11,5 +11,5 @@ export default function BoundedNumberInput({value,max,label,onCommit}:{value:num
  }
  return <input type="number" inputMode="numeric" aria-label={label} min={1} max={max} step={1} value={draft}
   onChange={event=>{const next=event.target.value;setDraft(next);const number=Number(next);if(next.trim()&&Number.isInteger(number)&&number>=1&&number<=max)onCommit(number);}}
-  onBlur={finish} onKeyDown={event=>{if(event.key==='Enter'){event.preventDefault();event.currentTarget.blur();}}}/>;
+  onBlur={finish} onKeyDown={event=>{if(event.key==='Enter'){event.preventDefault();finish();}}}/>;
 }
