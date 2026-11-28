@@ -2,12 +2,13 @@ import {localModelPosition,type ModelBank,type ModelPosition} from './circuitSea
 
 /** The preview retains a small physical neighborhood, including adjacent sections.
  * These are model positions, never a claim about ticket seat numbering. */
-export function detailedSeatPositions(bank:ModelBank,selection:ModelPosition,preview:boolean):ModelPosition[]{
+export function detailedSeatPositions(bank:ModelBank,selection:ModelPosition,preview:boolean,portable=false):ModelPosition[]{
  if(bank.id!==selection.bank||bank.kind==='lawn')return [];
  const columns=Array.from({length:bank.sections*bank.seats},(_,i)=>({bank:bank.id,section:Math.floor(i/bank.seats)+1,row:selection.row,seat:i%bank.seats+1}));
  const x=localModelPosition(bank,selection)[0];
- const visible=preview?columns.sort((a,b)=>Math.abs(localModelPosition(bank,a)[0]-x)-Math.abs(localModelPosition(bank,b)[0]-x)).slice(0,31):columns;
- const first=preview?Math.max(1,selection.row-5):1,last=preview?Math.min(bank.rows,selection.row+5):bank.rows;
+ const windowed=preview||portable,limit=preview?31:61,radius=preview?5:10;
+ const visible=windowed?columns.sort((a,b)=>Math.abs(localModelPosition(bank,a)[0]-x)-Math.abs(localModelPosition(bank,b)[0]-x)).slice(0,limit):columns;
+ const first=windowed?Math.max(1,selection.row-radius):1,last=windowed?Math.min(bank.rows,selection.row+radius):bank.rows;
  return visible.flatMap(p=>Array.from({length:last-first+1},(_,i)=>({...p,row:first+i})));
 }
 

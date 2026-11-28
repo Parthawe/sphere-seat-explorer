@@ -26,3 +26,15 @@ test('preview crosses section boundaries by physical distance, while explorer re
  assert.equal(detailedSeatPositions({...bank,kind:'lawn'},selected,true).length,0);
  assert.equal(detailedSeatPositions(bank,{...selected,bank:'other'},true).length,0);
 });
+
+test('portable seating keeps every selected bank and edge reachable with a bounded detailed neighborhood',()=>{
+ for(const model of Object.values(circuitModels))for(const bank of model.banks){
+  for(const selection of [{bank:bank.id,section:1,row:1,seat:1},{bank:bank.id,section:bank.sections,row:bank.rows,seat:bank.seats}]){
+   const positions=detailedSeatPositions(bank,selection,false,true);
+   assert(positions.length<=1281);
+   if(bank.kind==='lawn'){assert.equal(positions.length,0);continue;}
+   assert(positions.some(p=>p.section===selection.section&&p.row===selection.row&&p.seat===selection.seat));
+   assert(positions.every(p=>p.row>=1&&p.row<=bank.rows&&p.section>=1&&p.section<=bank.sections&&p.seat>=1&&p.seat<=bank.seats));
+  }
+ }
+});

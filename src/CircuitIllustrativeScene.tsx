@@ -1,3 +1,4 @@
+import {fitStudyCamera} from './studyCamera';
 import useDoubleTapFocus from './useDoubleTapFocus';
 import StudyTrackSurface from './StudyTrackSurface';
 import useSceneQuality from './useSceneQuality';
@@ -11,12 +12,12 @@ import {buildStudyGeometry} from './circuitStudy';
 import type {CircuitLayout} from './circuitLayouts';
 
 
-type Props={mode?:'perspective'|'top';autoRotate?:boolean;preview?:boolean;layout:CircuitLayout;playing:boolean;visible:boolean;reset:number;zoom:number;onReady:()=>void;onUnavailable:()=>void};
+type Props={immersive?:boolean;mode?:'perspective'|'top';autoRotate?:boolean;preview?:boolean;layout:CircuitLayout;playing:boolean;visible:boolean;reset:number;zoom:number;onReady:()=>void;onUnavailable:()=>void};
 export default function CircuitIllustrativeScene(props:Props){
  const quality=useSceneQuality();
  return <Canvas shadows dpr={quality.dpr} frameloop={!props.visible?'never':props.playing?'always':'demand'} camera={{fov:44,near:.015,far:120,position:[12,15,15]}} gl={{antialias:true}} fallback={<span>3D requires WebGL.</span>}><ShaderGuard onUnavailable={props.onUnavailable}/><World {...props} playing={props.playing&&props.visible} shadowSize={quality.shadowSize}/></Canvas>;
 }
-function World({layout,mode='perspective',autoRotate,preview,playing,reset,zoom,onReady,onUnavailable,shadowSize}:Props&{shadowSize:number}){
+function World({layout,mode='perspective',immersive=false,autoRotate,preview,playing,reset,zoom,onReady,onUnavailable,shadowSize}:Props&{shadowSize:number}){
  const {camera,gl,invalidate,size}=useThree(),controls=useRef<OrbitControls|null>(null),goal=useRef<{eye:T.Vector3;target:T.Vector3}|null>(null),phase=useRef(.1),reported=useRef(false);
  useDoubleTapFocus(!preview,.35,(eye,target)=>{
   goal.current={eye,target};
@@ -29,11 +30,8 @@ function World({layout,mode='perspective',autoRotate,preview,playing,reset,zoom,
  const path=useMemo(()=>{const p=new T.CurvePath<T.Vector3>();for(let i=1;i<points.length;i++)p.add(new T.LineCurve3(points[i-1],points[i]));p.updateArcLengths();return p;},[points]);
  const orbitTime=useRef(0);
  const previousZoom=useRef(zoom);
- const cameraGoal=useMemo(()=>{
-  const direction=(mode==='top'?new T.Vector3(0,1,.005):new T.Vector3(10,10,13)).normalize(),right=new T.Vector3().crossVectors(new T.Vector3(0,1,0),direction).normalize(),up=new T.Vector3().crossVectors(direction,right).normalize(),tanY=Math.tan(44*Math.PI/360),tanX=tanY*size.width/size.height;
-  let distance=10;for(const p of points){const depth=p.dot(direction);distance=Math.max(distance,Math.abs(p.dot(right))/(tanX*.9)+depth,Math.abs(p.dot(up))/(tanY*.9)+depth);}
-  return {eye:direction.multiplyScalar(distance*1.02),target:new T.Vector3()};
- },[points,mode,size.width,size.height]);
+ const cameraGoal=useMemo(()=>fitStudyCamera(points,size.width/size.height,mode,size.height,immersive,Boolean(preview&&autoRotate)),[points,mode,size.width,size.height,immersive,preview,autoRotate]);
+ useEffect(()=>{const lens=camera as T.PerspectiveCamera;lens.clearViewOffset();if(immersive)lens.setViewOffset(size.width,size.height,0,cameraGoal.offsetY,size.width,size.height);lens.updateProjectionMatrix();},[camera,cameraGoal,immersive,size.width,size.height]);
  useEffect(()=>{gl.setClearColor('#11161c');const lost=(e:Event)=>{e.preventDefault();onUnavailable();};gl.domElement.addEventListener('webglcontextlost',lost);return()=>gl.domElement.removeEventListener('webglcontextlost',lost);},[gl,onUnavailable]);
  useEffect(()=>{const c=new OrbitControls(camera,gl.domElement);c.enableDamping=!matchMedia('(prefers-reduced-motion: reduce)').matches;c.enablePan=false;c.minDistance=.2;c.maxDistance=55;c.maxPolarAngle=Math.PI*.48;const change=()=>invalidate(),manual=()=>{goal.current=null;};c.addEventListener('change',change);c.addEventListener('start',manual);controls.current=c;return()=>{c.dispose();controls.current=null;};},[camera,gl,invalidate]);
  useEffect(()=>{

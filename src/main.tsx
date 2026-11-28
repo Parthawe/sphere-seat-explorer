@@ -27,6 +27,7 @@ import "./typography.css";
 import "./dataExperience.css";
 import "./immersiveScene.css";
 import "./installApp.css";
+import "./mobileScenes.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppBoundary><App /></AppBoundary>
