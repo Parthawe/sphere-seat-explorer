@@ -4,7 +4,7 @@
 .study-stage-label {position:absolute;left:24px;top:20px;pointer-events:none;}
 .study-stage-label span {display:block;font-size:10px;letter-spacing:.12em;color:var(--color-line);}
 .study-stage-label strong {display:block;font:500 25px/1.2 var(--font-ui);margin-top:5px;}
-.study-stage-foot {position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:14px 20px;background:var(--color-ink);color:var(--color-line);font-size:10px;}
+.study-stage-foot {flex-wrap:wrap;position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:12px;padding:14px 20px;background:var(--color-ink);color:var(--color-line);font-size:10px;}
 .study-controls {padding:20px;border-left:1px solid var(--color-control-border);background:var(--color-panel);}
 .study-control-heading {display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;}
 .study-control-heading h2 {font:500 30px/1.1 var(--font-ui);margin:0;}

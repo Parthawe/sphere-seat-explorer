@@ -1,3 +1,4 @@
+import useDoubleTapFocus from './useDoubleTapFocus';
 import StudyTrackSurface from './StudyTrackSurface';
 import useSceneQuality from './useSceneQuality';
 import {Canvas,useFrame,useThree} from '@react-three/fiber';
@@ -15,8 +16,13 @@ export default function CircuitIllustrativeScene(props:Props){
  const quality=useSceneQuality();
  return <Canvas shadows dpr={quality.dpr} frameloop={!props.visible?'never':props.playing?'always':'demand'} camera={{fov:44,near:.015,far:120,position:[12,15,15]}} gl={{antialias:true}} fallback={<span>3D requires WebGL.</span>}><ShaderGuard onUnavailable={props.onUnavailable}/><World {...props} playing={props.playing&&props.visible} shadowSize={quality.shadowSize}/></Canvas>;
 }
-function World({layout,mode='perspective',autoRotate,playing,reset,zoom,onReady,onUnavailable,shadowSize}:Props&{shadowSize:number}){
+function World({layout,mode='perspective',autoRotate,preview,playing,reset,zoom,onReady,onUnavailable,shadowSize}:Props&{shadowSize:number}){
  const {camera,gl,invalidate,size}=useThree(),controls=useRef<OrbitControls|null>(null),goal=useRef<{eye:T.Vector3;target:T.Vector3}|null>(null),phase=useRef(.1),reported=useRef(false);
+ useDoubleTapFocus(!preview,.35,(eye,target)=>{
+  goal.current={eye,target};
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){camera.position.copy(eye);controls.current?.target.copy(target);camera.lookAt(target);goal.current=null;}
+  invalidate();
+ });
  const geometry=useMemo(()=>buildStudyGeometry(layout),[layout]);
  const points=useMemo(()=>geometry.points.map(p=>new T.Vector3(p[0],.11,p[1])),[geometry]);
 

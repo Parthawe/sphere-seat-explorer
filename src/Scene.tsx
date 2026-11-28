@@ -1,3 +1,4 @@
+import useDoubleTapFocus from './useDoubleTapFocus';
 import {flightDuration,flightProgress,sampleFlight} from './cameraFlight';
 import {ShaderGuard} from './SceneMaterials';
 import { vegasCircuitCamera } from "./vegasCamera";
@@ -61,6 +62,12 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
     mode === "seat" ? new T.Vector3(...seatTarget(selection)) : new T.Vector3(),
   );
   const lookGoal=useRef<T.Vector3|null>(null);
+  useDoubleTapFocus(!preview&&mode!=='seat',30,(eye,look)=>{
+    lookGoal.current=null;const lens=camera as T.PerspectiveCamera;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){camera.position.copy(eye);target.current.copy(look);controls.current?.target.copy(look);camera.lookAt(look);transition.current=null;}
+    else transition.current={position:eye,target:look,startPosition:camera.position.clone(),startTarget:controls.current?.target.clone()??target.current.clone(),started:performance.now(),duration:650,fromFov:lens.fov,toFov:lens.fov};
+    invalidate();
+  });
   const seatAngles = useRef({ yaw: 0, pitch: 0 });
   useEffect(() => {
     onReady?.();

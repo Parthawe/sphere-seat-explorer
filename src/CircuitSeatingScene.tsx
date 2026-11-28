@@ -1,3 +1,4 @@
+import useDoubleTapFocus from './useDoubleTapFocus';
 import useSceneQuality from './useSceneQuality';
 import BankSceneMarkers from './BankSceneMarkers';
 import {advanceTraffic,createTrafficField,fieldColors} from './raceTraffic';
@@ -127,6 +128,12 @@ function DemoCars({model,playing,selection,speed,pass,lead}:{model:CircuitModel;
 function Rig({model,selection,mode,preview,autoRotate,playing,visible,reset,cameraControls,onZoomLimitsChange,following,onManualLook,lead}:Props&{lead:RefObject<T.Vector3>}){
  const orbit=useRef({time:0,eye:new T.Vector3(),target:new T.Vector3()});
  const {camera,gl,invalidate,size,scene}=useThree(),control=useRef<OrbitControls|null>(null),tr=useRef<{p:T.Vector3;t:T.Vector3;started:number;duration:number;fromFov:number;toFov:number;from:T.Vector3;fromT:T.Vector3}|null>(null),target=useRef(new T.Vector3()),lookGoal=useRef<T.Vector3|null>(null);
+ useDoubleTapFocus(!preview&&mode!=='seat',12,(eye,look)=>{
+  lookGoal.current=null;const lens=camera as T.PerspectiveCamera;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){camera.position.copy(eye);target.current.copy(look);control.current?.target.copy(look);camera.lookAt(look);tr.current=null;}
+  else tr.current={p:eye,t:look,from:camera.position.clone(),fromT:control.current?.target.clone()??target.current.clone(),started:performance.now(),duration:650,fromFov:lens.fov,toFov:lens.fov};
+  invalidate();
+ });
  useEffect(()=>{const c=new OrbitControls(camera,gl.domElement);c.enablePan=false;c.enableDamping=!matchMedia('(prefers-reduced-motion: reduce)').matches;c.dampingFactor=.09;c.minDistance=12;c.maxDistance=3000;c.maxPolarAngle=Math.PI*.495;control.current=c;const change=()=>invalidate(),start=()=>{tr.current=null;gl.domElement.dataset.modelReady='true';};c.addEventListener('change',change);c.addEventListener('start',start);return()=>{c.dispose();control.current=null;};},[camera,gl,invalidate]);
  useEffect(()=>{lookGoal.current=null;const bank=model.banks.find(b=>b.id===selection.bank)!,p=modelPosition(model,selection),f=bankFrame(model,bank);let position:T.Vector3,look:T.Vector3;
   if(mode==='seat'){position=new T.Vector3(p[0],p[1]+1.15,p[2]);look=new T.Vector3(p[0]+f.forward[0]*90,1.6+roadSample(model,p[0]+f.forward[0]*90,p[2]+f.forward[1]*90).height,p[2]+f.forward[1]*90);}
