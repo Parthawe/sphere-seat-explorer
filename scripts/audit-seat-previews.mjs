@@ -15,6 +15,7 @@ try{
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));console.log(race+': preview ready, shaders active, reduced motion honored, no horizontal overflow');
  }
  await page.locator('#hero-race-choice').selectOption('bahrain');await page.waitForFunction(()=>document.querySelector('.race-3d-preview')?.getAttribute('data-preview-ready')==='true');
+ await page.getByRole('group',{name:'3D preview camera'}).getByRole('button',{name:'Seat',exact:true}).click();
  await page.emulateMedia({reducedMotion:'no-preference'});
  const play=page.getByRole('button',{name:'Play preview cars',exact:true});await play.click();
  await page.waitForFunction(()=>document.querySelector('.race-3d-preview canvas')?.getAttribute('data-cars-playing')==='true');

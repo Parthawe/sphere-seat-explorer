@@ -7,6 +7,7 @@ export type Route = {
   seats: boolean;
   atlas?: boolean;
   circuit?: boolean;
+  camera?: 'circuit'|'stand'|'seat';
   layout?: boolean;
   trackStudy?: boolean;
   racing?: boolean;
@@ -39,6 +40,7 @@ export function readRoute(search: string): Route {
     seats: validSeason && vegasRequest && isVegas && screen !== "vegas",
     atlas: validSeason && screen === "vegas" && isVegas,
     circuit: validSeason && screen === "circuit",
+    ...(validSeason&&screen==='circuit'&&['circuit','stand','seat'].includes(p.get('camera')??'')?{camera:p.get('camera') as 'circuit'|'stand'|'seat'}:{}),
     layout: validSeason && screen === "layout",
     trackStudy: validSeason && screen === "track-study",
     racing: validSeason && screen === "racing",

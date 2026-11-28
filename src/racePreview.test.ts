@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {existsSync,readFileSync} from 'node:fs';
-import {racePreview} from './racePreview';
+import {racePreview,racePreviewLink} from './racePreview';
 import {calendars} from './races';
 import {readRoute} from './routing';
 import {raceCoverage} from './raceCoverage';
@@ -34,5 +34,15 @@ test('outline-only editions never offer a seat-exploration action',()=>{
   }else{
    assert.equal(preview.action,'Explore seats');assert.match(preview.note,/unverified/);
   }
+ }
+});
+
+test('preview entry preserves the demonstrated camera without inventing seats on outline studies',()=>{
+ for(const race of Object.values(calendars).flat())for(const camera of ['circuit','seat'] as const){
+  const spec=racePreview(race),params=new URLSearchParams(racePreviewLink(race,camera).slice(1)),route=readRoute('?'+params);
+  assert.equal(route.season,race.season);assert.equal(route.race,race.slug);
+  if(spec.kind==='model'){assert.equal(params.get('camera'),camera);assert.equal(route.camera,camera);}
+  else if(spec.kind==='vegas'){assert(route.seats);assert.equal(params.get('view'),camera);assert.equal(params.get('seat'),'C:12:18');}
+  else {assert(route.trackStudy);assert(!params.has('camera'));assert(!params.has('seat'));}
  }
 });

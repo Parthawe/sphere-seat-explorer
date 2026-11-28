@@ -110,14 +110,14 @@ function Track({model}:{model:CircuitModel}){
  useEffect(()=>()=>{road.dispose();runoff.dispose();textures.forEach(t=>t.dispose());},[road,runoff,textures]);
  return <><mesh geometry={runoff} receiveShadow><SurfaceMaterial surface={model.appearance==='day'?'grass':'concrete'} map={terrainGrass} color={terrainGrass?'#ffffff':model.appearance==='day'?'#697660':model.id==='qatar'?'#355b69':model.id==='united-arab-emirates'?'#347c8c':'#967456'} roughness={.95} strength={.35}/></mesh><mesh geometry={road} receiveShadow><SurfaceMaterial surface="asphalt" grainScale={.7} strength={.4} map={textures[0]} normalMap={textures[1]} roughnessMap={textures[2]} normalScale={new T.Vector2(.55,.55)} color="#777c83" roughness={.78}/></mesh><Instances items={curbs[0]} color="#dc2529"/><Instances items={curbs[1]} color="#e9e8e5"/></>;
 }
-function Context({model,selection,roofs}:{model:CircuitModel;selection:ModelPosition;roofs:boolean}){
+function Context({model,selection,roofs,mode}:{model:CircuitModel;selection:ModelPosition;roofs:boolean;mode:Mode}){
  const bank=model.banks.find(b=>b.id===selection.bank)!,frame=bankFrame(model,bank);
  const poles=useMemo(()=>{const c=new T.CatmullRomCurve3(model.track.slice(0,-1).map((p,i)=>new T.Vector3(p[0],model.trackHeights?.[i]??0,p[1])),true);return c.getSpacedPoints(Math.round(model.length/75)).map((p,i,a)=>{const d=c.getTangentAt(i/(a.length-1));return [p.x-d.z*20,p.z+d.x*20];});},[model]);
  const tower=model.features.find(f=>f.name==='Sakhir Tower'),towerCenter=tower?footprintPlacement(tower.points).center:undefined;
  const nearPoles=useMemo(()=>[...poles].sort((a,b)=>Math.hypot(a[0]-bank.center[0],a[1]-bank.center[1])-Math.hypot(b[0]-bank.center[0],b[1]-bank.center[1])).slice(0,3),[poles,bank]);
  const main=model.banks.find(b=>b.id===model.pitBank)??model.banks[0],mf=bankFrame(model,main),pit=[mf.target[0]+mf.forward[0]*28,mf.target[1]+mf.forward[1]*28];
  return <>
-  {model.appearance!=='day'&&<mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><VenueSurfaceMaterial surface="concrete" color={model.id==='qatar'?'#15171d':model.id==='united-arab-emirates'?'#142126':'#191b23'} roughness={.98} grainScale={.45} strength={.45}/></mesh>}
+  {model.appearance!=='day'&&<mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><VenueSurfaceMaterial surface="concrete" color={mode==='circuit'?'#596775':model.id==='qatar'?'#15171d':model.id==='united-arab-emirates'?'#142126':'#191b23'} roughness={.98} grainScale={.45} strength={.45}/></mesh>}
   {model.appearance!=='day'&&poles.map((p,i)=><group key={i} position={[p[0],0,p[1]]}><mesh position={[0,12,0]}><cylinderGeometry args={[.17,.33,24,6]}/><meshStandardMaterial color="#7c8796" metalness={.6}/></mesh><mesh position={[0,24,0]} rotation={[-.2,0,0]}><boxGeometry args={[4,.45,1.1]}/><meshBasicMaterial color={new T.Color(2.2,2.4,3)} toneMapped={false}/></mesh></group>)}
   {model.appearance!=='day'&&nearPoles.map((p,i)=><pointLight key={i} position={[p[0],23,p[1]]} intensity={3800} distance={180} decay={2} color="#f2f3ff"/>)}
   {model.appearance!=='day'&&nearPoles.map((p,i)=><LightShaft key={i} origin={[p[0],24,p[1]]} target={[p[0]+frame.forward[0]*18,.2,p[1]+frame.forward[1]*18]} strength={.22}/>)}
@@ -141,6 +141,7 @@ function DemoCars({model,playing,selection,speed,pass,lead}:{model:CircuitModel;
  return <>{fieldColors.map((c,i)=><group key={i} ref={r=>{refs.current[i]=r;}}><FormulaCar color={c} compact={i>=4} wheels={r=>{wheels.current[i]=r;}}/></group>)}</>;
 }
 function Rig({viewInsets,model,selection,mode,preview,autoRotate,playing,visible,reset,cameraControls,onZoomLimitsChange,following,onManualLook,lead}:Props&{lead:RefObject<T.Vector3>}){
+ const previewMode=useRef<Mode|null>(null);
  const topInset=mode==='seat'?0:viewInsets?.top,bottomInset=mode==='seat'?0:viewInsets?.bottom;
  const orbit=useRef({time:0,eye:new T.Vector3(),target:new T.Vector3()});
  const {camera,gl,invalidate,size,scene}=useThree(),control=useRef<OrbitControls|null>(null),tr=useRef<{p:T.Vector3;t:T.Vector3;started:number;duration:number;fromFov:number;toFov:number;from:T.Vector3;fromT:T.Vector3}|null>(null),target=useRef(new T.Vector3()),lookGoal=useRef<T.Vector3|null>(null);
@@ -163,8 +164,9 @@ function Rig({viewInsets,model,selection,mode,preview,autoRotate,playing,visible
   if(mode!=='seat'&&!preview){const top=topInset??Math.min(size.height*(mode==='stand'?.5:.35),size.width<760?250:220),bottom=bottomInset??110;(camera as T.PerspectiveCamera).setViewOffset(size.width,size.height,0,(bottom-top)/2,size.width,size.height);}
   const lens=camera as T.PerspectiveCamera,fromFov=lens.fov,toFov=mode==='seat'?(size.width<size.height?(preview?78:90):70):45;lens.fov=toFov;lens.updateProjectionMatrix();gl.domElement.dataset.seatFov=String(lens.fov);onZoomLimitsChange((camera as T.PerspectiveCamera).fov>35,(camera as T.PerspectiveCamera).fov<105);
   orbit.current={time:0,eye:position.clone(),target:look.clone()};
-  if(preview||window.matchMedia('(prefers-reduced-motion: reduce)').matches){camera.position.copy(position);target.current.copy(look);camera.lookAt(look);c?.target.copy(look);tr.current=null;gl.domElement.dataset.modelReady='true';}
-  else{lens.fov=fromFov;lens.updateProjectionMatrix();tr.current={p:position,t:look,from:camera.position.clone(),fromT:target.current.clone(),started:performance.now(),duration:flightDuration(camera.position.distanceTo(position)),fromFov,toFov};gl.domElement.dataset.modelReady='moving';}
+  const previewSwitch=preview&&previewMode.current!==null&&previewMode.current!==mode;previewMode.current=mode;
+  if((preview&&!previewSwitch)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){camera.position.copy(position);target.current.copy(look);camera.lookAt(look);c?.target.copy(look);tr.current=null;gl.domElement.dataset.modelReady='true';}
+  else{lens.fov=fromFov;lens.updateProjectionMatrix();tr.current={p:position,t:look,from:camera.position.clone(),fromT:target.current.clone(),started:performance.now(),duration:previewSwitch?.9:flightDuration(camera.position.distanceTo(position)),fromFov,toFov};gl.domElement.dataset.modelReady='moving';}
   invalidate();
  },[topInset,bottomInset,model,selection.bank,selection.section,selection.row,selection.seat,mode,preview,reset,size.width,size.height,camera,gl,invalidate,scene,onZoomLimitsChange]);
  // An OS preference change must also finish a transition already in progress.
@@ -200,10 +202,10 @@ function Lighting({model,selection,mode,shadowSize}:{model:CircuitModel;selectio
  useEffect(()=>{light.current?.shadow.camera.updateProjectionMatrix();invalidate();},[span,invalidate]);
  target.position.set(p[0],p[1],p[2]);target.updateMatrixWorld();
  return <><primitive object={target}/>
-  <ambientLight intensity={model.appearance==='day'?.08:.04}/>
+  <ambientLight intensity={mode==='circuit'?.35:model.appearance==='day'?.08:.04}/>
   <directionalLight target={target} position={[p[0]+40,p[1]+12,p[2]-30]} intensity={model.appearance==='day'?.2:.18} color={model.appearance==='day'?'#e2ecff':'#ffdfbe'}/>
-  <hemisphereLight args={model.appearance==='day'?['#deedff','#4b5142',.22]:['#c9d9f5','#252225',.16]}/>
-  <directionalLight ref={light} target={target} position={[p[0]-60,p[1]+130,p[2]+50]} intensity={model.appearance==='day'?2:1.1} color={model.appearance==='day'?'#fff4de':'#deeaff'} castShadow shadow-mapSize={[shadowSize,shadowSize]} shadow-camera-left={-span} shadow-camera-right={span} shadow-camera-top={span} shadow-camera-bottom={-span} shadow-camera-far={350} shadow-bias={-.00012} shadow-normalBias={.008}/>
+  <hemisphereLight args={model.appearance==='day'?['#deedff','#4b5142',.22]:['#c9d9f5','#252225',mode==='circuit'?.5:.16]}/>
+  <directionalLight ref={light} target={target} position={[p[0]-60,p[1]+130,p[2]+50]} intensity={model.appearance==='day'?2:mode==='circuit'?1.6:1.1} color={model.appearance==='day'?'#fff4de':'#deeaff'} castShadow shadow-mapSize={[shadowSize,shadowSize]} shadow-camera-left={-span} shadow-camera-right={span} shadow-camera-top={span} shadow-camera-bottom={-span} shadow-camera-far={350} shadow-bias={-.00012} shadow-normalBias={.008}/>
  </>;
 }
 function Finish({bloom,occlusion}:{bloom:boolean;occlusion:boolean}){const {gl,scene,camera,size}=useThree();const composer=useMemo(()=>{const c=new EffectComposer(gl);c.addPass(new RenderPass(scene,camera));if(occlusion){const ao=new GTAOPass(scene,camera,size.width,size.height);ao.updateGtaoMaterial({radius:.7,thickness:.35,samples:8,distanceFallOff:1.4});ao.blendIntensity=.42;c.addPass(ao);}if(bloom)c.addPass(new UnrealBloomPass(new T.Vector2(size.width,size.height),.18,.35,1.3));c.addPass(new OutputPass());return c;},[gl,scene,camera,bloom,occlusion]);useEffect(()=>{composer.setSize(size.width,size.height);},[composer,size]);useEffect(()=>()=>{composer.passes.forEach(pass=>pass.dispose());composer.dispose();},[composer]);useFrame((_,delta)=>composer.render(delta),1);return null;}

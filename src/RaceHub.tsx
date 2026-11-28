@@ -55,7 +55,7 @@ export default function RaceHub() {
     else if (next.racing) p.set("screen", "racing");
     else if (next.trackStudy) p.set("screen", "track-study");
     else if (next.layout) p.set("screen", "layout");
-    else if (next.circuit) p.set("screen", "circuit");
+    else if (next.circuit) {p.set("screen", "circuit");if(next.camera)p.set("camera",next.camera);}
     else if (next.atlas) p.set("screen", "vegas");
     else if (next.seats) {
       p.set("screen", "seats");
@@ -205,7 +205,7 @@ export default function RaceHub() {
           <Suspense fallback={<div className="hub-loading" role="status">Loading race guide…</div>}><RaceGuide key={`${selected.season}-${selected.slug}`} race={selected} route={route} go={go} jumpTo={jumpTo}/></Suspense>
         ) : (
           <>
-            <SeasonLanding key={route.season} season={route.season} onRace={select} onStudy={(race,immersive=false)=>race.slug==='las-vegas'?go({season:race.season,race:race.slug,seats:true,position:'C',mode:'circuit',immersive}):go({...readRoute(raceStudyLink(race)),immersive})} />
+            <SeasonLanding key={route.season} season={route.season} onRace={select} onStudy={(race,immersive=false,camera='circuit')=>race.slug==='las-vegas'?go({season:race.season,race:race.slug,seats:true,position:'C',mode:camera,immersive}):go({...readRoute(raceStudyLink(race)),camera,immersive})} />
             <section
               className="race-calendar"
               id="race-calendar"
