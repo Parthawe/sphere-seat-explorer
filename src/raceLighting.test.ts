@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {calendars} from './races';import {raceLighting,raceLightLabel} from './raceLighting';
+import {calendars} from './races';import {raceLighting,raceLightLabel,lightingSessionId,withLightingSession} from './raceLighting';
 import {venueMapLinks,satelliteEmbedUrl} from './venueMaps';
 test('all race editions have finite light, schedule evidence or an explicit unconfirmed study',()=>{
  for(const race of Object.values(calendars).flat()){
@@ -23,4 +23,15 @@ test('Google venue links preserve physical geography and remain useful without a
  }
  const a=venueMapLinks({season:2026,slug:'bahrain'})!,b=venueMapLinks({season:2027,slug:'bahrain'})!;assert(a.location.longitude>100);assert(b.location.longitude<60);assert.notEqual(a.center,b.center);
  const embedded=new URL(satelliteEmbedUrl({season:2026,slug:'qatar'},'AIza'+'x'.repeat(35))!);assert.equal(embedded.pathname,'/maps/embed/v1/view');assert.equal(embedded.searchParams.get('maptype'),'satellite');
+});
+
+test('session sunlight uses its own published start and rejects unknown or untimed sessions',()=>{
+ const race={season:2026 as const,slug:'united-arab-emirates'};
+ const practice=raceLighting(race,undefined,0,'p1'),qualifying=raceLighting(race,undefined,0,'q');
+ assert.equal(practice.period,'day');assert.equal(practice.trackTime,'13:30');assert.equal(qualifying.period,'night');assert.equal(qualifying.trackTime,'18:00');
+ assert.equal(lightingSessionId(race,'invented'),'r');assert.deepEqual(raceLighting(race,undefined,0,'invented'),raceLighting(race));
+ const next={season:2027 as const,slug:'bahrain'};assert.equal(lightingSessionId(next,'p1'),'r');assert.equal(raceLighting(next,undefined,0,'p1').basis,'study');
+ const url=withLightingSession('https://f1tickets.online/?camera=seat&bank=main&position=3',race,'p1');
+ assert.equal(new URL(url).searchParams.get('session'),'p1');assert.equal(new URL(url).searchParams.get('position'),'3');
+ assert.equal(new URL(withLightingSession(url,race,'r')).searchParams.has('session'),false);
 });

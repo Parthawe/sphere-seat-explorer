@@ -63,3 +63,8 @@
 .race-3d-preview-footer .race-light-notice {margin-bottom:5px;color:var(--color-paper);}
 .circuit-model-heading .race-light-notice {margin-top:5px;}
 .circuit-model-stage .circuit-model-heading .race-light-notice {font:400 11px/1.5 var(--font-ui);text-transform:none;letter-spacing:normal;}
+
+.circuit-model-heading .scene-session-light {display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;margin-top:6px;}
+.circuit-model-stage .scene-session-light select {width:auto;max-width:100%;min-height:44px;padding:8px 30px 8px 10px;background:#18202b;color:#fff;border:1px solid #78818e;border-radius:4px;font:400 12px/1.4 var(--font-ui);pointer-events:auto;}
+.circuit-model-stage .scene-session-light select:focus-visible {outline:2px solid #fff;outline-offset:3px;}
+.circuit-model-heading .scene-session-light .race-light-notice {margin-top:0;}
