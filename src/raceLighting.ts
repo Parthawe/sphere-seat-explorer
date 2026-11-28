@@ -7,8 +7,10 @@ export type RaceLighting={period:LightPeriod;basis:'schedule'|'study';start:stri
 const rad=Math.PI/180;
 /** Visual thresholds, not a weather forecast or a measured obstruction/shade study. */
 export function lightPeriod(altitude:number):LightPeriod{return altitude>10?'day':altitude>=-6?'dusk':'night';}
-export function raceLighting(race:Pick<Race,'season'|'slug'>,fallback?:LightPeriod,offsetMinutes=0):RaceLighting{
- const detail=raceEventFor(race),location=raceLocation(race),session=detail?.sessions.find(s=>s.name==='Race'),start=session?.start;
+export function lightingSessionId(race:Pick<Race,'season'|'slug'>,id:string|null|undefined){return raceEventFor(race)?.sessions.find(s=>s.id===id&&s.start&&Number.isFinite(Date.parse(s.start)))?.id??'r';}
+export function withLightingSession(url:string,race:Pick<Race,'season'|'slug'>,id:string){const u=new URL(url),session=lightingSessionId(race,id);if(session==='r')u.searchParams.delete('session');else u.searchParams.set('session',session);return u.href;}
+export function raceLighting(race:Pick<Race,'season'|'slug'>,fallback?:LightPeriod,offsetMinutes=0,sessionId='r'):RaceLighting{
+ const detail=raceEventFor(race),location=raceLocation(race),session=detail?.sessions.find(s=>s.id===lightingSessionId(race,sessionId)),start=session?.start;
  const preset=fallback??(race.slug==='united-arab-emirates'?'dusk':['bahrain','saudi-arabia','singapore','las-vegas','qatar'].includes(race.slug)?'night':'day');
  if(detail&&start&&location&&Number.isFinite(Date.parse(start))){
   const instant=new Date(Date.parse(start)+Math.max(0,Math.min(120,offsetMinutes))*60000),position=getPosition(instant,location.latitude,location.longitude),a=position.altitude*rad,z=position.azimuth*rad;

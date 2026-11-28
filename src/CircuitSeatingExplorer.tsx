@@ -1,3 +1,5 @@
+import {raceEventFor} from './raceEventData';
+import {lightingSessionId,raceLighting,withLightingSession} from './raceLighting';
 import RaceLightNotice from './RaceLightNotice';
 import useSceneLoadTimeout from './useSceneLoadTimeout';
 import {expandedFromUrl,withImmersiveView} from './immersiveNavigation';
@@ -32,6 +34,9 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  const [viewInsets,setViewInsets]=useState({top:200,bottom:110});
  const markerLayer=useRef<HTMLDivElement>(null),[overviewBanks,setOverviewBanks]=useState<string[]|null>(null);
  const mediaRace=calendars[model.season].find(r=>r.slug===model.id)!;
+ const [sessionId,setSessionId]=useState(()=>lightingSessionId(mediaRace,new URLSearchParams(location.search).get('session')));
+ const sessions=raceEventFor(mediaRace)?.sessions.filter(s=>s.start&&Number.isFinite(Date.parse(s.start)))??[];
+ const lighting=useMemo(()=>raceLighting(mediaRace,undefined,0,sessionId),[mediaRace,sessionId]);
  const Scene=useMemo(()=>lazy(()=>import('./CircuitSeatingScene')),[retry]);
  const [speed,setSpeed]=useState(1),[pass,setPass]=useState(0),[following,setFollowing]=useState(false);
  const [focusView,setFocusView]=useState(expandedFromUrl),[bankSearch,setBankSearch]=useState('');
@@ -67,13 +72,13 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
   }
  },[grid]);
  useEffect(()=>{
-  const url=new URL(modelPositionUrl(location.origin,model,selection,mode));
+  const url=new URL(withLightingSession(modelPositionUrl(location.origin,model,selection,mode),mediaRace,sessionId));
   url.search=new URL(withImmersiveView(url.href,expandedFromUrl())).search;
   if(location.search!==url.search)history.replaceState(history.state,'',url.pathname+url.search);
   syncPublicUrlMetadata();
- },[model,selection,mode]);
- useEffect(()=>{const restore=()=>{const q=new URLSearchParams(location.search);if(q.get('race')!==model.id||q.get('screen')!=='circuit')return;setSelection(normalizeModelPosition(model,{bank:q.get('bank')??undefined,section:Number(q.get('section')),row:Number(q.get('modelRow')),seat:Number(q.get('position'))}));const camera=q.get('camera');setMode(camera==='seat'||camera==='stand'?camera:'circuit');};window.addEventListener('popstate',restore);return()=>window.removeEventListener('popstate',restore);},[model]);
- async function share(){const url=modelPositionUrl(SITE_ORIGIN,model,selection,mode);try{await navigator.clipboard.writeText(url);setFeedback('Model position link copied. No ticket information included.');}catch{setFeedback('Copy model position link: '+url);}}
+ },[model,selection,mode,mediaRace,sessionId]);
+ useEffect(()=>{const restore=()=>{const q=new URLSearchParams(location.search);if(q.get('race')!==model.id||q.get('screen')!=='circuit')return;setSelection(normalizeModelPosition(model,{bank:q.get('bank')??undefined,section:Number(q.get('section')),row:Number(q.get('modelRow')),seat:Number(q.get('position'))}));const camera=q.get('camera');setMode(camera==='seat'||camera==='stand'?camera:'circuit');setSessionId(lightingSessionId(mediaRace,q.get('session')));};window.addEventListener('popstate',restore);return()=>window.removeEventListener('popstate',restore);},[model,mediaRace]);
+ async function share(){const url=withLightingSession(modelPositionUrl(SITE_ORIGIN,model,selection,mode),mediaRace,sessionId);try{await navigator.clipboard.writeText(url);setFeedback('Model position link copied. No ticket information included.');}catch{setFeedback('Copy model position link: '+url);}}
  function startReplay(restart=false){
   if(restart)setPass(p=>p+1);
   setPlaying(true);
@@ -91,13 +96,13 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
   <main className="circuit-explorer-layout">
    <section ref={stage} className={'circuit-model-stage mode-'+mode+(model.appearance==='day'?' day-scene':'')+(unavailable?' is-unavailable':'')} aria-label={`${model.name} 3D seating model`}>
     <div className="circuit-model-canvas" role="region" tabIndex={0} aria-label="Interactive modeled view. Drag to look or orbit. Arrow keys change model row and position." onKeyDown={arrows}>
-     {unavailable?<div className="circuit-model-fallback" role="alert"><h2>3D view unavailable</h2><p>Your position controls and complete model grid still work.</p><button onClick={()=>{stage.current?.querySelector<HTMLElement>('.circuit-model-canvas')?.focus({preventScroll:true});setUnavailable(false);setReady(false);setRetry(r=>r+1);}}>Retry 3D</button><button onClick={()=>setGrid(true)}>Open model grid</button></div>:<SceneBoundary key={retry} onUnavailable={unavailableCallback}><Suspense fallback={null}><Scene markerLayer={markerLayer} markersReady={ready&&!unavailable} viewInsets={viewInsets} onZoomLimitsChange={zoomLimitsCallback} cameraControls={cameraControls} key={model.id+'-'+retry} model={model} selection={selection} mode={mode} visible={sceneVisible} playing={playing&&sceneVisible&&!overview&&!grid&&!referencesOpen} speed={speed} pass={pass} following={following&&playing&&sceneVisible&&!overview&&!grid&&!referencesOpen&&mode==='seat'} onManualLook={manualLook} roofs={roofs} reset={reset} onSelect={position=>{setSelection(position);if(mode==='circuit')setMode('stand');}} onUnavailable={unavailableCallback} onReady={readyCallback}/></Suspense></SceneBoundary>}
+     {unavailable?<div className="circuit-model-fallback" role="alert"><h2>3D view unavailable</h2><p>Your position controls and complete model grid still work.</p><button onClick={()=>{stage.current?.querySelector<HTMLElement>('.circuit-model-canvas')?.focus({preventScroll:true});setUnavailable(false);setReady(false);setRetry(r=>r+1);}}>Retry 3D</button><button onClick={()=>setGrid(true)}>Open model grid</button></div>:<SceneBoundary key={retry} onUnavailable={unavailableCallback}><Suspense fallback={null}><Scene lighting={lighting} markerLayer={markerLayer} markersReady={ready&&!unavailable} viewInsets={viewInsets} onZoomLimitsChange={zoomLimitsCallback} cameraControls={cameraControls} key={model.id+'-'+retry} model={model} selection={selection} mode={mode} visible={sceneVisible} playing={playing&&sceneVisible&&!overview&&!grid&&!referencesOpen} speed={speed} pass={pass} following={following&&playing&&sceneVisible&&!overview&&!grid&&!referencesOpen&&mode==='seat'} onManualLook={manualLook} roofs={roofs} reset={reset} onSelect={position=>{setSelection(position);if(mode==='circuit')setMode('stand');}} onUnavailable={unavailableCallback} onReady={readyCallback}/></Suspense></SceneBoundary>}
     </div>
     {!ready&&<img className="circuit-loading-poster" src={racePreview(mediaRace).poster} alt="" aria-hidden="true" onError={event=>{event.currentTarget.hidden=true;}}/>}
     {!ready&&!unavailable&&<div className="circuit-model-loading" role="status">Loading 3D view…<small>Circuit overview shown while loading</small></div>}
     <div ref={markerLayer} className="circuit-bank-markers" role="group" hidden={mode!=='circuit'||!ready||unavailable} aria-label="Modeled bank markers">{model.banks.map((b,i)=><button type="button" key={b.id} hidden data-bank-marker={i} aria-label={`Explore modeled bank ${b.name}`} onClick={event=>{const indices=(event.currentTarget.dataset.members??String(i)).split(',').map(Number).filter(index=>Number.isInteger(index)&&model.banks[index]);const ids=indices.map(index=>model.banks[index].id);if(ids.length>1)openMap(ids);else if(ids[0])openBank(ids[0]);}}><span className="bank-marker-single"><UiIcon name={b.kind==='lawn'?'map':'seat'}/></span><span className="bank-marker-group"><UiIcon name="layers"/></span><span data-marker-count>{i+1}</span><span className="bank-marker-name" data-marker-label>{b.name}</span></button>)}</div>
     <button aria-label="Photos & fan reports" title="Photos & fan reports" className="circuit-photo-trigger" onClick={()=>setReferencesOpen(true)}><UiIcon name="camera"/>References</button>
-    <div ref={heading} className="circuit-model-heading"><h1>{mode==='circuit'?mediaRace.name:bank.name}</h1><p>{mode==='circuit'?`${model.banks.length} modeled banks · select a stand`:<>{bank.kind==='lawn'?'LAWN STUDY':`MODEL SECTION ${selection.section} / ROW ${selection.row}`} · POSITION {selection.seat}</>}</p><RaceLightNotice race={{season:model.season,slug:model.id}}/></div>
+    <div ref={heading} className="circuit-model-heading"><h1>{mode==='circuit'?mediaRace.name:bank.name}</h1><p>{mode==='circuit'?`${model.banks.length} modeled banks · select a stand`:<>{bank.kind==='lawn'?'LAWN STUDY':`MODEL SECTION ${selection.section} / ROW ${selection.row}`} · POSITION {selection.seat}</>}</p><div className="scene-session-light">{sessions.length>1&&<select aria-label="Session lighting" value={sessionId} onChange={e=>setSessionId(e.target.value)}>{sessions.map(session=><option key={session.id} value={session.id}>{session.name}</option>)}</select>}<RaceLightNotice race={mediaRace} lighting={lighting}/></div></div>
     <nav ref={cameraModes} className="circuit-camera-modes" aria-label="3D camera"><button aria-label="Full circuit" aria-pressed={mode==='circuit'} onClick={()=>{setFollowing(false);setMode('circuit');}}><UiIcon name="circuit"/>Circuit</button><button aria-label="Grandstand" aria-pressed={mode==='stand'} onClick={()=>{setFollowing(false);setMode('stand');}}><UiIcon name="layers"/>Stand</button><button aria-label={bank.kind==='lawn'?'Standing view':'Seated view'} aria-pressed={mode==='seat'} onClick={()=>setMode('seat')}><UiIcon name="seat"/>{bank.kind==='lawn'?'Standing':'Seat'}</button></nav>
     {mode==='seat'&&ready&&!unavailable&&<div className="circuit-seat-zoom" role="group" aria-label="Seated view zoom" title="Zoom keeps your modeled seat fixed">
      <button disabled={!ready||unavailable||!zoomLimits.inward} aria-label="Zoom in on seated view" title="Zoom in" onClick={()=>cameraControls.current?.zoomIn()}>+</button>

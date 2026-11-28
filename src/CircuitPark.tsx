@@ -60,7 +60,8 @@ export default function CircuitPark({model,motion=false}:{model:CircuitModel;mot
    object.position.set(x,ground+height*(palm?.86:.82),z);object.scale.set(width,palm?width:height*.4,width);object.rotation.y=Number(tree.id)%6;object.updateMatrix();treeRefs.current[1]?.setMatrixAt(i,object.matrix);
   });for(const mesh of treeRefs.current){if(mesh){mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingSphere();}}
  },[trees]);
- useEffect(()=>()=>{water.forEach(w=>w.geometry.dispose());normal.dispose();},[water,normal]);
+ useEffect(()=>()=>water.forEach(w=>w.geometry.dispose()),[water]);
+ useEffect(()=>()=>normal.dispose(),[normal]);
  return <>
   {model.terrain?<CircuitTerrainMesh model={model}/>:<mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><VenueSurfaceMaterial surface={model.groundStyle==='campus'?'concrete':'grass'} roughness={1} strength={.35}/></mesh>}
   {water.map(w=><mesh key={w.id} geometry={w.geometry} rotation={[-Math.PI/2,0,0]} position={[0,.035,0]} receiveShadow><WaterSurface normalMap={normal} playing={motion}/></mesh>)}
