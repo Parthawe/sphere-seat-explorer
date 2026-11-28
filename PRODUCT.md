@@ -212,3 +212,8 @@ An expanded globe opens its existing race study expanded through the public imme
 ## Bounded scene loading and recovery · 28 November 2026
 
 Visible, pending scene loads now have a 30-second foreground deadline. Earth, circuit/diagram studies, seating models and previews reach their existing recovery states; Vegas opens its usable 2D map and announces the fallback. Readiness, unmount, retries and background/offscreen state clear or renew the deadline. This does not force-reload a page or change verified venue coverage. The globe’s Close action remains above loading/error overlays, and direct circuit recovery preserves expanded navigation.
+
+
+## Circuit-first visual entrance · 28 November 2026
+
+For new visits, the homepage starts with a live Circuit preview; explicit World preferences remain supported. Modeled races can show a representative fixed-eye seat perspective, identified by bank and existing accuracy limits. Explore 3D opens the supported viewer expanded, while Race guide keeps photographs, product guidance and sources one click away. Outline-only races remain source-outline studies and gain authored studio relief, not reconstructed venues. The initial analytics choice appears inline at the footer and remains optional. No new seat inventory, images, venue assets, verified photographic sightlines, API or database migration is added.

@@ -12,7 +12,7 @@ try{
    ['Earth','?season=2027','.earth-journey']
   ]){
    const page=await browser.newPage({viewport:size,reducedMotion:'reduce',hasTouch:size.width<1000});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.addInitScript(()=>localStorage.setItem('usage-consent-v1','declined'));
-   await page.goto(origin+'/'+url);const stage=page.locator(selector),canvas=stage.locator('canvas');await canvas.waitFor({timeout:60000});await page.waitForTimeout(800);await canvas.evaluate(el=>el.dataset.keepCanvas='same');
+   await page.goto(origin+'/'+url);if(name==='Earth')await page.getByRole('button',{name:'World',exact:true}).click();const stage=page.locator(selector),canvas=stage.locator('canvas');await canvas.waitFor({timeout:60000});await page.waitForTimeout(800);await canvas.evaluate(el=>el.dataset.keepCanvas='same');
    const enter=stage.getByRole('button',{name:'Expand 3D',exact:true});await enter.click();await page.waitForTimeout(500);
    assert.equal(await stage.getAttribute('data-immersive'),'true');const bounds=await stage.boundingBox();assert.ok(bounds.x===0&&bounds.y===0&&Math.abs(bounds.width-size.width)<2&&Math.abs(bounds.height-size.height)<2,JSON.stringify({name,size,bounds}));
    assert.equal(await canvas.getAttribute('data-keep-canvas'),'same');assert.equal(await page.evaluate(()=>document.body.style.position),'fixed');

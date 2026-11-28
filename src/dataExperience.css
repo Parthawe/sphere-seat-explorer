@@ -14,7 +14,7 @@
 .newsletter-result h3 {font-size:20px;}
 .privacy-footer {display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px 28px;padding:16px 20px;background:#efeeec;color:#47464c;font-size:12px;border-top:1px solid #bdbdc1;}
 .privacy-footer a,.privacy-footer button {display:inline-flex;align-items:center;min-height:44px;color:inherit;font-size:12px;}
-.analytics-choice {position:fixed;bottom:16px;left:16px;right:16px;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:1080px;margin:auto;padding:18px 24px;border:1px solid #89888d;border-radius:4px;background:#f7f4f1;color:#15151e;}
+.analytics-choice {position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:24px;width:calc(100% - 32px);max-width:1080px;margin:16px auto;padding:18px 24px;border:1px solid #89888d;border-radius:4px;background:#f7f4f1;color:#15151e;}
 .analytics-choice strong {font-size:14px;}
 .analytics-choice p {margin:6px 0 0;font-size:12px;line-height:1.6;max-width:66ch;}
 .analytics-choice a {text-decoration:underline;text-underline-offset:3px;}
@@ -54,7 +54,7 @@ body:has(.data-page) {background:#f7f4f1;}
 .insight-email-actions {display:flex;flex-wrap:wrap;align-items:center;gap:20px;}
 .insight-email-actions>a {text-decoration:underline;min-height:44px;display:inline-flex;align-items:center;}
 .insight-loading {min-height:300px;display:grid;place-items:center;}
-@media(max-width:760px){.newsletter-signup {grid-template-columns:minmax(0,1fr);gap:16px;}.analytics-choice {left:8px;right:8px;bottom:8px;padding:16px;display:block;}.analytics-choice>div:last-child {margin-top:12px;}.analytics-choice button {flex:1;}.data-page {padding:24px 16px;}.insights-page>header {display:block;}.insight-summary {grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}.insight-breakdowns {grid-template-columns:minmax(0,1fr);gap:12px;}.insight-issues li {display:block;}.insight-issues li>span {display:block;margin-top:8px;}.insight-emails li>span {min-width:0;}.privacy-footer {gap:4px 16px;}}
+@media(max-width:760px){.newsletter-signup {grid-template-columns:minmax(0,1fr);gap:16px;}.analytics-choice {left:auto;right:auto;bottom:auto;padding:16px;display:block;}.analytics-choice>div:last-child {margin-top:12px;}.analytics-choice button {flex:1;}.data-page {padding:24px 16px;}.insights-page>header {display:block;}.insight-summary {grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}.insight-breakdowns {grid-template-columns:minmax(0,1fr);gap:12px;}.insight-issues li {display:block;}.insight-issues li>span {display:block;margin-top:8px;}.insight-emails li>span {min-width:0;}.privacy-footer {gap:4px 16px;}}
 @media(prefers-reduced-motion:no-preference){.newsletter-result {animation:signup-arrive .2s ease-out;}@keyframes signup-arrive{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
 
 .signup-container {max-width:1280px;padding-inline:32px;margin:auto;}

@@ -30,11 +30,11 @@ function World({layout,mode='perspective',autoRotate,preview,playing,reset,zoom,
  const orbitTime=useRef(0);
  const previousZoom=useRef(zoom);
  const cameraGoal=useMemo(()=>{
-  const direction=(mode==='top'?new T.Vector3(0,1,.005):new T.Vector3(10,12,13)).normalize(),right=new T.Vector3().crossVectors(new T.Vector3(0,1,0),direction).normalize(),up=new T.Vector3().crossVectors(direction,right).normalize(),tanY=Math.tan(44*Math.PI/360),tanX=tanY*size.width/size.height;
-  let distance=10;for(const p of points){const depth=p.dot(direction);distance=Math.max(distance,Math.abs(p.dot(right))/(tanX*.78)+depth,Math.abs(p.dot(up))/(tanY*.78)+depth);}
-  return {eye:direction.multiplyScalar(distance*1.08),target:new T.Vector3()};
+  const direction=(mode==='top'?new T.Vector3(0,1,.005):new T.Vector3(10,10,13)).normalize(),right=new T.Vector3().crossVectors(new T.Vector3(0,1,0),direction).normalize(),up=new T.Vector3().crossVectors(direction,right).normalize(),tanY=Math.tan(44*Math.PI/360),tanX=tanY*size.width/size.height;
+  let distance=10;for(const p of points){const depth=p.dot(direction);distance=Math.max(distance,Math.abs(p.dot(right))/(tanX*.9)+depth,Math.abs(p.dot(up))/(tanY*.9)+depth);}
+  return {eye:direction.multiplyScalar(distance*1.02),target:new T.Vector3()};
  },[points,mode,size.width,size.height]);
- useEffect(()=>{gl.setClearColor('#15151e');const lost=(e:Event)=>{e.preventDefault();onUnavailable();};gl.domElement.addEventListener('webglcontextlost',lost);return()=>gl.domElement.removeEventListener('webglcontextlost',lost);},[gl,onUnavailable]);
+ useEffect(()=>{gl.setClearColor('#11161c');const lost=(e:Event)=>{e.preventDefault();onUnavailable();};gl.domElement.addEventListener('webglcontextlost',lost);return()=>gl.domElement.removeEventListener('webglcontextlost',lost);},[gl,onUnavailable]);
  useEffect(()=>{const c=new OrbitControls(camera,gl.domElement);c.enableDamping=!matchMedia('(prefers-reduced-motion: reduce)').matches;c.enablePan=false;c.minDistance=.2;c.maxDistance=55;c.maxPolarAngle=Math.PI*.48;const change=()=>invalidate(),manual=()=>{goal.current=null;};c.addEventListener('change',change);c.addEventListener('start',manual);controls.current=c;return()=>{c.dispose();controls.current=null;};},[camera,gl,invalidate]);
  useEffect(()=>{
   goal.current=cameraGoal;

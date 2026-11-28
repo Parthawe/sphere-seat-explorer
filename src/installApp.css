@@ -12,3 +12,5 @@
 .app-install-panel .app-install-note {font-size:13px;color:#505059;}
 .app-install-panel:focus-visible,.app-install-panel :focus-visible {outline:2px solid #c70000;outline-offset:3px;}
 @media(max-width:480px){.app-install-panel {padding:16px 20px;}.app-install-panel h2 {font-size:24px;}.hero-view-switch>.install-app-button {padding-inline:10px;}}
+
+@media(max-width:360px){.hero-view-switch>.install-app-button {width:44px;min-width:44px;padding:10px;}.hero-view-switch>.install-app-button>span {display:none;}}

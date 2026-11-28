@@ -22,13 +22,13 @@ function World({layout,mode,reset,zoom,playing,onReady,onUnavailable,shadowSize}
  const path=useMemo(()=>new THREE.CurvePath<THREE.Vector3>(),[]);
  useMemo(()=>{path.curves=[];for(let i=1;i<points.length;i++)path.add(new THREE.LineCurve3(points[i-1],points[i]));path.updateArcLengths();},[path,points]);
  const cameraGoal=useMemo(()=>{
-  const direction=(mode==='top'?new THREE.Vector3(0,1,.005):new THREE.Vector3(10,12,13)).normalize();
+  const direction=(mode==='top'?new THREE.Vector3(0,1,.005):new THREE.Vector3(10,10,13)).normalize();
   const right=new THREE.Vector3().crossVectors(new THREE.Vector3(0,1,0),direction).normalize(),up=new THREE.Vector3().crossVectors(direction,right).normalize();
-  const tanY=Math.tan(44*Math.PI/360),tanX=tanY*size.width/size.height,vertical=.82;
-  let distance=10;for(const p of points){const depth=p.dot(direction);distance=Math.max(distance,Math.abs(p.dot(right))/(tanX*.84)+depth,Math.abs(p.dot(up))/(tanY*vertical)+depth);}
-  return direction.multiplyScalar(distance*1.06);
+  const tanY=Math.tan(44*Math.PI/360),tanX=tanY*size.width/size.height,vertical=.9;
+  let distance=10;for(const p of points){const depth=p.dot(direction);distance=Math.max(distance,Math.abs(p.dot(right))/(tanX*.9)+depth,Math.abs(p.dot(up))/(tanY*vertical)+depth);}
+  return direction.multiplyScalar(distance*1.02);
  },[points,mode,size.width,size.height]);
- useEffect(()=>{gl.setClearColor('#15151e');const lost=(event:Event)=>{event.preventDefault();onUnavailable();};gl.domElement.addEventListener('webglcontextlost',lost);onReady();return()=>gl.domElement.removeEventListener('webglcontextlost',lost);},[gl,onReady,onUnavailable]);
+ useEffect(()=>{gl.setClearColor('#11161c');const lost=(event:Event)=>{event.preventDefault();onUnavailable();};gl.domElement.addEventListener('webglcontextlost',lost);onReady();return()=>gl.domElement.removeEventListener('webglcontextlost',lost);},[gl,onReady,onUnavailable]);
  useEffect(()=>{const c=new OrbitControls(camera,gl.domElement);c.enableDamping=!matchMedia('(prefers-reduced-motion: reduce)').matches;c.dampingFactor=.08;c.minDistance=5;c.maxDistance=45;c.minPolarAngle=.03;c.maxPolarAngle=Math.PI*.47;c.enablePan=false;c.target.set(0,0,0);const change=()=>invalidate(),manual=()=>{target.current=null;focus.current=null;};c.addEventListener('change',change);c.addEventListener('start',manual);controls.current=c;return()=>{c.dispose();controls.current=null;};},[camera,gl,invalidate]);
  useEffect(()=>{const v=cameraGoal.clone();target.current=v;focus.current=new THREE.Vector3();const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced){camera.position.copy(v);controls.current?.target.set(0,0,0);camera.lookAt(0,0,0);target.current=null;focus.current=null;}invalidate();},[cameraGoal,reset,camera,invalidate]);
  useEffect(()=>{const delta=zoom-lastZoom.current;lastZoom.current=zoom;if(!delta)return;target.current=null;focus.current=null;const look=controls.current?.target??new THREE.Vector3();camera.position.sub(look).multiplyScalar(delta>0?.85:1.18).add(look);controls.current?.update();invalidate();},[zoom,camera,invalidate]);

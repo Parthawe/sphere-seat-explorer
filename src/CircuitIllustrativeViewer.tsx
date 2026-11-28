@@ -48,7 +48,7 @@ export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Rac
      <div className="study-stage-foot"><span>Double-tap to explore</span><span><UiIcon name="info"/>Flat track outline · no seating geometry</span></div>
     </div>
     <aside className="study-controls" aria-label="Circuit study controls">
-     <div className="study-control-heading"><h2>Circuit overview</h2></div>
+     <div className="study-control-heading"><h2>Circuit reference</h2></div>
      <button className="study-share" aria-label="Copy study link" disabled={copying} aria-busy={copying} onClick={copy}><UiIcon name={copying?'motion':'copy'}/>Copy study link</button>
      {geometry&&<svg className="study-map" viewBox="-7 -7 14 14" role="img" aria-label="Circuit outline only. No stands or seat positions."><polyline points={geometry.points.map(p=>p.join(',')).join(' ')} fill="none" stroke="currentColor" strokeWidth=".12" strokeLinejoin="round"/></svg>}
      {hasSeatStudy&&<a className="study-area-link study-seat-handoff" href={raceStudyLink(race)}><UiIcon name="seat"/>Open seating study<UiIcon name="arrow"/></a>}

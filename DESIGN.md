@@ -315,3 +315,10 @@ Continuous world journey (28 November 2026): expanded Earth arrivals open the ex
 Scene recovery (28 November 2026): retain the existing visual language and recovery controls. Pending visible 3D loads get a 30-second foreground deadline, cleared on readiness, failure, retry or unmount. Background tabs/offscreen scenes do not spend that deadline. Stalled existing viewers use their established Retry/guide fallback; Vegas returns to its working 2D map with an announcement. The expanded globe Close action sits above loading/context-loss overlays, and its recovery circuit link retains expanded navigation. No automatic reload is introduced.
 
 Mobile Vegas map recovery keeps its return-to-3D action visible and gives camera tools at least 44px touch targets. Asking for 3D again clears stale readiness/failure state and starts a new loading window.
+
+
+## Current circuit-first entrance · 28 November 2026
+
+New visitors start on Circuit, with valid saved World preferences retained. Desktop pairs the introduction/race picker with a large live preview; phone layout keeps the mission, selector and preview together. Explore 3D opens the selected supported study expanded, while Race guide is a separate secondary action. Modeled races show a fixed-eye representative seat perspective with its bank name and unverified-model disclosure; outline-only editions retain an illustrative circuit preview. The globe remains an explicit World option. One font family and F1 red actions remain. The initial optional analytics choice is inline at the footer; explicit settings scroll to it without covering the product.
+
+Outline studies use the unchanged source centerline as a raised ribbon with authored display thickness, asphalt detail, metal sidewalls, a dark studio floor and cast shadows. The large rectangular slab is removed. This is presentation geometry, with no new surveyed terrain, road-width or seat claim. Camera framing is tighter. Seating-model headings show the race/stand directly, remove the uppercase eyebrow and keep reference access in the upper-right corner on phones.

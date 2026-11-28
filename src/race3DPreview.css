@@ -46,3 +46,5 @@
 
 /* A preview is a link; canvas event layers must never capture its click. */
 .race-3d-renderer,.race-3d-renderer * {pointer-events:none!important;}
+
+.preview-bank-name {display:block;margin-bottom:4px;font:400 14px/1.3 var(--font-ui);color:var(--color-white);}
