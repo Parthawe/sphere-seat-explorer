@@ -1,3 +1,4 @@
+import useSceneLoadTimeout from './useSceneLoadTimeout';
 import {expandedFromUrl} from './immersiveNavigation';
 import useImmersiveScene from './useImmersiveScene';
 import ImmersiveButton from './ImmersiveButton';
@@ -22,6 +23,7 @@ export default function CircuitLayoutViewer({race,onBack,onRace}:{race:Race;onBa
  useImmersiveScene(scene,immersive,setImmersive);
  useEffect(()=>{const element=tools.current;if(!element)return;const measure=()=>scene.current?.style.setProperty('--layout-tools-height',`${element.offsetHeight}px`);const observer=new ResizeObserver(measure);observer.observe(element);measure();return()=>observer.disconnect();},[]);
  const onReady=useCallback(()=>setReady(true),[]),onUnavailable=useCallback(()=>{setFailed(true);setReady(false);},[]);
+ useSceneLoadTimeout(ready,failed,retry,onUnavailable,visible);
  useEffect(()=>{const controller=new AbortController();setLayout(null);setFailed(false);setReady(false);loadCircuitLayout(race,controller.signal).then(setLayout).catch(()=>{if(!controller.signal.aborted)onUnavailable();});return()=>controller.abort();},[race.season,race.slug,retry,onUnavailable]);
  useEffect(()=>{let inView=true;const update=()=>setVisible(inView&&!document.hidden),observer=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;update();}),q=matchMedia('(prefers-reduced-motion: reduce)'),motion=()=>{if(q.matches)setPlaying(false);};if(scene.current)observer.observe(scene.current);document.addEventListener('visibilitychange',update);q.addEventListener('change',motion);return()=>{observer.disconnect();document.removeEventListener('visibilitychange',update);q.removeEventListener('change',motion);};},[]);
  return <div className="layout-viewer">

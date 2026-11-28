@@ -1,3 +1,4 @@
+import useSceneLoadTimeout from './useSceneLoadTimeout';
 import {loadCircuitLayout} from './loadCircuitLayout';
 import {lazy,Suspense,useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import type {Race} from './races';
@@ -16,6 +17,7 @@ export default function Race3DPreview({race,onOpen,animated=false}:{race:Race;on
  const Scenes=useMemo(()=>({Model:lazy(()=>import('./CircuitSeatingScene')),Vegas:lazy(()=>import('./HeroScene')),Outline:lazy(()=>import('./CircuitIllustrativeScene'))}),[retry]);
  const model=spec.kind==='model'?findCircuitModel(race.season,race.slug):undefined,selection=useMemo(()=>model?normalizeModelPosition(model,{}):null,[model]);
  const onReady=useCallback(()=>setReady(true),[]),unavailable=useCallback(()=>{setReady(false);setFailed(true);},[]);
+ useSceneLoadTimeout(ready,failed,retry,unavailable,requested&&visible);
  useEffect(()=>{let inView=false;const update=()=>setVisible(inView&&!document.hidden),observer=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;update();},{rootMargin:'80px'});if(stage.current)observer.observe(stage.current);document.addEventListener('visibilitychange',update);return()=>{observer.disconnect();document.removeEventListener('visibilitychange',update);};},[]);
  useEffect(()=>{const q=matchMedia('(prefers-reduced-motion: reduce)'),change=()=>{setReduced(q.matches);if(q.matches)setMotion(false);};q.addEventListener('change',change);return()=>q.removeEventListener('change',change);},[]);
  useEffect(()=>{if(visible&&!saver)setRequested(true);},[visible,saver]);

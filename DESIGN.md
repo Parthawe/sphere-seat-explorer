@@ -310,3 +310,8 @@ Installable web app (28 November 2026): retain the existing one-family interface
 
 
 Continuous world journey (28 November 2026): expanded Earth arrivals open the existing circuit viewer expanded, including reduced-motion/direct and skip-animation paths. Expanded state is a public URL flag that survives sanitized viewer URL updates, camera changes and reloads; Close/Escape removes it. The homepage remembers only its selected race and World/Circuit mode in tab storage, isolated by season and validated against the corresponding calendar. Blocked storage leaves controls usable. Globe selection keeps focus inside an expanded world, and the Vegas home link retains its season.
+
+
+Scene recovery (28 November 2026): retain the existing visual language and recovery controls. Pending visible 3D loads get a 30-second foreground deadline, cleared on readiness, failure, retry or unmount. Background tabs/offscreen scenes do not spend that deadline. Stalled existing viewers use their established Retry/guide fallback; Vegas returns to its working 2D map with an announcement. The expanded globe Close action sits above loading/context-loss overlays, and its recovery circuit link retains expanded navigation. No automatic reload is introduced.
+
+Mobile Vegas map recovery keeps its return-to-3D action visible and gives camera tools at least 44px touch targets. Asking for 3D again clears stale readiness/failure state and starts a new loading window.

@@ -99,3 +99,6 @@
  .earth-destination {max-width:calc(100% - 32px);}
  .earth-destination .earth-coordinates {margin-top:9px;font-size:10px;}
 }
+
+/* Close remains reachable above loading, context-loss and arrival overlays. */
+.earth-journey .earth-topline {z-index:7;}

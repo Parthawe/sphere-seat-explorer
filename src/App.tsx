@@ -1,3 +1,4 @@
+import useSceneLoadTimeout from './useSceneLoadTimeout';
 import {expandedFromUrl,withImmersiveView} from './immersiveNavigation';
 import useImmersiveScene from './useImmersiveScene';
 import ImmersiveButton from './ImmersiveButton';
@@ -363,6 +364,7 @@ export default function App({
     [compareYaw, setCompareYaw] = useState(0),
     [comparePitch, setComparePitch] = useState(0);
   useSceneMeasurement('vegas',ready,unavailable,0);
+  useSceneLoadTimeout(ready,unavailable,0,()=>{setUnavailable(true);setFlat(true);announce('3D took too long to load. Showing the circuit map.');},!flat);
   useEffect(() => {
     const q = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => {
@@ -635,10 +637,11 @@ export default function App({
           </div>
           <div className="scene-tools">
             <button
+              className={flat?"scene-map-return":undefined}
               title={flat ? "Show 3D scene" : "Show 2D map"}
               aria-label={flat ? "Show 3D scene" : "Show 2D map"}
               aria-pressed={flat}
-              onClick={() => setFlat(!flat)}
+              onClick={() => {if(flat){setReady(false);setUnavailable(false);}setFlat(!flat);}}
             >
               <Icon name="layers" />
             </button>

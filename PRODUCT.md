@@ -207,3 +207,8 @@ The owner chose an optional installable web app and online-first operation. A st
 ## Continuous world navigation · 28 November 2026
 
 An expanded globe opens its existing race study expanded through the public immersive=1 flag. Viewer URL normalization preserves that flag; exiting removes it. Homepage race and World/Circuit choices are stored per season for the current tab, with no personal ticket data or database write. Choices remain independent across seasons. This connects existing scenes and does not add geometry, seats or verified sightlines.
+
+
+## Bounded scene loading and recovery · 28 November 2026
+
+Visible, pending scene loads now have a 30-second foreground deadline. Earth, circuit/diagram studies, seating models and previews reach their existing recovery states; Vegas opens its usable 2D map and announces the fallback. Readiness, unmount, retries and background/offscreen state clear or renew the deadline. This does not force-reload a page or change verified venue coverage. The globe’s Close action remains above loading/error overlays, and direct circuit recovery preserves expanded navigation.

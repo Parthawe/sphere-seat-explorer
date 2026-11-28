@@ -1360,10 +1360,12 @@ dialog::backdrop {
     gap: 6px;
   }
   .scene-tools button {
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
   }
-  .scene-tools button:first-child,
+  .scene-tools button:first-child:not(.scene-map-return),
   .mode-overview .zoom-button,
   .mode-stand .zoom-button {
     display: none;
