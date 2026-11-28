@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-GB
+tone_instructions: >-
+  Be concise and specific. Prioritise reproducible bugs, data accuracy, accessibility,
+  privacy and rendering performance. Explain the affected behaviour and a concrete
+  fix. Avoid praise, poems and speculative style-only findings.
+reviews:
+  profile: assertive
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: true
+  auto_approvals:
+    enabled: false
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    drafts: false
+  path_filters:
+    - '!dist/**'
+    - '!node_modules/**'
+    - '!.sites-runtime/**'
+    - '!.sites-build/**'
+    - '!**/*.tsbuildinfo'
+  path_instructions:
+    - path: '**'
+      instructions: >-
+        This is f1tickets.online, a React/TypeScript/Three.js ticket research site
+        with a Cloudflare Worker and D1 storage. Keep reviews within the changed
+        behaviour and show evidence for findings. Preserve race edition and physical
+        venue identity. The 2026 Bahrain-named race is mapped to Malaysia; the 2027
+        Bahrain study is Sakhir. Do not replace sourced identities from memory.
+        Generated positions, traffic, skies and estimated grandstand geometry must
+        not be presented as verified ticket seats, live telemetry or weather.
+        Unknown start times stay TBC. Preserve source attribution and licenses.
+    - path: 'src/**'
+      instructions: >-
+        Check GPU resource ownership/disposal, instancing budgets, shader compilation,
+        coordinate frames, camera clipping and interrupted transitions. Hidden scenes
+        must not keep animating. Respect reduced motion and handle WebGL/network failure
+        with usable recovery. Verify mobile portrait/landscape fit, 44px scene controls,
+        light/dark contrast, retained keyboard focus, dialog isolation and scroll cleanup.
+        Keep day/night provenance and public URLs consistent across previews and entry.
+        External imagery must keep its attribution and must not silently become evidence
+        for an exact seating view. Optional Google embeds must load only on explicit
+        action and unload on close. Do not request cosmetic rewrites without an observed
+        usability or maintenance problem.
+    - path: 'worker/**'
+      instructions: >-
+        Preserve opt-in analytics, owner-only insights and signup exports, request
+        validation, parameterised SQL, rate limits and retention. Check origin and
+        authentication boundaries and fail closed on missing configuration. Do not
+        expose server secrets, ticket text, raw IP addresses or email data in public
+        responses, logs or analytics. Email storage does not authorise sending mail.
+    - path: 'scripts/**'
+      instructions: >-
+        Collectors and generators must retain provenance, license and edition boundaries.
+        Browser audits should verify real behaviour and fail on shader/runtime errors;
+        do not weaken assertions to hide regressions. Avoid tests that merely mirror
+        implementation. Publishing must preserve the existing Site identity, public
+        audience and D1 binding, and use build output from the exact pushed commit.
+  finishing_touches:
+    unit_tests:
+      enabled: false
+    docstrings:
+      enabled: false
+chat:
+  auto_reply: true
