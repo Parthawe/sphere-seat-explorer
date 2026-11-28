@@ -1,3 +1,4 @@
+import {raceLighting} from './raceLighting';
 import useSceneLoadTimeout from './useSceneLoadTimeout';
 import {expandedFromUrl,withImmersiveView} from './immersiveNavigation';
 import useImmersiveScene from './useImmersiveScene';
@@ -562,7 +563,7 @@ export default function App({
                   </div>
                 }
               >
-                <Scene
+                <Scene lighting={raceLighting({season:season===2027?2027:2026,slug:"las-vegas"})}
                   selection={selection}
                   mode={mode}
                   reset={reset}
@@ -1266,7 +1267,7 @@ export default function App({
                       <article key={key(s)} className="comparison-item">
                         <div className="comparison-preview">
                           <Suspense fallback={<span>Loading view…</span>}>
-                            <Scene
+                            <Scene lighting={raceLighting({season:season===2027?2027:2026,slug:"las-vegas"})}
                               selection={s}
                               mode="seat"
                               reset={0}

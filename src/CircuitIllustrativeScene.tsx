@@ -1,3 +1,4 @@
+import type {RaceLighting} from './raceLighting';
 import {fitStudyCamera} from './studyCamera';
 import useDoubleTapFocus from './useDoubleTapFocus';
 import StudyTrackSurface from './StudyTrackSurface';
@@ -12,12 +13,12 @@ import {buildStudyGeometry} from './circuitStudy';
 import type {CircuitLayout} from './circuitLayouts';
 
 
-type Props={immersive?:boolean;mode?:'perspective'|'top';autoRotate?:boolean;preview?:boolean;layout:CircuitLayout;playing:boolean;visible:boolean;reset:number;zoom:number;onReady:()=>void;onUnavailable:()=>void};
+type Props={lighting?:RaceLighting;immersive?:boolean;mode?:'perspective'|'top';autoRotate?:boolean;preview?:boolean;layout:CircuitLayout;playing:boolean;visible:boolean;reset:number;zoom:number;onReady:()=>void;onUnavailable:()=>void};
 export default function CircuitIllustrativeScene(props:Props){
  const quality=useSceneQuality();
  return <Canvas shadows dpr={quality.dpr} frameloop={!props.visible?'never':props.playing?'always':'demand'} camera={{fov:44,near:.015,far:120,position:[12,15,15]}} gl={{antialias:true}} fallback={<span>3D requires WebGL.</span>}><ShaderGuard onUnavailable={props.onUnavailable}/><World {...props} playing={props.playing&&props.visible} shadowSize={quality.shadowSize}/></Canvas>;
 }
-function World({layout,mode='perspective',immersive=false,autoRotate,preview,playing,reset,zoom,onReady,onUnavailable,shadowSize}:Props&{shadowSize:number}){
+function World({lighting,layout,mode='perspective',immersive=false,autoRotate,preview,playing,reset,zoom,onReady,onUnavailable,shadowSize}:Props&{shadowSize:number}){
  const {camera,gl,invalidate,size}=useThree(),controls=useRef<OrbitControls|null>(null),goal=useRef<{eye:T.Vector3;target:T.Vector3}|null>(null),phase=useRef(.1),reported=useRef(false);
  useDoubleTapFocus(!preview,.35,(eye,target)=>{
   goal.current={eye,target};
@@ -32,7 +33,7 @@ function World({layout,mode='perspective',immersive=false,autoRotate,preview,pla
  const previousZoom=useRef(zoom);
  const cameraGoal=useMemo(()=>fitStudyCamera(points,size.width/size.height,mode,size.height,immersive,Boolean(preview&&autoRotate)),[points,mode,size.width,size.height,immersive,preview,autoRotate]);
  useEffect(()=>{const lens=camera as T.PerspectiveCamera;lens.clearViewOffset();if(immersive)lens.setViewOffset(size.width,size.height,0,cameraGoal.offsetY,size.width,size.height);lens.updateProjectionMatrix();},[camera,cameraGoal,immersive,size.width,size.height]);
- useEffect(()=>{gl.setClearColor('#11161c');const lost=(e:Event)=>{e.preventDefault();onUnavailable();};gl.domElement.addEventListener('webglcontextlost',lost);return()=>gl.domElement.removeEventListener('webglcontextlost',lost);},[gl,onUnavailable]);
+ useEffect(()=>{gl.setClearColor(lighting?.period==='day'?'#778491':lighting?.period==='dusk'?'#504654':'#11161c');gl.domElement.dataset.raceLight=lighting?.period??'night';gl.domElement.dataset.raceLightBasis=lighting?.basis??'study';const lost=(e:Event)=>{e.preventDefault();onUnavailable();};gl.domElement.addEventListener('webglcontextlost',lost);return()=>gl.domElement.removeEventListener('webglcontextlost',lost);},[gl,onUnavailable,lighting?.period,lighting?.basis]);
  useEffect(()=>{const c=new OrbitControls(camera,gl.domElement);c.enableDamping=!matchMedia('(prefers-reduced-motion: reduce)').matches;c.enablePan=false;c.minDistance=.2;c.maxDistance=55;c.maxPolarAngle=Math.PI*.48;const change=()=>invalidate(),manual=()=>{goal.current=null;};c.addEventListener('change',change);c.addEventListener('start',manual);controls.current=c;return()=>{c.dispose();controls.current=null;};},[camera,gl,invalidate]);
  useEffect(()=>{
   goal.current=cameraGoal;
@@ -49,7 +50,7 @@ function World({layout,mode='perspective',immersive=false,autoRotate,preview,pla
   if(playing)phase.current=(phase.current+Math.min(delta,.05)/35)%1;
   if(!reported.current){reported.current=true;onReady();}
  });
- return <><StudioReflections intensity={.55}/><ambientLight intensity={.25}/><hemisphereLight args={['#f7f4f1','#24242b',.65]}/><directionalLight position={[-7,13,7]} intensity={2.7} color="#fff2e3" castShadow shadow-mapSize={[shadowSize,shadowSize]} shadow-bias={-.0001} shadow-normalBias={.003} shadow-camera-left={-8} shadow-camera-right={8} shadow-camera-top={8} shadow-camera-bottom={-8}/><directionalLight position={[8,4,-8]} intensity={.6}/>
+ return <><StudioReflections intensity={.55}/><ambientLight intensity={lighting?.period==='night'?.15:.3}/><hemisphereLight args={['#f7f4f1','#24242b',.65]}/><directionalLight position={[-7,13,7]} intensity={lighting?.period==='night'?1.1:lighting?.period==='dusk'?1.8:2.7} color={lighting?.period==='dusk'?'#ffd1a0':'#fff2e3'} castShadow shadow-mapSize={[shadowSize,shadowSize]} shadow-bias={-.0001} shadow-normalBias={.003} shadow-camera-left={-8} shadow-camera-right={8} shadow-camera-top={8} shadow-camera-bottom={-8}/><directionalLight position={[8,4,-8]} intensity={.6}/>
   <StudyTrackSurface points={points}/>
   <CircuitCars path={path} phase={phase} playing={playing}/>
  </>;

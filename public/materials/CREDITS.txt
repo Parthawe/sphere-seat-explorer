@@ -26,3 +26,8 @@ Scanned surface materials (1K diffuse, OpenGL normal, roughness; downloaded 28 N
   https://polyhaven.com/a/grass_ground
 CC0 1.0: https://polyhaven.com/license
 World-space texture scale and weathering are artistic choices, not venue material surveys.
+
+Sun position: SunCalc 2.1.4, Volodymyr Agafonkin, BSD-2-Clause.
+https://github.com/mourner/suncalc
+Full license: /materials/SUNCALC-LICENSE.txt
+Estimated solar position at a published session start, not a weather or shadow-obstruction survey.

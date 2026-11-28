@@ -1,3 +1,6 @@
+import VenueMapReference from './VenueMapReference';
+import RaceLightNotice from './RaceLightNotice';
+import {raceLighting} from './raceLighting';
 import useSceneLoadTimeout from './useSceneLoadTimeout';
 import {expandedFromUrl,withImmersiveView} from './immersiveNavigation';
 import useImmersiveScene from './useImmersiveScene';
@@ -39,7 +42,7 @@ export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Rac
    <div className="layout-title"><div><h1>{race.name}<span>{race.season} · Illustrative circuit study</span></h1></div><div className="layout-race-picker"><label>Season<select aria-label="Study season" value={race.season} onChange={e=>{const races=calendars[Number(e.target.value) as 2026|2027];onRace(races.find(r=>r.slug===race.slug)??races[0]);}}><option>2026</option><option>2027</option></select></label><label>Race<select aria-label="Study race" value={race.slug} onChange={e=>onRace(calendars[race.season].find(r=>r.slug===e.target.value)!)}>{calendars[race.season].map(r=><option key={r.slug} value={r.slug}>{r.name}</option>)}</select></label></div></div>
    <div className="study-workspace">
     <div ref={stage} className="study-stage" role="region" tabIndex={0} aria-label="Illustrative circuit study. Double-tap or double-click to move closer. Plus and minus zoom in orbit mode. Home resets the camera." onKeyDown={e=>{if(e.target!==e.currentTarget)return;if(e.key==='Home'){e.preventDefault();setReset(r=>r+1);}if(e.key==='+'||e.key==='='||e.key==='-'){e.preventDefault();setZoom(z=>z+(e.key==='-'?-1:1));}}} data-study-id={layout?.id} data-study-ready={ready&&!failed}>
-     {layout&&!failed&&<StudyBoundary key={retry} onUnavailable={onUnavailable}><Suspense fallback={null}><Scene immersive={immersive} {...{layout,mode,playing,visible,reset,zoom,onReady,onUnavailable}}/></Suspense></StudyBoundary>}
+     {layout&&!failed&&<StudyBoundary key={retry} onUnavailable={onUnavailable}><Suspense fallback={null}><Scene lighting={raceLighting(race)} immersive={immersive} {...{layout,mode,playing,visible,reset,zoom,onReady,onUnavailable}}/></Suspense></StudyBoundary>}
      {!ready&&!failed&&<div className="layout-loading" role="status">Loading circuit study…</div>}
      {failed&&<div className="layout-fallback" role="alert"><h2>3D study unavailable</h2><p>Try again, or use the race guide’s viewing information.</p><button onClick={()=>{setReady(false);setFailed(false);setRetry(r=>r+1);}}>Retry study</button><button onClick={onBack}>Open race guide</button></div>}
      <ImmersiveButton active={immersive} onToggle={()=>setImmersive(value=>!value)}/>
@@ -47,7 +50,7 @@ export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Rac
      <div className="study-scene-tools" aria-label="Circuit camera tools"><div role="group" aria-label="Study camera"><button aria-label="Orbit circuit" aria-pressed={mode==='perspective'} disabled={!ready} onClick={()=>setMode('perspective')}><UiIcon name="cube"/><span>Orbit</span></button><button aria-label="Overhead circuit" aria-pressed={mode==='top'} disabled={!ready} onClick={()=>setMode('top')}><UiIcon name="map"/><span>Overhead</span></button></div><div role="group" aria-label="Study zoom"><button aria-label="Zoom out study" disabled={!ready} onClick={()=>setZoom(z=>z-1)}>−</button><button aria-label="Zoom in study" disabled={!ready} onClick={()=>setZoom(z=>z+1)}><UiIcon name="plus"/></button><button aria-label="Reset study camera" disabled={!ready} onClick={()=>setReset(r=>r+1)}><UiIcon name="reset"/></button></div></div>
      <div className="study-stage-foot"><span>Double-tap to explore</span><span><UiIcon name="info"/>Flat track outline · no seating geometry</span></div>
     </div>
-    <aside className="study-controls" aria-label="Circuit study controls">
+    <aside className="study-controls" aria-label="Circuit study controls"><RaceLightNotice race={race}/><VenueMapReference race={race}/>
      <div className="study-control-heading"><h2>Circuit reference</h2></div>
      <button className="study-share" aria-label="Copy study link" disabled={copying} aria-busy={copying} onClick={copy}><UiIcon name={copying?'motion':'copy'}/>Copy study link</button>
      {geometry&&<svg className="study-map" viewBox="-7 -7 14 14" role="img" aria-label="Circuit outline only. No stands or seat positions."><polyline points={geometry.points.map(p=>p.join(',')).join(' ')} fill="none" stroke="currentColor" strokeWidth=".12" strokeLinejoin="round"/></svg>}

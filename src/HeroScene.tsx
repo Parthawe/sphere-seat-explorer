@@ -1,3 +1,4 @@
+import type {RaceLighting} from './raceLighting';
 import {ShaderGuard} from './SceneMaterials';
 import {Canvas,useFrame,useThree} from '@react-three/fiber';
 import {Suspense,useEffect,useRef,type RefObject} from 'react';
@@ -5,7 +6,7 @@ import * as T from 'three';
 import {World} from './World';
 import {HERO_SELECTION,heroCameraEase,heroCameraPose,type HeroCameraView} from './heroCamera';
 
-type Props={autoRotate?:boolean;view:HeroCameraView;motion:boolean;reduced:boolean;active:boolean;interactionRef:RefObject<HTMLElement|null>;onReady:()=>void;onUnavailable:()=>void};
+type Props={lighting?:RaceLighting;autoRotate?:boolean;view:HeroCameraView;motion:boolean;reduced:boolean;active:boolean;interactionRef:RefObject<HTMLElement|null>;onReady:()=>void;onUnavailable:()=>void};
 function HeroRig({autoRotate,view,motion,reduced,active,interactionRef,onReady}:Props) {
  const {camera,gl,size,invalidate}=useThree();
  const pose=heroCameraPose(view,size.width/Math.max(1,size.height));
@@ -69,6 +70,6 @@ function HeroRig({autoRotate,view,motion,reduced,active,interactionRef,onReady}:
 export default function HeroScene(props:Props) {
  const visibleMotion=props.active&&props.motion&&!props.reduced;
  return <Canvas frameloop={!props.active?'never':visibleMotion?'always':'demand'} shadows="soft" dpr={[1,1.25]} camera={{position:[210,260,-365],fov:46,near:.25,far:1800}} gl={{antialias:true,powerPreference:'default'}} fallback={<span>3D unavailable</span>} onCreated={({gl})=>{gl.domElement.setAttribute('aria-label','Live illustrative Las Vegas 3D scene');gl.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();props.onUnavailable();},{once:true});}}>
-  <ShaderGuard onUnavailable={props.onUnavailable}/><Suspense fallback={null}><World selection={HERO_SELECTION} mode={props.view==='circuit'?'overview':'seat'} playing={visibleMotion} ambientMotion={visibleMotion} atmosphere sphereDisplay="moon"/><HeroRig {...props}/></Suspense>
+  <ShaderGuard onUnavailable={props.onUnavailable}/><Suspense fallback={null}><World lighting={props.lighting} selection={HERO_SELECTION} mode={props.view==='circuit'?'overview':'seat'} playing={visibleMotion} ambientMotion={visibleMotion} atmosphere sphereDisplay="moon"/><HeroRig {...props}/></Suspense>
  </Canvas>;
 }

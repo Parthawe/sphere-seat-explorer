@@ -1,3 +1,4 @@
+import {raceLighting,type RaceLighting} from './raceLighting';
 import VenueEnvironment from './VenueEnvironment';
 import useSceneQuality from './useSceneQuality';
 import {CircuitCars} from './PassingCars';
@@ -1417,6 +1418,7 @@ function Finish({
 export function World({
   selection,
   mode,
+  lighting=raceLighting({season:2026,slug:"las-vegas"}),
   onSelect,
   onStand,
   playing = false,
@@ -1428,6 +1430,7 @@ export function World({
 }: {
   selection: Selection;
   mode: Mode;
+  lighting?:RaceLighting;
   onSelect?: (s: Selection) => void;
   onStand?: (id: string) => void;
   playing?: boolean;
@@ -1452,7 +1455,7 @@ export function World({
   return (
     <>
       <color attach="background" args={["#080911"]} />
-      <VenueEnvironment/>
+      <VenueEnvironment light={lighting}/>
       <fogExp2
         attach="fog"
         args={["#111421", mode === "circuit" ? 0.0003 : 0.0012]}

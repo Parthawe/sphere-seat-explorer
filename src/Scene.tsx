@@ -1,3 +1,4 @@
+import type {RaceLighting} from './raceLighting';
 import {attachSeatedPointerControls} from './seatedPointerControls';
 import useDoubleTapFocus from './useDoubleTapFocus';
 import {flightDuration,flightProgress,sampleFlight,settleCamera} from './cameraFlight';
@@ -31,6 +32,7 @@ import {
 } from "./model";
 
 type Props = {
+  lighting?:RaceLighting;
   selection: Selection;
   mode: Mode;
   reset: number;

@@ -57,3 +57,9 @@
 .preview-camera-switch button:focus-visible {outline:2px solid var(--color-action);outline-offset:-2px;}
 .race-3d-preview-selectable .race-3d-preview-credit {top:76px;}
 @media(max-width:400px) {.preview-camera-switch button {gap:5px;padding-inline:9px;}.race-3d-preview-selectable .race-3d-preview-tools>button {padding-inline:9px;gap:5px;}}
+
+.race-light-notice {display:flex;align-items:center;gap:6px;font:400 11px/1.5 var(--font-ui);color:inherit;text-transform:none;letter-spacing:normal;}
+.race-light-notice svg {width:15px;height:15px;flex:0 0 15px;}
+.race-3d-preview-footer .race-light-notice {margin-bottom:5px;color:var(--color-paper);}
+.circuit-model-heading .race-light-notice {margin-top:5px;}
+.circuit-model-stage .circuit-model-heading .race-light-notice {font:400 11px/1.5 var(--font-ui);text-transform:none;letter-spacing:normal;}

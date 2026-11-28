@@ -1,3 +1,5 @@
+import RaceLightNotice from './RaceLightNotice';
+import {raceLighting} from './raceLighting';
 import useSceneLoadTimeout from './useSceneLoadTimeout';
 import {loadCircuitLayout} from './loadCircuitLayout';
 import {lazy,Suspense,useCallback,useEffect,useMemo,useRef,useState} from 'react';
@@ -36,11 +38,11 @@ export default function Race3DPreview({race,onOpen,animated=false,framing='circu
     <img className="race-3d-poster" src={posterFailed?`/circuit-plans/${circuitLayoutId(race.season,race.slug)}.svg`:spec.poster} width="960" height="540" fetchPriority="high" alt={posterFailed?`${race.name} source circuit outline fallback`:spec.kind==='outline'?`${race.name} circuit outline study`:`Illustrative ${race.name} venue study`} onError={()=>setPosterFailed(true)}/>
     {requested&&!failed&&<div className="race-3d-renderer" data-ready={ready} aria-hidden="true"><HeroSceneBoundary key={retry} onUnavailable={unavailable}><Suspense fallback={null}>
      {spec.kind==='model'&&model&&selection&&<Scenes.Model autoRotate={orbiting} preview model={model} selection={selection} mode={camera==='seat'?'seat':'circuit'} playing={playing} visible={visible} speed={1} pass={0} following={false} onManualLook={noAction} roofs reset={0} cameraControls={cameraControls} onZoomLimitsChange={noAction} onSelect={noAction} onReady={onReady} onUnavailable={unavailable}/>}
-     {spec.kind==='vegas'&&<Scenes.Vegas autoRotate={orbiting} view={camera==='seat'?'seat':'circuit'} motion={playing} reduced={reduced} active={visible} interactionRef={stage} onReady={onReady} onUnavailable={unavailable}/>}
-     {spec.kind==='outline'&&layout&&<Scenes.Outline autoRotate={orbiting} preview layout={layout} playing={playing} visible={visible} reset={0} zoom={0} onReady={onReady} onUnavailable={unavailable}/>}
+     {spec.kind==='vegas'&&<Scenes.Vegas lighting={raceLighting(race)} autoRotate={orbiting} view={camera==='seat'?'seat':'circuit'} motion={playing} reduced={reduced} active={visible} interactionRef={stage} onReady={onReady} onUnavailable={unavailable}/>}
+     {spec.kind==='outline'&&layout&&<Scenes.Outline lighting={raceLighting(race)} autoRotate={orbiting} preview layout={layout} playing={playing} visible={visible} reset={0} zoom={0} onReady={onReady} onUnavailable={unavailable}/>}
     </Suspense></HeroSceneBoundary></div>}
    </div>
-   <div className="race-3d-preview-footer"><span>{camera==='seat'&&model&&selection&&<span className="preview-bank-name">{model.banks.find(b=>b.id===selection.bank)?.name}</span>}{spec.note}</span><strong><UiIcon name={spec.kind!=='outline'&&camera==='seat'?'seat':'circuit'}/>{action}<UiIcon name="arrow"/></strong></div>
+   <div className="race-3d-preview-footer"><span><RaceLightNotice race={race}/>{camera==='seat'&&model&&selection&&<span className="preview-bank-name">{model.banks.find(b=>b.id===selection.bank)?.name}</span>}{spec.note}</span><strong><UiIcon name={spec.kind!=='outline'&&camera==='seat'?'seat':'circuit'}/>{action}<UiIcon name="arrow"/></strong></div>
   </a>
   {canChoose&&<div className="preview-camera-switch" role="group" aria-label="3D preview camera"><button aria-pressed={camera==='circuit'} onClick={()=>{setCamera('circuit');onCameraChange?.('circuit');}}><UiIcon name="circuit"/>Overview</button><button aria-pressed={camera==='seat'} onClick={()=>{setCamera('seat');onCameraChange?.('seat');}}><UiIcon name="seat"/>Seat</button></div>}
   <a className="race-3d-preview-credit" href="/circuit-previews/CREDITS.md" target="_blank" rel="noreferrer" aria-label="3D preview credits" title="3D preview credits"><UiIcon name="info"/></a>

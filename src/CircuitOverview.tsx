@@ -1,3 +1,4 @@
+import VenueMapReference from './VenueMapReference';
 import {useEffect,useRef} from 'react';
 import {bankFrame,modelPosition,type CircuitModel,type ModelPosition} from './circuitSeating';
 
@@ -29,6 +30,7 @@ export default function CircuitOverview({model,selection,open,onClose,onSelect,b
    </div>
    <section className="circuit-overview-banks" aria-label="Choose a viewing bank"><h3>Choose your bank</h3><p>Choose a bank, then return to its modeled view.</p>{bankIds&&<button type="button" onClick={()=>{onShowAll?.();requestAnimationFrame(()=>dialog.current?.querySelector<HTMLButtonElement>('.circuit-overview-banks button[aria-pressed=true]')?.focus());}}>Show all {model.banks.length} banks</button>}{listed.map(b=><button type="button" key={b.id} aria-pressed={selection.bank===b.id} onClick={()=>onSelect(b.id)}><span>{model.banks.findIndex(item=>item.id===b.id)+1}</span><div><strong>{b.name}</strong><small>{b.footprint?'OSM footprint · facing inferred':'Estimated viewing region'}</small></div></button>)}</section>
   </div>
+  <VenueMapReference active={open} race={{season:model.season,slug:model.id}}/>
   <footer><div><strong>{bank.name}</strong><p>The shaded fan illustrates a 70° horizontal view. It does not measure visibility, obstructions or the camera’s current zoom. North is up; distances use adapted OSM geography.{model.banks.some(b=>b.mapLabelOffset)&&' Leader lines connect labels to their estimated regions.'}</p><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors · ODbL</a></div><button type="button" onClick={onClose}>Return to selected view</button></footer>
  </dialog>;
 }

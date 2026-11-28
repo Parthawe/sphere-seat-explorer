@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';import {chromium} from 'playwright';
+const origin=process.argv[2]??'http://localhost:5190',browser=await chromium.launch({args:process.platform==='darwin'?['--use-angle=metal']:[]});
+try{
+ for(const [season,race,light,basis] of [[2026,'china','day','schedule'],[2026,'united-arab-emirates','dusk','schedule'],[2026,'qatar','night','schedule'],[2027,'bahrain','night','study'],[2027,'australia','day','study']]){
+  const page=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,reducedMotion:'reduce'}),errors=[],google=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'&&/shader|WebGLProgram|THREE\./i.test(m.text()))errors.push(m.text());});page.on('request',r=>{if(/google\.com|googleapis\.com/.test(r.url()))google.push(r.url());});
+  await page.addInitScript(()=>localStorage.setItem('usage-consent-v1','deny'));await page.goto(`${origin}/?season=${season}&race=${race}&screen=circuit&camera=seat&immersive=1`);
+  const canvas=page.locator(`canvas[data-model-ready=true][data-race-light=${light}][data-race-light-basis=${basis}]`);await canvas.waitFor({timeout:90000});await page.waitForFunction(()=>document.querySelector('canvas')?.dataset.environmentSource==='outdoor-hdr');
+  const notice=page.locator('.circuit-model-heading .race-light-notice');assert.match(await notice.innerText(),basis==='study'?/Time TBC/:/track time/);
+  await page.getByRole('button',{name:'Open circuit map',exact:true}).click();const map=page.locator('.circuit-overview-dialog');await map.locator('.venue-map-reference summary').click();
+  const satellite=map.getByRole('link',{name:/Google satellite/}),url=new URL(await satellite.getAttribute('href'));assert.equal(url.searchParams.get('basemap'),'satellite');assert.equal(url.searchParams.get('api'),'1');assert.equal(await map.locator('iframe').count(),0);assert.deepEqual(google,[]);
+  await map.getByRole('button',{name:'Return to selected view',exact:true}).click();await page.screenshot({path:`/tmp/f1-race-light-${race}-phone.png`});assert.deepEqual(errors,[]);console.log(`${season} ${race}: ${light}/${basis}, sky/HDR rendered, notice and coordinate map links passed without third-party requests`);await page.close();
+ }
+ const page=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});await page.goto(origin+'/?season=2026&race=bahrain');await page.locator('.venue-map-reference').waitFor();await page.locator('.venue-map-reference summary').click();const malaysia=new URL(await page.getByRole('link',{name:/Google satellite/}).getAttribute('href'));assert(Number(malaysia.searchParams.get('center').split(',')[1])>100);console.log('Malaysia event uses Malaysia satellite coordinates');await page.close();
+}finally{await browser.close();}
