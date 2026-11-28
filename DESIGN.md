@@ -307,3 +307,6 @@ Simulated traffic defaults (27 November 2026): moving cars start automatically i
 
 
 Installable web app (28 November 2026): retain the existing one-family interface and all browser features. Install app appears beside World/Circuit and in the shared footer, with a user-opened nonmodal instruction panel when a browser prompt is unavailable. Standalone windows hide installation actions. Installation remains optional; no prompts appear automatically. Online-first navigation uses only a self-contained offline screen, with Retry returning to the same URL. Native app, AR and offline circuits are not included.
+
+
+Continuous world journey (28 November 2026): expanded Earth arrivals open the existing circuit viewer expanded, including reduced-motion/direct and skip-animation paths. Expanded state is a public URL flag that survives sanitized viewer URL updates, camera changes and reloads; Close/Escape removes it. The homepage remembers only its selected race and World/Circuit mode in tab storage, isolated by season and validated against the corresponding calendar. Blocked storage leaves controls usable. Globe selection keeps focus inside an expanded world, and the Vegas home link retains its season.

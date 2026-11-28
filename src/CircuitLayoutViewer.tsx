@@ -1,3 +1,4 @@
+import {expandedFromUrl} from './immersiveNavigation';
 import useImmersiveScene from './useImmersiveScene';
 import ImmersiveButton from './ImmersiveButton';
 import {useSceneMeasurement,trackUsage} from './usageAnalytics';
@@ -17,7 +18,7 @@ export default function CircuitLayoutViewer({race,onBack,onRace}:{race:Race;onBa
  const [layout,setLayout]=useState<CircuitLayout|null>(null),[failed,setFailed]=useState(false),[ready,setReady]=useState(false),[retry,setRetry]=useState(0),[mode,setMode]=useState<LayoutCamera>('perspective'),[reset,setReset]=useState(0),[playing,setPlaying]=useState(()=>!matchMedia('(prefers-reduced-motion: reduce)').matches),[visible,setVisible]=useState(()=>!document.hidden),[zoom,setZoom]=useState(0);
  useSceneMeasurement('diagram',ready,failed,retry);
  const tools=useRef<HTMLDivElement>(null),scene=useRef<HTMLDivElement>(null),Scene=useMemo(()=>lazy(()=>import('./CircuitLayoutScene')),[retry]);
- const [immersive,setImmersive]=useState(false);
+ const [immersive,setImmersive]=useState(expandedFromUrl);
  useImmersiveScene(scene,immersive,setImmersive);
  useEffect(()=>{const element=tools.current;if(!element)return;const measure=()=>scene.current?.style.setProperty('--layout-tools-height',`${element.offsetHeight}px`);const observer=new ResizeObserver(measure);observer.observe(element);measure();return()=>observer.disconnect();},[]);
  const onReady=useCallback(()=>setReady(true),[]),onUnavailable=useCallback(()=>{setFailed(true);setReady(false);},[]);

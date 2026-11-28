@@ -1,3 +1,4 @@
+import {readHomeExperience,saveHomeExperience} from './homeExperience';
 import {InstallAppButton} from './InstallApp';
 import {lazy,Suspense,useEffect,useState} from 'react';
 import RaceHighlights from './RaceHighlights';
@@ -7,13 +8,15 @@ const Race3DPreview=lazy(()=>import('./Race3DPreview'));
 import UiIcon from './UiIcon';
 import {calendars,dateLabel,raceStatus,type Race,type Season} from './races';
 
-export default function SeasonLanding({season,onRace,onStudy}:{season:Season;onRace:(race:Race)=>void;onStudy:(race:Race)=>void}) {
+export default function SeasonLanding({season,onRace,onStudy}:{season:Season;onRace:(race:Race)=>void;onStudy:(race:Race,immersive?:boolean)=>void}) {
  const [today,setToday]=useState(()=>new Date().toISOString().slice(0,10));
  useEffect(()=>{const refresh=()=>setToday(new Date().toISOString().slice(0,10));const timer=window.setInterval(refresh,60000);document.addEventListener('visibilitychange',refresh);return()=>{clearInterval(timer);document.removeEventListener('visibilitychange',refresh);};},[]);
  const races=calendars[season],defaultRace=races.find(r=>raceStatus(r,today)!=='Past')??races[0];
- const [view,setView]=useState<'world'|'circuit'>('world');
- const [choice,setChoice]=useState<{season:Season;slug:string}|null>(null);
+ const [initial]=useState(()=>readHomeExperience(season));
+ const [view,setView]=useState<'world'|'circuit'>(initial.view);
+ const [choice,setChoice]=useState<{season:Season;slug:string}|null>(()=>initial.race?{season,slug:initial.race}:null);
  const chosenRace=(choice?.season===season?races.find(r=>r.slug===choice.slug):null)??defaultRace;
+ useEffect(()=>saveHomeExperience(season,{view,race:choice?.season===season?choice.slug:null}),[season,view,choice]);
  const preview=racePreview(chosenRace);
  return <>
   <section className="season-landing" aria-labelledby="season-landing-title">

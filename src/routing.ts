@@ -14,6 +14,7 @@ export type Route = {
   position?: string;
   mode?: Mode;
   issue?: string;
+  immersive?: boolean;
 };
 
 export function readRoute(search: string): Route {
@@ -42,6 +43,7 @@ export function readRoute(search: string): Route {
     trackStudy: validSeason && screen === "track-study",
     racing: validSeason && screen === "racing",
     study: validSeason && screen === "stand-study" ? p.get("option")??"" : undefined,
+    immersive: validSeason&&!issue&&p.get('immersive')==='1'&&['seats','circuit','layout','track-study'].includes(screen??''),
     issue,
   };
 }

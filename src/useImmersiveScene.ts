@@ -1,7 +1,10 @@
-import {useLayoutEffect,type RefObject} from 'react';
+import {expandedFromUrl,withImmersiveView} from './immersiveNavigation';
+import {useEffect,useLayoutEffect,type RefObject} from 'react';
 
 /** Viewport mode also works on mobile browsers without the Fullscreen API. */
 export default function useImmersiveScene(surface:RefObject<HTMLElement|null>,active:boolean,setActive:(active:boolean)=>void){
+ useEffect(()=>{const restore=()=>setActive(expandedFromUrl());window.addEventListener('popstate',restore);return()=>window.removeEventListener('popstate',restore);},[setActive]);
+ useLayoutEffect(()=>{const current=location.pathname+location.search+location.hash,next=withImmersiveView(current,active);if(next!==current)history.replaceState(history.state,'',next);},[active]);
  useLayoutEffect(()=>{
   const element=surface.current;if(!active||!element)return;
   const opener=element.querySelector<HTMLElement>('.scene-expand')??(document.activeElement instanceof HTMLElement?document.activeElement:null);

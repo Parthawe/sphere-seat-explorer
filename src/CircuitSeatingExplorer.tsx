@@ -1,3 +1,4 @@
+import {expandedFromUrl,withImmersiveView} from './immersiveNavigation';
 import useImmersiveScene from './useImmersiveScene';
 import ImmersiveButton from './ImmersiveButton';
 import {useSceneMeasurement,trackUsage} from './usageAnalytics';
@@ -30,7 +31,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  const mediaRace=calendars[model.season].find(r=>r.slug===model.id)!;
  const Scene=useMemo(()=>lazy(()=>import('./CircuitSeatingScene')),[retry]);
  const [speed,setSpeed]=useState(1),[pass,setPass]=useState(0),[following,setFollowing]=useState(false);
- const [focusView,setFocusView]=useState(false),[bankSearch,setBankSearch]=useState('');
+ const [focusView,setFocusView]=useState(expandedFromUrl),[bankSearch,setBankSearch]=useState('');
  const heading=useRef<HTMLDivElement>(null),cameraModes=useRef<HTMLElement>(null);
  const stage=useRef<HTMLElement|null>(null),[sceneVisible,setSceneVisible]=useState(true);
  useImmersiveScene(stage,focusView,setFocusView);
@@ -63,6 +64,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  },[grid]);
  useEffect(()=>{
   const url=new URL(modelPositionUrl(location.origin,model,selection,mode));
+  url.search=new URL(withImmersiveView(url.href,expandedFromUrl())).search;
   if(location.search!==url.search)history.replaceState(history.state,'',url.pathname+url.search);
   syncPublicUrlMetadata();
  },[model,selection,mode]);

@@ -202,3 +202,8 @@ Following the owner’s request for a larger 3D experience and shared fan feedba
 ## Installable web app · 28 November 2026
 
 The owner chose an optional installable web app and online-first operation. A standalone manifest, existing-brand raster icons, Apple touch icon and explicit install controls reuse the current browser renderer and URLs. Apple guidance is shown on request. A service worker caches only the public offline screen; APIs, authentication, private pages and assets bypass it. It never replaces a running session automatically. Optional analytics adds browser-confirmed app_installed events and deduplicated standalone app_launch events to existing private reporting. No DB migration, native app, AR, offline guides/circuits, push or cross-device synchronization is introduced.
+
+
+## Continuous world navigation · 28 November 2026
+
+An expanded globe opens its existing race study expanded through the public immersive=1 flag. Viewer URL normalization preserves that flag; exiting removes it. Homepage race and World/Circuit choices are stored per season for the current tab, with no personal ticket data or database write. Choices remain independent across seasons. This connects existing scenes and does not add geometry, seats or verified sightlines.

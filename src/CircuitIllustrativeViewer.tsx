@@ -1,3 +1,4 @@
+import {expandedFromUrl,withImmersiveView} from './immersiveNavigation';
 import useImmersiveScene from './useImmersiveScene';
 import ImmersiveButton from './ImmersiveButton';
 import {useSceneMeasurement,trackUsage} from './usageAnalytics';
@@ -19,7 +20,7 @@ export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Rac
  const [mode,setMode]=useState<'perspective'|'top'>('perspective'),[layout,setLayout]=useState<CircuitLayout|null>(null),[ready,setReady]=useState(false),[failed,setFailed]=useState(false),[retry,setRetry]=useState(0),[reset,setReset]=useState(0),[zoom,setZoom]=useState(0),[playing,setPlaying]=useState(()=>!matchMedia('(prefers-reduced-motion: reduce)').matches),[visible,setVisible]=useState(()=>!document.hidden),[message,setMessage]=useState(''),[copying,setCopying]=useState(false);
  useSceneMeasurement('outline',ready,failed,retry);
  const stage=useRef<HTMLDivElement>(null),Scene=useMemo(()=>lazy(()=>import('./CircuitIllustrativeScene')),[retry]);
- const [immersive,setImmersive]=useState(false);
+ const [immersive,setImmersive]=useState(expandedFromUrl);
  useImmersiveScene(stage,immersive,setImmersive);
  const geometry=useMemo(()=>layout?buildStudyGeometry(layout):null,[layout]),venue=findVenue(race.season,race.slug);
  const [areaId,setAreaId]=useState(()=>venue?.areas[0]?.id??'');
@@ -27,7 +28,7 @@ export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Rac
  const area=venue?.areas.find(a=>a.id===areaId)??venue?.areas[0];
  const onReady=useCallback(()=>setReady(true),[]),onUnavailable=useCallback(()=>{setFailed(true);setReady(false);},[]);
  useEffect(()=>{const controller=new AbortController();setLayout(null);setFailed(false);setReady(false);loadCircuitLayout(race,controller.signal).then(setLayout).catch(()=>{if(!controller.signal.aborted)onUnavailable();});return()=>controller.abort();},[race.season,race.slug,retry,onUnavailable]);
- useEffect(()=>{history.replaceState(history.state,'',circuitStudyUrl(race));syncPublicUrlMetadata();},[race]);
+ useEffect(()=>{history.replaceState(history.state,'',withImmersiveView(circuitStudyUrl(race),expandedFromUrl()));syncPublicUrlMetadata();},[race]);
  useEffect(()=>{let inView=true;const update=()=>setVisible(inView&&!document.hidden),observer=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;update();}),q=matchMedia('(prefers-reduced-motion: reduce)'),motion=()=>{if(q.matches)setPlaying(false);};if(stage.current)observer.observe(stage.current);document.addEventListener('visibilitychange',update);q.addEventListener('change',motion);return()=>{observer.disconnect();document.removeEventListener('visibilitychange',update);q.removeEventListener('change',motion);};},[]);
  async function copy(){const url=new URL(circuitStudyUrl(race),location.origin).href;setCopying(true);try{await navigator.clipboard.writeText(url);if(location.href===url)setMessage('Study link copied.');}catch{setMessage('Copy is unavailable. Copy the study link from your browser’s address bar.');}finally{setCopying(false);}}
  return <div className="layout-viewer study-viewer">

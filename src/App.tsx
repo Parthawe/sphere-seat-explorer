@@ -1,3 +1,4 @@
+import {expandedFromUrl,withImmersiveView} from './immersiveNavigation';
 import useImmersiveScene from './useImmersiveScene';
 import ImmersiveButton from './ImmersiveButton';
 import {useSceneMeasurement} from './usageAnalytics';
@@ -313,7 +314,7 @@ export default function App({
   onAreas?: () => void;
 }) {
   const seatSearch = (current: Selection, view: Mode, shortlist: Selection[]) =>
-    makeSearch(current, view, shortlist) + "&race=las-vegas&season=" + season;
+    withImmersiveView(makeSearch(current, view, shortlist) + "&race=las-vegas&season=" + season,expandedFromUrl());
   const initial = useRef(readUrl(window.location.search)).current;
   const [selection, setSelection] = useState<Selection>(initial.current),
     [mode, setMode] = useState<Mode>(initial.mode),
@@ -472,7 +473,7 @@ export default function App({
       window.history.replaceState({}, "", shared.pathname + shared.search);
     }
   }
- const [immersive,setImmersive]=useState(false);
+ const [immersive,setImmersive]=useState(expandedFromUrl);
  useImmersiveScene(sceneRef,immersive,setImmersive);
   return (
     <div className="app-shell">
@@ -480,7 +481,7 @@ export default function App({
         Skip to seat controls
       </a>
       <header className="site-header">
-        <a className="wordmark" href="/" aria-label="F1 Tickets Online home">
+        <a className="wordmark" href={`?season=${season}`} aria-label="F1 Tickets Online home">
           <BrandIdentity subtitle="F1 SEAT EXPLORER" />
         </a>
         <div className="header-location">
