@@ -110,7 +110,7 @@ export function SurfaceMaterial({surface,grainScale=1,strength=.65,worldMapScale
         if(uAtlasKind>3.5){float field=atlasNoise(vAtlasWorld.xz*.035)*.65+atlasNoise(vAtlasWorld.xz*.32)*.35;diffuseColor.rgb*=mix(.78,1.12,field);}`)
       .replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
         roughnessFactor=clamp(roughnessFactor+(atlasDetail.y-.5)*.22*uAtlasStrength-atlasRubber*.06*uAtlasStrength,.08,1.);
-        if(uAtlasKind<.5)roughnessFactor=max(.68,roughnessFactor);
+        if(uAtlasKind<.5)roughnessFactor=max(.84,roughnessFactor);
         if(uAtlasKind>3.5)roughnessFactor=max(.92,roughnessFactor);
         if(uAtlasKind>2.5&&uAtlasKind<3.5){float stripe=(vAtlasLocal.x+vAtlasLocal.y*.23)*210.;float filtered=1.-smoothstep(.5,2.,fwidth(stripe));roughnessFactor=clamp(roughnessFactor+sin(stripe)*.055*filtered,.12,.95);}`)
       .replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
