@@ -563,7 +563,7 @@ export default function App({
                   selection={selection}
                   mode={mode}
                   reset={reset}
-                  playing={historyOpen ? false : playing}
+                  playing={historyOpen||referencesOpen ? false : playing}
                   replay={replay}
                   atmosphere={atmosphere}
                   sphereDisplay={sphereDisplay}
@@ -719,7 +719,7 @@ export default function App({
           </div>
           <SpectatorReferences open={referencesOpen} onClose={()=>setReferencesOpen(false)} venue="las-vegas" area={["A","B","C","D","E"].includes(selection.stand)?"sphere":selection.stand==="M"?"main":selection.stand==="H"?"turn-17":"turn-3-4"} areaName={stand.name} season={season}/>
           <div className="track-demo">
-            {!historyOpen&&<button onClick={()=>{setPlaying(false);setReferencesOpen(true);}}>Photos & fan reports</button>}
+            {!historyOpen&&<button onClick={()=>setReferencesOpen(true)}>Photos & fan reports</button>}
             <button aria-pressed={historyOpen} onClick={() => setHistoryOpen(!historyOpen)}>Historical race</button>
             {!historyOpen && <button aria-pressed={playing} onClick={() => setPlaying(!playing)}>
               <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -782,7 +782,7 @@ export default function App({
             </details>
             <span>{historyOpen ? "2024 archive · projected onto estimated track" : "Illustrative racing · not live timing"}</span>
           </div>
-          {historyOpen && <HistoricalReplay standId={selection.stand} onChange={setReplay} onReferences={()=>{setPlaying(false);setReferencesOpen(true);}} onClose={() => {setHistoryOpen(false);setReplay(null);}} />}
+          {historyOpen && <HistoricalReplay standId={selection.stand} onChange={setReplay} onReferences={()=>setReferencesOpen(true)} onClose={() => {setHistoryOpen(false);setReplay(null);}} />}
           {saved.length > 0 && (
             <div className="compare-dock" aria-label="Saved view shortlist">
               <div className="dock-items">

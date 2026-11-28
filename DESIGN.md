@@ -302,3 +302,5 @@ Double-tap focus (27 November 2026): circuit studies, diagrams and modeled orbit
 
 
 Expanded 3D workspace (27 November 2026): Earth, outline studies, diagrams, modeled seating and Vegas share one viewport-filling mode. Preserve the mounted WebGL renderer, selected race and camera controls; expose an on-screen Close action and Escape, isolate background controls, lock page scrolling and restore focus on exit. Safe-area padding and compact controls serve portrait and landscape phones. This is a web interaction, with no native-app or AR claim. Guides, photographs, ticket handoffs and coverage limits remain in the existing page.
+
+Simulated traffic defaults (27 November 2026): moving cars start automatically in circuit seating, outline/diagram studies and race previews unless reduced motion is enabled. Pause remains explicit. Temporary background-tab, map, grid and reference-panel suspension preserves the user's playback choice and resumes on return; retry retains the choice. Historical replay remains separate from simulated traffic.

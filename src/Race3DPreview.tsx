@@ -11,11 +11,11 @@ const noAction=()=>{};
 export default function Race3DPreview({race,onOpen,animated=false}:{race:Race;onOpen?:()=>void;animated?:boolean}){
  const spec=racePreview(race),stage=useRef<HTMLDivElement>(null),cameraControls=useRef<ModelCameraControls|null>(null);
  const [visible,setVisible]=useState(false),[requested,setRequested]=useState(false),[ready,setReady]=useState(false),[failed,setFailed]=useState(false),[retry,setRetry]=useState(0),[posterFailed,setPosterFailed]=useState(false),[layout,setLayout]=useState<CircuitLayout|null>(null);
- const [reduced,setReduced]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),[motion,setMotion]=useState(()=>animated&&!matchMedia('(prefers-reduced-motion: reduce)').matches);
+ const [reduced,setReduced]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),[motion,setMotion]=useState(()=>!matchMedia('(prefers-reduced-motion: reduce)').matches);
  const saver=Boolean((navigator as Navigator&{connection?:{saveData?:boolean}}).connection?.saveData);
  const Scenes=useMemo(()=>({Model:lazy(()=>import('./CircuitSeatingScene')),Vegas:lazy(()=>import('./HeroScene')),Outline:lazy(()=>import('./CircuitIllustrativeScene'))}),[retry]);
  const model=spec.kind==='model'?findCircuitModel(race.season,race.slug):undefined,selection=useMemo(()=>model?normalizeModelPosition(model,{}):null,[model]);
- const onReady=useCallback(()=>setReady(true),[]),unavailable=useCallback(()=>{setReady(false);setFailed(true);setMotion(false);},[]);
+ const onReady=useCallback(()=>setReady(true),[]),unavailable=useCallback(()=>{setReady(false);setFailed(true);},[]);
  useEffect(()=>{let inView=false;const update=()=>setVisible(inView&&!document.hidden),observer=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;update();},{rootMargin:'80px'});if(stage.current)observer.observe(stage.current);document.addEventListener('visibilitychange',update);return()=>{observer.disconnect();document.removeEventListener('visibilitychange',update);};},[]);
  useEffect(()=>{const q=matchMedia('(prefers-reduced-motion: reduce)'),change=()=>{setReduced(q.matches);if(q.matches)setMotion(false);};q.addEventListener('change',change);return()=>q.removeEventListener('change',change);},[]);
  useEffect(()=>{if(visible&&!saver)setRequested(true);},[visible,saver]);

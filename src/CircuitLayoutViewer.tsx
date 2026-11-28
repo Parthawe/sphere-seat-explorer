@@ -14,13 +14,13 @@ const VenueStands=lazy(()=>import("./VenueStands"));
 class LayoutBoundary extends Component<{children:ReactNode;onUnavailable:()=>void},{failed:boolean}>{state={failed:false};static getDerivedStateFromError(){return {failed:true};}componentDidCatch(){this.props.onUnavailable();}render(){return this.state.failed?null:this.props.children;}}
 const StandMediaGallery=lazy(()=>import('./StandMediaGallery'));
 export default function CircuitLayoutViewer({race,onBack,onRace}:{race:Race;onBack:()=>void;onRace:(race:Race)=>void}) {
- const [layout,setLayout]=useState<CircuitLayout|null>(null),[failed,setFailed]=useState(false),[ready,setReady]=useState(false),[retry,setRetry]=useState(0),[mode,setMode]=useState<LayoutCamera>('perspective'),[reset,setReset]=useState(0),[playing,setPlaying]=useState(false),[visible,setVisible]=useState(()=>!document.hidden),[zoom,setZoom]=useState(0);
+ const [layout,setLayout]=useState<CircuitLayout|null>(null),[failed,setFailed]=useState(false),[ready,setReady]=useState(false),[retry,setRetry]=useState(0),[mode,setMode]=useState<LayoutCamera>('perspective'),[reset,setReset]=useState(0),[playing,setPlaying]=useState(()=>!matchMedia('(prefers-reduced-motion: reduce)').matches),[visible,setVisible]=useState(()=>!document.hidden),[zoom,setZoom]=useState(0);
  useSceneMeasurement('diagram',ready,failed,retry);
  const tools=useRef<HTMLDivElement>(null),scene=useRef<HTMLDivElement>(null),Scene=useMemo(()=>lazy(()=>import('./CircuitLayoutScene')),[retry]);
  const [immersive,setImmersive]=useState(false);
  useImmersiveScene(scene,immersive,setImmersive);
  useEffect(()=>{const element=tools.current;if(!element)return;const measure=()=>scene.current?.style.setProperty('--layout-tools-height',`${element.offsetHeight}px`);const observer=new ResizeObserver(measure);observer.observe(element);measure();return()=>observer.disconnect();},[]);
- const onReady=useCallback(()=>setReady(true),[]),onUnavailable=useCallback(()=>{setFailed(true);setReady(false);setPlaying(false);},[]);
+ const onReady=useCallback(()=>setReady(true),[]),onUnavailable=useCallback(()=>{setFailed(true);setReady(false);},[]);
  useEffect(()=>{const controller=new AbortController();setLayout(null);setFailed(false);setReady(false);loadCircuitLayout(race,controller.signal).then(setLayout).catch(()=>{if(!controller.signal.aborted)onUnavailable();});return()=>controller.abort();},[race.season,race.slug,retry,onUnavailable]);
  useEffect(()=>{let inView=true;const update=()=>setVisible(inView&&!document.hidden),observer=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;update();}),q=matchMedia('(prefers-reduced-motion: reduce)'),motion=()=>{if(q.matches)setPlaying(false);};if(scene.current)observer.observe(scene.current);document.addEventListener('visibilitychange',update);q.addEventListener('change',motion);return()=>{observer.disconnect();document.removeEventListener('visibilitychange',update);q.removeEventListener('change',motion);};},[]);
  return <div className="layout-viewer">
