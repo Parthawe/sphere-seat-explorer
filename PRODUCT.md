@@ -197,3 +197,8 @@ At the owner’s explicit request, the site now supports opt-in first-party prod
 ## Immersive web exploration · 27 November 2026
 
 Following the owner’s request for a larger 3D experience and shared fan feedback, the existing Earth and circuit scenes can fill the viewport through Expand 3D. This uses the existing renderer and works without the native Fullscreen API. Close/Escape returns to the guide context. It adds no new surveyed geometry, verified ticket seats, native app, AR capability or paid service. Fast guide/photo access and deeper 3D exploration remain available on the same website.
+
+
+## Installable web app · 28 November 2026
+
+The owner chose an optional installable web app and online-first operation. A standalone manifest, existing-brand raster icons, Apple touch icon and explicit install controls reuse the current browser renderer and URLs. Apple guidance is shown on request. A service worker caches only the public offline screen; APIs, authentication, private pages and assets bypass it. It never replaces a running session automatically. Optional analytics adds browser-confirmed app_installed events and deduplicated standalone app_launch events to existing private reporting. No DB migration, native app, AR, offline guides/circuits, push or cross-device synchronization is introduced.
