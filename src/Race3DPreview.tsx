@@ -27,22 +27,22 @@ export default function Race3DPreview({race,onOpen,animated=false,framing='circu
   stage.current?.closest<HTMLAnchorElement>('.race-3d-preview-link')?.focus({preventScroll:true});
   setFailed(false);setReady(false);setRetry(n=>n+1);setRequested(true);
  }
- const playing=motion&&visible&&!reduced;
+ const playing=motion&&visible&&!reduced,orbiting=animated&&(framing==='circuit'||spec.kind==='outline');
  return <div className="race-3d-preview" data-preview-key={spec.key} data-preview-ready={ready&&!failed} data-preview-visible={visible}>
   <a className="race-3d-preview-link" href={spec.href} aria-label={`Explore ${race.name} ${race.season} in 3D`} onClick={event=>{if(!onOpen||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();onOpen();}}>
    <div ref={stage} className="race-3d-preview-stage">
     <img className="race-3d-poster" src={posterFailed?`/circuit-plans/${circuitLayoutId(race.season,race.slug)}.svg`:spec.poster} width="960" height="540" fetchPriority="high" alt={posterFailed?`${race.name} source circuit outline fallback`:spec.kind==='outline'?`${race.name} circuit outline study`:`Illustrative ${race.name} venue study`} onError={()=>setPosterFailed(true)}/>
     {requested&&!failed&&<div className="race-3d-renderer" data-ready={ready} aria-hidden="true"><HeroSceneBoundary key={retry} onUnavailable={unavailable}><Suspense fallback={null}>
-     {spec.kind==='model'&&model&&selection&&<Scenes.Model autoRotate={animated&&framing==='circuit'} preview model={model} selection={selection} mode={framing==='seat'?'seat':'circuit'} playing={playing} visible={visible} speed={1} pass={0} following={false} onManualLook={noAction} roofs reset={0} cameraControls={cameraControls} onZoomLimitsChange={noAction} onSelect={noAction} onReady={onReady} onUnavailable={unavailable}/>}
-     {spec.kind==='vegas'&&<Scenes.Vegas autoRotate={animated} view={framing==='seat'?'seat':'circuit'} motion={playing} reduced={reduced} active={visible} interactionRef={stage} onReady={onReady} onUnavailable={unavailable}/>}
-     {spec.kind==='outline'&&layout&&<Scenes.Outline autoRotate={animated} preview layout={layout} playing={playing} visible={visible} reset={0} zoom={0} onReady={onReady} onUnavailable={unavailable}/>}
+     {spec.kind==='model'&&model&&selection&&<Scenes.Model autoRotate={orbiting} preview model={model} selection={selection} mode={framing==='seat'?'seat':'circuit'} playing={playing} visible={visible} speed={1} pass={0} following={false} onManualLook={noAction} roofs reset={0} cameraControls={cameraControls} onZoomLimitsChange={noAction} onSelect={noAction} onReady={onReady} onUnavailable={unavailable}/>}
+     {spec.kind==='vegas'&&<Scenes.Vegas autoRotate={orbiting} view={framing==='seat'?'seat':'circuit'} motion={playing} reduced={reduced} active={visible} interactionRef={stage} onReady={onReady} onUnavailable={unavailable}/>}
+     {spec.kind==='outline'&&layout&&<Scenes.Outline autoRotate={orbiting} preview layout={layout} playing={playing} visible={visible} reset={0} zoom={0} onReady={onReady} onUnavailable={unavailable}/>}
     </Suspense></HeroSceneBoundary></div>}
    </div>
    <div className="race-3d-preview-footer"><span>{framing==='seat'&&model&&selection&&<span className="preview-bank-name">{model.banks.find(b=>b.id===selection.bank)?.name}</span>}{spec.note}</span><strong><UiIcon name={spec.kind==='outline'?'circuit':'seat'}/>{spec.action}<UiIcon name="arrow"/></strong></div>
   </a>
   <a className="race-3d-preview-credit" href="/circuit-previews/CREDITS.md" target="_blank" rel="noreferrer" aria-label="3D preview credits" title="3D preview credits"><UiIcon name="info"/></a>
   <div className="race-3d-preview-tools">
-   {failed||(!requested&&saver)?<button onClick={load}>{failed?'Retry preview':'Load 3D'}<UiIcon name="cube"/></button>:ready&&!reduced?<button aria-label={animated?(motion?'Pause 3D preview':'Play 3D preview'):(motion?'Pause preview cars':'Play preview cars')} aria-pressed={motion} onClick={()=>setMotion(v=>!v)}><UiIcon name={motion?'pause':'play'}/>{motion?'Pause':animated?'Play 3D':'Simulated cars'}</button>:null}
+   {failed||(!requested&&saver)?<button onClick={load}>{failed?'Retry preview':'Load 3D'}<UiIcon name="cube"/></button>:ready&&!reduced?<button aria-label={orbiting?(motion?'Pause 3D preview':'Play 3D preview'):(motion?'Pause preview cars':'Play preview cars')} aria-pressed={motion} onClick={()=>setMotion(v=>!v)}><UiIcon name={motion?'pause':'play'}/>{motion?'Pause':orbiting?'Play 3D':'Simulated cars'}</button>:null}
   </div>
   <span className="race-3d-preview-status" role="status">{failed?'3D preview unavailable. Open the explorer to retry.':requested&&!ready?'Preparing 3D preview…':''}</span>
  </div>;

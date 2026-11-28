@@ -4,6 +4,7 @@ These images are captured from this website’s illustrative 3D renderer. They a
 
 - Flat source outlines: [MIT geometry license](/data/circuit-layouts-LICENSE.txt). No terrain, bridge, stand or seat geometry is invented for those views.
 - Detailed venue and Vegas geography: © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL. See the matching explorer’s source notes and linked geometry record.
+- Qatar, Bahrain and Abu Dhabi building plans: [adapted OSM footprints, source URLs and download](/data/venue-context.json). Heights, facade modules and materials are illustrative; these do not establish measured obstructions or exact seat views.
 - Rendering materials: [texture and NASA lunar-image credits](/materials/CREDITS.txt). The Vegas lunar display is a simulated display, not Sphere show footage.
 - Spa terrain provenance and its coarse sampling limitations remain in the venue’s full 3D source notes. All banks, tiers, chairs, buildings and modeled sightlines retain their existing source/estimate limits.
 - [Per-image source and SHA-256 manifest](/circuit-previews/sources.json).
