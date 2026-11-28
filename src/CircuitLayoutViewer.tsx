@@ -1,3 +1,5 @@
+import useImmersiveScene from './useImmersiveScene';
+import ImmersiveButton from './ImmersiveButton';
 import {useSceneMeasurement,trackUsage} from './usageAnalytics';
 import {raceStudyLink} from './raceCards';
 import {raceCoverage} from './raceCoverage';
@@ -15,6 +17,8 @@ export default function CircuitLayoutViewer({race,onBack,onRace}:{race:Race;onBa
  const [layout,setLayout]=useState<CircuitLayout|null>(null),[failed,setFailed]=useState(false),[ready,setReady]=useState(false),[retry,setRetry]=useState(0),[mode,setMode]=useState<LayoutCamera>('perspective'),[reset,setReset]=useState(0),[playing,setPlaying]=useState(false),[visible,setVisible]=useState(()=>!document.hidden),[zoom,setZoom]=useState(0);
  useSceneMeasurement('diagram',ready,failed,retry);
  const tools=useRef<HTMLDivElement>(null),scene=useRef<HTMLDivElement>(null),Scene=useMemo(()=>lazy(()=>import('./CircuitLayoutScene')),[retry]);
+ const [immersive,setImmersive]=useState(false);
+ useImmersiveScene(scene,immersive,setImmersive);
  useEffect(()=>{const element=tools.current;if(!element)return;const measure=()=>scene.current?.style.setProperty('--layout-tools-height',`${element.offsetHeight}px`);const observer=new ResizeObserver(measure);observer.observe(element);measure();return()=>observer.disconnect();},[]);
  const onReady=useCallback(()=>setReady(true),[]),onUnavailable=useCallback(()=>{setFailed(true);setReady(false);setPlaying(false);},[]);
  useEffect(()=>{const controller=new AbortController();setLayout(null);setFailed(false);setReady(false);loadCircuitLayout(race,controller.signal).then(setLayout).catch(()=>{if(!controller.signal.aborted)onUnavailable();});return()=>controller.abort();},[race.season,race.slug,retry,onUnavailable]);
@@ -26,6 +30,7 @@ export default function CircuitLayoutViewer({race,onBack,onRace}:{race:Race;onBa
     {layout&&!failed&&<LayoutBoundary key={retry} onUnavailable={onUnavailable}><Suspense fallback={null}><div className="layout-canvas"><Scene {...{layout,mode,reset,zoom,playing,visible,onReady,onUnavailable}}/></div></Suspense></LayoutBoundary>}
     {!ready&&!failed&&<div className="layout-loading" role="status">Loading circuit diagram…</div>}
     {failed&&<div className="layout-fallback" role="alert"><h2>3D diagram unavailable</h2><p>The race guide and existing viewing information still work.</p><button onClick={()=>{setFailed(false);setReady(false);setRetry(r=>r+1);}}>Retry 3D diagram</button><button onClick={onBack}>Open race guide</button></div>}
+    <ImmersiveButton active={immersive} onToggle={()=>setImmersive(value=>!value)}/>
     <div className="layout-scene-label" aria-hidden="true">{layout?.name}</div>
     <div ref={tools} className="layout-tools" aria-label="Diagram controls"><div role="group" aria-label="Diagram camera"><button disabled={!ready} aria-pressed={mode==='perspective'} onClick={()=>setMode('perspective')}><UiIcon name="cube"/>Orbit</button><button disabled={!ready} aria-pressed={mode==='top'} onClick={()=>setMode('top')}><UiIcon name="map"/>Overhead</button></div><div role="group" aria-label="Diagram zoom"><button disabled={!ready} aria-label="Zoom in on diagram" onClick={()=>setZoom(z=>z+1)}>+</button><button disabled={!ready} aria-label="Zoom out on diagram" onClick={()=>setZoom(z=>z-1)}>−</button><button disabled={!ready} aria-label="Reset diagram camera" onClick={()=>setReset(r=>r+1)}><UiIcon name="reset"/></button></div><button disabled={!ready} aria-label={playing?'Pause circuit cars':'Show circuit cars'} aria-pressed={playing} onClick={()=>setPlaying(p=>!p)}><UiIcon name={playing?'pause':'play'}/>Cars</button></div>
     <div className="layout-scene-foot"><span>Drag to orbit · Double-tap to explore</span><span>Flat diagram · illustrative cars</span></div>

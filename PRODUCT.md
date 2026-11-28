@@ -192,3 +192,8 @@ Twenty-seven source-outline centers locate all 47 listed editions. NASA Blue Mar
 ## Optional usage insights and email request storage · 27 November 2026
 
 At the owner’s explicit request, the site now supports opt-in first-party product usage measurements and a separate consented email-request list. Operator details supplied are Parth, pawar.d.parth@gmail.com, India. The Worker/D1 backend retains the existing public site and circuit client; its private /insights dashboard uses the site owner’s native sign-in. It reports visits, exploration, loading health and source handoffs without interpreting them as sales. Signup requests are unverified and no delivery service or automatic messages are enabled. The /privacy notice and persistent settings describe the actual collection, retention and contact/deletion paths. Existing affiliate, ads and external-feed gates remain unchanged. See docs/measurement-and-email.md.
+
+
+## Immersive web exploration · 27 November 2026
+
+Following the owner’s request for a larger 3D experience and shared fan feedback, the existing Earth and circuit scenes can fill the viewport through Expand 3D. This uses the existing renderer and works without the native Fullscreen API. Close/Escape returns to the guide context. It adds no new surveyed geometry, verified ticket seats, native app, AR capability or paid service. Fast guide/photo access and deeper 3D exploration remain available on the same website.

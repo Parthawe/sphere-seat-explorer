@@ -1,3 +1,5 @@
+import useImmersiveScene from './useImmersiveScene';
+import ImmersiveButton from './ImmersiveButton';
 import {useSceneMeasurement} from './usageAnalytics';
 import {calendars} from './races';
 import { SITE_ORIGIN, syncPublicUrlMetadata } from "./brand";
@@ -470,14 +472,8 @@ export default function App({
       window.history.replaceState({}, "", shared.pathname + shared.search);
     }
   }
-  async function fullscreen() {
-    try {
-      if (document.fullscreenElement) await document.exitFullscreen();
-      else await sceneRef.current?.requestFullscreen();
-    } catch {
-      announce("Fullscreen is unavailable in this browser.");
-    }
-  }
+ const [immersive,setImmersive]=useState(false);
+ useImmersiveScene(sceneRef,immersive,setImmersive);
   return (
     <div className="app-shell">
       <a className="skip-link" href="#seat-controls">
@@ -683,13 +679,7 @@ export default function App({
             >
               −
             </button>
-            <button
-              title="Fullscreen scene"
-              aria-label="Fullscreen scene"
-              onClick={fullscreen}
-            >
-              <Icon name="expand" />
-            </button>
+            <ImmersiveButton inline active={immersive} onToggle={()=>setImmersive(value=>!value)}/>
           </div>
           <div className="scene-bottom">
             <div className="circuit-inset">

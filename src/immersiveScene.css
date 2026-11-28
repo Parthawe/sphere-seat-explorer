@@ -1,0 +1,37 @@
+/* The existing world fills the viewport without requiring an app download. */
+.scene-expand {display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:10px 14px;font:400 13px var(--font-ui);}
+.scene-expand .ui-icon {width:20px;height:20px;flex-shrink:0;}
+.study-stage>.scene-expand,.layout-stage>.scene-expand {position:absolute;right:16px;top:16px;z-index:3;}
+.study-stage>.study-play-overlay {right:156px;}
+.study-stage>.study-stage-label {max-width:calc(100% - 310px);}
+.study-stage-label strong {font-size:19px;}
+.layout-stage>.layout-scene-label {max-width:calc(100% - 180px);}
+[data-immersive=true] {position:fixed!important;inset:0!important;width:100%!important;height:100dvh!important;min-height:0!important;max-height:none!important;max-width:none!important;margin:0!important;border:0!important;z-index:1000!important;isolation:isolate;background:var(--color-ink);overscroll-behavior:contain;}
+[data-immersive=true].study-stage>div:has(canvas) {inset:0!important;height:100%!important;}
+[data-immersive=true].layout-stage>.layout-canvas {inset:0!important;}
+[data-immersive=true] .study-stage-label,[data-immersive=true] .layout-scene-label {top:max(20px,env(safe-area-inset-top));left:max(20px,env(safe-area-inset-left));}
+[data-immersive=true]>.scene-expand {top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));}
+[data-immersive=true] .study-scene-tools,[data-immersive=true] .layout-tools {bottom:calc(62px + env(safe-area-inset-bottom));}
+[data-immersive=true] .study-stage-foot,[data-immersive=true] .layout-scene-foot,[data-immersive=true] .circuit-scene-note {padding-bottom:calc(14px + env(safe-area-inset-bottom));}
+[data-immersive=true].earth-journey {--earth-height:100dvh;}
+[data-immersive=true] .earth-topline {padding-top:env(safe-area-inset-top);}
+.earth-topline>.scene-expand {margin-left:auto;pointer-events:auto;}
+[data-immersive=true].circuit-model-stage .circuit-scene-actions {bottom:calc(56px + env(safe-area-inset-bottom));}
+[data-immersive=true].scene-area .scene-tools {top:max(18px,env(safe-area-inset-top));}
+@media(max-width:760px){
+ .study-stage>.scene-expand {right:12px;top:14px;padding:10px;}
+ .study-stage>.study-play-overlay {right:64px;}
+ .study-stage>.study-stage-label {max-width:calc(100% - 130px);}
+ .scene-expand>span {display:none;}
+ .layout-stage>.layout-scene-label {max-width:calc(100% - 85px);}
+ [data-immersive=true] .study-scene-tools {left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));}
+ [data-immersive=true].circuit-model-stage .circuit-model-heading {top:max(16px,env(safe-area-inset-top));}
+}
+@media(max-height:500px){
+ [data-immersive=true].study-stage .study-stage-label strong {font-size:16px;}
+ [data-immersive=true].study-stage .study-stage-foot {font-size:10px;padding-block:8px;}
+ [data-immersive=true].study-stage .study-scene-tools {bottom:calc(40px + env(safe-area-inset-bottom));}
+}
+
+/* Lift the existing ancestor chain above sticky page chrome without moving WebGL. */
+[data-immersive-ancestor=true] {position:relative!important;z-index:1000!important;isolation:auto!important;overflow:visible!important;transform:none!important;filter:none!important;clip-path:none!important;contain:none!important;}

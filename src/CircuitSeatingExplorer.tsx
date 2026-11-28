@@ -1,3 +1,5 @@
+import useImmersiveScene from './useImmersiveScene';
+import ImmersiveButton from './ImmersiveButton';
 import {useSceneMeasurement,trackUsage} from './usageAnalytics';
 import {racePreview} from './racePreview';
 import BoundedNumberInput from './BoundedNumberInput';
@@ -29,13 +31,9 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  const Scene=useMemo(()=>lazy(()=>import('./CircuitSeatingScene')),[retry]);
  const [speed,setSpeed]=useState(1),[pass,setPass]=useState(0),[following,setFollowing]=useState(false);
  const [focusView,setFocusView]=useState(false),[bankSearch,setBankSearch]=useState('');
- const returnToControls=useRef(false),focusButton=useRef<HTMLButtonElement>(null);
- useLayoutEffect(()=>{
-  if(focusView){stage.current?.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});return;}
-  if(returnToControls.current){returnToControls.current=false;const select=document.getElementById('model-bank');select?.focus({preventScroll:true});if(matchMedia('(max-width:760px), (max-height:600px)').matches)select?.closest('aside')?.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
- },[focusView]);
  const heading=useRef<HTMLDivElement>(null),cameraModes=useRef<HTMLElement>(null);
  const stage=useRef<HTMLElement|null>(null),[sceneVisible,setSceneVisible]=useState(true);
+ useImmersiveScene(stage,focusView,setFocusView);
  useEffect(()=>{const observer=new IntersectionObserver(([entry])=>setSceneVisible(entry.isIntersecting));if(stage.current)observer.observe(stage.current);return()=>observer.disconnect();},[]);
  useLayoutEffect(()=>{
   const surface=stage.current,title=heading.current,modes=cameraModes.current;
@@ -82,7 +80,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
  function openMap(ids:string[]|null=null){setPlaying(false);setOverviewBanks(ids);setOverview(true);}
  function closeMap(){setOverview(false);focusModelView();}
  function save(){if(saved.some(p=>positionKey(p)===positionKey(selection))){setSaved(saved.filter(p=>positionKey(p)!==positionKey(selection)));return;}if(saved.length===3){setFeedback('Three positions saved. Remove one to compare another.');return;}setSaved([...saved,{...selection}]);}
- function arrows(e:React.KeyboardEvent,gridView=false){if(!gridView&&e.key.toLowerCase()==='f'&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();if(focusView)returnToControls.current=true;setFocusView(value=>!value);return;}if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();choose({seat:selection.seat+(e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0),row:selection.row+(e.key==='ArrowUp'?1:e.key==='ArrowDown'?-1:0)*(gridView?-1:1)});}
+ function arrows(e:React.KeyboardEvent,gridView=false){if(!gridView&&e.key.toLowerCase()==='f'&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();setFocusView(value=>!value);return;}if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();choose({seat:selection.seat+(e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0),row:selection.row+(e.key==='ArrowUp'?1:e.key==='ArrowDown'?-1:0)*(gridView?-1:1)});}
  return <div className={'circuit-explorer'+(focusView?' circuit-focus-view':'')}>
   <header className="circuit-explorer-header"><a className="wordmark" href={`?season=${model.season}`}><BrandIdentity subtitle="3D SEATING STUDIES" /></a><div><span>{model.country.toUpperCase()} / {model.season}</span><button onClick={()=>onBack(bank.id)}>Race guide</button></div></header>
   <main className="circuit-explorer-layout">
@@ -101,7 +99,7 @@ export default function CircuitSeatingExplorer({model,onBack}:{model:CircuitMode
      <button disabled={!ready||unavailable} aria-label="Reset seated zoom" title="Reset zoom" onClick={()=>cameraControls.current?.resetZoom()}>1×</button>
      <button disabled={!ready||unavailable||!zoomLimits.outward} aria-label="Zoom out on seated view" title="Zoom out" onClick={()=>cameraControls.current?.zoomOut()}>−</button>
     </div>}
-    <div className="circuit-scene-actions">{bank.roof&&<button aria-label={roofs?"Roof cutaway":"Restore roofs"} title={roofs?"Roof cutaway":"Restore roofs"} aria-pressed={!roofs} onClick={()=>setRoofs(!roofs)}><UiIcon name="layers"/><span className="circuit-action-label">Roof</span></button>}<button aria-label="Reset camera" title="Reset camera" onClick={()=>{setFollowing(false);setReset(r=>r+1);}}><UiIcon name="reset"/></button><button aria-label={playing?'Pause cars':'Show passing cars'} disabled={!ready||unavailable} aria-pressed={playing} onClick={()=>setPlaying(!playing)}><UiIcon name={playing?'pause':'play'}/><span className="circuit-action-label">Cars</span></button><button aria-label="Choose model position" title="Choose model position" onClick={()=>setGrid(true)}><UiIcon name="grid"/><span className="circuit-quick-position-label">Position</span></button><button aria-label="Open circuit map" title="Open circuit map" onClick={()=>openMap()}><UiIcon name="map"/><span className="circuit-action-label">Map</span></button><button ref={focusButton} aria-label={focusView?'Show seat controls':'Hide seat controls'} aria-pressed={focusView} title={focusView?'Show seat controls (F)':'Focus view (F)'} onClick={()=>{if(focusView)returnToControls.current=true;setFocusView(value=>!value);}}><UiIcon name={focusView?'seat':'expand'}/><span className="circuit-focus-label">{focusView?'Seats':'Focus'}</span></button></div>
+    <div className="circuit-scene-actions">{bank.roof&&<button aria-label={roofs?"Roof cutaway":"Restore roofs"} title={roofs?"Roof cutaway":"Restore roofs"} aria-pressed={!roofs} onClick={()=>setRoofs(!roofs)}><UiIcon name="layers"/><span className="circuit-action-label">Roof</span></button>}<button aria-label="Reset camera" title="Reset camera" onClick={()=>{setFollowing(false);setReset(r=>r+1);}}><UiIcon name="reset"/></button><button aria-label={playing?'Pause cars':'Show passing cars'} disabled={!ready||unavailable} aria-pressed={playing} onClick={()=>setPlaying(!playing)}><UiIcon name={playing?'pause':'play'}/><span className="circuit-action-label">Cars</span></button><button aria-label="Choose model position" title="Choose model position" onClick={()=>setGrid(true)}><UiIcon name="grid"/><span className="circuit-quick-position-label">Position</span></button><button aria-label="Open circuit map" title="Open circuit map" onClick={()=>openMap()}><UiIcon name="map"/><span className="circuit-action-label">Map</span></button><ImmersiveButton inline active={focusView} onToggle={()=>setFocusView(value=>!value)}/></div>
     <div className="circuit-scene-note"><span>{mode==='seat'?'Drag to look · Scroll to zoom':mode==='circuit'?'Double-tap to explore · Drag to orbit':'Drag to orbit · Select a position'}</span><span>Illustrative view · simulated cars</span></div>
    </section>
    <aside className="circuit-position-panel" aria-label="Model position controls">

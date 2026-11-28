@@ -1,3 +1,5 @@
+import useImmersiveScene from './useImmersiveScene';
+import ImmersiveButton from './ImmersiveButton';
 import {useSceneMeasurement,trackUsage} from './usageAnalytics';
 import {raceStudyLink} from './raceCards';
 import {raceCoverage} from './raceCoverage';
@@ -17,6 +19,8 @@ export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Rac
  const [mode,setMode]=useState<'perspective'|'top'>('perspective'),[layout,setLayout]=useState<CircuitLayout|null>(null),[ready,setReady]=useState(false),[failed,setFailed]=useState(false),[retry,setRetry]=useState(0),[reset,setReset]=useState(0),[zoom,setZoom]=useState(0),[playing,setPlaying]=useState(false),[visible,setVisible]=useState(()=>!document.hidden),[message,setMessage]=useState(''),[copying,setCopying]=useState(false);
  useSceneMeasurement('outline',ready,failed,retry);
  const stage=useRef<HTMLDivElement>(null),Scene=useMemo(()=>lazy(()=>import('./CircuitIllustrativeScene')),[retry]);
+ const [immersive,setImmersive]=useState(false);
+ useImmersiveScene(stage,immersive,setImmersive);
  const geometry=useMemo(()=>layout?buildStudyGeometry(layout):null,[layout]),venue=findVenue(race.season,race.slug);
  const [areaId,setAreaId]=useState(()=>venue?.areas[0]?.id??'');
  const coverage=raceCoverage(race.season,race.slug),hasSeatStudy=coverage.kind==='model'||coverage.kind==='reference3d';
@@ -35,7 +39,8 @@ export default function CircuitIllustrativeViewer({race,onBack,onRace}:{race:Rac
      {layout&&!failed&&<StudyBoundary key={retry} onUnavailable={onUnavailable}><Suspense fallback={null}><Scene {...{layout,mode,playing,visible,reset,zoom,onReady,onUnavailable}}/></Suspense></StudyBoundary>}
      {!ready&&!failed&&<div className="layout-loading" role="status">Loading circuit study…</div>}
      {failed&&<div className="layout-fallback" role="alert"><h2>3D study unavailable</h2><p>Try again, or use the race guide’s viewing information.</p><button onClick={()=>{setReady(false);setFailed(false);setRetry(r=>r+1);}}>Retry study</button><button onClick={onBack}>Open race guide</button></div>}
-     <div className="study-stage-label"><strong>Circuit overview</strong></div><button className="study-play-overlay" disabled={!ready} aria-label={playing?'Pause cars':'Show passing cars'} aria-pressed={playing} title={playing?'Pause simulated cars':'Play simulated cars'} onClick={()=>setPlaying(p=>!p)}><UiIcon name={playing?'pause':'play'}/><span>{playing?'Pause':'Simulated cars'}</span></button>
+     <ImmersiveButton active={immersive} onToggle={()=>setImmersive(value=>!value)}/>
+     <div className="study-stage-label"><strong>{immersive?race.name:'Circuit overview'}</strong></div><button className="study-play-overlay" disabled={!ready} aria-label={playing?'Pause cars':'Show passing cars'} aria-pressed={playing} title={playing?'Pause simulated cars':'Play simulated cars'} onClick={()=>setPlaying(p=>!p)}><UiIcon name={playing?'pause':'play'}/><span>{playing?'Pause':'Simulated cars'}</span></button>
      <div className="study-scene-tools" aria-label="Circuit camera tools"><div role="group" aria-label="Study camera"><button aria-label="Orbit circuit" aria-pressed={mode==='perspective'} disabled={!ready} onClick={()=>setMode('perspective')}><UiIcon name="cube"/><span>Orbit</span></button><button aria-label="Overhead circuit" aria-pressed={mode==='top'} disabled={!ready} onClick={()=>setMode('top')}><UiIcon name="map"/><span>Overhead</span></button></div><div role="group" aria-label="Study zoom"><button aria-label="Zoom out study" disabled={!ready} onClick={()=>setZoom(z=>z-1)}>−</button><button aria-label="Zoom in study" disabled={!ready} onClick={()=>setZoom(z=>z+1)}><UiIcon name="plus"/></button><button aria-label="Reset study camera" disabled={!ready} onClick={()=>setReset(r=>r+1)}><UiIcon name="reset"/></button></div></div>
      <div className="study-stage-foot"><span>Double-tap to explore</span><span><UiIcon name="info"/>Flat track outline · no seating geometry</span></div>
     </div>

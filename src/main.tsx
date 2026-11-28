@@ -25,6 +25,7 @@ import "./editorial.css";
 import "./earthJourney.css";
 import "./typography.css";
 import "./dataExperience.css";
+import "./immersiveScene.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppBoundary><App /></AppBoundary>
