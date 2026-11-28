@@ -149,7 +149,8 @@ function Rig({viewInsets,model,selection,mode,preview,autoRotate,playing,visible
  useDoubleTapFocus(!preview&&mode!=='seat',12,(eye,look)=>{
   lookGoal.current=null;const lens=camera as T.PerspectiveCamera;
   if(matchMedia('(prefers-reduced-motion: reduce)').matches){camera.position.copy(eye);target.current.copy(look);control.current?.target.copy(look);camera.lookAt(look);tr.current=null;}
-  else tr.current={p:eye,t:look,from:camera.position.clone(),fromT:control.current?.target.clone()??target.current.clone(),started:performance.now(),duration:650,fromFov:lens.fov,toFov:lens.fov};
+  else tr.current={p:eye,t:look,from:camera.position.clone(),fromT:control.current?.target.clone()??target.current.clone(),started:performance.now(),duration:.65,fromFov:lens.fov,toFov:lens.fov};
+  gl.domElement.dataset.modelReady=matchMedia('(prefers-reduced-motion: reduce)').matches?'true':'moving';
   invalidate();
  });
  useEffect(()=>{const c=new OrbitControls(camera,gl.domElement);c.enablePan=false;c.enableDamping=!matchMedia('(prefers-reduced-motion: reduce)').matches;c.dampingFactor=.09;c.minDistance=12;c.maxDistance=3000;c.maxPolarAngle=Math.PI*.495;control.current=c;const change=()=>invalidate(),start=()=>{tr.current=null;gl.domElement.dataset.modelReady='true';};c.addEventListener('change',change);c.addEventListener('start',start);return()=>{c.dispose();control.current=null;};},[camera,gl,invalidate]);

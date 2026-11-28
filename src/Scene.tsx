@@ -68,7 +68,8 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
   useDoubleTapFocus(!preview&&mode!=='seat',30,(eye,look)=>{
     lookGoal.current=null;const lens=camera as T.PerspectiveCamera;
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){camera.position.copy(eye);target.current.copy(look);controls.current?.target.copy(look);camera.lookAt(look);transition.current=null;}
-    else transition.current={position:eye,target:look,startPosition:camera.position.clone(),startTarget:controls.current?.target.clone()??target.current.clone(),started:performance.now(),duration:650,fromFov:lens.fov,toFov:lens.fov};
+    else transition.current={position:eye,target:look,startPosition:camera.position.clone(),startTarget:controls.current?.target.clone()??target.current.clone(),started:performance.now(),duration:.65,fromFov:lens.fov,toFov:lens.fov};
+    gl.domElement.dataset.cameraState=matchMedia('(prefers-reduced-motion: reduce)').matches?'ready':'moving';
     invalidate();
   });
   useEffect(() => {

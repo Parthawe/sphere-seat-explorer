@@ -3,7 +3,7 @@ import {chromium} from 'playwright';
 const origin=process.argv[2]??'http://127.0.0.1:5190';
 const browser=await chromium.launch({args:process.platform==='darwin'?['--use-angle=metal']:[]});
 try{
- for(const [width,height] of [[390,844],[844,390],[1440,900]]){
+ for(const [width,height] of [[320,740],[390,844],[844,390],[1440,900]]){
   const page=await browser.newPage({viewport:{width,height},hasTouch:width<1000,reducedMotion:'reduce'}),errors=[];
   page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'&&/shader|WebGLProgram|THREE\./i.test(m.text()))errors.push(m.text());});
   await page.addInitScript(()=>localStorage.setItem('usage-consent-v1','deny'));
