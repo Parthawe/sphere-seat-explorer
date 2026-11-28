@@ -707,7 +707,7 @@ export default function App({
               {flat
                 ? "Choose a stand in the selector"
                 : mode === "seat"
-                  ? "DRAG TO LOOK · SCROLL TO ZOOM"
+                  ? "DRAG TO LOOK · PINCH OR SCROLL TO ZOOM"
                   : "DRAG TO ORBIT · SELECT A GRANDSTAND"}
             </div>
             <div className="north">

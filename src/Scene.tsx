@@ -1,5 +1,6 @@
+import {attachSeatedPointerControls} from './seatedPointerControls';
 import useDoubleTapFocus from './useDoubleTapFocus';
-import {flightDuration,flightProgress,sampleFlight} from './cameraFlight';
+import {flightDuration,flightProgress,sampleFlight,settleCamera} from './cameraFlight';
 import {ShaderGuard} from './SceneMaterials';
 import { vegasCircuitCamera } from "./vegasCamera";
 import { seatedLookTarget } from "./seatLook";
@@ -68,7 +69,6 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
     else transition.current={position:eye,target:look,startPosition:camera.position.clone(),startTarget:controls.current?.target.clone()??target.current.clone(),started:performance.now(),duration:650,fromFov:lens.fov,toFov:lens.fov};
     invalidate();
   });
-  const seatAngles = useRef({ yaw: 0, pitch: 0 });
   useEffect(() => {
     onReady?.();
   }, [gl]);
@@ -172,10 +172,6 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
         : 46;
     (camera as T.PerspectiveCamera).updateProjectionMatrix();
     if(transition.current){transition.current.toFov=(camera as T.PerspectiveCamera).fov;(camera as T.PerspectiveCamera).fov=fromFov;(camera as T.PerspectiveCamera).updateProjectionMatrix();}
-    seatAngles.current = {
-      yaw: Math.atan2(t.x - p.x, t.z - p.z),
-      pitch: Math.atan2(t.y - p.y, Math.hypot(t.x - p.x, t.z - p.z)),
-    };
     invalidate();
   }, [
     selection.stand,
@@ -218,55 +214,12 @@ function Rig({ selection, mode, reset, preview, onReady, previewLook, replay }: 
   ]);
   useEffect(() => {
     if (mode !== "seat" || preview) return;
-    const el = gl.domElement;
-    let down = false,
-      lastX = 0,
-      lastY = 0;
-    const start = (e: PointerEvent) => {
-      const direction = camera.getWorldDirection(new T.Vector3());
-      seatAngles.current = { yaw: Math.atan2(direction.x, direction.z), pitch: Math.asin(T.MathUtils.clamp(direction.y, -1, 1)) };
-      down = true;
-      lastX = e.clientX;
-      lastY = e.clientY;
-      el.setPointerCapture(e.pointerId);
-      transition.current = null;
-      gl.domElement.dataset.cameraState = "ready";
-    };
-    const move = (e: PointerEvent) => {
-      if (!down) return;
-      seatAngles.current.yaw -= (e.clientX - lastX) * 0.003;
-      seatAngles.current.pitch = Math.max(
-        -0.8,
-        Math.min(0.9, seatAngles.current.pitch + (e.clientY - lastY) * 0.003),
-      );
-      lastX = e.clientX;
-      lastY = e.clientY;
-      const { yaw, pitch } = seatAngles.current;
-      const desired=new T.Vector3(...seatedLookTarget(camera.position,yaw,pitch));
-      if(matchMedia('(prefers-reduced-motion: reduce)').matches){target.current.copy(desired);camera.lookAt(target.current);}else lookGoal.current=desired;
-      invalidate();
-    };
-    const end = () => (down = false);
-    const wheel = (e: WheelEvent) => {
-      e.preventDefault();
-      const c = camera as T.PerspectiveCamera;
-      c.fov = T.MathUtils.clamp(c.fov + e.deltaY * 0.035, 35, 110);
-      c.updateProjectionMatrix();
-      invalidate();
-    };
-    el.addEventListener("pointerdown", start);
-    el.addEventListener("pointermove", move);
-    el.addEventListener("pointerup", end);
-    el.addEventListener("pointercancel", end);
-    el.addEventListener("wheel", wheel, { passive: false });
-    return () => {
-      el.removeEventListener("pointerdown", start);
-      el.removeEventListener("pointermove", move);
-      el.removeEventListener("pointerup", end);
-      el.removeEventListener("pointercancel", end);
-      el.removeEventListener("wheel", wheel);
-    };
-  }, [mode, preview, gl, camera, invalidate]);
+    return attachSeatedPointerControls(gl.domElement,camera as T.PerspectiveCamera,{
+      onStart:()=>{const flight=transition.current;if(flight){settleCamera(camera as T.PerspectiveCamera,target.current,flight.position,flight.target,flight.toFov);controls.current?.target.copy(flight.target);gl.domElement.dataset.seatFov=String(flight.toFov);invalidate();}transition.current=null;lookGoal.current=null;gl.domElement.dataset.cameraState="ready";},
+      onLook:(yaw,pitch)=>{const desired=new T.Vector3(...seatedLookTarget(camera.position,yaw,pitch));if(matchMedia('(prefers-reduced-motion: reduce)').matches){target.current.copy(desired);camera.lookAt(target.current);}else lookGoal.current=desired;},
+      onZoom:fov=>{gl.domElement.dataset.seatFov=String(fov);},invalidate,pitchLimits:[-.8,.9],maxFov:110,wheelScale:.035,
+    });
+  }, [mode,preview,gl,camera,invalidate]);
   useEffect(() => {
     const el = gl.domElement;
     const zoom = (event: Event) => {

@@ -17,7 +17,11 @@ export default function useImmersiveScene(surface:RefObject<HTMLElement|null>,ac
   const siblings=new Map<HTMLElement,boolean>(),ancestors:HTMLElement[]=[];
   for(let child:HTMLElement=element;child.parentElement;child=child.parentElement){
    if(child!==element&&child!==document.body){ancestors.push(child);child.dataset.immersiveAncestor='true';}
-   for(const sibling of child.parentElement.children){if(sibling!==child&&sibling instanceof HTMLElement){siblings.set(sibling,sibling.inert);sibling.inert=true;}}
+   for(const sibling of child.parentElement.children){if(sibling!==child&&sibling instanceof HTMLElement&&!(sibling instanceof HTMLDialogElement)){
+     // Native modal dialogs escape an inert ancestor, but not their own inert flag.
+     // Leave dialogs available for the scene's grid, map and reference controls.
+     siblings.set(sibling,sibling.inert);sibling.inert=true;
+    }}
   }
   const buttons=()=>Array.from(element.querySelectorAll<HTMLElement>('button:not(:disabled),a[href],select:not(:disabled),input:not(:disabled),[tabindex="0"]')).filter(el=>!el.closest('[inert]')&&el.getClientRects().length>0&&!el.closest('[hidden]'));
   const key=(event:KeyboardEvent)=>{

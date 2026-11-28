@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {Vector3} from 'three';
-import {flightEase,flightDuration,flightProgress,sampleFlight} from './cameraFlight';
+import {Vector3,PerspectiveCamera} from 'three';
+import {flightEase,flightDuration,flightProgress,sampleFlight,settleCamera} from './cameraFlight';
 
 test('camera ease has stationary ends and remains monotone',()=>{
  assert.equal(flightEase(-1),0);assert.equal(flightEase(2),1);
@@ -26,4 +26,15 @@ test('slow frames finish on time and long idle before a new flight cannot skip i
  assert.equal(flightProgress(60000,60600,1.2),.5);
  assert.equal(flightProgress(60000,90000,1.2),1);
  assert.equal(flightProgress(60000,59000,1.2),0);
+});
+
+test('direct manipulation during seat arrival completes the destination eye, target and lens',()=>{
+ const camera=new PerspectiveCamera(45),target=new Vector3(),eye=new Vector3(42,8,-120),look=new Vector3(43,2,-30);
+ const sourceEye=eye.clone(),sourceLook=look.clone();
+ sampleFlight(new Vector3(800,1000,400),eye,new Vector3(),look,.15,camera.position,target);
+ assert(camera.position.distanceTo(eye)>100);
+ settleCamera(camera,target,eye,look,90);
+ assert.deepEqual(camera.position,eye);assert.deepEqual(target,look);assert.equal(camera.fov,90);
+ assert(camera.getWorldDirection(new Vector3()).distanceTo(look.clone().sub(eye).normalize())<1e-12);
+ assert.deepEqual(eye,sourceEye);assert.deepEqual(look,sourceLook);
 });

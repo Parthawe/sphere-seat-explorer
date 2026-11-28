@@ -1,3 +1,4 @@
+import {attachSeatedPointerControls} from './seatedPointerControls';
 import VenueContext,{hasVenueContext} from './VenueContext';
 import {detailedSeatPositions,distantSeatBands} from './seatDetail';
 import useDoubleTapFocus from './useDoubleTapFocus';
@@ -6,7 +7,7 @@ import BankSceneMarkers from './BankSceneMarkers';
 import {advanceTraffic,createTrafficField,fieldColors} from './raceTraffic';
 import {WorldSky} from './WorldShaders';
 import {stadiumSeatPanel,modelSeatAccent} from './stadiumSeat';
-import {flightDuration,flightProgress,sampleFlight} from './cameraFlight';
+import {flightDuration,flightProgress,sampleFlight,settleCamera} from './cameraFlight';
 import {SurfaceMaterial,ShaderGuard,StudioReflections} from './SceneMaterials';
 import {LightShaft} from './Atmosphere';
 import {seatedLookTarget} from "./seatLook";
@@ -170,9 +171,14 @@ function Rig({model,selection,mode,preview,autoRotate,playing,visible,reset,came
   return()=>{cameraControls.current=null;};
  },[mode,camera,gl,invalidate,size.width,size.height,cameraControls,onZoomLimitsChange]);
  // In seated mode orbit around the eye position, never move the camera through the stands.
- useEffect(()=>{if(mode!=='seat')return;const c=control.current;if(c)c.enabled=false;const el=gl.domElement;let last:{x:number;y:number}|null=null;const p=modelPosition(model,selection),f=bankFrame(model,model.banks.find(b=>b.id===selection.bank)!);let yaw=f.yaw,pitch=Math.atan2(1.6+roadSample(model,p[0]+f.forward[0]*90,p[2]+f.forward[1]*90).height-p[1]-1.15,90);
-  const down=(e:PointerEvent)=>{onManualLook();const direction=camera.getWorldDirection(new T.Vector3());yaw=Math.atan2(direction.x,direction.z);pitch=Math.asin(T.MathUtils.clamp(direction.y,-1,1));last={x:e.clientX,y:e.clientY};el.setPointerCapture(e.pointerId);tr.current=null;gl.domElement.dataset.modelReady='true';};const move=(e:PointerEvent)=>{if(!last)return;yaw-=(e.clientX-last.x)*.003;pitch=T.MathUtils.clamp(pitch+(e.clientY-last.y)*.003,-1.1,.7);last={x:e.clientX,y:e.clientY};const desired=new T.Vector3(...seatedLookTarget(camera.position,yaw,pitch));if(matchMedia('(prefers-reduced-motion: reduce)').matches){target.current.copy(desired);camera.lookAt(target.current);}else lookGoal.current=desired;invalidate();};const up=()=>{last=null;};const wheel=(e:WheelEvent)=>{e.preventDefault();const c=camera as T.PerspectiveCamera;c.fov=T.MathUtils.clamp(c.fov+e.deltaY*.03,35,105);c.updateProjectionMatrix();gl.domElement.dataset.seatFov=String(c.fov);onZoomLimitsChange(c.fov>35,c.fov<105);invalidate();};el.addEventListener('pointerdown',down);el.addEventListener('pointermove',move);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);el.addEventListener('wheel',wheel,{passive:false});return()=>{el.removeEventListener('pointerdown',down);el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);el.removeEventListener('wheel',wheel);};
- },[mode,selection.bank,selection.section,selection.row,selection.seat,reset,model,camera,gl,invalidate,onZoomLimitsChange,onManualLook]);
+ useEffect(()=>{if(mode!=='seat'||preview)return;const c=control.current;if(c)c.enabled=false;
+  return attachSeatedPointerControls(gl.domElement,camera as T.PerspectiveCamera,{
+   onStart:()=>{onManualLook();const flight=tr.current;if(flight){settleCamera(camera as T.PerspectiveCamera,target.current,flight.p,flight.t,flight.toFov);control.current?.target.copy(flight.t);gl.domElement.dataset.seatFov=String(flight.toFov);onZoomLimitsChange(flight.toFov>35,flight.toFov<105);invalidate();}tr.current=null;lookGoal.current=null;gl.domElement.dataset.modelReady='true';},
+   onLook:(yaw,pitch)=>{const desired=new T.Vector3(...seatedLookTarget(camera.position,yaw,pitch));if(matchMedia('(prefers-reduced-motion: reduce)').matches){target.current.copy(desired);camera.lookAt(target.current);}else lookGoal.current=desired;},
+   onZoom:fov=>{gl.domElement.dataset.seatFov=String(fov);onZoomLimitsChange(fov>35,fov<105);},invalidate,
+  });
+ },[mode,preview,selection.bank,selection.section,selection.row,selection.seat,reset,model,camera,gl,invalidate,onZoomLimitsChange,onManualLook]);
+
  useFrame((_,delta)=>{const t=tr.current;if(!t){if(preview&&autoRotate&&playing&&visible){const o=orbit.current;o.time+=Math.min(delta,.05);camera.position.copy(o.eye).sub(o.target).applyAxisAngle(T.Object3D.DEFAULT_UP,Math.sin(o.time*.22)*.12).add(o.target);gl.domElement.dataset.previewOrbit=String(o.time);invalidate();}if(mode!=='seat')control.current?.update();const goal=lookGoal.current;if(goal&&mode==='seat'){target.current.lerp(goal,1-Math.exp(-Math.min(delta,.05)*18));if(target.current.distanceTo(goal)<.01){target.current.copy(goal);lookGoal.current=null;}camera.lookAt(target.current);invalidate();}else if(following&&mode==='seat'){target.current.lerp(lead.current,1-Math.exp(-delta*5));camera.lookAt(target.current);invalidate();}return;}const f=flightProgress(t.started,performance.now(),t.duration),e=sampleFlight(t.from,t.p,t.fromT,t.t,f,camera.position,target.current),lens=camera as T.PerspectiveCamera;lens.fov=T.MathUtils.lerp(t.fromFov,t.toFov,e);lens.updateProjectionMatrix();gl.domElement.dataset.seatFov=String(lens.fov);camera.lookAt(target.current);control.current?.target.copy(target.current);if(f===1){tr.current=null;gl.domElement.dataset.modelReady='true';}invalidate();});
  return null;
 }

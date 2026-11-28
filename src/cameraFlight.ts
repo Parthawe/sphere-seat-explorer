@@ -1,4 +1,4 @@
-import {Vector3} from 'three';
+import {Vector3,type PerspectiveCamera} from 'three';
 
 /** Zero velocity and acceleration at both ends of a deliberate camera move. */
 export function flightEase(progress:number){
@@ -19,4 +19,9 @@ export function sampleFlight(from:Vector3,to:Vector3,fromTarget:Vector3,toTarget
  if(distance>20)eye.y+=Math.sin(Math.PI*eased)**2*Math.min(distance*.1,35);
  target.lerpVectors(fromTarget,toTarget,eased);
  return eased;
+}
+
+/** Finish arrival before handing a seated camera to direct manipulation. */
+export function settleCamera(camera:PerspectiveCamera,target:Vector3,eye:Vector3,look:Vector3,fov:number){
+ camera.position.copy(eye);target.copy(look);camera.fov=fov;camera.updateProjectionMatrix();camera.lookAt(target);
 }
