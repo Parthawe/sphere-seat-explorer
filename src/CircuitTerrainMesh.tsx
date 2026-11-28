@@ -1,9 +1,10 @@
+import VenueSurfaceMaterial from './VenueSurfaceMaterial';
 import {useMemo,useEffect} from 'react';
 import * as T from 'three';
 import {bankFrame,bankGroundHeight,type CircuitModel} from './circuitSeating';
 import {groundHeight,roadSample} from './circuitTerrain';
 /** Coarse licensed ground samples plus explicitly authored road grading/platforms. */
-export default function CircuitTerrainMesh({model,texture}:{model:CircuitModel;texture:T.Texture}){
+export default function CircuitTerrainMesh({model}:{model:CircuitModel}){
  const geometry=useMemo(()=>{
   const t=model.terrain!,[west,north,east,south]=t.bounds,cols=257,rows=385,vertices:number[]=[],uv:number[]=[],indices:number[]=[];
   const pads=model.banks.map(bank=>({bank,frame:bankFrame(model,bank),height:bankGroundHeight(model,bank)}));
@@ -16,5 +17,5 @@ export default function CircuitTerrainMesh({model,texture}:{model:CircuitModel;t
   const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(vertices,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(indices);g.computeVertexNormals();return g;
  },[model]);
  useEffect(()=>()=>geometry.dispose(),[geometry]);
- return <mesh geometry={geometry} receiveShadow><meshStandardMaterial map={texture} roughness={1}/></mesh>;
+ return <mesh geometry={geometry} receiveShadow><VenueSurfaceMaterial surface="grass" roughness={1} strength={.35}/></mesh>;
 }

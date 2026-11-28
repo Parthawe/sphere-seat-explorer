@@ -1,4 +1,4 @@
-import {useThree} from '@react-three/fiber';
+import VenueSurfaceMaterial from './VenueSurfaceMaterial';
 import {WaterSurface} from './WorldShaders';
 import {groundHeight} from './circuitTerrain';
 import CircuitTerrainMesh from './CircuitTerrainMesh';
@@ -10,7 +10,7 @@ export function createGrassTexture(repeatX=420,repeatY=420,base:[number,number,n
   const size=128,pixels=new Uint8Array(size*size*4);let seed=31871;
   for(let y=0;y<size;y++)for(let x=0;x<size;x++){
    seed=(Math.imul(seed,1664525)+1013904223)>>>0;
-   const variation=(seed/4294967296-.5)*16+Math.sin(x*.16)*Math.cos(y*.11)*4,i=(y*size+x)*4;
+   const variation=(seed/4294967296-.5)*12,i=(y*size+x)*4;
    pixels[i]=base[0]+variation;pixels[i+1]=base[1]+variation;pixels[i+2]=base[2]+variation*.7;pixels[i+3]=255;
   }
   const texture=new T.DataTexture(pixels,size,size);texture.colorSpace=T.SRGBColorSpace;texture.wrapS=texture.wrapT=T.RepeatWrapping;texture.repeat.set(repeatX,repeatY);texture.magFilter=T.LinearFilter;texture.minFilter=T.LinearMipmapLinearFilter;texture.generateMipmaps=true;texture.needsUpdate=true;return texture;
@@ -19,7 +19,6 @@ export function createGrassTexture(repeatX=420,repeatY=420,base:[number,number,n
 
 /** Geographic park context. Tree crowns, heights and event clearing are authored. */
 export default function CircuitPark({model,motion=false}:{model:CircuitModel;motion?:boolean}){
- const {gl}=useThree();
  const water=useMemo(()=>model.features.filter(f=>f.kind==='water').map(f=>{
   const shape=new T.Shape(f.points.map(p=>new T.Vector2(p[0],-p[1])));
   shape.holes=(f.holes??[]).map(h=>new T.Path(h.map(p=>new T.Vector2(p[0],-p[1]))));
@@ -32,8 +31,6 @@ export default function CircuitPark({model,motion=false}:{model:CircuitModel;mot
   }
   const texture=new T.DataTexture(pixels,size,size);texture.wrapS=texture.wrapT=T.RepeatWrapping;texture.repeat.set(.14,.14);texture.needsUpdate=true;return texture;
  },[]);
- const grass=useMemo(()=>createGrassTexture(420,420,model.groundStyle==='campus'?[103,110,113]:undefined),[model.groundStyle]);
- useEffect(()=>{grass.anisotropy=Math.min(8,gl.capabilities.getMaxAnisotropy());grass.needsUpdate=true;return()=>grass.dispose();},[grass,gl]);
  const palmGeometry=useMemo(()=>{
   if(model.vegetationStyle!=='palms')return null;
   const vertices:number[]=[];
@@ -65,7 +62,7 @@ export default function CircuitPark({model,motion=false}:{model:CircuitModel;mot
  },[trees]);
  useEffect(()=>()=>{water.forEach(w=>w.geometry.dispose());normal.dispose();},[water,normal]);
  return <>
-  {model.terrain?<CircuitTerrainMesh model={model} texture={grass}/>:<mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><meshStandardMaterial map={grass} roughness={1}/></mesh>}
+  {model.terrain?<CircuitTerrainMesh model={model}/>:<mesh position={[0,-1,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[20000,20000]}/><VenueSurfaceMaterial surface={model.groundStyle==='campus'?'concrete':'grass'} roughness={1} strength={.35}/></mesh>}
   {water.map(w=><mesh key={w.id} geometry={w.geometry} rotation={[-Math.PI/2,0,0]} position={[0,.035,0]} receiveShadow><WaterSurface normalMap={normal} playing={motion}/></mesh>)}
   {trees.length>0&&<>
    <instancedMesh ref={m=>{if(m)treeRefs.current[0]=m;}} args={[undefined,undefined,trees.length]} castShadow receiveShadow><cylinderGeometry args={[1,1,1,6]}/><meshStandardMaterial color="#66563d" roughness={1}/></instancedMesh>

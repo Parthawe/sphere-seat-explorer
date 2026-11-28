@@ -1,6 +1,8 @@
+import VenueEnvironment from './VenueEnvironment';
+import useSceneQuality from './useSceneQuality';
 import {CircuitCars} from './PassingCars';
-import {WorldSky} from './WorldShaders';
-import {SurfaceMaterial,StudioReflections} from './SceneMaterials';
+
+import {SurfaceMaterial} from './SceneMaterials';
 import FormulaCar from "./FormulaCar";
 import { curve, points } from "./racingLine";
 import { replaySample, type ReplayFrame, type ReplayDriver } from "./replayMath";
@@ -1360,7 +1362,6 @@ function FanZone() {
     </>
   );
 }
-function MetalReflections() { return <StudioReflections intensity={.45}/>; }
 
 function Finish({
   playing,
@@ -1371,11 +1372,11 @@ function Finish({
   preview?: boolean;
   atmosphere: boolean;
 }) {
-  const { gl, scene, camera, size, invalidate } = useThree();
+  const { gl, scene, camera, size, invalidate } = useThree(),quality=useSceneQuality();
   const composer = useMemo(() => {
     const c = new EffectComposer(gl);
     c.addPass(new RenderPass(scene, camera));
-    if (size.width >= 760 && !preview) {
+    if (!quality.portable && !preview) {
       const ao = new GTAOPass(
         scene,
         camera,
@@ -1383,30 +1384,30 @@ function Finish({
         Math.round(size.height * 0.65),
       );
       ao.updateGtaoMaterial({
-        radius: 1.2,
-        thickness: 0.8,
+        radius: .8,
+        thickness: .45,
         samples: 8,
         distanceFallOff: 1.5,
       });
-      ao.blendIntensity = 0.65;
+      ao.blendIntensity = 0.48;
       c.addPass(ao);
     }
     c.addPass(
       new UnrealBloomPass(
         new T.Vector2(size.width, size.height),
+        0.18,
         0.3,
-        0.45,
-        1.15,
+        1.3,
       ),
     );
     c.addPass(new OutputPass());
     return c;
-  }, [gl, scene, camera, preview]);
+  }, [gl, scene, camera, preview,quality.portable]);
   useEffect(() => {
     composer.setSize(size.width, size.height);
     invalidate();
   }, [composer, size, invalidate]);
-  useEffect(() => () => composer.dispose(), [composer]);
+  useEffect(() => () => {composer.passes.forEach(pass=>pass.dispose());composer.dispose();}, [composer]);
   useFrame((_, delta) => {
     composer.render(delta);
     if ((playing || atmosphere) && !preview) invalidate();
@@ -1436,7 +1437,7 @@ export function World({
   ambientMotion?: boolean;
   replay?: ReplayFrame | null;
 }) {
-  const { invalidate } = useThree();
+  const { invalidate } = useThree(),quality=useSceneQuality();
   const shadowLight=useRef<T.DirectionalLight>(null),shadowTarget=useMemo(()=>new T.Object3D(),[]);
   const wideShadow=mode==='overview'||mode==='circuit',shadowSpan=wideShadow?230:90;
   const center=getStand(selection.stand).center;
@@ -1451,20 +1452,20 @@ export function World({
   return (
     <>
       <color attach="background" args={["#080911"]} />
-      <WorldSky/>
+      <VenueEnvironment/>
       <fogExp2
         attach="fog"
         args={["#111421", mode === "circuit" ? 0.0003 : 0.0012]}
       />
-      <ambientLight intensity={0.16} />
-      <hemisphereLight args={["#bac8e7", "#17131b", 0.4]} />
+      <ambientLight intensity={0.06} />
+      <hemisphereLight args={["#bac8e7", "#17131b", 0.18]} />
       <primitive object={shadowTarget}/>
       <directionalLight ref={shadowLight} target={shadowTarget}
         position={[shadowTarget.position.x-60,160,shadowTarget.position.z-120]}
-        intensity={2.8}
+        intensity={1.4}
         color="#e1e7f6"
         castShadow
-        shadow-mapSize={[2048, 2048]}
+        shadow-mapSize={[quality.shadowSize, quality.shadowSize]}
         shadow-camera-left={-shadowSpan}
         shadow-camera-right={shadowSpan}
         shadow-camera-top={shadowSpan}
@@ -1474,7 +1475,7 @@ export function World({
         shadow-normalBias={0.035}
         shadow-bias={-0.00008}
       />
-      <MetalReflections />
+
       <VenueDetails />
       <FanZone />
       <Environment />

@@ -13,7 +13,7 @@ const poles: [number, number, number][] = [
 export function LightShaft({
   origin,
   target,
-  strength=1,
+  strength=.35,
 }: {
   origin: [number, number, number];
   target: [number, number, number];
@@ -138,7 +138,7 @@ export function Atmosphere({
         ref={spot}
         position={[stand.center[0] - 24, 32, stand.center[2] - 12]}
         color="#dfebff"
-        intensity={4200}
+        intensity={3000}
         angle={0.72}
         penumbra={0.8}
         distance={155}

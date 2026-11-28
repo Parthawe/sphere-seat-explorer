@@ -9,3 +9,20 @@ nasa-moon.jpg: NASA's Scientific Visualization Studio CGI Moon Kit, 2025 lunar c
 https://svs.gsfc.nasa.gov/4720
 https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_2k.jpg
 Used to render a simulated lunar Exosphere display. It is not Sphere show footage. No NASA affiliation is implied.
+
+Outdoor lighting references (1K RGBE HDR, downloaded 28 November 2026):
+- day-sky.hdr: Kloppenheim 01 (Pure Sky), Greg Zaal and Jarod Guest.
+  https://polyhaven.com/a/kloppenheim_01_puresky
+- night-sky.hdr: Dikhololo Night, Greg Zaal.
+  https://polyhaven.com/a/dikhololo_night
+Both CC0 1.0: https://polyhaven.com/license
+Used for artistic illumination/reflections; the pure-sky image is also a daylight sky background.
+These are not photographs of the modeled venues or evidence of race-day weather.
+
+Scanned surface materials (1K diffuse, OpenGL normal, roughness; downloaded 28 November 2026):
+- concrete-color/normal/roughness.jpg: Concrete Floor 01, Rob Tuytel.
+  https://polyhaven.com/a/concrete_floor_01
+- grass-color/normal/roughness.jpg: Grass Ground, Charlotte Baglioni.
+  https://polyhaven.com/a/grass_ground
+CC0 1.0: https://polyhaven.com/license
+World-space texture scale and weathering are artistic choices, not venue material surveys.
